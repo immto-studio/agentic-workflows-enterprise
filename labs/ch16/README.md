@@ -2185,9 +2185,10 @@ nothing before the stop, refused it 5 times while the store was down and 12 afte
 without the key's limit, 70,000 in that minute, filled the provider's window. Failing closed, the gateway answered 503
 to every call that passed chapter 5's request rate, from 2.86 s after the stop until 2.68 s after the restart, W3's 57
 attempts while the store was down among them, with "Rate limit enforcement unavailable: request counters could not be
-verified against Redis". Chapter 5 says Larkspur's budgets and rate limits fail closed, and of a managed gateway whose
-limits fail open by default, that the default "has to be a decision rather than a discovery" (ch05:498). LiteLLM's
-limiter fails open when its store goes; the decision on LiteLLM is this setting, and its cost is every call through a
+verified against Redis". Chapter 5 says Larkspur's budgets and rate limits fail closed, and that a managed gateway's limits
+may fail open by default, so the direction is checked before anyone relies on it (ch05:498). By default LiteLLM's
+limiter falls back to each proxy's own counters when its store goes, and keeps serving; the decision on LiteLLM is
+this setting, and its cost is every call through a
 limited key for as long as the store is gone. LiteLLM's Redis client stopped calling the store after five failures in
 a row, its circuit breaker waiting a minute before it tries again, and the proxy logged a traceback for every spend
 write it skipped, 650 and 920 of them in the two rounds. The alert reached the receiver 4.47 s after the stop and
@@ -3885,7 +3886,7 @@ The lab's findings across steps 2 to 9, gathered; each step's own list above sta
 - A tokens-per-minute limit per key keeps the incident workflow served through the operations assistant's burst; the
   request rate alone does not, and the deployment's own limits count too late (step 5). Without a shared store the
   limiter's windows sat in a 200-entry in-memory cache that step 4's alerts filled 30.5 seconds into the burst; on Garnet
-  with its Lua transaction mode the windows hold, and when the store stops LiteLLM fails open unless told to fail closed
+  with its Lua transaction mode the windows hold, and when the store stops LiteLLM keeps serving from each proxy's memory unless told to fail closed
   (step 5b).
 - Naive retries made 9.07 times the load and served no more than sending each request once; honoring Retry-After served
   56 of 80 at 4.25 calls a success, and every workflow's client now waits out a 429 that names its wait (steps 5 and
