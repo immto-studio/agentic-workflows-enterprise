@@ -270,7 +270,7 @@ the run ends refused with "model unavailable"; the engineer works the incident w
 
 ## The write identities on AWS
 
-`aws/` plans W3's write identities offline (`aws/results/2026-11-02/`), through the per-request chain of
+`aws/` plans W3's write identities offline (`aws/results/2026-11-10/`), through the per-request chain of
 chapters 4 and 6, not the direct Pod Identity binding W2 took. The writer server runs as one service
 account and gets a base runtime role through EKS Pod Identity; for each write it assumes a narrow role
 per request, setting the source identity to the engineer and a workflow session tag, so CloudTrail and

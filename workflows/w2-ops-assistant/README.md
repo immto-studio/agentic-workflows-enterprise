@@ -45,7 +45,7 @@ vet.py                  a server's tools/list as a reviewer reads it, hints besi
 aws/
   *.tf                  one role per server from the catalog, Pod Identity trust, the view policy on the
                         production namespace, a boundary that denies the never-list
-  plan_offline.py       validate and plan with placeholder credentials; results/2026-11-09/ holds the plan
+  plan_offline.py       validate and plan with placeholder credentials; results/2026-11-10/ holds the plan
 tests/                  67 tests, none of which needs a model or a cloud account; the plan test needs
                         terraform and a provider cache, the Terraform tests python-hcl2
 ```
@@ -304,7 +304,7 @@ three stay what their tests say they are, read-only in every annotation and ever
 ## The AWS identities, planned offline (`aws/`)
 
 One IAM role per server (W2-D2), trusted by EKS Pod Identity (`pods.eks.amazonaws.com`, with
-`aws:SourceArn` bound to the account's clusters), each holding the read actions `catalog/tools.yaml`
+the session tag `eks-cluster-arn` bound to the account's clusters), each holding the read actions `catalog/tools.yaml`
 names for its server and nothing else, under a permission boundary that is the union of the three
 and denies the never-list outright (`iam:*`, `sts:AssumeRole`, `secretsmanager:*`, `ssm:*`,
 `eks:AccessKubernetesApi` and the EKS access-entry writes, `logs:PutLogEvents`, `logs:DeleteLogGroup`,
@@ -323,8 +323,8 @@ ARN, so that statement says `*`.
 `aws/plan_offline.py` copies the configuration to a work folder, adds an override with placeholder
 credentials and the provider's skip flags, and runs `terraform init -backend=false` from a plugin
 directory, `terraform validate`, and `terraform plan -refresh=false` with a placeholder account
-number; no request reaches AWS. `aws/results/2026-11-09/` holds the plan, run again after the
-boundary's last change: 15 resources (3 roles, 3 read policies and the boundary, 3 attachments, 3 pod
+number; no request reaches AWS. `aws/results/2026-11-10/` holds the plan, run again after the
+trust condition moved to the session tag: 15 resources (3 roles, 3 read policies and the boundary, 3 attachments, 3 pod
 identity associations, 1 access entry, 1 access policy association), never applied. The Service Authorization Reference's access levels were not
 read (its pages answer a text fetch with their titles), so the read-only claim rests on the verbs
 (`Get`, `List`, `Describe`, `Filter`) and on the checks that read them, with vet.py's sensitive

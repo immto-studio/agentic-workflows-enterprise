@@ -5,7 +5,7 @@ placeholder credentials and the skip flags, then runs `terraform init -backend=f
 directory, `terraform validate`, and `terraform plan -refresh=false` with a placeholder account
 number. Writes the plan's text and a summary of the resources to aws/results/<date>/ (or --out).
 
-  python aws/plan_offline.py [--plugin-dir DIR] [--out aws/results/2026-11-09]
+  python aws/plan_offline.py [--plugin-dir DIR] [--out aws/results/2026-11-10]
 
 The plugin directory defaults to TF_PLUGIN_CACHE_DIR, whose layout is a filesystem mirror's, so a
 cache that holds hashicorp/aws 6.71.0 serves init offline; without one, init asks the registry.

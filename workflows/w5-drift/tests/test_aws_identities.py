@@ -36,7 +36,7 @@ import cloud_fake  # noqa: E402  (servers/, on the path through conftest)
 AWS = W5 / "aws"
 MODULE = AWS / "workload-account"
 WORKFLOWS = W5.parent
-RESULTS = AWS / "results" / "2026-11-03"
+RESULTS = AWS / "results" / "2026-11-10"
 CATALOG = yaml.safe_load((W5 / "catalog" / "tools.yaml").read_text(encoding="utf-8"))
 MANIFEST = yaml.safe_load((W5 / "manifest" / "w5-drift.yaml").read_text(encoding="utf-8"))
 WORKSPACE_MAP = yaml.safe_load((W5 / "catalog" / "workspace-map.yaml").read_text(encoding="utf-8"))
@@ -328,7 +328,7 @@ def check_trusts(summary: dict[str, Any]) -> None:
         assert len(trust) == 1 and sorted(trust[0]["Action"]) == sorted(CHAIN)
         assert {k: v for k, v in trust[0].items() if k != "Action"} == {
             "Sid": "EKSPodIdentity", "Effect": "Allow", "Principal": {"Service": "pods.eks.amazonaws.com"},
-            "Condition": {"ArnLike": {"aws:SourceArn": f"arn:aws:eks:ca-central-1:{OPS}:cluster/*"}}}
+            "Condition": {"StringLike": {"aws:RequestTag/eks-cluster-arn": f"arn:aws:eks:ca-central-1:{OPS}:cluster/*"}}}
         assert summary["roles"][f'aws_iam_role.identity["{name}"]'] == {
             "name": spec["identity"], "max_session_duration": 3600, "permissions_boundary": "known after apply"}
 
@@ -600,7 +600,7 @@ def test_each_identity_is_bound_through_pod_identity_under_its_boundary():
     trust = TF["data"]["aws_iam_policy_document"]["pod_identity_trust"]["statement"][0]
     assert trust["principals"][0] == {"type": "Service", "identifiers": ["pods.eks.amazonaws.com"]}
     assert sorted(trust["actions"]) == ["sts:AssumeRole", "sts:TagSession"]
-    assert trust["condition"][0]["variable"] == "aws:SourceArn"
+    assert trust["condition"][0]["variable"] == "aws:RequestTag/eks-cluster-arn"
     association = TF["resource"]["aws_eks_pod_identity_association"]["identity"]
     assert association["for_each"] == "${local.bindings}"
     assert association["namespace"] == "${each.value.namespace}" and association["service_account"] == "${each.key}"
@@ -760,7 +760,7 @@ def test_the_kept_results_are_this_plan_and_name_no_local_path():
     summary = kept_summary()
     assert "Plan: 47 to add, 0 to change, 0 to destroy." in text
     check_resources(summary)
-    assert summary["account_id"] == OPS and summary["measured"] == "2026-11-03"
+    assert summary["account_id"] == OPS and summary["measured"] == "2026-11-10"
     assert summary["workload_account_ids"] == plan_offline.WORKLOAD_ACCOUNTS
     assert summary["organization_id"] == plan_offline.ORGANIZATION_ID
     check_ops_reads(summary)  # the kept policies are the catalog's of today

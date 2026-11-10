@@ -134,7 +134,7 @@ def test_each_agent_role_is_bound_through_pod_identity_under_the_boundary():
     assert role["permissions_boundary"] == "${aws_iam_policy.boundary.arn}"
     trust = TF["data"]["aws_iam_policy_document"]["pod_identity_trust"]["statement"][0]
     assert trust["principals"][0] == {"type": "Service", "identifiers": ["pods.eks.amazonaws.com"]}
-    assert trust["condition"][0]["variable"] == "aws:SourceArn"
+    assert trust["condition"][0]["variable"] == "aws:RequestTag/eks-cluster-arn"
     association = TF["resource"]["aws_eks_pod_identity_association"]["agent"]
     assert association["for_each"] == "${local.agents}"
     assert association["namespace"] == "${each.value.namespace}"

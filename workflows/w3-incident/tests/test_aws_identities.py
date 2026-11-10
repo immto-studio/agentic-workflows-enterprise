@@ -85,7 +85,7 @@ def test_the_runtime_role_assumes_the_write_roles_per_request():
     assert "permissions_boundary" not in runtime, "the runtime must assume the write roles; the boundary denies sts:AssumeRole"
     trust = TF["data"]["aws_iam_policy_document"]["runtime_trust"]["statement"][0]
     assert trust["principals"][0] == {"type": "Service", "identifiers": ["pods.eks.amazonaws.com"]}
-    assert trust["condition"][0]["variable"] == "aws:SourceArn"
+    assert trust["condition"][0]["variable"] == "aws:RequestTag/eks-cluster-arn"
     assume = TF["data"]["aws_iam_policy_document"]["runtime"]["statement"][0]
     assert sorted(assume["actions"]) == ["sts:AssumeRole", "sts:SetSourceIdentity", "sts:TagSession"]
     assert assume["resources"] == "${values(local.write_role_arns)}"

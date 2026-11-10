@@ -1,47 +1,47 @@
-# terraform plan -refresh=false with placeholder credentials, the ops account 111122223333, the workload accounts 411122223333, 422233334444, 433344445555, a placeholder organization ID, and a placeholder key ARN (2026-11-03)
+# terraform plan -refresh=false with placeholder credentials, the ops account 111122223333, the workload accounts 411122223333, 422233334444, 433344445555, a placeholder organization ID, and a placeholder key ARN (2026-11-10)
 # No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
-data.aws_iam_policy_document.state_reader: Reading...
-data.aws_iam_policy_document.pod_identity_trust: Reading...
-data.aws_iam_policy_document.export_reader: Reading...
-data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
-data.aws_iam_policy_document.state_reader: Read complete after 0s [id=1956429626]
-data.aws_iam_policy_document.export_reader: Read complete after 0s [id=792430784]
-module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
-module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
-module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
-module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
-module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
 module.lm_network_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
-module.lm_network_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
 module.lm_network_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
-module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
-module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
-module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=644330325]
-module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_network_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
 module.lm_network_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
-module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=477707832]
+module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
 module.lm_network_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=901132637]
 module.lm_network_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=110047797]
-module.lm_claims_prod.data.aws_iam_policy_document.boundary: Reading...
-module.lm_network_prod.data.aws_iam_policy_document.boundary: Reading...
-module.lm_claims_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
-module.lm_network_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
-module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
-module.lm_sandbox.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
-module.lm_sandbox.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
-module.lm_sandbox.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
-module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
 module.lm_sandbox.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
 module.lm_sandbox.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=1319870802]
 module.lm_sandbox.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=2781569856]
+module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.boundary: Reading...
 module.lm_sandbox.data.aws_iam_policy_document.boundary: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=644330325]
 module.lm_sandbox.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=477707832]
+module.lm_claims_prod.data.aws_iam_policy_document.boundary: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+data.aws_iam_policy_document.export_reader: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Reading...
 data.aws_iam_policy_document.chain["cost-mcp"]: Reading...
 data.aws_iam_policy_document.chain["cloud-mcp"]: Reading...
 data.aws_iam_policy_document.state_bucket_deny: Reading...
+data.aws_iam_policy_document.state_reader: Reading...
 data.aws_iam_policy_document.chain["cloud-mcp"]: Read complete after 0s [id=1988098484]
 data.aws_iam_policy_document.chain["cost-mcp"]: Read complete after 0s [id=3988783961]
+data.aws_iam_policy_document.export_reader: Read complete after 0s [id=792430784]
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=1384716204]
 data.aws_iam_policy_document.state_bucket_deny: Read complete after 0s [id=3522244308]
+data.aws_iam_policy_document.state_reader: Read complete after 0s [id=1956429626]
 data.aws_iam_policy_document.boundary: Reading...
 data.aws_iam_policy_document.boundary: Read complete after 0s [id=3830289731]
 
@@ -640,8 +640,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -692,8 +692,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -746,8 +746,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -798,8 +798,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -852,8 +852,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -906,8 +906,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"

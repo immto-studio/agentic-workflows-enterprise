@@ -86,11 +86,11 @@ data "aws_iam_policy_document" "pod_identity_trust" {
       identifiers = ["pods.eks.amazonaws.com"] # <1>
     }
 
-    # Only pods of this account's clusters: the service principal
-    # carries the cluster ARN as the source.
+    # Only pods of this account's clusters: Pod Identity tags the
+    # session with the cluster's ARN.
     condition {
-      test     = "ArnLike"
-      variable = "aws:SourceArn"
+      test     = "StringLike"
+      variable = "aws:RequestTag/eks-cluster-arn"
       values   = ["arn:aws:eks:${var.region}:${var.account_id}:cluster/*"]
     }
   }

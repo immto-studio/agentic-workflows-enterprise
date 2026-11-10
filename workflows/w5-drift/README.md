@@ -1060,7 +1060,7 @@ finding that differs as it is. New runs keep the detectors' order.
 
 ## The identities on AWS
 
-`aws/` plans W5's identities offline (W5-D1, W5-D15): forty-seven resources in `aws/results/2026-11-03/`,
+`aws/` plans W5's identities offline (W5-D1, W5-D15): forty-seven resources in `aws/results/2026-11-10/`,
 never applied, across four accounts. The ops account holds the ops cluster, and the three workload accounts
 are the ones `catalog/workspace-map.yaml` names: `lm-network-prod`, `lm-claims-prod`, and `lm-sandbox`.
 Every W5 Pod runs in `larkspur-ops`, the platform team's namespace of the ops cluster, under a service

@@ -85,7 +85,7 @@ def test_one_role_per_server_trusted_by_pod_identity_under_the_boundary():
     trust = TF["data"]["aws_iam_policy_document"]["pod_identity_trust"]["statement"][0]
     assert trust["principals"][0] == {"type": "Service", "identifiers": ["pods.eks.amazonaws.com"]}
     assert sorted(trust["actions"]) == ["sts:AssumeRole", "sts:TagSession"]
-    assert trust["condition"][0]["variable"] == "aws:SourceArn"
+    assert trust["condition"][0]["variable"] == "aws:RequestTag/eks-cluster-arn"
     association = TF["resource"]["aws_eks_pod_identity_association"]["server"]
     assert association["namespace"] == "${var.servers_namespace}" and association["service_account"] == "${each.key}"
 

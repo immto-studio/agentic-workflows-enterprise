@@ -244,7 +244,7 @@ authorize nothing. The scorer rejects such a rationale anyway.
 
 ## The identities on AWS
 
-`aws/` plans W4's identities offline (`aws/results/2026-11-02/`, fourteen resources, never applied).
+`aws/` plans W4's identities offline (`aws/results/2026-11-10/`, fourteen resources, never applied).
 Each agent runs as one Kubernetes service account in its team's namespace of the ops cluster,
 `larkspur-ops` for the analyst and the scribe and `larkspur-change` for the risk scorer, and gets its
 own role through EKS Pod Identity, the direct binding W2 took. W4 is rung 2: its writes are a change

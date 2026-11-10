@@ -1,5 +1,5 @@
 {
-  "measured": "2026-11-03",
+  "measured": "2026-11-10",
   "account_id": "111122223333",
   "workload_account_ids": {
     "lm-network-prod": "411122223333",
@@ -621,8 +621,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",
@@ -639,8 +639,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",
@@ -657,8 +657,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",
@@ -675,8 +675,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",
@@ -693,8 +693,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",
@@ -711,8 +711,8 @@
           "sts:AssumeRole"
         ],
         "Condition": {
-          "ArnLike": {
-            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          "StringLike": {
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
           }
         },
         "Effect": "Allow",

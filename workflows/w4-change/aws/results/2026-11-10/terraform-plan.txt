@@ -1,14 +1,14 @@
-# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-02)
+# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-10)
 # No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
-data.aws_iam_policy_document.boundary: Reading...
-data.aws_iam_policy_document.trigger_trust: Reading...
 data.aws_iam_policy_document.trigger: Reading...
-data.aws_iam_policy_document.pod_identity_trust: Reading...
 data.aws_iam_policy_document.agent["scribe"]: Reading...
+data.aws_iam_policy_document.boundary: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Reading...
+data.aws_iam_policy_document.trigger_trust: Reading...
 data.aws_iam_policy_document.trigger: Read complete after 0s [id=1346216574]
 data.aws_iam_policy_document.agent["scribe"]: Read complete after 0s [id=800441576]
-data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
 data.aws_iam_policy_document.trigger_trust: Read complete after 0s [id=1374271686]
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=1384716204]
 data.aws_iam_policy_document.boundary: Read complete after 0s [id=938035731]
 
 Terraform used the selected providers to generate the following execution
@@ -222,8 +222,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -276,8 +276,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -330,8 +330,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"

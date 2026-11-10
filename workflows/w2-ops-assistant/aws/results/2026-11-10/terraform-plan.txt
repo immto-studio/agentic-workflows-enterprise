@@ -1,14 +1,14 @@
-# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-09)
+# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-10)
 # No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
-data.aws_iam_policy_document.server_reads["logs-mcp"]: Reading...
-data.aws_iam_policy_document.server_reads["metrics-mcp"]: Reading...
 data.aws_iam_policy_document.server_reads["kubernetes-mcp"]: Reading...
+data.aws_iam_policy_document.server_reads["metrics-mcp"]: Reading...
 data.aws_iam_policy_document.pod_identity_trust: Reading...
 data.aws_iam_policy_document.read_boundary: Reading...
-data.aws_iam_policy_document.server_reads["kubernetes-mcp"]: Read complete after 0s [id=2221311043]
-data.aws_iam_policy_document.server_reads["logs-mcp"]: Read complete after 0s [id=4250132802]
+data.aws_iam_policy_document.server_reads["logs-mcp"]: Reading...
 data.aws_iam_policy_document.server_reads["metrics-mcp"]: Read complete after 0s [id=1148010673]
-data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
+data.aws_iam_policy_document.server_reads["logs-mcp"]: Read complete after 0s [id=4250132802]
+data.aws_iam_policy_document.server_reads["kubernetes-mcp"]: Read complete after 0s [id=2221311043]
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=1384716204]
 data.aws_iam_policy_document.read_boundary: Read complete after 0s [id=3236341632]
 
 Terraform used the selected providers to generate the following execution
@@ -307,8 +307,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -359,8 +359,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
@@ -411,8 +411,8 @@ Terraform will perform the following actions:
                           + "sts:AssumeRole",
                         ]
                       + Condition = {
-                          + ArnLike = {
-                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                          + StringLike = {
+                              + "aws:RequestTag/eks-cluster-arn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
                             }
                         }
                       + Effect    = "Allow"
