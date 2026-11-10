@@ -3585,3 +3585,7 @@ The appendix's footnotes name each page by its title. The titles, in the order t
 - Air-gap deployment: <https://docs.nvidia.com/nim/large-language-models/2.0.9/deployment/air-gap-deployment.html>
 - NIM Operator cache: <https://docs.nvidia.com/nim-operator/latest/cache.html>
 - GPU Operator air-gapped installation: <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/install-gpu-operator-air-gapped.html>
+- AI gateway capabilities: <https://docs.cloud.google.com/apigee/docs/api-platform/get-started/ai-capabilities>
+- Apigee release notes: <https://docs.cloud.google.com/apigee/docs/release/release-notes>
+- API Gateway release notes: <https://docs.cloud.google.com/api-gateway/docs/release-notes>
+- Overview of model routing: <https://docs.cloud.google.com/api-gateway/docs/model-routing-overview>
