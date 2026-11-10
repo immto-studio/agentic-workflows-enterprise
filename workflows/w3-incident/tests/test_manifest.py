@@ -68,7 +68,11 @@ def test_the_never_list_is_chapter_4s_and_no_tool_serves_it():
 def test_each_write_identity_holds_the_one_verb_not_the_edit_role():
     writer = CATALOG["servers"]["writer-mcp"]
     assert set(writer["identities"]) == {"restart_deployment", "scale_deployment"}
-    assert writer["azure"]["role"] == "Azure Kubernetes Service RBAC Writer", "the write role, scoped to the namespace"
+    # Azure: a custom role with the deployments' data actions only; the built-in RBAC Writer reads Secrets and runs
+    # pods as any service account in the namespace (Microsoft's AKS RBAC page), as the edit role does.
+    assert writer["azure"]["role"] == "larkspur-ops-writer", "a custom role, not a built-in one"
+    assert writer["azure"]["data_actions"] == [f"Microsoft.ContainerService/managedClusters/apps/deployments/{verb}"
+                                               for verb in ("read", "write")]
     assert writer["azure"]["scope"] == "namespace"
     # The edit built-in role is never named (the fact sheet, B.4: it reads Secrets and runs pods as any SA).
     text = (W3 / "catalog" / "tools.yaml").read_text(encoding="utf-8")

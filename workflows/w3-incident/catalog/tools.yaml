@@ -24,7 +24,13 @@ servers:
       eks_access: {policy: larkspur-ops-writer, namespaces: [larkspur-prod]}
       role_actions: [eks:DescribeCluster]
     google: {cluster_rbac: larkspur-ops-writer}   # a Role with patch on deployments and get and patch on deployments/scale, bound in the namespace
-    azure: {role: Azure Kubernetes Service RBAC Writer, scope: namespace}   # Microsoft's write role, scoped to the namespace
+    # Azure: a custom role with the deployments' read and write data actions only, scoped to the namespace. Microsoft's
+    # built-in Azure Kubernetes Service RBAC Writer also allows reading Secrets and running pods as any service account.
+    azure:
+      role: larkspur-ops-writer
+      data_actions: [Microsoft.ContainerService/managedClusters/apps/deployments/read,
+                     Microsoft.ContainerService/managedClusters/apps/deployments/write]
+      scope: namespace
   servicenow-mcp:
     identity: larkspur-ops-change-writer
     # ServiceNow is not AWS; the identity is an integration user with the itil role for POST and
