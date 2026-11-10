@@ -1,0 +1,85 @@
+# W4's catalog: the three agents of the change-management workflow, the identity each acts under, what
+# that identity may reach, and what no identity in the workflow may ever do (W4-D11). The platform team
+# owns the analyst and the scribe; the change-management team owns the risk scorer (W4-D2). aws/ reads
+# this file with yamldecode and the tests read the same file, so it is the one place that says what an
+# identity may do.
+#
+# The agents' work is on GitHub, ServiceNow, and the gateway, not on AWS: a pull request read, a check
+# read, a change record written, a comment written, a rationale asked for. The AWS role of each agent
+# is its workload identity (chapter 4: one per agent, in the account's directory), bound to its service
+# account through EKS Pod Identity and held under the boundary, so CloudTrail names it and the never-list
+# binds it. The downstream credentials (a GitHub App's installation token, the ServiceNow client
+# credentials, the gateway key) are leased from Vault for the run, never held in the agent's code or
+# granted to its role (chapter 4: agent code holds no long-lived secret), which is why no role below
+# reads a secret.
+
+agents:
+  analyst:
+    identity: larkspur-change-analyst
+    team: platform-engineering
+    namespace: larkspur-ops          # the platform team's namespace in the ops cluster, beside W2 and W3
+    service_account: w4-analyst
+    role: the read-only A2A server, one skill, assess-change (W4-D3)
+    github_app:
+      name: larkspur-change-reader
+      # Fine-grained permissions, every one a read: the pull request and its files, the check runs and
+      # the combined status, and the plan artifact the CI job uploads. No write of any kind.
+      permissions: {metadata: read, pull_requests: read, checks: read, statuses: read, actions: read}
+    servicenow: {roles: [sn_change_read]}   # GET on change_request (the fact sheet, C.4)
+    aws: {role_actions: []}                 # no AWS action: the sources are GitHub and ServiceNow
+  risk_scorer:
+    identity: larkspur-risk-scorer
+    team: change-management
+    namespace: larkspur-change       # the change-management team's namespace: its own identity, its own budget
+    service_account: w4-risk-scorer
+    role: the A2A server of the change-management team, one skill, score-change; reaches no source (W4-D3)
+    gateway: {alias: larkspur-chat, key: w4-change/risk-scorer}   # the manifest's budget rides on the team's key
+    aws: {role_actions: []}
+  scribe:
+    identity: larkspur-change-scribe
+    team: platform-engineering
+    namespace: larkspur-ops
+    service_account: w4-scribe
+    role: the orchestrator and A2A client; two writes, a ticket and a comment, never infrastructure (W4-D6)
+    github_app:
+      name: larkspur-change-scribe
+      # issues: write is the comment on the pull request's conversation
+      # (an issue comment, updated in place). Not pull_requests: write,
+      # which would let the App submit an approving review, and not
+      # contents: write, which merges. No reviewer seat (W4-D11).
+      permissions: {metadata: read, issues: write}
+    servicenow: {roles: [itil]}             # POST /sn_chg_rest/change (C.4); the record stays in New or Assess
+    aws: {role_actions: [sqs:ReceiveMessage, sqs:DeleteMessage, sqs:GetQueueAttributes, sqs:ChangeMessageVisibility]}
+
+# The trigger (W4-D4): a GitHub Actions job on the pull request assumes an AWS role through OIDC
+# (ADR-0049: no long-lived keys; the trust restricts the token's subject to one repository and one
+# environment) and sends one message to the workflow's queue; the scribe consumes it. The role holds
+# sqs:SendMessage on that queue and nothing else.
+trigger:
+  identity: larkspur-change-trigger
+  github: {organization: larkspur-mutual, repository: platform-infra, environment: change-evidence}
+  aws: {role_actions: [sqs:SendMessage]}
+
+# The A2A token (W4-D11): a static bearer per caller in the lab; in production a short-lived JWT from the
+# identity provider, checked for signature, issuer, audience, and expiry. Not an AWS resource: the issuer
+# is Larkspur's identity provider and the audiences are the servers' names, so aws/ carries nothing for
+# it. The managed alternative on AWS (the fact sheet, A.2) is AgentCore Runtime hosting an A2A server on
+# port 9000 behind a JWT authorizer that takes the identity provider's discovery URL and the allowed
+# client; chapter 13 describes it, the lab does not build it.
+a2a:
+  issuer: https://login.larkspur.example/
+  caller: larkspur-scribe
+  audiences: {analyst: larkspur-analyst, risk_scorer: larkspur-risk-scorer}
+
+# The never-list (the manifest's), as what each identity lacks. The first two are GitHub's: no App of
+# the workflow holds contents: write (a merge) or pull_requests: write (an approving review), and the
+# Terraform refuses to plan if the catalog ever gives one. The rest are chapter 4's, denied as AWS
+# actions by the boundary on every role, the apply's own actions among them.
+never:
+  merge_pull_request: no contents write on any GitHub App of the workflow
+  approve_pull_request: no pull_requests write, so no approving review
+  delete_namespace: no delete on namespaces on any identity
+  modify_iam: no iam action on any identity
+  modify_security_group: no ec2 security group action on any identity
+  read_vault_secret: no secretsmanager, ssm, or Kubernetes Secrets read on any identity
+  run_command: no exec, pods/exec, ssm, or remote command action on any identity

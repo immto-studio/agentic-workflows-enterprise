@@ -1,0 +1,29 @@
+# The read-only operations assistant (W2, chapter 11), as the lab runs it: chapter 5's manifest
+# for W2 (labs/ch05/manifest/w2-ops-assistant.yaml) with the four tools chapter 11 adds. Growing
+# the tool list is a change of scope and goes through a change record; the gateway and the harness
+# read this file, and the harness's allowlist must sit inside `tools` (a test checks it).
+workflow: w2-ops-assistant
+owner: sam.okafor@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 1
+data_class_max: internal
+models: [larkspur-chat, larkspur-chat-restricted]
+# Internal by class, but a log line can carry a claim number or a name the servers' redaction misses,
+# so W2's calls stay in Canada (chapter 11); the gateway logs the Region that served
+regions: [ca-central-1]
+tools:
+  get_pod_status: {args: [service]}
+  get_recent_alerts: {args: [service, minutes]}
+  get_recent_events: {args: [service, minutes]}
+  get_pod_logs: {args: [service, minutes, lines]}
+  query_metric: {args: [service, metric, minutes]}
+  search_logs: {args: [service, minutes, contains, lines]}
+never:
+  - restart_deployment
+  - delete_namespace
+  - modify_iam
+  - modify_security_group
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 0.50, per_month_usd: 200, requests_per_minute: 120}   # the rate also binds the self-hosted alias
+trace_content: false

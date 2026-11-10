@@ -1,0 +1,45 @@
+# The chat models Microsoft offered as Standard deployments in Canada in October 2026, with what it
+# said about each, and the one this lab pins (pinned: true; terraform/variables.tf's chat_model
+# names it). Both are in Canada East; Canada Central had none. A Standard deployment processes data
+# in the region's geography. Global and Data Zone deployments may process it outside Canada, and
+# regional provisioned deployments in Canada reached gpt-5.2 (retiring 2027-06-08).
+#
+# Sources, all read on 2026-10-29; page_dates holds each page's ms.date.
+# - region_availability: "Region availability for Foundry Models sold by Azure", the Standard table.
+#   https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure-region-availability
+# - retirement_schedule: "Model retirement schedule": stage, retirement date, replacement.
+#   https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule
+# - lifecycle_policy: "Foundry Models lifecycle and support policy": new_deployments quotes what it
+#   says about creating deployments in the model's stage.
+#   https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements
+#
+# tests/test_models_and_costs.py fails when the pinned model is missing here, isn't processed in
+# Canada, has a stage other than GA or Legacy (a Deprecated model is "No longer available to new
+# customers", decided per subscription), or retires within 90 days.
+gpt-4o:
+  version: "2024-11-20"
+  pinned: true
+  deployment: Standard
+  region: canadaeast
+  processed_in_canada: true
+  stage: Legacy
+  new_deployments: "Yes (until deprecation)"
+  retires: 2027-04-14
+  replacement: >-
+    gpt-5.1 2025-11-13 (GA, retiring 2027-05-15), which Canada had only as a regional provisioned
+    deployment in Canada East and as Global deployments, not as a Standard one
+  page_dates: {region_availability: 2026-09-03, retirement_schedule: 2026-09-21, lifecycle_policy: 2026-07-24}
+gpt-4.1-mini:
+  version: "2025-04-14"
+  pinned: false
+  deployment: Standard
+  region: canadaeast
+  processed_in_canada: true
+  stage: Deprecated
+  new_deployments: >-
+    Existing customers: Yes. New customers: No. "Existing customer" is determined at the
+    subscription level: whether that Azure subscription has ever deployed the specific model
+    version. A new subscription under the same tenant doesn't inherit access.
+  retires: 2027-04-14
+  replacement: none named
+  page_dates: {region_availability: 2026-09-03, retirement_schedule: 2026-09-21, lifecycle_policy: 2026-07-24}

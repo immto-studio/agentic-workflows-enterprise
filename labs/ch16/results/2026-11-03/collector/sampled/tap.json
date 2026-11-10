@@ -1,0 +1,2997 @@
+{
+  "other_traces": [],
+  "run_traces": {
+    "01b00d427b8247bdbc6f227a9470b3e1": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 380,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734685.11281,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "03f3e2f8538544cd86d6999323d6c7e7": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000414
+          ]
+        ],
+        "duration_ms": 429,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734755.237327,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "097649094204416b8f8310d647f0f418": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000408
+          ],
+          [
+            "w2-ops-assistant",
+            0.000678
+          ]
+        ],
+        "duration_ms": 443,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734743.7224646,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "0b8e6fcf3a404bf0af5b2024e205526a": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000387
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 450,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734723.685565,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "0dabe78d9cd44c5580c42177bc0486f1": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 439,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734748.728384,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "0f270e8e967648338d8bb3dac47e3333": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000402
+          ],
+          [
+            "w2-ops-assistant",
+            0.000423
+          ]
+        ],
+        "duration_ms": 525,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734745.2288814,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "1044922b9d0949088fbf79f5b3156e77": {
+      "content": {},
+      "features": {
+        "costs": [],
+        "duration_ms": 247,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734808.3074758,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "10829891689f44fd86568fa6cc26eb54": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000408
+          ],
+          [
+            "w2-ops-assistant",
+            0.000678
+          ]
+        ],
+        "duration_ms": 470,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734765.2719984,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "12ebf20284364f5ca30cfa7e221775de": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.0006
+          ]
+        ],
+        "duration_ms": 390,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734740.22376,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "1a356ae257024eed8b1114f5374b8600": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000402
+          ],
+          [
+            "w2-ops-assistant",
+            0.000423
+          ]
+        ],
+        "duration_ms": 436,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734768.7612364,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "1ee4a203a7c841068c364b5e8d7d189e": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000408
+          ],
+          [
+            "w2-ops-assistant",
+            0.000678
+          ]
+        ],
+        "duration_ms": 455,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734698.634926,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "1fed509a321b46c5a00b01ee80fa5b8e": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000786
+          ]
+        ],
+        "duration_ms": 455,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734758.7403114,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "20b13f6210b848bfa4b192b4bde8b61c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000405
+          ],
+          [
+            "w2-ops-assistant",
+            0.00072
+          ]
+        ],
+        "duration_ms": 453,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734758.7403114,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "20c9308303784e74923414fb159f5b16": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 364,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734706.8841705,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "21148bb3c06b43519907a960e7342caf": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000405
+          ],
+          [
+            "w2-ops-assistant",
+            0.00072
+          ]
+        ],
+        "duration_ms": 387,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734691.8489838,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "2121ca8b3b0a4b999e468e850afe84a2": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.000654
+          ]
+        ],
+        "duration_ms": 400,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734695.139635,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "215b2922d8ca45caa1bb2c5970e0c1dc": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000504
+          ]
+        ],
+        "duration_ms": 418,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734770.274141,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "233bdc5a312943b7b15c6f6e288455ff": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 447,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734751.9710581,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "2fefecc776b34ea292bb4a186e11dd5c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000657
+          ]
+        ],
+        "duration_ms": 384,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734693.6300976,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "31e3329b57b54f10b913fb6f5c3c58c5": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000786
+          ]
+        ],
+        "duration_ms": 406,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734782.036743,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "35f2331231fd4003b35fdb0e0466debb": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 436,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734750.2334135,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "35f27c8f14c147149febd3e648a79c70": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000414
+          ]
+        ],
+        "duration_ms": 459,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734688.6264355,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "378c565aa4a74ff0b53bb6eb32a43c7c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 419,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734733.7076218,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "3d3db8e3e7e140dea2c709bc54e8c8f2": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000414
+          ]
+        ],
+        "duration_ms": 439,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734733.7076218,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "413624374d6a42c696ae53cea43edd2c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000405
+          ],
+          [
+            "w2-ops-assistant",
+            0.00072
+          ]
+        ],
+        "duration_ms": 425,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734780.296022,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "44afb9587a9647d9a9248b89ce486421": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000375
+          ],
+          [
+            "w2-ops-assistant",
+            0.000489
+          ]
+        ],
+        "duration_ms": 463,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734751.9710581,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "46b3692b93104e3295a6b2a17c7e5a38": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000387
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 453,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734788.7991323,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "47690536b8d241caa487a84d369de11b": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.000654
+          ]
+        ],
+        "duration_ms": 437,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734783.7841403,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "47e63c6344c34df3b6b3a9f1051083d9": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 499,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734711.894305,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "499f84839dbb49dba01d07dcab60d3b6": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000504
+          ]
+        ],
+        "duration_ms": 554,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734703.6410418,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "4bc497a2ebb643e8941a89a4c853004b": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 520,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734718.6733613,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "4eed191151284fb1b4a9c6281734c6cf": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 194,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734792.0435884,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "528405a438da446c970aa65f60550aa7": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 440,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734705.1600518,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "537a17e082db4afaa6e3b60ba2d29aa8": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 405,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734785.301744,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "58d36c49667f4df6818789ece444b62b": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.0006
+          ]
+        ],
+        "duration_ms": 475,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734718.6733613,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "59578e7013424099ba5699523ecd8f0b": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000414
+          ]
+        ],
+        "duration_ms": 456,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734710.1722372,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "5b64f4c46dd1443dbfbb13dbb8da495a": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000405
+          ],
+          [
+            "w2-ops-assistant",
+            0.00072
+          ]
+        ],
+        "duration_ms": 431,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734735.2192326,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "5e1371bd34a945d69152e4bcc6dec583": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 194,
+        "error": false,
+        "fallback": false,
+        "refused": true,
+        "spans": 6
+      },
+      "first_received": 1793734792.0435884,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "6137feac88144aa39cec3f45198a1180": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.0006
+          ]
+        ],
+        "duration_ms": 417,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734761.9902463,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "618263791e6244aea63856be2310f9d9": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 430,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734755.237327,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "627c82ed4a1f493dac84ceb1e0fdab8e": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 392,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734706.8841705,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "6292e12b140d47d98b5c2959e13cf827": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000378
+          ],
+          [
+            "w2-ops-assistant",
+            0.000402
+          ]
+        ],
+        "duration_ms": 440,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734775.286207,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "687c664a808f4aa396c3b2f0270c7f87": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000402
+          ],
+          [
+            "w2-ops-assistant",
+            0.000423
+          ]
+        ],
+        "duration_ms": 403,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734701.8706439,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "6b4ba25ea20344a48ffaab5428c879b8": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 243,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734725.1985,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "6f40ec9f889e446c9566a94565a62d1e": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.000654
+          ]
+        ],
+        "duration_ms": 420,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734761.9902463,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "70d500bb6fa0404b8c851e7635af142b": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 424,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734700.1494887,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "727d0c6ad9ae4950bab1927ac0f47556": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000402
+          ],
+          [
+            "w2-ops-assistant",
+            0.000423
+          ]
+        ],
+        "duration_ms": 450,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734790.3033144,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "7408c960ed144577840d1adf4f4d0479": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.000654
+          ]
+        ],
+        "duration_ms": 379,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734738.7072558,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "75134cb5649d4bc097d558650904cc30": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 457,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734772.009607,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "78b569a78bb34852ae861b23e979073f": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000375
+          ],
+          [
+            "w2-ops-assistant",
+            0.000489
+          ]
+        ],
+        "duration_ms": 440,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734686.8393292,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "797c9f48dd9e48bc807c46494965303c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 526,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734778.777995,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "7a51deb0cf234f94995cc5031142373d": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000387
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 434,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734700.1494887,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "7ea05514b7e04413ba1136cb9f85a805": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 403,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734683.6151383,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "806ad2d6c0344da8bd51f487c10187ed": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000375
+          ],
+          [
+            "w2-ops-assistant",
+            0.000489
+          ]
+        ],
+        "duration_ms": 391,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734708.6555676,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "8360680dd400451692f7fbb2056cc490": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 200,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734746.9673717,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "83e18cbb71b34e80979da9325687a7c9": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000405
+          ],
+          [
+            "w2-ops-assistant",
+            0.00072
+          ]
+        ],
+        "duration_ms": 419,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734713.6677682,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "8606b30431b54790a66a9a5670b38bb2": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000504
+          ]
+        ],
+        "duration_ms": 409,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734681.8364162,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "86414368013d47f9a24b7d4b07a4681f": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 531,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734763.754272,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "8cfcdd94fb604e0ba92e766562097d55": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000375
+          ],
+          [
+            "w2-ops-assistant",
+            0.000489
+          ]
+        ],
+        "duration_ms": 430,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734730.2131054,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "8d9b4425ad9f4eabb87c6fd84a6a5243": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 413,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734741.961771,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "93fc5d67c1324049a8f3896f4ee996be": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000363
+          ],
+          [
+            "w2-ops-assistant",
+            0.000372
+          ]
+        ],
+        "duration_ms": 388,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734690.1275153,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "94509649f45e4c93a76eb958ce112ed4": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 389,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734728.6990578,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "974e3b5ce925436c82057503af1e3059": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 227,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734768.7612364,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "9c0e059d95f04e839c5e2f6966683cc2": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000387
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 425,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734767.0041964,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "9c83ef2d0d8244b3858e99de83be4393": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.000654
+          ]
+        ],
+        "duration_ms": 479,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734716.8972855,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "9f354eb4630b4f1b996d0930a7005cd4": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000387
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 465,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734745.2288814,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "a5e736ac2c5146978fc338f331c4a265": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 400,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734726.9226317,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "a621d2191cc6457a82c2ae649bae8309": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000363
+          ],
+          [
+            "w2-ops-assistant",
+            0.000372
+          ]
+        ],
+        "duration_ms": 408,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734778.777995,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ad7fff35aa3c4ea79d6d646937e39eb5": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 418,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734690.1275153,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "add78e30510a4ccbab2eae0ee7913dde": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000432
+          ]
+        ],
+        "duration_ms": 421,
+        "error": true,
+        "fallback": true,
+        "refused": false,
+        "spans": 13
+      },
+      "first_received": 1793734795.3066778,
+      "services": {
+        "gateway": 4,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 13
+    },
+    "ae1487f8b7df410fad9e9ad0908ac3be": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 459,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734772.009607,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "afda51c3ab0241fb9af69b648d385236": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000657
+          ]
+        ],
+        "duration_ms": 457,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734760.255561,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "b0e8bb31278f4272a6333edc22b14834": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000378
+          ],
+          [
+            "w2-ops-assistant",
+            0.000402
+          ]
+        ],
+        "duration_ms": 441,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734753.7361255,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "b4ef45b0be1046d48b93b3f57a0fcb74": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 410,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734728.6990578,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "b6ac774817774c93b48d7612a393a71a": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 416,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734696.8551354,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ba8f6c3cd11b47e2a4687529ecbedc24": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 410,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734765.2719984,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "c159d1dba9d442db86e05d08d7d9765c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.0006
+          ]
+        ],
+        "duration_ms": 426,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734696.8551354,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "c80fa929308e4db3be7e06a8aa5dfeec": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000657
+          ]
+        ],
+        "duration_ms": 472,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734716.8972855,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "cafbf2a639e24385a1432addb844236b": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 193,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734703.6410418,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "ccea3c05294f43d68d5b41f422588da2": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000378
+          ],
+          [
+            "w2-ops-assistant",
+            0.000402
+          ]
+        ],
+        "duration_ms": 370,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734708.6555676,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "d03ed0518fd5421bb90a1a0764c3aa20": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000414
+          ]
+        ],
+        "duration_ms": 450,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734777.0203273,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "d65b490c2e8d4d88a689563a552fcdbc": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000408
+          ],
+          [
+            "w2-ops-assistant",
+            0.000678
+          ]
+        ],
+        "duration_ms": 433,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734787.041526,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "d7e2c688673f49c6be82af704da84134": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000396
+          ]
+        ],
+        "duration_ms": 12450,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734795.3066778,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "d8d43f0bee434fc4b4901b2e6af35b40": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000657
+          ]
+        ],
+        "duration_ms": 404,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734782.036743,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "dba30f2fa9ed4e9bbfe988cb8e159b7d": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000363
+          ],
+          [
+            "w2-ops-assistant",
+            0.000372
+          ]
+        ],
+        "duration_ms": 405,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734735.2192326,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "df5d595a63be4b8785dd4fd373ebf7cb": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000504
+          ]
+        ],
+        "duration_ms": 436,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734748.728384,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "e84988ff561f4914958d15a0836f48c4": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 371,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734721.9115968,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "eb7802c07e6c400b8113b2efc46e61fc": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000657
+          ]
+        ],
+        "duration_ms": 403,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734738.7072558,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ebdb5bc5daca4360bde7e59a3989af32": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000378
+          ],
+          [
+            "w2-ops-assistant",
+            0.000402
+          ]
+        ],
+        "duration_ms": 380,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734731.9314508,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ec9e1754e2944c8c9ae3f3a518a6e7a4": {
+      "content": {},
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.510417
+          ]
+        ],
+        "duration_ms": 265,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 6
+      },
+      "first_received": 1793734793.803186,
+      "services": {
+        "gateway": 1,
+        "harness": 3,
+        "mcp-server": 2
+      },
+      "spans": 6
+    },
+    "ef694b96e443444b9c3046fac47a8e02": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000378
+          ],
+          [
+            "w2-ops-assistant",
+            0.000402
+          ]
+        ],
+        "duration_ms": 398,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734686.8393292,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f0b3b5d8a97d458ba258bf1fde898bde": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000786
+          ]
+        ],
+        "duration_ms": 404,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734715.186762,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f363ba092e7c409d996af57f80ad6682": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000408
+          ]
+        ],
+        "duration_ms": 437,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734683.6151383,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f52ca6dff1384d2ab54edeed02ca62f0": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000384
+          ],
+          [
+            "w2-ops-assistant",
+            0.000426
+          ]
+        ],
+        "duration_ms": 533,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734773.775374,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f58d72856fc04a79b2179c8668d88fe8": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000363
+          ],
+          [
+            "w2-ops-assistant",
+            0.000372
+          ]
+        ],
+        "duration_ms": 413,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734713.6677682,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f5e0d6dbd90e4db4a084ee20ebf02405": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000375
+          ],
+          [
+            "w2-ops-assistant",
+            0.000489
+          ]
+        ],
+        "duration_ms": 423,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734773.775374,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f5fa8cb84d66456bbd6dc2238928928c": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 439,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734788.7991323,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f73b5d0dbc724908a752f5e297b46b22": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000786
+          ]
+        ],
+        "duration_ms": 420,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734736.9467037,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "f9746a41c7d04acd9d3d89e8e4dbc369": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000363
+          ],
+          [
+            "w2-ops-assistant",
+            0.000372
+          ]
+        ],
+        "duration_ms": 430,
+        "error": true,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734756.980195,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "fa9d46b70c8e426799a19d0658fa13bc": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000402
+          ],
+          [
+            "w2-ops-assistant",
+            0.000423
+          ]
+        ],
+        "duration_ms": 430,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734723.685565,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "fac3287921b941b6be1201918e33d601": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000372
+          ],
+          [
+            "w2-ops-assistant",
+            0.000504
+          ]
+        ],
+        "duration_ms": 405,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734726.9226317,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "faf6f233912e416fad84b23abd5c1ced": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.00042
+          ],
+          [
+            "w2-ops-assistant",
+            0.0006
+          ]
+        ],
+        "duration_ms": 473,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734783.7841403,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "fe32d4dfd3814ad6b90e7b3e70bfdcd1": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000408
+          ],
+          [
+            "w2-ops-assistant",
+            0.000678
+          ]
+        ],
+        "duration_ms": 373,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734720.190069,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ff2260cea0e04385b9de0b4bb196f78a": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000423
+          ],
+          [
+            "w2-ops-assistant",
+            0.000786
+          ]
+        ],
+        "duration_ms": 406,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734693.6300976,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    },
+    "ffca06fbb34e4fe784561157e2476acb": {
+      "content": {
+        "gen_ai.tool.call.arguments": 2
+      },
+      "features": {
+        "costs": [
+          [
+            "w2-ops-assistant",
+            0.000399
+          ],
+          [
+            "w2-ops-assistant",
+            0.00042
+          ]
+        ],
+        "duration_ms": 415,
+        "error": false,
+        "fallback": false,
+        "refused": false,
+        "spans": 11
+      },
+      "first_received": 1793734743.7224646,
+      "services": {
+        "gateway": 2,
+        "harness": 5,
+        "mcp-server": 4
+      },
+      "spans": 11
+    }
+  }
+}

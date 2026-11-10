@@ -1,0 +1,153 @@
+# The misbehaving-agent playbook as a table the chapter can print (companion #14, O-D13): for each symptom, the
+# signal, the first and second lever, who pulls them, and the change record each leaves. playbook/runbook.md is the
+# on-call lead's version of the same, with the commands. O-D12's fast burns page; everything else opens a ticket.
+#
+# `signal` ties each symptom to something the lab emits: a span attribute, a cost line, an alert's name, a log line.
+# `emitted` says whether the lab emits it (yes), emits it for some workflows (partly), or emits nothing yet (no), and
+# `not_emitted` says what is missing. tests/test_playbook.py holds every lever, alert and file named here to the lab.
+who: the on-call lead on Tomasz's rota (oncall.lead@larkspur.example in the lab's records)
+authority: >-
+  ch02:163: "Pulling the kill switch or moving a workflow down a rung is an emergency change authorized by the on-call
+  lead, documented within twenty-four hours, and reviewed at the next board meeting." The lab puts the other two
+  levers, the rate and the remap back, under the same authority and the same record.
+levers:
+  rate:
+    name: the rate in the manifest
+    what: >-
+      lower the workflow's requests_per_minute, and its tokens a minute where its key has one, so it sends less. Live,
+      through the key's rpm_limit and tpm_limit with LiteLLM's /key/update (budget/keys.Admin.update, step 5's per-key
+      limits), with no restart; the manifest's own number follows as the change, since chapter 5's callback reads the
+      manifests when the gateway starts
+    command: none in budget/oncall.py yet; budget/keys.Admin.update(token, rpm_limit=..., tpm_limit=...)
+    record: >-
+      an emergency change line (the shape budget/oncall.change_record writes), then the manifest's change record, which
+      the pipeline requires of every manifest (chapter 5's schema)
+  remap:
+    name: the alias remapped back
+    what: >-
+      point the alias at the deployment it served before the change, in the gateway's model list, so every workflow on
+      the alias goes back at once
+    command: none in the lab yet; the gateway's config and a restart, or LiteLLM's model management
+    record: >-
+      an emergency change line, and the remap's own record as a model change: "An alias remap is a model change and
+      reruns the golden set" (chapter 5's schema), chapter 15's live job on the remap (E-D9)
+  rung:
+    name: a rung down
+    what: >-
+      the override the harness reads before each run (budget/rungs.py): the workflow drops every write tool and goes on
+      reading. W1 is at rung 0 and W2 has no write tool, so for them it changes nothing
+    command: python budget/oncall.py rung <workflow> <rung> --by <lead> --change <number> --reason <why>
+    record: budget/oncall.py's line in changes.jsonl, with the time it must be documented by and the review it goes to
+    drilled: step 4 (results/2026-11-03/budget/drills.json, the rung down); step 6's month, in a dry run
+  kill:
+    name: the kill switch
+    what: >-
+      the workflow's key blocked at the gateway, the next call refused (step 4: 0.142 s to the loop's first refusal at
+      the median), and on AWS the deny-all on its harness and tool roles (budget/identity.py pull, step 7)
+    command: python budget/oncall.py kill <workflow> --by <lead> --change <number> --reason <why>
+    record: budget/oncall.py's line in changes.jsonl, with what the gateway answered and how long it took
+    drilled: step 4, five cycles each way
+symptoms:
+  - symptom: a loop that exhausts its step budget
+    signal: >-
+      W3: the step-budget sentence in the run's triage and its state `refused` in W3's store. W2: the harness's
+      refusal after MAX_READS reads and one more model call, which W2 marks larkspur.refused like a refusal by rule;
+      the cost lines and the span tree of the trace id count the calls (slo/slis.w2_budget_stop). Either way a bad
+      event of the success SLI, so a fast burn pages (fast-burn-1h, fast-burn-6h)
+    emitted: partly
+    not_emitted: >-
+      W2 emits no line that names the budget stop: it has to be counted from the calls. W1 words a search budget that
+      ran out as its refusal by design (W1-D22), so nothing tells that one from a refusal
+    alert: page on a fast burn of success; a ticket on the slow one
+    first_lever: remap
+    second_lever: kill
+    note: >-
+      a loop that starts with a model change is the remap's (the month's regression: W2 paged 30 minutes in); one with
+      no change behind it is the kill switch's while the owner looks
+  - symptom: a cost spike
+    signal: >-
+      the gateway's cost lines (tokens and cost per trace id and per workflow); chapter 5's `refused` line when a run
+      reaches per_run_usd; LiteLLM's soft_budget_crossed webhook at 80 percent of the month and its 422 at 100 (step 4,
+      budget/receiver.py)
+    emitted: "yes"
+    alert: a ticket to the owner and FinOps at 80 percent (step 4); no page, since the budgets stop the spend themselves
+    first_lever: rate
+    second_lever: kill
+    note: >-
+      the month's regressed W5 nights averaged 19,394 output tokens against 12,929 before (the month's w5_nights),
+      and no SLI moved: the cost lines are the only signal of that one
+  - symptom: a run of refusals or tool errors
+    signal: >-
+      refusals: the harness's `answer` line with refused true (W2) and the root span's larkspur.refused; the tool
+      servers' refusals (larkspur.refused on their spans) and the harness's `tool_call` lines with ok false. A tool
+      error that ends a run is a bad event of the success SLI (W2's read-failed sentence, W1's search-failed sentence)
+    emitted: partly
+    not_emitted: >-
+      a refusal is a good event of the success SLI, so a run of refusals burns nothing: no alert counts the share of
+      refusals yet. The kept run the month's regressed W2 draws from refused 4 of 20 questions by rule and stopped 5
+      at the read budget, all 9 with the same refusal sentence
+    alert: page on a fast burn when errors end runs; nothing for refusals yet
+    first_lever: remap
+    second_lever: kill
+  - symptom: a planted text restated
+    signal: >-
+      W5: the prose seam refuses a reply with a forbidden word and writes the stub, and the night's record and the pull
+      request lines carry `refused_words`. Chapter 15's red-team signal (labs/ch15/redteam/contain.py, rules and
+      structural checks) is scored offline on red-team runs
+    emitted: partly
+    not_emitted: W1 to W4 emit nothing at run time when an answer restates a planted text; their patterns are in the scorers
+    alert: a ticket
+    first_lever: rung
+    second_lever: kill
+  - symptom: a denied egress
+    signal: >-
+      chapter 4's controls against exfiltration through rendered output: the egress allowlist for the harness and the
+      tool servers (chapter 6's endpoints and network, chapter 9's NetworkPolicy) and the rendering allowlist for links
+      and images
+    emitted: "no"
+    not_emitted: >-
+      no flow log, firewall log or NetworkPolicy log is read by the lab, and the chat clients' rendering rules aren't
+      in it
+    alert: a ticket, once something emits it
+    first_lever: kill
+    second_lever: kill
+    note: the second is the kill switch's identity half, budget/identity.py pull, after the gateway half
+  - symptom: confident wrong answers reported by people
+    signal: >-
+      W3, W4 and W5: a person declining a proposal, the outcome SLI's bad event (W3's approval service, the board's
+      class, the pull request closed in W5's ledger); its slow burn opens a ticket and its budget spent moves the
+      workflow down a rung (slo/policy.yaml)
+    emitted: partly
+    not_emitted: >-
+      W1 and W2: no channel collects a person's report of a wrong answer, in the lab or the book, so neither has an
+      outcome SLI (slo/slos.yaml)
+    alert: a ticket (slow-burn-3d on outcome); never a page
+    first_lever: remap
+    second_lever: rung
+    note: for W1 and W2, which a rung down doesn't change, the second lever is the kill switch
+  - symptom: a provider outage
+    signal: >-
+      the gateway's `failed` lines for the primary, the `call` lines a fallback served (`fallback`, `served_alias`,
+      `region`), step 5b's `fallback_in_jurisdiction` line, W3's model-unavailable sentence, and W4's and W5's stub
+      prose (the pack's rationale_source, the night's body_sources); the latency SLI's burn from the timeouts
+    emitted: "yes"
+    alert: >-
+      a page if the latency burn crosses 14.4; in the month it peaked at 13.6 for W2 and paged nothing, while W4's probe,
+      which has no fallback, paged twice
+    first_lever: rate
+    second_lever: kill
+    note: >-
+      the gateway's cooldown and fallback act on their own (step 5b); the rate keeps the fallback, the self-hosted
+      replicas for W1 to W3, from carrying more than chapter 9 sized them for
+  - symptom: a model that changed under its alias
+    signal: >-
+      the gateway's cost line, `served_model` and `deployment` for the alias, which the platform's models panel shows by
+      hour; the remap's change record; chapter 15's live job after every remap (E-D9); the SLIs it moves (the month's
+      W2 step-budget stops)
+    emitted: partly
+    not_emitted: >-
+      a provider's update in place under an identifier with no version, as Claude's on Bedrock (fact sheet section 5)
+      or Azure's model router: `served_model` doesn't change, and only the SLIs and people show it
+    alert: a page if a fast burn follows; a ticket otherwise
+    first_lever: remap
+    second_lever: rung

@@ -1,0 +1,26 @@
+# Agent Platform prices for the chapter 7 lab, as printed on Google's pricing page.
+# The book prints none of these numbers; it states what is billed and how.
+source: https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing
+fetched: 2026-10-29
+note: The page is about 16 MB, too large for some fetch tools; it was read with curl. US list prices in USD.
+agent_runtime:
+  agent_compute_per_vcpu_hour: 0.085
+  agent_memory_per_gib_hour: 0.009
+  free_per_month_per_account: {agent_compute_vcpu_hours: 50, agent_memory_gib_hours: 100}
+  billing: "All usage is rounded to the nearest second. For Runtime, idle time spent waiting for the next prompt between turns is not billed."
+agent_gateway_agent_to_anywhere:
+  unit: one Agent Compute vCPU-hour per 15,000 API calls or authorization requests
+  billed_since: 2026-07-13
+  billing: "Billing is prorated to your actual usage per hour, per project."
+sessions:
+  billed_since: 2026-09-01
+  storage_per_gib_month: 0.30
+  reads: one Agent Compute vCPU-hour per 3 million read operations
+  writes: one Agent Compute vCPU-hour per 1 million write operations
+memory_bank:
+  billed_since: 2026-09-01
+  storage_per_gib_month: 0.30
+  storage_includes: revisions
+  reads: one Agent Compute vCPU-hour per 3 million read operations
+  writes: one Agent Compute vCPU-hour per 1 million write operations
+  tokens: memory generation and embeddings at their models' prices

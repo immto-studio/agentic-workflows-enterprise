@@ -1,0 +1,30 @@
+# Who may reach the model server: the gateway, on the allowlist's API
+# port, and Prometheus, on its metrics port. Nothing reaches vLLM's own
+# port 8000 except the kubelet's probes, which come from the node, and
+# network policies always admit the node. The pod reaches nothing.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: vllm-only-from-gateway
+  namespace: llm-serving
+spec:
+  podSelector:
+    matchLabels: {app: vllm}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: llm-gateway}
+          podSelector:
+            matchLabels: {app: litellm}
+      ports:
+        - {port: 8080, protocol: TCP}  # the allowlist's API port
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: monitoring}
+          podSelector:
+            matchLabels: {app.kubernetes.io/name: prometheus}
+      ports:
+        - {port: 8081, protocol: TCP}  # /metrics and nothing else
+  # no egress at all: the weights are on the volume; no DNS needed
+  egress: []

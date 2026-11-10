@@ -1,0 +1,20 @@
+# The weights, on a volume the serving pods mount read-only on every GPU node, so the storage
+# class is a shared file system that allows ReadOnlyMany (on EKS, Amazon EFS or FSx for Lustre
+# through its CSI driver; an EBS volume can't be shared this way). Layout:
+#   openai/gpt-oss-20b/<full commit hash>/   one directory per approved revision
+#   tiktoken/                                 the encodings gpt-oss reads at start-up
+# A separate job in a staging network downloads an approved revision by an allowlist of file
+# names, checks the signature bundle and every file against the approved digest list
+# (weights-digests.yaml), and writes the files under the revision's directory through its own
+# read-write mount of the same file system. The serving namespace never talks to the Hub.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: model-store
+  namespace: llm-serving
+  labels: {larkspur.example/model: gpt-oss-20b, larkspur.example/revision: 6cee5e81ee83917806bbde320786a8fb61efebee}
+spec:
+  accessModes: [ReadOnlyMany]
+  resources:
+    requests: {storage: 40Gi}
+  storageClassName: model-store

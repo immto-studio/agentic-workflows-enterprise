@@ -1,0 +1,41 @@
+# The busy hours the calculator runs for (companion #14, O-D9), stated here because the book gives neither.
+#
+# Each workflow's tokens per run, calls per run and month come from the ledger (results/2026-11-03/ledger.json,
+# `month`), measured on gpt-oss-20b in the kept runs: W2 over its 110 runs, W3 over step 3b's 24 incidents with
+# tokens. The busy hour is a number of runs in one hour, a lab assumption with its basis. The duty cycle follows
+# from the two: the month's runs over the runs the month would hold if every hour were the busy hour,
+# runs a month / (730 x busy-hour runs), so the month's tokens equal the busy hour's tokens a minute times the
+# duty cycle times the month's minutes.
+#
+# W3's calls that carry log lines go to the self-hosted alias (chapter 12, W3-D10), never to a managed model, so
+# committed capacity on a cloud carries W3's other calls; the self-hosted share is set against chapter 9's
+# measured throughput instead (`self_hosted`).
+ledger: results/2026-11-03/ledger.json
+month_hours: 730
+
+workflows:
+  w2:
+    workflow: w2-ops-assistant
+    unit: question
+    busy_hour_runs: 200
+    source: lab assumption, not in the book
+    basis: >-
+      twice "the hundred questions an hour" of ch12:18, an hour in which an incident has everyone asking at
+      once; the month is the ledger's 43,030 questions, chapter 9's 100 million tokens (ch09:405) at W2's
+      measured tokens per question
+  w3:
+    workflow: w3-incident
+    unit: incident
+    busy_hour_runs: 10
+    source: lab assumption, not in the book
+    basis: >-
+      a day's incidents in one hour, as an outage that pages for many services at once; the month is the
+      ledger's 300 incidents, about ten a day, itself a lab assumption
+
+# Chapter 9's measurements of gpt-oss-20b on the workstation's RTX 5080 (Ollama 0.40.13), reused and not
+# remeasured, as the ledger reuses them for the GPU allocation: a single stream's prompt and decode speeds.
+self_hosted:
+  file: labs/ch09/results/2026-10-29/throughput-gpt-oss-20b.json
+  prompt_tokens_per_second: median_prompt_tok_s
+  output_tokens_per_second: median_output_tok_s
+  replicas: 2   # ch09:23, "two vLLM replicas"

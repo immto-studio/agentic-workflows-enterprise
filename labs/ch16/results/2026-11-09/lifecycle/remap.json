@@ -1,0 +1,82 @@
+{
+ "measured": true,
+ "decision": "remap back",
+ "remapped": true,
+ "config": "litellm.restored.yaml",
+ "record": {
+  "change": "CH-20261109-01",
+  "kind": "emergency",
+  "lever": "alias remap, back",
+  "alias": "larkspur-chat",
+  "workflows": [
+   "w1-knowledge",
+   "w2-ops-assistant",
+   "w3-incident",
+   "w4-change",
+   "w5-drift"
+  ],
+  "from": [
+   {
+    "id": "local-gpt-oss-20b-chat",
+    "model": "ollama_chat/gpt-oss:20b",
+    "weight": 3
+   },
+   {
+    "id": "candidate-gemma4-12b-chat",
+    "model": "ollama_chat/gemma4:12b",
+    "weight": 1
+   }
+  ],
+  "to": [
+   {
+    "id": "local-gpt-oss-20b-chat",
+    "model": "ollama_chat/gpt-oss:20b"
+   }
+  ],
+  "by": "oncall.lead@larkspur.example",
+  "authority": "on-call lead",
+  "at": "2026-11-09T11:54:11.440+00:00",
+  "document_by": "2026-11-10T11:54:11.440+00:00",
+  "review": "the next board meeting",
+  "reason": "larkspur-chat goes back to the model it served before: the gate: trajectory.allowed regressed past the threshold",
+  "config_before": "lifecycle/litellm.canary.yaml",
+  "config_after": "litellm.restored.yaml",
+  "evidence": [
+   "gate.json",
+   "gate.md",
+   "live-w2-gemma4-12b.json",
+   "canary.json",
+   "canary-calls.jsonl",
+   "canary-runs.jsonl",
+   "decision.json"
+  ],
+  "takes_effect": "at the proxy's next start, which reads the configuration once"
+ },
+ "probe": {
+  "cases": [
+   "w2-01",
+   "w2-02",
+   "w2-03"
+  ],
+  "calls": 6,
+  "deployments": [
+   "local-gpt-oss-20b-chat"
+  ],
+  "served_models": [
+   "gpt-oss:20b"
+  ],
+  "ends": [
+   "answer",
+   "answer",
+   "answer"
+  ],
+  "seconds": [
+   8.64,
+   0.9,
+   2.05
+  ],
+  "expected_deployment": "local-gpt-oss-20b-chat",
+  "every_call_on_it": true
+ },
+ "written_again": "the restored configuration and this record were written again after the run, offline from the kept files and with the run's timestamp: the first version carried the canary's router_settings block, which lifecycle/litellm.current.yaml lacks, and a reason that named neither the gate nor the canary. The probe ran against that first version, whose model_list is the same."
+}

@@ -1,0 +1,638 @@
+{
+ "w4-01": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "claims-api#482",
+  "evidence": {
+   "additions": 24,
+   "author": "priya.raman",
+   "change_class": "normal",
+   "change_ref": "claims-api#482",
+   "ci_state": "success",
+   "deletions": 6,
+   "files_changed": 2,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-05",
+   "pr_url": "https://github.invalid/larkspur/claims-api/pull/482",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 1,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": true,
+   "service": "claims-api",
+   "terraform": null,
+   "title": "Raise the claims-api request timeout to 30s",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": false,
+   "trace_id": "0eb4c2baf16e4a229d7852bd03ebec2e"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-05",
+   "planned_start": "2026-11-05",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 1,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "claims-api#482",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "The change claims-api#482 on claims-api is classified as Low because it is a standard-shaped change with CI passed, a rollback named, no tier\u20110 or payments touched, and it is outside the freeze.",
+   "rationale_source": "model",
+   "reasons": [
+    "a standard-shaped change: CI passed, a rollback is named, nothing tier-0 or payments touched, outside the freeze"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "Low",
+   "service": "claims-api",
+   "trace_id": "0eb4c2baf16e4a229d7852bd03ebec2e"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 12.3,
+  "servicenow": {
+   "number": "CHG0041101",
+   "state": "Assess"
+  },
+  "trace_id": "0eb4c2baf16e4a229d7852bd03ebec2e",
+  "written": true
+ },
+ "w4-02": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "document-ocr#31",
+  "evidence": {
+   "additions": 2,
+   "author": "sam.okafor",
+   "change_class": "normal",
+   "change_ref": "document-ocr#31",
+   "ci_state": "pending",
+   "deletions": 2,
+   "files_changed": 1,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-06",
+   "pr_url": "https://github.invalid/larkspur/document-ocr/pull/31",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 0,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": true,
+   "service": "document-ocr",
+   "terraform": null,
+   "title": "Bump document-ocr base image",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": false,
+   "trace_id": "925d0f465bb148e584bc83098b0a6204"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-12",
+   "planned_start": "2026-11-06",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 2,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "document-ocr#31",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "This change (document-ocr#31 on document-ocr) is classified as Medium because the deployment change\u2019s CI has not passed.",
+   "rationale_source": "model",
+   "reasons": [
+    "a deployment change whose CI has not passed"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "Medium",
+   "service": "document-ocr",
+   "trace_id": "925d0f465bb148e584bc83098b0a6204"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 6.5,
+  "servicenow": {
+   "number": "CHG0041102",
+   "state": "New"
+  },
+  "trace_id": "925d0f465bb148e584bc83098b0a6204",
+  "written": true
+ },
+ "w4-03": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "fraud-scoring#120",
+  "evidence": {
+   "additions": 136,
+   "author": "dana.whitfield",
+   "change_class": "normal",
+   "change_ref": "fraud-scoring#120",
+   "ci_state": "success",
+   "deletions": 53,
+   "files_changed": 3,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-07",
+   "pr_url": "https://github.invalid/larkspur/fraud-scoring/pull/120",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 1,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": false,
+   "service": "fraud-scoring",
+   "terraform": {
+    "has_destroy": false,
+    "has_replace": true,
+    "resource_changes": [
+     {
+      "actions": [
+       "delete",
+       "create"
+      ],
+      "address": "aws_sagemaker_endpoint.fraud",
+      "type": "aws_sagemaker_endpoint"
+     },
+     {
+      "actions": [
+       "update"
+      ],
+      "address": "aws_iam_role_policy.fraud_invoke",
+      "type": "aws_iam_role_policy"
+     }
+    ]
+   },
+   "title": "Swap the fraud-scoring model endpoint",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": true,
+   "trace_id": "92354ea3f7cb40c1ba14b93f2df2316a"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-12",
+   "planned_start": "2026-11-07",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 3,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "fraud-scoring#120",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "High: a tier\u20110 service with no rollback plan, a tier\u20110 service is touched, the Terraform plan replaces a resource, and no rollback plan is named.",
+   "rationale_source": "model",
+   "reasons": [
+    "a tier-0 service with no rollback plan",
+    "a tier-0 service is touched",
+    "the Terraform plan replaces a resource",
+    "no rollback plan is named"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "fraud-scoring",
+   "trace_id": "92354ea3f7cb40c1ba14b93f2df2316a"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 7.4,
+  "servicenow": {
+   "number": "CHG0041103",
+   "state": "Assess"
+  },
+  "trace_id": "92354ea3f7cb40c1ba14b93f2df2316a",
+  "written": true
+ },
+ "w4-04": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "billing-worker#77",
+  "evidence": {
+   "additions": 3,
+   "author": "marcus.bell",
+   "change_class": "normal",
+   "change_ref": "billing-worker#77",
+   "ci_state": "success",
+   "deletions": 1,
+   "files_changed": 1,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-10",
+   "pr_url": "https://github.invalid/larkspur/billing-worker/pull/77",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 0,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": true,
+   "service": "billing-worker",
+   "terraform": null,
+   "title": "Adjust billing-worker retry budget",
+   "touches_deploy": true,
+   "touches_payments_slice": true,
+   "touches_tier0": false,
+   "trace_id": "232b4a8649fa4f12b70c7607e06ea67c"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [
+    "touches the payments slice"
+   ],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-12",
+   "planned_start": "2026-11-10",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 4,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "billing-worker#77",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "The change is classified as High because it touches the payments slice.",
+   "rationale_source": "model",
+   "reasons": [
+    "the change touches the payments slice"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "billing-worker",
+   "trace_id": "232b4a8649fa4f12b70c7607e06ea67c"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 8.1,
+  "servicenow": {
+   "number": "CHG0041104",
+   "state": "Assess"
+  },
+  "trace_id": "232b4a8649fa4f12b70c7607e06ea67c",
+  "written": true
+ },
+ "w4-05": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "policy-admin#200",
+  "evidence": {
+   "additions": 2,
+   "author": "priya.raman",
+   "change_class": "normal",
+   "change_ref": "policy-admin#200",
+   "ci_state": "success",
+   "deletions": 2,
+   "files_changed": 1,
+   "in_freeze_window": true,
+   "planned_start": "2026-12-20",
+   "pr_url": "https://github.invalid/larkspur/policy-admin/pull/200",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 0,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": true,
+   "service": "policy-admin",
+   "terraform": null,
+   "title": "Year-end policy-admin rate-table refresh",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": false,
+   "trace_id": "1a31a0d719004a5eb4e0ebdd13b0ab58"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [
+    "in-freeze-window",
+    "normal change needs a pre-freeze CAB or an emergency path"
+   ],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": true,
+   "next_cab": "2026-12-24",
+   "planned_start": "2026-12-20",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 5,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "policy-admin#200",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "High: the change lands in the freeze window.",
+   "rationale_source": "model",
+   "reasons": [
+    "the change lands in the freeze window"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "policy-admin",
+   "trace_id": "1a31a0d719004a5eb4e0ebdd13b0ab58"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 6.1,
+  "servicenow": {
+   "number": "CHG0041105",
+   "state": "Assess"
+  },
+  "trace_id": "1a31a0d719004a5eb4e0ebdd13b0ab58",
+  "written": true
+ },
+ "w4-06": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "claims-api#500",
+  "evidence": {
+   "additions": 38,
+   "author": "unknown.contractor",
+   "change_class": "normal",
+   "change_ref": "claims-api#500",
+   "ci_state": "failure",
+   "deletions": 6,
+   "files_changed": 2,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-05",
+   "pr_url": "https://github.invalid/larkspur/claims-api/pull/500",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 1,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": false,
+   "service": "claims-api",
+   "terraform": {
+    "has_destroy": true,
+    "has_replace": false,
+    "resource_changes": [
+     {
+      "actions": [
+       "delete"
+      ],
+      "address": "aws_dynamodb_table.billing_ledger",
+      "type": "aws_dynamodb_table"
+     }
+    ]
+   },
+   "title": "Hotfix claims-api",
+   "touches_deploy": true,
+   "touches_payments_slice": true,
+   "touches_tier0": false,
+   "trace_id": "c1222f0f91d640439467a16be8b910d6"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [
+    "touches the payments slice"
+   ],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-05",
+   "planned_start": "2026-11-05",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 6,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "claims-api#500",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "CLASS: High \u2013 the change touches the payments slice, CI failed, the Terraform plan destroys a resource, a deployment change whose CI has not passed, and no rollback plan is named.",
+   "rationale_source": "model",
+   "reasons": [
+    "the change touches the payments slice",
+    "CI failed",
+    "the Terraform plan destroys a resource",
+    "a deployment change whose CI has not passed",
+    "no rollback plan is named"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "claims-api",
+   "trace_id": "c1222f0f91d640439467a16be8b910d6"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 5.9,
+  "servicenow": {
+   "number": "CHG0041106",
+   "state": "New"
+  },
+  "trace_id": "c1222f0f91d640439467a16be8b910d6",
+  "written": true
+ },
+ "w4-07": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "quote-engine#88",
+  "evidence": {
+   "additions": 70,
+   "author": "priya.raman",
+   "change_class": "normal",
+   "change_ref": "quote-engine#88",
+   "ci_state": "success",
+   "deletions": 22,
+   "files_changed": 2,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-12",
+   "pr_url": "https://github.invalid/larkspur/quote-engine/pull/88",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 0,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": true,
+   "service": "quote-engine",
+   "terraform": {
+    "has_destroy": true,
+    "has_replace": false,
+    "resource_changes": [
+     {
+      "actions": [
+       "delete"
+      ],
+      "address": "aws_dynamodb_table.quote_rates",
+      "type": "aws_dynamodb_table"
+     }
+    ]
+   },
+   "title": "Migrate the quote-engine rate store",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": false,
+   "trace_id": "6df629d1445a47838c2a2a2b917a15da"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-12",
+   "planned_start": "2026-11-12",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 7,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "quote-engine#88",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "High: the Terraform plan destroys a resource.",
+   "rationale_source": "model",
+   "reasons": [
+    "the Terraform plan destroys a resource"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "quote-engine",
+   "trace_id": "6df629d1445a47838c2a2a2b917a15da"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 8.6,
+  "servicenow": {
+   "number": "CHG0041107",
+   "state": "Assess"
+  },
+  "trace_id": "6df629d1445a47838c2a2a2b917a15da",
+  "written": true
+ },
+ "w4-08": {
+  "analyst": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "analyst",
+   "url": "http://127.0.0.1:52711",
+   "version": "0.1.0"
+  },
+  "change_ref": "quote-engine#90",
+  "evidence": {
+   "additions": 3,
+   "author": "unknown.contractor",
+   "change_class": "normal",
+   "change_ref": "quote-engine#90",
+   "ci_state": "failure",
+   "deletions": 1,
+   "files_changed": 1,
+   "in_freeze_window": false,
+   "planned_start": "2026-11-12",
+   "pr_url": "https://github.invalid/larkspur/quote-engine/pull/90",
+   "produced_by": "larkspur-analyst",
+   "recent_changes_count": 0,
+   "requested_by": "larkspur-scribe",
+   "rollback_plan_present": false,
+   "service": "quote-engine",
+   "terraform": null,
+   "title": "Quote-engine config tweak",
+   "touches_deploy": true,
+   "touches_payments_slice": false,
+   "touches_tier0": false,
+   "trace_id": "172f6be8af2647b5b2482b296c56d96b"
+  },
+  "policy": {
+   "cab_cadence": "Thursdays at 14:00 ET",
+   "flags": [],
+   "freeze_window": "2026-12-14 to 2027-01-04",
+   "in_freeze_window": false,
+   "next_cab": "2026-11-12",
+   "planned_start": "2026-11-12",
+   "production_rule": "the production GitHub Actions environment needs an approved ServiceNow change number and one reviewer from the owning team"
+  },
+  "pr_comment": {
+   "comment_id": 8,
+   "updated": false
+  },
+  "requested_by": "larkspur-scribe",
+  "risk": {
+   "change_ref": "quote-engine#90",
+   "produced_by": "larkspur-risk-scorer",
+   "rationale": "The change is classified as High because the CI failed, the deployment change\u2019s CI has not passed, and no rollback plan is named.",
+   "rationale_source": "model",
+   "reasons": [
+    "CI failed",
+    "a deployment change whose CI has not passed",
+    "no rollback plan is named"
+   ],
+   "requested_by": "larkspur-scribe",
+   "risk_class": "High",
+   "service": "quote-engine",
+   "trace_id": "172f6be8af2647b5b2482b296c56d96b"
+  },
+  "risk_scorer": {
+   "final_state": "TASK_STATE_COMPLETED",
+   "name": "risk-scorer",
+   "url": "http://127.0.0.1:52719",
+   "version": "0.1.0"
+  },
+  "seconds": 9.6,
+  "servicenow": {
+   "number": "CHG0041108",
+   "state": "New"
+  },
+  "trace_id": "172f6be8af2647b5b2482b296c56d96b",
+  "written": true
+ }
+}

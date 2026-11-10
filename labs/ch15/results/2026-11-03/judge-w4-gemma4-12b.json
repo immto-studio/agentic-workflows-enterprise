@@ -1,0 +1,1321 @@
+{
+ "workflow": "w4",
+ "name": "W4, change management",
+ "judge": "gemma4-12b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gemma4:12b",
+  "name": "gemma4:12b",
+  "think": false,
+  "ollama": "0.40.13",
+  "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+  "loaded": [
+   {
+    "name": "gemma4:12b",
+    "context_length": 16384,
+    "size_vram": 1471330384
+   }
+  ]
+ },
+ "gateway": {
+  "alias_by_class": {
+   "restricted": "larkspur-chat-restricted",
+   "other": "larkspur-chat"
+  },
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gemma4:12b",
+   "larkspur-chat-restricted": "ollama_chat/gemma4:12b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.gemma.yaml",
+   "sha256": "b4aabf9c69d47cf4766e0081ac240410f45abc0cd223578049715768741e94e9"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w4.yaml",
+  "sha256": "d8f4d41bdfcef915c93125a93f404c97b2f8a15643b74c636a813fc8b8be53ab"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w4.jsonl",
+  "version": "506eb14dcd423560752d7cf7eb4fac1447d86c7cdc91976a5ca1da91f8c56ddb"
+ },
+ "manifest": {
+  "path": "workflows/w4-change/manifest/w4-change.yaml",
+  "sha256": "8fdf61468d39f8823a0b69637fa318aec6df598049b30487244216ac3fe64e5b"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "d1ba7f25680d226f268b96f0e46e247952b7056a92fcc5837e7b198e35e7ce32"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "66d359d02e239fb8b4d8bea8516fee59e4d770b10864633a9d73591e9050e61c"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 27,
+  "prompt": 13636,
+  "completion": 721,
+  "by_slice": {
+   "cross": {
+    "calls": 19,
+    "prompt": 9554,
+    "completion": 513
+   },
+   "self": {
+    "calls": 4,
+    "prompt": 1949,
+    "completion": 112
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 2133,
+    "completion": 96
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 24,
+  "judged": 19,
+  "not_judged": {
+   "W4's stub sentence": 5
+  }
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "05a906a415e944e69832ec0c44921fcc",
+   "messages_sha256": "9588b168c9108a9e412e22228239056026e579ee41e3a4e143a1df825b560766",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.49,
+   "tokens": {
+    "prompt": 528,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c16d99904008423b8c20c5e63272126e",
+   "messages_sha256": "6817fda8edeee95eca6a64a5e0c79c3eb9d6acdd3b7ba02be10afb1f136c2b9e",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 491,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "393b7f0a80de49cca77fe2025e2e1009",
+   "messages_sha256": "7dec5ba099933354d045602fbc5894bebceab35382b6eb3c06a5e0b02704b936",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 528,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "051e48e00e674484955b63256871b5b0",
+   "messages_sha256": "84170e8574456706606b764ea5bf15a6eded9171561afbe05aea3c9d4a58e8a3",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 473,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "3f0801cbf8cf4ebdb6061aa69e1ad677",
+   "messages_sha256": "193dc0beb4ba4013102653a8ec95dc4bffe44225c3f9b26f077b4e0016de8db0",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 472,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c2aa1ef89a6b437e92d53689b9125f1c",
+   "messages_sha256": "04875d3c131cbeb7c89355c54248028066360a3b8a43554da2fc700dbf420e53",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 535,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "064419980e7a495b957a363e5c82c615",
+   "messages_sha256": "0c63b1d9eced5d6a6d1bfe153968e89f4cbe38b4e3ef5643ad78762326efec62",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.35,
+   "tokens": {
+    "prompt": 469,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7c77cff3efd34d0f9685c216b566fba0",
+   "messages_sha256": "e5e605aa4bef417bd2a94a1c2601aac04c8d8486ee8b4424109563db0ee77469",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 505,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c938a04b529a4bd9859cef08acc47718",
+   "messages_sha256": "9588b168c9108a9e412e22228239056026e579ee41e3a4e143a1df825b560766",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 528,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "d7c7b651afa3477ca054c57ecda8f3f4",
+   "messages_sha256": "e2fd9583b83e2f06a90de28b7664e3c79e0d6b434e2cdd8f9ba63b3d3658ce84",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 490,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "63de30af7baf4f5d859f7d54340441c0",
+   "messages_sha256": "04875d3c131cbeb7c89355c54248028066360a3b8a43554da2fc700dbf420e53",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.35,
+   "tokens": {
+    "prompt": 535,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "afe45f424e114650aa38eb9a2c6dfdf8",
+   "messages_sha256": "bbe002eaa9fd52905eba9c06343b9250a27b18cfad11537f3eea190763cddc7d",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 517,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "84e07c4dbfdd467399ab7e4a1140c9a8",
+   "messages_sha256": "e2fd9583b83e2f06a90de28b7664e3c79e0d6b434e2cdd8f9ba63b3d3658ce84",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 490,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "0f6134efe5d44863826638e5b7485752",
+   "messages_sha256": "7dec5ba099933354d045602fbc5894bebceab35382b6eb3c06a5e0b02704b936",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 528,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "a03faad2045f4870a1d10c15d04ea66e",
+   "messages_sha256": "62b69a34948b4510770e155d774ab423401bae69c228b9690d37b5be21d17c9a",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 475,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "6c6e0386619348afbfbb4fa79ae67d54",
+   "messages_sha256": "0babe75b4e79a710fd929d315bcdd742c0340066b835db6cbea9336741da25fd",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 476,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "a19d8c3fb5b548c59da68c58db8b5840",
+   "messages_sha256": "04875d3c131cbeb7c89355c54248028066360a3b8a43554da2fc700dbf420e53",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 535,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "5298e943cb044064b9982652f636e52d",
+   "messages_sha256": "df36b55c6d93ee3ee28131fb386e1d071b4092cfdb801a37b9477ebffd47594e",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 474,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7abf68546bb14bbd8ce63e4d65e4a9f9",
+   "messages_sha256": "e5e605aa4bef417bd2a94a1c2601aac04c8d8486ee8b4424109563db0ee77469",
+   "verdict": "right",
+   "reason": "none",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.25,
+   "tokens": {
+    "prompt": 505,
+    "completion": 10
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "f0791651c0bc499b83f92e02883d3c41",
+   "messages_sha256": "407c25860cb600bfd126e86453f237ddfb8e5cf3b51712a828a3930664cf2e8b",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 493,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "cee80c575d584c20b5a70be69f9468a7",
+   "messages_sha256": "bd1e570630ac3f99528be3d2dde19cdd7946c9f2c1563b671dd697feda21008e",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 473,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "1fbe32d46ef945fd8e7638084180d2e0",
+   "messages_sha256": "9258522889d650fdee880406610856453db1648e412a56e5da76e88c21b9b6ae",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 478,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "78134e7828e14eb3b3c66fbfcec91d84",
+   "messages_sha256": "0a2497d35361750e0c6e614bad40e68026a5621a6d586f73aa4cb349dc589943",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 505,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "5e1af5d0df214e9aae5dd38e95d0689a",
+   "messages_sha256": "6b923894a23a9db1a8239fd50122e84fbee9961ea75bcab0f8702dcb46fb5a64",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 560,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "450d8005e2fe4ecaab3fd9ab78366f7e",
+   "messages_sha256": "475dd5aaca76ec8821a8a7045115db853c345357555a341020b05720aea3bdc9",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 503,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7103011dcf944774bedc98c6462c0952",
+   "messages_sha256": "192ffa6e94e6ab9f167a24070af51697bf892fe09508b7e5c76547d1b32e00e7",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes the correct reason, and does not imply any approval or authorization.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 498,
+    "completion": 30
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c19c13b077bd47c283cf2f50de81ae68",
+   "messages_sha256": "2eba58d6cfcd05938a72a964354cee6d101adfa65fe6f331019031119e93ef45",
+   "verdict": "right",
+   "reason": "none",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.26,
+   "tokens": {
+    "prompt": 572,
+    "completion": 10
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  }
+ ]
+}

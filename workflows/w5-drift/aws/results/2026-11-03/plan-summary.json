@@ -1,0 +1,1091 @@
+{
+  "measured": "2026-11-03",
+  "account_id": "111122223333",
+  "workload_account_ids": {
+    "lm-network-prod": "411122223333",
+    "lm-claims-prod": "422233334444",
+    "lm-sandbox": "433344445555"
+  },
+  "organization_id": "o-a1b2c3d4e5",
+  "state_kms_key_arn": "arn:aws:kms:ca-central-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+  "resources_to_add": 47,
+  "by_type": {
+    "aws_eks_pod_identity_association": 10,
+    "aws_iam_policy": 14,
+    "aws_iam_role": 12,
+    "aws_iam_role_policy_attachment": 10,
+    "terraform_data": 1
+  },
+  "addresses": [
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-claims-prod\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-network-prod\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-sandbox\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cost-export-reader\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-claims-prod\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-network-prod\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-sandbox\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-harness\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-policy-reader\"]",
+    "aws_eks_pod_identity_association.identity[\"w5-state-reader\"]",
+    "aws_iam_policy.boundary",
+    "aws_iam_policy.chain[\"cloud-mcp\"]",
+    "aws_iam_policy.chain[\"cost-mcp\"]",
+    "aws_iam_policy.reads[\"cost-export\"]",
+    "aws_iam_policy.reads[\"state-mcp\"]",
+    "aws_iam_role.identity[\"cloud-mcp\"]",
+    "aws_iam_role.identity[\"cost-export\"]",
+    "aws_iam_role.identity[\"cost-mcp\"]",
+    "aws_iam_role.identity[\"harness\"]",
+    "aws_iam_role.identity[\"policy-mcp\"]",
+    "aws_iam_role.identity[\"state-mcp\"]",
+    "aws_iam_role_policy_attachment.chain[\"cloud-mcp\"]",
+    "aws_iam_role_policy_attachment.chain[\"cost-mcp\"]",
+    "aws_iam_role_policy_attachment.reads[\"cost-export\"]",
+    "aws_iam_role_policy_attachment.reads[\"state-mcp\"]",
+    "module.lm_claims_prod.aws_iam_policy.boundary",
+    "module.lm_claims_prod.aws_iam_policy.reads[\"cloud-mcp\"]",
+    "module.lm_claims_prod.aws_iam_policy.reads[\"cost-mcp\"]",
+    "module.lm_claims_prod.aws_iam_role.target[\"cloud-mcp\"]",
+    "module.lm_claims_prod.aws_iam_role.target[\"cost-mcp\"]",
+    "module.lm_claims_prod.aws_iam_role_policy_attachment.reads[\"cloud-mcp\"]",
+    "module.lm_claims_prod.aws_iam_role_policy_attachment.reads[\"cost-mcp\"]",
+    "module.lm_network_prod.aws_iam_policy.boundary",
+    "module.lm_network_prod.aws_iam_policy.reads[\"cloud-mcp\"]",
+    "module.lm_network_prod.aws_iam_policy.reads[\"cost-mcp\"]",
+    "module.lm_network_prod.aws_iam_role.target[\"cloud-mcp\"]",
+    "module.lm_network_prod.aws_iam_role.target[\"cost-mcp\"]",
+    "module.lm_network_prod.aws_iam_role_policy_attachment.reads[\"cloud-mcp\"]",
+    "module.lm_network_prod.aws_iam_role_policy_attachment.reads[\"cost-mcp\"]",
+    "module.lm_sandbox.aws_iam_policy.boundary",
+    "module.lm_sandbox.aws_iam_policy.reads[\"cloud-mcp\"]",
+    "module.lm_sandbox.aws_iam_policy.reads[\"cost-mcp\"]",
+    "module.lm_sandbox.aws_iam_role.target[\"cloud-mcp\"]",
+    "module.lm_sandbox.aws_iam_role.target[\"cost-mcp\"]",
+    "module.lm_sandbox.aws_iam_role_policy_attachment.reads[\"cloud-mcp\"]",
+    "module.lm_sandbox.aws_iam_role_policy_attachment.reads[\"cost-mcp\"]",
+    "terraform_data.catalog_checks"
+  ],
+  "policies": {
+    "aws_iam_policy.boundary": [
+      {
+        "Action": "s3:GetObject",
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-cost-exports/larkspur-cur2-daily/*",
+        "Sid": "ExportObjects"
+      },
+      {
+        "Action": "s3:ListBucket",
+        "Condition": {
+          "StringLike": {
+            "s3:prefix": "larkspur-cur2-daily/*"
+          }
+        },
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-cost-exports",
+        "Sid": "ExportListed"
+      },
+      {
+        "Action": [
+          "s3:GetObjectVersion",
+          "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:s3:::larkspur-terraform-state/live/sandbox-quill/terraform.tfstate",
+          "arn:aws:s3:::larkspur-terraform-state/live/network-live/terraform.tfstate",
+          "arn:aws:s3:::larkspur-terraform-state/live/claims-api-prod/terraform.tfstate"
+        ],
+        "Sid": "StateObjects"
+      },
+      {
+        "Action": [
+          "s3:ListBucketVersions",
+          "s3:ListBucket"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "s3:prefix": [
+              "live/network-live/terraform.tfstate",
+              "live/claims-api-prod/terraform.tfstate",
+              "live/sandbox-quill/terraform.tfstate"
+            ]
+          }
+        },
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-terraform-state",
+        "Sid": "StateKeysListed"
+      },
+      {
+        "Action": "kms:Decrypt",
+        "Effect": "Allow",
+        "Resource": "arn:aws:kms:ca-central-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+        "Sid": "StateKeyDecrypt"
+      },
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+        ],
+        "Sid": "CloudTargets"
+      },
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+        ],
+        "Sid": "CostTargets"
+      },
+      {
+        "Action": "s3:*",
+        "Effect": "Deny",
+        "Resource": "arn:aws:s3:::larkspur-terraform-state/*.tflock",
+        "Sid": "LockFiles"
+      },
+      {
+        "Action": [
+          "ssm:*",
+          "secretsmanager:*",
+          "s3:PutObject",
+          "s3:DeleteObjectVersion",
+          "s3:DeleteObject",
+          "rds:*",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "lambda:*",
+          "kms:GenerateDataKey",
+          "kms:Encrypt",
+          "iam:*",
+          "elasticloadbalancing:Delete*",
+          "eks:*",
+          "ec2:UpdateSecurityGroupRuleDescriptions*",
+          "ec2:Terminate*",
+          "ec2:Stop*",
+          "ec2:Revoke*",
+          "ec2:ReplaceRoute",
+          "ec2:Modify*",
+          "ec2:Delete*",
+          "ec2:CreateSecurityGroup",
+          "ec2:CreateRoute",
+          "ec2:Authorize*",
+          "cloudwatch:PutMetricData",
+          "cloudformation:*",
+          "ce:UpdateAnomalySubscription",
+          "ce:UpdateAnomalyMonitor",
+          "ce:DeleteAnomalySubscription",
+          "ce:DeleteAnomalyMonitor",
+          "budgets:UpdateBudgetAction",
+          "budgets:ModifyBudget",
+          "budgets:ExecuteBudgetAction",
+          "budgets:DeleteBudgetAction",
+          "budgets:CreateBudgetAction"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      },
+      {
+        "Action": "sts:AssumeRole",
+        "Effect": "Deny",
+        "NotResource": [
+          "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+        ],
+        "Sid": "AssumeRoleOutsideTargets"
+      }
+    ],
+    "aws_iam_policy.chain[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+        ],
+        "Sid": "CloudTargets"
+      }
+    ],
+    "aws_iam_policy.chain[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+          "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+        ],
+        "Sid": "CostTargets"
+      }
+    ],
+    "aws_iam_policy.reads[\"cost-export\"]": [
+      {
+        "Action": "s3:GetObject",
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-cost-exports/larkspur-cur2-daily/*",
+        "Sid": "ExportObjects"
+      },
+      {
+        "Action": "s3:ListBucket",
+        "Condition": {
+          "StringLike": {
+            "s3:prefix": "larkspur-cur2-daily/*"
+          }
+        },
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-cost-exports",
+        "Sid": "ExportListed"
+      }
+    ],
+    "aws_iam_policy.reads[\"state-mcp\"]": [
+      {
+        "Action": [
+          "s3:GetObjectVersion",
+          "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:s3:::larkspur-terraform-state/live/sandbox-quill/terraform.tfstate",
+          "arn:aws:s3:::larkspur-terraform-state/live/network-live/terraform.tfstate",
+          "arn:aws:s3:::larkspur-terraform-state/live/claims-api-prod/terraform.tfstate"
+        ],
+        "Sid": "StateObjects"
+      },
+      {
+        "Action": [
+          "s3:ListBucketVersions",
+          "s3:ListBucket"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "s3:prefix": [
+              "live/network-live/terraform.tfstate",
+              "live/claims-api-prod/terraform.tfstate",
+              "live/sandbox-quill/terraform.tfstate"
+            ]
+          }
+        },
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::larkspur-terraform-state",
+        "Sid": "StateKeysListed"
+      },
+      {
+        "Action": "kms:Decrypt",
+        "Effect": "Allow",
+        "Resource": "arn:aws:kms:ca-central-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+        "Sid": "StateKeyDecrypt"
+      }
+    ],
+    "module.lm_claims_prod.aws_iam_policy.boundary": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      },
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      },
+      {
+        "Action": [
+          "sts:AssumeRole",
+          "ssm:*",
+          "secretsmanager:*",
+          "s3:PutObject",
+          "s3:DeleteObjectVersion",
+          "s3:DeleteObject",
+          "rds:*",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "lambda:*",
+          "kms:GenerateDataKey",
+          "kms:Encrypt",
+          "iam:*",
+          "elasticloadbalancing:Delete*",
+          "eks:*",
+          "ec2:UpdateSecurityGroupRuleDescriptions*",
+          "ec2:Terminate*",
+          "ec2:Stop*",
+          "ec2:Revoke*",
+          "ec2:ReplaceRoute",
+          "ec2:Modify*",
+          "ec2:Delete*",
+          "ec2:CreateSecurityGroup",
+          "ec2:CreateRoute",
+          "ec2:Authorize*",
+          "cloudwatch:PutMetricData",
+          "cloudformation:*",
+          "ce:UpdateAnomalySubscription",
+          "ce:UpdateAnomalyMonitor",
+          "ce:DeleteAnomalySubscription",
+          "ce:DeleteAnomalyMonitor",
+          "budgets:UpdateBudgetAction",
+          "budgets:ModifyBudget",
+          "budgets:ExecuteBudgetAction",
+          "budgets:DeleteBudgetAction",
+          "budgets:CreateBudgetAction"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      }
+    ],
+    "module.lm_claims_prod.aws_iam_policy.reads[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      }
+    ],
+    "module.lm_claims_prod.aws_iam_policy.reads[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      }
+    ],
+    "module.lm_network_prod.aws_iam_policy.boundary": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      },
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      },
+      {
+        "Action": [
+          "sts:AssumeRole",
+          "ssm:*",
+          "secretsmanager:*",
+          "s3:PutObject",
+          "s3:DeleteObjectVersion",
+          "s3:DeleteObject",
+          "rds:*",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "lambda:*",
+          "kms:GenerateDataKey",
+          "kms:Encrypt",
+          "iam:*",
+          "elasticloadbalancing:Delete*",
+          "eks:*",
+          "ec2:UpdateSecurityGroupRuleDescriptions*",
+          "ec2:Terminate*",
+          "ec2:Stop*",
+          "ec2:Revoke*",
+          "ec2:ReplaceRoute",
+          "ec2:Modify*",
+          "ec2:Delete*",
+          "ec2:CreateSecurityGroup",
+          "ec2:CreateRoute",
+          "ec2:Authorize*",
+          "cloudwatch:PutMetricData",
+          "cloudformation:*",
+          "ce:UpdateAnomalySubscription",
+          "ce:UpdateAnomalyMonitor",
+          "ce:DeleteAnomalySubscription",
+          "ce:DeleteAnomalyMonitor",
+          "budgets:UpdateBudgetAction",
+          "budgets:ModifyBudget",
+          "budgets:ExecuteBudgetAction",
+          "budgets:DeleteBudgetAction",
+          "budgets:CreateBudgetAction"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      }
+    ],
+    "module.lm_network_prod.aws_iam_policy.reads[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      }
+    ],
+    "module.lm_network_prod.aws_iam_policy.reads[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      }
+    ],
+    "module.lm_sandbox.aws_iam_policy.boundary": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      },
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      },
+      {
+        "Action": [
+          "sts:AssumeRole",
+          "ssm:*",
+          "secretsmanager:*",
+          "s3:PutObject",
+          "s3:DeleteObjectVersion",
+          "s3:DeleteObject",
+          "rds:*",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "lambda:*",
+          "kms:GenerateDataKey",
+          "kms:Encrypt",
+          "iam:*",
+          "elasticloadbalancing:Delete*",
+          "eks:*",
+          "ec2:UpdateSecurityGroupRuleDescriptions*",
+          "ec2:Terminate*",
+          "ec2:Stop*",
+          "ec2:Revoke*",
+          "ec2:ReplaceRoute",
+          "ec2:Modify*",
+          "ec2:Delete*",
+          "ec2:CreateSecurityGroup",
+          "ec2:CreateRoute",
+          "ec2:Authorize*",
+          "cloudwatch:PutMetricData",
+          "cloudformation:*",
+          "ce:UpdateAnomalySubscription",
+          "ce:UpdateAnomalyMonitor",
+          "ce:DeleteAnomalySubscription",
+          "ce:DeleteAnomalyMonitor",
+          "budgets:UpdateBudgetAction",
+          "budgets:ModifyBudget",
+          "budgets:ExecuteBudgetAction",
+          "budgets:DeleteBudgetAction",
+          "budgets:CreateBudgetAction"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      }
+    ],
+    "module.lm_sandbox.aws_iam_policy.reads[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "tag:GetResources",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInstances",
+          "cloudwatch:GetMetricStatistics",
+          "cloudtrail:LookupEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CloudReads"
+      }
+    ],
+    "module.lm_sandbox.aws_iam_policy.reads[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "ce:GetCostAndUsageWithResources",
+          "ce:GetCostAndUsage",
+          "ce:GetAnomalies",
+          "budgets:ViewBudget",
+          "aws-portal:ViewBilling"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "CostReads"
+      }
+    ]
+  },
+  "trusts": {
+    "aws_iam_role.identity[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.identity[\"cost-export\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.identity[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.identity[\"harness\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.identity[\"policy-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.identity[\"state-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "module.lm_claims_prod.aws_iam_role.target[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cloud-reader-lm-claims-prod"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ],
+    "module.lm_claims_prod.aws_iam_role.target[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cost-reader-lm-claims-prod"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ],
+    "module.lm_network_prod.aws_iam_role.target[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cloud-reader-lm-network-prod"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ],
+    "module.lm_network_prod.aws_iam_role.target[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cost-reader-lm-network-prod"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ],
+    "module.lm_sandbox.aws_iam_role.target[\"cloud-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cloud-reader-lm-sandbox"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ],
+    "module.lm_sandbox.aws_iam_role.target[\"cost-mcp\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          },
+          "StringEquals": {
+            "aws:PrincipalOrgID": "o-a1b2c3d4e5",
+            "aws:RequestTag/eks-cluster-arn": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+            "aws:RequestTag/kubernetes-namespace": "larkspur-ops",
+            "aws:RequestTag/kubernetes-service-account": "w5-cost-reader-lm-sandbox"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::111122223333:root"
+        },
+        "Sid": "OpsReaderThroughPodIdentity"
+      }
+    ]
+  },
+  "roles": {
+    "aws_iam_role.identity[\"cloud-mcp\"]": {
+      "name": "larkspur-drift-cloud-reader",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "aws_iam_role.identity[\"cost-export\"]": {
+      "name": "larkspur-drift-cost-export-reader",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "aws_iam_role.identity[\"cost-mcp\"]": {
+      "name": "larkspur-drift-cost-reader",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "aws_iam_role.identity[\"harness\"]": {
+      "name": "larkspur-drift-harness",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "aws_iam_role.identity[\"policy-mcp\"]": {
+      "name": "larkspur-drift-policy-reader",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "aws_iam_role.identity[\"state-mcp\"]": {
+      "name": "larkspur-drift-state-reader",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_claims_prod.aws_iam_role.target[\"cloud-mcp\"]": {
+      "name": "larkspur-drift-cloud-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_claims_prod.aws_iam_role.target[\"cost-mcp\"]": {
+      "name": "larkspur-drift-cost-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_network_prod.aws_iam_role.target[\"cloud-mcp\"]": {
+      "name": "larkspur-drift-cloud-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_network_prod.aws_iam_role.target[\"cost-mcp\"]": {
+      "name": "larkspur-drift-cost-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_sandbox.aws_iam_role.target[\"cloud-mcp\"]": {
+      "name": "larkspur-drift-cloud-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    },
+    "module.lm_sandbox.aws_iam_role.target[\"cost-mcp\"]": {
+      "name": "larkspur-drift-cost-reader-target",
+      "max_session_duration": 3600,
+      "permissions_boundary": "known after apply"
+    }
+  },
+  "pod_identity": {
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-claims-prod\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cloud-reader-lm-claims-prod",
+      "target_role_arn": "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-network-prod\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cloud-reader-lm-network-prod",
+      "target_role_arn": "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cloud-reader-lm-sandbox\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cloud-reader-lm-sandbox",
+      "target_role_arn": "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cost-export-reader\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cost-export-reader",
+      "target_role_arn": null,
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-claims-prod\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cost-reader-lm-claims-prod",
+      "target_role_arn": "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-network-prod\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cost-reader-lm-network-prod",
+      "target_role_arn": "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-cost-reader-lm-sandbox\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-cost-reader-lm-sandbox",
+      "target_role_arn": "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-harness\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-harness",
+      "target_role_arn": null,
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-policy-reader\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-policy-reader",
+      "target_role_arn": null,
+      "disable_session_tags": false
+    },
+    "aws_eks_pod_identity_association.identity[\"w5-state-reader\"]": {
+      "cluster": "ops",
+      "namespace": "larkspur-ops",
+      "service_account": "w5-state-reader",
+      "target_role_arn": null,
+      "disable_session_tags": false
+    }
+  },
+  "outputs": {
+    "service_accounts": {
+      "larkspur-ops/w5-cloud-reader-lm-claims-prod": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader",
+        "target_role_arn": "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target"
+      },
+      "larkspur-ops/w5-cloud-reader-lm-network-prod": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader",
+        "target_role_arn": "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+      },
+      "larkspur-ops/w5-cloud-reader-lm-sandbox": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader",
+        "target_role_arn": "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target"
+      },
+      "larkspur-ops/w5-cost-export-reader": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-export-reader",
+        "target_role_arn": null
+      },
+      "larkspur-ops/w5-cost-reader-lm-claims-prod": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader",
+        "target_role_arn": "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target"
+      },
+      "larkspur-ops/w5-cost-reader-lm-network-prod": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader",
+        "target_role_arn": "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+      },
+      "larkspur-ops/w5-cost-reader-lm-sandbox": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader",
+        "target_role_arn": "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+      },
+      "larkspur-ops/w5-harness": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-harness",
+        "target_role_arn": null
+      },
+      "larkspur-ops/w5-policy-reader": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-policy-reader",
+        "target_role_arn": null
+      },
+      "larkspur-ops/w5-state-reader": {
+        "role_arn": "arn:aws:iam::111122223333:role/larkspur-drift-state-reader",
+        "target_role_arn": null
+      }
+    },
+    "state_bucket_deny_policy": [
+      {
+        "Sid": "W5DeniedStateWrites",
+        "Effect": "Deny",
+        "Action": [
+          "s3:PutObject",
+          "s3:DeleteObjectVersion",
+          "s3:DeleteObject"
+        ],
+        "Resource": "arn:aws:s3:::larkspur-terraform-state/*",
+        "Principal": "*",
+        "Condition": {
+          "ArnEquals": {
+            "aws:PrincipalArn": [
+              "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader",
+              "arn:aws:iam::111122223333:role/larkspur-drift-cost-export-reader",
+              "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader",
+              "arn:aws:iam::111122223333:role/larkspur-drift-harness",
+              "arn:aws:iam::111122223333:role/larkspur-drift-policy-reader",
+              "arn:aws:iam::111122223333:role/larkspur-drift-state-reader",
+              "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+              "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+              "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+              "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+              "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+              "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+            ]
+          }
+        }
+      }
+    ],
+    "target_role_arns": {
+      "cloud-mcp": {
+        "lm-claims-prod": "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+        "lm-network-prod": "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+        "lm-sandbox": "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target"
+      },
+      "cost-mcp": {
+        "lm-claims-prod": "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+        "lm-network-prod": "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+        "lm-sandbox": "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+      }
+    }
+  }
+}

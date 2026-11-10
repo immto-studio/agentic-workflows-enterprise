@@ -1,0 +1,61 @@
+# W3's tool catalog: the tools the incident workflow serves beyond W2's six reads, the server that
+# runs each, and the access that server's identity holds. The platform team owns it, with incident
+# response. W3 triages with W2's reads (workflows/w2-ops-assistant/catalog/tools.yaml, imported, not
+# copied), so only the writes and the ServiceNow tools are here.
+#
+# The writes are on a server of their own (W3-D4), so W2's three servers stay read-only in every
+# annotation and every identity and their vetting result stands. The write identities hold only the
+# verbs the two writes need, not the built-in edit role, which the fact sheet shows would also
+# read Secrets and run pods as any service account (B.4). The AWS access levels were not read for
+# the lab (chapter 12 says so); the Google and Azure rows name the roles the fact sheet quotes.
+
+servers:
+  writer-mcp:
+    # One Kubernetes MCP server for the two writes, each tool under an identity of its own through the
+    # per-request chain of chapters 4 and 6 (the person is the source identity, the session is named
+    # after their object ID), because a write is where attribution is worth the trade W2 did not take.
+    identities:
+      restart_deployment: larkspur-ops-restarter
+      scale_deployment: larkspur-ops-scaler
+    aws:
+      # An EKS access entry scoped to larkspur-prod with a custom Role that permits `patch` on
+      # deployments (the pod-template annotation) and `get` and `patch` on deployments/scale, and
+      # nothing else; each role also holds eks:DescribeCluster. No Secrets, no exec, no pods/exec.
+      eks_access: {policy: larkspur-ops-writer, namespaces: [larkspur-prod]}
+      role_actions: [eks:DescribeCluster]
+    google: {cluster_rbac: larkspur-ops-writer}   # a Role with patch on deployments and get and patch on deployments/scale, bound in the namespace
+    azure: {role: Azure Kubernetes Service RBAC Writer, scope: namespace}   # Microsoft's write role, scoped to the namespace
+  servicenow-mcp:
+    identity: larkspur-ops-change-writer
+    # ServiceNow is not AWS; the identity is an integration user with the itil role for POST and
+    # sn_change_read for GET (the fact sheet, C.4). The scope of the itil role was not read (F); it is
+    # the one place W3's chain holds a role broader than its tool.
+    servicenow: {read_role: sn_change_read, write_role: itil}
+
+tools:
+  restart_deployment:
+    server: writer-mcp
+    args: [service]
+    writes: a rollout restart (the deployment's pod-template annotation), held for an approval
+  scale_deployment:
+    server: writer-mcp
+    args: [service, replicas]
+    writes: the deployment's replica count (the scale subresource), held for an approval
+  get_recent_changes:
+    server: servicenow-mcp
+    args: [service, minutes]
+    reads: the change records on the service, newest first
+  record_change:
+    server: servicenow-mcp
+    args: [approval_id]
+    writes: one change record for the approved step, idempotent on the approval's number
+
+# Never-list entries with a tool shape, denied by having no tool and no action; the writer's
+# identities hold the two writes' three grants on deployments only, and the ServiceNow identity no
+# infrastructure action.
+never:
+  delete_namespace: no delete on namespaces on any identity
+  modify_iam: no iam action on any identity
+  modify_security_group: no ec2 security group action on any identity
+  read_vault_secret: no secretsmanager, ssm, or Kubernetes Secrets read on any identity
+  run_command: no exec, pods/exec, ssm, or remote command action on any identity

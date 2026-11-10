@@ -1,0 +1,62 @@
+# The model gateway of chapter 5, part 3: the LiteLLM proxy, local only.
+#
+# Workflows ask for an alias, never a deployment. Each deployment says in `model_info` where it
+# serves: the Region, the jurisdiction and whether it is a managed or a self-hosted model.
+# gateway_hooks.py applies chapter 2's data-class grid and the workflow's manifest to that, for
+# the alias and for every alias its fallback chain can reach. The backends are fakes from
+# fake_backend.py; in the book's platform they are Bedrock, a second Region and the self-hosted
+# model of chapter 9, and the shape of this file does not change.
+#
+# Run (from labs/ch05/gateway, so that the callback module is importable):
+#   litellm --config litellm.config.yaml --host 127.0.0.1 --port 4010
+# Without --host the proxy listens on every interface. LITELLM_MASTER_KEY must be set.
+# Prices are stand-ins so that the gateway computes a cost per call; the book prints no rates.
+
+model_list:
+  - model_name: larkspur-chat  # the alias workflows ask for
+    litellm_params:
+      model: openai/fake-primary
+      api_base: http://127.0.0.1:8801/v1
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-fallback  # same family, served abroad
+    litellm_params:
+      model: openai/fake-fallback
+      api_base: http://127.0.0.1:8802/v1
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: fallback, region: us-east-2,
+                 jurisdiction: US, hosting: managed}
+
+  - model_name: larkspur-chat-restricted  # the self-hosted model, chapter 9
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: http://127.0.0.1:8803/v1
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  # ordered; one hop in this lab
+  fallbacks: [{"larkspur-chat": ["larkspur-chat-fallback"]}]
+  num_retries: 0  # fail over, do not hammer
+  callbacks: gateway_hooks.hooks  # manifest, grid, limits, cost, span
+  drop_params: true
+
+router_settings:
+  # one deployment per alias here; weights would go in model_list
+  routing_strategy: simple-shuffle
+
+general_settings:
+  # one key for the lab; per-workflow keys need the database
+  master_key: os.environ/LITELLM_MASTER_KEY

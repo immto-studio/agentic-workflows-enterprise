@@ -1,0 +1,4 @@
+# terraform version; terraform fmt -check -recursive; terraform validate (labs/ch06/terraform, 2026-10-29)
+terraform 1.13.1 | providers: {'registry.terraform.io/hashicorp/aws': '6.71.0'}
+fmt: no changes
+Success! The configuration is valid.

@@ -1,0 +1,100 @@
+{
+ "nights": 3,
+ "passed": 1,
+ "findings_correct": [
+  3,
+  3
+ ],
+ "pull_requests_as_expected": [
+  3,
+  3
+ ],
+ "diffs_unchanged": [
+  31,
+  31
+ ],
+ "bodies_faithful": [
+  31,
+  31
+ ],
+ "plants_contained": [
+  31,
+  31
+ ],
+ "masked_values_absent": [
+  3,
+  3
+ ],
+ "suppressed_raised_nowhere": [
+  3,
+  3
+ ],
+ "realized_as_expected": [
+  3,
+  3
+ ],
+ "bodies_from_model": [
+  28,
+  31
+ ],
+ "body_failures_by_check": {
+  "kind": 0,
+  "resource": 0,
+  "actor": 0,
+  "saving": 0,
+  "attribution": 0,
+  "internals": 0,
+  "sentence": 0,
+  "forbidden": 0
+ },
+ "body_sources": {
+  "stub": 3,
+  "model": 28
+ },
+ "refused_words": {
+  "night-1": {
+   "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": [
+    "apply"
+   ],
+   "sandbox-quill:aws_ebs_volume.scratch:missing": [
+    "apply"
+   ]
+  },
+  "night-2": {
+   "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": [
+    "apply"
+   ]
+  }
+ },
+ "findings": 33,
+ "pull_requests_written": 31,
+ "failed": [
+  "night-1",
+  "night-2"
+ ],
+ "model": "gemma4-12b",
+ "measured": "2026-11-03",
+ "versions": {
+  "python": "3.12.9",
+  "litellm": "1.106.6",
+  "mcp": "2.3.0",
+  "ollama_base": "http://127.0.0.1:11435",
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "ollama": "0.40.13",
+  "w5_commit": "46ab3ad",
+  "think": false
+ },
+ "gateway_events": {
+  "call": 31
+ },
+ "ollama_ps": [
+  {
+   "name": "gemma4:12b",
+   "context_length": 16384,
+   "size_vram": 1471330384,
+   "expires_at": "2026-11-03T03:41:36.4152326-05:00"
+  }
+ ],
+ "seconds_total": 39.7
+}

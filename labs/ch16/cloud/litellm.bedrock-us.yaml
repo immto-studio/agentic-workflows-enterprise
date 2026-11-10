@@ -1,0 +1,31 @@
+# Step 7's gateway for the two logged calls: larkspur-chat served by Nova Lite In-Region in us-east-2, the one
+# Region the lab account can turn model invocation logging on in (book D-034). W2's Internal data may be served
+# there (its manifest's Regions name us-east-2), so W2 makes the calls. This is not chapter 6's design, which
+# keeps larkspur-chat in Canada; it is the deployment chapter 6 names larkspur-chat-fallback, put behind the
+# alias so the logged call goes through the gateway's callbacks like any other.
+#
+# Run (from labs/ch16/cloud):
+#   GATEWAY_CONFIG=litellm.bedrock-us.yaml LITELLM_MASTER_KEY=<a local value> \
+#     litellm --config litellm.bedrock-us.yaml --host 127.0.0.1 --port 4017
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: bedrock/converse/amazon.nova-lite-v1:0
+      aws_region_name: us-east-2
+      input_cost_per_token: 0.00000006    # us-east-2, the dated table (nova-lite-us)
+      output_cost_per_token: 0.00000024
+      timeout: 120
+    model_info:
+      id: nova-lite-us
+      region: us-east-2
+      jurisdiction: US
+      hosting: managed
+
+litellm_settings:
+  num_retries: 0
+  callbacks: [request_metadata_hooks.hooks, ch05_bedrock_callback.hooks]
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

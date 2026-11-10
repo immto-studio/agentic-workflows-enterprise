@@ -1,0 +1,200 @@
+{
+  "comment": "SHA-256 of each tool's definition (name, title, description, input and output schemas, annotations). Regenerate with `python server.py --write-lock` and review the diff: the description is prompt text the model reads, and the schemas and annotations decide what it can ask for.",
+  "generated": "2026-10-29",
+  "tools": {
+    "get_pod_status": {
+      "sha256": "6a390080cc1bc6228f665b0545fa06d4b3b6eeeabc2be10c23d555006224d8ef",
+      "definition": {
+        "name": "get_pod_status",
+        "description": "Pod counts and restarts for one deployment. Read-only.",
+        "inputSchema": {
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            }
+          },
+          "required": [
+            "service"
+          ],
+          "title": "get_pod_statusArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "$defs": {
+            "Pod": {
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "type": "string"
+                },
+                "phase": {
+                  "title": "Phase",
+                  "type": "string"
+                },
+                "restarts": {
+                  "title": "Restarts",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "phase",
+                "restarts"
+              ],
+              "title": "Pod",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            },
+            "namespace": {
+              "title": "Namespace",
+              "type": "string"
+            },
+            "ready": {
+              "title": "Ready",
+              "type": "integer"
+            },
+            "desired": {
+              "title": "Desired",
+              "type": "integer"
+            },
+            "image": {
+              "title": "Image",
+              "type": "string"
+            },
+            "pods": {
+              "items": {
+                "$ref": "#/$defs/Pod"
+              },
+              "title": "Pods",
+              "type": "array"
+            }
+          },
+          "required": [
+            "service",
+            "namespace",
+            "ready",
+            "desired",
+            "image",
+            "pods"
+          ],
+          "title": "PodStatus",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      }
+    },
+    "get_recent_alerts": {
+      "sha256": "8e9ceceb650d2e3f250cd30249447baa88094fda0f247d6663dd3a851842dfcd",
+      "definition": {
+        "name": "get_recent_alerts",
+        "description": "Return the alerts that fired for one deployment within the last N minutes (1 to 1440), newest first, with severity and summary. Read-only.",
+        "inputSchema": {
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            },
+            "minutes": {
+              "title": "Minutes",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "service",
+            "minutes"
+          ],
+          "title": "get_recent_alertsArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "$defs": {
+            "Alert": {
+              "properties": {
+                "service": {
+                  "title": "Service",
+                  "type": "string"
+                },
+                "severity": {
+                  "enum": [
+                    "critical",
+                    "warning",
+                    "info"
+                  ],
+                  "title": "Severity",
+                  "type": "string"
+                },
+                "age_minutes": {
+                  "title": "Age Minutes",
+                  "type": "integer"
+                },
+                "source": {
+                  "title": "Source",
+                  "type": "string"
+                },
+                "summary": {
+                  "title": "Summary",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "service",
+                "severity",
+                "age_minutes",
+                "source",
+                "summary"
+              ],
+              "title": "Alert",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            },
+            "window_minutes": {
+              "title": "Window Minutes",
+              "type": "integer"
+            },
+            "count": {
+              "title": "Count",
+              "type": "integer"
+            },
+            "alerts": {
+              "items": {
+                "$ref": "#/$defs/Alert"
+              },
+              "title": "Alerts",
+              "type": "array"
+            }
+          },
+          "required": [
+            "service",
+            "window_minutes",
+            "count",
+            "alerts"
+          ],
+          "title": "AlertList",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        }
+      }
+    }
+  }
+}

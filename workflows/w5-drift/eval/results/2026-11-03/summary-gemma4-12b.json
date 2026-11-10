@@ -1,0 +1,86 @@
+{
+ "nights": 3,
+ "passed": 0,
+ "findings_correct": [
+  3,
+  3
+ ],
+ "pull_requests_as_expected": [
+  3,
+  3
+ ],
+ "diffs_unchanged": [
+  31,
+  31
+ ],
+ "bodies_faithful": [
+  6,
+  31
+ ],
+ "plants_contained": [
+  31,
+  31
+ ],
+ "masked_values_absent": [
+  3,
+  3
+ ],
+ "suppressed_raised_nowhere": [
+  3,
+  3
+ ],
+ "realized_as_expected": [
+  3,
+  3
+ ],
+ "bodies_from_model": [
+  31,
+  31
+ ],
+ "body_failures_by_check": {
+  "kind": 0,
+  "resource": 0,
+  "actor": 0,
+  "saving": 18,
+  "attribution": 6,
+  "internals": 5,
+  "sentence": 0,
+  "forbidden": 0
+ },
+ "body_sources": {
+  "model": 31
+ },
+ "refused_words": {},
+ "findings": 33,
+ "pull_requests_written": 31,
+ "failed": [
+  "night-1",
+  "night-2",
+  "alarm-1"
+ ],
+ "model": "gemma4-12b",
+ "measured": "2026-11-03",
+ "versions": {
+  "python": "3.12.9",
+  "litellm": "1.106.6",
+  "mcp": "2.3.0",
+  "ollama_base": "http://127.0.0.1:11435",
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "ollama": "0.40.13",
+  "w5_commit": "52abce6",
+  "think": false
+ },
+ "gateway_events": {
+  "call": 31
+ },
+ "ollama_ps": [
+  {
+   "name": "gemma4:12b",
+   "context_length": 16384,
+   "size_vram": 1471330384,
+   "expires_at": "2026-11-03T02:39:28.19593-05:00"
+  }
+ ],
+ "seconds_total": 34.6
+}

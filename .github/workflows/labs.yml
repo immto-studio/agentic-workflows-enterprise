@@ -1,0 +1,43 @@
+# Run every lab's tests on every push and pull request.
+#
+# Labs with their own pinned requirements get a job of their own; all run on Linux. The labs run
+# on Windows by hand before each chapter goes to review. Actions are pinned to a commit, not a tag,
+# for the reason chapter 4 gives for pinning tool definitions: a tag can move.
+name: labs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ch01-ch04:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest==9.2.0
+      - run: python -m pytest labs/ch01 -q
+      - run: python -m pytest labs/ch04 -q
+
+  ch05:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: labs/ch05/requirements.txt
+      - run: python -m pip install -r labs/ch05/requirements.txt
+      - name: No proprietary package in the environment
+        run: "! python -m pip show litellm-enterprise"
+      - working-directory: labs/ch05
+        run: python -m pytest tests -q

@@ -1,0 +1,22 @@
+# Test runs behind chapter 6, 2026-10-29, after the reader review's fixes. Python 3.12, Windows 11.
+
+## labs/ch06, this lab's environment (requirements.txt): python -m pytest -q tests/
+66 passed, 2 skipped in 26.65s
+
+## labs/ch06, chapter 5's environment: python -m pytest -q tests/test_image.py tests/test_gateway_aws.py tests/test_scope_check.py tests/test_scp.py
+54 passed, 9 warnings in 11.78s
+
+## labs/ch05, after the AgentCore session check and the guardrail verdicts: python -m pytest -q tests/
+173 passed in 52.39s
+
+## labs/ch07 image tests, chapter 5's environment
+17 passed in 6.32s
+
+## labs/ch07, its own environment
+42 passed, 9 skipped in 3.29s
+
+## labs/ch08 image tests, chapter 5's environment
+18 passed in 7.78s
+
+## labs/ch08, its own environment
+21 passed, 1 skipped in 0.71s

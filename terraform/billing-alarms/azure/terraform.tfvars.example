@@ -1,0 +1,7 @@
+# Copy to a file outside the repository (or to terraform.tfvars, which .gitignore refuses)
+# and fill in. Do not commit real IDs or addresses.
+subscription_id   = "00000000-0000-0000-0000-000000000000"
+alert_email       = "you@example.com"
+owner             = "your-name"
+monthly_limit_usd = 150
+location          = "westeurope"

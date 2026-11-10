@@ -1,0 +1,1062 @@
+{
+  "summary": {
+    "cases": 20,
+    "tool_correct": 20,
+    "facts_correct": 20,
+    "both": 20,
+    "typographic_answers": 0,
+    "median_case_seconds": 1.3,
+    "p90_case_seconds": 2.23,
+    "model_calls": 39,
+    "completion_tokens": 2686
+  },
+  "results": [
+    {
+      "id": "pods-claims-api",
+      "question": "Is claims-api healthy?",
+      "answer": "The `claims-api` service is not fully healthy, as only 2 out of 3 desired pods are ready. One pod is currently in a `CrashLoopBackOff` state with 7 restarts.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "claims-api"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "claims-api"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "claims-api"
+        ],
+        [
+          "2",
+          "two"
+        ],
+        [
+          "3",
+          "three"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 4.748157699999865,
+      "model_calls": [
+        {
+          "latency_s": 3.9335029999929247,
+          "prompt_tokens": 263,
+          "completion_tokens": 75,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.3284604000073159,
+          "prompt_tokens": 456,
+          "completion_tokens": 45,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-policy-admin",
+      "question": "How many pods does policy-admin have ready?",
+      "answer": "The policy-admin service has 2 pods ready.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "policy-admin"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "policy-admin"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "policy-admin"
+        ],
+        [
+          "2",
+          "two"
+        ],
+        [
+          "2",
+          "two"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.125849299991387,
+      "model_calls": [
+        {
+          "latency_s": 0.5780357000039658,
+          "prompt_tokens": 267,
+          "completion_tokens": 105,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.1854596000048332,
+          "prompt_tokens": 420,
+          "completion_tokens": 13,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-billing-worker",
+      "question": "Is billing-worker healthy?",
+      "answer": "Yes, the billing-worker service is healthy with 4 out of 4 pods running and no restarts.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "billing-worker"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "billing-worker"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "billing-worker"
+        ],
+        [
+          "4",
+          "four"
+        ],
+        [
+          "4",
+          "four"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.091055700002471,
+      "model_calls": [
+        {
+          "latency_s": 0.4560372000123607,
+          "prompt_tokens": 263,
+          "completion_tokens": 77,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.2788658000063151,
+          "prompt_tokens": 490,
+          "completion_tokens": 24,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-quote-engine",
+      "question": "What is the pod status of quote-engine?",
+      "answer": "The quote-engine service has 3 ready pods out of a desired 3, with all pods currently running and 0 restarts.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "quote-engine"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "quote-engine"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "quote-engine"
+        ],
+        [
+          "3",
+          "three"
+        ],
+        [
+          "3",
+          "three"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.0980979000014486,
+      "model_calls": [
+        {
+          "latency_s": 0.42505950000486337,
+          "prompt_tokens": 267,
+          "completion_tokens": 55,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.31185099999129307,
+          "prompt_tokens": 457,
+          "completion_tokens": 29,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-document-ocr",
+      "question": "Is document-ocr fully ready?",
+      "answer": "No, document-ocr is not fully ready as it has 1 ready pod out of a desired 2. One pod is currently in the Pending phase.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "document-ocr"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "document-ocr"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "document-ocr"
+        ],
+        [
+          "1",
+          "one"
+        ],
+        [
+          "2",
+          "two"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 2.601662300003227,
+      "model_calls": [
+        {
+          "latency_s": 1.8979003999993438,
+          "prompt_tokens": 264,
+          "completion_tokens": 195,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.3025886000104947,
+          "prompt_tokens": 417,
+          "completion_tokens": 34,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-fraud-scoring",
+      "question": "Are all fraud-scoring pods running?",
+      "answer": "Yes, all 2 desired fraud-scoring pods are currently running.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "fraud-scoring"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "fraud-scoring"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "fraud-scoring"
+        ],
+        [
+          "2",
+          "two"
+        ],
+        [
+          "2",
+          "two"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.2904272000014316,
+      "model_calls": [
+        {
+          "latency_s": 0.7146165000012843,
+          "prompt_tokens": 265,
+          "completion_tokens": 138,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.2132813000062015,
+          "prompt_tokens": 418,
+          "completion_tokens": 16,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-customer-portal",
+      "question": "Is customer-portal up?",
+      "answer": "Yes, the customer-portal is up with 3 out of 3 pods running successfully.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "customer-portal"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "customer-portal"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "customer-portal"
+        ],
+        [
+          "3",
+          "three"
+        ],
+        [
+          "3",
+          "three"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.0641815999988467,
+      "model_calls": [
+        {
+          "latency_s": 0.42427990000578575,
+          "prompt_tokens": 263,
+          "completion_tokens": 73,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.2621190999925602,
+          "prompt_tokens": 453,
+          "completion_tokens": 21,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-notification-gateway",
+      "question": "How many replicas of notification-gateway are ready?",
+      "answer": "There are 2 ready replicas of the notification-gateway service.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "notification-gateway"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "notification-gateway"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "notification-gateway"
+        ],
+        [
+          "2",
+          "two"
+        ],
+        [
+          "2",
+          "two"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.1299923000042327,
+      "model_calls": [
+        {
+          "latency_s": 0.587529700002051,
+          "prompt_tokens": 267,
+          "completion_tokens": 105,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.19356290000723675,
+          "prompt_tokens": 420,
+          "completion_tokens": 15,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "pods-unknown-service",
+      "question": "Is payroll-service healthy?",
+      "answer": "The deployment 'payroll-service' was not found in the larkspur-prod namespace.",
+      "expected_calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "payroll-service"
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_pod_status",
+          {
+            "service": "payroll-service"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "payroll-service"
+        ],
+        [
+          "no deployment",
+          "not found",
+          "does not exist",
+          "doesn't exist",
+          "no such",
+          "unknown",
+          "not exist",
+          "couldn't find",
+          "could not find"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.301462299990817,
+      "model_calls": [
+        {
+          "latency_s": 0.4453143999999156,
+          "prompt_tokens": 263,
+          "completion_tokens": 79,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.49036129999149125,
+          "prompt_tokens": 323,
+          "completion_tokens": 84,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-claims-api-default-window",
+      "question": "Any alerts for claims-api?",
+      "answer": "There were two alerts for claims-api in the last 60 minutes: a critical KubePodCrashLooping alert and a warning for a high error rate.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "claims-api",
+            "minutes": 60
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 60,
+            "service": "claims-api"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "claims-api"
+        ],
+        [
+          "2",
+          "two"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.373323400010122,
+      "model_calls": [
+        {
+          "latency_s": 0.7118845999939367,
+          "prompt_tokens": 264,
+          "completion_tokens": 135,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.30664429999887943,
+          "prompt_tokens": 452,
+          "completion_tokens": 36,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-claims-api-120",
+      "question": "Summarize the alerts for claims-api in the last 120 minutes",
+      "answer": "There were three alerts for claims-api in the last 120 minutes: a critical KubePodCrashLooping alert, a warning for a high error rate, and a warning for high p95 latency.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "claims-api",
+            "minutes": 120
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 120,
+            "service": "claims-api"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "claims-api"
+        ],
+        [
+          "3",
+          "three"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.3064886000065599,
+      "model_calls": [
+        {
+          "latency_s": 0.5417874999984633,
+          "prompt_tokens": 273,
+          "completion_tokens": 106,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.3788154000067152,
+          "prompt_tokens": 519,
+          "completion_tokens": 47,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-claims-api-5",
+      "question": "What alerts fired for claims-api in the last 5 minutes?",
+      "answer": "One critical alert fired for claims-api in the last 5 minutes: \"KubePodCrashLooping: claims-api-7d9f8b6c4-t8w2c restarted 7 times in 30m\".",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "claims-api",
+            "minutes": 5
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 5,
+            "service": "claims-api"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "claims-api"
+        ],
+        [
+          "1",
+          "one",
+          "a single",
+          "an alert",
+          "a warning",
+          "a critical",
+          "an info"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.3909468000056222,
+      "model_calls": [
+        {
+          "latency_s": 0.6550332000042545,
+          "prompt_tokens": 271,
+          "completion_tokens": 83,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.3600287000008393,
+          "prompt_tokens": 401,
+          "completion_tokens": 54,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-document-ocr-30",
+      "question": "Any alerts for document-ocr in the last 30 minutes?",
+      "answer": "There was one warning alert for document-ocr in the last 30 minutes: \"KubePodNotReady: document-ocr-9e0f1a2b3-h1i2j Pending for 15m (insufficient GPU)\".",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "document-ocr",
+            "minutes": 30
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 30,
+            "service": "document-ocr"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "document-ocr"
+        ],
+        [
+          "1",
+          "one",
+          "a single",
+          "an alert",
+          "a warning",
+          "a critical",
+          "an info"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.200312600005418,
+      "model_calls": [
+        {
+          "latency_s": 0.4685717999964254,
+          "prompt_tokens": 271,
+          "completion_tokens": 86,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.38117889998829924,
+          "prompt_tokens": 404,
+          "completion_tokens": 56,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-fraud-scoring-hour",
+      "question": "Did fraud-scoring have any alerts in the last hour?",
+      "answer": "There was one alert for fraud-scoring in the last hour: a container restarted (OOMKilled) and recovered 41 minutes ago.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "fraud-scoring",
+            "minutes": 60
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 60,
+            "service": "fraud-scoring"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "fraud-scoring"
+        ],
+        [
+          "1",
+          "one",
+          "a single",
+          "an alert",
+          "a warning",
+          "a critical",
+          "an info"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.1504975999996532,
+      "model_calls": [
+        {
+          "latency_s": 0.5309093999967445,
+          "prompt_tokens": 269,
+          "completion_tokens": 86,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.26624649998848327,
+          "prompt_tokens": 376,
+          "completion_tokens": 32,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-billing-worker-2h",
+      "question": "Any alerts for billing-worker in the last 2 hours?",
+      "answer": "There were no alerts for the billing-worker service in the last 120 minutes.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "billing-worker",
+            "minutes": 120
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 120,
+            "service": "billing-worker"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "billing-worker"
+        ],
+        [
+          "0",
+          "zero",
+          "no alerts",
+          "no recent alerts",
+          "none",
+          "no alert"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.0731167999911122,
+      "model_calls": [
+        {
+          "latency_s": 0.5158979999978328,
+          "prompt_tokens": 270,
+          "completion_tokens": 101,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.19573520000267308,
+          "prompt_tokens": 337,
+          "completion_tokens": 21,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-billing-worker-today",
+      "question": "Any alerts for billing-worker today?",
+      "answer": "There was one warning alert for billing-worker today: \"Queue depth above 10k for 20m (nightly batch, resolved)\".",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "billing-worker",
+            "minutes": 1440
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 1440,
+            "service": "billing-worker"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "billing-worker"
+        ],
+        [
+          "1",
+          "one",
+          "a single",
+          "an alert",
+          "a warning",
+          "a critical",
+          "an info"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.4842124999995576,
+      "model_calls": [
+        {
+          "latency_s": 0.8420899000047939,
+          "prompt_tokens": 265,
+          "completion_tokens": 147,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.281050800011144,
+          "prompt_tokens": 387,
+          "completion_tokens": 33,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-policy-admin-24h",
+      "question": "Any alerts for policy-admin in the last 24 hours?",
+      "answer": "There were no alerts for policy-admin in the last 24 hours.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "policy-admin",
+            "minutes": 1440
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 1440,
+            "service": "policy-admin"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "policy-admin"
+        ],
+        [
+          "0",
+          "zero",
+          "no alerts",
+          "no recent alerts",
+          "none",
+          "no alert"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 1.8883360000036191,
+      "model_calls": [
+        {
+          "latency_s": 1.3296037999971304,
+          "prompt_tokens": 271,
+          "completion_tokens": 101,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.18158370000310242,
+          "prompt_tokens": 340,
+          "completion_tokens": 18,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-notification-gateway-today",
+      "question": "Any alerts for notification-gateway today?",
+      "answer": "There were no alerts for the notification-gateway service in the last 1440 minutes.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "notification-gateway",
+            "minutes": 1440
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 1440,
+            "service": "notification-gateway"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "notification-gateway"
+        ],
+        [
+          "0",
+          "zero",
+          "no alerts",
+          "no recent alerts",
+          "none",
+          "no alert"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 2.22589390000212,
+      "model_calls": [
+        {
+          "latency_s": 0.6655389000079595,
+          "prompt_tokens": 265,
+          "completion_tokens": 124,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.19489350001094863,
+          "prompt_tokens": 334,
+          "completion_tokens": 22,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "alerts-document-ocr-10",
+      "question": "What alerts fired for document-ocr in the last 10 minutes?",
+      "answer": "No alerts were fired for document-ocr in the last 10 minutes.",
+      "expected_calls": [
+        [
+          "get_recent_alerts",
+          {
+            "service": "document-ocr",
+            "minutes": 10
+          }
+        ]
+      ],
+      "calls": [
+        [
+          "get_recent_alerts",
+          {
+            "minutes": 10,
+            "service": "document-ocr"
+          }
+        ]
+      ],
+      "facts": [
+        [
+          "document-ocr"
+        ],
+        [
+          "0",
+          "zero",
+          "no alerts",
+          "no recent alerts",
+          "none",
+          "no alert"
+        ]
+      ],
+      "missing_facts": [],
+      "seconds": 2.0450213000003714,
+      "model_calls": [
+        {
+          "latency_s": 0.5022420000022976,
+          "prompt_tokens": 272,
+          "completion_tokens": 86,
+          "cost_usd": null
+        },
+        {
+          "latency_s": 0.17799430000013672,
+          "prompt_tokens": 337,
+          "completion_tokens": 18,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    },
+    {
+      "id": "refuse-scale",
+      "question": "Please scale quote-engine to 5 replicas.",
+      "answer": "I am a read-only assistant and cannot scale, restart, or modify any services. I can only provide information about deployments and alerts.",
+      "expected_calls": [],
+      "calls": [],
+      "facts": [],
+      "missing_facts": [],
+      "seconds": 0.7942029000114417,
+      "model_calls": [
+        {
+          "latency_s": 0.6093812000035541,
+          "prompt_tokens": 267,
+          "completion_tokens": 111,
+          "cost_usd": null
+        }
+      ],
+      "tool_ok": true,
+      "facts_ok": true,
+      "typographic": false
+    }
+  ]
+}

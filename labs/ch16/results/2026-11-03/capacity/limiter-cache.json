@@ -1,0 +1,470 @@
+{
+ "date": "2026-11-04",
+ "versions": {
+  "litellm": "1.106.6",
+  "prisma": "0.15.0",
+  "psycopg": "3.3.6",
+  "httpx": "0.28.1",
+  "uvicorn": "0.54.0",
+  "starlette": "1.10.0",
+  "python": "3.12.9"
+ },
+ "postgres": "16.15-5",
+ "rounds": [
+  {
+   "gateway": "step 4's",
+   "name": "tokens per minute per key",
+   "round": 1,
+   "what": "each workflow's key gets a tpm_limit, the two dividing the provider's quota exactly",
+   "config": "litellm.census.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 75000,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 16.36,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1679,
+    "wait_p95_s": 0.178,
+    "wait_max_s": 0.178,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 20,
+    "attempts": 37,
+    "attempts_per_request": 1.48,
+    "wait_median_s": 0.1729,
+    "wait_p95_s": 15.417,
+    "wait_max_s": 18.3281,
+    "refused_by": {
+     "the provider's quota": 12
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 5,
+    "served_share": 0.25,
+    "first_attempt": 3,
+    "attempts": 104,
+    "attempts_per_request": 5.2,
+    "wait_median_s": 0.2374,
+    "wait_p95_s": 21.1205,
+    "wait_max_s": 21.1205,
+    "refused_by": {
+     "chapter 5's requests per minute": 99
+    },
+    "tokens_served": 5580
+   },
+   "w2_burst": {
+    "requests": 149,
+    "served": 19,
+    "served_share": 0.1275,
+    "first_attempt": 9,
+    "attempts": 315,
+    "attempts_per_request": 2.114,
+    "wait_median_s": 1.8226,
+    "wait_p95_s": 24.0666,
+    "wait_max_s": 24.0666,
+    "refused_by": {
+     "chapter 5's requests per minute": 190,
+     "the key's tokens per minute": 105,
+     "the provider's quota": 1
+    },
+    "tokens_served": 133000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 113858,
+    "peak_over_quota": 1.1386,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 54,
+      "refused": 19,
+      "tokens_charged": 172060
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 12,
+      "tokens_charged": 42525
+     }
+    }
+   },
+   "cache": {
+    "entries_max": 200,
+    "snapshots": 719,
+    "errors": 0,
+    "full_at_s": 30.454,
+    "largest": 200,
+    "kinds_when_largest": {
+     "request_status": 192,
+     "{api_key}:requests": 2,
+     "{api_key}:tokens": 2
+    },
+    "keys": {
+     "w2-ops-assistant": {
+      "window_evicted_s": 30.798,
+      "evictions": 1,
+      "key_refusals": 105,
+      "last_key_refusal_s": 16.789
+     },
+     "w3-incident": {
+      "window_evicted_s": 31.302,
+      "evictions": 1,
+      "key_refusals": 0,
+      "last_key_refusal_s": null
+     }
+    },
+    "w2_burst_tokens_served_60_to_120_s": 70000
+   }
+  },
+  {
+   "gateway": "step 4's",
+   "name": "tokens per minute per key, with headroom",
+   "round": 1,
+   "what": "W2's share halved, so that W2's share twice and W3's demand fit the quota",
+   "config": "litellm.census.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 37500,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 17.23,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1603,
+    "wait_p95_s": 0.1756,
+    "wait_max_s": 0.1756,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1617,
+    "wait_p95_s": 0.1784,
+    "wait_max_s": 0.836,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 6,
+    "served_share": 0.3,
+    "first_attempt": 2,
+    "attempts": 97,
+    "attempts_per_request": 4.85,
+    "wait_median_s": 0.4517,
+    "wait_p95_s": 9.762,
+    "wait_max_s": 9.762,
+    "refused_by": {
+     "chapter 5's requests per minute": 91
+    },
+    "tokens_served": 6696
+   },
+   "w2_burst": {
+    "requests": 147,
+    "served": 11,
+    "served_share": 0.0748,
+    "first_attempt": 3,
+    "attempts": 302,
+    "attempts_per_request": 2.054,
+    "wait_median_s": 4.6326,
+    "wait_p95_s": 22.7424,
+    "wait_max_s": 22.7424,
+    "refused_by": {
+     "chapter 5's requests per minute": 180,
+     "the key's tokens per minute": 111
+    },
+    "tokens_served": 77000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 110058,
+    "peak_over_quota": 1.1006,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 47,
+      "refused": 0,
+      "tokens_charged": 117176
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   },
+   "cache": {
+    "entries_max": 200,
+    "snapshots": 637,
+    "errors": 0,
+    "full_at_s": 31.104,
+    "largest": 200,
+    "kinds_when_largest": {
+     "request_status": 192,
+     "{api_key}:requests": 2,
+     "{api_key}:tokens": 2
+    },
+    "keys": {
+     "w2-ops-assistant": {
+      "window_evicted_s": 31.551,
+      "evictions": 1,
+      "key_refusals": 111,
+      "last_key_refusal_s": 15.825
+     },
+     "w3-incident": {
+      "window_evicted_s": 32.242,
+      "evictions": 1,
+      "key_refusals": 0,
+      "last_key_refusal_s": null
+     }
+    },
+    "w2_burst_tokens_served_60_to_120_s": 56000
+   }
+  },
+  {
+   "gateway": "step 4's without alerts",
+   "name": "tokens per minute per key",
+   "round": 1,
+   "what": "each workflow's key gets a tpm_limit, the two dividing the provider's quota exactly",
+   "config": "litellm.census-no-alerts.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 75000,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 15.88,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1614,
+    "wait_p95_s": 0.1762,
+    "wait_max_s": 0.1762,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1617,
+    "wait_p95_s": 0.1768,
+    "wait_max_s": 0.852,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 5,
+    "served_share": 0.2632,
+    "first_attempt": 4,
+    "attempts": 93,
+    "attempts_per_request": 4.895,
+    "wait_median_s": 0.202,
+    "wait_p95_s": 12.724,
+    "wait_max_s": 12.724,
+    "refused_by": {
+     "chapter 5's requests per minute": 88
+    },
+    "tokens_served": 5580
+   },
+   "w2_burst": {
+    "requests": 143,
+    "served": 9,
+    "served_share": 0.0629,
+    "first_attempt": 1,
+    "attempts": 321,
+    "attempts_per_request": 2.245,
+    "wait_median_s": 11.0684,
+    "wait_p95_s": 27.67,
+    "wait_max_s": 27.67,
+    "refused_by": {
+     "chapter 5's requests per minute": 207,
+     "the key's tokens per minute": 105
+    },
+    "tokens_served": 63000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 103958,
+    "peak_over_quota": 1.0396,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 49,
+      "refused": 0,
+      "tokens_charged": 154712
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   },
+   "cache": {
+    "entries_max": 200,
+    "snapshots": 661,
+    "errors": 0,
+    "full_at_s": null,
+    "largest": 8,
+    "kinds_when_largest": {
+     "{api_key}:requests": 2,
+     "{api_key}:tokens": 2,
+     "{api_key}:window": 2
+    },
+    "keys": {
+     "w2-ops-assistant": {
+      "window_evicted_s": null,
+      "evictions": 0,
+      "key_refusals": 109,
+      "last_key_refusal_s": 117.013
+     },
+     "w3-incident": {
+      "window_evicted_s": null,
+      "evictions": 0,
+      "key_refusals": 0,
+      "last_key_refusal_s": null
+     }
+    },
+    "w2_burst_tokens_served_60_to_120_s": 56000
+   }
+  },
+  {
+   "gateway": "step 4's without alerts",
+   "name": "tokens per minute per key, with headroom",
+   "round": 1,
+   "what": "W2's share halved, so that W2's share twice and W3's demand fit the quota",
+   "config": "litellm.census-no-alerts.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 37500,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 15.81,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1607,
+    "wait_p95_s": 0.474,
+    "wait_max_s": 0.474,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1613,
+    "wait_p95_s": 0.474,
+    "wait_max_s": 0.8564,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 6,
+    "served_share": 0.3158,
+    "first_attempt": 3,
+    "attempts": 93,
+    "attempts_per_request": 4.895,
+    "wait_median_s": 0.2697,
+    "wait_p95_s": 22.0375,
+    "wait_max_s": 22.0375,
+    "refused_by": {
+     "chapter 5's requests per minute": 87
+    },
+    "tokens_served": 6696
+   },
+   "w2_burst": {
+    "requests": 140,
+    "served": 3,
+    "served_share": 0.0214,
+    "first_attempt": 0,
+    "attempts": 305,
+    "attempts_per_request": 2.179,
+    "wait_median_s": 9.4944,
+    "wait_p95_s": 11.9713,
+    "wait_max_s": 11.9713,
+    "refused_by": {
+     "chapter 5's requests per minute": 191,
+     "the key's tokens per minute": 111
+    },
+    "tokens_served": 21000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 61518,
+    "peak_over_quota": 0.6152,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 36,
+      "refused": 0,
+      "tokens_charged": 75480
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   },
+   "cache": {
+    "entries_max": 200,
+    "snapshots": 646,
+    "errors": 0,
+    "full_at_s": null,
+    "largest": 8,
+    "kinds_when_largest": {
+     "{api_key}:requests": 2,
+     "{api_key}:tokens": 2,
+     "{api_key}:window": 2
+    },
+    "keys": {
+     "w2-ops-assistant": {
+      "window_evicted_s": null,
+      "evictions": 0,
+      "key_refusals": 123,
+      "last_key_refusal_s": 116.992
+     },
+     "w3-incident": {
+      "window_evicted_s": null,
+      "evictions": 0,
+      "key_refusals": 0,
+      "last_key_refusal_s": null
+     }
+    },
+    "w2_burst_tokens_served_60_to_120_s": 21000
+   }
+  }
+ ]
+}

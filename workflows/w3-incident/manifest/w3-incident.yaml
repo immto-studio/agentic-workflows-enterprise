@@ -1,0 +1,36 @@
+# The incident workflow (W3, chapter 12), as the lab runs it: chapter 5's W3 manifest
+# (labs/ch05/manifest/w3-incident.yaml) with the tools chapter 12 adds. W3 triages with W2's six
+# reads, reads recent changes, proposes one write (restart or scale), writes the change record, and
+# in production quotes the runbook through the knowledge server. Growing the tool list is a change of
+# scope and goes through a change record; the gateway and the harness read this file.
+workflow: w3-incident
+owner: tomasz.nowak@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 3
+data_class_max: restricted         # a log line can carry health information (chapter 9); Restricted goes to the self-hosted alias only
+models: [larkspur-chat, larkspur-chat-restricted]
+regions: [ca-central-1]            # every call of this workflow is served in Canada
+tools:
+  # W2's reads, which W3 triages with (the same six tools, the same shapes).
+  get_pod_status: {args: [service]}
+  get_recent_alerts: {args: [service, minutes]}
+  get_recent_events: {args: [service, minutes]}
+  get_pod_logs: {args: [service, minutes, lines]}
+  query_metric: {args: [service, metric, minutes]}
+  search_logs: {args: [service, minutes, contains, lines]}
+  # ServiceNow: what changed on the service (a read), and the change record for the step (a write).
+  get_recent_changes: {args: [service, minutes]}
+  record_change: {args: [approval_id], writes: true}
+  # The two writes, each held for an approval; the harness never runs a write tool during triage.
+  restart_deployment: {args: [service], writes: true}
+  scale_deployment: {args: [service, replicas], writes: true}
+  # In production, the runbook step, quoted through W1's knowledge server; the lab leaves it out.
+  # search_runbooks: {args: [query]}
+never:  # chapter 4's tool-shaped actions; the catalog serves none
+  - delete_namespace  # the payments slice is the map's job, not a tool
+  - modify_iam
+  - modify_security_group
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 2.00, per_month_usd: 500, requests_per_minute: 60}   # the rate also binds the self-hosted alias, which costs nothing per token
+trace_content: false

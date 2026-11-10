@@ -1,0 +1,665 @@
+{
+ "on": {
+  "before": {
+   "at": "2026-11-09T09:38:25.833+00:00",
+   "destination": "XRay",
+   "destination_status": "ACTIVE",
+   "indexing_percent": 0.0,
+   "indexing_rules": [
+    {
+     "name": "Default",
+     "rule": {
+      "Probabilistic": {
+       "DesiredSamplingPercentage": 0.0
+      }
+     }
+    }
+   ],
+   "resource_policy_present": false,
+   "resource_policies": [],
+   "log_groups": {
+    "aws/spans": {
+     "exists": false,
+     "stored_bytes": null
+    },
+    "/aws/application-signals/data": {
+     "exists": false,
+     "stored_bytes": null
+    }
+   }
+  },
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "started": "2026-11-09T09:38:25.835+00:00",
+  "resource_policy": {
+   "put": true,
+   "name": "TransactionSearchAccess",
+   "seconds": 0.281
+  },
+  "update_destination": {
+   "destination": "CloudWatchLogs",
+   "status": "PENDING",
+   "seconds": 1.273
+  },
+  "active": {
+   "reached": false,
+   "seconds": 182.641,
+   "readings": [
+    {
+     "seconds": 1.315,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 6.358,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 11.405,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 16.431,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 21.478,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 26.515,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 31.561,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 36.603,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 41.646,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 46.682,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 51.743,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 56.777,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 61.823,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 66.856,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 71.891,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 76.917,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 81.952,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 86.986,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 92.019,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 97.052,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 102.078,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 107.111,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 112.153,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 117.186,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 122.219,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 127.253,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 132.287,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 137.32,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 142.353,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 147.393,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 152.427,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 157.46,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 162.492,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 167.527,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 172.566,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 177.592,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 182.641,
+     "destination": "CloudWatchLogs",
+     "status": "PENDING"
+    }
+   ]
+  },
+  "indexing_percent_after_switch": 0.0,
+  "update_indexing_rule": {
+   "set_to": 1.0,
+   "answer": {
+    "Name": "Default",
+    "ModifiedAt": "2026-11-09 04:41:29-05:00",
+    "Rule": {
+     "Probabilistic": {
+      "DesiredSamplingPercentage": 1.0
+     }
+    }
+   },
+   "seconds": 182.727
+  },
+  "after": {
+   "at": "2026-11-09T09:41:29.259+00:00",
+   "destination": "CloudWatchLogs",
+   "destination_status": "PENDING",
+   "indexing_percent": 1.0,
+   "indexing_rules": [
+    {
+     "name": "Default",
+     "rule": {
+      "Probabilistic": {
+       "DesiredSamplingPercentage": 1.0
+      }
+     }
+    }
+   ],
+   "resource_policy_present": true,
+   "resource_policies": [
+    "TransactionSearchAccess"
+   ],
+   "log_groups": {
+    "aws/spans": {
+     "exists": true,
+     "stored_bytes": 0
+    },
+    "/aws/application-signals/data": {
+     "exists": true,
+     "stored_bytes": 0
+    }
+   }
+  },
+  "ended_seconds": 183.426,
+  "prices_while_on": {
+   "ingestion": {
+    "quote": "$0.35 per GB of Application Signals data ingested for the first 10TB - US East (Ohio)",
+    "source": "fact sheet 8.8, AmazonCloudWatch offer file for us-east-2",
+    "date": "2026-11-03"
+   },
+   "indexing": {
+    "quote": "$0.00000075 per spans indexed for USE2-XRay-Spans-Indexed in US East (Ohio)",
+    "free_share": "By default you will also index 1% of ingested spans for free as trace summary",
+    "source": "fact sheet 8.8 and 8.2",
+    "date": "2026-11-03"
+   }
+  }
+ },
+ "status_2026-11-09T094642": {
+  "at": "2026-11-09T09:46:42.582+00:00",
+  "destination": "CloudWatchLogs",
+  "destination_status": "ACTIVE",
+  "indexing_percent": 1.0,
+  "indexing_rules": [
+   {
+    "name": "Default",
+    "rule": {
+     "Probabilistic": {
+      "DesiredSamplingPercentage": 1.0
+     }
+    }
+   }
+  ],
+  "resource_policy_present": true,
+  "resource_policies": [
+   "TransactionSearchAccess"
+  ],
+  "log_groups": {
+   "aws/spans": {
+    "exists": true,
+    "stored_bytes": 0
+   },
+   "/aws/application-signals/data": {
+    "exists": true,
+    "stored_bytes": 0
+   }
+  }
+ },
+ "off": {
+  "before": {
+   "at": "2026-11-09T10:03:04.040+00:00",
+   "destination": "CloudWatchLogs",
+   "destination_status": "ACTIVE",
+   "indexing_percent": 1.0,
+   "indexing_rules": [
+    {
+     "name": "Default",
+     "rule": {
+      "Probabilistic": {
+       "DesiredSamplingPercentage": 1.0
+      }
+     }
+    }
+   ],
+   "resource_policy_present": true,
+   "resource_policies": [
+    "TransactionSearchAccess"
+   ],
+   "log_groups": {
+    "aws/spans": {
+     "exists": true,
+     "stored_bytes": 0
+    },
+    "/aws/application-signals/data": {
+     "exists": true,
+     "stored_bytes": 0
+    }
+   }
+  },
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "started": "2026-11-09T10:03:04.041+00:00",
+  "update_destination": {
+   "destination": "XRay",
+   "status": "PENDING",
+   "seconds": 0.261
+  },
+  "xray_again": {
+   "reached": false,
+   "seconds": 181.651,
+   "readings": [
+    {
+     "seconds": 0.306,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 5.338,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 10.369,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 15.399,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 20.442,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 25.472,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 30.516,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 35.552,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 40.588,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 45.636,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 50.673,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 55.715,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 60.751,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 65.789,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 70.82,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 75.858,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 80.896,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 85.932,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 90.97,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 96.017,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 101.056,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 106.102,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 111.139,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 116.184,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 121.214,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 126.244,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 131.28,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 136.316,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 141.359,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 146.396,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 151.432,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 156.461,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 161.497,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 166.535,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 171.565,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 176.614,
+     "destination": "XRay",
+     "status": "PENDING"
+    },
+    {
+     "seconds": 181.651,
+     "destination": "XRay",
+     "status": "PENDING"
+    }
+   ]
+  },
+  "resource_policy": {
+   "deleted": true,
+   "seconds": 181.98
+  },
+  "log_groups": {
+   "aws/spans": {
+    "deleted": true,
+    "seconds": 182.037
+   },
+   "/aws/application-signals/data": {
+    "deleted": true,
+    "seconds": 182.099
+   }
+  },
+  "update_indexing_rule": {
+   "set_to": 0.0,
+   "answer": {
+    "Name": "Default",
+    "ModifiedAt": "2026-11-09 05:06:07-05:00",
+    "Rule": {
+     "Probabilistic": {
+      "DesiredSamplingPercentage": 0.0
+     }
+    }
+   },
+   "seconds": 182.175
+  },
+  "after": {
+   "at": "2026-11-09T10:06:06.850+00:00",
+   "destination": "XRay",
+   "destination_status": "PENDING",
+   "indexing_percent": 0.0,
+   "indexing_rules": [
+    {
+     "name": "Default",
+     "rule": {
+      "Probabilistic": {
+       "DesiredSamplingPercentage": 0.0
+      }
+     }
+    }
+   ],
+   "resource_policy_present": false,
+   "resource_policies": [],
+   "log_groups": {
+    "aws/spans": {
+     "exists": false,
+     "stored_bytes": null
+    },
+    "/aws/application-signals/data": {
+     "exists": false,
+     "stored_bytes": null
+    }
+   }
+  },
+  "ended_seconds": 182.81
+ },
+ "status_2026-11-09T100805": {
+  "at": "2026-11-09T10:08:05.658+00:00",
+  "destination": "XRay",
+  "destination_status": "PENDING",
+  "indexing_percent": 0.0,
+  "indexing_rules": [
+   {
+    "name": "Default",
+    "rule": {
+     "Probabilistic": {
+      "DesiredSamplingPercentage": 0.0
+     }
+    }
+   }
+  ],
+  "resource_policy_present": false,
+  "resource_policies": [],
+  "log_groups": {
+   "aws/spans": {
+    "exists": false,
+    "stored_bytes": null
+   },
+   "/aws/application-signals/data": {
+    "exists": false,
+    "stored_bytes": null
+   }
+  }
+ },
+ "status_2026-11-09T101040": {
+  "at": "2026-11-09T10:10:40.256+00:00",
+  "destination": "XRay",
+  "destination_status": "ACTIVE",
+  "indexing_percent": 0.0,
+  "indexing_rules": [
+   {
+    "name": "Default",
+    "rule": {
+     "Probabilistic": {
+      "DesiredSamplingPercentage": 0.0
+     }
+    }
+   }
+  ],
+  "resource_policy_present": false,
+  "resource_policies": [],
+  "log_groups": {
+   "aws/spans": {
+    "exists": false,
+    "stored_bytes": null
+   },
+   "/aws/application-signals/data": {
+    "exists": false,
+    "stored_bytes": null
+   }
+  }
+ }
+}

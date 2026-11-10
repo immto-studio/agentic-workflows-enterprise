@@ -1,0 +1,274 @@
+{
+ "run": {
+  "started": "2026-11-09T10:02:08.889+00:00",
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "role": "w3-incident-get-pod-status",
+  "role_tags": {
+   "purpose": "ch16-cloud-session",
+   "workflow": "w3-incident",
+   "tool": "get_pod_status",
+   "writes": "false",
+   "data": "synthetic"
+  },
+  "trace_id": "5de3012d83cd461e9d1c74d4cc3259df",
+  "object_id": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+  "session": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+  "sts_endpoint": "https://sts.us-east-2.amazonaws.com",
+  "assume": {
+   "ok": true,
+   "session": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+   "tags": [
+    "workflow",
+    "trace_id"
+   ],
+   "started": "2026-11-09T10:02:08.889+00:00",
+   "latency_s": 0.317,
+   "expiration": "2026-11-09T10:17:10+00:00",
+   "returned_access_key_id": "asia-40084311aa1b"
+  },
+  "read": {
+   "started": "2026-11-09T10:02:09.206+00:00",
+   "ok": true,
+   "reservations": 1,
+   "latency_s": 0.344
+  },
+  "refusals": [
+   {
+    "case": "no trace_id tag",
+    "refused": true,
+    "code": "AccessDenied",
+    "message": "An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: sts:TagSession on resource: arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+   },
+   {
+    "case": "chapter 6's session name, the object ID alone",
+    "refused": true,
+    "code": "AccessDenied",
+    "message": "An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+   },
+   {
+    "case": "a tag key the policy doesn't list",
+    "refused": true,
+    "code": "AccessDenied",
+    "message": "An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: sts:TagSession on resource: arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+   },
+   {
+    "case": "a trace id of the wrong length",
+    "refused": true,
+    "code": "AccessDenied",
+    "message": "An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: sts:TagSession on resource: arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+   }
+  ],
+  "deny_all": {
+   "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+   "poll_interval_s": 0.5,
+   "pull_requested": "2026-11-09T10:02:09.717+00:00",
+   "pull": [
+    {
+     "role": "w3-incident-get-pod-status",
+     "action": "put",
+     "why": "deny-all and revoke",
+     "at": "2026-11-09T10:02:09Z"
+    }
+   ],
+   "pull_answered_s": 0.151,
+   "calls_after_pull": [
+    {
+     "seconds": 0.512,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 1.365,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 2.202,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 3.092,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 3.94,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 4.912,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 5.755,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 6.594,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 7.434,
+     "ok": true,
+     "code": null
+    },
+    {
+     "seconds": 8.232,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    }
+   ],
+   "first_denied_s": 8.232,
+   "first_denied_code": "UnauthorizedOperation",
+   "calls_that_passed_after_pull": 9,
+   "release_requested": "2026-11-09T10:02:17.949+00:00",
+   "release": [
+    {
+     "role": "w3-incident-get-pod-status",
+     "action": "put",
+     "why": "revoke only, sessions issued before 2026-11-09T10:02:17Z",
+     "at": "2026-11-09T10:02:18Z"
+    }
+   ],
+   "release_answered_s": 0.159,
+   "later_session": {
+    "ok": true,
+    "session": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "tags": [
+     "workflow",
+     "trace_id"
+    ],
+    "started": "2026-11-09T10:02:20.109+00:00",
+    "latency_s": 0.042,
+    "expiration": "2026-11-09T10:17:21+00:00",
+    "returned_access_key_id": "asia-aa1586ede697"
+   },
+   "later_trace_id": "4cbae03fa55e4f00b8aac041eacc67a2",
+   "calls_after_release": [
+    {
+     "seconds": 2.516,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 3.334,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 4.14,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 4.961,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 5.746,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 6.539,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 7.36,
+     "ok": false,
+     "code": "UnauthorizedOperation"
+    },
+    {
+     "seconds": 8.197,
+     "ok": true,
+     "code": null
+    }
+   ],
+   "later_session_first_success_s": 8.197,
+   "later_session_refusals_before_success": 7,
+   "issued_before_release_after": {
+    "ok": false,
+    "latency_s": 0.285,
+    "error": "ClientError",
+    "code": "UnauthorizedOperation",
+    "message": "An error occurred (UnauthorizedOperation) when calling the DescribeInstances operation: You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy"
+   },
+   "purge": {
+    "results": [
+     {
+      "role": "w3-incident-get-pod-status",
+      "action": "deleted",
+      "why": "policy removed",
+      "at": "2026-11-09T10:02:26Z"
+     }
+    ],
+    "seconds": 0.161
+   },
+   "later_session_after_purge": {
+    "ok": true,
+    "reservations": 1,
+    "latency_s": 0.335
+   }
+  },
+  "ended": "2026-11-09T10:02:28.938+00:00"
+ },
+ "cloudtrail": {
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "started": "2026-11-09T10:06:32.134+00:00",
+  "polled_s": 0.566,
+  "readings": [
+   {
+    "seconds": 0.566,
+    "AssumeRole": 2,
+    "DescribeInstances": 21
+   }
+  ],
+  "first_seen": {
+   "AssumeRole": {
+    "seconds": 0.433,
+    "event_time": "2026-11-09T10:02:10Z",
+    "minutes_after_call": 4.4
+   },
+   "DescribeInstances": {
+    "seconds": 0.566,
+    "event_time": "2026-11-09T10:02:10Z",
+    "minutes_after_call": 4.4
+   }
+  },
+  "sessions": [
+   "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+   "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e"
+  ],
+  "events": 23,
+  "by_name": {
+   "AssumeRole": 2,
+   "DescribeInstances": 21
+  },
+  "with_access_key_id": 23,
+  "denied": 9,
+  "assume_role_with_tags": 2,
+  "join": {
+   "records_per_store": {
+    "harness log": 3,
+    "tool server log": 1,
+    "gateway cost lines": 2,
+    "spans": 11,
+    "CloudTrail": 13
+   },
+   "cloudtrail_matched_by": [
+    "AssumeRole, session tag trace_id",
+    "role session name in userIdentity.arn"
+   ],
+   "reverse_from_one_read_event": [
+    "5de3012d83cd461e9d1c74d4cc3259df"
+   ]
+  }
+ }
+}

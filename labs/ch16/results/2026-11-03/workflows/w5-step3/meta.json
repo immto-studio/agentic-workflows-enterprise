@@ -1,0 +1,102 @@
+{
+  "all_kept_spans_at_the_sink": true,
+  "collector_exit": 0,
+  "collector_started": 1793741513.5515392,
+  "date": "2026-11-03",
+  "decision_wait_after_root_received": null,
+  "decision_wait_s": 30.0,
+  "ended": 1793741592.1674569,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "gpu_after": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 15309,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "gpu_before": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 15310,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "model": "gpt-oss-20b",
+  "night": "night-1",
+  "only": null,
+  "passed": true,
+  "processes": [
+    {
+      "process": "the night's harness, in this process (harness/night.py)",
+      "service": "w5-night"
+    },
+    {
+      "process": "the state reader (servers/state_reader.py)",
+      "service": "larkspur-drift-state"
+    },
+    {
+      "process": "the cloud reader (servers/cloud_reader.py)",
+      "service": "larkspur-drift-cloud"
+    },
+    {
+      "process": "the cost reader (servers/cost_reader.py)",
+      "service": "larkspur-drift-cost"
+    },
+    {
+      "process": "the policy reader (servers/policy_reader.py)",
+      "service": "larkspur-drift-policy"
+    },
+    {
+      "process": "the gateway (LiteLLM with chapter 5's callback, W5's manifest)",
+      "service": "gateway"
+    },
+    {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "service": null
+    }
+  ],
+  "python": "3.12.9",
+  "run": "w5-gpt-oss-20b-step3",
+  "seconds": 54.9,
+  "share_percent": 10.0,
+  "started": 1793741513.556442,
+  "trace_id": "55866d0afa414a58af7fb0542b591913",
+  "traces_expected_kept": 1,
+  "wait": "step3",
+  "waited_after_quiet_s": 3.2,
+  "workflow": "w5"
+}

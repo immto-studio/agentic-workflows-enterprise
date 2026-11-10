@@ -1,0 +1,13 @@
+# kubectl apply -k labs/ch09/k8s   (after the vllm-api-key Secret and the model-store volume exist)
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - model-store.yaml
+  - vllm-deployment.yaml
+  - vllm-service.yaml
+  - networkpolicy.yaml
+  - keda-scaledobject.yaml
+  - vllm-allowlist.yaml
+  - vllm-podmonitor.yaml
+  - weights-digests.yaml

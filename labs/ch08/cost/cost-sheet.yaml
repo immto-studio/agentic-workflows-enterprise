@@ -1,0 +1,27 @@
+# Foundry prices for the chapter 8 lab, as Microsoft's pricing pages carried them.
+# The book prints none of these numbers; it states what is billed and how.
+fetched: 2026-10-29
+currency: USD
+note: >-
+  Both pages show "$-" until their script runs. The rates are in data-amount attributes in the HTML,
+  read with curl. They are US list prices: "Prices are calculated based on US dollars and converted
+  using London closing spot rates that are captured in the two business days prior to the last
+  business day of the previous month end." (both pages).
+hosted_agents:
+  source: https://azure.microsoft.com/en-us/pricing/details/foundry-agent-service/
+  region: canada-central
+  vcpu_per_hour: 0.10934
+  memory_per_gib_hour: 0.01298
+  billing: "Hosted agents are billed based on the underlying container compute consumed per hour."
+chat_tokens:
+  source: https://azure.microsoft.com/en-us/pricing/details/azure-openai/
+  source_note: >-
+    The Foundry Agent Service page sends token prices to its "Foundry Models pricing page"
+    (/en-us/pricing/details/ai-foundry-models/aoai/), whose HTML carried no model rows on the day,
+    so these come from the Azure OpenAI pricing page.
+  model: gpt-4o
+  version: "2024-11-20"
+  deployment: Standard
+  region: canada-east
+  page_row: GPT-4o-2024-1120 Regional (the page's pay-per-token row for a deployment in the region)
+  per_million_tokens: {input: 3.025, cached_input: 1.513, output: 12.1}

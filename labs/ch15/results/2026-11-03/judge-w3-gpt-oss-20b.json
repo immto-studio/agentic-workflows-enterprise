@@ -1,0 +1,117 @@
+{
+ "workflow": "w3",
+ "name": "W3, incident triage",
+ "judge": "gpt-oss-20b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gpt-oss:20b",
+  "name": "gpt-oss:20b",
+  "think": "model default",
+  "ollama": "0.22.1",
+  "digest": "a0b38d0b19f7c5dd3589e5e6598edfed41c81969d73f9e4774011c1328e9dad8",
+  "loaded": [
+   {
+    "name": "gpt-oss:20b",
+    "context_length": 16384,
+    "size_vram": 14460958080
+   }
+  ]
+ },
+ "gateway": {
+  "alias_by_class": {
+   "restricted": "larkspur-chat-restricted",
+   "other": "larkspur-chat"
+  },
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gpt-oss:20b",
+   "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.config.yaml",
+   "sha256": "9aa45c27368567bc5501aa904555bd0c1d17519214b2be5bc934960a5c87deb7"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w3.yaml",
+  "sha256": "a020f218c57dfa7ac370c607e684448b1f584bac4a53a01749c12ba57358a5cb"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w3.jsonl",
+  "version": "44635897b4e8ec51ad7e76d03bde1e7e3e700e1ebfd79247305e9ebecd7e5936"
+ },
+ "manifest": {
+  "path": "workflows/w3-incident/manifest/w3-incident.yaml",
+  "sha256": "99c11910ed1677098eef91a6a28248da89ab9287dbf3b73c3b7eaa1fca580078"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "d1ba7f25680d226f268b96f0e46e247952b7056a92fcc5837e7b198e35e7ce32"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "6327ba7bf2dcdd5492ecefcf8384e9e71a5b58fbb131032ddec1a71823abcd47"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "b7a8a73fe74b608f064dbd207a0621bc27be2c91c79651aeed096c3c69861733"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 0,
+  "prompt": 0,
+  "completion": 0,
+  "by_slice": {
+   "cross": {
+    "calls": 0,
+    "prompt": 0,
+    "completion": 0
+   },
+   "self": {
+    "calls": 0,
+    "prompt": 0,
+    "completion": 0
+   },
+   "padded": {
+    "calls": 0,
+    "prompt": 0,
+    "completion": 0
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 0,
+  "judged": 0,
+  "not_judged": {}
+ },
+ "items": []
+}

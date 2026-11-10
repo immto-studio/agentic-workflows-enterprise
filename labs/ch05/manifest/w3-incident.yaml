@@ -1,0 +1,20 @@
+# The incident workflow (W3, chapter 12), reduced to what the chapter 5 gateway checks. It may send
+# Restricted prompts, but only to the self-hosted alias; the grid in the gateway enforces that.
+workflow: w3-incident
+owner: tomasz.nowak@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 3
+data_class_max: restricted
+models: [larkspur-chat, larkspur-chat-restricted]
+regions: [ca-central-1]              # every call of this workflow is served in Canada
+tools:
+  get_pod_status: {args: [service]}
+  get_recent_alerts: {args: [service, minutes]}
+  restart_deployment: {args: [service], writes: true}
+never:
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 2.00, per_month_usd: 500, requests_per_minute: 60}   # the rate also binds the self-hosted alias, which costs nothing per token
+trace_content: false

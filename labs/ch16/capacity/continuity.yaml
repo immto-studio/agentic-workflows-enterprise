@@ -1,0 +1,258 @@
+# The continuity table (companion #14, O-D10): each platform component the plan names, how it fails, the recovery
+# objective the lab proposes for it, and the evidence, from this step's drills, from steps 3 and 4, or from the fact
+# sheet. The book sets no recovery objective for any of these, and none of the three clouds publishes one for a model
+# endpoint or an agent service (fact sheet section 5), so each objective here is the lab's proposal for the chapter,
+# sized by what the drills measured. RTO is how long until the component serves again, RPO what is lost.
+#
+# `sources` names where every number in `evidence` comes from: a drill's JSON and the path inside it (`drills` is
+# results/2026-11-03/capacity/drills.json, `calculator` its calculator.json, `limiter cache` its limiter-cache.json,
+# `step 3` and `step 4` those steps' collector.json and drills.json), shown as the summary shows numbers unless
+# `shown` says otherwise; or the fact sheet's section and its words, each checked word for word on 3 November 2026.
+# tests/test_capacity_configs.py reads every drill path and finds its number in the evidence.
+components:
+  - component: the gateway
+    failure_mode: >-
+      A model behind it fails, with 5xx errors, timeouts or refused connections; or the proxy itself stops, and every
+      call in flight with it.
+    recovery_objective: >-
+      A failing model off the path within three failures, seconds, or the timeout and a little more when it hangs;
+      back on it within one cooldown of healing, thirty seconds; the proxy back within a minute of a restart. RPO
+      none: it holds nothing a call needs beyond its database.
+    evidence: >-
+      Outage drill, with allowed_fails 2 and cooldown_time 30: the router cooled the primary down at its third
+      failure, 0.542 s into a 5xx outage, 5.8 s into timeouts, each of which held its call five seconds, and 2.91 s
+      into refused connections, each of which took about two; in those two modes a fourth call, already in flight,
+      failed after it. The primary served again 2.15, 16.6 and 7.76 s after it healed, as the cooldown in force ran
+      out. W2's every call was answered, by the fallback in us-east-2 while the primary failed; W3 got the primary's
+      error and then the cooldown's 429. Step 4's proxy came back from a restart in 20.4 s with its database.
+    sources:
+      - {drill: drills, path: "outage[0].failures_at_the_primary[2]"}
+      - {drill: drills, path: "outage[1].failures_at_the_primary[2]"}
+      - {drill: drills, path: "outage[2].failures_at_the_primary[2]"}
+      - {drill: drills, path: "outage[0].primary_served_again_after_heal_s"}
+      - {drill: drills, path: "outage[1].primary_served_again_after_heal_s"}
+      - {drill: drills, path: "outage[2].primary_served_again_after_heal_s"}
+      - {drill: step 4, path: restart.proxy_back_in_s}
+      - fact_sheet: section 5
+        date: 2026-10-29
+        quote: '"To meet an availability target, add bounded retries and multi-Region or multi-model fallback in your application"'
+    gap: >-
+      One Region: the second gateway Region of month five isn't deployed (O-D17). A proxy killed with calls in
+      flight, and a fleet of proxies behind a load balancer, weren't drilled.
+
+  - component: its database
+    failure_mode: >-
+      PostgreSQL unreachable. The keys, the monthly budgets, the key block and the spend counter all live in it.
+    recovery_objective: >-
+      Back inside the time the proxy answers from its key cache, under a minute, so that a failover refuses no
+      caller. RPO for spend none, which needs what the proxy drops put back from chapter 5's cost lines.
+    evidence: >-
+      Database drill, PostgreSQL stopped for 90.1 s under step 4's gateway, W2 calling once a second: the proxy
+      answered 51 calls from its key cache until 50.1 s, then refused 31 with 503, "the authentication database is
+      temporarily unreachable", each refusal holding its caller 14.6 s at the median. The first call sent 0.862 s
+      after PostgreSQL started again was answered. The key's spend counter gained 0.543 of the answered calls'
+      cost, less than the share answered outside the outage.
+    sources:
+      - {drill: drills, path: database.stopped_for_s}
+      - {drill: drills, path: database.answered_from_the_key_cache}
+      - {drill: drills, path: database.the_cache_answered_until_s}
+      - {drill: drills, path: database.refusals}
+      - {drill: drills, path: database.refusal_held_its_caller_s.median}
+      - {drill: drills, path: database.first_call_answered_after_restart_sent_s}
+      - {drill: drills, path: database.spend_counted_over_answered}
+      - fact_sheet: section 8.1
+        date: 2026-11-03
+        quote: '"Every budget on this page is enforced against spend read from the database, so none of them cap anything on a DB-less deployment."'
+    gap: >-
+      A managed database's failover wasn't drilled, nor a proxy started while its database is down. Nothing in the
+      lab puts the lost spend back from the cost lines yet, so after an outage each budget is enforced against less
+      than was spent.
+
+  - component: Redis
+    failure_mode: >-
+      Redis down: LiteLLM keeps the keys' windows, the spend reservations and the cooldown counts in each worker's
+      memory instead.
+    recovery_objective: >-
+      None of its own, since nothing in it needs restoring; the shared counts come back with it. Until then each of n
+      workers allows its own share, n times every limit, and a worker's key limits hold only while its in-memory
+      cache keeps their windows.
+    evidence: >-
+      Fact sheet 8.1 quotes LiteLLM's docs on what a worker without Redis does with spend. LiteLLM 1.106.6's cooldown
+      counter falls back to "this worker's in-memory count" on a Redis error (router_utils/cooldown_handlers.py). This
+      step ran one proxy process and no Redis, so every count in its drills was one worker's, and the keys' windows
+      sat in that worker's cache of 200 entries. On step 4's gateway, whose budget alerts keep a status there for
+      every request, the limiter-cache drill found the cache full 30.5 s into a burst and W2's window evicted at
+      30.8 s; without the alerts the cache held 8 entries all round and the window lived out its minute.
+    sources:
+      - fact_sheet: section 8.1
+        date: 2026-11-03
+        quote: '"Spend is reserved and counted per worker, so concurrent requests on different workers can overshoot a hard budget before the database catches up."'
+      - {drill: limiter cache, path: "rounds[0].cache.full_at_s"}
+      - {drill: limiter cache, path: "rounds[0].cache.keys.w2-ops-assistant.window_evicted_s"}
+      - {drill: limiter cache, path: "rounds[2].cache.largest"}
+    gap: >-
+      No Redis runs on this workstation, and no drill stopped one, or showed whether Redis keeps a key's window
+      through a burst of refusals.
+
+  - component: Langfuse
+    failure_mode: >-
+      Langfuse down or its stores lost: the trace store the observability team reads. The Collector's export to it
+      fails while the span file and CloudWatch, in pipelines of their own, carry on.
+    recovery_objective: >-
+      Hours, restored from a backup of its four stores. Traces are sampled already, and neither the audit record nor
+      the cost lines pass through it (O-D3), so nothing a budget or an audit needs is lost with it.
+    evidence: >-
+      Fact sheet 8.5 quotes Langfuse's own guide on its Compose setup, which step 7 runs on one VM. Step 3's Collector
+      exports to the span file, CloudWatch and Langfuse in separate pipelines.
+    sources:
+      - fact_sheet: section 8.5
+        date: 2026-11-03
+        quote: '"The docker compose setup lacks high-availability, scaling capabilities, and backup functionality."'
+    gap: >-
+      Langfuse didn't run in this step, and what the Collector's exporter keeps while Langfuse is away wasn't measured.
+
+  - component: the audit log
+    failure_mode: >-
+      The approval service's store, Larkspur's one audit trail of approvals, unreachable or lost; or the cloud's own
+      audit log out of reach.
+    recovery_objective: >-
+      RPO zero for a decided approval, which W3's service commits before it answers (SQLite, synchronous FULL). RTO:
+      no write runs until the service is back, since every write asks it first; reads go on.
+    evidence: >-
+      The repeated-write check: a write ran only under an approval the service covered, a second run presenting the
+      first run's approval got "the approval is for another run", and the service's log recorded every refusal.
+      CloudTrail's event history, by fact sheet 8.2, keeps the last 90 days of management events in a Region; anything
+      kept longer needs a trail.
+    sources:
+      - {drill: drills, path: "repeat.rows[2].reason"}
+      - fact_sheet: section 8.2
+        date: 2026-11-03
+        quote: '"the past 90 days of management events in an AWS Region"'
+    gap: >-
+      The store's loss wasn't drilled, and the lab keeps it in one SQLite file; the immutable store chapter 2 asks for
+      (ch02:170) is the cloud's, and step 7 reads CloudTrail.
+
+  - component: the self-hosted path
+    failure_mode: >-
+      One of chapter 9's two replicas down, or both. Restricted calls have no fallback, since Restricted data never
+      leaves the path.
+    recovery_objective: >-
+      RTO: a replica rescheduled and its model loaded, minutes, with the other carrying the load meanwhile. RPO none:
+      a replica keeps no state.
+    evidence: >-
+      W3's busiest hour takes 8.34 s of one replica at chapter 9's measured single-stream speeds, 0.232% of its hour,
+      so one replica carries it. With the path down, W3's harness gets a 5xx and ends the triage "model unavailable"
+      before any write, as the outage drill showed through the managed alias.
+    sources:
+      - {drill: calculator, path: "self_hosted[1].replica_seconds"}
+      - {drill: calculator, path: "self_hosted[1].share_of_one_replica_hour", shown: "0.232%"}
+      - {drill: drills, path: "outage[0].runs.w3_in_flight.outcome"}
+    gap: >-
+      The replicas' own failover belongs to chapter 9's lab and wasn't drilled here; chapter 9's speeds are the
+      workstation's RTX 5080 standing in for an L40S.
+
+  - component: W5's ledger in its fork
+    failure_mode: >-
+      The fork's branch lost, or the fork App's commit refused: W5's ledger is one JSON file there, every change a
+      commit.
+    recovery_objective: >-
+      RPO: the last commit, which git keeps in every clone. RTO: the branch pushed again from a clone; a night is
+      short and idempotent, so a night lost is run again.
+    evidence: >-
+      W5's ledger says so of itself (workflows/w5-drift/writer/ledger.py): "Deployed, it is a file on a branch of W5's
+      own fork, written by the fork App, so every change to it is a commit", and W5 keeps no store of runs, since a
+      night is idempotent (W5-D2).
+    sources:
+      - {code: workflows/w5-drift/writer/ledger.py, quote: "Deployed, it is a file on a branch of W5's own fork, written by the fork App, so every change to it is a commit"}
+    gap: Not drilled; restoring a lost fork is untested.
+
+  - component: the trace pipeline
+    failure_mode: >-
+      The Collector down: each process's exporter retries and then drops its spans, and tail sampling loses the
+      traces it was holding in memory to decide.
+    recovery_objective: >-
+      RTO: a restart. RPO: the traces in the Collector's memory, about 30.7 s of them at the default wait. The cost
+      lines and the audit record never pass through it (O-D3), so cost per run and the approvals survive its loss.
+    evidence: >-
+      Step 3 measured tail sampling holding each trace 30.7 s at the median before it left. Fact sheet 8.4 quotes the
+      tail sampler's README: every span of a trace must reach one Collector instance, so a second Collector behind a
+      plain load balancer would split traces.
+    sources:
+      - {drill: step 3, path: phases.every-run.delay.collector_to_langfuse.median}
+      - fact_sheet: section 8.4
+        date: 2026-11-03
+        quote: '"All spans for a given trace MUST be received by the same collector instance for effective sampling decisions."'
+    gap: A Collector restart, and what each exporter drops meanwhile, weren't drilled.
+
+# Step 5b's drills change two of the rows above, the gateway's and Redis's. The rows below are the two as step 5b found
+# them; step 5's summary keeps step 5's, and capacity/summary_5b.py prints these. In their `sources`, `store` is
+# results/2026-11-04/capacity/store.json, `probe` its store-probe.json and `outage 5b` its outage.json, and a `summary`
+# entry is a number step 5b's summary prints, computed there from those files; tests/test_capacity_5b_results.py finds
+# every one of them in the evidence.
+after_step5b:
+  - component: the gateway
+    failure_mode: >-
+      A model behind it fails, with 5xx errors, timeouts or refused connections; or the proxy itself stops, and every
+      call in flight with it.
+    recovery_objective: >-
+      A failing model off the path within three failures, seconds, or the timeout and a little more when it hangs;
+      back on it within one cooldown of healing, thirty seconds; the proxy back within a minute of a restart; and a
+      workflow whose data may not leave Canada served meanwhile by the self-hosted alias. RPO none: it holds nothing a
+      call needs beyond its database.
+    evidence: >-
+      Outage drill again, step 5's three modes. With litellm.outage-canada.yaml, W3's calls failed over to the
+      self-hosted alias in ca-central-1 and all 30, 25 and 29 made while the primary failed were answered; the fake in
+      us-east-2 saw none of W3's requests, and W2's calls failed over to us-east-2 as in step 5. On step 5's config,
+      W3's model client of step 5b ended its triage in flight as model unavailable on the primary's 503, the
+      timeout's 408 and the refused connection's 500, and a triage started in the cooldown waited out two 429s of 30
+      s and was answered by the healed primary 61.3 s after it began.
+    sources:
+      - {drill: outage 5b, path: "configs[1].modes[0].w3.calls"}
+      - {drill: outage 5b, path: "configs[1].modes[1].w3.calls"}
+      - {drill: outage 5b, path: "configs[1].modes[2].w3.calls"}
+      - {drill: outage 5b, path: "configs[0].modes[0].runs.w3_during_cooldown.seconds"}
+      - {summary: "1.51%"}
+    gap: >-
+      One Region: the second gateway Region of month five isn't deployed (O-D17). A proxy killed with calls in
+      flight, and a fleet of proxies behind a load balancer, weren't drilled. During an outage the self-hosted replicas
+      carry W3's Confidential calls as well as its Restricted ones; at chapter 9's speeds W3's busy hour would take
+      1.51% of one replica's hour, and the replicas under that load weren't drilled.
+
+  - component: Redis
+    failure_mode: >-
+      The store unreachable. LiteLLM keeps the keys' windows and counters, the spend counters and the router's state
+      there, and counts in it with Lua scripts that must run whole.
+    recovery_objective: >-
+      Back within the minute LiteLLM waits before it tries the store again, with the keys' limits failing closed
+      meanwhile (fail_closed_rate_limit_enforcement) and the platform's on-call alerted within seconds. RPO: the
+      current minute's windows, which a restarted store has lost; nothing a budget needs, since the spend is in the
+      database.
+    evidence: >-
+      Garnet 2.2.5 ran every step of LiteLLM 1.106.6's eight limiter scripts as Redis does; with its Lua transaction
+      mode it admitted 250 of 1,000 check-and-increments against a limit of 250 in each of three trials, and without
+      it 251 in two. With the windows in the store, step 4's alerts still filled the proxy's in-memory cache 31.4 s
+      into a burst, yet W2's key went on refusing until 117 s, no window left the store early, and the provider refused
+      W3 nothing. With the store stopped 30 s into the burst, LiteLLM's default carried on from memory, which held no
+      window of W2's: the key refused nothing until the store came back, and the provider refused W3 5 times while it
+      was down and 12 after. Failing closed, every keyed call got 503 from 2.86 s after the stop until 2.68 s after the
+      restart. In both rounds the alert reached step 4's receiver 4.47 s after the stop, and the second one 1.21 and
+      1.18 s after the restart. LiteLLM's circuit breaker opened after five failures, and the proxy wrote 13,937 log
+      lines in the default's round, 650 of them tracebacks for spend writes it skipped.
+    sources:
+      - {drill: probe, path: "modes[0].trials[0].admitted"}
+      - {drill: probe, path: "modes[1].trials[0].admitted"}
+      - {drill: store, path: "cache[0].cache.full_at_s"}
+      - {drill: store, path: "cache[0].cache.keys.w2-ops-assistant.last_key_refusal_s"}
+      - {drill: store, path: "stopped[0].phases.while down.w3-incident.refused_by.the provider's quota"}
+      - {drill: store, path: "stopped[0].phases.after.w3-incident.refused_by.the provider's quota"}
+      - {drill: store, path: "stopped[1].first_503_after_the_stop_s"}
+      - {drill: store, path: "stopped[0].log_lines"}
+      - {drill: store, path: "stopped[0].log.a store call skipped while the breaker was open, with its traceback"}
+      - {summary: "4.47"}
+      - {summary: "1.21"}
+      - {summary: "1.18"}
+      - {summary: "2.68"}
+    gap: >-
+      One proxy on one store: a fleet sharing it, the store's own replication and failover, a store that answers
+      slowly rather than not at all, and TLS to it weren't drilled. Garnet ran in memory, so a restarted store came
+      back empty.

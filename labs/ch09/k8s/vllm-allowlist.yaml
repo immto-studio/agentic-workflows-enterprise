@@ -1,0 +1,44 @@
+# The path allowlist in front of vLLM, a second container in its pod.
+# vLLM's API key guards only the routes under /v1, /v2, /inference and
+# /cohere: /invocations runs the same inference without a key, and
+# /pause, /abort_requests and /update_weights answer anyone who reaches
+# the port (vLLM security guide, page dated 27 October 2026). So the
+# network reaches this proxy and never vLLM's own port. The gateway gets
+# three routes on 8080, Prometheus gets /metrics on 8081, and everything
+# else is a 404.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vllm-allowlist
+  namespace: llm-serving
+data:
+  nginx.conf: |
+    pid /tmp/nginx.pid;
+    error_log /dev/stderr warn;
+    events {}
+    http {
+      access_log /dev/stdout;
+      client_body_temp_path /tmp/client_body;
+      proxy_temp_path /tmp/proxy;
+      fastcgi_temp_path /tmp/fastcgi;
+      uwsgi_temp_path /tmp/uwsgi;
+      scgi_temp_path /tmp/scgi;
+      client_max_body_size 8m;
+      proxy_http_version 1.1;
+      proxy_set_header Connection "";
+      proxy_buffering off;
+      proxy_read_timeout 300s;
+      upstream vllm { server 127.0.0.1:8000; keepalive 16; }
+      server {
+        listen 8080;
+        location = /v1/chat/completions { proxy_pass http://vllm; }
+        location = /v1/models { proxy_pass http://vllm; }
+        location = /health { proxy_pass http://vllm; }
+        location / { return 404; }
+      }
+      server {
+        listen 8081;
+        location = /metrics { proxy_pass http://vllm; }
+        location / { return 404; }
+      }
+    }

@@ -1,0 +1,1291 @@
+{
+ "workflow": "w4",
+ "name": "W4, change management",
+ "judge": "gemma4-12b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gemma4:12b",
+  "name": "gemma4:12b",
+  "think": false,
+  "ollama": "0.40.13",
+  "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+  "loaded": [
+   {
+    "name": "gemma4:12b",
+    "context_length": 16384,
+    "size_vram": 1471330384
+   }
+  ]
+ },
+ "gateway": {
+  "alias": "larkspur-chat",
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gemma4:12b",
+   "larkspur-chat-restricted": "ollama_chat/gemma4:12b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.gemma.yaml",
+   "sha256": "b4aabf9c69d47cf4766e0081ac240410f45abc0cd223578049715768741e94e9"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w4.yaml",
+  "sha256": "7d1c3c8047c5a36985ca5ffc743f0a21a35eadacc7b2948e2ef16172ad5c344f"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w4.jsonl",
+  "version": "506eb14dcd423560752d7cf7eb4fac1447d86c7cdc91976a5ca1da91f8c56ddb"
+ },
+ "manifest": {
+  "path": "workflows/w4-change/manifest/w4-change.yaml",
+  "sha256": "8fdf61468d39f8823a0b69637fa318aec6df598049b30487244216ac3fe64e5b"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "e0a645c2415c68abcd6a8c51d857c3da5d84aa4aa24c27d36e96cd984af333eb"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "a2871f78aa2a5614f32c51cfd2d5472702e6fb16a152e8bf78ae7eda40fa8bcb"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 27,
+  "prompt": 13717,
+  "completion": 697,
+  "by_slice": {
+   "cross": {
+    "calls": 19,
+    "prompt": 9611,
+    "completion": 493
+   },
+   "self": {
+    "calls": 4,
+    "prompt": 1961,
+    "completion": 112
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 2145,
+    "completion": 92
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 24,
+  "judged": 19,
+  "not_judged": {
+   "W4's stub sentence": 5
+  }
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "aae12d9bbd294094bfcf050d6afeeeb7",
+   "messages_sha256": "d8d536133f2c06dcf2f42bc0cc0a3d10ab65f1129eec0b6437614de3c658ba61",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.47,
+   "tokens": {
+    "prompt": 531,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "2e02c5ea254a491783c36e7a8b273e0f",
+   "messages_sha256": "69f0b46e40e14bfd6306ac0bebbda2d1876541ddd0e46d096bdff51ff0db1251",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 494,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "1dbaaefccc12445e8777d987fc28d79d",
+   "messages_sha256": "025586ce86469b131d9ab6a3def847c02a2d19d4379aed9341cd114638e1547d",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 531,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "0b09807db17046f0a0659c6059454cfd",
+   "messages_sha256": "b757ac39d40a8ed475787ad34dfc569df20f5f1c655be43e42bd84c3d6ffd15c",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 476,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "855ee3ff0d4749738e9f904b0a5fd350",
+   "messages_sha256": "d1f6e430f0ac61d8facf125add0e948632cfaa67d50e68584af2984325b19fb1",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 475,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "59b364bcb59a468ca1cb2d09f03a2515",
+   "messages_sha256": "2a57f7153cc48286d13d8825cf647984675024ae1e1ac743ea2c9b4bae752c9a",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 538,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "9892074761b74d4e911c080f3f0fedc5",
+   "messages_sha256": "73e479cbe40929e35fe0690a7945a26163654f3ad1b8c3699a73822eaed9e387",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 472,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "38b5878eef9a448f89b805a0511e2ce9",
+   "messages_sha256": "d631531d9774a3519dfa729912462fd75f064dd822ef4a140c1932331175da6a",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.4,
+   "tokens": {
+    "prompt": 508,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c1a250e5fe284e139d1b15a82c99ae4b",
+   "messages_sha256": "d8d536133f2c06dcf2f42bc0cc0a3d10ab65f1129eec0b6437614de3c658ba61",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 531,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "47cc62268581425ba41a0e959e0b02a8",
+   "messages_sha256": "876c9334c997f21e474edc0495f7c3e40578c8df54bc0d90a9296e3d66dbf445",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.4,
+   "tokens": {
+    "prompt": 493,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "09f77eb535cc4eea97018fca54b80bb3",
+   "messages_sha256": "2a57f7153cc48286d13d8825cf647984675024ae1e1ac743ea2c9b4bae752c9a",
+   "verdict": "right",
+   "reason": "none",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.26,
+   "tokens": {
+    "prompt": 538,
+    "completion": 10
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "492fec391b814ebf9e71342973ce2e7d",
+   "messages_sha256": "7b5bed12c01dc38cd629555fac484dbb997eed79746672a9079c7c368f9a6753",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.4,
+   "tokens": {
+    "prompt": 520,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "6f2e2caa57bc43fd8eecb7f2fc4e0f67",
+   "messages_sha256": "876c9334c997f21e474edc0495f7c3e40578c8df54bc0d90a9296e3d66dbf445",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 493,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "184b169f628541aaadfa91f3786cb74a",
+   "messages_sha256": "025586ce86469b131d9ab6a3def847c02a2d19d4379aed9341cd114638e1547d",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 531,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "f5594f877abc4cd7b73371f994af6df3",
+   "messages_sha256": "8ed8c64342062ee01048b246bd2a2f665582e11feed37af0b9590311d8ef62e9",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 478,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "8244c8945f0e4b34897d594a945e62fe",
+   "messages_sha256": "21934f7c4db539383dca76bb5a8c90180c0eb838dc1058c4efe93b30a9b93462",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 479,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7322ec37efca48888ea60ffd55f669ae",
+   "messages_sha256": "2a57f7153cc48286d13d8825cf647984675024ae1e1ac743ea2c9b4bae752c9a",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes all provided reasons, and does not imply any approval or authorization.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 538,
+    "completion": 30
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "595b1b891bb14c55825ed56a4444ae3b",
+   "messages_sha256": "512cede8bd8deb3c666dc2db523ceb9ea10dfd2fac47fb446d87abe1ebf17382",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 477,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02/run-before-logs-kept",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "775016b8ba114d179f15f6e152b7f447",
+   "messages_sha256": "d631531d9774a3519dfa729912462fd75f064dd822ef4a140c1932331175da6a",
+   "verdict": "right",
+   "reason": "none",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.26,
+   "tokens": {
+    "prompt": 508,
+    "completion": 10
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "f7ba828f1cb64d9e8e133f342f26ab28",
+   "messages_sha256": "690c4af84995770ebc9b1379f11f9e5e8b31a9cf74a3850a5b8bab5388c8e26a",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.4,
+   "tokens": {
+    "prompt": 496,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "b4cc29370e7c4e10babbd465dd5b5ae5",
+   "messages_sha256": "1486d467c1a1fb1b1996a73084d8352ed5f67fd26207ba71acd7b4b17265d0ed",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.38,
+   "tokens": {
+    "prompt": 476,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "3961be2cefdb46b9a90203d143fa4b1c",
+   "messages_sha256": "ddc7f791081a54e56d09883d2dc270412daabfffa7813e54fab7c65de968403c",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.39,
+   "tokens": {
+    "prompt": 481,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "9da8ab2f29444a2b986fc7db082df4f4",
+   "messages_sha256": "7db708a538eabb07f25d6e84d14fbee4798ed43047334ddcd447ecbcdb7d9170",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes all provided reasons, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.4,
+   "tokens": {
+    "prompt": 508,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "bf4ea9422b23405eaeea19995e358a52",
+   "messages_sha256": "ebad5048d7ab9f3fbddc7845d221c69457cd7c1526b37a4cd69aa668416830a1",
+   "verdict": "right",
+   "reason": "The output correctly names the class, includes the provided reason, and avoids any language implying approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.41,
+   "tokens": {
+    "prompt": 563,
+    "completion": 28
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "fc529b4266854628b2d36678a65acaf2",
+   "messages_sha256": "aed7f989fa30f517164d234921dffaa2c0138bf2c414cd6143479c4e4ea5e2c8",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes the correct reason, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 506,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "98f307438d6e45ba866662e9a4876e79",
+   "messages_sha256": "42d710794e75a4df66fd557c094ca0e500d11455797f297cbaed5ea28fce28da",
+   "verdict": "right",
+   "reason": "The output names the correct class, includes the correct reason, and does not imply approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 501,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7f0ea191df2749a59461224798ba04ea",
+   "messages_sha256": "98154123875698e2ef2101fee75ef41ff986905bef20e0fdefe112736a1883a5",
+   "verdict": "right",
+   "reason": "none",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.27,
+   "tokens": {
+    "prompt": 575,
+    "completion": 10
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  }
+ ]
+}

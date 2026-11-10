@@ -1,0 +1,28 @@
+# Chapter 6's harness image, built from labs/ (context.zip, which sandbox.py uploads) for linux/arm64.
+# The Dockerfile pins python:3.12-slim by digest on Docker Hub, whose anonymous pull limit a shared
+# build service soon reaches. When Amazon ECR Public's mirror of Docker's official images serves the
+# same digest, the build pulls it from there instead; the digest is the same, so the image is too.
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  pre_build:
+    commands:
+      - REGISTRY="${REPOSITORY_URI%%/*}"
+      - aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$REGISTRY"
+      - BASE="$(awk '/^FROM /{print $2; exit}' ch06/image/Dockerfile)"
+      - echo "base image $BASE"
+      - |
+        if docker pull --platform linux/arm64 "public.ecr.aws/docker/library/$BASE"; then
+          sed -i "s#^FROM $BASE#FROM public.ecr.aws/docker/library/$BASE#" ch06/image/Dockerfile
+          echo "the same digest, from ECR Public"
+        fi
+  build:
+    commands:
+      - TAG="build-$CODEBUILD_BUILD_NUMBER"
+      - docker build --platform linux/arm64 -f ch06/image/Dockerfile -t "$REPOSITORY_URI:$TAG" .
+  post_build:
+    commands:
+      - docker push "$REPOSITORY_URI:$TAG"

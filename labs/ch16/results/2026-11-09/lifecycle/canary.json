@@ -1,0 +1,337 @@
+{
+ "measured": true,
+ "simulated": false,
+ "complete": true,
+ "workflow": "w2",
+ "alias": "larkspur-chat",
+ "threshold_s": 10.0,
+ "targets": {
+  "success": 0.995,
+  "latency": 0.95
+ },
+ "arms": {
+  "local-gpt-oss-20b-chat": {
+   "arm": "control",
+   "model": "ollama_chat/gpt-oss:20b",
+   "weight": 3.0,
+   "share": 0.75,
+   "think": "model default",
+   "num_ctx": 16384
+  },
+  "candidate-gemma4-12b-chat": {
+   "arm": "candidate",
+   "model": "ollama_chat/gemma4:12b",
+   "weight": 1.0,
+   "share": 0.25,
+   "think": false,
+   "num_ctx": 16384
+  }
+ },
+ "calls": {
+  "total": 196,
+  "failed": 0,
+  "after_a_model_change": 77,
+  "with_a_swap_during": 77
+ },
+ "runs": {
+  "total": 100,
+  "by_group": {
+   "candidate": 11,
+   "control": 49,
+   "mixed": 36,
+   "none": 4
+  },
+  "calls_median": 2.0
+ },
+ "by_arm": {
+  "candidate": {
+   "calls": 54,
+   "failed_calls": 0,
+   "share_of_calls": 0.2755,
+   "prompt_tokens": 60000,
+   "completion_tokens": 2099,
+   "latency_ms_median": 4678.0,
+   "latency_ms_p95": 5192,
+   "calls_after_a_swap": 39,
+   "latency_ms_median_after_a_swap": 4718,
+   "latency_ms_median_steady": 372,
+   "load_s_median": 4.4,
+   "load_s_max": 5.86,
+   "load_s_total": 173.9,
+   "latency_ms_median_without_load": 370.5,
+   "runs_touched": {
+    "runs": 47,
+    "ends": {
+     "answer": 42,
+     "refusal": 5
+    },
+    "success": {
+     "good": 47,
+     "valid": 47,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 31,
+     "valid": 47,
+     "value": 0.659574
+    },
+    "latency_without_loads": {
+     "good": 47,
+     "valid": 47,
+     "value": 1.0
+    },
+    "seconds_median": 7.5,
+    "seconds_max": 16.86,
+    "seconds_without_loads_median": 1.5,
+    "loads_s_total": 305.0,
+    "runs_with_a_load": 43
+   },
+   "runs_pure": {
+    "runs": 11,
+    "ends": {
+     "answer": 6,
+     "refusal": 5
+    },
+    "success": {
+     "good": 11,
+     "valid": 11,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 11,
+     "valid": 11,
+     "value": 1.0
+    },
+    "latency_without_loads": {
+     "good": 11,
+     "valid": 11,
+     "value": 1.0
+    },
+    "seconds_median": 4.8,
+    "seconds_max": 5.75,
+    "seconds_without_loads_median": 0.7,
+    "loads_s_total": 30.8,
+    "runs_with_a_load": 7
+   }
+  },
+  "control": {
+   "calls": 142,
+   "failed_calls": 0,
+   "share_of_calls": 0.7245,
+   "prompt_tokens": 137584,
+   "completion_tokens": 18142,
+   "latency_ms_median": 927.5,
+   "latency_ms_p95": 5751,
+   "calls_after_a_swap": 38,
+   "latency_ms_median_after_a_swap": 5228.0,
+   "latency_ms_median_steady": 647.0,
+   "load_s_median": 4.4,
+   "load_s_max": 6.35,
+   "load_s_total": 166.2,
+   "latency_ms_median_without_load": 694.5,
+   "runs_touched": {
+    "runs": 85,
+    "ends": {
+     "answer": 77,
+     "refusal": 8
+    },
+    "success": {
+     "good": 85,
+     "valid": 85,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 69,
+     "valid": 85,
+     "value": 0.811765
+    },
+    "latency_without_loads": {
+     "good": 85,
+     "valid": 85,
+     "value": 1.0
+    },
+    "seconds_median": 5.3,
+    "seconds_max": 16.86,
+    "seconds_without_loads_median": 1.7,
+    "loads_s_total": 309.4,
+    "runs_with_a_load": 44
+   },
+   "runs_pure": {
+    "runs": 49,
+    "ends": {
+     "answer": 41,
+     "refusal": 8
+    },
+    "success": {
+     "good": 49,
+     "valid": 49,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 49,
+     "valid": 49,
+     "value": 1.0
+    },
+    "latency_without_loads": {
+     "good": 49,
+     "valid": 49,
+     "value": 1.0
+    },
+    "seconds_median": 1.7,
+    "seconds_max": 7.49,
+    "seconds_without_loads_median": 1.6,
+    "loads_s_total": 35.1,
+    "runs_with_a_load": 8
+   }
+  }
+ },
+ "by_group": {
+  "candidate": {
+   "runs": 11,
+   "ends": {
+    "answer": 6,
+    "refusal": 5
+   },
+   "success": {
+    "good": 11,
+    "valid": 11,
+    "value": 1.0
+   },
+   "latency": {
+    "good": 11,
+    "valid": 11,
+    "value": 1.0
+   },
+   "latency_without_loads": {
+    "good": 11,
+    "valid": 11,
+    "value": 1.0
+   },
+   "seconds_median": 4.8,
+   "seconds_max": 5.75,
+   "seconds_without_loads_median": 0.7,
+   "loads_s_total": 30.8,
+   "runs_with_a_load": 7
+  },
+  "control": {
+   "runs": 49,
+   "ends": {
+    "answer": 41,
+    "refusal": 8
+   },
+   "success": {
+    "good": 49,
+    "valid": 49,
+    "value": 1.0
+   },
+   "latency": {
+    "good": 49,
+    "valid": 49,
+    "value": 1.0
+   },
+   "latency_without_loads": {
+    "good": 49,
+    "valid": 49,
+    "value": 1.0
+   },
+   "seconds_median": 1.7,
+   "seconds_max": 7.49,
+   "seconds_without_loads_median": 1.6,
+   "loads_s_total": 35.1,
+   "runs_with_a_load": 8
+  },
+  "mixed": {
+   "runs": 36,
+   "ends": {
+    "answer": 36
+   },
+   "success": {
+    "good": 36,
+    "valid": 36,
+    "value": 1.0
+   },
+   "latency": {
+    "good": 20,
+    "valid": 36,
+    "value": 0.555556
+   },
+   "latency_without_loads": {
+    "good": 36,
+    "valid": 36,
+    "value": 1.0
+   },
+   "seconds_median": 9.8,
+   "seconds_max": 16.86,
+   "seconds_without_loads_median": 1.7,
+   "loads_s_total": 274.3,
+   "runs_with_a_load": 36
+  },
+  "none": {
+   "runs": 4,
+   "ends": {
+    "refusal": 4
+   },
+   "success": {
+    "good": 4,
+    "valid": 4,
+    "value": 1.0
+   },
+   "latency": {
+    "good": 4,
+    "valid": 4,
+    "value": 1.0
+   },
+   "latency_without_loads": {
+    "good": 4,
+    "valid": 4,
+    "value": 1.0
+   },
+   "seconds_median": 0.2,
+   "seconds_max": 0.17,
+   "seconds_without_loads_median": 0.2,
+   "loads_s_total": 0.0,
+   "runs_with_a_load": 0
+  }
+ },
+ "how_the_slis_are_counted": {
+  "pure": "the runs one arm served alone",
+  "touched": "the runs an arm served at all; a run both arms served counts for both, as does its failure",
+  "per_call": "the gateway's call lines: a call that came back, and its latency; a swap during the call is marked",
+  "latency_without_loads": "the run's seconds less the time its calls spent loading a model the server had to swap in, measured from the watcher's samples of /api/ps (every half second); what the latency SLI reads where each model has replicas of its own"
+ },
+ "started": "2026-11-09T11:43:19+00:00",
+ "seconds": 553.9,
+ "pass_seconds": [
+  126.5,
+  136.9,
+  110.2,
+  155.1
+ ],
+ "passes": 4,
+ "cases_a_pass": 25,
+ "config": {
+  "source": "labs/ch16/lifecycle/litellm.canary.yaml",
+  "sha256": "e31d9b584a0b04677625ce9e887d1a107c80c7fda6552b7dbe279ebe78ac0175"
+ },
+ "server": {
+  "ollama": "0.40.13",
+  "digests": {
+   "gpt-oss:20b": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+   "gemma4:12b": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b"
+  },
+  "swaps": {
+   "changes": 155,
+   "loads": {
+    "gemma4:12b": 39,
+    "gpt-oss:20b": 38
+   },
+   "resident_s": {
+    "gpt-oss:20b": 170.0,
+    "gemma4:12b": 42.4
+   },
+   "both_at_once": false,
+   "max_size_vram": 12752204594
+  }
+ },
+ "gateway_log_lines": 196
+}

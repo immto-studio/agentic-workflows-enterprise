@@ -1,0 +1,302 @@
+{
+ "night": "2026-11-03",
+ "trace_id": "a5fc350d994244df90325b387d0f2f15",
+ "trigger": {
+  "account": "lm-claims-prod",
+  "alert": "budget:claims-monthly:FORECASTED:100",
+  "kind": "budget",
+  "budget": "claims-monthly",
+  "notification_type": "FORECASTED",
+  "threshold": 100.0,
+  "state": {
+   "found": true,
+   "budget": "lm-claims-prod-monthly",
+   "matched_by": "the account's one budget",
+   "notification": {
+    "NotificationType": "FORECASTED",
+    "ComparisonOperator": "GREATER_THAN",
+    "Threshold": 100.0,
+    "ThresholdType": "PERCENTAGE",
+    "NotificationState": "ALARM"
+   },
+   "actual": "1402.10",
+   "forecasted": "25930.00",
+   "limit": "24000.00"
+  }
+ },
+ "workspaces": [
+  "claims-api-prod"
+ ],
+ "started": "2026-11-03T08:26:06+00:00",
+ "agent": {
+  "name": "larkspur-w5-drift",
+  "oid": "e6f7a8b9-c0d1-5e2f-9a3b-4c5d6e7f8091"
+ },
+ "locks": {
+  "state-mcp": {
+   "list_workspaces": "efeec45e4902",
+   "get_state": "26e51e8ebc2e",
+   "get_state_version": "01b6bb351f60",
+   "list_state_versions": "cb33e81a6d0b"
+  },
+  "cloud-mcp": {
+   "describe_resources": "e9513e671807",
+   "get_resources_by_tag": "89d512ad7775",
+   "lookup_events": "cb5b699a5f50",
+   "get_cpu_utilization": "8813dec127b6"
+  },
+  "cost-mcp": {
+   "get_cost_and_usage": "656e870b42d4",
+   "get_cost_by_resource": "ec11d277b7dd",
+   "describe_budgets": "8bf498cdfc70",
+   "get_anomalies": "6f0f1f583941",
+   "read_cost_export": "af4477b1ef86"
+  },
+  "policy-mcp": {
+   "get_tagging_standard": "a6eaec06276a",
+   "list_policy_exceptions": "617b28643c28"
+  }
+ },
+ "refused": {},
+ "failed": {},
+ "findings": [
+  {
+   "key": "claims-api-prod:aws_instance.api:changed",
+   "kind": "changed",
+   "workspace": "claims-api-prod",
+   "account": "lm-claims-prod",
+   "region": "ca-central-1",
+   "resource_type": "aws_instance",
+   "address": "aws_instance.api",
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "evidence": {
+    "attributes": {
+     "instance_type": {
+      "state": "t3.large",
+      "live": "m5.large"
+     }
+    }
+   },
+   "attribution": {
+    "event_name": "ModifyInstanceAttribute",
+    "event_id": "5521e801-ebce-5326-88eb-7a802bf0a667",
+    "event_time": "2026-10-24T15:05:31Z",
+    "username": "sam.okafor",
+    "principal_arn": "arn:aws:sts::422233334444:assumed-role/ClaimsOperator/sam.okafor",
+    "identity_type": "AssumedRole",
+    "source_ip": "10.44.8.30",
+    "user_agent": "console.ec2.amazonaws.com",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "i-0c1a1b2c3d4e5f001"
+    }
+   },
+   "estimated_monthly_saving": null,
+   "suppressed_by": null,
+   "template": "adopt"
+  },
+  {
+   "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "kind": "changed",
+   "workspace": "claims-api-prod",
+   "account": "lm-claims-prod",
+   "region": "ca-central-1",
+   "resource_type": "aws_security_group",
+   "address": "aws_security_group.billing_worker",
+   "resource_id": "sg-0c1a1b2c3d4e5f102",
+   "evidence": {
+    "attributes": {
+     "ingress": {
+      "state": [
+       [
+        "tcp",
+        443,
+        443,
+        "10.44.0.0/16"
+       ]
+      ],
+      "live": [
+       [
+        "tcp",
+        443,
+        443,
+        "10.44.0.0/16"
+       ],
+       [
+        "tcp",
+        8080,
+        8080,
+        "0.0.0.0/0"
+       ]
+      ],
+      "added": [
+       [
+        "tcp",
+        8080,
+        8080,
+        "0.0.0.0/0"
+       ]
+      ],
+      "removed": [],
+      "descriptions": {
+       "[\"tcp\", 8080, 8080, \"0.0.0.0/0\"]": "temp: jenkins smoke test"
+      }
+     }
+    }
+   },
+   "attribution": {
+    "event_name": "AuthorizeSecurityGroupIngress",
+    "event_id": "393e0c91-e863-54f1-9103-d21a0e61825f",
+    "event_time": "2026-10-29T03:12:47Z",
+    "username": "jenkins-deploy-prod",
+    "principal_arn": "arn:aws:iam::422233334444:user/jenkins-deploy-prod",
+    "identity_type": "IAMUser",
+    "source_ip": "10.44.12.7",
+    "user_agent": "Jenkins/2.479.2 (job billing-worker-deploy-prod; build 4471)",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "sg-0c1a1b2c3d4e5f102"
+    }
+   },
+   "estimated_monthly_saving": null,
+   "suppressed_by": null,
+   "template": "revert"
+  },
+  {
+   "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "kind": "graviton_candidate",
+   "workspace": "claims-api-prod",
+   "account": "lm-claims-prod",
+   "region": "ca-central-1",
+   "resource_type": "aws_instance",
+   "address": "aws_instance.api",
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "evidence": {
+    "instance_type": "m5.large",
+    "architecture": "x86_64",
+    "family": "m5",
+    "suggested_family": "m7g",
+    "suggested_type": "m7g.large",
+    "code_instance_type": "t3.large",
+    "adr": "ADR-0050",
+    "cost": {
+     "period": "2026-10",
+     "monthly": 85.9,
+     "fraction": 0.2,
+     "unit": "synthetic"
+    }
+   },
+   "attribution": {
+    "event_name": "ModifyInstanceAttribute",
+    "event_id": "5521e801-ebce-5326-88eb-7a802bf0a667",
+    "event_time": "2026-10-24T15:05:31Z",
+    "username": "sam.okafor",
+    "principal_arn": "arn:aws:sts::422233334444:assumed-role/ClaimsOperator/sam.okafor",
+    "identity_type": "AssumedRole",
+    "source_ip": "10.44.8.30",
+    "user_agent": "console.ec2.amazonaws.com",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "i-0c1a1b2c3d4e5f001"
+    }
+   },
+   "estimated_monthly_saving": 17.18,
+   "suppressed_by": null,
+   "template": "instance_type"
+  }
+ ],
+ "pull_requests": [
+  {
+   "key": "claims-api-prod:aws_instance.api:changed",
+   "action": "updated",
+   "repo": "larkspur-mutual/platform-infra",
+   "number": 2301,
+   "branch": "w5/claims-api-prod-aws_instance.api-changed",
+   "pushed": false,
+   "reason": "",
+   "title": "Instance type drift on aws_instance.api (i-0c1a1b2c3d4e5f001) in claims-api-prod",
+   "body_source": "model",
+   "refused_words": []
+  },
+  {
+   "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "action": "updated",
+   "repo": "larkspur-mutual/platform-infra",
+   "number": 2302,
+   "branch": "w5/claims-api-prod-aws_security_group.billing_worker-changed",
+   "pushed": false,
+   "reason": "",
+   "title": "Changed outside Terraform: added ingress rule to aws_security_group.billing_worker in claims-api-prod",
+   "body_source": "model",
+   "refused_words": []
+  },
+  {
+   "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "action": "updated",
+   "repo": "larkspur-mutual/platform-infra",
+   "number": 2303,
+   "branch": "w5/claims-api-prod-aws_instance.api-graviton_candidate",
+   "pushed": false,
+   "reason": "",
+   "title": "Graviton candidate: aws_instance.api (i-0c1a1b2c3d4e5f001) runs x86 family",
+   "body_source": "model",
+   "refused_words": []
+  }
+ ],
+ "counts": {
+  "findings": 3,
+  "by_kind": {
+   "changed": 2,
+   "graviton_candidate": 1
+  },
+  "pull_requests": {
+   "opened": 0,
+   "updated": 3,
+   "skipped": 0,
+   "suppressed": 0
+  }
+ },
+ "cost": {
+  "gateway_calls": 3,
+  "prompt_tokens": 1894,
+  "completion_tokens": 7319,
+  "refused": 0,
+  "failed": 0
+ },
+ "body_sources": {
+  "model": 3
+ },
+ "refused_words": {},
+ "ledger": {
+  "realized": [],
+  "pull_request_states": {
+   "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": "open",
+   "claims-api-prod:aws_instance.api:changed": "open",
+   "claims-api-prod:aws_security_group.billing_worker:changed": "open",
+   "claims-api-prod:aws_instance.api:graviton_candidate": "open",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged": "open",
+   "sandbox-quill:aws_ebs_volume.scratch:missing": "open",
+   "sandbox-quill:aws_instance.notebook:untagged": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged": "open",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged": "open",
+   "sandbox-quill:aws_instance.batch:idle": "open",
+   "sandbox-quill:aws_ebs_volume.archive:unattached_volume": "merged",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot": "open",
+   "sandbox-quill:aws_instance.notebook:graviton_candidate": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60501:unmanaged": "open"
+  },
+  "file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run-gpt-oss-20b-20261103T031323\\nights\\ledger.json"
+ },
+ "spend": {
+  "lm-claims-prod": 21718.24
+ },
+ "duration_s": 147.331,
+ "workspaces_read": [
+  "claims-api-prod"
+ ],
+ "record_file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run-gpt-oss-20b-20261103T031323\\nights\\alarm-2026-11-03-lm-claims-prod.json",
+ "log_file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run-gpt-oss-20b-20261103T031323\\nights\\alarm-2026-11-03-lm-claims-prod.jsonl",
+ "seconds": 147.4,
+ "golden_id": "alarm-1"
+}

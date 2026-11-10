@@ -1,0 +1,119 @@
+# SIMULATED. The month the alerts and the error-budget policy run over (companion #14, O-D12). Nothing in it was
+# measured as a month: its runs are drawn from the kept runs, its volumes are the ledger's month, and the five
+# injected events take their shapes from step 5's and 5b's drills where a drill measured one and from a stated
+# assumption where none did. slo/simulate.py builds it; every file it writes says "simulated": true.
+simulated: true
+seed: 20261109
+start: "2027-01-05T00:00:00-05:00"   # Tuesday 5 January 2027, 00:00 ET: after the year-end freeze (ch13:18), no change of clocks
+days: 30
+lead_in_days: 3                      # three days of baseline before the month, so the 3-day window is full on day one.
+                                     # Their runs end before the month and count in the alerts' windows and in no
+                                     # budget; a decision made inside the month on one of their proposals counts, as
+                                     # any rolling window would see it (slos.yaml, in_the_month)
+volumes:
+  source: results/2026-11-03/ledger.json, month.rows[].runs_per_month (ledger/volumes.yaml's sources), per 730 hours
+  scaled: each workflow's runs an hour are its runs a month over 730, the ledger's month
+arrivals: >-
+  W1 to W4 arrive as a Poisson process at their hourly rate, the same at every hour of every day: the month has no
+  daily or weekly cycle, which the book gives none of. W5 runs once a night at 02:00 ET (ch14:13) and four alarm runs
+  a month (volumes.yaml) at uniformly random times.
+pools:
+  reference_model: gpt-oss-20b       # the ledger's month prices on it, and every workflow kept runs on it
+  rule: >-
+    each run is one of its workflow's kept runs on the reference model, drawn uniformly with replacement: its end, its
+    time, and its calls by alias. The golden sets' mix of cases stands for production's, traps and refusals included.
+  baseline:
+    w1: ["2026-10-29"]
+    w2: ["2026-11-02", "2026-11-02 run2", "2026-11-02 run3", "traced/2026-11-03"]
+    w3: ["2026-11-02", "traced/2026-11-03"]
+    w4: ["2026-11-02", "2026-11-02/first-run-max-tokens-200", "2026-11-02/run-before-logs-kept", "traced/2026-11-03"]
+    w5: ["2026-11-03/after-review", "2026-11-03/step-5b", "2026-11-03/step-5c"]
+w5_nights:
+  pull_requests_opened: >-
+    a scheduled night opens the pull requests its kept steady-state night opened (golden night-2, the first with a
+    ledger to update: 1 opened, 13 updated in every kept run); an alarm's run opens what alarm-1 opened (0)
+decisions:
+  basis: >-
+    an assumption for every workflow: no kept run holds a person's decision. W3's two approvals are the eval's
+    scripted approver, W5's one merge a run is the eval's (before golden night 2), and W4 kept no board decision.
+  w3: {decided: 0.9, delay_minutes: [2, 30], accept: 0.95, revert_of_accepted: 0.02,
+       note: "a tenth of proposals time out undecided and are dropped (chapter 12's timeout), and aren't valid"}
+  w4: {decided: 1.0, at: "the next Thursday session at 14:00 ET (ch13:18)", accept: 0.97}
+  w5: {decided: 0.6, delay_hours: [6, 72], accept: 0.9,
+       note: "a pull request still open at the month's end has no decision and isn't valid yet; one decided after the
+              month's end counts in the next month (slos.yaml, in_the_month)"}
+
+injected:
+  - id: provider-outage
+    what: the managed model behind larkspur-chat in ca-central-1 stops answering, as in step 5's timeout mode
+    start_day: 6
+    start: "10:00"
+    minutes: 45
+    shape: >-
+      step 5b's gateway (capacity/litellm.outage-canada.yaml): a Confidential or Internal call whose own chain stops
+      falls back to the self-hosted alias in Canada, and in the drill all of W2's and W3's calls were answered
+      (results/2026-11-04/capacity/outage.json). In the timeout mode a call sent to the primary first waits the
+      deployment's 5-second timeout (the config's `timeout`); at the month's rate of about two managed calls a
+      minute the 30-second cooldown covers little of the time, so every managed call of W1, W2 and W3 is taken to wait
+      it before the fallback answers, an upper bound. W4's and W5's manifests list larkspur-chat alone, so their calls
+      get the timeout and then the cooldown's 429 with retry-after 30 (the config's `cooldown_time`); step 5b's seams
+      wait it out once, then write the stub. The month adds the timeout and one wait of the cooldown to each of their
+      calls, an upper bound again, and their runs still end in their packs and pull requests. With this seed no W4 or
+      W5 run starts inside the 45 minutes, so nothing in the results moves with that shape; tests/test_slo_month.py
+      drives it on a W4 run of its own. The probe sends one call and waits out no 429, so W4's probe in the window
+      fails after the timeout.
+    timeout_s_from: capacity/litellm.outage-canada.yaml
+    cooldown_s_from: capacity/litellm.outage-canada.yaml
+  - id: throttled-hour
+    what: the provider's quota for the account falls to half of the demand on larkspur-chat for an hour
+    start_day: 8
+    start: "14:00"
+    minutes: 60
+    shape: >-
+      step 5's retry drill through step 4's gateway with Retry-After honored (results/2026-11-03/capacity/drills.json,
+      client_retries): of 80 requests the provider refused 34 at their first attempt, 29 of those were served after
+      waiting, and 5 never were. Each managed call in the hour is admitted at once, served after a wait, or refused
+      for good with those shares. The drill kept
+      no wait per request; a waited call waits a time drawn uniformly from 1 second to the clients' cap of 60 (step 5b).
+      A refused call ends W1's and W2's run as an error, W3's as model unavailable (step 5b), and W4's and W5's seams
+      write the stub. Every 429 a workflow sees is on its 429 panel.
+  - id: model-regression
+    what: larkspur-chat is remapped on day 15 and the new model does worse in production than on the golden sets
+    start_day: 15
+    start: "10:00"
+    until: the month's end; the month models no response to an alert, and the policy's actions are recorded beside it
+    shape: >-
+      chapter 15's live job ran the golden sets on the remap and passed (E-D9), so the regression is what they don't
+      cover. W2's questions are drawn from W2's first kept run (2026-11-02 run1: nine refusals in 20, against three or
+      four in the later runs, and the slowest tail). W5's nights are drawn from W5's three kept runs before the review
+      (2026-11-03, first-run-max-tokens-1200, second-run-max-tokens-4096: 334 to 714 seconds and 8,000 to 25,000 output
+      tokens a night). W3's proposals are accepted at 0.6, the share of W3's five kept proposals that passed their
+      golden check (3 of 5), standing for a person declining a worse proposal; an assumption, as the decisions are.
+      W1 has no earlier kept run on the model, and W4's class is decided by rules before the model is asked
+      (chapter 13), so neither changes.
+    pools:
+      w2: ["2026-11-02 run1"]
+      w5: ["2026-11-03", "2026-11-03/first-run-max-tokens-1200", "2026-11-03/second-run-max-tokens-4096"]
+    w3_accept: 0.6
+  - id: self-hosted-down
+    what: both of chapter 9's replicas stop answering for a weekend; the managed path is healthy
+    start_day: 25
+    start: "00:00"
+    minutes: 2880
+    shape: >-
+      a weekend, Saturday 00:00 to Monday 00:00 ET, long enough that W3's thin traffic meets it a few times: at 0.4
+      incidents an hour and a quarter of the kept incidents sending a Restricted call, about five. Restricted calls
+      have no fallback (chapter 9), so every run that sends one fails: W3's ends as model unavailable (its client takes
+      a 5xx for an outage, step 5) and W1's raises. A run whose kept run had failed already stays the baseline's. The
+      hourly probe sends its case's first call to larkspur-chat and stays green. This is section 8.9's first caution:
+      "if an issue affects real users but doesn't affect artificial traffic, the successful artificial requests hide
+      the real user signal".
+  - id: w4-records-refused
+    what: the change record's API refuses W4's writes for a day (an expired token), and every pack fails to be written
+    start_day: 23
+    start: "00:00"
+    minutes: 1440
+    shape: >-
+      every W4 run in the day ends with its pack not written, an error; the model path is healthy, so W4's probe stays
+      green. Grouped with W1 and W3 it is section 8.9's second caution: "a complete failure of an individual service
+      may not count as a significant event".

@@ -1,0 +1,256 @@
+{
+ "date": "2026-11-04",
+ "versions": {
+  "litellm": "1.106.6",
+  "prisma": "0.15.0",
+  "psycopg": "3.3.6",
+  "httpx": "0.28.1",
+  "uvicorn": "0.54.0",
+  "starlette": "1.10.0",
+  "python": "3.12.9",
+  "redis": "8.1.0",
+  "garnet": "2.2.5"
+ },
+ "race": {
+  "calls": 1000,
+  "connections": 100,
+  "limit": 250,
+  "trials": 3
+ },
+ "modes": [
+  {
+   "transaction_mode": true,
+   "server": {
+    "redis_version": "7.4.3",
+    "garnet_version": "2.2.5"
+   },
+   "answers": {
+    "batch_1st": [
+     "now",
+     1
+    ],
+    "batch_2nd": [
+     "now",
+     2
+    ],
+    "read": [
+     "now",
+     "2",
+     null
+    ],
+    "check_1st": [
+     0,
+     60,
+     "now"
+    ],
+    "check_2nd": [
+     0,
+     90,
+     "now"
+    ],
+    "check_over": [
+     1,
+     1,
+     90,
+     100
+    ],
+    "guarded_match": [
+     1,
+     70
+    ],
+    "guarded_stale": [
+     0,
+     70
+    ],
+    "acquire_1": [
+     0,
+     1
+    ],
+    "acquire_2": [
+     0,
+     2
+    ],
+    "acquire_3_over": [
+     1,
+     1,
+     2,
+     2
+    ],
+    "release_a": [
+     1
+    ],
+    "count": [
+     1
+    ],
+    "float_1": [
+     "0.25"
+    ],
+    "float_2": [
+     "0.75"
+    ],
+    "ttl_window": 60,
+    "ttl_tokens": 60,
+    "ttl_spend": 60
+   },
+   "as_redis_answers": {
+    "batch_1st": true,
+    "batch_2nd": true,
+    "read": true,
+    "check_1st": true,
+    "check_2nd": true,
+    "check_over": true,
+    "guarded_match": true,
+    "guarded_stale": true,
+    "acquire_1": true,
+    "acquire_2": true,
+    "acquire_3_over": true,
+    "release_a": true,
+    "count": true,
+    "float_1": true,
+    "float_2": true,
+    "ttl_window": true,
+    "ttl_tokens": true,
+    "ttl_spend": true
+   },
+   "trials": [
+    {
+     "admitted": 250,
+     "refused": 750,
+     "errors": 0,
+     "counter_after": 250
+    },
+    {
+     "admitted": 250,
+     "refused": 750,
+     "errors": 0,
+     "counter_after": 250
+    },
+    {
+     "admitted": 250,
+     "refused": 750,
+     "errors": 0,
+     "counter_after": 250
+    }
+   ]
+  },
+  {
+   "transaction_mode": false,
+   "server": {
+    "redis_version": "7.4.3",
+    "garnet_version": "2.2.5"
+   },
+   "answers": {
+    "batch_1st": [
+     "now",
+     1
+    ],
+    "batch_2nd": [
+     "now",
+     2
+    ],
+    "read": [
+     "now",
+     "2",
+     null
+    ],
+    "check_1st": [
+     0,
+     60,
+     "now"
+    ],
+    "check_2nd": [
+     0,
+     90,
+     "now"
+    ],
+    "check_over": [
+     1,
+     1,
+     90,
+     100
+    ],
+    "guarded_match": [
+     1,
+     70
+    ],
+    "guarded_stale": [
+     0,
+     70
+    ],
+    "acquire_1": [
+     0,
+     1
+    ],
+    "acquire_2": [
+     0,
+     2
+    ],
+    "acquire_3_over": [
+     1,
+     1,
+     2,
+     2
+    ],
+    "release_a": [
+     1
+    ],
+    "count": [
+     1
+    ],
+    "float_1": [
+     "0.25"
+    ],
+    "float_2": [
+     "0.75"
+    ],
+    "ttl_window": 60,
+    "ttl_tokens": 60,
+    "ttl_spend": 60
+   },
+   "as_redis_answers": {
+    "batch_1st": true,
+    "batch_2nd": true,
+    "read": true,
+    "check_1st": true,
+    "check_2nd": true,
+    "check_over": true,
+    "guarded_match": true,
+    "guarded_stale": true,
+    "acquire_1": true,
+    "acquire_2": true,
+    "acquire_3_over": true,
+    "release_a": true,
+    "count": true,
+    "float_1": true,
+    "float_2": true,
+    "ttl_window": true,
+    "ttl_tokens": true,
+    "ttl_spend": true
+   },
+   "trials": [
+    {
+     "admitted": 251,
+     "refused": 749,
+     "errors": 0,
+     "counter_after": 250
+    },
+    {
+     "admitted": 250,
+     "refused": 750,
+     "errors": 0,
+     "counter_after": 250
+    },
+    {
+     "admitted": 251,
+     "refused": 749,
+     "errors": 0,
+     "counter_after": 250
+    }
+   ]
+  }
+ ],
+ "stopped_pids": [
+  44948,
+  48484
+ ]
+}

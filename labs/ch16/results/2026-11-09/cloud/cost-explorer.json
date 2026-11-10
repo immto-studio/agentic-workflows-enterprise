@@ -1,0 +1,124 @@
+{
+ "at": "2026-11-09T10:02:13.878+00:00",
+ "window": {
+  "start": "2026-10-24",
+  "end": "2026-11-10"
+ },
+ "requests": 1,
+ "price_per_request": {
+  "quote": "$0.01 per API Request",
+  "source": "fact sheet 8.8, AWSCostExplorer offer file",
+  "date": "2026-11-03"
+ },
+ "ledger": {
+  "price": {
+   "id": "nova-lite-ca",
+   "input_per_million": 0.064,
+   "output_per_million": 0.256,
+   "date": "2026-10-29"
+  },
+  "days": {
+   "2026-10-29": {
+    "calls": 48,
+    "input_tokens": 81439,
+    "output_tokens": 4260,
+    "cost_usd": 0.006303
+   }
+  }
+ },
+ "attempts": [
+  {
+   "filter": "product attribute model = Nova Lite",
+   "ok": true
+  }
+ ],
+ "filter": "product attribute model = Nova Lite",
+ "answers": true,
+ "rows": [
+  {
+   "day": "2026-10-30",
+   "usage_type": "CAN1-NovaLite-input-tokens",
+   "cost_usd": 0.0,
+   "usage": 88.24,
+   "unit": "1K tokens"
+  },
+  {
+   "day": "2026-10-30",
+   "usage_type": "CAN1-NovaLite-output-tokens",
+   "cost_usd": 0.0,
+   "usage": 8.211,
+   "unit": "1K tokens"
+  },
+  {
+   "day": "2026-10-30",
+   "usage_type": "USE2-NovaLite-input-tokens",
+   "cost_usd": 0.0,
+   "usage": 0.006,
+   "unit": "1K tokens"
+  },
+  {
+   "day": "2026-10-30",
+   "usage_type": "USE2-NovaLite-output-tokens",
+   "cost_usd": 0.0,
+   "usage": 0.003,
+   "unit": "1K tokens"
+  }
+ ],
+ "usage_types": [
+  "CAN1-NovaLite-input-tokens",
+  "CAN1-NovaLite-output-tokens",
+  "USE2-NovaLite-input-tokens",
+  "USE2-NovaLite-output-tokens"
+ ],
+ "cost_usd_in_window": 0.0,
+ "reconciliation": [
+  {
+   "day": "2026-10-29",
+   "bill_usage_types": [],
+   "bill_input_tokens": 0,
+   "bill_output_tokens": 0,
+   "bill_cost_usd": 0,
+   "ledger_calls": 48,
+   "ledger_input_tokens": 81439,
+   "ledger_output_tokens": 4260,
+   "ledger_cost_usd": 0.006303
+  },
+  {
+   "day": "2026-10-30",
+   "bill_usage_types": [
+    "CAN1-NovaLite-input-tokens",
+    "CAN1-NovaLite-output-tokens",
+    "USE2-NovaLite-input-tokens",
+    "USE2-NovaLite-output-tokens"
+   ],
+   "bill_input_tokens": 88246,
+   "bill_output_tokens": 8214,
+   "bill_cost_usd": 0.0,
+   "ledger_calls": 0,
+   "ledger_input_tokens": 0,
+   "ledger_output_tokens": 0,
+   "ledger_cost_usd": 0.0
+  }
+ ],
+ "skipped": false,
+ "estimated_cost_usd": 0.01,
+ "aligned": {
+  "bill_day_utc": "2026-10-30",
+  "ledger_day_toronto": "2026-10-29",
+  "usage_types": [
+   "CAN1-NovaLite-input-tokens",
+   "CAN1-NovaLite-output-tokens"
+  ],
+  "bill_input_tokens": 88240,
+  "bill_output_tokens": 8211,
+  "bill_cost_usd": 0.0,
+  "bill_at_the_tables_price_usd": 0.007749,
+  "ledger_calls": 48,
+  "ledger_input_tokens": 81439,
+  "ledger_output_tokens": 4260,
+  "ledger_cost_usd": 0.006303,
+  "input_ratio_bill_over_ledger": 1.084,
+  "output_ratio_bill_over_ledger": 1.927,
+  "cost_ratio_at_list_price": 1.229
+ }
+}

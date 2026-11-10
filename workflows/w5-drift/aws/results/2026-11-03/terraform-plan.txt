@@ -1,0 +1,2007 @@
+# terraform plan -refresh=false with placeholder credentials, the ops account 111122223333, the workload accounts 411122223333, 422233334444, 433344445555, a placeholder organization ID, and a placeholder key ARN (2026-11-03)
+# No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
+data.aws_iam_policy_document.state_reader: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Reading...
+data.aws_iam_policy_document.export_reader: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
+data.aws_iam_policy_document.state_reader: Read complete after 0s [id=1956429626]
+data.aws_iam_policy_document.export_reader: Read complete after 0s [id=792430784]
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_claims_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=644330325]
+module.lm_network_prod.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_network_prod.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
+module.lm_claims_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=477707832]
+module.lm_network_prod.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=901132637]
+module.lm_network_prod.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=110047797]
+module.lm_claims_prod.data.aws_iam_policy_document.boundary: Reading...
+module.lm_network_prod.data.aws_iam_policy_document.boundary: Reading...
+module.lm_claims_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+module.lm_network_prod.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.trust["cost-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.reads["cloud-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.trust["cloud-mcp"]: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.reads["cost-mcp"]: Read complete after 0s [id=1684187931]
+module.lm_sandbox.data.aws_iam_policy_document.reads["cloud-mcp"]: Read complete after 0s [id=2996131230]
+module.lm_sandbox.data.aws_iam_policy_document.trust["cost-mcp"]: Read complete after 0s [id=1319870802]
+module.lm_sandbox.data.aws_iam_policy_document.trust["cloud-mcp"]: Read complete after 0s [id=2781569856]
+module.lm_sandbox.data.aws_iam_policy_document.boundary: Reading...
+module.lm_sandbox.data.aws_iam_policy_document.boundary: Read complete after 0s [id=749419958]
+data.aws_iam_policy_document.chain["cost-mcp"]: Reading...
+data.aws_iam_policy_document.chain["cloud-mcp"]: Reading...
+data.aws_iam_policy_document.state_bucket_deny: Reading...
+data.aws_iam_policy_document.chain["cloud-mcp"]: Read complete after 0s [id=1988098484]
+data.aws_iam_policy_document.chain["cost-mcp"]: Read complete after 0s [id=3988783961]
+data.aws_iam_policy_document.state_bucket_deny: Read complete after 0s [id=3522244308]
+data.aws_iam_policy_document.boundary: Reading...
+data.aws_iam_policy_document.boundary: Read complete after 0s [id=3830289731]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_eks_pod_identity_association.identity["w5-cloud-reader-lm-claims-prod"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cloud-reader-lm-claims-prod"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cloud-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cloud-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cloud-reader-lm-network-prod"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cloud-reader-lm-network-prod"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cloud-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cloud-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cloud-reader-lm-sandbox"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cloud-reader-lm-sandbox"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cloud-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cloud-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cost-export-reader"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cost-export-reader"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cost-export-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cost-export-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cost-reader-lm-claims-prod"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cost-reader-lm-claims-prod"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cost-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cost-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cost-reader-lm-network-prod"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cost-reader-lm-network-prod"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cost-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cost-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-cost-reader-lm-sandbox"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-cost-reader-lm-sandbox"
+      + tags                 = {
+          + "identity" = "larkspur-drift-cost-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-cost-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+      + target_role_arn      = "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-harness"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-harness"
+      + tags                 = {
+          + "identity" = "larkspur-drift-harness"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-harness"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-policy-reader"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-policy-reader"
+      + tags                 = {
+          + "identity" = "larkspur-drift-policy-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-policy-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_eks_pod_identity_association.identity["w5-state-reader"] will be created
+  + resource "aws_eks_pod_identity_association" "identity" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w5-state-reader"
+      + tags                 = {
+          + "identity" = "larkspur-drift-state-reader"
+        }
+      + tags_all             = {
+          + "identity" = "larkspur-drift-state-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_policy.boundary will be created
+  + resource "aws_iam_policy" "boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W5's roles in the ops account: their statements as the ceiling, sts:AssumeRole denied on every role but the readers' target roles, the lock files and the rest of the never-list denied."
+      + id               = (known after apply)
+      + name             = "w5-drift-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "s3:GetObject"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::larkspur-cost-exports/larkspur-cur2-daily/*"
+                      + Sid      = "ExportObjects"
+                    },
+                  + {
+                      + Action    = "s3:ListBucket"
+                      + Condition = {
+                          + StringLike = {
+                              + "s3:prefix" = "larkspur-cur2-daily/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "arn:aws:s3:::larkspur-cost-exports"
+                      + Sid       = "ExportListed"
+                    },
+                  + {
+                      + Action   = [
+                          + "s3:GetObjectVersion",
+                          + "s3:GetObject",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:s3:::larkspur-terraform-state/live/sandbox-quill/terraform.tfstate",
+                          + "arn:aws:s3:::larkspur-terraform-state/live/network-live/terraform.tfstate",
+                          + "arn:aws:s3:::larkspur-terraform-state/live/claims-api-prod/terraform.tfstate",
+                        ]
+                      + Sid      = "StateObjects"
+                    },
+                  + {
+                      + Action    = [
+                          + "s3:ListBucketVersions",
+                          + "s3:ListBucket",
+                        ]
+                      + Condition = {
+                          + StringEquals = {
+                              + "s3:prefix" = [
+                                  + "live/network-live/terraform.tfstate",
+                                  + "live/claims-api-prod/terraform.tfstate",
+                                  + "live/sandbox-quill/terraform.tfstate",
+                                ]
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "arn:aws:s3:::larkspur-terraform-state"
+                      + Sid       = "StateKeysListed"
+                    },
+                  + {
+                      + Action   = "kms:Decrypt"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:kms:ca-central-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+                      + Sid      = "StateKeyDecrypt"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+                        ]
+                      + Sid      = "CloudTargets"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+                        ]
+                      + Sid      = "CostTargets"
+                    },
+                  + {
+                      + Action   = "s3:*"
+                      + Effect   = "Deny"
+                      + Resource = "arn:aws:s3:::larkspur-terraform-state/*.tflock"
+                      + Sid      = "LockFiles"
+                    },
+                  + {
+                      + Action   = [
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "s3:PutObject",
+                          + "s3:DeleteObjectVersion",
+                          + "s3:DeleteObject",
+                          + "rds:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "lambda:*",
+                          + "kms:GenerateDataKey",
+                          + "kms:Encrypt",
+                          + "iam:*",
+                          + "elasticloadbalancing:Delete*",
+                          + "eks:*",
+                          + "ec2:UpdateSecurityGroupRuleDescriptions*",
+                          + "ec2:Terminate*",
+                          + "ec2:Stop*",
+                          + "ec2:Revoke*",
+                          + "ec2:ReplaceRoute",
+                          + "ec2:Modify*",
+                          + "ec2:Delete*",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:CreateRoute",
+                          + "ec2:Authorize*",
+                          + "cloudwatch:PutMetricData",
+                          + "cloudformation:*",
+                          + "ce:UpdateAnomalySubscription",
+                          + "ce:UpdateAnomalyMonitor",
+                          + "ce:DeleteAnomalySubscription",
+                          + "ce:DeleteAnomalyMonitor",
+                          + "budgets:UpdateBudgetAction",
+                          + "budgets:ModifyBudget",
+                          + "budgets:ExecuteBudgetAction",
+                          + "budgets:DeleteBudgetAction",
+                          + "budgets:CreateBudgetAction",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                  + {
+                      + Action      = "sts:AssumeRole"
+                      + Effect      = "Deny"
+                      + NotResource = [
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+                        ]
+                      + Sid         = "AssumeRoleOutsideTargets"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_policy.chain["cloud-mcp"] will be created
+  + resource "aws_iam_policy" "chain" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cloud-mcp: sts:AssumeRole and sts:TagSession on its target role in each workload account, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cloud-reader-chain"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+                        ]
+                      + Sid      = "CloudTargets"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_policy.chain["cost-mcp"] will be created
+  + resource "aws_iam_policy" "chain" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cost-mcp: sts:AssumeRole and sts:TagSession on its target role in each workload account, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cost-reader-chain"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+                          + "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+                        ]
+                      + Sid      = "CostTargets"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_policy.reads["cost-export"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cost-export: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cost-export-reader-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "s3:GetObject"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::larkspur-cost-exports/larkspur-cur2-daily/*"
+                      + Sid      = "ExportObjects"
+                    },
+                  + {
+                      + Action    = "s3:ListBucket"
+                      + Condition = {
+                          + StringLike = {
+                              + "s3:prefix" = "larkspur-cur2-daily/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "arn:aws:s3:::larkspur-cost-exports"
+                      + Sid       = "ExportListed"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_policy.reads["state-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 state-mcp: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-state-reader-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "s3:GetObjectVersion",
+                          + "s3:GetObject",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:s3:::larkspur-terraform-state/live/sandbox-quill/terraform.tfstate",
+                          + "arn:aws:s3:::larkspur-terraform-state/live/network-live/terraform.tfstate",
+                          + "arn:aws:s3:::larkspur-terraform-state/live/claims-api-prod/terraform.tfstate",
+                        ]
+                      + Sid      = "StateObjects"
+                    },
+                  + {
+                      + Action    = [
+                          + "s3:ListBucketVersions",
+                          + "s3:ListBucket",
+                        ]
+                      + Condition = {
+                          + StringEquals = {
+                              + "s3:prefix" = [
+                                  + "live/network-live/terraform.tfstate",
+                                  + "live/claims-api-prod/terraform.tfstate",
+                                  + "live/sandbox-quill/terraform.tfstate",
+                                ]
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "arn:aws:s3:::larkspur-terraform-state"
+                      + Sid       = "StateKeysListed"
+                    },
+                  + {
+                      + Action   = "kms:Decrypt"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:kms:ca-central-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+                      + Sid      = "StateKeyDecrypt"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # aws_iam_role.identity["cloud-mcp"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cloud-mcp: sts:AssumeRole and sts:TagSession on its target roles, and nothing else"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cloud-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-drift-cloud-reader"
+          + "team"     = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-drift-cloud-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "platform-engineering"
+          + "workflow" = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.identity["cost-export"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cost-export: the reads its fake mirrors, and nothing else"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cost-export-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cost-export-reader"
+          + "service_account" = "w5-cost-export-reader"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cost-export-reader"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cost-export-reader"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.identity["cost-mcp"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cost-mcp: sts:AssumeRole and sts:TagSession on its target roles, and nothing else"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cost-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-drift-cost-reader"
+          + "team"     = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-drift-cost-reader"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "platform-engineering"
+          + "workflow" = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.identity["harness"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 harness: no AWS action"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-harness"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-harness"
+          + "service_account" = "w5-harness"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-harness"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-harness"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.identity["policy-mcp"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 policy-mcp: no AWS action"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-policy-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-policy-reader"
+          + "service_account" = "w5-policy-reader"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-policy-reader"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-policy-reader"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.identity["state-mcp"] will be created
+  + resource "aws_iam_role" "identity" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 state-mcp: the reads its fake mirrors, and nothing else"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-state-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-state-reader"
+          + "service_account" = "w5-state-reader"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-state-reader"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-state-reader"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.chain["cloud-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "chain" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cloud-reader"
+    }
+
+  # aws_iam_role_policy_attachment.chain["cost-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "chain" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cost-reader"
+    }
+
+  # aws_iam_role_policy_attachment.reads["cost-export"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cost-export-reader"
+    }
+
+  # aws_iam_role_policy_attachment.reads["state-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-state-reader"
+    }
+
+  # terraform_data.catalog_checks will be created
+  + resource "terraform_data" "catalog_checks" {
+      + id     = (known after apply)
+      + input  = "w5-drift"
+      + output = (known after apply)
+    }
+
+  # module.lm_claims_prod.aws_iam_policy.boundary will be created
+  + resource "aws_iam_policy" "boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W5's target roles in lm-claims-prod: their reads as the ceiling, the never-list denied, sts:AssumeRole on every role included."
+      + id               = (known after apply)
+      + name             = "w5-drift-target-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "s3:PutObject",
+                          + "s3:DeleteObjectVersion",
+                          + "s3:DeleteObject",
+                          + "rds:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "lambda:*",
+                          + "kms:GenerateDataKey",
+                          + "kms:Encrypt",
+                          + "iam:*",
+                          + "elasticloadbalancing:Delete*",
+                          + "eks:*",
+                          + "ec2:UpdateSecurityGroupRuleDescriptions*",
+                          + "ec2:Terminate*",
+                          + "ec2:Stop*",
+                          + "ec2:Revoke*",
+                          + "ec2:ReplaceRoute",
+                          + "ec2:Modify*",
+                          + "ec2:Delete*",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:CreateRoute",
+                          + "ec2:Authorize*",
+                          + "cloudwatch:PutMetricData",
+                          + "cloudformation:*",
+                          + "ce:UpdateAnomalySubscription",
+                          + "ce:UpdateAnomalyMonitor",
+                          + "ce:DeleteAnomalySubscription",
+                          + "ce:DeleteAnomalyMonitor",
+                          + "budgets:UpdateBudgetAction",
+                          + "budgets:ModifyBudget",
+                          + "budgets:ExecuteBudgetAction",
+                          + "budgets:DeleteBudgetAction",
+                          + "budgets:CreateBudgetAction",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_claims_prod.aws_iam_policy.reads["cloud-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cloud-mcp in lm-claims-prod: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cloud-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_claims_prod.aws_iam_policy.reads["cost-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cost-mcp in lm-claims-prod: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cost-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_claims_prod.aws_iam_role.target["cloud-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cloud-reader-lm-claims-prod"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cloud-mcp in lm-claims-prod: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cloud-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "service_account" = "w5-cloud-reader-lm-claims-prod"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cloud-reader-lm-claims-prod"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_claims_prod.aws_iam_role.target["cost-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cost-reader-lm-claims-prod"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cost-mcp in lm-claims-prod: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cost-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "service_account" = "w5-cost-reader-lm-claims-prod"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cost-reader-lm-claims-prod"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_claims_prod.aws_iam_role_policy_attachment.reads["cloud-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cloud-reader-target"
+    }
+
+  # module.lm_claims_prod.aws_iam_role_policy_attachment.reads["cost-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cost-reader-target"
+    }
+
+  # module.lm_network_prod.aws_iam_policy.boundary will be created
+  + resource "aws_iam_policy" "boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W5's target roles in lm-network-prod: their reads as the ceiling, the never-list denied, sts:AssumeRole on every role included."
+      + id               = (known after apply)
+      + name             = "w5-drift-target-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "s3:PutObject",
+                          + "s3:DeleteObjectVersion",
+                          + "s3:DeleteObject",
+                          + "rds:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "lambda:*",
+                          + "kms:GenerateDataKey",
+                          + "kms:Encrypt",
+                          + "iam:*",
+                          + "elasticloadbalancing:Delete*",
+                          + "eks:*",
+                          + "ec2:UpdateSecurityGroupRuleDescriptions*",
+                          + "ec2:Terminate*",
+                          + "ec2:Stop*",
+                          + "ec2:Revoke*",
+                          + "ec2:ReplaceRoute",
+                          + "ec2:Modify*",
+                          + "ec2:Delete*",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:CreateRoute",
+                          + "ec2:Authorize*",
+                          + "cloudwatch:PutMetricData",
+                          + "cloudformation:*",
+                          + "ce:UpdateAnomalySubscription",
+                          + "ce:UpdateAnomalyMonitor",
+                          + "ce:DeleteAnomalySubscription",
+                          + "ce:DeleteAnomalyMonitor",
+                          + "budgets:UpdateBudgetAction",
+                          + "budgets:ModifyBudget",
+                          + "budgets:ExecuteBudgetAction",
+                          + "budgets:DeleteBudgetAction",
+                          + "budgets:CreateBudgetAction",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_network_prod.aws_iam_policy.reads["cloud-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cloud-mcp in lm-network-prod: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cloud-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_network_prod.aws_iam_policy.reads["cost-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cost-mcp in lm-network-prod: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cost-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_network_prod.aws_iam_role.target["cloud-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cloud-reader-lm-network-prod"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cloud-mcp in lm-network-prod: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cloud-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "service_account" = "w5-cloud-reader-lm-network-prod"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cloud-reader-lm-network-prod"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_network_prod.aws_iam_role.target["cost-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cost-reader-lm-network-prod"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cost-mcp in lm-network-prod: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cost-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "service_account" = "w5-cost-reader-lm-network-prod"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cost-reader-lm-network-prod"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_network_prod.aws_iam_role_policy_attachment.reads["cloud-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cloud-reader-target"
+    }
+
+  # module.lm_network_prod.aws_iam_role_policy_attachment.reads["cost-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cost-reader-target"
+    }
+
+  # module.lm_sandbox.aws_iam_policy.boundary will be created
+  + resource "aws_iam_policy" "boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W5's target roles in lm-sandbox: their reads as the ceiling, the never-list denied, sts:AssumeRole on every role included."
+      + id               = (known after apply)
+      + name             = "w5-drift-target-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "s3:PutObject",
+                          + "s3:DeleteObjectVersion",
+                          + "s3:DeleteObject",
+                          + "rds:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "lambda:*",
+                          + "kms:GenerateDataKey",
+                          + "kms:Encrypt",
+                          + "iam:*",
+                          + "elasticloadbalancing:Delete*",
+                          + "eks:*",
+                          + "ec2:UpdateSecurityGroupRuleDescriptions*",
+                          + "ec2:Terminate*",
+                          + "ec2:Stop*",
+                          + "ec2:Revoke*",
+                          + "ec2:ReplaceRoute",
+                          + "ec2:Modify*",
+                          + "ec2:Delete*",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:CreateRoute",
+                          + "ec2:Authorize*",
+                          + "cloudwatch:PutMetricData",
+                          + "cloudformation:*",
+                          + "ce:UpdateAnomalySubscription",
+                          + "ce:UpdateAnomalyMonitor",
+                          + "ce:DeleteAnomalySubscription",
+                          + "ce:DeleteAnomalyMonitor",
+                          + "budgets:UpdateBudgetAction",
+                          + "budgets:ModifyBudget",
+                          + "budgets:ExecuteBudgetAction",
+                          + "budgets:DeleteBudgetAction",
+                          + "budgets:CreateBudgetAction",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_sandbox.aws_iam_policy.reads["cloud-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cloud-mcp in lm-sandbox: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cloud-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "tag:GetResources",
+                          + "elasticloadbalancing:DescribeLoadBalancers",
+                          + "ec2:DescribeVolumes",
+                          + "ec2:DescribeSnapshots",
+                          + "ec2:DescribeSecurityGroups",
+                          + "ec2:DescribeRouteTables",
+                          + "ec2:DescribeInstances",
+                          + "cloudwatch:GetMetricStatistics",
+                          + "cloudtrail:LookupEvents",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CloudReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_sandbox.aws_iam_policy.reads["cost-mcp"] will be created
+  + resource "aws_iam_policy" "reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W5 cost-mcp in lm-sandbox: the reads its fake mirrors, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-drift-cost-reader-target-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "ce:GetCostAndUsageWithResources",
+                          + "ce:GetCostAndUsage",
+                          + "ce:GetAnomalies",
+                          + "budgets:ViewBudget",
+                          + "aws-portal:ViewBilling",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "CostReads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w5-drift"
+        }
+    }
+
+  # module.lm_sandbox.aws_iam_role.target["cloud-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cloud-reader-lm-sandbox"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cloud-mcp in lm-sandbox: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cloud-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "service_account" = "w5-cloud-reader-lm-sandbox"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cloud-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cloud-reader-lm-sandbox"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_sandbox.aws_iam_role.target["cost-mcp"] will be created
+  + resource "aws_iam_role" "target" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnEquals    = {
+                              + "aws:PrincipalArn" = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+                            }
+                          + StringEquals = {
+                              + "aws:PrincipalOrgID"                        = "o-a1b2c3d4e5"
+                              + "aws:RequestTag/eks-cluster-arn"            = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                              + "aws:RequestTag/kubernetes-namespace"       = "larkspur-ops"
+                              + "aws:RequestTag/kubernetes-service-account" = "w5-cost-reader-lm-sandbox"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "arn:aws:iam::111122223333:root"
+                        }
+                      + Sid       = "OpsReaderThroughPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W5 cost-mcp in lm-sandbox: the reads its fake mirrors, and nothing else, reached from the ops account through EKS Pod Identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-drift-cost-reader-target"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "service_account" = "w5-cost-reader-lm-sandbox"
+          + "team"            = "platform-engineering"
+        }
+      + tags_all              = {
+          + "identity"        = "larkspur-drift-cost-reader-target"
+          + "owner"           = "tomasz.nowak@larkspur.example"
+          + "service_account" = "w5-cost-reader-lm-sandbox"
+          + "sponsor"         = "priya.raman@larkspur.example"
+          + "team"            = "platform-engineering"
+          + "workflow"        = "w5-drift"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.lm_sandbox.aws_iam_role_policy_attachment.reads["cloud-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cloud-reader-target"
+    }
+
+  # module.lm_sandbox.aws_iam_role_policy_attachment.reads["cost-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-drift-cost-reader-target"
+    }
+
+Plan: 47 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + boundary_arn             = (known after apply)
+  + role_arns                = {
+      + cloud-mcp   = (known after apply)
+      + cost-export = (known after apply)
+      + cost-mcp    = (known after apply)
+      + harness     = (known after apply)
+      + policy-mcp  = (known after apply)
+      + state-mcp   = (known after apply)
+    }
+  + service_accounts         = {
+      + "larkspur-ops/w5-cloud-reader-lm-claims-prod"  = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          + target_role_arn = "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target"
+        }
+      + "larkspur-ops/w5-cloud-reader-lm-network-prod" = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          + target_role_arn = "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+        }
+      + "larkspur-ops/w5-cloud-reader-lm-sandbox"      = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader"
+          + target_role_arn = "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target"
+        }
+      + "larkspur-ops/w5-cost-export-reader"           = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cost-export-reader"
+          + target_role_arn = null
+        }
+      + "larkspur-ops/w5-cost-reader-lm-claims-prod"   = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          + target_role_arn = "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target"
+        }
+      + "larkspur-ops/w5-cost-reader-lm-network-prod"  = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          + target_role_arn = "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+        }
+      + "larkspur-ops/w5-cost-reader-lm-sandbox"       = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader"
+          + target_role_arn = "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+        }
+      + "larkspur-ops/w5-harness"                      = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-harness"
+          + target_role_arn = null
+        }
+      + "larkspur-ops/w5-policy-reader"                = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-policy-reader"
+          + target_role_arn = null
+        }
+      + "larkspur-ops/w5-state-reader"                 = {
+          + role_arn        = "arn:aws:iam::111122223333:role/larkspur-drift-state-reader"
+          + target_role_arn = null
+        }
+    }
+  + state_bucket_deny_policy = jsonencode(
+        {
+          + Statement = [
+              + {
+                  + Action    = [
+                      + "s3:PutObject",
+                      + "s3:DeleteObjectVersion",
+                      + "s3:DeleteObject",
+                    ]
+                  + Condition = {
+                      + ArnEquals = {
+                          + "aws:PrincipalArn" = [
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-cloud-reader",
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-cost-export-reader",
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-cost-reader",
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-harness",
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-policy-reader",
+                              + "arn:aws:iam::111122223333:role/larkspur-drift-state-reader",
+                              + "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target",
+                              + "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target",
+                              + "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target",
+                              + "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target",
+                              + "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target",
+                              + "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target",
+                            ]
+                        }
+                    }
+                  + Effect    = "Deny"
+                  + Principal = "*"
+                  + Resource  = "arn:aws:s3:::larkspur-terraform-state/*"
+                  + Sid       = "W5DeniedStateWrites"
+                },
+            ]
+          + Version   = "2012-10-17"
+        }
+    )
+  + target_boundary_arns     = {
+      + lm-claims-prod  = (known after apply)
+      + lm-network-prod = (known after apply)
+      + lm-sandbox      = (known after apply)
+    }
+  + target_role_arns         = {
+      + cloud-mcp = {
+          + lm-claims-prod  = "arn:aws:iam::422233334444:role/larkspur-drift-cloud-reader-target"
+          + lm-network-prod = "arn:aws:iam::411122223333:role/larkspur-drift-cloud-reader-target"
+          + lm-sandbox      = "arn:aws:iam::433344445555:role/larkspur-drift-cloud-reader-target"
+        }
+      + cost-mcp  = {
+          + lm-claims-prod  = "arn:aws:iam::422233334444:role/larkspur-drift-cost-reader-target"
+          + lm-network-prod = "arn:aws:iam::411122223333:role/larkspur-drift-cost-reader-target"
+          + lm-sandbox      = "arn:aws:iam::433344445555:role/larkspur-drift-cost-reader-target"
+        }
+    }

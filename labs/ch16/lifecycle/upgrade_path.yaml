@@ -1,0 +1,53 @@
+# The upgrade path (chapter 16, step 8, O-D14; fig-16-04): the stages a model goes through from the register to the
+# alias, and what gates each. lifecycle/upgrade.py runs it once for real and writes results/<date>/lifecycle/fig-16-04.json,
+# these stages with the run's numbers. The candidate is a local model, so the run costs nothing.
+figure: fig-16-04
+stages:
+  - id: register
+    name: the register
+    what: >-
+      the candidate is in lifecycle/register.yaml as a candidate, with its pin (a digest for a local model), its stage
+      and its retirement date where the provider publishes one
+    gate: the register and the gateways name the same deployments (lifecycle/register.py --check)
+    decided_by: the platform team
+  - id: staging
+    name: the candidate behind the alias on a staging gateway
+    what: >-
+      a second LiteLLM configuration (lifecycle/litellm.staging.yaml) puts the candidate behind larkspur-chat; chapter
+      15's live job runs the workflow's golden set on it through the workflow's own harness and the other local model
+      judges the prose (labs/ch15/ci/live.py)
+    gate: >-
+      the gate of E-D9 (labs/ch15/ci/gate.py): no check may lose more cases against the baseline than its threshold
+      allows (the baseline built from the kept runs, until a live run is accepted); the pins are listed for the review
+      that accepts the new baseline
+    decided_by: the gate's rule; the set's owner reviews the table
+  - id: canary
+    name: a canary weight in the gateway
+    what: >-
+      larkspur-chat gets the candidate as a second deployment at weight 1 beside the current model at weight 3
+      (lifecycle/litellm.canary.yaml), so a quarter of the alias's calls go to it; W2's golden questions run through
+      the gateway several times and the cost lines say which arm served each call
+    gate: >-
+      O-D12's SLIs over each arm's runs (slo/slis.py): the candidate's success and latency ratios not below the
+      control's on the same traffic, with at least 20 valid runs on the candidate
+    decided_by: the decision rule (lifecycle/decision.py); the workflow's owner and the platform team read the file
+  - id: decision
+    name: promote, remap back, or extend
+    what: lifecycle/decision.py reads the gate's verdict and the canary's SLIs and gives one of the three
+    gate: the rule above
+    decided_by: the platform team for a promotion; the on-call lead for a remap back pulled under the playbook (O-D13)
+  - id: remap
+    name: the alias remapped
+    what: >-
+      lifecycle/remap.py writes the alias's new deployments into the gateway configuration, whole, and one line into
+      changes.jsonl: the change, its kind, the deployments before and after, who, when, the time to document it, the
+      review, the reason and the evidence files; the proxy reads the configuration at its next start
+    gate: the change record (ch02:163)
+    decided_by: whoever the decision names
+  - id: after
+    name: after the remap
+    what: >-
+      E-D9: the live job runs again on the new alias map, its result is reviewed and accepted as the baseline, and the
+      register's stage moves (the candidate to serving, the model it replaced to retired when it leaves every gateway)
+    gate: the review that accepts the baseline (labs/ch15/ci/live.py --accept)
+    decided_by: the set's owner, with the data and AI center of excellence for the judge's rubric

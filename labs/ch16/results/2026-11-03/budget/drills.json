@@ -1,0 +1,848 @@
+{
+ "date": "2026-11-03",
+ "versions": {
+  "litellm": "1.106.6",
+  "litellm-proxy-extras": "0.4.108",
+  "prisma": "0.15.0",
+  "psycopg": "3.3.6",
+  "httpx": "0.28.1",
+  "python": "3.12.9"
+ },
+ "postgres": "16.15-5",
+ "proxy_start_s": 20.03,
+ "keys": {
+  "w2-ops-assistant": {
+   "key_alias": "w2-ops-assistant",
+   "models": [
+    "larkspur-chat",
+    "larkspur-chat-restricted"
+   ],
+   "max_budget": 200.0,
+   "soft_budget": 160.0,
+   "soft_share": 0.8,
+   "budget_duration": "1mo",
+   "metadata": {
+    "owner": "sam.okafor@larkspur.example",
+    "sponsor": "priya.raman@larkspur.example",
+    "workflow": "w2-ops-assistant",
+    "data_class_max": "internal"
+   },
+   "budget_reset_at": "2026-12-01T05:00:00+00:00",
+   "expected_reset_at": "2026-12-01T05:00:00+00:00",
+   "reset_matches_toronto": true,
+   "reset_in_toronto": "2026-12-01T00:00:00-05:00"
+  },
+  "w3-incident": {
+   "key_alias": "w3-incident",
+   "models": [
+    "larkspur-chat",
+    "larkspur-chat-restricted"
+   ],
+   "max_budget": 500.0,
+   "soft_budget": 400.0,
+   "soft_share": 0.8,
+   "budget_duration": "1mo",
+   "metadata": {
+    "owner": "tomasz.nowak@larkspur.example",
+    "sponsor": "priya.raman@larkspur.example",
+    "workflow": "w3-incident",
+    "data_class_max": "restricted"
+   },
+   "budget_reset_at": "2026-12-01T05:00:00+00:00",
+   "expected_reset_at": "2026-12-01T05:00:00+00:00",
+   "reset_matches_toronto": true,
+   "reset_in_toronto": "2026-12-01T00:00:00-05:00"
+  }
+ },
+ "kill_switch": {
+  "cycles": [
+   {
+    "cycle": 1,
+    "block_call_s": 0.034,
+    "block_answer": true,
+    "first_loop_refusal_s": 0.142,
+    "loop_calls_in_flight_that_succeeded": 0,
+    "call_right_after_block": 401,
+    "call_right_after_block_kind": "kill_switch",
+    "unblock_call_s": 0.027,
+    "unblock_answer": false,
+    "first_loop_success_after_unblock_s": 0.101,
+    "call_right_after_unblock": 200,
+    "refused_message": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin."
+   },
+   {
+    "cycle": 2,
+    "block_call_s": 0.024,
+    "block_answer": true,
+    "first_loop_refusal_s": 0.064,
+    "loop_calls_in_flight_that_succeeded": 0,
+    "call_right_after_block": 401,
+    "call_right_after_block_kind": "kill_switch",
+    "unblock_call_s": 0.023,
+    "unblock_answer": false,
+    "first_loop_success_after_unblock_s": 0.042,
+    "call_right_after_unblock": 200,
+    "refused_message": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin."
+   },
+   {
+    "cycle": 3,
+    "block_call_s": 0.027,
+    "block_answer": true,
+    "first_loop_refusal_s": 0.249,
+    "loop_calls_in_flight_that_succeeded": 1,
+    "call_right_after_block": 401,
+    "call_right_after_block_kind": "kill_switch",
+    "unblock_call_s": 0.024,
+    "unblock_answer": false,
+    "first_loop_success_after_unblock_s": 0.22,
+    "call_right_after_unblock": 200,
+    "refused_message": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin."
+   },
+   {
+    "cycle": 4,
+    "block_call_s": 0.024,
+    "block_answer": true,
+    "first_loop_refusal_s": 0.189,
+    "loop_calls_in_flight_that_succeeded": 0,
+    "call_right_after_block": 401,
+    "call_right_after_block_kind": "kill_switch",
+    "unblock_call_s": 0.023,
+    "unblock_answer": false,
+    "first_loop_success_after_unblock_s": 0.163,
+    "call_right_after_unblock": 200,
+    "refused_message": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin."
+   },
+   {
+    "cycle": 5,
+    "block_call_s": 0.026,
+    "block_answer": true,
+    "first_loop_refusal_s": 0.142,
+    "loop_calls_in_flight_that_succeeded": 0,
+    "call_right_after_block": 401,
+    "call_right_after_block_kind": "kill_switch",
+    "unblock_call_s": 0.023,
+    "unblock_answer": false,
+    "first_loop_success_after_unblock_s": 0.105,
+    "call_right_after_unblock": 200,
+    "refused_message": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin."
+   }
+  ],
+  "loop_interval_s": 0.25,
+  "loop_calls": 86,
+  "loop_outcomes": {
+   "answered": 46,
+   "kill_switch": 40
+  },
+  "first_refusal_s": {
+   "median": 0.142,
+   "max": 0.249,
+   "min": 0.064
+  },
+  "first_success_after_unblock_s": {
+   "median": 0.105,
+   "max": 0.22,
+   "min": 0.042
+  },
+  "block_call_s": {
+   "median": 0.026,
+   "max": 0.034,
+   "min": 0.024
+  },
+  "unblock_call_s": {
+   "median": 0.023,
+   "max": 0.027,
+   "min": 0.023
+  }
+ },
+ "reservation": {
+  "output_tokens_reserved": 16384,
+  "input_tokens_assumed": 200,
+  "input_cost_per_token": 3e-06,
+  "output_cost_per_token": 1.5e-05,
+  "estimate_usd": 0.24636
+ },
+ "alert": {
+  "soft_budget": 160.0,
+  "max_budget": 200.0,
+  "settled_before_seed": {
+   "waited_s": 12.48,
+   "spend": 0.018972
+  },
+  "seeded_spend": 159.75064,
+  "seeded_share": 0.798753,
+  "runs": [
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 159.751516,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 159.752392,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 159.753268,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 159.754144,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 159.75502,
+    "message": null
+   }
+  ],
+  "month_crossed_in_run": null,
+  "alert_during_run": 5,
+  "month_before_the_alerting_run_usd": 159.754144,
+  "alert": {
+   "received_at": "2026-11-03T23:45:41.851+00:00",
+   "event": "soft_budget_crossed",
+   "kind": "the soft budget reached",
+   "key_alias": "w2-ops-assistant",
+   "spend": 160.00035100000002,
+   "max_budget": 200.0,
+   "soft_budget": 160.0,
+   "projected_spend": null,
+   "event_group": "key",
+   "event_message": "Key Budget: Total Soft Budget:`160.0`",
+   "forwarded_to": [
+    "sam.okafor@larkspur.example",
+    "finops@larkspur.example"
+   ],
+   "sent": {
+    "spend": 160.00035100000002,
+    "max_budget": 200.0,
+    "soft_budget": 160.0,
+    "token": "1c11223de9df36ea4059088af0f1194c15b44d4dca4a8b2776c6283ac8a3df33",
+    "customer_id": null,
+    "user_id": null,
+    "team_id": null,
+    "team_alias": null,
+    "organization_id": null,
+    "user_email": null,
+    "key_alias": "w2-ops-assistant",
+    "projected_exceeded_date": null,
+    "projected_spend": null,
+    "event_group": "key",
+    "alert_emails": null,
+    "max_budget_alert_emails": null,
+    "event": "soft_budget_crossed",
+    "event_message": "Key Budget: Total Soft Budget:`160.0`"
+   }
+  },
+  "alert_spend_beyond_the_month_usd": 0.246207
+ },
+ "stop": {
+  "max_budget": 200.0,
+  "settled_before_seed": {
+   "waited_s": 15.74,
+   "spend": 159.75502
+  },
+  "seeded_spend": 199.75064,
+  "runs": [
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 199.751516,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 199.752392,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 199.753268,
+    "message": null
+   },
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "cost_usd": 0.000876,
+    "month_after_usd": 199.754144,
+    "message": null
+   },
+   {
+    "answered": false,
+    "stop": "monthly_budget",
+    "status": 422,
+    "calls": 1,
+    "cost_usd": 0.000372,
+    "month_after_usd": 199.754516,
+    "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+   },
+   {
+    "answered": false,
+    "stop": "monthly_budget",
+    "status": 422,
+    "calls": 1,
+    "cost_usd": 0.000372,
+    "month_after_usd": 199.754888,
+    "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+   },
+   {
+    "answered": false,
+    "stop": "monthly_budget",
+    "status": 422,
+    "calls": 1,
+    "cost_usd": 0.000372,
+    "month_after_usd": 199.75526,
+    "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+   },
+   {
+    "answered": false,
+    "stop": "monthly_budget",
+    "status": 422,
+    "calls": 1,
+    "cost_usd": 0.000372,
+    "month_after_usd": 199.755632,
+    "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+   }
+  ],
+  "first_stopped_run": 5,
+  "tally": {
+   "answered": 4,
+   "monthly_budget": 4
+  },
+  "stop_status": 422,
+  "stop_kind": "monthly_budget",
+  "stop_message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0",
+  "calls_made_by_stopped_runs": 4,
+  "month_before_the_first_stop_usd": 199.754144,
+  "spend_in_database_after_usd": 199.755632,
+  "short_of_the_budget_usd": 0.244368,
+  "alerts_so_far": [
+   {
+    "event": "threshold_crossed",
+    "spend": 159.751012,
+    "forwarded_to": [
+     "sam.okafor@larkspur.example",
+     "finops@larkspur.example"
+    ]
+   },
+   {
+    "event": "soft_budget_crossed",
+    "spend": 160.00035100000002,
+    "forwarded_to": [
+     "sam.okafor@larkspur.example",
+     "finops@larkspur.example"
+    ]
+   },
+   {
+    "event": "budget_crossed",
+    "spend": 199.751012,
+    "forwarded_to": [
+     "sam.okafor@larkspur.example",
+     "finops@larkspur.example"
+    ]
+   }
+  ]
+ },
+ "restart": {
+  "month_set_to_usd": 200.0,
+  "spend_in_database_before_restart": 200.0,
+  "run_before_restart": {
+   "answered": false,
+   "stop": "monthly_budget",
+   "status": 422,
+   "calls": 0,
+   "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+  },
+  "proxy_back_in_s": 20.38,
+  "spend_litellm_reports_after_restart": 200.0,
+  "run_after_restart": {
+   "answered": false,
+   "stop": "monthly_budget",
+   "status": 422,
+   "calls": 0,
+   "message": "Budget has been exceeded! Key=w2-ops-assistant (sk-...pb9A) Current cost: 200.0, Max budget: 200.0"
+  }
+ },
+ "reset": {
+  "reset_in_s": 13.47,
+  "spend_after_reset": 0.0,
+  "new_budget_reset_at": "2026-12-01T05:00:00+00:00",
+  "expected_reset_at": "2026-12-01T05:00:00+00:00",
+  "new_reset_matches_toronto": true,
+  "runs_until_answered": [
+   {
+    "answered": true,
+    "stop": null,
+    "status": null,
+    "calls": 2,
+    "message": null
+   }
+  ],
+  "answered_after_s": 0.81
+ },
+ "binding": [
+  {
+   "case": "W2's key, its own tags",
+   "status": 200,
+   "kind": "answered",
+   "message": ""
+  },
+  {
+   "case": "W2's key, W3's workflow tag",
+   "status": 400,
+   "kind": "refused",
+   "message": "request refused: the key is 'w2-ops-assistant''s, and the request says it is 'w3-incident'"
+  },
+  {
+   "case": "W2's key, data class above its maximum",
+   "status": 400,
+   "kind": "refused",
+   "message": "request refused: data class 'confidential' is above the key's maximum ('internal')"
+  },
+  {
+   "case": "the master key, which names no workflow",
+   "status": 400,
+   "kind": "refused",
+   "message": "request refused: the key names no workflow; model calls go through a workflow's own key"
+  },
+  {
+   "case": "W3's key, its own tags",
+   "status": 200,
+   "kind": "answered",
+   "message": ""
+  }
+ ],
+ "alerts": [
+  {
+   "received_at": "2026-11-03T23:45:39.755+00:00",
+   "event": "threshold_crossed",
+   "kind": "the month's pace projected past the soft budget",
+   "key_alias": "w2-ops-assistant",
+   "spend": 159.751012,
+   "soft_budget": null,
+   "max_budget": 160.0,
+   "projected_spend": 1722.8720211343243,
+   "event_message": "Key Budget: Projected Limit Exceeded5% or less of budget remaining",
+   "forwarded_to": [
+    "sam.okafor@larkspur.example",
+    "finops@larkspur.example"
+   ]
+  },
+  {
+   "received_at": "2026-11-03T23:45:41.851+00:00",
+   "event": "soft_budget_crossed",
+   "kind": "the soft budget reached",
+   "key_alias": "w2-ops-assistant",
+   "spend": 160.00035100000002,
+   "soft_budget": 160.0,
+   "max_budget": 200.0,
+   "projected_spend": null,
+   "event_message": "Key Budget: Total Soft Budget:`160.0`",
+   "forwarded_to": [
+    "sam.okafor@larkspur.example",
+    "finops@larkspur.example"
+   ]
+  },
+  {
+   "received_at": "2026-11-03T23:45:58.200+00:00",
+   "event": "budget_crossed",
+   "kind": "the month's pace projected past the soft budget",
+   "key_alias": "w2-ops-assistant",
+   "spend": 199.751012,
+   "soft_budget": null,
+   "max_budget": 160.0,
+   "projected_spend": 2154.0959676841035,
+   "event_message": "Key Budget: Projected Limit ExceededBudget Crossed\n Total Budget:`160.0`",
+   "forwarded_to": [
+    "sam.okafor@larkspur.example",
+    "finops@larkspur.example"
+   ]
+  },
+  {
+   "received_at": "2026-11-03T23:47:05.864+00:00",
+   "event": "budget_crossed",
+   "kind": "the budget reached",
+   "key_alias": "w2-ops-assistant",
+   "spend": 200.0,
+   "soft_budget": 160.0,
+   "max_budget": 200.0,
+   "projected_spend": null,
+   "event_message": "Key Budget: Total Soft Budget:`160.0`Budget Crossed\n Total Budget:`200.0`",
+   "forwarded_to": [
+    "sam.okafor@larkspur.example",
+    "finops@larkspur.example"
+   ]
+  }
+ ],
+ "gateway_log": {
+  "lines": 131,
+  "by_event": {
+   "call": 77,
+   "failed": 51,
+   "refused": 3
+  },
+  "calls_by_workflow": {
+   "w2-ops-assistant": 76,
+   "w3-incident": 1
+  },
+  "calls_with_cost": 77,
+  "failed_by_reason": {
+   "budget exceeded": 6,
+   "key blocked": 45
+  },
+  "failed_without_trace_id": 51
+ },
+ "rung": [
+  {
+   "case": "no override; the model asks to restart",
+   "started": true,
+   "manifest_rung": 3,
+   "rung": 3,
+   "note": "no override",
+   "dropped": [],
+   "offered": [
+    "get_pod_status",
+    "get_recent_alerts",
+    "restart_deployment"
+   ],
+   "model_calls": 2,
+   "tool_calls": {
+    "restart_deployment": 1
+   },
+   "answer": "Restarted claims-api."
+  },
+  {
+   "case": "lowered to rung 1; the model asks to restart",
+   "started": true,
+   "manifest_rung": 3,
+   "rung": 1,
+   "note": "lowered from rung 3 to 1",
+   "dropped": [
+    "restart_deployment"
+   ],
+   "offered": [
+    "get_pod_status",
+    "get_recent_alerts"
+   ],
+   "model_calls": 1,
+   "tool_calls": {},
+   "answer": "Refused: restart_deployment is not an allowed call."
+  },
+  {
+   "case": "lowered to rung 1; the model asks to read",
+   "started": true,
+   "manifest_rung": 3,
+   "rung": 1,
+   "note": "lowered from rung 3 to 1",
+   "dropped": [
+    "restart_deployment"
+   ],
+   "offered": [
+    "get_pod_status",
+    "get_recent_alerts"
+   ],
+   "model_calls": 2,
+   "tool_calls": {
+    "get_pod_status": 1
+   },
+   "answer": "claims-api has 2 of 3 pods ready."
+  },
+  {
+   "case": "an override of rung 4, above the manifest's 3",
+   "started": true,
+   "manifest_rung": 3,
+   "rung": 3,
+   "note": "override rung 4 ignored: an override only lowers the manifest's rung 3",
+   "dropped": [],
+   "offered": [
+    "get_pod_status",
+    "get_recent_alerts",
+    "restart_deployment"
+   ],
+   "model_calls": 2,
+   "tool_calls": {
+    "restart_deployment": 1
+   },
+   "answer": "Restarted claims-api."
+  },
+  {
+   "case": "a malformed override (rung: one)",
+   "started": false,
+   "why": "w3-incident.yaml: rung 'one' is not an integer from 0 to 5",
+   "model_calls": 0,
+   "tool_calls": {}
+  },
+  {
+   "case": "an override that isn't YAML",
+   "started": false,
+   "why": "w3-incident.yaml: not YAML (ScannerError)",
+   "model_calls": 0,
+   "tool_calls": {}
+  },
+  {
+   "case": "override removed; the model asks to restart",
+   "started": true,
+   "manifest_rung": 3,
+   "rung": 3,
+   "note": "no override",
+   "dropped": [],
+   "offered": [
+    "get_pod_status",
+    "get_recent_alerts",
+    "restart_deployment"
+   ],
+   "model_calls": 2,
+   "tool_calls": {
+    "restart_deployment": 1
+   },
+   "answer": "Restarted claims-api."
+  }
+ ],
+ "changes": [
+  {
+   "change": "EC-DRILL-01",
+   "kind": "emergency",
+   "lever": "kill switch, gateway half",
+   "workflow": "w2-ops-assistant",
+   "from": "open",
+   "to": "blocked",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:02.749+00:00",
+   "document_by": "2026-11-04T23:45:02.749+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: the kill switch timed at the gateway",
+   "answer": {
+    "blocked": true,
+    "seconds": 0.012
+   }
+  },
+  {
+   "change": "EC-DRILL-01",
+   "kind": "emergency",
+   "lever": "kill switch released",
+   "workflow": "w2-ops-assistant",
+   "from": "blocked",
+   "to": "open",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:04.794+00:00",
+   "document_by": "2026-11-04T23:45:04.794+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: released",
+   "answer": {
+    "blocked": false,
+    "seconds": 0.008
+   }
+  },
+  {
+   "change": "EC-DRILL-02",
+   "kind": "emergency",
+   "lever": "kill switch, gateway half",
+   "workflow": "w2-ops-assistant",
+   "from": "open",
+   "to": "blocked",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:06.826+00:00",
+   "document_by": "2026-11-04T23:45:06.826+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: the kill switch timed at the gateway",
+   "answer": {
+    "blocked": true,
+    "seconds": 0.007
+   }
+  },
+  {
+   "change": "EC-DRILL-02",
+   "kind": "emergency",
+   "lever": "kill switch released",
+   "workflow": "w2-ops-assistant",
+   "from": "blocked",
+   "to": "open",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:08.859+00:00",
+   "document_by": "2026-11-04T23:45:08.859+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: released",
+   "answer": {
+    "blocked": false,
+    "seconds": 0.007
+   }
+  },
+  {
+   "change": "EC-DRILL-03",
+   "kind": "emergency",
+   "lever": "kill switch, gateway half",
+   "workflow": "w2-ops-assistant",
+   "from": "open",
+   "to": "blocked",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:10.911+00:00",
+   "document_by": "2026-11-04T23:45:10.911+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: the kill switch timed at the gateway",
+   "answer": {
+    "blocked": true,
+    "seconds": 0.008
+   }
+  },
+  {
+   "change": "EC-DRILL-03",
+   "kind": "emergency",
+   "lever": "kill switch released",
+   "workflow": "w2-ops-assistant",
+   "from": "blocked",
+   "to": "open",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:12.945+00:00",
+   "document_by": "2026-11-04T23:45:12.945+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: released",
+   "answer": {
+    "blocked": false,
+    "seconds": 0.007
+   }
+  },
+  {
+   "change": "EC-DRILL-04",
+   "kind": "emergency",
+   "lever": "kill switch, gateway half",
+   "workflow": "w2-ops-assistant",
+   "from": "open",
+   "to": "blocked",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:14.983+00:00",
+   "document_by": "2026-11-04T23:45:14.983+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: the kill switch timed at the gateway",
+   "answer": {
+    "blocked": true,
+    "seconds": 0.007
+   }
+  },
+  {
+   "change": "EC-DRILL-04",
+   "kind": "emergency",
+   "lever": "kill switch released",
+   "workflow": "w2-ops-assistant",
+   "from": "blocked",
+   "to": "open",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:17.016+00:00",
+   "document_by": "2026-11-04T23:45:17.016+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: released",
+   "answer": {
+    "blocked": false,
+    "seconds": 0.008
+   }
+  },
+  {
+   "change": "EC-DRILL-05",
+   "kind": "emergency",
+   "lever": "kill switch, gateway half",
+   "workflow": "w2-ops-assistant",
+   "from": "open",
+   "to": "blocked",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:19.049+00:00",
+   "document_by": "2026-11-04T23:45:19.049+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: the kill switch timed at the gateway",
+   "answer": {
+    "blocked": true,
+    "seconds": 0.008
+   }
+  },
+  {
+   "change": "EC-DRILL-05",
+   "kind": "emergency",
+   "lever": "kill switch released",
+   "workflow": "w2-ops-assistant",
+   "from": "blocked",
+   "to": "open",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:45:21.089+00:00",
+   "document_by": "2026-11-04T23:45:21.089+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: released",
+   "answer": {
+    "blocked": false,
+    "seconds": 0.007
+   }
+  },
+  {
+   "change": "EC-DRILL-RUNG",
+   "kind": "emergency",
+   "lever": "rung down",
+   "workflow": "w3-incident",
+   "from": "manifest (3)",
+   "to": 1,
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:47:21.996+00:00",
+   "document_by": "2026-11-04T23:47:21.996+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: a planted line restated; reads only until the review",
+   "answer": {}
+  },
+  {
+   "change": "EC-DRILL-RUNG",
+   "kind": "emergency",
+   "lever": "rung restored",
+   "workflow": "w3-incident",
+   "from": "unreadable",
+   "to": "manifest (3)",
+   "by": "oncall.lead@larkspur.example",
+   "authority": "on-call lead",
+   "at": "2026-11-03T23:47:22.013+00:00",
+   "document_by": "2026-11-04T23:47:22.013+00:00",
+   "review": "the next board meeting",
+   "reason": "drill: back to the manifest's rung",
+   "answer": {}
+  }
+ ]
+}

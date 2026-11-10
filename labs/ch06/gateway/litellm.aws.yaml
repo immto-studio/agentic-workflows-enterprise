@@ -1,0 +1,70 @@
+# The AWS gateway pair's deployments for chapter 5's aliases, as Larkspur runs them in ca-central-1.
+# Chapter 5's rules (labs/ch05/gateway/gateway_rules.py) read model_info exactly as they read the
+# lab's fake backends; tests/test_gateway_aws.py runs them on this file.
+#
+# For most of 2026 the only model with a Canadian geographic profile on Amazon Bedrock was Amazon
+# Nova Lite, `ca.amazon.nova-lite-v1:0`, which serves from ca-central-1 and ca-west-1. On 22 October
+# 2026 AWS added one for Claude Haiku 5.5, `ca.anthropic.claude-haiku-5-5`, from the same two
+# Regions: a candidate for larkspur-chat, which moves only when a workflow's golden set passes on it.
+# Every other newer model reaches Canada through the US or global profiles, so it may serve
+# Internal data and nothing above it.
+# serves_from lists the profile's destinations, and the gateway compares every one of them with
+# the manifest's regions, not only the Region the call is made in.
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: bedrock/converse/ca.amazon.nova-lite-v1:0
+      aws_region_name: ca-central-1
+      # LiteLLM 1.106.6 doesn't know Bedrock's ca. profiles and takes this one for a model without
+      # tool calling. It refuses a request that carries tools (with drop_params on, it drops them
+      # without a word), and the router counts the refusal as a failure and tries the fallback.
+      # Allowing the tools sends them as Bedrock's toolConfig (tests/test_gateway_aws.py).
+      allowed_openai_params: [tools]
+      input_cost_per_token: 0.000000064    # ca-central-1, AWS Price List, 2026-10-28
+      output_cost_per_token: 0.000000256
+      guardrails: [larkspur-aws]           # the managed aliases only
+    model_info:
+      id: nova-lite-ca
+      region: ca-central-1                    # where the call is made
+      serves_from: [ca-central-1, ca-west-1]  # where it can be served
+      jurisdiction: CA
+      hosting: managed
+
+  - model_name: larkspur-chat-fallback  # in Ohio, for Internal data only
+    litellm_params:
+      model: bedrock/converse/amazon.nova-lite-v1:0
+      aws_region_name: us-east-2
+      input_cost_per_token: 0.00000006
+      output_cost_per_token: 0.00000024
+      guardrails: [larkspur-aws]
+    model_info:
+      id: nova-lite-us
+      region: us-east-2
+      jurisdiction: US
+      hosting: managed
+
+  - model_name: larkspur-chat-restricted     # chapter 9's self-hosted model (labs/ch09/gateway/litellm.k8s.yaml)
+    litellm_params:
+      model: hosted_vllm/gpt-oss-20b
+      api_base: http://vllm-gpt-oss-20b.llm-serving.svc:8080/v1
+      api_key: os.environ/VLLM_API_KEY
+    model_info: {id: vllm-gpt-oss-20b-6cee5e8, region: ca-central-1, jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  fallbacks: [{"larkspur-chat": ["larkspur-chat-fallback"]}]
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+
+# terraform/guardrail.tf's guardrail, before and after each call on the deployments that name it,
+# the managed ones. A Restricted prompt goes to the self-hosted model and never to this managed
+# service. LiteLLM sends ApplyGuardrail the text of every message, tool results included; the
+# Standard tier evaluates in Canada. The identifier and version are Terraform's `guardrail` output.
+guardrails:
+  - guardrail_name: larkspur-aws
+    litellm_params:
+      guardrail: bedrock
+      mode: [pre_call, post_call]
+      default_on: false
+      guardrailIdentifier: GUARDRAIL_ID_FROM_TERRAFORM
+      guardrailVersion: GUARDRAIL_VERSION_FROM_TERRAFORM
+      aws_region_name: ca-central-1

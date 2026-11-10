@@ -1,0 +1,105 @@
+# The dashboard (fig-16-03), as a list of panels: O-D17 rules out Grafana and a vendor console, so the lab writes what
+# each panel shows and where its data comes from, and slo/run_slo.py writes the data for one workflow's dashboard
+# over the simulated month (results/<date>/slo/fig-16-03.json). `source` names what the lab emits; `status` says
+# whether the lab emits it (emitted), computes it from what it emits (derived), or has nothing for it yet (open).
+workflow_row:
+  - id: slis
+    title: the three SLIs against their targets
+    shows: >-
+      success, latency and outcome over the 30-day window to date, each against its target from slos.yaml; W1 and W2
+      have no outcome SLI
+    source: slo/slis.py over the harness logs, the run state, the cost lines and the spans slos.yaml names
+    status: derived
+  - id: budget-left
+    title: the error budget left
+    shows: each SLI's budget in events less the bad events of the window, as a share of the budget
+    source: slo/budget_policy.py (budgets, spent)
+    status: derived
+  - id: burn-rates
+    title: the burn rates
+    shows: each SLI's burn rate over 1 hour, 6 hours and 3 days, with the page and ticket lines at 14.4, 6 and 1
+    source: slo/burn.py (Stream.burn)
+    status: derived
+  - id: alerts
+    title: the alerts
+    shows: each page and ticket with its rule, its start and end, and the injected event or baseline behind it
+    source: slo/burn.py (evaluate); W5's failed and late nights; nothing pages anyone (O-D17)
+    status: derived
+  - id: budget-events
+    title: the budget events
+    shows: >-
+      step-budget stops and per-run budget refusals (bad events of the success SLI), the 80 percent alarm, the month's
+      stop, and the policy's freeze and rung down
+    source: >-
+      the harnesses' stop sentences and chapter 5's `refused` cost line; LiteLLM's soft_budget_crossed webhook and its
+      422 (step 4, budget/receiver.py); the policy's log
+    status: emitted
+  - id: owner-429s
+    title: the 429s its owner sees
+    shows: >-
+      the 429s that came back to the workflow (ch05:498): the provider's, waited out or not, and its own key's and
+      request rate's, which are its controls holding and never page anyone
+    source: >-
+      the gateway's `failed` cost lines for the provider's 429 (chapter 5's gateway_hooks), chapter 5's `refused` line
+      for the request rate, LiteLLM's key limiter's refusals (step 5); each client's waits (step 5b)
+    status: emitted
+  - id: fallbacks
+    title: the calls a fallback served
+    shows: the calls each alias served from its fallback, by Region and deployment, so an outage the fallback hid shows
+    source: the gateway's cost line, `fallback`, `served_alias`, `region`; step 5b's `fallback_in_jurisdiction` line
+    status: emitted
+  - id: probe
+    title: the hourly probe
+    shows: the probe's result each hour, beside the workflow's own runs, for W1, W3 and W4
+    source: slo/probe.py's log, one line a probe with its trace id and its cost line
+    status: emitted
+  - id: incidents
+    title: the controls
+    shows: every breach of residency, the never-list or a budget, as an incident; never budget spent
+    source: slis.incidents over the runs; the gateway's region and refusal lines, the harness's refusals
+    status: derived
+platform_row:
+  - id: provider-429s
+    title: the provider's 429s across workflows
+    shows: the provider's 429s by workflow, and the page when two or more workflows get them within 5 minutes (ch05:498)
+    source: the gateway's `failed` cost lines whose error is the provider's rate limit
+    status: emitted
+  - id: gateway
+    title: the gateway itself
+    shows: the proxy's readiness, its own latency (step 5), and its limiter's store (step 5b)
+    source: LiteLLM's readiness endpoint; step 5b's limiter_store_unreachable and limiter_store_reachable alerts
+    status: emitted
+  - id: fallbacks
+    title: the fallbacks and the self-hosted path
+    shows: the calls served by each fallback, and the self-hosted replicas' share of their hours (chapter 9, the ledger)
+    source: the gateway's cost lines; ledger/month.py's GPU allocation
+    status: emitted
+  - id: models
+    title: the models behind each alias
+    shows: the served model behind each alias by hour, so a remap or a change under an alias shows as a step
+    source: the gateway's cost line, `served_model` and `deployment`
+    status: emitted
+  - id: probes
+    title: the probes and their cost
+    shows: every probe's result and the tokens the probes spend, against each workflow's own
+    source: slo/probe.py's cost lines, priced by ledger/price.py
+    status: emitted
+  - id: foundry-sessions
+    title: Foundry hosted-agent sessions per subscription and region, against their quota
+    shows: >-
+      the count of concurrent hosted-agent sessions in each subscription and region against its quota, until a
+      workflow that needs a quota of its own gets a subscription from the vending pipeline (ch18:49)
+    quota: >-
+      2,000 concurrent hosted-agent sessions per subscription per region in Canada Central, 1,000 in regions not listed,
+      and the errors `session_quota_exceeded` and `regional_session_quota_exceeded` when it runs out
+      (the Microsoft fact sheet's Agent Service limits, LINKS.md, chapter 8)
+    source: >-
+      open: chapter 16's fact sheet names no metric or API that reports the count, and the lab runs no Foundry hosted
+      agent. The panel's source is a fact for the chapter's fact check; the quota's two error codes are the only signal
+      named so far, and they come only once the quota is spent.
+    status: open
+  - id: spend
+    title: the month's spend against the budgets
+    shows: each workflow's month against per_month_usd, with the 80 percent alarm (step 4), and the showback lines
+    source: the cost lines and ledger/month.py; LiteLLM's key spend in its database
+    status: emitted

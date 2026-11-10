@@ -1,0 +1,428 @@
+{
+ "simulated": true,
+ "seed": 20261109,
+ "start": "2027-01-05T00:00:00-05:00",
+ "days": 30,
+ "w5_nights": {
+  "before": {
+   "nights": 16,
+   "output_tokens_mean": 12929,
+   "output_tokens_range": [
+    8377,
+    18505
+   ],
+   "seconds_mean": 238.6
+  },
+  "after": {
+   "nights": 14,
+   "output_tokens_mean": 19394,
+   "output_tokens_range": [
+    11556,
+    25462
+   ],
+   "seconds_mean": 546.9
+  }
+ },
+ "lead_in_days": 3,
+ "built_from": {
+  "volumes": "results/2026-11-03/ledger.json, month.rows[].runs_per_month (ledger/volumes.yaml's sources), per 730 hours",
+  "runs": "each run is one of its workflow's kept runs on the reference model, drawn uniformly with replacement: its end, its time, and its calls by alias. The golden sets' mix of cases stands for production's, traps and refusals included.",
+  "pools": {
+   "w1": [
+    "2026-10-29"
+   ],
+   "w2": [
+    "2026-11-02",
+    "2026-11-02 run2",
+    "2026-11-02 run3",
+    "traced/2026-11-03"
+   ],
+   "w3": [
+    "2026-11-02",
+    "traced/2026-11-03"
+   ],
+   "w4": [
+    "2026-11-02",
+    "2026-11-02/first-run-max-tokens-200",
+    "2026-11-02/run-before-logs-kept",
+    "traced/2026-11-03"
+   ],
+   "w5": [
+    "2026-11-03/after-review",
+    "2026-11-03/step-5b",
+    "2026-11-03/step-5c"
+   ]
+  },
+  "decisions": "an assumption for every workflow: no kept run holds a person's decision. W3's two approvals are the eval's scripted approver, W5's one merge a run is the eval's (before golden night 2), and W4 kept no board decision."
+ },
+ "shapes": {
+  "throttle": {
+   "requests": 80,
+   "refused_at_first_attempt": 34,
+   "served": 75,
+   "never": 5,
+   "p_never": 0.0625,
+   "p_waited": 0.3625,
+   "p_at_once": 0.575
+  },
+  "outage_timeout_s": 5.0,
+  "outage_cooldown_s": 30.0,
+  "w5_opened": 1,
+  "windows": {
+   "provider-outage": [
+    554400.0,
+    557100.0
+   ],
+   "throttled-hour": [
+    741600.0,
+    745200.0
+   ],
+   "model-regression": [
+    1332000.0,
+    2592000.0
+   ],
+   "self-hosted-down": [
+    2160000.0,
+    2332800.0
+   ],
+   "w4-records-refused": [
+    1987200.0,
+    2073600.0
+   ]
+  }
+ },
+ "workflows": {
+  "w1": {
+   "runs": 5955,
+   "ends": {
+    "answer": 4684,
+    "refusal": 1217,
+    "error": 54
+   },
+   "decisions": {},
+   "slis": {
+    "success": {
+     "good": 5901,
+     "valid": 5955,
+     "value": 0.990932
+    },
+    "latency": {
+     "good": 5898,
+     "valid": 5901,
+     "value": 0.999492
+    },
+    "outcome": null
+   },
+   "expected": {
+    "success": 5917.808,
+    "latency": 5917.808,
+    "outcome": 0.0
+   },
+   "budgets": {
+    "success": 29.589,
+    "latency": 295.89
+   },
+   "changed_by": {
+    "provider-outage": 2,
+    "self-hosted-down": 53,
+    "throttled-hour": 5
+   },
+   "bad_by": {
+    "self-hosted-down": 53,
+    "throttled-hour": 1
+   }
+  },
+  "w2": {
+   "runs": 42133,
+   "ends": {
+    "answer": 29323,
+    "refusal": 7378,
+    "budget_stop": 5161,
+    "error": 271
+   },
+   "decisions": {},
+   "slis": {
+    "success": {
+     "good": 36701,
+     "valid": 42133,
+     "value": 0.871075
+    },
+    "latency": {
+     "good": 35595,
+     "valid": 36701,
+     "value": 0.969865
+    },
+    "outcome": null
+   },
+   "expected": {
+    "success": 42440.479,
+    "latency": 41968.918,
+    "outcome": 0.0
+   },
+   "budgets": {
+    "success": 212.202,
+    "latency": 2098.446
+   },
+   "changed_by": {
+    "model-regression": 20403,
+    "provider-outage": 55,
+    "throttled-hour": 44
+   },
+   "bad_by": {
+    "baseline": 261,
+    "model-regression": 5161,
+    "throttled-hour": 10
+   }
+  },
+  "w3": {
+   "runs": 281,
+   "ends": {
+    "answer": 196,
+    "refusal": 9,
+    "proposal": 31,
+    "budget_stop": 40,
+    "unavailable": 5
+   },
+   "decisions": {
+    "accepted": 25,
+    "rejected": 5
+   },
+   "slis": {
+    "success": {
+     "good": 236,
+     "valid": 281,
+     "value": 0.839858
+    },
+    "latency": {
+     "good": 236,
+     "valid": 236,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 25,
+     "valid": 30,
+     "value": 0.833333
+    }
+   },
+   "expected": {
+    "success": 295.89,
+    "latency": 246.575,
+    "outcome": 27.74
+   },
+   "budgets": {
+    "success": 14.795,
+    "latency": 12.329,
+    "outcome": 2.774
+   },
+   "changed_by": {
+    "model-regression": 10,
+    "self-hosted-down": 5
+   },
+   "bad_by": {
+    "baseline": 42,
+    "model-regression": 3,
+    "self-hosted-down": 5
+   }
+  },
+  "w4": {
+   "runs": 190,
+   "ends": {
+    "proposal": 187,
+    "error": 3
+   },
+   "decisions": {
+    "accepted": 152,
+    "rejected": 9
+   },
+   "slis": {
+    "success": {
+     "good": 187,
+     "valid": 190,
+     "value": 0.984211
+    },
+    "latency": {
+     "good": 187,
+     "valid": 187,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 152,
+     "valid": 161,
+     "value": 0.944099
+    }
+   },
+   "expected": {
+    "success": 197.26,
+    "latency": 197.26,
+    "outcome": 197.26
+   },
+   "budgets": {
+    "success": 1.973,
+    "latency": 9.863,
+    "outcome": 19.726
+   },
+   "changed_by": {
+    "w4-records-refused": 3
+   },
+   "bad_by": {
+    "baseline": 9,
+    "w4-records-refused": 3
+   }
+  },
+  "w5": {
+   "runs": 35,
+   "ends": {
+    "proposal": 35
+   },
+   "decisions": {
+    "accepted": 14,
+    "rejected": 3
+   },
+   "slis": {
+    "success": {
+     "good": 35,
+     "valid": 35,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 35,
+     "valid": 35,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 14,
+     "valid": 17,
+     "value": 0.823529
+    }
+   },
+   "expected": {
+    "success": 33.945,
+    "latency": 33.945,
+    "outcome": 18.0
+   },
+   "budgets": {
+    "success": 3.395,
+    "latency": 3.395,
+    "outcome": 3.6
+   },
+   "changed_by": {
+    "model-regression": 15
+   },
+   "bad_by": {
+    "baseline": 2,
+    "model-regression": 1
+   }
+  }
+ },
+ "injected": [
+  {
+   "id": "provider-outage",
+   "what": "the managed model behind larkspur-chat in ca-central-1 stops answering, as in step 5's timeout mode",
+   "start_s": 554400.0,
+   "end_s": 557100.0,
+   "start": "Mon 11 Jan 10:00",
+   "end": "Mon 11 Jan 10:45",
+   "runs_changed": {
+    "w1": 2,
+    "w2": 55
+   },
+   "bad_events": {},
+   "gateway_records": {
+    "w1 fallback": 2,
+    "w1 probe fallback": 1,
+    "w2 fallback": 56,
+    "w3 probe fallback": 1,
+    "w4 probe failed": 1
+   }
+  },
+  {
+   "id": "throttled-hour",
+   "what": "the provider's quota for the account falls to half of the demand on larkspur-chat for an hour",
+   "start_s": 741600.0,
+   "end_s": 745200.0,
+   "start": "Wed 13 Jan 14:00",
+   "end": "Wed 13 Jan 15:00",
+   "runs_changed": {
+    "w1": 5,
+    "w2": 44
+   },
+   "bad_events": {
+    "w1": 1,
+    "w2": 10
+   },
+   "gateway_records": {
+    "w1 provider_429": 5,
+    "w2 provider_429": 44,
+    "w3 probe provider_429": 1,
+    "w4 probe provider_429": 1
+   }
+  },
+  {
+   "id": "model-regression",
+   "what": "larkspur-chat is remapped on day 15 and the new model does worse in production than on the golden sets",
+   "start_s": 1332000.0,
+   "end_s": 2592000.0,
+   "start": "Wed 20 Jan 10:00",
+   "end": "Thu 04 Feb 00:00",
+   "runs_changed": {
+    "w2": 20403,
+    "w3": 10,
+    "w5": 15
+   },
+   "bad_events": {
+    "w2": 5161,
+    "w3": 3,
+    "w5": 1
+   },
+   "gateway_records": {}
+  },
+  {
+   "id": "self-hosted-down",
+   "what": "both of chapter 9's replicas stop answering for a weekend; the managed path is healthy",
+   "start_s": 2160000.0,
+   "end_s": 2332800.0,
+   "start": "Sat 30 Jan 00:00",
+   "end": "Mon 01 Feb 00:00",
+   "runs_changed": {
+    "w1": 53,
+    "w3": 5
+   },
+   "bad_events": {
+    "w1": 53,
+    "w3": 5
+   },
+   "gateway_records": {
+    "w1 failed": 53,
+    "w3 failed": 8
+   }
+  },
+  {
+   "id": "w4-records-refused",
+   "what": "the change record's API refuses W4's writes for a day (an expired token), and every pack fails to be written",
+   "start_s": 1987200.0,
+   "end_s": 2073600.0,
+   "start": "Thu 28 Jan 00:00",
+   "end": "Fri 29 Jan 00:00",
+   "runs_changed": {
+    "w4": 3
+   },
+   "bad_events": {
+    "w4": 3
+   },
+   "gateway_records": {}
+  }
+ ],
+ "probes": {
+  "w1": {
+   "answer": 720
+  },
+  "w3": {
+   "answer": 720
+  },
+  "w4": {
+   "answer": 719,
+   "error": 1
+  }
+ },
+ "incidents": []
+}

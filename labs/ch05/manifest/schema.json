@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/larkspur/workflow-manifest.schema.json",
+  "title": "Larkspur workflow manifest",
+  "description": "What one workflow may touch. The manifest is the unit of change (chapter 2): the pipeline refuses to deploy a manifest without a change record, and the gateway and the harness enforce it at run time.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workflow",
+    "owner",
+    "sponsor",
+    "rung",
+    "data_class_max",
+    "models",
+    "regions",
+    "tools",
+    "never",
+    "budget",
+    "trace_content"
+  ],
+  "properties": {
+    "workflow": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "The workflow's name; also its gateway tag and the prefix of its identities."
+    },
+    "owner": {
+      "type": "string",
+      "format": "email",
+      "description": "The engineer accountable for the code and the on-call."
+    },
+    "sponsor": {
+      "type": "string",
+      "format": "email",
+      "description": "The manager accountable for the purpose, the budget and the access reviews."
+    },
+    "rung": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "The autonomy rung of chapter 1."
+    },
+    "data_class_max": {
+      "enum": [
+        "public",
+        "internal",
+        "confidential",
+        "restricted"
+      ],
+      "description": "The highest data class a prompt of this workflow may carry."
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "description": "Gateway aliases the workflow may call. An alias remap is a model change and reruns the golden set."
+    },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "description": "Regions a model call may be served from, fallbacks included. The gateway refuses an alias that serves outside them and disables a fallback that would."
+    },
+    "tools": {
+      "type": "object",
+      "description": "The allowlist: tool name to its declared arguments and whether it writes.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "args"
+        ],
+        "properties": {
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "writes": {
+            "type": "boolean",
+            "default": false
+          },
+          "allow": {
+            "type": "object",
+            "description": "Values an argument may take, enforced by the policy engine at the tool gateway (chapter 6). An argument not named here is unconstrained.",
+            "additionalProperties": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "never": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actions no identity in the workflow's chain may perform, whatever anyone asks."
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "per_run_usd",
+        "per_month_usd"
+      ],
+      "properties": {
+        "per_run_usd": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "per_month_usd": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "requests_per_minute": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "trace_content": {
+      "type": "boolean",
+      "description": "Whether spans may carry prompts, outputs and tool arguments. A data-class decision."
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "all_kept_spans_at_the_sink": true,
+  "collector_exit": 0,
+  "collector_started": 1793746514.3344717,
+  "date": "2026-11-03",
+  "decision_wait_after_root_received": null,
+  "decision_wait_s": 30.0,
+  "ended": 1793746536.5565507,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "gpu_after": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 15212,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 1
+    },
+    "ollama_11434": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "gpu_before": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 15215,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 1
+    },
+    "ollama_11434": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "model": "gpt-oss-20b",
+  "only": "w4-01",
+  "processes": [
+    {
+      "process": "the scribe, in this process (eval/lab.py)",
+      "service": "scribe"
+    },
+    {
+      "process": "the analyst A2A server (a2a/analyst.py)",
+      "service": "analyst"
+    },
+    {
+      "process": "the risk scorer A2A server (a2a/risk_scorer.py), whose rationale seam calls the gateway",
+      "service": "risk-scorer"
+    },
+    {
+      "process": "the gateway (LiteLLM with chapter 5's callback, W4's manifest)",
+      "service": "gateway"
+    },
+    {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "service": null
+    }
+  ],
+  "python": "3.12.9",
+  "run": "w4-gpt-oss-20b-smoke",
+  "seconds": 21.5,
+  "share_percent": 100.0,
+  "started": 1793746514.3353262,
+  "think": "model default",
+  "traces_expected_kept": 1,
+  "wait": null,
+  "waited_after_quiet_s": 20.7,
+  "workflow": "w4"
+}

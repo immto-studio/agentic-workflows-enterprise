@@ -1,0 +1,17 @@
+{
+  "case": "w3-01",
+  "executed": true,
+  "model_calls": 7,
+  "passed": true,
+  "proposal": {
+    "args": {
+      "service": "claims-api"
+    },
+    "tool": "restart_deployment"
+  },
+  "seconds": 13.3,
+  "state": "done",
+  "tool_calls": 6,
+  "trace_id": "484e9edf5f694fca851d1d77c5a50345",
+  "workflow": "w3"
+}

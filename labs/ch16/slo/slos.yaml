@@ -1,0 +1,267 @@
+# The SLIs and SLOs of the five workflows (companion #14, O-D12): the lab's proposals for Larkspur, not targets
+# the book has set. Each SLI is a ratio of good events to valid events over a 30-day window, the window of the
+# workbook's error budgets (fact sheet 8.9: "13.9% of the 30-day error budget"). slo/slis.py computes them.
+#
+# Where every target comes from:
+# - the clouds' SLAs, fact sheet section 6: Bedrock "99.9% monthly uptime", where "Error" is "any Request that
+#   returns a 500 error code"; Google's Gemini online inference 99.5%; Foundry Models 99.9%. Larkspur's
+#   managed alias is Nova Lite on Bedrock (chapter 6), so no workflow promises more than 99.9 percent of what one
+#   model call does, and a run of n calls at most about 0.999^n of it;
+# - the kept runs, measured below (results/<date>/slo/kept.json);
+# - the rung of chapter 1's ladder, which sets what a person decides (the outcome SLI);
+# - the workbook's caution on low targets: for a 90 percent target "a 100% outage consumes only 1.4% of the
+#   budget in that hour, this alert could never fire" (fact sheet 8.9). A target t lets the page at burn rate
+#   14.4 fire only when 1 / (1 - t) >= 14.4, which needs t of at least 93.06 percent.
+#
+# Quality, chapter 15's golden sets and release criteria (labs/ch15/release/criteria.yaml, E-D11), gates a
+# release and has no SLO. The controls have no error budget either: they hold every time (`controls`, below).
+window_days: 30
+in_the_month: >-
+  an event counts at the time it becomes known, in a month's tables, in a budget and in a burn-rate window alike: a
+  run when it ends, an outcome when a person decides (slis.placed, slis.in_window; burn.Stream places events the
+  same way). So a proposal made in one month and decided in the next counts for success in the first and for
+  outcome in the second, a proposal still undecided at a month's end counts for outcome in no month yet, and a
+  decision made inside the month on a proposal from the lead-in counts, as any rolling 30-day window would see it
+  (slo/month.yaml, lead_in_days). The budget in events is sized on the month's expected proposals, decided in it or
+  after (simulate.expected).
+controls:
+  residency:
+    rule: every model call is served inside the manifest's Regions, fallbacks included (chapter 5's gateway_rules)
+    signal: the gateway's cost line, `region` and `fallback`; the span's larkspur.region
+  never_list:
+    rule: no tool on the manifest's never-list is offered or called
+    signal: the harness's refusal of the call (chapter 1's decision box) and its log line; the tool server's refusal
+  budget:
+    rule: no run spends past its per_run_usd and no month past its per_month_usd
+    signal: chapter 5's `refused` cost line for the per-run budget; LiteLLM's 422 and the 80 percent webhook (step 4)
+  breach: >-
+    a run that breaches a control is an incident for the playbook (playbook/playbook.yaml), opened whatever the
+    run's end. It spends no error budget: slis.incidents lists it and no SLI reads the breach.
+
+workflows:
+  w1:
+    name: W1, the knowledge assistant
+    manifest: workflows/w1-knowledge-assistant/manifest/w1-knowledge.yaml
+    rung: 0
+    unit: question
+    valid: >-
+      a question the harness ran, whether it answered, refused, or failed; not a question the workflow's own monthly
+      budget or request rate refused (the control holding, ch05:498: its owner sees it on the budget and 429 panels)
+    slis:
+      success:
+        good: >-
+          an answer, or the harness's refusal sentence ("nothing in the documents you can read"). The search limit is
+          W1's way to refuse (W1-D22): a third search asked for after two that found nothing readable gets the refusal
+          (answer.finish), as chapter 10 tells it (ch10:330, as of 9 November 2026), so for W1 it is a refusal by rule
+        bad: the search-failed sentence, chapter 5's per-run budget refusal at the gateway, a run that raised
+        sources:
+          - harness log, the `answer` line's `refused` and `answer` (workflows/w1-knowledge-assistant/harness/answer.py)
+          - the kept results' `answer` against the harness's REFUSAL_WORDS and SEARCH_FAILED
+          - the gateway's `refused` cost line for a per-run budget stop (chapter 5's gateway_hooks)
+        kept_runs_lack: >-
+          nothing for success; a run that raised leaves no result in the kept runs, which hold none
+        target: 0.995
+        reason: >-
+          two or three model calls and a search a question: at the SLA's 99.9 percent a call, a question can't do
+          better than about 99.7 percent from the model alone, and 99.5 leaves the search its share. The kept runs
+          answered or refused all 75 questions.
+      latency:
+        threshold_s: 30
+        good: a question answered or refused within 30 seconds of the harness receiving it
+        sources:
+          - the kept results' `seconds` per question
+          - the harness's `invoke_agent` span, start to end, when the process installs a tracer (step 3b)
+        kept_runs_lack: the time the person waits before the harness receives the question (Teams, the bot)
+        target: 0.95
+        reason: >-
+          gpt-oss-20b on the workstation answered in 8.3 seconds at the median and 16.8 at most, Nova Lite in 1.9 and
+          55.6 (chapter 10's 56-second refusal); 30 seconds holds the local model's tail and flags the managed one's.
+      outcome:
+        target: null
+        good: none
+        reason: >-
+          no person decides on an answer. The one human signal would be a person reporting an answer wrong, which
+          nothing in the lab or the book collects (the playbook's "confident wrong answers reported by people").
+        kept_runs_lack: everything; there is no event
+  w2:
+    name: W2, the operations assistant
+    manifest: workflows/w2-ops-assistant/manifest/w2-ops-assistant.yaml
+    rung: 1
+    unit: question
+    valid: as for W1
+    slis:
+      success:
+        good: an answer, or the harness's refusal sentence ("nothing the assistant can read"), out of scope included
+        bad: >-
+          a step-budget stop, the read-failed sentence ("W2 couldn't read the systems just now"), chapter 5's per-run
+          budget refusal at the gateway, a run that raised. W2's harness words a step-budget stop as its refusal
+          (answer.finish) and marks it larkspur.refused, as it does a refusal by rule; the run's calls tell them apart:
+          MAX_READS reads and one model call more (slis.w2_budget_stop)
+        sources:
+          - harness log, the `answer` line's `refused` and `reason`; the root span's larkspur.refused (answer.py)
+          - the kept results' `answer` against REFUSAL_WORDS and READ_FAILED, and `read_events` and `model_calls`
+          - the gateway's cost lines for the trace id, one a call, which count the calls in production
+          - the gateway's `refused` cost line for a per-run budget stop
+        kept_runs_lack: nothing for success
+        target: 0.995
+        reason: >-
+          two model calls and one read at the median (ch03:58): about 99.8 percent from the SLA alone, 99.5 with the
+          reads' share. The kept runs ended 129 of 135 questions well: five step-budget stops, all in the first kept run
+          (2026-11-02 run1, before the prompt's fix), and one read-failed sentence.
+      latency:
+        threshold_s: 10
+        good: a question answered or refused within 10 seconds
+        sources:
+          - the kept results' `seconds` per question
+          - the harness's `invoke_agent w2-harness` span (fig-16-01's trace is one, 2.58 seconds)
+        kept_runs_lack: as for W1
+        target: 0.95
+        reason: >-
+          the chat's answer: the kept runs' median is 2 seconds and 134 of 135 finished inside 10; a question that
+          takes longer than a person would take to look is one the assistant has failed to save time on.
+      outcome:
+        target: null
+        good: none
+        reason: as for W1, no person decides on an answer
+        kept_runs_lack: everything; there is no event
+  w3:
+    name: W3, incident triage
+    manifest: workflows/w3-incident/manifest/w3-incident.yaml
+    rung: 3
+    unit: incident
+    valid: an incident the harness triaged; not one the workflow's own monthly budget or request rate refused
+    slis:
+      success:
+        good: a triage that answered, a refusal by the harness's rules, or a proposal (the run in awaiting_approval or after)
+        bad: >-
+          the step-budget sentence (state refused with BUDGET_EXHAUSTED), the model-unavailable sentence (W3 ends a run
+          it can't wait for that way, step 5b), a run that raised
+        sources:
+          - the run's state and triage in W3's store (state/store.py), as the kept records hold them (`state`, `triage`)
+          - >-
+            the `invoke_agent w3-incident` span (one trace an incident since #10)
+          - the gateway's `refused` and `failed` cost lines
+        kept_runs_lack: nothing for success
+        target: 0.95
+        reason: >-
+          six to eight model calls and reads an incident put the SLA's ceiling near 99.3 percent. The kept runs end 8
+          of 48 incidents at the step budget, 83 percent; a target there would leave the 1-hour page unable to fire (a
+          total outage burns at 6, under 14.4) and the 6-hour one able to fire only on six hours of total outage, and 95
+          is the lowest round target at which the 1-hour page can (a total outage burns at 20). W3 doesn't meet it today,
+          and the error budget says so.
+      latency:
+        threshold_s: 120
+        good: a triage that reached its answer, refusal or proposal within 120 seconds, the person's approval excluded
+        sources:
+          - the kept records' `seconds`
+          - the `invoke_agent w3-incident` span up to the proposal; the approval service's decision time is the outcome's
+        kept_runs_lack: the wait for a person, which the eval's scripted approver makes instant
+        target: 0.95
+        reason: >-
+          W3's own time budget, TIME_BUDGET_S, two minutes from the triage's first model call (harness/loop.py, step
+          5b), about three times the longest kept triage (42.2 seconds).
+      outcome:
+        target: 0.90
+        good: a proposed write a person approved, that ran and was verified, and that wasn't rolled back
+        bad: a proposal a person declined, or an approved write the harness rolled back after a failed verification
+        valid: a proposal a person decided; one that timed out and was dropped had no decision and isn't valid
+        sources:
+          - the approval service's decision and the run's state (done, rolled_back, dropped) in W3's store
+          - the approval service's log of every decision (approval/approval_service.py)
+        kept_runs_lack: >-
+          a person's decision: the eval's approver is scripted (eval/lab.py approves every proposal an eligible
+          approver exists for), so the kept runs' 2 of 2 says nothing about people
+        reason: >-
+          rung 3 acts with a person's approval: a declined restart or a rolled-back one is a person correcting W3,
+          and more than one in ten would turn the approval into a review of W3's mistakes.
+  w4:
+    name: W4, change management
+    manifest: workflows/w4-change/manifest/w4-change.yaml
+    rung: 2
+    unit: change
+    valid: a change the scribe ran; not one the workflow's own monthly budget or request rate refused
+    slis:
+      success:
+        good: the pack written to the change record and the comment, whatever wrote the rationale (the model or the stub)
+        bad: a pack not written (the scribe's `pack_incomplete`, a write that failed), a run that raised
+        sources:
+          - the scribe's `pack_written_to_systems` and `pack_incomplete` log lines (a2a/scribe.py)
+          - the scribe's `invoke_agent change-management` span and its error.type
+        kept_runs_lack: nothing for success
+        target: 0.99
+        reason: >-
+          one model call a change, and the stub sentence when the model fails, so the model's availability barely
+          touches it. About 200 changes a month (ch13:9) make 99 percent a budget of two failed changes.
+      latency:
+        threshold_s: 60
+        good: the pack on the change record within a minute of the trigger
+        sources:
+          - the kept packs' `seconds`
+          - the scribe's span, trigger to pack_written_to_systems
+        kept_runs_lack: nothing for latency
+        target: 0.95
+        reason: >-
+          the kept changes took 13.1 seconds at most (chapter 13's median 7.8 on gpt-oss-20b); a minute is the lab's
+          figure for the requester's comment, and LiteLLM's 30-second cooldown wait plus the seam's own fits inside it.
+      outcome:
+        target: 0.90
+        good: a change whose risk class the board kept
+        bad: a change the board reclassified
+        valid: a change the board decided at its Thursday session (ch13:18)
+        sources:
+          - the change record's risk class after the board's session, in ServiceNow
+        kept_runs_lack: >-
+          everything: the ServiceNow fake records the pack and the state "Assess", and no run kept a board's decision.
+          Nothing in the lab emits this event yet.
+        reason: >-
+          rung 2 proposes; a reclassified change is the board correcting W4, and the class is decided by rules before
+          the model is asked (chapter 13), so more than one in ten would be a rule to fix.
+  w5:
+    name: W5, drift and FinOps
+    manifest: workflows/w5-drift/manifest/w5-drift.yaml
+    rung: 2
+    unit: night
+    valid: >-
+      a scheduled night or an alarm's run the harness started; a night the check of GitHub refused is a refusal by
+      rule and counts good, since the control held
+    slis:
+      success:
+        good: a night that ran to night_done, its pull requests written, opened, updated or suppressed
+        bad: a night that stopped short of night_done, a run that raised
+        sources:
+          - the night's log, night_start to night_done (harness/night.py); the record's `stopped` and `failed`
+          - the `invoke_agent w5-night` span (one trace a night since step 3b)
+        kept_runs_lack: nothing for success
+        target: 0.90
+        reason: >-
+          one run a night, about 30 a month, and about four alarm runs: a night is a thirtieth of the month and the
+          budget has to be whole runs (fact sheet 8.9). 90 percent of about 34 runs is a budget of 3.4 failed runs,
+          so three fit inside it and the fourth spends it (budget_policy.spent and burn.night_alerts count it the
+          same way). The model writes only the bodies, and the stub stands in when it fails, so the SLA doesn't bind
+          the night.
+      latency:
+        threshold_s: 21600
+        good: a night done by 08:00 ET, six hours after its 02:00 start (ch14:13); an alarm's run within six hours
+        sources:
+          - the night's record, `duration_s`; night_start and night_done
+        kept_runs_lack: nothing for latency
+        target: 0.90
+        reason: >-
+          the whole night: the pull requests have to be there when people start. The 22 kept scheduled nights took
+          15 to 714 seconds and the 11 kept alarm runs 3 to 147, so the threshold is far off; it is in nights for the
+          same reason as success.
+      outcome:
+        target: 0.80
+        good: a pull request a person merged
+        bad: a pull request a person closed without a merge
+        valid: a pull request a person decided; one still open has no decision yet
+        sources:
+          - >-
+            W5's ledger, each finding's pull_request state (writer/ledger.py): open, merged, closed
+        kept_runs_lack: >-
+          a person: the one merged pull request in each kept run's ledger is the eval's, which merges the archive
+          volume's pull request before golden night 2 (eval/nights.yaml, `before.merge`; eval/run_nights.simulate_merge),
+          so the kept runs' 1 of 1 says nothing about people
+        reason: >-
+          rung 2 proposes; some drift is intended and a person rightly declines to adopt it, which still counts as a
+          rejection, so the bar sits below W3's and W4's.

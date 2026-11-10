@@ -1,0 +1,42 @@
+#!/bin/bash
+# Chapter 16, step 7: Langfuse ${version} from its Compose file on one VM. Written by Terraform (vm.tf).
+set -uo pipefail
+exec > >(tee -a /var/log/ch16-langfuse.log) 2>&1
+echo "ch16 user data start $(date -u +%FT%TZ)"
+mkdir -p /opt/langfuse
+cd /opt/langfuse
+echo '${compose_b64gz}' | base64 -d | gunzip > docker-compose.yml
+echo '${override_b64}' | base64 -d > docker-compose.override.yml
+echo '${env_b64}' | base64 -d > .env
+chmod 600 .env
+sha256sum docker-compose.yml docker-compose.override.yml > files.sha256
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -q
+apt-get install -y -q docker.io docker-compose-v2 curl
+systemctl enable --now docker
+{ docker --version; docker compose version; } > versions.txt 2>&1
+echo "pull start $(date -u +%FT%TZ)" >> timeline.txt
+if docker compose pull; then
+  echo "pinned" > pin.txt
+else
+  # The pinned tag isn't served: fall back to the Compose file's own floating tag and say so.
+  sed -i "s/:${version}/:4/g" docker-compose.override.yml
+  docker compose pull && echo "floating-tag-fallback" > pin.txt
+fi
+echo "pull done $(date -u +%FT%TZ)" >> timeline.txt
+docker compose up -d
+echo "up issued $(date -u +%FT%TZ)" >> timeline.txt
+for i in $(seq 1 180); do
+  if curl -fsS http://127.0.0.1:3000/api/public/health > health.json 2>/dev/null; then
+    echo "healthy $(date -u +%FT%TZ)" >> timeline.txt
+    break
+  fi
+  sleep 5
+done
+docker compose images > images.txt 2>&1
+for id in $(docker compose images -q 2>/dev/null | sort -u); do
+  docker image inspect --format '{{join .RepoTags ","}} {{join .RepoDigests ","}}' "$id"
+done > digests.txt 2>&1
+docker compose ps > ps.txt 2>&1
+date -u +%FT%TZ > ready
+echo "ch16 user data end $(date -u +%FT%TZ)"

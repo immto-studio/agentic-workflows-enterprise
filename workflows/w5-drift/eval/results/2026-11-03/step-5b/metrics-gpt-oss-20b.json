@@ -1,0 +1,253 @@
+{
+ "measured": "2026-11-03",
+ "model": "gpt-oss-20b",
+ "versions": {
+  "python": "3.12.9",
+  "litellm": "1.106.6",
+  "mcp": "2.3.0",
+  "ollama_base": "http://127.0.0.1:11434",
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "ollama": "0.22.1",
+  "w5_commit": "46ab3ad",
+  "think": "model default"
+ },
+ "nights": [
+  {
+   "id": "night-1",
+   "night": "2026-11-02",
+   "trigger": "schedule",
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ],
+   "trace_id": "4a95f715e9b648efb051c09a3f7a5655",
+   "findings": 15,
+   "by_kind": {
+    "unmanaged": 2,
+    "changed": 2,
+    "graviton_candidate": 2,
+    "missing": 1,
+    "untagged": 4,
+    "idle": 1,
+    "unattached_volume": 2,
+    "old_snapshot": 1
+   },
+   "pull_requests": {
+    "opened": 14,
+    "updated": 0,
+    "skipped": 0,
+    "suppressed": 1
+   },
+   "body_sources": {
+    "model": 13,
+    "stub": 1
+   },
+   "refused_words": {
+    "sandbox-quill:aws_ebs_volume.scratch:missing": [
+     "apply"
+    ]
+   },
+   "duration_s": 386.842,
+   "seconds": 386.9,
+   "cost_as_recorded": {
+    "gateway_calls": 14,
+    "prompt_tokens": 8884,
+    "completion_tokens": 18505,
+    "refused": 0,
+    "failed": 0
+   },
+   "gateway": {
+    "calls": 14,
+    "prompt_tokens": 8884,
+    "completion_tokens": 18505,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 14,
+     "median": 13192.0,
+     "p95": 121509.0,
+     "max": 121509.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": false
+  },
+  {
+   "id": "night-2",
+   "night": "2026-11-03",
+   "trigger": "schedule",
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ],
+   "trace_id": "30be1c40f2744683b2e6ceeee44a2314",
+   "findings": 15,
+   "by_kind": {
+    "unmanaged": 3,
+    "changed": 2,
+    "graviton_candidate": 2,
+    "missing": 1,
+    "untagged": 4,
+    "idle": 1,
+    "unattached_volume": 1,
+    "old_snapshot": 1
+   },
+   "pull_requests": {
+    "opened": 1,
+    "updated": 13,
+    "skipped": 0,
+    "suppressed": 1
+   },
+   "body_sources": {
+    "model": 13,
+    "stub": 1
+   },
+   "refused_words": {
+    "sandbox-quill:aws_ebs_volume.scratch:missing": [
+     "apply"
+    ]
+   },
+   "duration_s": 364.143,
+   "seconds": 364.2,
+   "cost_as_recorded": {
+    "gateway_calls": 14,
+    "prompt_tokens": 8888,
+    "completion_tokens": 17857,
+    "refused": 0,
+    "failed": 0
+   },
+   "gateway": {
+    "calls": 14,
+    "prompt_tokens": 8888,
+    "completion_tokens": 17857,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 14,
+     "median": 11405.0,
+     "p95": 120834.0,
+     "max": 120834.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": false
+  },
+  {
+   "id": "alarm-1",
+   "night": "2026-11-03",
+   "trigger": "budget",
+   "workspaces": [
+    "claims-api-prod"
+   ],
+   "trace_id": "a5fc350d994244df90325b387d0f2f15",
+   "findings": 3,
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 1
+   },
+   "pull_requests": {
+    "opened": 0,
+    "updated": 3,
+    "skipped": 0,
+    "suppressed": 0
+   },
+   "body_sources": {
+    "model": 3
+   },
+   "refused_words": {},
+   "duration_s": 147.331,
+   "seconds": 147.4,
+   "cost_as_recorded": {
+    "gateway_calls": 3,
+    "prompt_tokens": 1894,
+    "completion_tokens": 7319,
+    "refused": 0,
+    "failed": 0
+   },
+   "gateway": {
+    "calls": 3,
+    "prompt_tokens": 1894,
+    "completion_tokens": 7319,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 3,
+     "median": 15378.0,
+     "p95": 119936.0,
+     "max": 119936.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": true
+  }
+ ],
+ "totals": {
+  "findings": 33,
+  "opened": 15,
+  "updated": 16,
+  "suppressed": 2,
+  "skipped": 0,
+  "bodies_from_model": 29,
+  "bodies_written": 31,
+  "refused_words": 2,
+  "refused_word_list": [
+   "apply"
+  ],
+  "seconds": 898.3,
+  "gateway_calls": 31,
+  "prompt_tokens": 19666,
+  "completion_tokens": 43681,
+  "gateway_calls_in_log": 31,
+  "latency_ms": {
+   "n": 31,
+   "median": 13076.0,
+   "p95": 120834.0,
+   "max": 121509.0
+  },
+  "prose": {
+   "model_bodies": 29,
+   "words": {
+    "n": 29,
+    "median": 58.0,
+    "p95": 85.0,
+    "max": 85.0
+   },
+   "u2011": 40,
+   "bodies_with_u2011": 9,
+   "other_typographic": 0
+  }
+ },
+ "savings": {
+  "month": "2026-11",
+  "proposed_share_of_spend": 0.0077,
+  "realized_share_of_spend": 0.0033,
+  "realized_share_of_proposed": 0.4277,
+  "realized_findings": 1,
+  "pull_requests_by_state": {
+   "open": 14,
+   "merged": 1,
+   "closed": 0
+  },
+  "findings_seen": 16,
+  "findings_suppressed": 1,
+  "with_estimate": 6,
+  "accounts_read": [
+   "lm-claims-prod",
+   "lm-network-prod",
+   "lm-sandbox"
+  ]
+ },
+ "nights_passed": [
+  1,
+  3
+ ]
+}

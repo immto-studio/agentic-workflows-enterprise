@@ -1,0 +1,33 @@
+# The chapter 5 gateway with a self-hosted deployment behind it: chapter 9, part 1.
+#
+# The alias is the one chapter 5 already reserved for the self-hosted path, the only destination
+# the data-class rule lets Restricted prompts reach. Behind it sits Ollama on this machine; in
+# production it is vLLM or SGLang on Kubernetes (part 2), and only `api_base` and `model` change.
+# The callbacks are chapter 5's (manifest, data-class grid, limits, cost line, span), loaded by
+# gateway_hooks.py here. Start the proxy with GATEWAY_CONFIG set to this file and
+# LITELLM_MASTER_KEY set to a local value.
+#
+# Run (from labs/ch09/gateway; the proxy listens on all interfaces without --host):
+#   litellm --config litellm.config.yaml --host 127.0.0.1 --port 4011
+
+model_list:
+  - model_name: larkspur-chat-restricted       # self-hosted: the only alias Restricted data may reach
+    litellm_params:
+      model: ollama_chat/gemma4:12b
+      api_base: http://127.0.0.1:11434
+      input_cost_per_token: 0                    # a self-hosted model costs GPU hours, not tokens
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:            # where chapter 9's production deployment serves; on a laptop, the laptop
+      id: local-gemma4-12b
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks                 # chapter 5's rules, unchanged
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

@@ -1,0 +1,29 @@
+# Which teams may ask W2 about which services (W2-D4). The teams are groups from W1's reviewed map
+# (workflows/w1-knowledge-assistant/knowledge-server/membership/groups.yaml), so one membership
+# table, synced from the directory, serves both workflows; the server takes the engineer's groups
+# from that table and never from a tool argument.
+#
+# Owner: the platform team, with each service's owning team. A change is a change of what an
+# engineer may read through the assistant and goes through review like one.
+#
+# `everyone` lists the services every engineer may ask about; a team's list adds to it. A service
+# listed nowhere is visible to nobody through W2, and the refusal reads the same whether the
+# service exists or not.
+reviewed: 2026-11-02
+everyone: [customer-portal, notification-gateway]
+teams:
+  lm-eng-all:
+    [claims-api, policy-admin, quote-engine, document-ocr, billing-worker]
+  lm-sec-incident-response: [fraud-scoring]
+  lm-pci-cde-operators: [billing-worker]
+
+# Who may approve a runbook step the incident workflow (W3, chapter 12) proposes on a service, and how
+# many distinct approvals the step needs (W3-D6). The group is one of W1's reviewed groups; the
+# requester never counts, whatever group they hold. `default` covers every service not listed.
+# Owner: the platform team with incident response; a change here is a change to who may authorize
+# a write to production and is reviewed like one.
+approvers:
+  default: {group: lm-sec-incident-response, required: 1}
+  billing-worker: {group: lm-pci-cde-operators, required: 1}
+  customer-portal: {group: lm-eng-all, required: 2}
+  notification-gateway: {group: lm-eng-all, required: 2}

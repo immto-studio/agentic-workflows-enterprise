@@ -1,0 +1,86 @@
+{
+  "all_kept_spans_at_the_sink": true,
+  "collector_exit": 0,
+  "collector_started": 1793741977.1721265,
+  "date": "2026-11-03",
+  "decision_wait_after_root_received": null,
+  "decision_wait_s": 30.0,
+  "ended": 1793742021.745777,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "gpu_after": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 15332,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "gpu_before": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 2420,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [],
+      "version": "0.22.1"
+    },
+    "ollama_11435": null
+  },
+  "model": "gpt-oss-20b",
+  "only": null,
+  "processes": [
+    {
+      "process": "the scribe, in this process (eval/lab.py)",
+      "service": "scribe"
+    },
+    {
+      "process": "the analyst A2A server (a2a/analyst.py)",
+      "service": "analyst"
+    },
+    {
+      "process": "the risk scorer A2A server (a2a/risk_scorer.py), whose rationale seam calls the gateway",
+      "service": "risk-scorer"
+    },
+    {
+      "process": "the gateway (LiteLLM with chapter 5's callback, W4's manifest)",
+      "service": "gateway"
+    },
+    {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gpt-oss:20b",
+          "size_vram": 14460958080
+        }
+      ],
+      "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "service": null
+    }
+  ],
+  "python": "3.12.9",
+  "run": "w4-gpt-oss-20b",
+  "seconds": 43.9,
+  "share_percent": 100.0,
+  "started": 1793741977.1732612,
+  "think": "model default",
+  "traces_expected_kept": 8,
+  "wait": null,
+  "waited_after_quiet_s": 19.2,
+  "workflow": "w4"
+}

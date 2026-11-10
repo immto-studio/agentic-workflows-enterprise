@@ -1,0 +1,820 @@
+{
+ "calls": {
+  "started": "2026-11-09T09:51:15.649+00:00",
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "prompt": "Reply with the single word: ready.",
+  "log_group": "/aws/bedrock/model-invocations-ch16",
+  "canada_side": {
+   "get_logging_configuration": {
+    "ok": false,
+    "error": "AccessDeniedException",
+    "code": "AccessDeniedException",
+    "message": "An error occurred (AccessDeniedException) when calling the GetModelInvocationLoggingConfiguration operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: bedrock:GetModelInvocationLoggingConfiguration with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/o-x7l2tplur3/service_control_policy/p-5ladirxm"
+   },
+   "describe_log_groups": {
+    "ok": false,
+    "error": "AccessDeniedException",
+    "code": "AccessDeniedException",
+    "message": "An error occurred (AccessDeniedException) when calling the DescribeLogGroups operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: logs:DescribeLogGroups on resource: arn:aws:logs:ca-central-1:<account>:log-group::log-stream: with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/o-x7l2tplur3/service_control_policy/p-5ladirxm"
+   },
+   "cloudtrail_lookup": {
+    "ok": false,
+    "error": "AccessDeniedException",
+    "code": "AccessDeniedException",
+    "message": "An error occurred (AccessDeniedException) when calling the LookupEvents operation: User: arn:aws:iam::<account>:user/<user> is not authorized to perform: cloudtrail:LookupEvents with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/o-x7l2tplur3/service_control_policy/p-5ladirxm"
+   }
+  },
+  "logging_before": {
+   "ok": true,
+   "config": {
+    "cloudWatchConfig": {
+     "logGroupName": "/aws/bedrock/model-invocations-ch16",
+     "roleArn": "arn:aws:iam::<account>:role/ch16-cloud-invocation-logging"
+    },
+    "textDataDeliveryEnabled": false,
+    "imageDataDeliveryEnabled": false,
+    "embeddingDataDeliveryEnabled": false,
+    "videoDataDeliveryEnabled": false
+   }
+  },
+  "trace_ids": {
+   "canada_ch05": "cec3118db1314e40aaa553a0e9c14fc4",
+   "canada": "a3f63224330e4027aa1d2bd98b06e008",
+   "us_text_off": "280e7796708b45d0b8b1eafa04a57511",
+   "us_text_on": "bfd8a29fb80447f5bf1ceb2899434154",
+   "us_profile": "21e37613001e4962af4e937a4d9d9daa"
+  },
+  "canada": {
+   "path": "gateway, litellm.bedrock-ca.yaml, W3 larkspur-chat (confidential), called in ca-central-1",
+   "attempts": [
+    {
+     "manifests": "chapter 5's W3 manifest, regions [ca-central-1]",
+     "trace_id": "cec3118db1314e40aaa553a0e9c14fc4",
+     "call": {
+      "ok": false,
+      "started": "2026-11-09T09:51:24.078+00:00",
+      "status": 400,
+      "latency_s": 0.434,
+      "body": "{\"error\":{\"message\":\"request refused: 'larkspur-chat' serves from ca-west-1, outside the regions of 'w3-incident'\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"400\"}}"
+     },
+     "gateway": {
+      "cost_lines": [
+       {
+        "ts": "2026-11-09T09:51:24.495+00:00",
+        "event": "refused",
+        "alias": "larkspur-chat",
+        "trace_id": "cec3118db1314e40aaa553a0e9c14fc4",
+        "tags": {
+         "workflow": "w3-incident",
+         "data_class": "confidential"
+        },
+        "reason": "request refused: 'larkspur-chat' serves from ca-west-1, outside the regions of 'w3-incident'"
+       }
+      ],
+      "spans": []
+     }
+    },
+    {
+     "manifests": "chapter 6's W3 manifest, regions [ca-central-1, ca-west-1]",
+     "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+     "call": {
+      "ok": true,
+      "started": "2026-11-09T09:51:33.793+00:00",
+      "latency_s": 1.19,
+      "text": "ready",
+      "model": "larkspur-chat",
+      "prompt_tokens": 99,
+      "completion_tokens": 2,
+      "cost_usd": 6.848e-06
+     },
+     "gateway": {
+      "cost_lines": [
+       {
+        "ts": "2026-11-09T09:51:34.191+00:00",
+        "event": "fallback_disabled",
+        "alias": "larkspur-chat",
+        "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+        "tags": {
+         "workflow": "w3-incident",
+         "data_class": "confidential"
+        },
+        "reason": "fallback to 'larkspur-chat-fallback' disabled for this request: data class 'confidential' may not go to 'larkspur-chat-fallback' (managed, us-east-2, US)"
+       },
+       {
+        "ts": "2026-11-09T09:51:34.984+00:00",
+        "event": "call",
+        "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+        "workflow": "w3-incident",
+        "data_class": "confidential",
+        "requested_alias": "larkspur-chat",
+        "served_alias": "larkspur-chat",
+        "fallback": false,
+        "fallbacks_disabled": true,
+        "deployment": "nova-lite-ca",
+        "region": "ca-central-1",
+        "served_model": "converse/ca.amazon.nova-lite-v1:0",
+        "prompt_tokens": 99,
+        "completion_tokens": 2,
+        "cost_usd": 6.85e-06,
+        "latency_ms": 787
+       }
+      ],
+      "spans": [
+       {
+        "name": "chat larkspur-chat",
+        "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+        "span_id": "d4a6c966f1fcb2c4",
+        "parent_span_id": null,
+        "kind": "CLIENT",
+        "start": "2026-11-09T09:51:34.192331+00:00",
+        "end": "2026-11-09T09:51:34.980267+00:00",
+        "status": "UNSET",
+        "status_description": null,
+        "attributes": {
+         "gen_ai.operation.name": "chat",
+         "gen_ai.request.model": "larkspur-chat",
+         "gen_ai.response.model": "converse/ca.amazon.nova-lite-v1:0",
+         "gen_ai.usage.input_tokens": 99,
+         "gen_ai.usage.output_tokens": 2,
+         "larkspur.component": "gateway",
+         "larkspur.trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+         "larkspur.workflow": "w3-incident",
+         "larkspur.data_class": "confidential",
+         "larkspur.served_alias": "larkspur-chat",
+         "larkspur.deployment": "nova-lite-ca",
+         "larkspur.region": "ca-central-1",
+         "larkspur.fallback": false,
+         "larkspur.cost_usd": 6.85e-06
+        },
+        "events": [],
+        "resource": {
+         "telemetry.sdk.language": "python",
+         "telemetry.sdk.name": "opentelemetry",
+         "telemetry.sdk.version": "1.45.1",
+         "service.instance.id": "be4a3cd4-c795-43f6-aded-a68a31d96dbe",
+         "service.name": "gateway",
+         "service.namespace": "larkspur-lab-ch05"
+        },
+        "scope": "larkspur.lab.ch05"
+       }
+      ]
+     }
+    }
+   ],
+   "call": {
+    "ok": true,
+    "started": "2026-11-09T09:51:33.793+00:00",
+    "latency_s": 1.19,
+    "text": "ready",
+    "model": "larkspur-chat",
+    "prompt_tokens": 99,
+    "completion_tokens": 2,
+    "cost_usd": 6.848e-06
+   },
+   "gateway": {
+    "cost_lines": [
+     {
+      "ts": "2026-11-09T09:51:34.191+00:00",
+      "event": "fallback_disabled",
+      "alias": "larkspur-chat",
+      "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+      "tags": {
+       "workflow": "w3-incident",
+       "data_class": "confidential"
+      },
+      "reason": "fallback to 'larkspur-chat-fallback' disabled for this request: data class 'confidential' may not go to 'larkspur-chat-fallback' (managed, us-east-2, US)"
+     },
+     {
+      "ts": "2026-11-09T09:51:34.984+00:00",
+      "event": "call",
+      "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+      "workflow": "w3-incident",
+      "data_class": "confidential",
+      "requested_alias": "larkspur-chat",
+      "served_alias": "larkspur-chat",
+      "fallback": false,
+      "fallbacks_disabled": true,
+      "deployment": "nova-lite-ca",
+      "region": "ca-central-1",
+      "served_model": "converse/ca.amazon.nova-lite-v1:0",
+      "prompt_tokens": 99,
+      "completion_tokens": 2,
+      "cost_usd": 6.85e-06,
+      "latency_ms": 787
+     }
+    ],
+    "spans": [
+     {
+      "name": "chat larkspur-chat",
+      "trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+      "span_id": "d4a6c966f1fcb2c4",
+      "parent_span_id": null,
+      "kind": "CLIENT",
+      "start": "2026-11-09T09:51:34.192331+00:00",
+      "end": "2026-11-09T09:51:34.980267+00:00",
+      "status": "UNSET",
+      "status_description": null,
+      "attributes": {
+       "gen_ai.operation.name": "chat",
+       "gen_ai.request.model": "larkspur-chat",
+       "gen_ai.response.model": "converse/ca.amazon.nova-lite-v1:0",
+       "gen_ai.usage.input_tokens": 99,
+       "gen_ai.usage.output_tokens": 2,
+       "larkspur.component": "gateway",
+       "larkspur.trace_id": "a3f63224330e4027aa1d2bd98b06e008",
+       "larkspur.workflow": "w3-incident",
+       "larkspur.data_class": "confidential",
+       "larkspur.served_alias": "larkspur-chat",
+       "larkspur.deployment": "nova-lite-ca",
+       "larkspur.region": "ca-central-1",
+       "larkspur.fallback": false,
+       "larkspur.cost_usd": 6.85e-06
+      },
+      "events": [],
+      "resource": {
+       "telemetry.sdk.language": "python",
+       "telemetry.sdk.name": "opentelemetry",
+       "telemetry.sdk.version": "1.45.1",
+       "service.instance.id": "be4a3cd4-c795-43f6-aded-a68a31d96dbe",
+       "service.name": "gateway",
+       "service.namespace": "larkspur-lab-ch05"
+      },
+      "scope": "larkspur.lab.ch05"
+     }
+    ]
+   }
+  },
+  "us_text_off": {
+   "path": "gateway, litellm.bedrock-us.yaml, W2 larkspur-chat (internal), Nova Lite In-Region us-east-2",
+   "text_delivery": false,
+   "call": {
+    "ok": true,
+    "started": "2026-11-09T09:51:43.795+00:00",
+    "latency_s": 1.21,
+    "text": "ready",
+    "model": "larkspur-chat",
+    "prompt_tokens": 99,
+    "completion_tokens": 2,
+    "cost_usd": 6.4199999999999995e-06
+   },
+   "log": {
+    "found": {
+     "record": {
+      "seen_after_s": 12.154,
+      "log_timestamp_ms": 1794217905000,
+      "ingestion_ms": 1794217910669,
+      "record": {
+       "timestamp": "2026-11-09T09:51:45Z",
+       "accountId": "<account>",
+       "region": "us-east-2",
+       "requestId": "7c1054fa-7470-4db0-a97a-1a93d377c1e3",
+       "operation": "Converse",
+       "modelId": "amazon.nova-lite-v1:0",
+       "requestMetadata": {
+        "workflow": "w2-ops-assistant",
+        "trace_id": "280e7796708b45d0b8b1eafa04a57511"
+       },
+       "input": {
+        "inputContentType": "application/json",
+        "inputTokenCount": 99
+       },
+       "output": {
+        "outputContentType": "application/json",
+        "outputTokenCount": 2
+       },
+       "identity": {
+        "arn": "arn:aws:iam::<account>:user/<user>"
+       },
+       "schemaVersion": "1.0",
+       "schemaType": "ModelInvocationLog"
+      }
+     }
+    },
+    "missing": [],
+    "polled_s": 12.154
+   },
+   "gateway": {
+    "cost_lines": [
+     {
+      "ts": "2026-11-09T09:51:45.006+00:00",
+      "event": "call",
+      "trace_id": "280e7796708b45d0b8b1eafa04a57511",
+      "workflow": "w2-ops-assistant",
+      "data_class": "internal",
+      "requested_alias": "larkspur-chat",
+      "served_alias": "larkspur-chat",
+      "fallback": false,
+      "fallbacks_disabled": false,
+      "deployment": "nova-lite-us",
+      "region": "us-east-2",
+      "served_model": "converse/amazon.nova-lite-v1:0",
+      "prompt_tokens": 99,
+      "completion_tokens": 2,
+      "cost_usd": 6.42e-06,
+      "latency_ms": 823
+     }
+    ],
+    "spans": [
+     {
+      "name": "chat larkspur-chat",
+      "trace_id": "280e7796708b45d0b8b1eafa04a57511",
+      "span_id": "f11dbedb65ae052d",
+      "parent_span_id": null,
+      "kind": "CLIENT",
+      "start": "2026-11-09T09:51:44.178489+00:00",
+      "end": "2026-11-09T09:51:45.002286+00:00",
+      "status": "UNSET",
+      "status_description": null,
+      "attributes": {
+       "gen_ai.operation.name": "chat",
+       "gen_ai.request.model": "larkspur-chat",
+       "gen_ai.response.model": "converse/amazon.nova-lite-v1:0",
+       "gen_ai.usage.input_tokens": 99,
+       "gen_ai.usage.output_tokens": 2,
+       "larkspur.component": "gateway",
+       "larkspur.trace_id": "280e7796708b45d0b8b1eafa04a57511",
+       "larkspur.workflow": "w2-ops-assistant",
+       "larkspur.data_class": "internal",
+       "larkspur.served_alias": "larkspur-chat",
+       "larkspur.deployment": "nova-lite-us",
+       "larkspur.region": "us-east-2",
+       "larkspur.fallback": false,
+       "larkspur.cost_usd": 6.42e-06
+      },
+      "events": [],
+      "resource": {
+       "telemetry.sdk.language": "python",
+       "telemetry.sdk.name": "opentelemetry",
+       "telemetry.sdk.version": "1.45.1",
+       "service.instance.id": "6ddd931a-1f5e-41ae-a6e1-613e2f2fa14a",
+       "service.name": "gateway",
+       "service.namespace": "larkspur-lab-ch05"
+      },
+      "scope": "larkspur.lab.ch05"
+     }
+    ]
+   },
+   "record_shape": {
+    "keys": [
+     "accountId",
+     "identity",
+     "input",
+     "modelId",
+     "operation",
+     "output",
+     "region",
+     "requestId",
+     "requestMetadata",
+     "schemaType",
+     "schemaVersion",
+     "timestamp"
+    ],
+    "input_keys": [
+     "inputContentType",
+     "inputTokenCount"
+    ],
+    "output_keys": [
+     "outputContentType",
+     "outputTokenCount"
+    ],
+    "request_metadata": {
+     "workflow": "w2-ops-assistant",
+     "trace_id": "280e7796708b45d0b8b1eafa04a57511"
+    },
+    "inference_region": null,
+    "region": "us-east-2",
+    "model_id": "amazon.nova-lite-v1:0",
+    "operation": "Converse",
+    "request_id": "7c1054fa-7470-4db0-a97a-1a93d377c1e3",
+    "text_fields_present": [],
+    "input_token_count": 99,
+    "output_token_count": 2
+   }
+  },
+  "text_delivery_on": {
+   "text_data_delivery_enabled": true,
+   "at": "2026-11-09T09:51:56.228+00:00"
+  },
+  "us_text_on": {
+   "path": "gateway, litellm.bedrock-us.yaml, W2 larkspur-chat (internal), Nova Lite In-Region us-east-2",
+   "text_delivery": true,
+   "call": {
+    "ok": true,
+    "started": "2026-11-09T09:51:56.228+00:00",
+    "latency_s": 0.562,
+    "text": "ready",
+    "model": "larkspur-chat",
+    "prompt_tokens": 99,
+    "completion_tokens": 2,
+    "cost_usd": 6.4199999999999995e-06
+   },
+   "log": {
+    "found": {
+     "record": {
+      "seen_after_s": 11.441,
+      "log_timestamp_ms": 1794217917000,
+      "ingestion_ms": 1794217923433,
+      "record": {
+       "timestamp": "2026-11-09T09:51:57Z",
+       "accountId": "<account>",
+       "region": "us-east-2",
+       "requestId": "926f089c-7558-4cbf-826e-cf635a6df773",
+       "operation": "Converse",
+       "modelId": "amazon.nova-lite-v1:0",
+       "requestMetadata": {
+        "workflow": "w2-ops-assistant",
+        "trace_id": "bfd8a29fb80447f5bf1ceb2899434154"
+       },
+       "input": {
+        "inputContentType": "application/json",
+        "inputBodyJson": {
+         "messages": [
+          {
+           "role": "user",
+           "content": [
+            {
+             "text": "Reply with the single word: ready."
+            }
+           ]
+          }
+         ],
+         "system": [
+          {
+           "text": "You are the read-only operations assistant of Larkspur Mutual's platform team. Answer questions about deployments and alerts in the larkspur-prod namespace by calling the tools you are given; never guess numbers. You cannot change anything: if asked to restart, scale, delete or change something, say that you can only read and do not call a tool. When a tool returns an error, report it plainly. Answer in one or two sentences."
+          }
+         ],
+         "inferenceConfig": {
+          "temperature": 0.0
+         }
+        },
+        "inputTokenCount": 99
+       },
+       "output": {
+        "outputContentType": "application/json",
+        "outputBodyJson": {
+         "output": {
+          "message": {
+           "role": "assistant",
+           "content": [
+            {
+             "text": "ready"
+            }
+           ]
+          }
+         },
+         "stopReason": "end_turn",
+         "metrics": {
+          "latencyMs": 340
+         },
+         "usage": {
+          "inputTokens": 99,
+          "outputTokens": 2,
+          "totalTokens": 101
+         }
+        },
+        "outputTokenCount": 2
+       },
+       "identity": {
+        "arn": "arn:aws:iam::<account>:user/<user>"
+       },
+       "schemaVersion": "1.0",
+       "schemaType": "ModelInvocationLog"
+      }
+     }
+    },
+    "missing": [],
+    "polled_s": 11.441
+   },
+   "gateway": {
+    "cost_lines": [
+     {
+      "ts": "2026-11-09T09:51:56.791+00:00",
+      "event": "call",
+      "trace_id": "bfd8a29fb80447f5bf1ceb2899434154",
+      "workflow": "w2-ops-assistant",
+      "data_class": "internal",
+      "requested_alias": "larkspur-chat",
+      "served_alias": "larkspur-chat",
+      "fallback": false,
+      "fallbacks_disabled": false,
+      "deployment": "nova-lite-us",
+      "region": "us-east-2",
+      "served_model": "converse/amazon.nova-lite-v1:0",
+      "prompt_tokens": 99,
+      "completion_tokens": 2,
+      "cost_usd": 6.42e-06,
+      "latency_ms": 371
+     }
+    ],
+    "spans": [
+     {
+      "name": "chat larkspur-chat",
+      "trace_id": "bfd8a29fb80447f5bf1ceb2899434154",
+      "span_id": "5568d13339ab9cf6",
+      "parent_span_id": null,
+      "kind": "CLIENT",
+      "start": "2026-11-09T09:51:56.416936+00:00",
+      "end": "2026-11-09T09:51:56.788125+00:00",
+      "status": "UNSET",
+      "status_description": null,
+      "attributes": {
+       "gen_ai.operation.name": "chat",
+       "gen_ai.request.model": "larkspur-chat",
+       "gen_ai.response.model": "converse/amazon.nova-lite-v1:0",
+       "gen_ai.usage.input_tokens": 99,
+       "gen_ai.usage.output_tokens": 2,
+       "larkspur.component": "gateway",
+       "larkspur.trace_id": "bfd8a29fb80447f5bf1ceb2899434154",
+       "larkspur.workflow": "w2-ops-assistant",
+       "larkspur.data_class": "internal",
+       "larkspur.served_alias": "larkspur-chat",
+       "larkspur.deployment": "nova-lite-us",
+       "larkspur.region": "us-east-2",
+       "larkspur.fallback": false,
+       "larkspur.cost_usd": 6.42e-06
+      },
+      "events": [],
+      "resource": {
+       "telemetry.sdk.language": "python",
+       "telemetry.sdk.name": "opentelemetry",
+       "telemetry.sdk.version": "1.45.1",
+       "service.instance.id": "6ddd931a-1f5e-41ae-a6e1-613e2f2fa14a",
+       "service.name": "gateway",
+       "service.namespace": "larkspur-lab-ch05"
+      },
+      "scope": "larkspur.lab.ch05"
+     }
+    ]
+   },
+   "record_shape": {
+    "keys": [
+     "accountId",
+     "identity",
+     "input",
+     "modelId",
+     "operation",
+     "output",
+     "region",
+     "requestId",
+     "requestMetadata",
+     "schemaType",
+     "schemaVersion",
+     "timestamp"
+    ],
+    "input_keys": [
+     "inputBodyJson",
+     "inputContentType",
+     "inputTokenCount"
+    ],
+    "output_keys": [
+     "outputBodyJson",
+     "outputContentType",
+     "outputTokenCount"
+    ],
+    "request_metadata": {
+     "workflow": "w2-ops-assistant",
+     "trace_id": "bfd8a29fb80447f5bf1ceb2899434154"
+    },
+    "inference_region": null,
+    "region": "us-east-2",
+    "model_id": "amazon.nova-lite-v1:0",
+    "operation": "Converse",
+    "request_id": "926f089c-7558-4cbf-826e-cf635a6df773",
+    "text_fields_present": [
+     "inputBodyJson",
+     "outputBodyJson"
+    ],
+    "input_token_count": 99,
+    "output_token_count": 2
+   }
+  },
+  "us_profile": {
+   "path": "the SDK's Converse in us-east-2 on us.amazon.nova-lite-v1:0, with the same requestMetadata",
+   "call": {
+    "ok": true,
+    "started": "2026-11-09T09:52:09.807+00:00",
+    "region_called": "us-east-2",
+    "model_id": "us.amazon.nova-lite-v1:0",
+    "latency_s": 0.55,
+    "request_id": "fdbdd876-8c99-447a-9528-47ef1d400ddc",
+    "usage": {
+     "inputTokens": 8,
+     "outputTokens": 3,
+     "totalTokens": 11
+    },
+    "metrics": {
+     "latencyMs": 302
+    },
+    "stop_reason": "end_turn",
+    "text": "Ready."
+   },
+   "log": {
+    "found": {
+     "record": {
+      "seen_after_s": 11.289,
+      "log_timestamp_ms": 1794217931000,
+      "ingestion_ms": 1794217934724,
+      "record": {
+       "timestamp": "2026-11-09T09:52:11Z",
+       "accountId": "<account>",
+       "region": "us-east-2",
+       "requestId": "fdbdd876-8c99-447a-9528-47ef1d400ddc",
+       "operation": "Converse",
+       "modelId": "us.amazon.nova-lite-v1:0",
+       "requestMetadata": {
+        "workflow": "w2-ops-assistant",
+        "trace_id": "21e37613001e4962af4e937a4d9d9daa"
+       },
+       "input": {
+        "inputContentType": "application/json",
+        "inputBodyJson": {
+         "messages": [
+          {
+           "role": "user",
+           "content": [
+            {
+             "text": "Reply with the single word: ready."
+            }
+           ]
+          }
+         ],
+         "inferenceConfig": {
+          "maxTokens": 20,
+          "temperature": 0.0
+         }
+        },
+        "inputTokenCount": 8
+       },
+       "output": {
+        "outputContentType": "application/json",
+        "outputBodyJson": {
+         "output": {
+          "message": {
+           "role": "assistant",
+           "content": [
+            {
+             "text": "Ready."
+            }
+           ]
+          }
+         },
+         "stopReason": "end_turn",
+         "metrics": {
+          "latencyMs": 302
+         },
+         "usage": {
+          "inputTokens": 8,
+          "outputTokens": 3,
+          "totalTokens": 11
+         }
+        },
+        "outputTokenCount": 3
+       },
+       "identity": {
+        "arn": "arn:aws:iam::<account>:user/<user>"
+       },
+       "inferenceRegion": "us-west-2",
+       "schemaVersion": "1.0",
+       "schemaType": "ModelInvocationLog"
+      }
+     }
+    },
+    "missing": [],
+    "polled_s": 11.289
+   },
+   "record_shape": {
+    "keys": [
+     "accountId",
+     "identity",
+     "inferenceRegion",
+     "input",
+     "modelId",
+     "operation",
+     "output",
+     "region",
+     "requestId",
+     "requestMetadata",
+     "schemaType",
+     "schemaVersion",
+     "timestamp"
+    ],
+    "input_keys": [
+     "inputBodyJson",
+     "inputContentType",
+     "inputTokenCount"
+    ],
+    "output_keys": [
+     "outputBodyJson",
+     "outputContentType",
+     "outputTokenCount"
+    ],
+    "request_metadata": {
+     "workflow": "w2-ops-assistant",
+     "trace_id": "21e37613001e4962af4e937a4d9d9daa"
+    },
+    "inference_region": "us-west-2",
+    "region": "us-east-2",
+    "model_id": "us.amazon.nova-lite-v1:0",
+    "operation": "Converse",
+    "request_id": "fdbdd876-8c99-447a-9528-47ef1d400ddc",
+    "text_fields_present": [
+     "inputBodyJson",
+     "outputBodyJson"
+    ],
+    "input_token_count": 8,
+    "output_token_count": 3
+   }
+  },
+  "text_delivery_off_again": {
+   "text_data_delivery_enabled": false,
+   "at": "2026-11-09T09:52:21.352+00:00"
+  },
+  "ended": "2026-11-09T09:52:21.352+00:00"
+ },
+ "first_run": {
+  "note": "The first run of cloud/bedrock_calls.py calls, before the Canada call was moved under chapter 6's manifest, made the three us-east-2 calls as well; their tokens, from that run's console output, count in the spend estimate. Its Canada attempt was refused by the gateway under chapter 5's manifest and made no model call.",
+  "started": "2026-11-09T09:47:40+00:00",
+  "us_east_2_calls": {
+   "us_text_off": {
+    "prompt_tokens": 99,
+    "completion_tokens": 2
+   },
+   "us_text_on": {
+    "prompt_tokens": 99,
+    "completion_tokens": 2
+   },
+   "us_profile": {
+    "input_tokens": 8,
+    "output_tokens": 3,
+    "inference_region": "us-west-2"
+   }
+  }
+ },
+ "cloudtrail": {
+  "polled_s": 0.714,
+  "events_in_window": 3,
+  "ours": {
+   "us_text_off": {
+    "found": true,
+    "event": {
+     "event_time": "2026-11-09T09:51:46Z",
+     "event_name": "Converse",
+     "aws_region": "us-east-2",
+     "request_id": "7c1054fa-7470-4db0-a97a-1a93d377c1e3",
+     "ours": true,
+     "error_code": null,
+     "model_id": "amazon.nova-lite-v1:0",
+     "additional_event_data": {
+      "inputTokens": 99,
+      "outputTokens": 2
+     },
+     "user_identity_type": "IAMUser"
+    },
+    "inference_region_cloudtrail": null,
+    "inference_region_log": null,
+    "request_id_matches_log": true
+   },
+   "us_text_on": {
+    "found": true,
+    "event": {
+     "event_time": "2026-11-09T09:51:57Z",
+     "event_name": "Converse",
+     "aws_region": "us-east-2",
+     "request_id": "926f089c-7558-4cbf-826e-cf635a6df773",
+     "ours": true,
+     "error_code": null,
+     "model_id": "amazon.nova-lite-v1:0",
+     "additional_event_data": {
+      "inputTokens": 99,
+      "outputTokens": 2
+     },
+     "user_identity_type": "IAMUser"
+    },
+    "inference_region_cloudtrail": null,
+    "inference_region_log": null,
+    "request_id_matches_log": true
+   },
+   "us_profile": {
+    "found": true,
+    "event": {
+     "event_time": "2026-11-09T09:52:11Z",
+     "event_name": "Converse",
+     "aws_region": "us-east-2",
+     "request_id": "fdbdd876-8c99-447a-9528-47ef1d400ddc",
+     "ours": true,
+     "error_code": null,
+     "model_id": "us.amazon.nova-lite-v1:0",
+     "additional_event_data": {
+      "inferenceRegion": "us-west-2",
+      "inputTokens": 8,
+      "outputTokens": 3
+     },
+     "user_identity_type": "IAMUser"
+    },
+    "inference_region_cloudtrail": "us-west-2",
+    "inference_region_log": "us-west-2",
+    "request_id_matches_log": true
+   }
+  }
+ }
+}

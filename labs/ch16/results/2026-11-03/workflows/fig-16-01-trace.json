@@ -1,0 +1,703 @@
+{
+  "answer": "The **claims\u2011api** deployment is not fully healthy.  \nIn the last 5\u202fminutes it has 3 desired pods, but only 2 are ready.  \nOne pod (`claims-api-7d9f8b6c4-t8w2c`) is in `CrashLoopBackOff` with 7 restarts.  \nThe other two pods are running with no restarts.  \nThis indicates a health issue with the failing pod.  \nFor anything the assistant can't see, ask the team that owns the service, or the incident commander during an incident. Reference 3601c1d0.",
+  "at_config_share": {
+    "kept": false,
+    "percent": 10.0,
+    "policy": null
+  },
+  "case": "w2-01",
+  "duration_ms": 2580.15,
+  "figure": "fig-16-01",
+  "join": [
+    "trace 3601c1d046e346ff8c20b5d7c08e6c9d",
+    "",
+    "harness log: 5 records",
+    "  {\"ts\": \"2026-11-03T21:22:28.773+00:00\", \"event\": \"tools_verified\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"case\": \"w2-01\", \"persona\": \"oncall.engineer\", \"server\": \"kubernetes-mcp\", \"tools\": {\"get_pod_status\": \"c64470f5a52b\", \"get_recent_alerts\": \"502afe3a8c2d\", \"get_recent_events\": \"cc174bce993e\", \"get_pod_logs\": \"f5984552e9c3\"}, \"lock\": \"workflows/w2-ops-assistant/servers/kubernetes.lock.json\"}",
+    "  {\"ts\": \"2026-11-03T21:22:28.787+00:00\", \"event\": \"tools_verified\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"case\": \"w2-01\", \"persona\": \"oncall.engineer\", \"server\": \"metrics-mcp\", \"tools\": {\"query_metric\": \"0fa1a6df5c5d\"}, \"lock\": \"workflows/w2-ops-assistant/servers/metrics.lock.json\"}",
+    "  {\"ts\": \"2026-11-03T21:22:28.789+00:00\", \"event\": \"tools_verified\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"case\": \"w2-01\", \"persona\": \"oncall.engineer\", \"server\": \"logs-mcp\", \"tools\": {\"search_logs\": \"cdeef8c373df\"}, \"lock\": \"workflows/w2-ops-assistant/servers/logs.lock.json\"}",
+    "  {\"ts\": \"2026-11-03T21:22:29.944+00:00\", \"event\": \"tool_call\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"case\": \"w2-01\", \"persona\": \"oncall.engineer\", \"tool\": \"get_pod_status\", \"args\": {\"service\": \"claims-api\"}, \"transport\": \"http\", \"ok\": true}",
+    "  {\"ts\": \"2026-11-03T21:22:31.264+00:00\", \"event\": \"answer\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"case\": \"w2-01\", \"persona\": \"oncall.engineer\", \"refused\": false, \"answer\": \"The **claims\u2011api** deployment is not fully healthy.  \\nIn the last 5\u202fminutes it has 3 desired pods, but only 2 are ready.  \\nOne pod (`claims-api-7d9f8b6c4-t8w2c`) is in `CrashLoopBackOff` with 7 restarts.  \\nThe other two pods are running with no restarts.  \\nThis indicates a health issue with the failing pod.  \\nFor anything the assistant can't see, ask the team that owns the service, or the incident commander during an incident. Reference 3601c1d0.\"}",
+    "",
+    "tool server log: 1 record",
+    "  {\"ts\": \"2026-11-03T21:22:29.872+00:00\", \"event\": \"tool_call\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"trace_source\": \"request\", \"tool\": \"get_pod_status\", \"args\": {\"service\": \"claims-api\"}, \"identity\": \"larkspur-ops-kubernetes-reader\", \"caller\": \"d0e14fb7-ba16-51e9-80c6-8c233ac4c455\", \"transport\": \"streamable-http\", \"ok\": true}",
+    "",
+    "gateway cost lines: 2 records: 2 served, 0.000000 USD, 1,881 tokens in, 198 out",
+    "  {\"ts\": \"2026-11-03T21:22:29.867+00:00\", \"event\": \"call\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"data_class\": \"internal\", \"requested_alias\": \"larkspur-chat\", \"served_alias\": \"larkspur-chat\", \"fallback\": false, \"fallbacks_disabled\": false, \"deployment\": \"local-gpt-oss-20b-chat\", \"region\": \"ca-central-1\", \"served_model\": \"gpt-oss:20b\", \"prompt_tokens\": 848, \"completion_tokens\": 42, \"cost_usd\": 0.0, \"latency_ms\": 585}",
+    "  {\"ts\": \"2026-11-03T21:22:31.264+00:00\", \"event\": \"call\", \"trace_id\": \"3601c1d046e346ff8c20b5d7c08e6c9d\", \"workflow\": \"w2-ops-assistant\", \"data_class\": \"internal\", \"requested_alias\": \"larkspur-chat\", \"served_alias\": \"larkspur-chat\", \"fallback\": false, \"fallbacks_disabled\": false, \"deployment\": \"local-gpt-oss-20b-chat\", \"region\": \"ca-central-1\", \"served_model\": \"gpt-oss:20b\", \"prompt_tokens\": 1033, \"completion_tokens\": 156, \"cost_usd\": 0.0, \"latency_ms\": 1097}",
+    "",
+    "spans: 19 kept by share-of-the-rest, at a share of 1",
+    "  invoke_agent w2-harness  [w2-harness]  +0 ms, 2580 ms  (kept at a share of 1)",
+    "    MCP send server/discover  [w2-harness]  +89 ms, 0 ms",
+    "      server/discover  [larkspur-ops-kubernetes]  +89 ms, 0 ms",
+    "    MCP send tools/list  [w2-harness]  +89 ms, 0 ms",
+    "      tools/list  [larkspur-ops-kubernetes]  +89 ms, 0 ms",
+    "    MCP send server/discover  [w2-harness]  +89 ms, 11 ms",
+    "      server/discover  [larkspur-ops-metrics]  +89 ms, 11 ms",
+    "    MCP send tools/list  [w2-harness]  +99 ms, 2 ms",
+    "      tools/list  [larkspur-ops-metrics]  +101 ms, 0 ms",
+    "    MCP send server/discover  [w2-harness]  +103 ms, 2 ms",
+    "      server/discover  [larkspur-ops-logs]  +105 ms, 0 ms",
+    "    MCP send tools/list  [w2-harness]  +105 ms, 0 ms",
+    "      tools/list  [larkspur-ops-logs]  +105 ms, 0 ms",
+    "    chat larkspur-chat  [gateway]  +595 ms, 585 ms",
+    "    execute_tool get_pod_status  [w2-harness]  +1182 ms, 78 ms",
+    "      MCP send tools/call get_pod_status  [w2-harness]  +1182 ms, 8 ms",
+    "        tools/call get_pod_status  [larkspur-ops-kubernetes]  +1182 ms, 5 ms",
+    "          execute_tool get_pod_status  [larkspur-ops-kubernetes]  +1188 ms, 0 ms",
+    "    chat larkspur-chat  [gateway]  +1479 ms, 1097 ms"
+  ],
+  "kept_by": [
+    "share-of-the-rest"
+  ],
+  "model": "gpt-oss-20b",
+  "model_calls": 2,
+  "question": "Is claims-api healthy?",
+  "share_recorded": [
+    1.0
+  ],
+  "source": "W2's golden set on gpt-oss-20b through chapter 5's gateway and chapter 16's pinned Collector, step 3b: the first case in the set's order with two model calls and one read that passed, chapter 3's median run (ch03:58). It replaces step 3's stand-in, a run of chapter 5's skeleton with its rule model.",
+  "spans": [
+    {
+      "attributes": {
+        "gen_ai.agent.name": "w2-harness",
+        "gen_ai.operation.name": "invoke_agent",
+        "gen_ai.request.model": "larkspur-chat",
+        "larkspur.refused": false
+      },
+      "duration_ms": 2580.15,
+      "kind": "INTERNAL",
+      "name": "invoke_agent w2-harness",
+      "parent_span_id": null,
+      "service": "w2-harness",
+      "span_id": "4ceea5f1634fc288",
+      "start_ms": 0.0,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 0.0,
+      "kind": "CLIENT",
+      "name": "MCP send server/discover",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "bef3f93f11ad0400",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 0.0,
+      "kind": "CLIENT",
+      "name": "MCP send tools/list",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "53b5cdf45aa56e1e",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 0.0,
+      "kind": "SERVER",
+      "name": "server/discover",
+      "parent_span_id": "bef3f93f11ad0400",
+      "service": "larkspur-ops-kubernetes",
+      "span_id": "551ff1f717e3287d",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 0.0,
+      "kind": "SERVER",
+      "name": "tools/list",
+      "parent_span_id": "53b5cdf45aa56e1e",
+      "service": "larkspur-ops-kubernetes",
+      "span_id": "83a760d99cd7b499",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 10.693,
+      "kind": "CLIENT",
+      "name": "MCP send server/discover",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "f2de79e504318514",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 10.693,
+      "kind": "SERVER",
+      "name": "server/discover",
+      "parent_span_id": "f2de79e504318514",
+      "service": "larkspur-ops-metrics",
+      "span_id": "7ad00fb10f7d6b07",
+      "start_ms": 88.575,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 1.702,
+      "kind": "CLIENT",
+      "name": "MCP send tools/list",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "a9a5816683079d60",
+      "start_ms": 99.268,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 0.0,
+      "kind": "SERVER",
+      "name": "tools/list",
+      "parent_span_id": "a9a5816683079d60",
+      "service": "larkspur-ops-metrics",
+      "span_id": "35a5efe2f59f755e",
+      "start_ms": 100.97,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 2.003,
+      "kind": "CLIENT",
+      "name": "MCP send server/discover",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "df143b24e62b90dd",
+      "start_ms": 102.713,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 0.0,
+      "kind": "CLIENT",
+      "name": "MCP send tools/list",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "59a0c478b4214d8f",
+      "start_ms": 104.716,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "server/discover"
+      },
+      "duration_ms": 0.0,
+      "kind": "SERVER",
+      "name": "server/discover",
+      "parent_span_id": "df143b24e62b90dd",
+      "service": "larkspur-ops-logs",
+      "span_id": "0f5a593d53286e57",
+      "start_ms": 104.716,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/list"
+      },
+      "duration_ms": 0.0,
+      "kind": "SERVER",
+      "name": "tools/list",
+      "parent_span_id": "59a0c478b4214d8f",
+      "service": "larkspur-ops-logs",
+      "span_id": "ec5cf0dd37231716",
+      "start_ms": 104.716,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "larkspur-chat",
+        "gen_ai.response.model": "gpt-oss:20b",
+        "gen_ai.usage.input_tokens": 848,
+        "gen_ai.usage.output_tokens": 42,
+        "larkspur.cost_usd": 0,
+        "larkspur.data_class": "internal",
+        "larkspur.deployment": "local-gpt-oss-20b-chat",
+        "larkspur.fallback": false,
+        "larkspur.region": "ca-central-1",
+        "larkspur.workflow": "w2-ops-assistant"
+      },
+      "duration_ms": 585.268,
+      "kind": "CLIENT",
+      "name": "chat larkspur-chat",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "gateway",
+      "span_id": "fb93a0fa07f8dd09",
+      "start_ms": 594.617,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "get_pod_status",
+        "mcp.method.name": "tools/call"
+      },
+      "duration_ms": 5.198,
+      "kind": "SERVER",
+      "name": "tools/call get_pod_status",
+      "parent_span_id": "35df54f5742b9ef7",
+      "service": "larkspur-ops-kubernetes",
+      "span_id": "0064f65d70da2b3e",
+      "start_ms": 1182.399,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "mcp.method.name": "tools/call"
+      },
+      "duration_ms": 7.755,
+      "kind": "CLIENT",
+      "name": "MCP send tools/call get_pod_status",
+      "parent_span_id": "8cf945946e3ef943",
+      "service": "w2-harness",
+      "span_id": "35df54f5742b9ef7",
+      "start_ms": 1182.399,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "get_pod_status"
+      },
+      "duration_ms": 77.763,
+      "kind": "INTERNAL",
+      "name": "execute_tool get_pod_status",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "w2-harness",
+      "span_id": "8cf945946e3ef943",
+      "start_ms": 1182.399,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "gen_ai.operation.name": "execute_tool",
+        "gen_ai.tool.name": "get_pod_status",
+        "larkspur.identity": "larkspur-ops-kubernetes-reader"
+      },
+      "duration_ms": 0.0,
+      "kind": "INTERNAL",
+      "name": "execute_tool get_pod_status",
+      "parent_span_id": "0064f65d70da2b3e",
+      "service": "larkspur-ops-kubernetes",
+      "span_id": "8d8dfe566c244833",
+      "start_ms": 1187.597,
+      "status": "UNSET"
+    },
+    {
+      "attributes": {
+        "gen_ai.operation.name": "chat",
+        "gen_ai.request.model": "larkspur-chat",
+        "gen_ai.response.model": "gpt-oss:20b",
+        "gen_ai.usage.input_tokens": 1033,
+        "gen_ai.usage.output_tokens": 156,
+        "larkspur.cost_usd": 0,
+        "larkspur.data_class": "internal",
+        "larkspur.deployment": "local-gpt-oss-20b-chat",
+        "larkspur.fallback": false,
+        "larkspur.region": "ca-central-1",
+        "larkspur.workflow": "w2-ops-assistant"
+      },
+      "duration_ms": 1097.38,
+      "kind": "CLIENT",
+      "name": "chat larkspur-chat",
+      "parent_span_id": "4ceea5f1634fc288",
+      "service": "gateway",
+      "span_id": "6a5722a9c246320a",
+      "start_ms": 1478.896,
+      "status": "UNSET"
+    }
+  ],
+  "stores": [
+    {
+      "events": [
+        "tools_verified",
+        "tools_verified",
+        "tools_verified",
+        "tool_call",
+        "answer"
+      ],
+      "key": "trace_id on every line",
+      "records": 5,
+      "store": "harness log"
+    },
+    {
+      "identity": [
+        "larkspur-ops-kubernetes-reader"
+      ],
+      "key": "trace_id from the call's _meta",
+      "records": 1,
+      "store": "tool servers' logs"
+    },
+    {
+      "input_tokens": 1881,
+      "key": "trace_id from the request's metadata",
+      "latency_ms": [
+        585,
+        1097
+      ],
+      "output_tokens": 198,
+      "records": 2,
+      "store": "gateway cost lines"
+    },
+    {
+      "key": "the trace id itself",
+      "records": 19,
+      "store": "span file (the Collector)"
+    },
+    {
+      "key": "the trace id itself",
+      "records": null,
+      "store": "CloudWatch (step 7)"
+    },
+    {
+      "key": "the trace id itself",
+      "records": null,
+      "store": "Langfuse (step 7)"
+    },
+    {
+      "key": "requestMetadata.trace_id",
+      "records": null,
+      "store": "model invocation log (step 7)"
+    },
+    {
+      "key": "the role session name, <object id>.<first 16 hex>",
+      "records": null,
+      "store": "CloudTrail (step 7)"
+    }
+  ],
+  "tool_calls": 1,
+  "trace_id": "3601c1d046e346ff8c20b5d7c08e6c9d",
+  "tree": [
+    {
+      "attributes": {
+        "gen_ai.agent.name": "w2-harness",
+        "gen_ai.operation.name": "invoke_agent",
+        "gen_ai.request.model": "larkspur-chat",
+        "larkspur.refused": false
+      },
+      "children": [
+        {
+          "attributes": {
+            "mcp.method.name": "server/discover"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "server/discover"
+              },
+              "children": [],
+              "duration_ms": 0.0,
+              "kind": "SERVER",
+              "name": "server/discover",
+              "parent_span_id": "bef3f93f11ad0400",
+              "service": "larkspur-ops-kubernetes",
+              "span_id": "551ff1f717e3287d",
+              "start_ms": 88.575,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 0.0,
+          "kind": "CLIENT",
+          "name": "MCP send server/discover",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "bef3f93f11ad0400",
+          "start_ms": 88.575,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "mcp.method.name": "tools/list"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "tools/list"
+              },
+              "children": [],
+              "duration_ms": 0.0,
+              "kind": "SERVER",
+              "name": "tools/list",
+              "parent_span_id": "53b5cdf45aa56e1e",
+              "service": "larkspur-ops-kubernetes",
+              "span_id": "83a760d99cd7b499",
+              "start_ms": 88.575,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 0.0,
+          "kind": "CLIENT",
+          "name": "MCP send tools/list",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "53b5cdf45aa56e1e",
+          "start_ms": 88.575,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "mcp.method.name": "server/discover"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "server/discover"
+              },
+              "children": [],
+              "duration_ms": 10.693,
+              "kind": "SERVER",
+              "name": "server/discover",
+              "parent_span_id": "f2de79e504318514",
+              "service": "larkspur-ops-metrics",
+              "span_id": "7ad00fb10f7d6b07",
+              "start_ms": 88.575,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 10.693,
+          "kind": "CLIENT",
+          "name": "MCP send server/discover",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "f2de79e504318514",
+          "start_ms": 88.575,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "mcp.method.name": "tools/list"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "tools/list"
+              },
+              "children": [],
+              "duration_ms": 0.0,
+              "kind": "SERVER",
+              "name": "tools/list",
+              "parent_span_id": "a9a5816683079d60",
+              "service": "larkspur-ops-metrics",
+              "span_id": "35a5efe2f59f755e",
+              "start_ms": 100.97,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 1.702,
+          "kind": "CLIENT",
+          "name": "MCP send tools/list",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "a9a5816683079d60",
+          "start_ms": 99.268,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "mcp.method.name": "server/discover"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "server/discover"
+              },
+              "children": [],
+              "duration_ms": 0.0,
+              "kind": "SERVER",
+              "name": "server/discover",
+              "parent_span_id": "df143b24e62b90dd",
+              "service": "larkspur-ops-logs",
+              "span_id": "0f5a593d53286e57",
+              "start_ms": 104.716,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 2.003,
+          "kind": "CLIENT",
+          "name": "MCP send server/discover",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "df143b24e62b90dd",
+          "start_ms": 102.713,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "mcp.method.name": "tools/list"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "tools/list"
+              },
+              "children": [],
+              "duration_ms": 0.0,
+              "kind": "SERVER",
+              "name": "tools/list",
+              "parent_span_id": "59a0c478b4214d8f",
+              "service": "larkspur-ops-logs",
+              "span_id": "ec5cf0dd37231716",
+              "start_ms": 104.716,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 0.0,
+          "kind": "CLIENT",
+          "name": "MCP send tools/list",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "59a0c478b4214d8f",
+          "start_ms": 104.716,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "gen_ai.operation.name": "chat",
+            "gen_ai.request.model": "larkspur-chat",
+            "gen_ai.response.model": "gpt-oss:20b",
+            "gen_ai.usage.input_tokens": 848,
+            "gen_ai.usage.output_tokens": 42,
+            "larkspur.cost_usd": 0,
+            "larkspur.data_class": "internal",
+            "larkspur.deployment": "local-gpt-oss-20b-chat",
+            "larkspur.fallback": false,
+            "larkspur.region": "ca-central-1",
+            "larkspur.workflow": "w2-ops-assistant"
+          },
+          "children": [],
+          "duration_ms": 585.268,
+          "kind": "CLIENT",
+          "name": "chat larkspur-chat",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "gateway",
+          "span_id": "fb93a0fa07f8dd09",
+          "start_ms": 594.617,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "gen_ai.operation.name": "execute_tool",
+            "gen_ai.tool.name": "get_pod_status"
+          },
+          "children": [
+            {
+              "attributes": {
+                "mcp.method.name": "tools/call"
+              },
+              "children": [
+                {
+                  "attributes": {
+                    "gen_ai.operation.name": "execute_tool",
+                    "gen_ai.tool.name": "get_pod_status",
+                    "mcp.method.name": "tools/call"
+                  },
+                  "children": [
+                    {
+                      "attributes": {
+                        "gen_ai.operation.name": "execute_tool",
+                        "gen_ai.tool.name": "get_pod_status",
+                        "larkspur.identity": "larkspur-ops-kubernetes-reader"
+                      },
+                      "children": [],
+                      "duration_ms": 0.0,
+                      "kind": "INTERNAL",
+                      "name": "execute_tool get_pod_status",
+                      "parent_span_id": "0064f65d70da2b3e",
+                      "service": "larkspur-ops-kubernetes",
+                      "span_id": "8d8dfe566c244833",
+                      "start_ms": 1187.597,
+                      "status": "UNSET"
+                    }
+                  ],
+                  "duration_ms": 5.198,
+                  "kind": "SERVER",
+                  "name": "tools/call get_pod_status",
+                  "parent_span_id": "35df54f5742b9ef7",
+                  "service": "larkspur-ops-kubernetes",
+                  "span_id": "0064f65d70da2b3e",
+                  "start_ms": 1182.399,
+                  "status": "UNSET"
+                }
+              ],
+              "duration_ms": 7.755,
+              "kind": "CLIENT",
+              "name": "MCP send tools/call get_pod_status",
+              "parent_span_id": "8cf945946e3ef943",
+              "service": "w2-harness",
+              "span_id": "35df54f5742b9ef7",
+              "start_ms": 1182.399,
+              "status": "UNSET"
+            }
+          ],
+          "duration_ms": 77.763,
+          "kind": "INTERNAL",
+          "name": "execute_tool get_pod_status",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "w2-harness",
+          "span_id": "8cf945946e3ef943",
+          "start_ms": 1182.399,
+          "status": "UNSET"
+        },
+        {
+          "attributes": {
+            "gen_ai.operation.name": "chat",
+            "gen_ai.request.model": "larkspur-chat",
+            "gen_ai.response.model": "gpt-oss:20b",
+            "gen_ai.usage.input_tokens": 1033,
+            "gen_ai.usage.output_tokens": 156,
+            "larkspur.cost_usd": 0,
+            "larkspur.data_class": "internal",
+            "larkspur.deployment": "local-gpt-oss-20b-chat",
+            "larkspur.fallback": false,
+            "larkspur.region": "ca-central-1",
+            "larkspur.workflow": "w2-ops-assistant"
+          },
+          "children": [],
+          "duration_ms": 1097.38,
+          "kind": "CLIENT",
+          "name": "chat larkspur-chat",
+          "parent_span_id": "4ceea5f1634fc288",
+          "service": "gateway",
+          "span_id": "6a5722a9c246320a",
+          "start_ms": 1478.896,
+          "status": "UNSET"
+        }
+      ],
+      "duration_ms": 2580.15,
+      "kind": "INTERNAL",
+      "name": "invoke_agent w2-harness",
+      "parent_span_id": null,
+      "service": "w2-harness",
+      "span_id": "4ceea5f1634fc288",
+      "start_ms": 0.0,
+      "status": "UNSET"
+    }
+  ],
+  "workflow": "w2-ops-assistant"
+}

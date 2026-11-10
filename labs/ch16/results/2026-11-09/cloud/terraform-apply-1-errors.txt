@@ -1,0 +1,41 @@
+aws_ec2_instance_connect_endpoint.lab: Still creating... [02m20s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [02m30s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [02m40s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [02m50s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [03m00s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [03m10s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [03m20s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Still creating... [03m30s elapsed]
+aws_ec2_instance_connect_endpoint.lab: Creation complete after 3m35s [id=eice-0ffa3543be29c3481]
+Error: creating VPC Security Group Rule
+  with aws_vpc_security_group_ingress_rule.vm_langfuse,
+  on network.tf line 74, in resource "aws_vpc_security_group_ingress_rule" "vm_langfuse":
+  74: resource "aws_vpc_security_group_ingress_rule" "vm_langfuse" {
+operation error EC2: AuthorizeSecurityGroupIngress, https response error
+StatusCode: 400, api error
+InvalidParameterValue: Invalid rule description. Valid descriptions are
+strings less than 256 characters from the following set:  a-zA-Z0-9.
+_-:/()#,@[]+=&;{}!$*
+Error: creating VPC Security Group Rule
+  with aws_vpc_security_group_egress_rule.endpoint_ssh,
+  on network.tf line 90, in resource "aws_vpc_security_group_egress_rule" "endpoint_ssh":
+  90: resource "aws_vpc_security_group_egress_rule" "endpoint_ssh" {
+operation error EC2: AuthorizeSecurityGroupEgress, https response error
+StatusCode: 400, api error
+InvalidParameterValue: Invalid rule description. Valid descriptions are
+strings less than 256 characters from the following set:  a-zA-Z0-9.
+_-:/()#,@[]+=&;{}!$*
+Error: creating VPC Security Group Rule
+  with aws_vpc_security_group_egress_rule.endpoint_langfuse,
+  on network.tf line 99, in resource "aws_vpc_security_group_egress_rule" "endpoint_langfuse":
+  99: resource "aws_vpc_security_group_egress_rule" "endpoint_langfuse" {
+operation error EC2: AuthorizeSecurityGroupEgress, https response error
+StatusCode: 400, api error
+InvalidParameterValue: Invalid rule description. Valid descriptions are
+strings less than 256 characters from the following set:  a-zA-Z0-9.
+_-:/()#,@[]+=&;{}!$*
+Error: creating EC2 Instance: operation error EC2: RunInstances, https response error StatusCode: 400, api error InvalidParameterCombination: The specified instance type is not eligible for Free Tier. For a list of Free Tier instance types, run 'describe-instance-types' with the filter 'free-tier-eligible=true'.
+  with aws_instance.langfuse,
+  on vm.tf line 28, in resource "aws_instance" "langfuse":
+  28: resource "aws_instance" "langfuse" {
+apply exit 1

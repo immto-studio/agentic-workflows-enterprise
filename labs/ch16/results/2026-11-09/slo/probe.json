@@ -1,0 +1,60 @@
+{
+ "simulated": true,
+ "hours": 720,
+ "cases": {
+  "w1": {
+   "case": "gq-14/oncall.engineer",
+   "kept_run": "gpt-oss-20b 2026-10-29",
+   "alias": "larkspur-chat",
+   "data_class": "internal",
+   "input_tokens": 404,
+   "output_tokens": 44,
+   "first_call_seconds": 0.413,
+   "probes": 720,
+   "served": 720,
+   "failed": 0,
+   "tokens_in_month": 322560,
+   "workflow_tokens_in_month": 18918523,
+   "over_workflow_tokens": 0.017,
+   "usd_per_probe": 3.712e-05,
+   "usd_in_month": 0.026726,
+   "priced_at": "nova-lite-ca"
+  },
+  "w3": {
+   "case": "w3-02",
+   "kept_run": "gpt-oss-20b traced/2026-11-03",
+   "alias": "larkspur-chat",
+   "data_class": "confidential",
+   "input_tokens": 981,
+   "output_tokens": 43,
+   "first_call_seconds": 0.436,
+   "probes": 720,
+   "served": 720,
+   "failed": 0,
+   "tokens_in_month": 737280,
+   "workflow_tokens_in_month": 3069407,
+   "over_workflow_tokens": 0.2402,
+   "usd_per_probe": 7.3792e-05,
+   "usd_in_month": 0.05313,
+   "priced_at": "nova-lite-ca"
+  },
+  "w4": {
+   "case": "w4-01",
+   "kept_run": "gpt-oss-20b traced/2026-11-03",
+   "alias": "larkspur-chat",
+   "data_class": "internal",
+   "input_tokens": 200,
+   "output_tokens": 253,
+   "first_call_seconds": 6.989,
+   "probes": 720,
+   "served": 719,
+   "failed": 1,
+   "tokens_in_month": 325707,
+   "workflow_tokens_in_month": 76710,
+   "over_workflow_tokens": 4.246,
+   "usd_per_probe": 7.7568e-05,
+   "usd_in_month": 0.055771,
+   "priced_at": "nova-lite-ca"
+  }
+ }
+}

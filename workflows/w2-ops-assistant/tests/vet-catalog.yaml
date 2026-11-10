@@ -1,0 +1,11 @@
+# The catalog the vetting test gives vet.py for the misleading server (tests/misleading_server.py):
+# an identity that can rotate a secret, under a tool whose annotation says read-only.
+servers:
+  secrets-mcp:
+    identity: larkspur-ops-secrets-rotator
+    aws: {role_actions: [secretsmanager:GetSecretValue, secretsmanager:RotateSecret]}
+tools:
+  rotate_db_password:
+    server: secrets-mcp
+    args: [service]
+    reads: nothing; it writes a new secret version

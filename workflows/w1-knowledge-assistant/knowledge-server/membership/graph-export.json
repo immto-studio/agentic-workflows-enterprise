@@ -1,0 +1,234 @@
+{
+  "source": "Synthetic stand-in for Microsoft Graph, read from the group side. For each object ID in groups.yaml: GET /groups/{id}?$select=id,displayName and GET /groups/{id}/transitiveMembers?$select=id,userPrincipalName,displayName, whose list is flat and holds users, groups, devices and service principals. The last entry is what GET /groups?$filter=displayName eq 'lm-vault-break-glass' also returns: a second group with a tracked name.",
+  "notes": {
+    "oncall.engineer@larkspur.example": "the golden set's persona: an on-call platform engineer",
+    "vault.custodian@larkspur.example": "member for gq-01",
+    "pci.operator@larkspur.example": "member for gq-02",
+    "incident.responder@larkspur.example": "member for gq-03",
+    "ea.lead@larkspur.example": "member for gq-04",
+    "regulatory.liaison@larkspur.example": "member for gq-05",
+    "former.custodian@larkspur.example": "removed from lm-vault-break-glass today: graph-delta.json",
+    "new.custodian@larkspur.example": "added to lm-vault-break-glass today: graph-delta.json",
+    "many.groups@larkspur.example": "in over 200 groups, so a token that listed groups would carry the overage pointer instead",
+    "df8a568d-afc1-59f2-b6d2-6072df7d4cf6": "the lookalike: a security group a member created and named lm-vault-break-glass, with the on-call engineer in it",
+    "bed0c88a-9d6a-54b3-b0de-b269988dc5bc": "a daemon's service principal in a tracked group: never a row in the table",
+    "c1efa3f0-d2d6-59a9-9e60-f574f09f0efa": "a device in a tracked group: never a row in the table"
+  },
+  "groups": [
+    {
+      "id": "0681cfc3-4bd5-55aa-a29c-62f5f9c1304a",
+      "displayName": "lm-all-staff",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.group",
+          "id": "e6d6fb9f-665f-5754-a0df-824132ecd5e9",
+          "displayName": "lm-eng-all"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "d0e14fb7-ba16-51e9-80c6-8c233ac4c455",
+          "userPrincipalName": "oncall.engineer@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "150ae7ac-aad5-55f2-99a4-5a6c1a6e833f",
+          "userPrincipalName": "vault.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "b8629306-a86e-510b-bede-64d5017d894d",
+          "userPrincipalName": "pci.operator@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "4cd23fbd-8358-5a5c-83ce-5fd7f4b8207e",
+          "userPrincipalName": "incident.responder@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "05eab7f9-0e10-594a-b410-36e41b625d20",
+          "userPrincipalName": "ea.lead@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "f1478a09-c370-5841-a2c3-8d5c03a1f0f3",
+          "userPrincipalName": "regulatory.liaison@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "cc091d04-608a-525c-bf24-bdef9ee3fb83",
+          "userPrincipalName": "former.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "c483d1f9-4a9b-595d-91b3-5a491d64c3e4",
+          "userPrincipalName": "new.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "5e3ab547-94b8-5819-b3bf-3c8219d3ca92",
+          "userPrincipalName": "many.groups@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "e6d6fb9f-665f-5754-a0df-824132ecd5e9",
+      "displayName": "lm-eng-all",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "d0e14fb7-ba16-51e9-80c6-8c233ac4c455",
+          "userPrincipalName": "oncall.engineer@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "150ae7ac-aad5-55f2-99a4-5a6c1a6e833f",
+          "userPrincipalName": "vault.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "b8629306-a86e-510b-bede-64d5017d894d",
+          "userPrincipalName": "pci.operator@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "4cd23fbd-8358-5a5c-83ce-5fd7f4b8207e",
+          "userPrincipalName": "incident.responder@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "05eab7f9-0e10-594a-b410-36e41b625d20",
+          "userPrincipalName": "ea.lead@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "f1478a09-c370-5841-a2c3-8d5c03a1f0f3",
+          "userPrincipalName": "regulatory.liaison@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "cc091d04-608a-525c-bf24-bdef9ee3fb83",
+          "userPrincipalName": "former.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "c483d1f9-4a9b-595d-91b3-5a491d64c3e4",
+          "userPrincipalName": "new.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "5e3ab547-94b8-5819-b3bf-3c8219d3ca92",
+          "userPrincipalName": "many.groups@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "9b948a12-69b2-5bb2-83ef-a70538c96c7c",
+      "displayName": "lm-vault-break-glass",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "150ae7ac-aad5-55f2-99a4-5a6c1a6e833f",
+          "userPrincipalName": "vault.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "cc091d04-608a-525c-bf24-bdef9ee3fb83",
+          "userPrincipalName": "former.custodian@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.servicePrincipal",
+          "id": "bed0c88a-9d6a-54b3-b0de-b269988dc5bc",
+          "displayName": "vault-unseal-automation",
+          "appId": "f1415b82-b176-544f-955b-cf1c7fd244cf"
+        }
+      ]
+    },
+    {
+      "id": "18a8b506-715d-5f5b-9ba6-1de5436bd17c",
+      "displayName": "lm-pci-cde-operators",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "b8629306-a86e-510b-bede-64d5017d894d",
+          "userPrincipalName": "pci.operator@larkspur.example"
+        },
+        {
+          "@odata.type": "#microsoft.graph.device",
+          "id": "c1efa3f0-d2d6-59a9-9e60-f574f09f0efa",
+          "displayName": "pci-jump-host-01"
+        }
+      ]
+    },
+    {
+      "id": "bb1b0582-5348-5259-ba5b-be1e6430632e",
+      "displayName": "lm-insider-risk",
+      "transitiveMembers": []
+    },
+    {
+      "id": "de44f471-84bc-54df-99e1-4c7a6b3b4608",
+      "displayName": "lm-ea-leads",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "05eab7f9-0e10-594a-b410-36e41b625d20",
+          "userPrincipalName": "ea.lead@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "2b872f3d-e8b4-58b6-9b67-9e103582019a",
+      "displayName": "lm-security-engineering",
+      "transitiveMembers": []
+    },
+    {
+      "id": "d8548679-f1c4-51af-ab37-6b83822fcb1f",
+      "displayName": "lm-cloud-governance",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "5e3ab547-94b8-5819-b3bf-3c8219d3ca92",
+          "userPrincipalName": "many.groups@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "1e872a82-1133-5821-8dd8-edeca153828c",
+      "displayName": "lm-sec-incident-response",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "4cd23fbd-8358-5a5c-83ce-5fd7f4b8207e",
+          "userPrincipalName": "incident.responder@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "5a1d40ea-e059-5c7d-90e1-0eb0e50dabbc",
+      "displayName": "lm-iam-admins",
+      "transitiveMembers": []
+    },
+    {
+      "id": "53bf0ae2-19a0-5bf5-b2bc-f3af9708e19d",
+      "displayName": "lm-legal-regulatory",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "f1478a09-c370-5841-a2c3-8d5c03a1f0f3",
+          "userPrincipalName": "regulatory.liaison@larkspur.example"
+        }
+      ]
+    },
+    {
+      "id": "df8a568d-afc1-59f2-b6d2-6072df7d4cf6",
+      "displayName": "lm-vault-break-glass",
+      "transitiveMembers": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "d0e14fb7-ba16-51e9-80c6-8c233ac4c455",
+          "userPrincipalName": "oncall.engineer@larkspur.example"
+        }
+      ]
+    }
+  ]
+}

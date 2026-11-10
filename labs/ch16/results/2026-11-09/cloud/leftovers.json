@@ -1,0 +1,37 @@
+{
+ "at": "2026-11-09T10:07:57.300+00:00",
+ "region": "us-east-2",
+ "instances_not_terminated": [],
+ "volumes": 0,
+ "elastic_ips_allocated": 0,
+ "vpcs": 0,
+ "instance_connect_endpoints": [],
+ "iam_roles": {
+  "w3-incident-get-pod-status": {
+   "exists": false
+  },
+  "ch16-cloud-invocation-logging": {
+   "exists": false
+  }
+ },
+ "log_groups": {
+  "/aws/bedrock/model-invocations-ch16": "absent",
+  "aws/spans": "absent",
+  "/aws/application-signals/data": "absent"
+ },
+ "other_log_groups": [],
+ "invocation_logging": false,
+ "xray_destination": {
+  "Destination": "XRay",
+  "Status": "PENDING"
+ },
+ "xray_indexing_percent": [
+  [
+   "Default",
+   0.0
+  ]
+ ],
+ "logs_resource_policies": [],
+ "budgets": [],
+ "sns_topics": []
+}

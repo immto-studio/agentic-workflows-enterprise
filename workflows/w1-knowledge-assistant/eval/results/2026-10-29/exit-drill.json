@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "measured": "2026-10-29",
+    "sqlite": "3.45.3",
+    "sqlite_vec": "v0.1.9",
+    "index": "index/qwen3-embedding-0.6b/fixed.npz"
+  },
+  "chunks_dumped": 189,
+  "dump_and_restore_s": 0.1,
+  "questions": 20,
+  "same_top_five": 20,
+  "differing": [],
+  "hit_at_5_numpy": 20,
+  "hit_at_5_sqlite_vec": 20,
+  "leaks": 0,
+  "passed": true
+}

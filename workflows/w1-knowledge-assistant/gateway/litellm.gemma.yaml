@@ -1,0 +1,62 @@
+# W1's gateway with both chat aliases on gemma4:12b: the second model of the evaluation.
+#
+# larkspur-embed is the embedding model the lab chose by measurement (eval/results/2026-10-29).
+# Both chat aliases sit on gemma4:12b here; litellm.config.yaml puts them on gpt-oss:20b, which is
+# how the evaluation compares the two. On AWS, larkspur-chat would be Nova Lite through the Canada
+# profile and larkspur-chat-restricted the self-hosted model of chapter 9; on a laptop every
+# destination is self-hosted, and model_info says so, because model_info is what the grid reads.
+#
+# All three models are served by the portable Ollama 0.40.13 on port 11435: Ollama 0.22.1 cannot load
+# gemma4:12b, and one server keeps one model family on the GPU. The chat aliases set num_ctx to 16384, as
+# W2 and W5 do for Gemma, because Ollama's default context is 4096 tokens.
+#
+# Run (from workflows/w1-knowledge-assistant/gateway; without --host the proxy listens on all interfaces):
+#   GATEWAY_CONFIG=litellm.gemma.yaml LITELLM_MASTER_KEY=<a local value> litellm --config litellm.gemma.yaml --host 127.0.0.1 --port 4012
+#   (the callbacks read the destinations from GATEWAY_CONFIG, so it names the same file)
+
+model_list:
+  - model_name: larkspur-embed
+    litellm_params:
+      model: ollama/qwen3-embedding:0.6b
+      api_base: http://127.0.0.1:11435
+      input_cost_per_token: 0
+    model_info:
+      id: local-qwen3-embedding
+      mode: embedding
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat
+    litellm_params:
+      model: ollama_chat/gemma4:12b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gemma4-12b-chat
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: ollama_chat/gemma4:12b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gemma4-12b-restricted
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

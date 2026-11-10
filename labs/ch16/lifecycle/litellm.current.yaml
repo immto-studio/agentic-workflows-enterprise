@@ -1,0 +1,44 @@
+# Step 8's gateway before the upgrade: W2's alias map as its own configuration has it, both chat aliases on
+# gpt-oss:20b, served here by the portable Ollama 0.40.13 on 11435, the one server the step runs so that the one GPU
+# holds one model at a time. The remap (lifecycle/remap.py) reads this file and writes the promoted or the restored
+# map beside the run's results; this file stays the starting point. num_ctx asks for a 16k context, as W2's runs do.
+#
+# Run (from workflows/w2-ops-assistant/gateway, so that W2's hooks are importable; the callbacks read the
+# destinations from GATEWAY_CONFIG, so it names this file):
+#   GATEWAY_CONFIG=<this file> LITELLM_MASTER_KEY=<a local value> litellm --config <this file> --host 127.0.0.1 --port 4018
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-chat
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-restricted
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

@@ -1,0 +1,16 @@
+# Prometheus Operator: scrape vLLM's metrics through the allowlist's
+# metrics port, the only port Prometheus may reach (networkpolicy.yaml).
+# The Prometheus instance must select PodMonitors in this namespace;
+# KEDA's trigger (keda-scaledobject.yaml) reads the queue from it.
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: vllm
+  namespace: llm-serving
+spec:
+  selector:
+    matchLabels: {app: vllm}
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      interval: 15s

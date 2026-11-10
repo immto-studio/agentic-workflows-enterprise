@@ -1,0 +1,28 @@
+# The chapter 5 gateway in front of the vLLM deployment of k8s/: the
+# production shape of litellm.config.yaml. Only the deployment entry
+# differs from the Ollama version; the alias, the hooks and the rules
+# are the same. Not run here: there is no cluster in the lab. Lines
+# stay under 72 columns, because the book prints this file.
+model_list:
+  # self-hosted: the only alias Restricted data may reach
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: hosted_vllm/gpt-oss-20b
+      api_base: http://vllm-gpt-oss-20b.llm-serving.svc:8080/v1
+      api_key: os.environ/VLLM_API_KEY
+      input_cost_per_token: 0     # GPU hours are priced by the hour
+      output_cost_per_token: 0
+      timeout: 120
+    model_info:
+      id: vllm-gpt-oss-20b-6cee5e8   # the revision, so the span names it
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks  # the skeleton's rules, unchanged
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

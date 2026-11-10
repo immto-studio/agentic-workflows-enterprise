@@ -1,0 +1,58 @@
+# The error-budget policy (companion #14, O-D12): the lab's proposal for Larkspur, applied to the simulated month
+# by slo/budget_policy.py. Its sources, as fact sheet section 6 quotes them: the SRE book's "If SLO violations occur
+# frequently enough to expend the error budget, releases are temporarily halted", and the workbook's example error
+# budget policy, "This policy is not intended to serve as a punishment for missing SLOs".
+window_days: 30
+budget: >-
+  an SLI's error budget for the window, in events, is 1 minus its target times the valid events it expects in the
+  window at the month's volumes (simulate.expected). It is spent when the window's bad events reach it. Real runs
+  only: the probe's runs never spend a budget.
+agreed_by: >-
+  the workflow's owner and sponsor, as its manifest names them, and the platform team, before the workflow ships at
+  its rung; the policy goes to the board with the manifest, as a change does (chapter 2)
+actions:
+  - id: freeze
+    when: any SLI's budget is spent
+    what: >-
+      changes to the workflow's prompts and models stop: no change to its system prompt or templates, no remap of an
+      alias for it, and no new model in its manifest. Its code, its tools and its data go on changing, and so do the
+      other workflows.
+    except: >-
+      a change that addresses what spent the budget, which the sponsor agrees to in writing, and every security fix
+    decided_by: >-
+      nobody at the time: the freeze follows from the budget, as the owner, the sponsor and the platform team agreed.
+      The owner and the sponsor are told; a dispute goes to the next board meeting.
+    applied_by: >-
+      the platform team's change pipeline, which refuses a manifest or prompt change for a frozen workflow without the
+      sponsor's exception (the pipeline refuses a manifest without a change record already, chapter 5's schema)
+    record: >-
+      a line in the policy's log (policy-actions.jsonl in the month's results): the workflow, the SLI, its budget in
+      events, the bad events that spent it, when, what is frozen, who was told, and when it lifts
+    lifts: when the 30-day window's bad events fall back under every budget
+  - id: rung-down
+    when: the outcome SLI's budget is spent
+    what: >-
+      the workflow moves down one rung through step 4's rung switch (budget/oncall.py rung), which lowers the rung
+      the harness reads before each run and drops every write tool (budget/rungs.py). W3 at rung 3 goes to 2 and
+      proposes what it used to do with an approval; W4 and W5 at rung 2 go to 1 and stop writing their packs and
+      pull requests, which leaves them reading.
+    decided_by: >-
+      the on-call lead, as ch02:163 makes every move down a rung: "an emergency change authorized by the on-call lead,
+      documented within twenty-four hours, and reviewed at the next board meeting"
+    record: >-
+      the change line budget/oncall.py writes to changes.jsonl (the change's number, the lever, the rung before and
+      after, who, when, the time it must be documented by, the review), and the override file the harness reads
+    lifts: >-
+      the workflow climbs back one rung at a time with evidence (ch01:221): chapter 15's release criteria for the rung
+      (labs/ch15/release/criteria.yaml) and the outcome SLI back inside its target over a window
+    no_rung_below: W1 is at rung 0, and neither W1 nor W2 has an outcome SLI
+  - id: incident
+    when: a control is breached (residency, the never-list, the budgets)
+    what: no error budget is spent; the breach is an incident, worked with the playbook's levers (playbook/playbook.yaml)
+    decided_by: the on-call lead on Tomasz's rota
+    record: the incident, and an emergency change for every lever pulled (ch02:163)
+dry_run: >-
+  the month's rung-downs go through budget/oncall.lower_rung into a temporary state folder, and budget/rungs.plan reads
+  each override back as the harness would; nothing outside that folder changes, and the results keep the change line
+  and the plan with the folder's path taken out
+on_call_lead: oncall.lead@larkspur.example

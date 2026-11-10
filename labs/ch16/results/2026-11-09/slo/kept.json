@@ -1,0 +1,856 @@
+{
+ "measured": true,
+ "simulated": false,
+ "what": "the SLIs on the kept runs, every model, as kept",
+ "targets": {
+  "w1": {
+   "success": 0.995,
+   "latency": 0.95,
+   "outcome": null
+  },
+  "w2": {
+   "success": 0.995,
+   "latency": 0.95,
+   "outcome": null
+  },
+  "w3": {
+   "success": 0.95,
+   "latency": 0.95,
+   "outcome": 0.9
+  },
+  "w4": {
+   "success": 0.99,
+   "latency": 0.95,
+   "outcome": 0.9
+  },
+  "w5": {
+   "success": 0.9,
+   "latency": 0.9,
+   "outcome": 0.8
+  }
+ },
+ "thresholds_s": {
+  "w1": 30.0,
+  "w2": 10.0,
+  "w3": 120.0,
+  "w4": 60.0,
+  "w5": 21600.0
+ },
+ "rows": [
+  {
+   "workflow": "w1",
+   "kept_run": "gemma4-12b 2026-11-03",
+   "runs": 25,
+   "ends": {
+    "answer": 21,
+    "refusal": 4
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w1",
+   "kept_run": "gpt-oss-20b 2026-10-29",
+   "runs": 25,
+   "ends": {
+    "answer": 20,
+    "refusal": 5
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w1",
+   "kept_run": "nova-lite 2026-10-29",
+   "runs": 25,
+   "ends": {
+    "answer": 23,
+    "refusal": 2
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 24,
+     "valid": 25,
+     "value": 0.96
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gemma4-12b 2026-11-02",
+   "runs": 25,
+   "ends": {
+    "answer": 20,
+    "refusal": 5
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gpt-oss-20b 2026-11-02",
+   "runs": 25,
+   "ends": {
+    "answer": 21,
+    "refusal": 4
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gpt-oss-20b 2026-11-02 run1",
+   "runs": 20,
+   "ends": {
+    "answer": 11,
+    "refusal": 4,
+    "budget_stop": 5
+   },
+   "slis": {
+    "success": {
+     "good": 15,
+     "valid": 20,
+     "value": 0.75
+    },
+    "latency": {
+     "good": 14,
+     "valid": 15,
+     "value": 0.933333
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gpt-oss-20b 2026-11-02 run2",
+   "runs": 20,
+   "ends": {
+    "answer": 16,
+    "refusal": 3,
+    "error": 1
+   },
+   "slis": {
+    "success": {
+     "good": 19,
+     "valid": 20,
+     "value": 0.95
+    },
+    "latency": {
+     "good": 19,
+     "valid": 19,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gpt-oss-20b 2026-11-02 run3",
+   "runs": 20,
+   "ends": {
+    "answer": 17,
+    "refusal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 20,
+     "valid": 20,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 20,
+     "valid": 20,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w2",
+   "kept_run": "gpt-oss-20b traced/2026-11-03",
+   "runs": 25,
+   "ends": {
+    "answer": 21,
+    "refusal": 4
+   },
+   "slis": {
+    "success": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 25,
+     "valid": 25,
+     "value": 1.0
+    },
+    "outcome": null
+   }
+  },
+  {
+   "workflow": "w3",
+   "kept_run": "gpt-oss-20b 2026-11-02",
+   "runs": 24,
+   "ends": {
+    "answer": 17,
+    "refusal": 1,
+    "proposal": 2,
+    "budget_stop": 4
+   },
+   "slis": {
+    "success": {
+     "good": 20,
+     "valid": 24,
+     "value": 0.833333
+    },
+    "latency": {
+     "good": 20,
+     "valid": 20,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w3",
+   "kept_run": "gpt-oss-20b traced/2026-11-03",
+   "runs": 24,
+   "ends": {
+    "answer": 16,
+    "refusal": 1,
+    "proposal": 3,
+    "budget_stop": 4
+   },
+   "slis": {
+    "success": {
+     "good": 20,
+     "valid": 24,
+     "value": 0.833333
+    },
+    "latency": {
+     "good": 20,
+     "valid": 20,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 2,
+     "valid": 2,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gemma4-12b 2026-11-02",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gpt-oss-20b 2026-11-02",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gpt-oss-20b 2026-11-02/first-run-max-tokens-200",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gpt-oss-20b 2026-11-02/run-before-logs-kept",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gemma4-12b traced/2026-11-03",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w4",
+   "kept_run": "gpt-oss-20b traced/2026-11-03",
+   "runs": 8,
+   "ends": {
+    "proposal": 8
+   },
+   "slis": {
+    "success": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 8,
+     "valid": 8,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gemma4-12b 2026-11-03",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gemma4-12b 2026-11-03/after-review",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gemma4-12b 2026-11-03/first-run-thinking-loop",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gemma4-12b 2026-11-03/step-5b",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gemma4-12b 2026-11-03/step-5c",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03/after-review",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03/first-run-max-tokens-1200",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03/second-run-max-tokens-4096",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03/step-5b",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  },
+  {
+   "workflow": "w5",
+   "kept_run": "gpt-oss-20b 2026-11-03/step-5c",
+   "runs": 3,
+   "ends": {
+    "proposal": 3
+   },
+   "slis": {
+    "success": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 3,
+     "valid": 3,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 1,
+     "valid": 1,
+     "value": 1.0
+    }
+   }
+  }
+ ],
+ "pooled": {
+  "w1": {
+   "ends": {
+    "answer": 64,
+    "refusal": 11
+   },
+   "slis": {
+    "success": {
+     "good": 75,
+     "valid": 75,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 74,
+     "valid": 75,
+     "value": 0.986667
+    },
+    "outcome": null
+   },
+   "seconds_median": 3.51,
+   "seconds_max": 55.55,
+   "decided": 0
+  },
+  "w2": {
+   "ends": {
+    "answer": 106,
+    "refusal": 23,
+    "budget_stop": 5,
+    "error": 1
+   },
+   "slis": {
+    "success": {
+     "good": 129,
+     "valid": 135,
+     "value": 0.955556
+    },
+    "latency": {
+     "good": 128,
+     "valid": 129,
+     "value": 0.992248
+    },
+    "outcome": null
+   },
+   "seconds_median": 2.05,
+   "seconds_max": 19.11,
+   "decided": 0
+  },
+  "w3": {
+   "ends": {
+    "answer": 33,
+    "refusal": 2,
+    "proposal": 5,
+    "budget_stop": 8
+   },
+   "slis": {
+    "success": {
+     "good": 40,
+     "valid": 48,
+     "value": 0.833333
+    },
+    "latency": {
+     "good": 40,
+     "valid": 40,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 2,
+     "valid": 2,
+     "value": 1.0
+    }
+   },
+   "seconds_median": 9.55,
+   "seconds_max": 42.2,
+   "decided": 2
+  },
+  "w4": {
+   "ends": {
+    "proposal": 48
+   },
+   "slis": {
+    "success": {
+     "good": 48,
+     "valid": 48,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 48,
+     "valid": 48,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 0,
+     "valid": 0,
+     "value": null
+    }
+   },
+   "seconds_median": 5.6,
+   "seconds_max": 13.1,
+   "decided": 0
+  },
+  "w5": {
+   "ends": {
+    "proposal": 33
+   },
+   "slis": {
+    "success": {
+     "good": 33,
+     "valid": 33,
+     "value": 1.0
+    },
+    "latency": {
+     "good": 33,
+     "valid": 33,
+     "value": 1.0
+    },
+    "outcome": {
+     "good": 11,
+     "valid": 11,
+     "value": 1.0
+    }
+   },
+   "seconds_median": 55.63,
+   "seconds_max": 714.427,
+   "decided": 11
+  }
+ },
+ "w2_budget_stops": [
+  "w2:gpt-oss-20b:2026-11-02 run1:w2-01",
+  "w2:gpt-oss-20b:2026-11-02 run1:w2-05",
+  "w2:gpt-oss-20b:2026-11-02 run1:w2-08",
+  "w2:gpt-oss-20b:2026-11-02 run1:w2-09",
+  "w2:gpt-oss-20b:2026-11-02 run1:w2-18"
+ ],
+ "incidents": []
+}

@@ -1,0 +1,13 @@
+Success! The configuration is valid.
+
+Terraform v1.13.1
+on windows_amd64
++ provider registry.terraform.io/hashicorp/google v8.9.0
+
+Your version of Terraform is out of date! The latest version
+is 1.17.1. You can update by downloading from https://developer.hashicorp.com/terraform/install
+
+Providers required by configuration:
+.
+└── provider[registry.terraform.io/hashicorp/google] 8.9.0
+

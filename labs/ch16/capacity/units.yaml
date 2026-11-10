@@ -1,0 +1,136 @@
+# Committed capacity as the calculator needs it beside the prices (companion #14, O-D9): what one unit carries,
+# the smallest purchase, the terms and the price each term takes from the dated table, and the on-demand rate the
+# commitment is set against.
+#
+# The prices stay in ledger/prices.yaml, the dated table, where step 2 put section 8.8's committed-capacity lines;
+# section 8.8 holds no committed price the table lacks, so this step adds none. What this file adds are the
+# facts that aren't prices: the unit, the minimum, the burndown, and where each product serves. Each carries the
+# fact sheet's own words, from sections 3 and 4 (pages accessed 2026-10-29) or section 8.8 (read 2026-11-03),
+# and each quote was checked word for word against chapter 16's fact sheet (LINKS.md, chapter 16) on
+# 3 November 2026.
+#
+# The on-demand comparator is a deployment of the dated table, or null with the reason. Section 8.8 quotes no
+# on-demand token rate for Claude Sonnet 4.5, gpt-5.5 or a Gemini model, so three of the four products have none,
+# and the calculator takes it as an input (calculator.py, --on-demand-input and --on-demand-output). The book
+# prints none of these numbers (style guide 12.4).
+month_hours: 730   # the table's month
+year_hours: 8760
+
+products:
+  - id: bedrock-reserved-sonnet-4.5-cac1
+    cloud: aws
+    what: Claude Sonnet 4.5 on Bedrock's Reserved tier, for geographic cross-Region inference, bought in ca-central-1
+    serves: the Canadian geography of the cross-Region profile
+    data_classes: up to Confidential, since the profile stays in Canada (chapter 2's grid)
+    unit:
+      kind: reserved_tpm          # input and output tokens a minute, reserved and priced apart
+      tokens_per_minute: 1000     # the price is per 1K TPM per hour
+    minimum: {input_tpm: 100000, output_tpm: 10000}
+    terms:
+      - {term: 1 month, price: claude-sonnet-4.5-reserved-1month-cac1}
+      - {term: 3 months, price: claude-sonnet-4.5-reserved-3month-cac1}
+    on_demand: null
+    on_demand_reason: >-
+      section 8.8 quotes no on-demand rate for Claude Sonnet 4.5 through the Canadian profile, and the offer file it
+      cites for the Reserved tier holds only the Reserved rows
+    facts:
+      - section: 3
+        date: 2026-10-29
+        quote: 'Reserved tier: "fixed price per 1K tokens-per-minute and are billed monthly", 1 or 3 months, minimum 100,000 input and 10,000 output TPM'
+      - section: 4
+        date: 2026-10-29
+        quote: 'Reserved "targets 99.5% uptime" and "automatically overflows to the Standard tier"'
+      - section: 8.8
+        date: 2026-11-03
+        quote: "Claude Sonnet 4.5's Reserved tier, the only one priced in the offer files, which ca-central-1 sells for geographic cross-Region inference, per 1K tokens a minute per hour, input and output priced apart"
+
+  - id: bedrock-pt-nova-lite-use1
+    cloud: aws
+    what: Nova Lite Provisioned Throughput, bought in us-east-1, the only Region that sells it
+    serves: us-east-1
+    data_classes: >-
+      none of W2's or W3's: us-east-1 is in neither manifest's Regions, and an inference profile can't use
+      Provisioned Throughput, so the Canadian path can't reach it; the grid's counterexample
+    unit:
+      kind: model_unit
+      tokens_per_minute: null     # the fact sheet gives no tokens a model unit carries for Nova Lite
+    minimum: {units: 1}
+    terms:
+      - {term: no commitment, price: nova-lite-pt-nocommit-use1}
+      - {term: 1 month, price: nova-lite-pt-1month-use1}
+      - {term: 6 months, price: nova-lite-pt-6months-use1}
+    on_demand: nova-lite-us
+    on_demand_stand_in: us-east-2's Nova Lite rate stands in for us-east-1's, which the table doesn't hold
+    facts:
+      - section: 4
+        date: 2026-10-29
+        quote: 'Provisioned Throughput: hourly by "Model Units (MUs)", "No commitment", "1 month", "6 months"'
+      - section: 4
+        date: 2026-10-29
+        quote: '"Inference profiles currently don''t support Provisioned Throughput"'
+      - section: 8.8
+        date: 2026-11-03
+        quote: "Nova Lite has no Reserved tier and sells Provisioned Throughput only in us-east-1"
+
+  - id: azure-ptu-gpt-5.5-regional-canadaeast
+    cloud: azure
+    what: Azure's regional provisioned throughput for gpt-5.5 in Canada East
+    serves: Canada East
+    data_classes: up to Confidential, as chapter 8's regional types (chapter 2's grid)
+    unit:
+      kind: normalized_tpm        # input TPM x (1 - cache rate) + output-to-input ratio x output TPM
+      tokens_per_minute: 1200     # gpt-5.5's input TPM per PTU
+      output_weight: 6            # gpt-5.5's output-to-input ratio
+    minimum: {units: 50, increment: 50}
+    terms:
+      - {term: hourly, price: azure-ptu-gpt-5.5-regional-canadaeast, field: per_hour, hours: 1}
+      - {term: 1-month reservation, price: azure-ptu-gpt-5.5-regional-canadaeast, field: per_month_reserved, hours: 730}
+      - {term: 1-year reservation, price: azure-ptu-gpt-5.5-regional-canadaeast, field: per_year_reserved, hours: 8760}
+    on_demand: null
+    on_demand_reason: >-
+      section 8.8 quotes no on-demand rate for gpt-5.5, and the table's Azure rate is gpt-4o's, whose tokens per PTU
+      the fact sheet doesn't give
+    facts:
+      - section: 4
+        date: 2026-10-29
+        quote: '"Normalized TPM = (input TPM × (1 − cache rate)) + (output-to-input ratio × output TPM)", "PTUs required = normalized TPM ÷ Input TPM per PTU" (gpt-5.5 1,200 input TPM per PTU, ratio 6; gpt-6-astra 600 normalized tokens)'
+      - section: 3
+        date: 2026-10-29
+        quote: 'minimums "15" PTU and increments "5" for Global and Data Zone, "50"/"50" for Regional'
+      - section: 3
+        date: 2026-10-29
+        quote: 'PTU: "A PTU represents a fixed amount of model processing capacity", "billed at an hourly rate ($/PTU/hr) … regardless of the number of tokens consumed"'
+
+  - id: google-gsu-gemini-3.6-flash
+    cloud: google
+    what: Google's Provisioned Throughput for Gemini 3.6 Flash, in GSUs, global or in one region
+    serves: the global endpoint, or one region; Montréal has no Provisioned Throughput (ch07:94)
+    data_classes: >-
+      Public on the global endpoint, which offers no data residency; Larkspur's Confidential path in Montréal has
+      no Provisioned Throughput to buy
+    unit:
+      kind: burndown_tps          # tokens a second per GSU, output burning down at its rate
+      tokens_per_second: 675
+      output_weight: 5
+    minimum: {units: 1}           # the fact sheet gives none; the calculator buys whole GSUs, at least one
+    terms:
+      - {term: 1 week, price: google-gsu, field: [per_hour, 1_week, non_global], hours: 1, endpoint: non-global}
+      - {term: 1 month, price: google-gsu, field: [per_hour, 1_month, non_global], hours: 1, endpoint: non-global}
+      - {term: 3 months, price: google-gsu, field: [per_hour, 3_month, non_global], hours: 1, endpoint: non-global}
+      - {term: 1 year, price: google-gsu, field: [per_hour, 1_year, non_global], hours: 1, endpoint: non-global}
+      - {term: 1 week, price: google-gsu, field: [per_hour, 1_week, global], hours: 1, endpoint: global}
+      - {term: 1 month, price: google-gsu, field: [per_hour, 1_month, global], hours: 1, endpoint: global}
+      - {term: 3 months, price: google-gsu, field: [per_hour, 3_month, global], hours: 1, endpoint: global}
+      - {term: 1 year, price: google-gsu, field: [per_hour, 1_year, global], hours: 1, endpoint: global}
+    on_demand: null
+    on_demand_reason: section 8.8 quotes no Gemini token rate, and the table's Gemini entry is null for the same reason
+    facts:
+      - section: 4
+        date: 2026-10-29
+        quote: 'burndown per model (Gemini 3.6 Flash: 675 tokens per second per GSU, output 5, cached input 0.1)'
+      - section: 3
+        date: 2026-10-29
+        quote: '"the discount is applied through a reduced burndown rate", "Unused throughput doesn''t accumulate"'
+      - section: 5
+        date: 2026-10-29
+        quote: 'global endpoints "don''t provide any data residency guarantees"'

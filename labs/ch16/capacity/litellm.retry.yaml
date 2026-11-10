@@ -1,0 +1,44 @@
+# Step 5's router retries: LiteLLM 1.106.6's router alone, to show when it waits for a provider's Retry-After.
+#
+# Fact sheet 8.1 reads the router as waiting only when its model group has no other healthy deployment, and then
+# honouring a Retry-After of up to 60 seconds; otherwise it retries at once, or backs off exponentially from
+# INITIAL_RETRY_DELAY (0.5 s) with up to JITTER (0.75 s) added. Two groups test both sides: `larkspur-chat-single`
+# has one deployment, and `larkspur-chat-pair` has two, tried in `order`, so the first attempt always lands on
+# the deployment the drill throttles. No callback runs here, since chapter 5's rules don't change what the router
+# does between attempts; the outage drill runs them with chapter 5's callback.
+#
+# Run (from labs/ch16/capacity): LITELLM_MASTER_KEY=... CAPACITY_T1_URL=... CAPACITY_T2_URL=... litellm --config
+# litellm.retry.yaml --host 127.0.0.1. capacity/run_drills.py starts everything this needs and stops it again.
+
+model_list:
+  - model_name: larkspur-chat-single
+    litellm_params:
+      model: openai/fake-t1
+      api_base: os.environ/CAPACITY_T1_URL
+      api_key: not-used-by-the-fake
+      timeout: 5
+    model_info: {id: t1-single}
+
+  - model_name: larkspur-chat-pair
+    litellm_params:
+      model: openai/fake-t1
+      api_base: os.environ/CAPACITY_T1_URL
+      api_key: not-used-by-the-fake
+      timeout: 5
+      order: 1
+    model_info: {id: t1-pair}
+
+  - model_name: larkspur-chat-pair
+    litellm_params:
+      model: openai/fake-t2
+      api_base: os.environ/CAPACITY_T2_URL
+      api_key: not-used-by-the-fake
+      timeout: 5
+      order: 2
+    model_info: {id: t2-pair}
+
+router_settings:
+  num_retries: 2
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

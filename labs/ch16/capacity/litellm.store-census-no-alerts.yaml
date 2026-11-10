@@ -1,0 +1,54 @@
+# Step 5b's limiter-cache drill (O-D8): litellm.store-census.yaml without step 4's budget alerts.
+#
+# The same gateway with `alerting` and `alert_types` left out, as litellm.census-no-alerts.yaml leaves them out of
+# step 5's: the proxy keeps no status per request in its in-memory cache. The keys' windows are in the shared store
+# all the same, and `store_hooks.hooks`, which is the lab's own and not one of LiteLLM's alerts, still watches it.
+# Budget alerts by webhook are off here; nothing else differs from litellm.store-census.yaml.
+#
+# Run (from labs/ch16/capacity): as litellm.store-census.yaml. capacity/run_drills.py starts everything this needs.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/BUDGET_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-restricted  # the self-hosted model, chapter 9
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/BUDGET_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  # the key must agree with the tags (ch05:164), then chapter 5's rules, limits, cost line and span
+  callbacks: [binding_hooks.hooks, ch05_hooks.hooks, census_hooks.hooks, store_hooks.hooks]
+  num_retries: 0
+  drop_params: true
+  # a key's 1mo budget resets at midnight on the 1st in this zone; the default is UTC
+  timezone: America/Toronto
+  # the default, written out: a spent budget answers 422, which the harness counts as a budget stop
+  budget_exceeded_status_code: 422
+
+router_settings:
+  redis_host: os.environ/CAPACITY_STORE_HOST
+  redis_port: os.environ/CAPACITY_STORE_PORT
+  redis_password: os.environ/CAPACITY_STORE_PASSWORD
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  database_url: os.environ/DATABASE_URL
+  coordination_redis:
+    host: os.environ/CAPACITY_STORE_HOST
+    port: os.environ/CAPACITY_STORE_PORT
+    password: os.environ/CAPACITY_STORE_PASSWORD

@@ -1,0 +1,22 @@
+{
+  "source": "Synthetic stand-in for GET /groups/delta?$filter=id eq '...' or ...&$select=members on the tracked IDs, from the previous run's deltaLink. members@delta lists direct members only; a removal carries @removed. A member removed by deleting the user doesn't appear at all.",
+  "value": [
+    {
+      "id": "9b948a12-69b2-5bb2-83ef-a70538c96c7c",
+      "members@delta": [
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "cc091d04-608a-525c-bf24-bdef9ee3fb83",
+          "@removed": {
+            "reason": "deleted"
+          }
+        },
+        {
+          "@odata.type": "#microsoft.graph.user",
+          "id": "c483d1f9-4a9b-595d-91b3-5a491d64c3e4"
+        }
+      ]
+    }
+  ],
+  "@odata.deltaLink": "https://graph.microsoft.com/v1.0/groups/delta?$deltatoken=lab-2026-10-29"
+}

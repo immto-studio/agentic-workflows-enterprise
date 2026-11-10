@@ -1,0 +1,27 @@
+# The incident workflow (W3) as it runs on Amazon Bedrock AgentCore in ca-central-1 (chapter 6).
+# It is chapter 5's manifest (labs/ch05/manifest/w3-incident.yaml) with three changes. Two of them
+# grow its scope, and pipeline/scope_check.py refuses them without a change record:
+#   - ca-west-1 in `regions`: the Canada profile that serves larkspur-chat on AWS can process a
+#     request in Calgary as well as in Montréal;
+#   - search_runbooks, the knowledge tool over the runbook corpus.
+# The third narrows it: an `allow` list on restart_deployment, which the policy engine at the tool
+# gateway enforces. Removing the list later, or adding a service to it, is growth again.
+workflow: w3-incident
+owner: tomasz.nowak@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 3
+data_class_max: restricted
+models: [larkspur-chat, larkspur-chat-restricted]
+regions: [ca-central-1, ca-west-1]   # every call of this workflow is served in Canada
+tools:
+  get_pod_status: {args: [service]}
+  get_recent_alerts: {args: [service, minutes]}
+  restart_deployment: {args: [service], writes: true, allow: {service: [claims-api, billing-worker]}}
+  search_runbooks: {args: [query]}
+never:
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 2.00, per_month_usd: 500, requests_per_minute: 60}   # the rate also binds the self-hosted alias, which costs nothing per token
+trace_content: false

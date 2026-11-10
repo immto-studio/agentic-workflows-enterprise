@@ -1,0 +1,98 @@
+{
+ "wait": {
+  "vm": {
+   "instance_id": "i-088b4db94c7bd5213",
+   "endpoint_id": "eice-0ffa3543be29c3481",
+   "availability_zone": "us-east-2a",
+   "instance_type": "m7i-flex.large",
+   "ami_id": "ami-0fc53b217ec1ad816"
+  },
+  "launched": "2026-11-09T09:46:30+00:00",
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "attempts": [
+   {
+    "seconds": 4.508,
+    "returncode": 0,
+    "last_line": "2026-11-09T09:48:29Z"
+   }
+  ],
+  "started": "2026-11-09T09:48:26.348+00:00",
+  "ssh_tunnel": {
+   "local_port": 52487,
+   "opened_after_s": 2.079
+  },
+  "ready": "2026-11-09T09:48:29Z",
+  "ready_after_poll_s": 4.508,
+  "ready_after_launch_s": 119.0,
+  "markers": {
+   "ready": "2026-11-09T09:48:29Z",
+   "pin.txt": "pinned",
+   "versions.txt": "Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2\nDocker Compose version 2.40.3+ds1-0ubuntu1~24.04.1",
+   "timeline.txt": "pull start 2026-11-09T09:47:07Z\npull done 2026-11-09T09:47:47Z\nup issued 2026-11-09T09:48:02Z\nhealthy 2026-11-09T09:48:27Z",
+   "health.json": {
+    "status": "OK",
+    "version": "4.74.0"
+   },
+   "files.sha256": "0f34f0fa6c039b2ba1951d69eba073ed5d75c8a908aa1ca8ef822e83507cec5f  docker-compose.yml\nd55818caf4405b48f63a34e99de54af2158d712296d057ba5b4253927c7b8bf9  docker-compose.override.yml",
+   "ps.txt": "NAME                         IMAGE                                                 COMMAND                  SERVICE           CREATED          STATUS                    PORTS\nlangfuse-clickhouse-1        docker.io/clickhouse/clickhouse-server:26.3.62.3      \"/entrypoint.sh\"         clickhouse        41 seconds ago   Up 32 seconds (healthy)   127.0.0.1:8123->8123/tcp, 127.0.0.1:9000->9000/tcp, 9009/tcp\nlangfuse-langfuse-web-1      docker.langfuse.com/langfuse/langfuse:4.74.0          \"dumb-init -- ./web/…\"   langfuse-web      34 seconds ago   Up 26 seconds             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp\nlangfuse-langfuse-worker-1   docker.langfuse.com/langfuse/langfuse-worker:4.74.0   \"dumb-init -- ./work…\"   langfuse-worker   34 seconds ago   Up 26 seconds             127.0.0.1:3030->3030/tcp\nlangfuse-minio-1             cgr.dev/chainguard/minio                              \"sh -c 'mkdir -p /da…\"   minio             41 seconds ago   Up 32 seconds (healthy)   0.0.0.0:9090->9000/tcp, [::]:9090->9000/tcp, 127.0.0.1:9091->9001/tcp\nlangfuse-postgres-1          docker.io/postgres:17                                 \"docker-entrypoint.s…\"   postgres          41 seconds ago   Up 32 seconds (healthy)   127.0.0.1:5432->5432/tcp\nlangfuse-redis-1             docker.io/redis:7                                     \"docker-entrypoint.s…\"   redis             41 seconds ago   Up 32 seconds (healthy)   127.0.0.1:6379->6379/tcp",
+   "digests.txt": "redis:7 redis@sha256:2e3eb11462c4e3759e6972678dd051d150ff54b1e60714b3c33b701260172a90\ncgr.dev/chainguard/minio:latest cgr.dev/chainguard/minio@sha256:a1ac4589a5f8136b616e667b48a0bea9719bb10bd45799ea946f24bbedfafde4\ndocker.langfuse.com/langfuse/langfuse-worker:4.74.0 docker.langfuse.com/langfuse/langfuse-worker@sha256:d9cf97c0ae7da19f9c4c417d4740d8b3cefc5151722772638f4c17c4b5b67ead\nclickhouse/clickhouse-server:26.3.62.3 clickhouse/clickhouse-server@sha256:de3e47c64078aa196dae2349e048fc98ba81947f651f5c20e06e46baea8ae40a\ndocker.langfuse.com/langfuse/langfuse:4.74.0 docker.langfuse.com/langfuse/langfuse@sha256:f409386b80aa7a77d15b16cf250118d05dab0f4535174f2d4a310ebcf1d7bfc1\npostgres:17 postgres@sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f"
+  },
+  "machine": {
+   "cores": "2",
+   "memory": "Mem:            7776        2976         447          27        4700        4799",
+   "disk": "/dev/root        29G  8.0G   21G  29% /",
+   "uptime": "up 2 minutes",
+   "os": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\""
+  },
+  "log_errors_or_warnings": [],
+  "ended_s": 32.923
+ },
+ "tunnel": {
+  "vm": {
+   "instance_id": "i-088b4db94c7bd5213",
+   "endpoint_id": "eice-0ffa3543be29c3481",
+   "availability_zone": "us-east-2a",
+   "instance_type": "m7i-flex.large",
+   "ami_id": "ami-0fc53b217ec1ad816"
+  },
+  "local_port": 3100,
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "attempts": [
+   {
+    "path": "open-tunnel to port 3000",
+    "tunnel_opened": true,
+    "health": {
+     "ok": false,
+     "error": "ConnectError: [WinError 10061] No connection could be made because the target machine actively refused it"
+    },
+    "seconds": 24.507,
+    "tunnel_log": "2026-11-09 04:50:20,054 - awscli.customizations.ec2instanceconnect.websocket - ERROR - {\"ErrorCode\":\"InvalidParameter\",\"Message\":\"The specified RemotePort is not valid. Specify either 22 or 3389 as the RemotePort and retry your request.\"}\nListening for connections on port 3100.\n[1] Accepted new tcp connection, opening websocket tunnel.\n\nAWS_ERROR_HTTP_WEBSOCKET_UPGRADE_FAILURE: Failed to upgrade HTTP connection to Websocket."
+   },
+   {
+    "path": "open-tunnel to port 22, ssh -L 3000",
+    "health": {
+     "ok": true,
+     "status": 200,
+     "body": {
+      "status": "OK",
+      "version": "4.74.0"
+     }
+    },
+    "seconds": 29.671
+   }
+  ],
+  "started": "2026-11-09T09:50:17.894+00:00",
+  "path": "open-tunnel to port 22, ssh -L 3000",
+  "health": {
+   "ok": true,
+   "status": 200,
+   "body": {
+    "status": "OK",
+    "version": "4.74.0"
+   }
+  },
+  "langfuse_version": "4.74.0",
+  "held_s": 649.815,
+  "stopped_by": "stop file"
+ }
+}

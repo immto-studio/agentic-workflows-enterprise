@@ -1,0 +1,15 @@
+# The models this lab pins, with what Google said about them on 28 October 2026.
+# Sources: "Model versions and lifecycle" and "Data residency" (Gemini Enterprise Agent Platform
+# documentation, both updated 2026-10-28). A test fails when a pinned model is missing here, is
+# not processed in Canada, or retires within 90 days; then the alias or the setting moves first.
+gemini-3.5-flash:
+  use: Memory Bank memory generation (Larkspur writes its own memories; generation stays off)
+  ga: 2026-05-19
+  retires_no_earlier_than: 2027-05-19
+  processed_in_canada: true
+text-multilingual-embedding-002:
+  use: Memory Bank similarity search
+  ga: 2024-05-14
+  retires: 2027-04-01
+  processed_in_canada: true
+  successor_in_canada: none listed on 2026-10-28 (gemini-embedding-001 and gemini-embedding-2 process in the US and EU only)

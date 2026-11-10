@@ -1,0 +1,110 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ChatModelsThroughTheModelGatewayOnly",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock-mantle:*"
+      ],
+      "NotResource": [
+        "arn:aws:bedrock:*::foundation-model/amazon.titan-embed-text-v2:0"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/llm-gateway"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "TheEmbeddingModelForTheGatewayAndKnowledgeBasesOnly",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": [
+        "arn:aws:bedrock:*::foundation-model/amazon.titan-embed-text-v2:0"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/llm-gateway",
+            "arn:aws:iam::*:role/*-knowledge-base"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "TheToolGatewaysChangeThroughThePipelineOnly",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock-agentcore:UpdateGateway",
+        "bedrock-agentcore:DeleteGateway",
+        "bedrock-agentcore:CreateGatewayTarget",
+        "bedrock-agentcore:UpdateGatewayTarget",
+        "bedrock-agentcore:DeleteGatewayTarget",
+        "bedrock-agentcore:PutResourcePolicy",
+        "bedrock-agentcore:DeleteResourcePolicy",
+        "bedrock-agentcore:CreatePolicy",
+        "bedrock-agentcore:UpdatePolicy",
+        "bedrock-agentcore:DeletePolicy",
+        "bedrock-agentcore:UpdatePolicyEngine",
+        "bedrock-agentcore:DeletePolicyEngine"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/platform-pipeline"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "RolesMadeOutsideThePipelineCarryTheBoundary",
+      "Effect": "Deny",
+      "Action": [
+        "iam:CreateRole",
+        "iam:PutRolePermissionsBoundary"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "iam:PermissionsBoundary": "arn:aws:iam::*:policy/*-agent-boundary"
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/platform-pipeline"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "TheBoundaryBelongsToTheBaseline",
+      "Effect": "Deny",
+      "Action": [
+        "iam:CreatePolicyVersion",
+        "iam:SetDefaultPolicyVersion",
+        "iam:DeletePolicyVersion",
+        "iam:DeletePolicy",
+        "iam:DeleteRolePermissionsBoundary"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:policy/*-agent-boundary",
+        "arn:aws:iam::*:role/*"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/platform-pipeline"
+          ]
+        }
+      }
+    }
+  ]
+}

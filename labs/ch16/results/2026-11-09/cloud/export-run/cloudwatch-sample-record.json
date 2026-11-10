@@ -1,0 +1,43 @@
+{
+ "resource": {
+  "attributes": {
+   "telemetry.sdk.language": "python",
+   "service.instance.id": "4eaaecae-09f3-4235-9d78-c1e73fbfaa5f",
+   "service.name": "mcp-server",
+   "telemetry.sdk.version": "1.45.1",
+   "service.namespace": "larkspur-lab-ch05",
+   "larkspur.identity": "larkspur-ops-reader",
+   "telemetry.sdk.name": "opentelemetry"
+  }
+ },
+ "scope": {
+  "name": "mcp-python-sdk",
+  "version": "",
+  "attributes": {
+   "tailsampling.policy": "share-of-the-rest"
+  }
+ },
+ "traceId": "5de3012d83cd461e9d1c74d4cc3259df",
+ "spanId": "191a426c9070fd8a",
+ "parentSpanId": "cb07c4b548576441",
+ "flags": 768,
+ "name": "server/discover",
+ "kind": "SERVER",
+ "startTimeUnixNano": 1794217894243737100,
+ "endTimeUnixNano": 1794217894243737100,
+ "durationNano": 0,
+ "attributes": {
+  "aws.local.service": "mcp-server",
+  "aws.local.operation": "server/discover",
+  "aws.span.kind": "SERVER",
+  "telemetry.extended": "true",
+  "mcp.protocol.version": "2026-07-28",
+  "PlatformType": "Generic",
+  "mcp.method.name": "server/discover",
+  "jsonrpc.request.id": "1",
+  "aws.local.environment": "generic:default"
+ },
+ "status": {
+  "code": "UNSET"
+ }
+}

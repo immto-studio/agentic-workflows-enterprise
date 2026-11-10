@@ -1,0 +1,53 @@
+# Step 4's gateway: chapter 5's aliases and callback, with LiteLLM's database behind them (O-D7).
+#
+# Each workflow calls through a virtual key of its own (budget/keys.py makes them from the manifests): the
+# key's alias and metadata name the workflow, its max_budget is the manifest's per_month_usd, its
+# soft_budget 80 percent of that, and its budget_duration 1mo, a reset at midnight on the 1st. All of it is
+# LiteLLM's MIT core and needs the database. The fake backends' URLs come from the environment, so the
+# drills can put them on free ports; the prices are chapter 5's stand-ins.
+#
+# Run (from labs/ch16/budget, so that the callback modules are importable):
+#   DATABASE_URL=postgresql://... LITELLM_MASTER_KEY=... WEBHOOK_URL=http://127.0.0.1:<port>/budget-alert \
+#   BUDGET_PRIMARY_URL=http://127.0.0.1:8801/v1 BUDGET_SELF_HOSTED_URL=http://127.0.0.1:8803/v1 \
+#   litellm --config litellm.config.yaml --host 127.0.0.1 --port 4010
+# budget/drills.py starts everything this needs and stops it again.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/BUDGET_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-restricted  # the self-hosted model, chapter 9
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/BUDGET_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  # the key must agree with the tags (ch05:164), then chapter 5's rules, limits, cost line and span
+  callbacks: [key_binding.hooks, ch05_callback.hooks]
+  num_retries: 0
+  drop_params: true
+  # a key's 1mo budget resets at midnight on the 1st in this zone; the default is UTC
+  timezone: America/Toronto
+  # the default, written out: a spent budget answers 422, which the harness counts as a budget stop
+  budget_exceeded_status_code: 422
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  database_url: os.environ/DATABASE_URL
+  # budget alerts as a POST of LiteLLM's webhook event to WEBHOOK_URL; email alerts need the license
+  alerting: ["webhook"]
+  alert_types: ["budget_alerts"]

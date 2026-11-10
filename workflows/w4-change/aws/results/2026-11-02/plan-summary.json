@@ -1,0 +1,145 @@
+{
+  "measured": "2026-11-02",
+  "account_id": "111122223333",
+  "resources_to_add": 14,
+  "by_type": {
+    "aws_eks_pod_identity_association": 3,
+    "aws_iam_policy": 3,
+    "aws_iam_role": 4,
+    "aws_iam_role_policy_attachment": 2,
+    "aws_sqs_queue": 1,
+    "terraform_data": 1
+  },
+  "policies": {
+    "aws_iam_policy.agent[\"scribe\"]": [
+      {
+        "Action": [
+          "sqs:ReceiveMessage",
+          "sqs:GetQueueAttributes",
+          "sqs:DeleteMessage",
+          "sqs:ChangeMessageVisibility"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger",
+        "Sid": "TriggerQueue"
+      }
+    ],
+    "aws_iam_policy.boundary": [
+      {
+        "Action": [
+          "sqs:SendMessage",
+          "sqs:ReceiveMessage",
+          "sqs:GetQueueAttributes",
+          "sqs:DeleteMessage",
+          "sqs:ChangeMessageVisibility"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger",
+        "Sid": "Ceiling"
+      },
+      {
+        "Action": [
+          "sts:AssumeRole",
+          "ssm:*",
+          "secretsmanager:*",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "lambda:*",
+          "iam:*",
+          "eks:*",
+          "ec2:*",
+          "dynamodb:UpdateItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "cloudwatch:PutMetricData",
+          "cloudformation:*"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      }
+    ],
+    "aws_iam_policy.trigger": [
+      {
+        "Action": "sqs:SendMessage",
+        "Effect": "Allow",
+        "Resource": "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger",
+        "Sid": "SendTrigger"
+      }
+    ]
+  },
+  "trusts": {
+    "aws_iam_role.agent[\"analyst\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.agent[\"risk_scorer\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.agent[\"scribe\"]": [
+      {
+        "Action": [
+          "sts:TagSession",
+          "sts:AssumeRole"
+        ],
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "pods.eks.amazonaws.com"
+        },
+        "Sid": "EKSPodIdentity"
+      }
+    ],
+    "aws_iam_role.trigger": [
+      {
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+          "StringEquals": {
+            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+            "token.actions.githubusercontent.com:sub": "repo:larkspur-mutual/platform-infra:environment:change-evidence"
+          }
+        },
+        "Effect": "Allow",
+        "Principal": {
+          "Federated": "arn:aws:iam::111122223333:oidc-provider/token.actions.githubusercontent.com"
+        },
+        "Sid": "GitHubActionsOIDC"
+      }
+    ]
+  }
+}

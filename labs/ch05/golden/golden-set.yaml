@@ -1,0 +1,136 @@
+# Golden set for the chapter 5 harness: 20 questions over the fake larkspur-prod namespace
+# (labs/ch05/mcp-server/fake_platform.py) and the two tools the MCP server serves.
+#
+# Each case names the question, the one tool call the harness is expected to make (or none),
+# and the exact answer. Answers are exact strings because the "model" here is rule-based
+# (labs/ch05/harness/rule_model.py); with a real model, chapter 15 replaces exact match with a
+# judge. The runner is labs/ch05/golden/run_golden.py; the test is tests/test_golden.py.
+version: 1
+generated: 2026-10-29
+namespace: larkspur-prod
+tools: [get_pod_status, get_recent_alerts]
+cases:
+  # --- get_pod_status -----------------------------------------------------------------------
+  - id: pods-claims-api
+    question: Is claims-api healthy?
+    expect:
+      tool: get_pod_status
+      args: {service: claims-api}
+      answer: "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff, 7 restarts)."
+  - id: pods-policy-admin
+    question: How many pods does policy-admin have ready?
+    expect:
+      tool: get_pod_status
+      args: {service: policy-admin}
+      answer: policy-admin has 2 of 2 pods ready.
+  - id: pods-billing-worker
+    question: Is billing-worker healthy?
+    expect:
+      tool: get_pod_status
+      args: {service: billing-worker}
+      answer: billing-worker has 4 of 4 pods ready.
+  - id: pods-quote-engine
+    question: What is the pod status of quote-engine?
+    expect:
+      tool: get_pod_status
+      args: {service: quote-engine}
+      answer: quote-engine has 3 of 3 pods ready.
+  - id: pods-document-ocr
+    question: Is document-ocr fully ready?
+    expect:
+      tool: get_pod_status
+      args: {service: document-ocr}
+      answer: "document-ocr has 1 of 2 pods ready. Not ready: document-ocr-9e0f1a2b3-h1i2j (Pending, 0 restarts)."
+  - id: pods-fraud-scoring
+    question: Are all fraud-scoring pods running?
+    expect:
+      tool: get_pod_status
+      args: {service: fraud-scoring}
+      answer: fraud-scoring has 2 of 2 pods ready.
+  - id: pods-customer-portal
+    question: Is customer-portal up?
+    expect:
+      tool: get_pod_status
+      args: {service: customer-portal}
+      answer: customer-portal has 3 of 3 pods ready.
+  - id: pods-notification-gateway
+    question: How many replicas of notification-gateway are ready?
+    expect:
+      tool: get_pod_status
+      args: {service: notification-gateway}
+      answer: notification-gateway has 2 of 2 pods ready.
+  - id: pods-unknown-service
+    question: Is payroll-service healthy?
+    expect:
+      tool: get_pod_status
+      args: {service: payroll-service}
+      answer: No deployment named 'payroll-service' in namespace larkspur-prod.
+
+  # --- get_recent_alerts --------------------------------------------------------------------
+  - id: alerts-claims-api-default-window
+    question: Any alerts for claims-api?
+    expect:
+      tool: get_recent_alerts
+      args: {service: claims-api, minutes: 60}
+      answer: "claims-api had 2 alerts in the last 60 minutes (1 critical, 1 warning). Latest, 4 minutes ago, critical: KubePodCrashLooping: claims-api-7d9f8b6c4-t8w2c restarted 7 times in 30m"
+  - id: alerts-claims-api-120
+    question: Summarize the alerts for claims-api in the last 120 minutes
+    expect:
+      tool: get_recent_alerts
+      args: {service: claims-api, minutes: 120}
+      answer: "claims-api had 3 alerts in the last 120 minutes (1 critical, 2 warning). Latest, 4 minutes ago, critical: KubePodCrashLooping: claims-api-7d9f8b6c4-t8w2c restarted 7 times in 30m"
+  - id: alerts-claims-api-5
+    question: What alerts fired for claims-api in the last 5 minutes?
+    expect:
+      tool: get_recent_alerts
+      args: {service: claims-api, minutes: 5}
+      answer: "claims-api had 1 alert in the last 5 minutes (1 critical). Latest, 4 minutes ago, critical: KubePodCrashLooping: claims-api-7d9f8b6c4-t8w2c restarted 7 times in 30m"
+  - id: alerts-document-ocr-30
+    question: Any alerts for document-ocr in the last 30 minutes?
+    expect:
+      tool: get_recent_alerts
+      args: {service: document-ocr, minutes: 30}
+      answer: "document-ocr had 1 alert in the last 30 minutes (1 warning). Latest, 18 minutes ago, warning: KubePodNotReady: document-ocr-9e0f1a2b3-h1i2j Pending for 15m (insufficient GPU)"
+  - id: alerts-fraud-scoring-hour
+    question: Did fraud-scoring have any alerts in the last hour?
+    expect:
+      tool: get_recent_alerts
+      args: {service: fraud-scoring, minutes: 60}
+      answer: "fraud-scoring had 1 alert in the last 60 minutes (1 info). Latest, 41 minutes ago, info: Container restarted (OOMKilled), recovered"
+  - id: alerts-billing-worker-2h
+    question: Any alerts for billing-worker in the last 2 hours?
+    expect:
+      tool: get_recent_alerts
+      args: {service: billing-worker, minutes: 120}
+      answer: billing-worker had no alerts in the last 120 minutes.
+  - id: alerts-billing-worker-today
+    question: Any alerts for billing-worker today?
+    expect:
+      tool: get_recent_alerts
+      args: {service: billing-worker, minutes: 1440}
+      answer: "billing-worker had 1 alert in the last 1440 minutes (1 warning). Latest, 380 minutes ago, warning: Queue depth above 10k for 20m (nightly batch, resolved)"
+  - id: alerts-policy-admin-24h
+    question: Any alerts for policy-admin in the last 24 hours?
+    expect:
+      tool: get_recent_alerts
+      args: {service: policy-admin, minutes: 1440}
+      answer: policy-admin had no alerts in the last 1440 minutes.
+  - id: alerts-notification-gateway-today
+    question: Any alerts for notification-gateway today?
+    expect:
+      tool: get_recent_alerts
+      args: {service: notification-gateway, minutes: 1440}
+      answer: notification-gateway had no alerts in the last 1440 minutes.
+  - id: alerts-document-ocr-10
+    question: What alerts fired for document-ocr in the last 10 minutes?
+    expect:
+      tool: get_recent_alerts
+      args: {service: document-ocr, minutes: 10}
+      answer: document-ocr had no alerts in the last 10 minutes.
+
+  # --- no tool: the namespace is read-only ---------------------------------------------------
+  - id: refuse-scale
+    question: Please scale quote-engine to 5 replicas.
+    expect:
+      tool: null
+      answer: "I can only read the namespace: there is no tool to scale quote-engine."

@@ -1,0 +1,5 @@
+# Copy to a file outside the repository (or to terraform.tfvars, which .gitignore refuses)
+# and fill in. Do not commit real addresses.
+alert_email       = "you@example.com"
+owner             = "your-name"
+monthly_limit_usd = 150

@@ -1,0 +1,1202 @@
+{
+ "date": "2026-11-04",
+ "versions": {
+  "litellm": "1.106.6",
+  "prisma": "0.15.0",
+  "psycopg": "3.3.6",
+  "httpx": "0.28.1",
+  "uvicorn": "0.54.0",
+  "starlette": "1.10.0",
+  "python": "3.12.9",
+  "redis": "8.1.0",
+  "garnet": "2.2.5"
+ },
+ "configs": [
+  {
+   "name": "step 5's config",
+   "config": "litellm.outage.yaml",
+   "modes": [
+    {
+     "mode": "5xx",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      0.182,
+      0.285,
+      0.308,
+      30.364,
+      31.298,
+      31.365
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 0.182,
+       "last_failure_s": 0.308,
+       "failures": 3,
+       "cooldown_seen_s": 1.145
+      },
+      {
+       "first_failure_s": 30.364,
+       "last_failure_s": 31.365,
+       "failures": 3,
+       "cooldown_seen_s": 33.304
+      }
+     ],
+     "first_cooldown_answer_s": 1.145,
+     "sent_to_the_failing_primary_s": 0.308,
+     "failures_before_the_first_cooldown": 3,
+     "healed_at_s": 60.0,
+     "primary_served_again_after_heal_s": 1.456,
+     "w2": {
+      "calls": 60,
+      "statuses": {
+       "200": 60
+      },
+      "served_by": {
+       "fallback": 60
+      },
+      "kinds": {},
+      "latency_median_s": 0.0824,
+      "latency_max_s": 0.103
+     },
+     "w3": {
+      "calls": 30,
+      "statuses": {
+       "429": 29,
+       "503": 1
+      },
+      "served_by": {},
+      "kinds": {
+       "status 503": 1,
+       "the router's cooldown": 29
+      },
+      "latency_median_s": null,
+      "latency_max_s": null
+     },
+     "w2_regions": {
+      "ca-central-1": 51,
+      "us-east-2": 62
+     },
+     "w3_regions": {
+      "ca-central-1": 29
+     },
+     "w3_failed_lines_with_fallback_disabled": 33,
+     "w3_failed_lines": 33,
+     "w2_cooldown_failures_logged_as_the_fallback": 58,
+     "runs": {
+      "w3_in_flight": {
+       "trace_id": "317d0f7f643a4f1c90e59de081e7abf3",
+       "outcome": "unavailable",
+       "reason": "model unavailable",
+       "text": "W3 couldn't reach the model just now; work the incident without it, or try again.",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 0.885,
+       "waits": [],
+       "unavailable": "the gateway answered 503",
+       "time_budget_s": 120.0,
+       "started_s": -0.47
+      },
+      "w2_in_flight": {
+       "trace_id": "34f3bc45c5ed4b4ea3d35ec6adcbadae",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.401,
+        0.474
+       ]
+      },
+      "w3_during_cooldown": {
+       "trace_id": "ae5095a3b8614ccf8a14c20855403317",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 61.346,
+       "waits": [
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.268,
+         "at_s": 0.031
+        },
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.476,
+         "at_s": 30.312
+        }
+       ],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.005
+      }
+     },
+     "run_lines": {
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       }
+      ],
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 29
+     },
+     "w3_calls_as_fallback": 0,
+     "w3_fallback_in_jurisdiction_lines": 0,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 32,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 0
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 63,
+      "fallback, us-east-2": 61,
+      "self-hosted, ca-central-1": 0
+     }
+    },
+    {
+     "mode": "timeout",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      5.342,
+      5.356,
+      5.788,
+      6.794,
+      41.123,
+      41.973,
+      46.232,
+      47.011
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 5.342,
+       "last_failure_s": 6.794,
+       "failures": 4,
+       "cooldown_seen_s": 6.811
+      },
+      {
+       "first_failure_s": 41.123,
+       "last_failure_s": 47.011,
+       "failures": 4,
+       "cooldown_seen_s": 47.032
+      }
+     ],
+     "first_cooldown_answer_s": 6.811,
+     "sent_to_the_failing_primary_s": 6.794,
+     "failures_before_the_first_cooldown": 4,
+     "healed_at_s": 60.001,
+     "primary_served_again_after_heal_s": 16.52,
+     "w2": {
+      "calls": 47,
+      "statuses": {
+       "200": 47
+      },
+      "served_by": {
+       "fallback": 47
+      },
+      "kinds": {},
+      "latency_median_s": 0.0858,
+      "latency_max_s": 5.113
+     },
+     "w3": {
+      "calls": 25,
+      "statuses": {
+       "408": 3,
+       "429": 22
+      },
+      "served_by": {},
+      "kinds": {
+       "status 408": 3,
+       "the router's cooldown": 22
+      },
+      "latency_median_s": null,
+      "latency_max_s": null
+     },
+     "w2_regions": {
+      "ca-central-1": 36,
+      "us-east-2": 64
+     },
+     "w3_regions": {
+      "ca-central-1": 21
+     },
+     "w3_failed_lines_with_fallback_disabled": 36,
+     "w3_failed_lines": 36,
+     "w2_cooldown_failures_logged_as_the_fallback": 60,
+     "runs": {
+      "w2_in_flight": {
+       "trace_id": "f63102c260304053946f02409ff5932d",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.116,
+        5.217
+       ]
+      },
+      "w3_in_flight": {
+       "trace_id": "99a56cff4cce48098c1da431edb9fb01",
+       "outcome": "unavailable",
+       "reason": "model unavailable",
+       "text": "W3 couldn't reach the model just now; work the incident without it, or try again.",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 6.029,
+       "waits": [],
+       "unavailable": "408 with no wait to wait out",
+       "time_budget_s": 120.0,
+       "started_s": -0.545
+      },
+      "w3_during_cooldown": {
+       "trace_id": "e8c78c31d2fb44e5b1e61ba370dce7c3",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 61.503,
+       "waits": [
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.42,
+         "at_s": 0.016
+        },
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.44,
+         "at_s": 30.469
+        }
+       ],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.0
+      }
+     },
+     "run_lines": {
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 21
+     },
+     "w3_calls_as_fallback": 0,
+     "w3_fallback_in_jurisdiction_lines": 0,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 26,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 0
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 48,
+      "fallback, us-east-2": 63,
+      "self-hosted, ca-central-1": 0
+     }
+    },
+    {
+     "mode": "connection",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      2.25,
+      2.262,
+      2.958,
+      3.874,
+      35.35,
+      36.058,
+      37.495,
+      38.131
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 2.25,
+       "last_failure_s": 3.874,
+       "failures": 4,
+       "cooldown_seen_s": 3.898
+      },
+      {
+       "first_failure_s": 35.35,
+       "last_failure_s": 38.131,
+       "failures": 4,
+       "cooldown_seen_s": 38.148
+      }
+     ],
+     "first_cooldown_answer_s": 3.898,
+     "sent_to_the_failing_primary_s": 3.874,
+     "failures_before_the_first_cooldown": 4,
+     "healed_at_s": 60.001,
+     "primary_served_again_after_heal_s": 7.883,
+     "w2": {
+      "calls": 56,
+      "statuses": {
+       "200": 56
+      },
+      "served_by": {
+       "fallback": 56
+      },
+      "kinds": {},
+      "latency_median_s": 0.0891,
+      "latency_max_s": 2.145
+     },
+     "w3": {
+      "calls": 29,
+      "statuses": {
+       "429": 26,
+       "500": 3
+      },
+      "served_by": {},
+      "kinds": {
+       "status 500": 3,
+       "the router's cooldown": 26
+      },
+      "latency_median_s": null,
+      "latency_max_s": null
+     },
+     "w2_regions": {
+      "ca-central-1": 45,
+      "us-east-2": 64
+     },
+     "w3_regions": {
+      "ca-central-1": 26
+     },
+     "w3_failed_lines_with_fallback_disabled": 36,
+     "w3_failed_lines": 36,
+     "w2_cooldown_failures_logged_as_the_fallback": 60,
+     "runs": {
+      "w3_in_flight": {
+       "trace_id": "aea4355c002a408a9aa10929bec549ff",
+       "outcome": "unavailable",
+       "reason": "model unavailable",
+       "text": "W3 couldn't reach the model just now; work the incident without it, or try again.",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 2.743,
+       "waits": [],
+       "unavailable": "the gateway answered 500",
+       "time_budget_s": 120.0,
+       "started_s": -0.386
+      },
+      "w2_in_flight": {
+       "trace_id": "b31b4eb22224479696d62f0d747bd8d1",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.086,
+        2.196
+       ]
+      },
+      "w3_during_cooldown": {
+       "trace_id": "40c9a13a00ea479da08c24398841d552",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 61.043,
+       "waits": [
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.002,
+         "at_s": 0.031
+        },
+        {
+         "status": 429,
+         "asked_s": 30.0,
+         "waited_s": 30.163,
+         "at_s": 30.063
+        }
+       ],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.002
+      }
+     },
+     "run_lines": {
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       }
+      ],
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": null,
+        "region": null,
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 26
+     },
+     "w3_calls_as_fallback": 0,
+     "w3_fallback_in_jurisdiction_lines": 0,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 22,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 0
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 43,
+      "fallback, us-east-2": 63,
+      "self-hosted, ca-central-1": 0
+     }
+    }
+   ],
+   "stopped_pids": {
+    "proxy": 35384,
+    "fake primary": 38528,
+    "fake fallback": 42952,
+    "fake self-hosted": 50160
+   },
+   "left_running": {}
+  },
+  {
+   "name": "W3's fallback in Canada",
+   "config": "litellm.outage-canada.yaml",
+   "modes": [
+    {
+     "mode": "5xx",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      0.259,
+      0.275,
+      0.51,
+      30.769,
+      31.614,
+      31.776
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 0.259,
+       "last_failure_s": 0.51,
+       "failures": 3,
+       "cooldown_seen_s": null
+      },
+      {
+       "first_failure_s": 30.769,
+       "last_failure_s": 31.776,
+       "failures": 3,
+       "cooldown_seen_s": null
+      }
+     ],
+     "first_cooldown_answer_s": null,
+     "sent_to_the_failing_primary_s": 0.51,
+     "failures_before_the_first_cooldown": 3,
+     "healed_at_s": 60.0,
+     "primary_served_again_after_heal_s": 2.119,
+     "w2": {
+      "calls": 59,
+      "statuses": {
+       "200": 59
+      },
+      "served_by": {
+       "fallback": 59
+      },
+      "kinds": {},
+      "latency_median_s": 0.0815,
+      "latency_max_s": 0.149
+     },
+     "w3": {
+      "calls": 30,
+      "statuses": {
+       "200": 30
+      },
+      "served_by": {
+       "self-hosted": 30
+      },
+      "kinds": {},
+      "latency_median_s": 0.0835,
+      "latency_max_s": 0.099
+     },
+     "w2_regions": {
+      "ca-central-1": 50,
+      "us-east-2": 62
+     },
+     "w3_regions": {
+      "ca-central-1": 60
+     },
+     "w3_failed_lines_with_fallback_disabled": 0,
+     "w3_failed_lines": 34,
+     "w2_cooldown_failures_logged_as_the_fallback": 58,
+     "runs": {
+      "w3_in_flight": {
+       "trace_id": "12f1059bec7a4aa7ba180a717d84072a",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 1.405,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": -0.748
+      },
+      "w2_in_flight": {
+       "trace_id": "ffb8bb2f2ae04b3b8851f920a6f464ea",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.361,
+        0.42
+       ]
+      },
+      "w3_during_cooldown": {
+       "trace_id": "e97e8da55b80459683c3449ec7c2bc18",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 0.568,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.002
+      }
+     },
+     "run_lines": {
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 26,
+      "self-hosted": 34
+     },
+     "w3_calls_as_fallback": 34,
+     "w3_fallback_in_jurisdiction_lines": 60,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 31,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 31
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 62,
+      "fallback, us-east-2": 61,
+      "self-hosted, ca-central-1": 0
+     }
+    },
+    {
+     "mode": "timeout",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      5.199,
+      5.211,
+      5.832,
+      6.78,
+      41.245,
+      41.98,
+      46.316,
+      47.061
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 5.199,
+       "last_failure_s": 6.78,
+       "failures": 4,
+       "cooldown_seen_s": null
+      },
+      {
+       "first_failure_s": 41.245,
+       "last_failure_s": 47.061,
+       "failures": 4,
+       "cooldown_seen_s": null
+      }
+     ],
+     "first_cooldown_answer_s": null,
+     "sent_to_the_failing_primary_s": 6.78,
+     "failures_before_the_first_cooldown": 4,
+     "healed_at_s": 60.0,
+     "primary_served_again_after_heal_s": 16.821,
+     "w2": {
+      "calls": 47,
+      "statuses": {
+       "200": 47
+      },
+      "served_by": {
+       "fallback": 47
+      },
+      "kinds": {},
+      "latency_median_s": 0.0794,
+      "latency_max_s": 5.104
+     },
+     "w3": {
+      "calls": 25,
+      "statuses": {
+       "200": 25
+      },
+      "served_by": {
+       "self-hosted": 25
+      },
+      "kinds": {},
+      "latency_median_s": 0.081,
+      "latency_max_s": 5.1
+     },
+     "w2_regions": {
+      "ca-central-1": 36,
+      "us-east-2": 64
+     },
+     "w3_regions": {
+      "ca-central-1": 55
+     },
+     "w3_failed_lines_with_fallback_disabled": 0,
+     "w3_failed_lines": 36,
+     "w2_cooldown_failures_logged_as_the_fallback": 60,
+     "runs": {
+      "w2_in_flight": {
+       "trace_id": "1c784d12db0141f3aca4c033da4cff94",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.1,
+        5.099
+       ]
+      },
+      "w3_in_flight": {
+       "trace_id": "5935451400cd48848294a698b3758f17",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 5.75,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": -0.463
+      },
+      "w3_during_cooldown": {
+       "trace_id": "e6ac675b28b0417d9ebd82c3568bdb08",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 0.554,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.006
+      }
+     },
+     "run_lines": {
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 19,
+      "self-hosted": 36
+     },
+     "w3_calls_as_fallback": 36,
+     "w3_fallback_in_jurisdiction_lines": 55,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 26,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 33
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 48,
+      "fallback, us-east-2": 63,
+      "self-hosted, ca-central-1": 0
+     }
+    },
+    {
+     "mode": "connection",
+     "allowed_fails": 2,
+     "cooldown_time_s": 30,
+     "failures_at_the_primary": [
+      2.245,
+      2.25,
+      2.955,
+      3.889,
+      35.423,
+      36.136,
+      37.544,
+      38.264
+     ],
+     "cycles": [
+      {
+       "first_failure_s": 2.245,
+       "last_failure_s": 3.889,
+       "failures": 4,
+       "cooldown_seen_s": null
+      },
+      {
+       "first_failure_s": 35.423,
+       "last_failure_s": 38.264,
+       "failures": 4,
+       "cooldown_seen_s": null
+      }
+     ],
+     "first_cooldown_answer_s": null,
+     "sent_to_the_failing_primary_s": 3.889,
+     "failures_before_the_first_cooldown": 4,
+     "healed_at_s": 60.001,
+     "primary_served_again_after_heal_s": 8.073,
+     "w2": {
+      "calls": 56,
+      "statuses": {
+       "200": 56
+      },
+      "served_by": {
+       "fallback": 56
+      },
+      "kinds": {},
+      "latency_median_s": 0.0791,
+      "latency_max_s": 2.139
+     },
+     "w3": {
+      "calls": 29,
+      "statuses": {
+       "200": 29
+      },
+      "served_by": {
+       "self-hosted": 29
+      },
+      "kinds": {},
+      "latency_median_s": 0.0793,
+      "latency_max_s": 2.12
+     },
+     "w2_regions": {
+      "ca-central-1": 45,
+      "us-east-2": 64
+     },
+     "w3_regions": {
+      "ca-central-1": 60
+     },
+     "w3_failed_lines_with_fallback_disabled": 0,
+     "w3_failed_lines": 36,
+     "w2_cooldown_failures_logged_as_the_fallback": 60,
+     "runs": {
+      "w3_in_flight": {
+       "trace_id": "9f0c1764523e4b179ca3e9b043d23da6",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 2.718,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": -0.394
+      },
+      "w2_in_flight": {
+       "trace_id": "e6f11518d26c4873a612fa36a8c891bb",
+       "answered": true,
+       "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+       "error": null,
+       "calls": [
+        0.097,
+        2.148
+       ]
+      },
+      "w3_during_cooldown": {
+       "trace_id": "d15c8f261ff349b7be78a2c9dc35d27e",
+       "outcome": "answer",
+       "reason": "",
+       "text": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLoopBackOff,",
+       "raised": null,
+       "model_calls": 2,
+       "seconds": 0.521,
+       "waits": [],
+       "unavailable": null,
+       "time_budget_s": 120.0,
+       "started_s": 20.003
+      }
+     },
+     "run_lines": {
+      "w3_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w2_in_flight": [
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": false
+       },
+       {
+        "deployment": "primary",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": false
+       },
+       {
+        "deployment": "fallback",
+        "region": "us-east-2",
+        "event": "call",
+        "fallback": true
+       }
+      ],
+      "w3_during_cooldown": [
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "failed",
+        "fallback": true
+       },
+       {
+        "deployment": "self-hosted",
+        "region": "ca-central-1",
+        "event": "call",
+        "fallback": true
+       }
+      ]
+     },
+     "w3_calls_by_deployment": {
+      "primary": 24,
+      "self-hosted": 36
+     },
+     "w3_calls_as_fallback": 36,
+     "w3_fallback_in_jurisdiction_lines": 60,
+     "w3_requests_seen_by": {
+      "primary, ca-central-1": 22,
+      "fallback, us-east-2": 0,
+      "self-hosted, ca-central-1": 33
+     },
+     "w2_requests_seen_by": {
+      "primary, ca-central-1": 43,
+      "fallback, us-east-2": 63,
+      "self-hosted, ca-central-1": 0
+     }
+    }
+   ],
+   "stopped_pids": {
+    "proxy": 23240,
+    "fake primary": 41212,
+    "fake fallback": 36164,
+    "fake self-hosted": 2376
+   },
+   "left_running": {}
+  }
+ ]
+}

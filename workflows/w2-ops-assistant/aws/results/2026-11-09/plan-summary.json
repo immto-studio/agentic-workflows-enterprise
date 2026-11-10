@@ -1,0 +1,95 @@
+{
+  "measured": "2026-11-09",
+  "account_id": "111122223333",
+  "resources_to_add": 15,
+  "by_type": {
+    "aws_eks_access_entry": 1,
+    "aws_eks_access_policy_association": 1,
+    "aws_eks_pod_identity_association": 3,
+    "aws_iam_policy": 4,
+    "aws_iam_role": 3,
+    "aws_iam_role_policy_attachment": 3
+  },
+  "policies": {
+    "aws_iam_policy.read_boundary": [
+      {
+        "Action": [
+          "logs:GetLogEvents",
+          "logs:FilterLogEvents",
+          "logs:DescribeLogStreams",
+          "logs:DescribeLogGroups",
+          "eks:DescribeCluster",
+          "cloudwatch:ListMetrics",
+          "cloudwatch:GetMetricData",
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:DescribeAlarmHistory"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "ReadCeiling"
+      },
+      {
+        "Action": [
+          "sts:AssumeRole",
+          "ssm:*",
+          "secretsmanager:*",
+          "logs:PutLogEvents",
+          "logs:DeleteLogGroup",
+          "iam:*",
+          "eks:UpdateAccessEntry",
+          "eks:CreateAccessEntry",
+          "eks:AssociateAccessPolicy",
+          "eks:AccessKubernetesApi",
+          "ec2:RevokeSecurityGroupIngress",
+          "ec2:RevokeSecurityGroupEgress",
+          "ec2:ModifySecurityGroupRules",
+          "ec2:DeleteSecurityGroup",
+          "ec2:CreateSecurityGroup",
+          "ec2:AuthorizeSecurityGroupIngress",
+          "ec2:AuthorizeSecurityGroupEgress",
+          "cloudwatch:PutMetricData"
+        ],
+        "Effect": "Deny",
+        "Resource": "*",
+        "Sid": "NeverList"
+      }
+    ],
+    "aws_iam_policy.server_reads[\"kubernetes-mcp\"]": [
+      {
+        "Action": "eks:DescribeCluster",
+        "Effect": "Allow",
+        "Resource": "arn:aws:eks:ca-central-1:111122223333:cluster/ops",
+        "Sid": "Reads"
+      }
+    ],
+    "aws_iam_policy.server_reads[\"logs-mcp\"]": [
+      {
+        "Action": [
+          "logs:GetLogEvents",
+          "logs:FilterLogEvents",
+          "logs:DescribeLogStreams",
+          "logs:DescribeLogGroups"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:logs:ca-central-1:111122223333:log-group:/larkspur/prod/*:log-stream:*",
+          "arn:aws:logs:ca-central-1:111122223333:log-group:/larkspur/prod/*"
+        ],
+        "Sid": "Reads"
+      }
+    ],
+    "aws_iam_policy.server_reads[\"metrics-mcp\"]": [
+      {
+        "Action": [
+          "cloudwatch:ListMetrics",
+          "cloudwatch:GetMetricData",
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:DescribeAlarmHistory"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Sid": "Reads"
+      }
+    ]
+  }
+}

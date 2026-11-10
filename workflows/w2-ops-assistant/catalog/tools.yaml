@@ -1,0 +1,68 @@
+# W2's tool catalog: every tool its three MCP servers serve, the server that runs it, and the read
+# access that server's identity holds. The platform team owns it (chapter 6's catalog is the AWS
+# form for the incident workflow; this one is W2's, for the three systems chapter 11 reads).
+#
+# One server per system, each under an identity of its own (W2-D2): an identity scoped to one
+# system is a ceiling worth having, and one server for all three would need the union of their
+# read scopes. No tool takes a namespace or a log group: the server derives both from the service,
+# and the service map decides which services the engineer may ask about (W2-D4).
+#
+# The AWS actions are from the AWS Policy Generator's action list, read on 2026-11-02; each one's
+# access level is still to be read from the Service Authorization Reference, whose pages answered
+# the fetch with their titles only (W2's fact sheet, section F, which lists what wasn't found). The Google and Azure
+# columns name the read roles the fact sheet quotes (B.2, B.3), by role, not by action.
+
+servers:
+  kubernetes-mcp:
+    identity: larkspur-ops-kubernetes-reader
+    aws:
+      role_actions: [eks:DescribeCluster]
+      eks_access: {policy: AmazonEKSViewPolicy, namespaces: [larkspur-prod]}  # get, list, watch; the policy's table lists pods/log and no Secrets resource (read 2026-11-02)
+    google: {role: roles/container.viewer, cluster_rbac: view}  # "read-only access to resources within GKE clusters", no container.secrets permission (read 2026-11-02); the view role excludes Secrets
+    azure: {role: Azure Kubernetes Service RBAC Reader, scope: namespace}  # excludes Secrets, roles, bindings
+  metrics-mcp:
+    identity: larkspur-ops-metrics-reader
+    aws: {role_actions: [cloudwatch:GetMetricData, cloudwatch:ListMetrics, cloudwatch:DescribeAlarms, cloudwatch:DescribeAlarmHistory]}
+    google: {role: roles/monitoring.viewer}
+    azure: {role: Monitoring Reader}
+  logs-mcp:
+    identity: larkspur-ops-logs-reader
+    aws: {role_actions: [logs:FilterLogEvents, logs:GetLogEvents, logs:DescribeLogGroups, logs:DescribeLogStreams]}
+    google: {role: roles/logging.viewer}  # not privateLogViewer: W2 never reads data-access audit logs
+    azure: {role: Monitoring Reader, scope: AKS cluster, access_mode: resource-context}  # a read role on the cluster: in resource-context mode Azure checks the read on the resource, and no workspace role is needed (read 2026-11-02)
+
+tools:
+  get_pod_status:
+    server: kubernetes-mcp
+    args: [service]
+    reads: deployments and pods in the service's namespace
+  get_recent_alerts:
+    server: kubernetes-mcp
+    args: [service, minutes]
+    reads: the alerts the alert manager routed for the service
+  get_recent_events:
+    server: kubernetes-mcp
+    args: [service, minutes]
+    reads: Kubernetes events on the service's objects
+  get_pod_logs:
+    server: kubernetes-mcp
+    args: [service, minutes, lines]
+    reads: the newest lines the service's pods wrote, bounded by window and count
+  query_metric:
+    server: metrics-mcp
+    args: [service, metric, minutes]
+    reads: one named series (error_rate, latency_p95, saturation); never a query string
+  search_logs:
+    server: logs-mcp
+    args: [service, minutes, contains, lines]
+    reads: the service's log group, a substring match, bounded by window and count
+
+# Never-list entries that have a tool shape, denied by having no tool at all; W2's manifest names
+# them, the catalog serves none, and the identities above hold no action that could do them.
+never:
+  restart_deployment: no write action on any server identity
+  delete_namespace: no write action on any server identity
+  modify_iam: no iam action on any server identity
+  modify_security_group: no ec2 security group action on any server identity; the boundary denies them
+  read_vault_secret: no secretsmanager, ssm, or Kubernetes Secrets read on any server identity
+  run_command: no exec, ssm, or remote command action on any server identity

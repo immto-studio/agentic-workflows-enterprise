@@ -1,0 +1,5 @@
+# The W1 corpus is generated and checked byte for byte against the generator
+# output (tests/test_corpus.py::test_same_seed_reproduces_identical_files).
+# Force LF in every checkout so core.autocrlf on Windows cannot turn the
+# committed Markdown and YAML files into CRLF.
+workflows/w1-knowledge-assistant/corpus/** text eol=lf

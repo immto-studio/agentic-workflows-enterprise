@@ -1,0 +1,11 @@
+# chapter 8 environment (labs/ch08/requirements.txt)
+.....................                                                    [100%]
+21 passed, 1 skipped in 0.73s
+
+# chapter 5 environment (labs/ch05/requirements.txt), image tests
+..................                                                       [100%]
+18 passed in 7.78s
+
+# chapter 7 environment (labs/ch07/requirements.txt), with terraform validate
+...........sssssss.....................                                  [100%]
+32 passed, 7 skipped in 2.97s

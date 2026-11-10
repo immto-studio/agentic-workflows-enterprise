@@ -1,0 +1,770 @@
+{
+ "findings": {
+  "claims-api-prod:aws_instance.api:changed": {
+   "account": "lm-claims-prod",
+   "address": "aws_instance.api",
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "claims-api-prod:aws_instance.api:changed",
+   "kind": "changed",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/claims-api-prod-aws_instance.api-changed",
+    "key": "claims-api-prod:aws_instance.api:changed",
+    "night": "2026-11-03",
+    "number": 2301,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Instance type mismatch on aws_instance.api"
+   },
+   "pull_request": {
+    "branch": "w5/claims-api-prod-aws_instance.api-changed",
+    "closed": null,
+    "merged": null,
+    "number": 2301,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "adopt",
+   "workspace": "claims-api-prod"
+  },
+  "claims-api-prod:aws_instance.api:graviton_candidate": {
+   "account": "lm-claims-prod",
+   "address": "aws_instance.api",
+   "estimated_monthly_saving": 17.18,
+   "first_seen": "2026-11-02",
+   "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "kind": "graviton_candidate",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/claims-api-prod-aws_instance.api-graviton_candidate",
+    "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+    "night": "2026-11-03",
+    "number": 2303,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Graviton candidate finding for aws_instance.api"
+   },
+   "pull_request": {
+    "branch": "w5/claims-api-prod-aws_instance.api-graviton_candidate",
+    "closed": null,
+    "merged": null,
+    "number": 2303,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "instance_type",
+   "workspace": "claims-api-prod"
+  },
+  "claims-api-prod:aws_security_group.billing_worker:changed": {
+   "account": "lm-claims-prod",
+   "address": "aws_security_group.billing_worker",
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "kind": "changed",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/claims-api-prod-aws_security_group.billing_worker-changed",
+    "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+    "night": "2026-11-03",
+    "number": 2302,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Security group ingress rule added outside of Terraform for aws_security_group.billing_worker"
+   },
+   "pull_request": {
+    "branch": "w5/claims-api-prod-aws_security_group.billing_worker-changed",
+    "closed": null,
+    "merged": null,
+    "number": 2302,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "sg-0c1a1b2c3d4e5f102",
+   "resource_type": "aws_security_group",
+   "suppressed_by": null,
+   "template": "revert",
+   "workspace": "claims-api-prod"
+  },
+  "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": {
+   "account": "lm-network-prod",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+   "kind": "unmanaged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "stub",
+    "branch": "w5/network-live-rtb-0a1b2c3d4e5f60011_10.251.0.0-24-unmanaged",
+    "key": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+    "night": "2026-11-03",
+    "number": 2300,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [
+     "apply"
+    ],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "W5 unmanaged: aws_route rtb-0a1b2c3d4e5f60011_10.251.0.0/24 in network-live"
+   },
+   "pull_request": {
+    "branch": "w5/network-live-rtb-0a1b2c3d4e5f60011_10.251.0.0-24-unmanaged",
+    "closed": null,
+    "merged": null,
+    "number": 2300,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "rtb-0a1b2c3d4e5f60011_10.251.0.0/24",
+   "resource_type": "aws_route",
+   "suppressed_by": null,
+   "template": "revert",
+   "workspace": "network-live"
+  },
+  "sandbox-quill:aws_ebs_volume.archive:unattached_volume": {
+   "account": "lm-sandbox",
+   "address": "aws_ebs_volume.archive",
+   "estimated_monthly_saving": 96.0,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:aws_ebs_volume.archive:unattached_volume",
+   "kind": "unattached_volume",
+   "last_seen": "2026-11-02",
+   "last_write": {
+    "action": "opened",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-aws_ebs_volume.archive-unattached_volume",
+    "key": "sandbox-quill:aws_ebs_volume.archive:unattached_volume",
+    "night": "2026-11-02",
+    "number": 2310,
+    "pushed": true,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Unattached volume vol-0d2b2c3d4e5f60403 found in sandbox-quill"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-aws_ebs_volume.archive-unattached_volume",
+    "closed": null,
+    "merged": "2026-11-02",
+    "number": 2310,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "merged",
+    "updated": "2026-11-02"
+   },
+   "realized_monthly_saving": 96.0,
+   "realized_on": "2026-11-03",
+   "resource_id": "vol-0d2b2c3d4e5f60403",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": null,
+   "template": "remove_block",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:aws_ebs_volume.scratch:missing": {
+   "account": "lm-sandbox",
+   "address": "aws_ebs_volume.scratch",
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:aws_ebs_volume.scratch:missing",
+   "kind": "missing",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-aws_ebs_volume.scratch-missing",
+    "key": "sandbox-quill:aws_ebs_volume.scratch:missing",
+    "night": "2026-11-03",
+    "number": 2305,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Missing aws_ebs_volume.scratch resource in account lm-sandbox"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-aws_ebs_volume.scratch-missing",
+    "closed": null,
+    "merged": null,
+    "number": 2305,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "vol-0d2b2c3d4e5f60401",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": null,
+   "template": "removed",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:aws_instance.batch:idle": {
+   "account": "lm-sandbox",
+   "address": "aws_instance.batch",
+   "estimated_monthly_saving": 12.5,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:aws_instance.batch:idle",
+   "kind": "idle",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-aws_instance.batch-idle",
+    "key": "sandbox-quill:aws_instance.batch:idle",
+    "night": "2026-11-03",
+    "number": 2309,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Idle instance found on aws_instance.batch"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-aws_instance.batch-idle",
+    "closed": null,
+    "merged": null,
+    "number": 2309,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "i-0d2b2c3d4e5f60302",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "instance_type",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:aws_instance.notebook:graviton_candidate": {
+   "account": "lm-sandbox",
+   "address": "aws_instance.notebook",
+   "estimated_monthly_saving": 28.56,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:aws_instance.notebook:graviton_candidate",
+   "kind": "graviton_candidate",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-aws_instance.notebook-graviton_candidate",
+    "key": "sandbox-quill:aws_instance.notebook:graviton_candidate",
+    "night": "2026-11-03",
+    "number": 2313,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Graviton candidate for aws_instance.notebook"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-aws_instance.notebook-graviton_candidate",
+    "closed": null,
+    "merged": null,
+    "number": 2313,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "i-0d2b2c3d4e5f60301",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "instance_type",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:aws_instance.notebook:untagged": {
+   "account": "lm-sandbox",
+   "address": "aws_instance.notebook",
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:aws_instance.notebook:untagged",
+   "kind": "untagged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-aws_instance.notebook-untagged",
+    "key": "sandbox-quill:aws_instance.notebook:untagged",
+    "night": "2026-11-03",
+    "number": 2306,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Missing data_classification tag on aws_instance.notebook"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-aws_instance.notebook-untagged",
+    "closed": null,
+    "merged": null,
+    "number": 2306,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "i-0d2b2c3d4e5f60301",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "tags",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": 50.0,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "kind": "old_snapshot",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60501-old_snapshot",
+    "key": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+    "night": "2026-11-03",
+    "number": 2312,
+    "pushed": true,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Old snapshot snap-0d2b2c3d4e5f60501 is older than the age limit"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60501-old_snapshot",
+    "closed": null,
+    "merged": null,
+    "number": 2312,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "snap-0d2b2c3d4e5f60501",
+   "resource_type": "aws_ebs_snapshot",
+   "suppressed_by": null,
+   "template": "note",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:snap-0d2b2c3d4e5f60501:unmanaged": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-03",
+   "key": "sandbox-quill:snap-0d2b2c3d4e5f60501:unmanaged",
+   "kind": "unmanaged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "opened",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60501-unmanaged",
+    "key": "sandbox-quill:snap-0d2b2c3d4e5f60501:unmanaged",
+    "night": "2026-11-03",
+    "number": 2314,
+    "pushed": true,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Unmanaged aws_ebs_snapshot snap-0d2b2c3d4e5f60501 found in sandbox-quill"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60501-unmanaged",
+    "closed": null,
+    "merged": null,
+    "number": 2314,
+    "opened": "2026-11-03",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "snap-0d2b2c3d4e5f60501",
+   "resource_type": "aws_ebs_snapshot",
+   "suppressed_by": null,
+   "template": "import",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged",
+   "kind": "untagged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60502-untagged",
+    "key": "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged",
+    "night": "2026-11-03",
+    "number": 2307,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Missing tags on aws_ebs_snapshot snap-0d2b2c3d4e5f60502"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-snap-0d2b2c3d4e5f60502-untagged",
+    "closed": null,
+    "merged": null,
+    "number": 2307,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "snap-0d2b2c3d4e5f60502",
+   "resource_type": "aws_ebs_snapshot",
+   "suppressed_by": null,
+   "template": "note",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": 20.2,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "kind": "unattached_volume",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-unattached_volume",
+    "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+    "night": "2026-11-03",
+    "number": 2311,
+    "pushed": true,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Unattached volume vol-0d2b2c3d4e5f60402 found in sandbox-quill"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-unattached_volume",
+    "closed": null,
+    "merged": null,
+    "number": 2311,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "vol-0d2b2c3d4e5f60402",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": null,
+   "template": "note",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+   "kind": "unmanaged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-unmanaged",
+    "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+    "night": "2026-11-03",
+    "number": 2304,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Unmanaged aws_ebs_volume vol-0d2b2c3d4e5f60402 found in sandbox-quill"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-unmanaged",
+    "closed": null,
+    "merged": null,
+    "number": 2304,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "vol-0d2b2c3d4e5f60402",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": null,
+   "template": "import",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged",
+   "kind": "untagged",
+   "last_seen": "2026-11-03",
+   "last_write": {
+    "action": "updated",
+    "body_source": "model",
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-untagged",
+    "key": "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged",
+    "night": "2026-11-03",
+    "number": 2308,
+    "pushed": false,
+    "reason": "",
+    "refused_words": [],
+    "repo": "larkspur-mutual/platform-infra",
+    "title": "Missing required tags on aws_ebs_volume vol-0d2b2c3d4e5f60402"
+   },
+   "pull_request": {
+    "branch": "w5/sandbox-quill-vol-0d2b2c3d4e5f60402-untagged",
+    "closed": null,
+    "merged": null,
+    "number": 2308,
+    "opened": "2026-11-02",
+    "repo": "larkspur-mutual/platform-infra",
+    "state": "open",
+    "updated": "2026-11-03"
+   },
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "vol-0d2b2c3d4e5f60402",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": null,
+   "template": "note",
+   "workspace": "sandbox-quill"
+  },
+  "sandbox-quill:vol-0d2b2c3d4e5f60404:untagged": {
+   "account": "lm-sandbox",
+   "address": null,
+   "estimated_monthly_saving": null,
+   "first_seen": "2026-11-02",
+   "key": "sandbox-quill:vol-0d2b2c3d4e5f60404:untagged",
+   "kind": "untagged",
+   "last_seen": "2026-11-03",
+   "pull_request": null,
+   "realized_monthly_saving": null,
+   "realized_on": null,
+   "resource_id": "vol-0d2b2c3d4e5f60404",
+   "resource_type": "aws_ebs_volume",
+   "suppressed_by": "RITM0045233",
+   "template": "note",
+   "workspace": "sandbox-quill"
+  }
+ },
+ "nights": {
+  "2026-11-02": {
+   "body_sources": {
+    "model": 12,
+    "stub": 2
+   },
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 2,
+    "idle": 1,
+    "missing": 1,
+    "old_snapshot": 1,
+    "unattached_volume": 2,
+    "unmanaged": 2,
+    "untagged": 4
+   },
+   "completion_tokens": 1655,
+   "duration_s": 21.085,
+   "failed": 0,
+   "findings": 15,
+   "gateway_calls": 14,
+   "night": "2026-11-02",
+   "prompt_tokens": 8941,
+   "pull_requests": {
+    "opened": 14,
+    "skipped": 0,
+    "suppressed": 1,
+    "updated": 0
+   },
+   "realized": [],
+   "refused": 0,
+   "refused_words": {
+    "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": [
+     "apply"
+    ],
+    "sandbox-quill:aws_ebs_volume.scratch:missing": [
+     "apply"
+    ]
+   },
+   "spend": {
+    "lm-claims-prod": 21718.24,
+    "lm-network-prod": 6160.0,
+    "lm-sandbox": 1206.98
+   },
+   "trace_id": "71f66ed1aea74d8b85d43331916978be",
+   "trigger": {
+    "kind": "schedule"
+   },
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ]
+  },
+  "2026-11-03": {
+   "body_sources": {
+    "model": 13,
+    "stub": 1
+   },
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 2,
+    "idle": 1,
+    "missing": 1,
+    "old_snapshot": 1,
+    "unattached_volume": 1,
+    "unmanaged": 3,
+    "untagged": 4
+   },
+   "completion_tokens": 1730,
+   "duration_s": 15.287,
+   "failed": 0,
+   "findings": 15,
+   "gateway_calls": 14,
+   "night": "2026-11-03",
+   "prompt_tokens": 8941,
+   "pull_requests": {
+    "opened": 1,
+    "skipped": 0,
+    "suppressed": 1,
+    "updated": 13
+   },
+   "realized": [
+    "sandbox-quill:aws_ebs_volume.archive:unattached_volume"
+   ],
+   "refused": 0,
+   "refused_words": {
+    "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": [
+     "apply"
+    ]
+   },
+   "spend": {
+    "lm-claims-prod": 21718.24,
+    "lm-network-prod": 6160.0,
+    "lm-sandbox": 1206.98
+   },
+   "trace_id": "3909deadf74b4f108ed7c8401edc7c39",
+   "trigger": {
+    "kind": "schedule"
+   },
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ]
+  },
+  "2026-11-03:budget:lm-claims-prod": {
+   "body_sources": {
+    "model": 3
+   },
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 1
+   },
+   "completion_tokens": 353,
+   "duration_s": 3.304,
+   "failed": 0,
+   "findings": 3,
+   "gateway_calls": 3,
+   "night": "2026-11-03",
+   "prompt_tokens": 1927,
+   "pull_requests": {
+    "opened": 0,
+    "skipped": 0,
+    "suppressed": 0,
+    "updated": 3
+   },
+   "realized": [],
+   "refused": 0,
+   "refused_words": {},
+   "spend": {
+    "lm-claims-prod": 21718.24
+   },
+   "trace_id": "3de8c35b17c0456487d5c7ef45639556",
+   "trigger": {
+    "account": "lm-claims-prod",
+    "alert": "budget:claims-monthly:FORECASTED:100",
+    "budget": "claims-monthly",
+    "kind": "budget",
+    "notification_type": "FORECASTED",
+    "state": {
+     "actual": "1402.10",
+     "budget": "lm-claims-prod-monthly",
+     "forecasted": "25930.00",
+     "found": true,
+     "limit": "24000.00",
+     "matched_by": "the account's one budget",
+     "notification": {
+      "ComparisonOperator": "GREATER_THAN",
+      "NotificationState": "ALARM",
+      "NotificationType": "FORECASTED",
+      "Threshold": 100.0,
+      "ThresholdType": "PERCENTAGE"
+     }
+    },
+    "threshold": 100.0
+   },
+   "workspaces": [
+    "claims-api-prod"
+   ]
+  }
+ }
+}

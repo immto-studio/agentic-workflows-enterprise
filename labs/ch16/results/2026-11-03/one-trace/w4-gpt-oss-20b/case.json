@@ -1,0 +1,9 @@
+{
+  "case": "w4-01",
+  "passed": true,
+  "rationale_source": "model",
+  "risk_class": "Low",
+  "seconds": 2.8,
+  "trace_id": "a599e27fd4341004b037cd1208cb4032",
+  "workflow": "w4"
+}

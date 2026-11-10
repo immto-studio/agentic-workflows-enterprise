@@ -1,0 +1,20 @@
+# The read-only operations assistant (W2, chapter 11) in chapter 5's lab
+workflow: w2-ops-assistant
+owner: sam.okafor@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 1
+data_class_max: internal
+models: [larkspur-chat, larkspur-chat-restricted]
+# Internal data may cross Regions; the gateway logs which one served
+regions: [ca-central-1, us-east-2]
+tools:
+  get_pod_status: {args: [service]}
+  get_recent_alerts: {args: [service, minutes]}
+never:
+  - restart_deployment
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 0.50, per_month_usd: 200, requests_per_minute: 120}
+trace_content: false

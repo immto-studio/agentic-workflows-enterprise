@@ -1,0 +1,333 @@
+{
+ "date": "2026-11-03",
+ "versions": {
+  "litellm": "1.106.6",
+  "litellm-proxy-extras": "0.4.108",
+  "prisma": "0.15.0",
+  "nodeenv": "1.12.0",
+  "psycopg": "3.3.6",
+  "node": "v22.19.0",
+  "python": "3.12.9",
+  "os": "Windows 11 10.0.26300"
+ },
+ "postgres": "16.15-5",
+ "proxy_console": "a console of its own, hidden",
+ "steps": [
+  {
+   "step": "prisma generate",
+   "t": 8.25,
+   "exit": 0,
+   "seconds": 8.2,
+   "said": [
+    "Warning: The binaryTargets option is not officially supported by Prisma Client Python.",
+    "✔ Generated Prisma Client Python (v0.15.0) to .\\..\\..\\..\\venv-c16db\\Lib\\site-packages\\prisma in 619ms"
+   ],
+   "engines_alive": 0,
+   "engines_seen": 0
+  },
+  {
+   "step": "postgres up",
+   "t": 14.05,
+   "listen": "127.0.0.1",
+   "engines_alive": 0,
+   "engines_seen": 0
+  },
+  {
+   "step": "proxy up",
+   "t": 35.81,
+   "proxy_exit": null,
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "readiness",
+   "t": 36.44,
+   "db": "connected",
+   "status": "healthy",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "call 1, master key",
+   "t": 37.73,
+   "status": 200,
+   "seconds": 0.88,
+   "answer": "[primary] Is claims-api healthy?",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "call 2, master key",
+   "t": 38.36,
+   "status": 200,
+   "seconds": 0.19,
+   "answer": "[primary] Is policy-admin healthy?",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "key generate",
+   "t": 39.05,
+   "status": 200,
+   "error": null,
+   "got_key": true,
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "call 3, the virtual key",
+   "t": 39.75,
+   "status": 200,
+   "seconds": 0.27,
+   "answer": "[primary] Is claims-api healthy?",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "key block",
+   "t": 40.39,
+   "status": 200,
+   "error": null,
+   "blocked": true,
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "call 4, the blocked key",
+   "t": 41.03,
+   "status": 401,
+   "seconds": 0.19,
+   "error": "Authentication Error, Key is blocked. Update via `/key/unblock` if you're an admin.",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "key unblock",
+   "t": 41.62,
+   "status": 200,
+   "error": null,
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "call 5, the key unblocked",
+   "t": 42.27,
+   "status": 200,
+   "seconds": 0.19,
+   "answer": "[primary] Is claims-api healthy?",
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "key row in the database",
+   "t": 42.73,
+   "row": {
+    "key_alias": "w2-ops-assistant",
+    "blocked": false,
+    "spend": 0.0,
+    "max_budget": 200.0,
+    "budget_duration": null,
+    "metadata": {
+     "workflow": "w2-ops-assistant"
+    }
+   },
+   "engines_alive": 1,
+   "engines_seen": 1
+  },
+  {
+   "step": "after settling",
+   "t": 63.36,
+   "seconds": 20.0,
+   "proxy_exit": null,
+   "engines_alive": 1,
+   "engines_seen": 1
+  }
+ ],
+ "engines": [
+  {
+   "seen_at": 35.81,
+   "alive_when_the_script_stopped_the_proxy": true,
+   "stopped_at": 63.8,
+   "ended_at": 64.47,
+   "exit_code": 1,
+   "name": "query-engine-windows.exe"
+  }
+ ],
+ "proxy_log_watcher_lines": [
+  "2026-11-03 18:43:31,806 - litellm_proxy_extras - INFO - Preparing the Prisma CLI toolchain (timeout 600.0s)",
+  "2026-11-03 18:43:35,967 - litellm_proxy_extras - INFO - Prisma CLI toolchain ready",
+  "213 migrations found in prisma/migrations",
+  "18:43:41 - LiteLLM Proxy:WARNING: utils.py:6217 - LiteLLM Prisma Client Exception connect(): 'Prisma' object has no attribute '_Prisma__engine'",
+  "18:43:42 - LiteLLM Proxy:INFO: utils.py:7027 - Started Prisma DB health watchdog (interval=30s, reconnect_cooldown=15s, probe_timeout=5.0s, reconnect_timeout=30.0s)",
+  "18:43:42 - LiteLLM Proxy:INFO: utils.py:6578 - Found prisma-query-engine at PID 43416.",
+  "18:43:42 - LiteLLM Proxy:INFO: utils.py:6592 - Watching engine PID 43416 via os.kill polling."
+ ],
+ "os_kill_probe": [
+  {
+   "mode": "console",
+   "python": "3.12.9",
+   "processes_on_prober_console": 2,
+   "attempts": [
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "no-console",
+   "python": "3.12.9",
+   "processes_on_prober_console": 0,
+   "attempts": [
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "console",
+   "python": "3.10.11",
+   "processes_on_prober_console": 2,
+   "attempts": [
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "no-console",
+   "python": "3.10.11",
+   "processes_on_prober_console": 0,
+   "attempts": [
+    {
+     "call": "raised SystemError (<built-in function kill> returned a result with an exception set)",
+     "child_alive": false,
+     "child_exit_code": 0
+    }
+   ]
+  },
+  {
+   "mode": "console",
+   "python": "3.13.11",
+   "processes_on_prober_console": 2,
+   "attempts": [
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "no-console",
+   "python": "3.13.11",
+   "processes_on_prober_console": 0,
+   "attempts": [
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "console",
+   "python": "3.14.2",
+   "processes_on_prober_console": 2,
+   "attempts": [
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "returned",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  },
+  {
+   "mode": "no-console",
+   "python": "3.14.2",
+   "processes_on_prober_console": 0,
+   "attempts": [
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    },
+    {
+     "call": "raised OSError (winerror 6)",
+     "child_alive": true,
+     "child_exit_code": null
+    }
+   ]
+  }
+ ]
+}

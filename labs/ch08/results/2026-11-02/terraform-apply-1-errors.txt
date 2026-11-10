@@ -1,0 +1,13 @@
+# Chapter 8's first apply on the trial subscription, 2026-11-02 (sandbox/, book D-037): terraform apply -var-file=lab.tfvars after the budget
+# Resources created: 14 of 20; the errors, with IDs removed
+
+Error: creating Deployment (Subscription: <id>
+Resource Group Name: "rg-ops-assistant"
+Account Name: "fdy-models-sbx01"
+Deployment Name: "larkspur-chat"): performing CreateOrUpdate: unexpected status 400 (400 Bad Request) with error: InsufficientQuota: Not enough quota is available to create this deployment. The deployment requires 50 quota units, but only 0 quota units are available in Tokens Per Minute (thousands) - gpt-4o. Current usage: 0 / 0 quota units. Request more quota or reduce the deployment capacity and try again.
+Error: creating/updating Policy Definition "deny-model-deployments-in-agent-accounts": policy.DefinitionsClient#CreateOrUpdate: Failure responding to request: StatusCode=403 -- Original Error: autorest/azure: Service returned an error. Status=403 Code="AuthorizationFailed" Message="The client '<id>' with object id '<id>' does not have authorization to perform action 'Microsoft.Authorization/policyDefinitions/write' over scope '/subscriptions/<id>/providers/Microsoft.Authorization/policyDefinitions/deny-model-deployments-in-agent-accounts' or the scope is invalid. If access was recently granted, please refresh your credentials."
+Error: creating/updating Policy Definition "deny-deployments-outside-the-geography": policy.DefinitionsClient#CreateOrUpdate: Failure responding to request: StatusCode=403 -- Original Error: autorest/azure: Service returned an error. Status=403 Code="AuthorizationFailed" Message="The client '<id>' with object id '<id>' does not have authorization to perform action 'Microsoft.Authorization/policyDefinitions/write' over scope '/subscriptions/<id>/providers/Microsoft.Authorization/policyDefinitions/deny-deployments-outside-the-geography' or the scope is invalid. If access was recently granted, please refresh your credentials."
+
+# The image build, ACR Tasks (sandbox/sandbox.py image), 2026-11-02:
+scheduleRun: HTTP 400 TasksOperationsNotAllowed: "ACR Tasks requests for the registry acropsassistantsbx01 and <subscription> are not permitted. Please file an Azure support request at http://aka.ms/azuresupport for assistance."
+# So the trial builds no image, and the facts that need an agent version (the endpoint's reachability, the project identity's pull) stay open on it.

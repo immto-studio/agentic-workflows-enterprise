@@ -1,0 +1,176 @@
+{
+ "measured": true,
+ "simulated": false,
+ "figure": "fig-16-04",
+ "workflow": "w2",
+ "candidate": "gemma4-12b",
+ "control": "gpt-oss-20b",
+ "stages": [
+  {
+   "id": "register",
+   "name": "the register",
+   "what": "the candidate is in lifecycle/register.yaml as a candidate, with its pin (a digest for a local model), its stage and its retirement date where the provider publishes one",
+   "gate": "the register and the gateways name the same deployments (lifecycle/register.py --check)",
+   "decided_by": "the platform team",
+   "numbers": {
+    "models": 13,
+    "by_cloud": {
+     "aws": 6,
+     "google": 2,
+     "azure": 2,
+     "local": 3
+    },
+    "pinned": 6,
+    "deployments": 14,
+    "problems": 0,
+    "candidate": "local-gemma4-12b",
+    "candidate_pin": "6114515d63c1",
+    "alert_today": {
+     "tickets": 1,
+     "review_rows": 5,
+     "pages": 0
+    }
+   }
+  },
+  {
+   "id": "staging",
+   "name": "the candidate behind the alias on a staging gateway",
+   "what": "a second LiteLLM configuration (lifecycle/litellm.staging.yaml) puts the candidate behind larkspur-chat; chapter 15's live job runs the workflow's golden set on it through the workflow's own harness and the other local model judges the prose (labs/ch15/ci/live.py)",
+   "gate": "the gate of E-D9 (labs/ch15/ci/gate.py): no check may lose more cases against the baseline than its threshold allows (the baseline built from the kept runs, until a live run is accepted); the pins are listed for the review that accepts the new baseline",
+   "decided_by": "the gate's rule; the set's owner reviews the table",
+   "numbers": {
+    "cases": 25,
+    "checks": 11,
+    "held": 9,
+    "regressed": [
+     "trajectory.allowed"
+    ],
+    "not_gated": 1,
+    "pin_problems": 7,
+    "verdict": "regressed",
+    "seconds": 136.4
+   }
+  },
+  {
+   "id": "canary",
+   "name": "a canary weight in the gateway",
+   "what": "larkspur-chat gets the candidate as a second deployment at weight 1 beside the current model at weight 3 (lifecycle/litellm.canary.yaml), so a quarter of the alias's calls go to it; W2's golden questions run through the gateway several times and the cost lines say which arm served each call",
+   "gate": "O-D12's SLIs over each arm's runs (slo/slis.py): the candidate's success and latency ratios not below the control's on the same traffic, with at least 20 valid runs on the candidate",
+   "decided_by": "the decision rule (lifecycle/decision.py); the workflow's owner and the platform team read the file",
+   "numbers": {
+    "share": 0.25,
+    "passes": 4,
+    "runs": 100,
+    "by_group": {
+     "candidate": 11,
+     "control": 49,
+     "mixed": 36,
+     "none": 4
+    },
+    "calls": 196,
+    "candidate_calls": 54,
+    "slis": {
+     "control": {
+      "success": {
+       "good": 85,
+       "valid": 85,
+       "value": 1.0
+      },
+      "latency": {
+       "good": 69,
+       "valid": 85,
+       "value": 0.811765
+      },
+      "latency_without_loads": {
+       "good": 85,
+       "valid": 85,
+       "value": 1.0
+      }
+     },
+     "candidate": {
+      "success": {
+       "good": 47,
+       "valid": 47,
+       "value": 1.0
+      },
+      "latency": {
+       "good": 31,
+       "valid": 47,
+       "value": 0.659574
+      },
+      "latency_without_loads": {
+       "good": 47,
+       "valid": 47,
+       "value": 1.0
+      }
+     }
+    },
+    "swaps": {
+     "gemma4:12b": 39,
+     "gpt-oss:20b": 38
+    },
+    "seconds": 553.9
+   }
+  },
+  {
+   "id": "decision",
+   "name": "promote, remap back, or extend",
+   "what": "lifecycle/decision.py reads the gate's verdict and the canary's SLIs and gives one of the three",
+   "gate": "the rule above",
+   "decided_by": "the platform team for a promotion; the on-call lead for a remap back pulled under the playbook (O-D13)",
+   "numbers": {
+    "decision": "remap back",
+    "because": [
+     "the gate: trajectory.allowed regressed past the threshold"
+    ],
+    "latency_read_from": "latency_without_loads",
+    "as_measured": "remap back"
+   }
+  },
+  {
+   "id": "remap",
+   "name": "the alias remapped",
+   "what": "lifecycle/remap.py writes the alias's new deployments into the gateway configuration, whole, and one line into changes.jsonl: the change, its kind, the deployments before and after, who, when, the time to document it, the review, the reason and the evidence files; the proxy reads the configuration at its next start",
+   "gate": "the change record (ch02:163)",
+   "decided_by": "whoever the decision names",
+   "numbers": {
+    "change": "CH-20261109-01",
+    "kind": "emergency",
+    "lever": "alias remap, back",
+    "from": [
+     {
+      "id": "local-gpt-oss-20b-chat",
+      "model": "ollama_chat/gpt-oss:20b",
+      "weight": 3
+     },
+     {
+      "id": "candidate-gemma4-12b-chat",
+      "model": "ollama_chat/gemma4:12b",
+      "weight": 1
+     }
+    ],
+    "to": [
+     {
+      "id": "local-gpt-oss-20b-chat",
+      "model": "ollama_chat/gpt-oss:20b"
+     }
+    ],
+    "probe_calls": 6,
+    "probe_served_by": [
+     "local-gpt-oss-20b-chat"
+    ]
+   }
+  },
+  {
+   "id": "after",
+   "name": "after the remap",
+   "what": "E-D9: the live job runs again on the new alias map, its result is reviewed and accepted as the baseline, and the register's stage moves (the candidate to serving, the model it replaced to retired when it leaves every gateway)",
+   "gate": "the review that accepts the baseline (labs/ch15/ci/live.py --accept)",
+   "decided_by": "the set's owner, with the data and AI center of excellence for the judge's rubric",
+   "numbers": {
+    "ran": false,
+    "waits_for": "the live job on the new map and the review that accepts it (E-D9)"
+   }
+  }
+ ]
+}

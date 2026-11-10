@@ -1,0 +1,532 @@
+# The dated price table of chapter 16's ledger (companion #14, O-D5 and O-D6).
+#
+# Every price is copied from a cost sheet of chapters 6 to 9, or, where no cost sheet has one, from
+# section 8.8 of chapter 16's fact sheet (LINKS.md, chapter 16, section 8.8; read
+# 2026-11-03). Each entry names its source, the date that source records, and the
+# page the source cites. An entry copied from a cost sheet says where in the sheet (`sheet`), and a test
+# reads the sheet and compares; an entry from the fact sheet carries its quote. A price no vendor
+# publishes, or no source has, is null, with the reason or the vendor's own words. US dollars,
+# on-demand, before tax.
+#
+# The book prints none of these numbers (style guide 12.4). It prints ratios and percentages of the
+# manifests' budgets, which the ledger derives from them.
+currency: USD
+month_hours: 730   # the cost sheets' month (labs/ch06/cost/cost-sheet.yaml idle_month, labs/ch09/cost/cost-sheet.yaml)
+
+# Chapter 6's design: the deployment that serves each alias on AWS ("Models and knowledge that stay in
+# Canada", ch06:162; labs/ch06/gateway/litellm.aws.yaml). A cost line is priced at the deployment its
+# alias names here, and a fallback at the deployment it fell back to, in that deployment's own Region.
+design:
+  larkspur-chat: nova-lite-ca
+  larkspur-chat-fallback: nova-lite-us
+  larkspur-chat-restricted: vllm-gpt-oss-20b
+  larkspur-embed: titan-embed-v2-ca
+fallbacks:
+  larkspur-chat: larkspur-chat-fallback   # labs/ch06/gateway/litellm.aws.yaml, litellm_settings.fallbacks
+
+# What serves an alias where, priced per million tokens. `gateway` is the gateway pair whose config the
+# deployment belongs to (ledger/litellm.prices.yaml); `litellm_model` is the name LiteLLM is given.
+deployments:
+  - id: nova-lite-ca
+    alias: larkspur-chat
+    gateway: aws
+    chapter: 6
+    model: Amazon Nova Lite through its Canadian geographic profile
+    litellm_model: bedrock/converse/ca.amazon.nova-lite-v1:0
+    litellm_params: {aws_region_name: ca-central-1}
+    region: ca-central-1
+    serves_from: [ca-central-1, ca-west-1]
+    input_per_million: 0.064
+    output_per_million: 0.256
+    cache_read_per_million: 0.016
+    note: a profile bills at the price of the Region it is called in, whichever destination serves it
+    source: labs/ch06/cost/cost-sheet.yaml
+    sheet:
+      input_per_million: [bedrock, nova_lite, ca-central-1, input_per_million]
+      output_per_million: [bedrock, nova_lite, ca-central-1, output_per_million]
+      cache_read_per_million: [bedrock, nova_lite, ca-central-1, cache_read_per_million]
+    date: 2026-10-29   # fetched; AmazonBedrock offer for ca-central-1 published 2026-10-28
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/ca-central-1/index.json
+    confirmed:
+      source: fact sheet, section 8.1
+      date: 2026-11-03
+      quote:
+        - "$0.000064 per 1K tokens for CAN1-NovaLite-input-tokens in Canada (Central)"
+        - "$0.000256 per 1K tokens for CAN1-NovaLite-output-tokens in Canada (Central)"
+
+  - id: nova-lite-us
+    alias: larkspur-chat-fallback
+    gateway: aws
+    chapter: 6
+    model: Amazon Nova Lite In-Region in us-east-2, the Internal fallback
+    litellm_model: bedrock/converse/amazon.nova-lite-v1:0
+    litellm_params: {aws_region_name: us-east-2}
+    region: us-east-2
+    input_per_million: 0.06
+    output_per_million: 0.24
+    cache_read_per_million: 0.015
+    source: labs/ch06/cost/cost-sheet.yaml
+    sheet:
+      input_per_million: [bedrock, nova_lite, us-east-2, input_per_million]
+      output_per_million: [bedrock, nova_lite, us-east-2, output_per_million]
+      cache_read_per_million: [bedrock, nova_lite, us-east-2, cache_read_per_million]
+    date: 2026-10-29   # fetched; AmazonBedrock offer for us-east-2 published 2026-10-28
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-2/index.json
+    confirmed:
+      source: fact sheet, section 8.1
+      date: 2026-11-03
+      quote:
+        - "$0.00006 per 1K tokens for Nova Lite-input-tokens in us-east-2 (Ohio)"
+
+  - id: vllm-gpt-oss-20b
+    alias: larkspur-chat-restricted
+    gateway: aws
+    chapter: 9
+    model: gpt-oss-20b on chapter 9's two vLLM replicas in ca-central-1
+    litellm_model: hosted_vllm/gpt-oss-20b
+    litellm_params: {api_base: "http://vllm-gpt-oss-20b.llm-serving.svc:8080/v1"}
+    region: ca-central-1
+    input_per_million: 0.0
+    output_per_million: 0.0
+    note: >-
+      zero per token: the GPUs are billed by the hour (gpu, below) and allocated in the month. A deployment
+      priced at exactly zero makes LiteLLM skip every budget check for its alias (fact sheet 8.1), so the
+      alias's only stop at the gateway is each manifest's requests_per_minute
+    source: labs/ch09/gateway/litellm.k8s.yaml
+    date: 2026-10-29   # chapter 9's lab, labs/ch09/results/2026-10-29
+    page: book ch09:198, "The deployment's price per token is zero"
+
+  - id: titan-embed-v2-ca
+    alias: larkspur-embed
+    gateway: aws
+    chapter: 6
+    model: Amazon Titan Text Embeddings V2 in ca-central-1, the Knowledge Base's embedding model
+    litellm_model: bedrock/amazon.titan-embed-text-v2:0
+    litellm_params: {aws_region_name: ca-central-1}
+    mode: embedding
+    region: ca-central-1
+    input_per_million: 0.10
+    output_per_million: 0.0
+    note: the kept runs record no embedding call, so no cost line uses this entry
+    source: labs/ch06/cost/cost-sheet.yaml
+    sheet:
+      input_per_million: [bedrock, titan_text_embeddings_v2, ca-central-1, input_per_million]
+    date: 2026-10-29   # fetched; AmazonBedrock offer for ca-central-1 published 2026-10-28
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/ca-central-1/index.json
+
+  - id: gpt-4o-canada-east
+    alias: larkspur-chat
+    gateway: azure
+    chapter: 8
+    model: gpt-4o 2024-11-20, a Standard deployment in Canada East
+    litellm_model: azure/gpt-4o-2024-11-20
+    litellm_params: {}
+    region: canadaeast
+    input_per_million: 3.025
+    output_per_million: 12.1
+    cached_input_per_million: 1.513
+    note: the page's pay-per-token row for a regional deployment, "GPT-4o-2024-1120 Regional"
+    source: labs/ch08/cost/cost-sheet.yaml
+    sheet:
+      input_per_million: [chat_tokens, per_million_tokens, input]
+      output_per_million: [chat_tokens, per_million_tokens, output]
+      cached_input_per_million: [chat_tokens, per_million_tokens, cached_input]
+    date: 2026-10-29
+    page: https://azure.microsoft.com/en-us/pricing/details/azure-openai/
+
+  - id: gemini-3.5-flash-montreal
+    alias: larkspur-chat
+    gateway: google
+    chapter: 7
+    model: Gemini 3.5 Flash in Montréal (ch07:88)
+    litellm_model: vertex_ai/gemini-3.5-flash
+    litellm_params: {vertex_location: northamerica-northeast1}
+    region: northamerica-northeast1
+    input_per_million: null
+    output_per_million: null
+    reason: labs/ch07/cost/cost-sheet.yaml prices Agent Platform's runtime, gateway, sessions and memory, not Gemini's tokens, and section 8.8 has no Gemini token price
+    source: labs/ch07/cost/cost-sheet.yaml
+    date: 2026-10-29
+    page: https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing
+
+  # Not an alias: the hosted price chapter 9's crossover sets against its GPUs (labs/ch09/cost/crossover.py).
+  - id: bedrock-gpt-oss-120b-use1
+    alias: null
+    gateway: null
+    chapter: 9
+    model: gpt-oss-120b on Amazon Bedrock's Standard tier in us-east-1
+    litellm_model: bedrock/openai.gpt-oss-120b-1:0
+    litellm_params: {aws_region_name: us-east-1}
+    region: us-east-1
+    input_per_million: 0.15
+    output_per_million: 0.60
+    source: labs/ch09/cost/cost-sheet.yaml
+    sheet:
+      input_per_million: [hosted, bedrock-gpt-oss-120b-standard, input_per_million]
+      output_per_million: [hosted, bedrock-gpt-oss-120b-standard, output_per_million]
+    date: 2026-10-28
+    page: https://aws.amazon.com/bedrock/pricing/
+
+# The guardrail chapter 6 runs before and after every call on the managed aliases. The cost lines don't
+# carry it: LiteLLM prices the model's tokens, and the guardrail bills text units of up to 1,000
+# characters, per policy. The ledger estimates it apart (price.guardrail_estimate).
+guardrail:
+  id: bedrock-guardrail-ca
+  what: Amazon Bedrock Guardrails in ca-central-1, before and after each call on the managed aliases
+  applies_to: [larkspur-chat, larkspur-chat-fallback]   # labs/ch06/gateway/litellm.aws.yaml, the managed aliases
+  calls: [pre_call, post_call]                          # mode in the same file
+  policies: [content_filters, sensitive_information]    # labs/ch06/terraform/guardrail.tf: content (with prompt attacks) and PII
+  per_1000_text_units:
+    content_filters: 0.15
+    denied_topics: 0.15
+    sensitive_information: 0.10
+    contextual_grounding: 0.10
+    word_filters: 0.0
+  text_unit_characters: 1000
+  characters_per_token: 4   # an estimate, not a price: LiteLLM's DEFAULT_CHARS_PER_TOKEN (fact sheet 8.1); the cost lines keep tokens
+  source: labs/ch06/cost/cost-sheet.yaml
+  sheet:
+    content_filters: [bedrock, guardrails_per_1000_text_units, ca-central-1, content_filters]
+    denied_topics: [bedrock, guardrails_per_1000_text_units, ca-central-1, denied_topics]
+    sensitive_information: [bedrock, guardrails_per_1000_text_units, ca-central-1, sensitive_information]
+    contextual_grounding: [bedrock, guardrails_per_1000_text_units, ca-central-1, contextual_grounding]
+    word_filters: [bedrock, guardrails_per_1000_text_units, ca-central-1, word_filters]
+  date: 2026-10-29
+  page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/ca-central-1/index.json
+
+# GPU hours. Chapter 9's replicas run on L40S-class g6e nodes, "a g6e.2xlarge or larger" in ca-central-1
+# (ch09:94); no cost sheet prices that node, so chapter 9 prices the smallest g6e size in us-east-1 as a
+# lower bound (ch09:415), and so does the ledger.
+gpu:
+  - id: aws-g6e.xlarge-l40s
+    what: one L40S on an on-demand g6e.xlarge in us-east-1, the lower bound chapter 9 uses
+    per_hour: 1.861
+    gpus: 1
+    source: labs/ch09/cost/cost-sheet.yaml
+    sheet:
+      per_hour: [gpu, aws-g6e.xlarge-l40s-on-demand, per_hour]
+    date: 2026-10-28
+    page: https://aws.amazon.com/ec2/pricing/on-demand/
+  - id: aws-g6e.2xlarge-l40s-cac1
+    what: the node chapter 9 names for a replica, a g6e.2xlarge or larger in ca-central-1 (ch09:94)
+    per_hour: null
+    reason: no cost sheet and no section of the fact sheet prices it
+    source: book ch09:94
+    date: 2026-10-28
+    page: book ch09:94
+  - id: aws-p5.4xlarge-h100
+    what: one H100 on an on-demand p5.4xlarge in us-east-1, chapter 9's crossover for gpt-oss-120b
+    per_hour: 6.88
+    gpus: 1
+    source: labs/ch09/cost/cost-sheet.yaml
+    sheet:
+      per_hour: [gpu, aws-p5.4xlarge-h100-on-demand, per_hour]
+    date: 2026-10-28
+    page: https://aws.amazon.com/ec2/pricing/on-demand/
+  - id: gcp-g2-standard-4-l4
+    what: one L4 on an on-demand g2-standard-4 in us-central1
+    per_hour: 0.7068
+    gpus: 1
+    source: labs/ch09/cost/cost-sheet.yaml
+    sheet:
+      per_hour: [gpu, gcp-g2-standard-4-l4-on-demand, per_hour]
+    date: 2026-10-28
+    page: https://cloud.google.com/products/compute/pricing/accelerator-optimized
+
+# The platform's fixed costs: the gateway's database, Redis and compute, Langfuse's stores, the shared
+# endpoints, and the licenses. volumes.yaml says how many of each the month counts.
+platform:
+  - id: rds-postgres-db.t4g.micro-cac1
+    what: RDS for PostgreSQL, db.t4g.micro (2 vCPU, 1 GiB), Single-AZ, ca-central-1
+    per_hour: 0.018
+    source: fact sheet, section 8.8
+    quote: "$ 0.018 per RDS db.t4g.micro Single-AZ instance hour (or partial hour) running PostgreSQL"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonRDS/current/ca-central-1/index.csv
+  - id: rds-postgres-db.t4g.small-cac1
+    what: RDS for PostgreSQL, db.t4g.small (2 GiB), Single-AZ, ca-central-1
+    per_hour: 0.035
+    source: fact sheet, section 8.8
+    quote: "$ 0.035 per RDS db.t4g.small Single-AZ instance hour (or partial hour) running PostgreSQL"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonRDS/current/ca-central-1/index.csv
+  - id: rds-postgres-db.t4g.medium-cac1
+    what: RDS for PostgreSQL, db.t4g.medium (4 GiB), Single-AZ, ca-central-1
+    per_hour: 0.07
+    source: fact sheet, section 8.8
+    quote: "$ 0.07 per RDS db.t4g.medium Single-AZ instance hour (or partial hour) running PostgreSQL"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonRDS/current/ca-central-1/index.csv
+  - id: rds-gp3-storage-cac1
+    what: RDS gp3 storage for PostgreSQL, ca-central-1
+    per_gb_month: 0.127
+    source: fact sheet, section 8.8
+    quote: "$0.127 per GB-month of provisioned GP3 storage running PostgreSQL"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonRDS/current/ca-central-1/index.csv
+  - id: elasticache-t4g.micro-valkey-cac1
+    what: ElastiCache, cache.t4g.micro running Valkey (0.5 GiB), ca-central-1
+    per_hour: 0.0144
+    source: fact sheet, section 8.8
+    quote: "$0.0144 per T4G Micro Cache node-hour (or partial hour) running Valkey"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonElastiCache/current/ca-central-1/index.json
+  - id: elasticache-t4g.micro-redis-cac1
+    what: ElastiCache, cache.t4g.micro running Redis, ca-central-1
+    per_hour: 0.018
+    source: fact sheet, section 8.8
+    quote: "$0.018 per T4G Micro Cache node-hour (or partial hour) running Redis"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonElastiCache/current/ca-central-1/index.json
+  - id: elasticache-t4g.small-valkey-cac1
+    what: ElastiCache, cache.t4g.small running Valkey, ca-central-1
+    per_hour: 0.028
+    source: fact sheet, section 8.8
+    quote: "$0.028 per T4G Small Cache node-hour (or partial hour) running Valkey"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonElastiCache/current/ca-central-1/index.json
+  - id: elasticache-serverless-valkey-storage-cac1
+    what: ElastiCache Serverless for Valkey, data storage, ca-central-1
+    per_gb_hour: 0.092
+    source: fact sheet, section 8.8
+    quote: "$0.092 per GB-hour for Valkey data storage"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonElastiCache/current/ca-central-1/index.json
+  - id: elasticache-serverless-valkey-ecpu-cac1
+    what: ElastiCache Serverless for Valkey, ElastiCache Processing Units, ca-central-1
+    per_million_ecpus: 0.0025
+    source: fact sheet, section 8.8
+    quote: "$0.0025 per million Valkey ECPUs"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonElastiCache/current/ca-central-1/index.json
+  - id: ec2-t3.xlarge-use2
+    what: EC2 t3.xlarge, Linux on demand (4 vCPU, 16 GiB, Langfuse's example size), us-east-2
+    per_hour: 0.1664
+    source: fact sheet, section 8.8
+    quote: "$0.1664 per On Demand Linux t3.xlarge Instance Hour"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-2/index.csv
+  - id: ec2-t4g.xlarge-use2
+    what: EC2 t4g.xlarge, Linux on demand (Arm, 16 GiB), us-east-2
+    per_hour: 0.1344
+    source: fact sheet, section 8.8
+    quote: "$0.1344 per On Demand Linux t4g.xlarge Instance Hour"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-2/index.csv
+  - id: ec2-m7i-flex.xlarge-use2
+    what: EC2 m7i-flex.xlarge, Linux on demand, us-east-2
+    per_hour: 0.19152
+    source: fact sheet, section 8.8
+    quote: "$0.19152 per On Demand Linux m7i-flex.xlarge Instance Hour"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-2/index.csv
+  - id: ec2-m7i-flex.large-use2
+    what: EC2 m7i-flex.large, Linux on demand (8 GiB, the largest free-tier-eligible type), us-east-2
+    per_hour: 0.09576
+    source: fact sheet, section 8.8
+    quote: "$0.09576 per On Demand Linux m7i-flex.large Instance Hour"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-2/index.csv
+  - id: ebs-gp3-use2
+    what: EBS gp3 storage, us-east-2
+    per_gb_month: 0.08
+    source: fact sheet, section 8.8
+    quote: "$0.08 per GB-month of General Purpose (gp3) provisioned storage - US East (Ohio)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/us-east-2/index.csv
+  - id: public-ipv4-use2
+    what: an in-use public IPv4 address, us-east-2 (the plan's Langfuse VM uses none)
+    per_hour: 0.005
+    source: fact sheet, section 8.8
+    quote: "$0.005 per In-use public IPv4 address per hour"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonVPC/current/us-east-2/index.json
+  - id: vpc-interface-endpoint-cac1
+    what: one interface endpoint in one Availability Zone, ca-central-1 (chapter 6's shared endpoints)
+    per_hour: 0.011
+    source: labs/ch06/cost/cost-sheet.yaml
+    sheet:
+      per_hour: [vpc_endpoints, interface_endpoint_hour]
+    date: 2026-10-29   # fetched; AmazonVPC offer for ca-central-1 published 2026-10-16
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonVPC/current/ca-central-1/index.json
+  - id: kms-key-cac1
+    what: one customer managed KMS key, ca-central-1
+    per_month: 1.00
+    source: labs/ch06/cost/cost-sheet.yaml
+    sheet:
+      per_month: [kms, customer_managed_key_version_month]
+    date: 2026-10-29   # fetched; awskms offer for ca-central-1 published 2026-10-26
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/awskms/current/ca-central-1/index.json
+  - id: psc-endpoint-google
+    what: chapter 7's Private Service Connect endpoint for Google APIs (ch07:88)
+    per_hour: null
+    reason: labs/ch07/cost/cost-sheet.yaml doesn't price it, and section 8.8 has no Google network price
+    source: labs/ch07/cost/cost-sheet.yaml
+    date: 2026-10-29
+    page: https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing
+  - id: private-endpoints-azure
+    what: chapter 8's private endpoints
+    per_hour: null
+    reason: "labs/ch08/README.md: \"The registry, the private endpoints and the workspace bill too, and the sheet doesn't price them.\""
+    source: labs/ch08/cost/cost-sheet.yaml
+    date: 2026-10-29
+    page: https://azure.microsoft.com/en-us/pricing/details/azure-openai/
+  - id: litellm-enterprise
+    what: LiteLLM's enterprise license
+    per_month: null
+    vendor_words: "Pricing depends on your deployment size. Get in touch to scope it."
+    source: fact sheet, section 8.8
+    quote: "Pricing depends on your deployment size. Get in touch to scope it."
+    date: 2026-11-03
+    page: https://docs.litellm.ai/docs/enterprise
+  - id: langfuse-enterprise
+    what: Langfuse's enterprise features, self-hosted; the open-source edition is free
+    per_month: null
+    vendor_words: "Custom Pricing"
+    source: fact sheet, section 8.8
+    quote: "Custom Pricing"
+    date: 2026-11-03
+    page: https://langfuse.com/pricing-self-host
+
+# What the traces cost in CloudWatch, and what the reconciliation's queries cost. In the table for step 7;
+# the month here doesn't use them (the README says why).
+observability:
+  - id: cloudwatch-span-ingestion-use2
+    what: CloudWatch Application Signals data ingested (spans), first 10 TB, us-east-2
+    per_gb: 0.35
+    source: fact sheet, section 8.8
+    quote: "$0.35 per GB of Application Signals data ingested for the first 10TB - US East (Ohio)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json
+  - id: cloudwatch-span-ingestion-cac1
+    what: CloudWatch Application Signals data ingested (spans), first 10 TB, ca-central-1
+    per_gb: 0.35
+    source: fact sheet, section 8.8
+    quote: "$0.35 per GB of Application Signals data ingested for the first 10TB - Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/ca-central-1/index.json
+  - id: cloudwatch-span-indexing-use2
+    what: Transaction Search spans indexed, us-east-2
+    per_span: 0.00000075
+    source: fact sheet, section 8.8
+    quote: "$0.00000075 per spans indexed for USE2-XRay-Spans-Indexed in US East (Ohio)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json
+  - id: cloudwatch-span-indexing-cac1
+    what: Transaction Search spans indexed, ca-central-1
+    per_span: 0.00000075
+    source: fact sheet, section 8.8
+    quote: "$0.00000075 per spans indexed for CAN1-XRay-Spans-Indexed in Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/ca-central-1/index.json
+  - id: cloudwatch-otlp-logs-use2
+    what: CloudWatch OTLP log data processed, us-east-2
+    per_gb: 0.50
+    source: fact sheet, section 8.8
+    quote: "$0.50 per GB of USE2-DataProcessingOtel-Bytes in US East (Ohio)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json
+  - id: cloudwatch-logs-insights-cac1
+    what: CloudWatch Logs Insights, data scanned, ca-central-1
+    per_gb: 0.0055
+    source: fact sheet, section 8.8
+    quote: "$0.0055 per GB log data scanned by CloudWatch Logs Insights queries - Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/ca-central-1/index.json
+  - id: cloudwatch-log-storage-cac1
+    what: CloudWatch Logs storage, ca-central-1
+    per_gb_month: 0.033
+    source: fact sheet, section 8.8
+    quote: "$0.033 per GB-mo of log storage - Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/ca-central-1/index.json
+  - id: cost-explorer-api
+    what: one Cost Explorer API request
+    per_request: 0.01
+    source: fact sheet, section 8.8
+    quote: "$0.01 per API Request"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSCostExplorer/current/index.json
+
+# Committed capacity, for step 5's calculator (O-D9). Nova Lite sells Provisioned Throughput only in
+# us-east-1 and has no Reserved tier; the only Reserved tier priced in ca-central-1 is Claude Sonnet 4.5's,
+# for geographic cross-Region inference.
+committed:
+  - id: nova-lite-pt-nocommit-use1
+    what: Nova Lite Provisioned Throughput, no commitment, per model unit, us-east-1
+    per_hour: 60.50
+    source: fact sheet, section 8.8
+    quote: "$60.50 per hour for USE1-NovaLite-ProvisionedThroughput-NoCommit-ModelUnits in US East (N. Virginia)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json
+  - id: nova-lite-pt-1month-use1
+    what: Nova Lite Provisioned Throughput, one-month commitment, per model unit, us-east-1
+    per_hour: 55.00
+    source: fact sheet, section 8.8
+    quote: "$55.00 per hour for USE1-NovaLite-ProvisionedThroughput-1month-ModelUnits in US East (N. Virginia)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json
+  - id: nova-lite-pt-6months-use1
+    what: Nova Lite Provisioned Throughput, six-month commitment, per model unit, us-east-1
+    per_hour: 30.25
+    source: fact sheet, section 8.8
+    quote: "$30.25 per hour for USE1-NovaLite-ProvisionedThroughput-6months-ModelUnits in US East (N. Virginia)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json
+  - id: claude-sonnet-4.5-reserved-1month-cac1
+    what: Claude Sonnet 4.5 Reserved tier, one month, geographic cross-Region inference, per 1K tokens a minute, ca-central-1
+    input_per_1k_tpm_hour: 0.198
+    output_per_1k_tpm_hour: 0.99
+    source: fact sheet, section 8.8
+    quote:
+      - "$0.198 per 1K TPM Hour for Claude4.5Sonnet-reserved-1-month-input-tokens-per-minute-cross-region-geo in Canada (Central)"
+      - "$0.99 per 1K TPM Hour for Claude4.5Sonnet-reserved-1-month-output-tokens-per-minute-cross-region-geo in Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockService/current/ca-central-1/index.json
+  - id: claude-sonnet-4.5-reserved-3month-cac1
+    what: Claude Sonnet 4.5 Reserved tier, three months, geographic cross-Region inference, per 1K tokens a minute, ca-central-1
+    input_per_1k_tpm_hour: 0.1782
+    output_per_1k_tpm_hour: 0.891
+    source: fact sheet, section 8.8
+    quote:
+      - "$0.1782 per 1K TPM Hour for Claude4.5Sonnet-reserved-3-month-input-tokens-per-minute-cross-region-geo in Canada (Central)"
+      - "$0.891 per 1K TPM Hour for Claude4.5Sonnet-reserved-3-month-output-tokens-per-minute-cross-region-geo in Canada (Central)"
+    date: 2026-11-03
+    page: https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockService/current/ca-central-1/index.json
+  - id: azure-ptu-gpt-5.5-regional-canadaeast
+    what: Azure provisioned throughput, GPT-5.5 Regional, Canada East, per PTU (at least 50)
+    per_hour: 2.36
+    per_month_reserved: 338
+    per_year_reserved: 3444
+    minimum_ptus: 50
+    source: fact sheet, section 8.8
+    quote:
+      - '"canada-east":2.36'
+      - "its monthly and yearly values are 338 and 3,444"
+    date: 2026-11-03
+    page: https://azure.microsoft.com/en-us/pricing/details/azure-openai/
+  - id: azure-ptu-global-canadaeast
+    what: Azure provisioned throughput, the Global rows, Canada East, per PTU (at least 15)
+    per_hour: 1.0
+    per_month_reserved: 260
+    per_year_reserved: 2652
+    minimum_ptus: 15
+    source: fact sheet, section 8.8
+    quote: "the Global rows, minimum 15, carry 1.0, 260 and 2,652 for Canada East"
+    date: 2026-11-03
+    page: https://azure.microsoft.com/en-us/pricing/details/azure-openai/
+  - id: google-gsu
+    what: Google Provisioned Throughput, per GSU per hour, global and non-global
+    per_hour:
+      1_week: {global: 7.14, non_global: 7.854}
+      1_month: {global: 3.698630137, non_global: 4.068493151}
+      3_month: {global: 3.287671233, non_global: 3.616438356}
+      1_year: {global: 2.739726027, non_global: 3.01369863}
+    source: fact sheet, section 8.8
+    quote:
+      - "1 week commit | $7.14 | $7.854"
+      - "1 month commit | $3.698630137 | $4.068493151"
+      - "3 month commit | $3.287671233 | $3.616438356"
+      - "1 year commit | $2.739726027 | $3.01369863"
+    date: 2026-11-03
+    page: https://cloud.google.com/model-garden/pricing

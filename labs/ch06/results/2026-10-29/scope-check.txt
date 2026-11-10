@@ -1,0 +1,20 @@
+# pipeline/scope_check.py: chapter 5's lab manifest as the base, the AWS manifest as the head (2026-10-29)
+$ python pipeline/scope_check.py --base-manifest ../ch05/manifest/w3-incident.yaml --manifest manifests/w3-incident.yaml --base-catalog catalog/tools.yaml --catalog catalog/tools.yaml
+grown: regions added: ca-west-1
+grown: tool added: search_runbooks
+grown: search_runbooks: IAM bedrock:Retrieve on ${knowledge_base_arn}
+narrowed: restart_deployment: service only claims-api, billing-worker
+scope check: refused: 3 grown scope(s) for w3-incident, no change record
+exit status 1
+
+$ ... --change-record CHG-20431
+grown: regions added: ca-west-1
+grown: tool added: search_runbooks
+grown: search_runbooks: IAM bedrock:Retrieve on ${knowledge_base_arn}
+narrowed: restart_deployment: service only claims-api, billing-worker
+scope check: 3 grown scope(s) for w3-incident, under CHG-20431
+exit status 0
+
+$ ... without --base-catalog
+scope check: --base-catalog is required with --base-manifest
+exit status 2

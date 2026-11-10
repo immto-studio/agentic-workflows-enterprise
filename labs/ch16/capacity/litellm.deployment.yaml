@@ -1,0 +1,55 @@
+# Step 5's third limit (O-D8): step 4's database-backed gateway with limits on the deployment itself.
+#
+# Step 4's aliases, keys and callbacks, with the primary deployment given the account's quota as `tpm`, a
+# request rate as `rpm`, and `max_parallel_requests`. LiteLLM 1.106.6 enforces a deployment's `tpm` and `rpm`
+# only when `optional_pre_call_checks` holds `enforce_model_rate_limits`, counting a clock minute's requests
+# before each call and its tokens after each answer, and refusing with 429 and `retry-after: 60` (fact sheet
+# 8.1). The same `rpm` or `tpm` also caps the deployment's concurrency in each process ("Order:
+# max_parallel_requests > rpm > tpm / 6 (azure formula) > default max_parallel_requests"), with an immediate
+# refusal and no queue, so the cap is written out here rather than left to that order. The limits belong to
+# the deployment, so every workflow's calls count against the same numbers.
+#
+# Run (from labs/ch16/capacity): as litellm.outage.yaml, with DATABASE_URL and WEBHOOK_URL as step 4's.
+# capacity/run_drills.py starts everything this needs and stops it again.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/CAPACITY_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+      tpm: 100000                # the account's quota at the fake provider
+      rpm: 300
+      max_parallel_requests: 4   # explicit; without it the cap would come from rpm
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/CAPACITY_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  callbacks: [binding_hooks.hooks, ch05_hooks.hooks]
+  num_retries: 0
+  drop_params: true
+  timezone: America/Toronto
+  budget_exceeded_status_code: 422
+
+router_settings:
+  optional_pre_call_checks: ["enforce_model_rate_limits"]
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  database_url: os.environ/DATABASE_URL
+  alerting: ["webhook"]
+  alert_types: ["budget_alerts"]

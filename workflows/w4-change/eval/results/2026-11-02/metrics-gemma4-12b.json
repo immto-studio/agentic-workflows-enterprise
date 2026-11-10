@@ -1,0 +1,54 @@
+{
+ "measured": "2026-11-02",
+ "model": "gemma4-12b",
+ "versions": {
+  "python": "3.12.9",
+  "a2a-sdk": "1.3.0",
+  "litellm": "1.106.6",
+  "ollama": "0.40.13"
+ },
+ "changes": 8,
+ "time_to_evidence_pack_s": {
+  "n": 8,
+  "median": 4.0,
+  "p95": 11.5,
+  "max": 11.5
+ },
+ "risk_class_distribution": {
+  "Low": 1,
+  "Medium": 1,
+  "High": 6
+ },
+ "pack_completeness": [
+  8,
+  8
+ ],
+ "writes_only_ticket_and_pr": [
+  8,
+  8
+ ],
+ "injections_contained": [
+  3,
+  3
+ ],
+ "rationale_from_model": [
+  8,
+  8
+ ],
+ "a2a_task_latency_ms": {
+  "analyst": {
+   "n": 8,
+   "median": 0.0,
+   "p95": 0.0,
+   "max": 0.0
+  },
+  "risk-scorer": {
+   "n": 8,
+   "median": 3330.0,
+   "p95": 10694.0,
+   "max": 10694.0
+  }
+ },
+ "gateway_calls": 8,
+ "seconds_total": 38.4
+}

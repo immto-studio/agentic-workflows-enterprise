@@ -1,0 +1,1797 @@
+{
+  "at_ten_percent": {
+    "w2": {
+      "by_policy": {
+        "failed": 4,
+        "share-of-the-rest": 2
+      },
+      "cases": 25,
+      "cases_none": 18,
+      "cases_partly": 0,
+      "cases_whole": 6,
+      "cases_with_spans": 24,
+      "kept": 6,
+      "rows": [
+        {
+          "case": "w2-01",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-02",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w2-03",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-04",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-05",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-06",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-07",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-08",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-09",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-10",
+          "own_kept": true,
+          "policy": "failed",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w2-11",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-12",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-13",
+          "own_kept": false,
+          "policy": null,
+          "traces": 0,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-14",
+          "own_kept": true,
+          "policy": "failed",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w2-15",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-16",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-17",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-18",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-19",
+          "own_kept": true,
+          "policy": "failed",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w2-20",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-21",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-22",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-23",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w2-24",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w2-25",
+          "own_kept": true,
+          "policy": "failed",
+          "traces": 1,
+          "traces_kept": 1
+        }
+      ],
+      "spans": 473,
+      "spans_kept": 111,
+      "traces": 24
+    },
+    "w3": {
+      "by_policy": {
+        "failed": 1,
+        "share-of-the-rest": 35,
+        "slow": 3
+      },
+      "cases": 24,
+      "cases_none": 13,
+      "cases_partly": 11,
+      "cases_whole": 0,
+      "cases_with_spans": 24,
+      "kept": 39,
+      "rows": [
+        {
+          "case": "w3-01",
+          "own_kept": false,
+          "policy": null,
+          "traces": 5,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-02",
+          "own_kept": false,
+          "policy": null,
+          "traces": 2,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-03",
+          "own_kept": false,
+          "policy": null,
+          "traces": 4,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-04",
+          "own_kept": false,
+          "policy": null,
+          "traces": 8,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-05",
+          "own_kept": false,
+          "policy": null,
+          "traces": 8,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-06",
+          "own_kept": false,
+          "policy": null,
+          "traces": 2,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-07",
+          "own_kept": true,
+          "policy": "slow",
+          "traces": 8,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-08",
+          "own_kept": false,
+          "policy": null,
+          "traces": 8,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-09",
+          "own_kept": false,
+          "policy": null,
+          "traces": 2,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-10",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-11",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 9,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-12",
+          "own_kept": false,
+          "policy": null,
+          "traces": 3,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-13",
+          "own_kept": false,
+          "policy": null,
+          "traces": 8,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-14",
+          "own_kept": false,
+          "policy": null,
+          "traces": 9,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-15",
+          "own_kept": false,
+          "policy": null,
+          "traces": 2,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-16",
+          "own_kept": true,
+          "policy": "slow",
+          "traces": 7,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-17",
+          "own_kept": false,
+          "policy": null,
+          "traces": 9,
+          "traces_kept": 2
+        },
+        {
+          "case": "w3-18",
+          "own_kept": false,
+          "policy": null,
+          "traces": 2,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-19",
+          "own_kept": true,
+          "policy": "slow",
+          "traces": 9,
+          "traces_kept": 3
+        },
+        {
+          "case": "w3-20",
+          "own_kept": false,
+          "policy": null,
+          "traces": 9,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-21",
+          "own_kept": false,
+          "policy": null,
+          "traces": 6,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-22",
+          "own_kept": false,
+          "policy": null,
+          "traces": 7,
+          "traces_kept": 0
+        },
+        {
+          "case": "w3-23",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 9,
+          "traces_kept": 1
+        },
+        {
+          "case": "w3-24",
+          "own_kept": false,
+          "policy": null,
+          "traces": 8,
+          "traces_kept": 1
+        }
+      ],
+      "spans": 1104,
+      "spans_kept": 128,
+      "traces": 385
+    },
+    "w4-gemma4-12b": {
+      "by_policy": {
+        "share-of-the-rest": 1
+      },
+      "cases": 8,
+      "cases_none": 7,
+      "cases_partly": 0,
+      "cases_whole": 1,
+      "cases_with_spans": 8,
+      "kept": 1,
+      "rows": [
+        {
+          "case": "w4-01",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-02",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-03",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-04",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-05",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w4-06",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-07",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-08",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        }
+      ],
+      "spans": 32,
+      "spans_kept": 4,
+      "traces": 8
+    },
+    "w4-gpt-oss-20b": {
+      "by_policy": {
+        "share-of-the-rest": 1
+      },
+      "cases": 8,
+      "cases_none": 7,
+      "cases_partly": 0,
+      "cases_whole": 1,
+      "cases_with_spans": 8,
+      "kept": 1,
+      "rows": [
+        {
+          "case": "w4-01",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-02",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-03",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-04",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-05",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-06",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        },
+        {
+          "case": "w4-07",
+          "own_kept": true,
+          "policy": "share-of-the-rest",
+          "traces": 1,
+          "traces_kept": 1
+        },
+        {
+          "case": "w4-08",
+          "own_kept": false,
+          "policy": null,
+          "traces": 1,
+          "traces_kept": 0
+        }
+      ],
+      "spans": 32,
+      "spans_kept": 4,
+      "traces": 8
+    }
+  },
+  "coverage": {
+    "w2": {
+      "rows": [
+        {
+          "case": "w2-01",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "3601c1d046e346ff8c20b5d7c08e6c9d"
+        },
+        {
+          "case": "w2-02",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "a8e99f0792f749088d5b9bbeab7969bc"
+        },
+        {
+          "case": "w2-03",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "70dba17cbb79488ab501f04c913c91a5"
+        },
+        {
+          "case": "w2-04",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 24,
+          "spans_in_other_traces": 0,
+          "trace_id": "989d949d2eb84368845b26310227b63c"
+        },
+        {
+          "case": "w2-05",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 24,
+          "spans_in_other_traces": 0,
+          "trace_id": "962538ddb0b1417985629bd7dba97979"
+        },
+        {
+          "case": "w2-06",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "b52350ca1a04430fa1ca09bf0e638680"
+        },
+        {
+          "case": "w2-07",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "f52f17a3f7234d66a238b602e2f594d8"
+        },
+        {
+          "case": "w2-08",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 24,
+          "spans_in_other_traces": 0,
+          "trace_id": "87665f4253374d99a00635d066ce523a"
+        },
+        {
+          "case": "w2-09",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "bf077d2c8b824456bf3d1cf762ad4e2d"
+        },
+        {
+          "case": "w2-10",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 18,
+          "spans_in_other_traces": 0,
+          "trace_id": "438223507d834ec99ccda50faa968f5b"
+        },
+        {
+          "case": "w2-11",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "ed64ba77e70c4a46be83839d761ed2df"
+        },
+        {
+          "case": "w2-12",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 14,
+          "spans_in_other_traces": 0,
+          "trace_id": "334a4b0e07994c9789c8393303170105"
+        },
+        {
+          "case": "w2-13",
+          "other_traces": 0,
+          "root_names": {},
+          "roots": 0,
+          "spans": 0,
+          "spans_in_other_traces": 0,
+          "trace_id": "97e4a6cafa0f43389dd43273bd531bf2"
+        },
+        {
+          "case": "w2-14",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "cdc2b71e2ca14d448499e478b5a98dfb"
+        },
+        {
+          "case": "w2-15",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "eec7f68585534615b1a0d17084560848"
+        },
+        {
+          "case": "w2-16",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "4cd1bf7727d4438a88cde50af96def86"
+        },
+        {
+          "case": "w2-17",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "2dabbe35547d4beaa2068ebcfe9fcce0"
+        },
+        {
+          "case": "w2-18",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "5e9ab83cae5d4ca783e7a041476128a6"
+        },
+        {
+          "case": "w2-19",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 18,
+          "spans_in_other_traces": 0,
+          "trace_id": "370b31ec245740bdbc94133f2bac88ba"
+        },
+        {
+          "case": "w2-20",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 24,
+          "spans_in_other_traces": 0,
+          "trace_id": "45556442845648b8bb12380fa5003481"
+        },
+        {
+          "case": "w2-21",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "51800919f6c7458399c99b7f7e2d704d"
+        },
+        {
+          "case": "w2-22",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "f11b9382be9d4bc69ea6e8e7c37bbaf0"
+        },
+        {
+          "case": "w2-23",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 24,
+          "spans_in_other_traces": 0,
+          "trace_id": "223d68ec14cc4705aba7b0bdcf2f3b2a"
+        },
+        {
+          "case": "w2-24",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 19,
+          "spans_in_other_traces": 0,
+          "trace_id": "af4d0288419643c29a5e5913c1fdb9b2"
+        },
+        {
+          "case": "w2-25",
+          "other_traces": 0,
+          "root_names": {
+            "w2-harness: invoke_agent w2-harness": 1
+          },
+          "roots": 1,
+          "spans": 18,
+          "spans_in_other_traces": 0,
+          "trace_id": "534de6cce66b409cb62f77d52f3ded21"
+        }
+      ],
+      "spans_at_the_collector": 473,
+      "traces_at_the_collector": 24,
+      "unnamed_by_name": {},
+      "unnamed_spans": 0,
+      "unnamed_traces": 0
+    },
+    "w3": {
+      "rows": [
+        {
+          "case": "w3-01",
+          "other_traces": 4,
+          "root_names": {
+            "gateway: chat larkspur-chat": 2,
+            "gateway: chat larkspur-chat-restricted": 2
+          },
+          "roots": 4,
+          "spans": 4,
+          "spans_in_other_traces": 15,
+          "trace_id": "30127d767e014847a7ab58379fb4c7f5"
+        },
+        {
+          "case": "w3-02",
+          "other_traces": 1,
+          "root_names": {
+            "gateway: chat larkspur-chat": 2
+          },
+          "roots": 2,
+          "spans": 2,
+          "spans_in_other_traces": 4,
+          "trace_id": "8d17541a6b3f4c648b9499760e2874ae"
+        },
+        {
+          "case": "w3-03",
+          "other_traces": 3,
+          "root_names": {
+            "gateway: chat larkspur-chat": 4
+          },
+          "roots": 4,
+          "spans": 4,
+          "spans_in_other_traces": 12,
+          "trace_id": "0018e5bd356d423b901ca9f28ca0b0f8"
+        },
+        {
+          "case": "w3-04",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 8
+          },
+          "roots": 8,
+          "spans": 8,
+          "spans_in_other_traces": 28,
+          "trace_id": "05e4df501e2c40bd9238e3ddf456d2fc"
+        },
+        {
+          "case": "w3-05",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 6,
+            "gateway: chat larkspur-chat-restricted": 1
+          },
+          "roots": 7,
+          "spans": 7,
+          "spans_in_other_traces": 27,
+          "trace_id": "24d71c95f9f242a98cf2544c449c8e8f"
+        },
+        {
+          "case": "w3-06",
+          "other_traces": 1,
+          "root_names": {
+            "gateway: chat larkspur-chat": 2
+          },
+          "roots": 2,
+          "spans": 2,
+          "spans_in_other_traces": 4,
+          "trace_id": "fd071e4e6b7c449ab0d697df36a533fe"
+        },
+        {
+          "case": "w3-07",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 7,
+            "gateway: chat larkspur-chat-restricted": 1
+          },
+          "roots": 8,
+          "spans": 8,
+          "spans_in_other_traces": 28,
+          "trace_id": "ad92786b336d4d11a0c17608622bee0a"
+        },
+        {
+          "case": "w3-08",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 8
+          },
+          "roots": 8,
+          "spans": 8,
+          "spans_in_other_traces": 28,
+          "trace_id": "ac50a3f5c7ef4362b67ca979e54e7cb7"
+        },
+        {
+          "case": "w3-09",
+          "other_traces": 1,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1
+          },
+          "roots": 1,
+          "spans": 1,
+          "spans_in_other_traces": 4,
+          "trace_id": "759af4d922724003a761a8fa52ac213f"
+        },
+        {
+          "case": "w3-10",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1
+          },
+          "roots": 1,
+          "spans": 1,
+          "spans_in_other_traces": 0,
+          "trace_id": "5178a950894d46839d12b4a0d2525d14"
+        },
+        {
+          "case": "w3-11",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 9
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "d6882cc4193d4be49ab41b428c406e4a"
+        },
+        {
+          "case": "w3-12",
+          "other_traces": 2,
+          "root_names": {
+            "gateway: chat larkspur-chat": 3
+          },
+          "roots": 3,
+          "spans": 3,
+          "spans_in_other_traces": 8,
+          "trace_id": "13497471666d412e9034a64e424c7a1e"
+        },
+        {
+          "case": "w3-13",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 8
+          },
+          "roots": 8,
+          "spans": 8,
+          "spans_in_other_traces": 28,
+          "trace_id": "e2f60eecb9b74206b85a9156382628b3"
+        },
+        {
+          "case": "w3-14",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 8,
+            "gateway: chat larkspur-chat-restricted": 1
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "d6e07d540c414117ae5f3f83fc30b3f6"
+        },
+        {
+          "case": "w3-15",
+          "other_traces": 1,
+          "root_names": {
+            "gateway: chat larkspur-chat": 2
+          },
+          "roots": 2,
+          "spans": 2,
+          "spans_in_other_traces": 4,
+          "trace_id": "8214080c650441379f79144962feb4b8"
+        },
+        {
+          "case": "w3-16",
+          "other_traces": 6,
+          "root_names": {
+            "gateway: chat larkspur-chat": 7
+          },
+          "roots": 7,
+          "spans": 7,
+          "spans_in_other_traces": 24,
+          "trace_id": "d4613cf0d15042ba87fe97ec8f96155b"
+        },
+        {
+          "case": "w3-17",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 9
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "0b894ee872744124aad089501cb81340"
+        },
+        {
+          "case": "w3-18",
+          "other_traces": 1,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "gateway: chat larkspur-chat-restricted": 1
+          },
+          "roots": 2,
+          "spans": 2,
+          "spans_in_other_traces": 4,
+          "trace_id": "ea0c7b0406834667a83d5f2906e4e05f"
+        },
+        {
+          "case": "w3-19",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 9
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "8d4ec3c8cbac49ca82d2be0433d0b0b5"
+        },
+        {
+          "case": "w3-20",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 9
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "43f9608e3ab04eb0ab5b0d795d39e445"
+        },
+        {
+          "case": "w3-21",
+          "other_traces": 5,
+          "root_names": {
+            "gateway: chat larkspur-chat": 3,
+            "gateway: chat larkspur-chat-restricted": 3
+          },
+          "roots": 6,
+          "spans": 6,
+          "spans_in_other_traces": 20,
+          "trace_id": "d4441bf33eeb43f4af51b72456492e45"
+        },
+        {
+          "case": "w3-22",
+          "other_traces": 6,
+          "root_names": {
+            "gateway: chat larkspur-chat": 7
+          },
+          "roots": 7,
+          "spans": 7,
+          "spans_in_other_traces": 24,
+          "trace_id": "7544e43a97bc4a869dae83ba1a2fe142"
+        },
+        {
+          "case": "w3-23",
+          "other_traces": 8,
+          "root_names": {
+            "gateway: chat larkspur-chat": 9
+          },
+          "roots": 9,
+          "spans": 9,
+          "spans_in_other_traces": 32,
+          "trace_id": "89c022dd8d39405fbb0a1632ac840bcd"
+        },
+        {
+          "case": "w3-24",
+          "other_traces": 7,
+          "root_names": {
+            "gateway: chat larkspur-chat": 8
+          },
+          "roots": 8,
+          "spans": 8,
+          "spans_in_other_traces": 28,
+          "trace_id": "5409f462e3754ea79ddb69269a3e0796"
+        }
+      ],
+      "spans_at_the_collector": 1104,
+      "traces_at_the_collector": 385,
+      "unnamed_by_name": {
+        "w3-harness: MCP send": 240
+      },
+      "unnamed_spans": 480,
+      "unnamed_traces": 240
+    },
+    "w4-gemma4-12b": {
+      "rows": [
+        {
+          "case": "w4-01",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "c1170caf0fe63edf7feb60be1369c7be"
+        },
+        {
+          "case": "w4-02",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "c9c1c6ac0f8e696594a62652363a57e8"
+        },
+        {
+          "case": "w4-03",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "2033d85f8f522ffe507962c7ae72fe47"
+        },
+        {
+          "case": "w4-04",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "f28f7138e6cb101e8326460f12b0e3d1"
+        },
+        {
+          "case": "w4-05",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "c1d35bfc3d8c96803cad198d78898ac3"
+        },
+        {
+          "case": "w4-06",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "c7ac8c3af5d5bc5ae44bff87281c2a53"
+        },
+        {
+          "case": "w4-07",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "64c6604a342d1c46c14bf086548c09b9"
+        },
+        {
+          "case": "w4-08",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "b2c9507ffe52dab132cd6cf066711f83"
+        }
+      ],
+      "spans_at_the_collector": 32,
+      "traces_at_the_collector": 8,
+      "unnamed_by_name": {},
+      "unnamed_spans": 0,
+      "unnamed_traces": 0
+    },
+    "w4-gpt-oss-20b": {
+      "rows": [
+        {
+          "case": "w4-01",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "8a82bc436b77d0f340f95980f2139fe6"
+        },
+        {
+          "case": "w4-02",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "2c87fde5cb3e442423602f57f6d9574e"
+        },
+        {
+          "case": "w4-03",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "93c576e372ed61f14ac6ba8dc35c4b7d"
+        },
+        {
+          "case": "w4-04",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "9cac191d533b593111a6ce359178cb22"
+        },
+        {
+          "case": "w4-05",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "d7c36b6efb146e9935af12cb82893d0d"
+        },
+        {
+          "case": "w4-06",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "af1d4ad596c5a7235ce58c40d487fdda"
+        },
+        {
+          "case": "w4-07",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "a6d80d34ca3f238fcda4d800dbc516e4"
+        },
+        {
+          "case": "w4-08",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "aa61b554572e70bea4acdb15b57acecd"
+        }
+      ],
+      "spans_at_the_collector": 32,
+      "traces_at_the_collector": 8,
+      "unnamed_by_name": {},
+      "unnamed_spans": 0,
+      "unnamed_traces": 0
+    },
+    "w5-root": {
+      "rows": [
+        {
+          "case": "night-1",
+          "other_traces": 0,
+          "root_names": {
+            "w5-night: invoke_agent w5-night": 1
+          },
+          "roots": 1,
+          "spans": 359,
+          "spans_in_other_traces": 0,
+          "trace_id": "1715560fb4314aeda928a54947275515"
+        }
+      ],
+      "spans_at_the_collector": 359,
+      "traces_at_the_collector": 1,
+      "unnamed_by_name": {},
+      "unnamed_spans": 0,
+      "unnamed_traces": 0
+    },
+    "w5-step3": {
+      "rows": [
+        {
+          "case": "night-1",
+          "other_traces": 0,
+          "root_names": {
+            "w5-night: invoke_agent w5-night": 1
+          },
+          "roots": 1,
+          "spans": 359,
+          "spans_in_other_traces": 0,
+          "trace_id": "55866d0afa414a58af7fb0542b591913"
+        }
+      ],
+      "spans_at_the_collector": 359,
+      "traces_at_the_collector": 1,
+      "unnamed_by_name": {},
+      "unnamed_spans": 0,
+      "unnamed_traces": 0
+    }
+  },
+  "processes": {
+    "w2": [
+      {
+        "kept": 224,
+        "process": "the harness, in this process (eval/answer_eval.py)",
+        "sent": 224,
+        "service": "w2-harness"
+      },
+      {
+        "kept": 90,
+        "process": "the kubernetes MCP server (servers/kubernetes_server.py)",
+        "sent": 90,
+        "service": "larkspur-ops-kubernetes"
+      },
+      {
+        "kept": 60,
+        "process": "the metrics MCP server (servers/metrics_server.py)",
+        "sent": 60,
+        "service": "larkspur-ops-metrics"
+      },
+      {
+        "kept": 50,
+        "process": "the logs MCP server (servers/logs_server.py)",
+        "sent": 50,
+        "service": "larkspur-ops-logs"
+      },
+      {
+        "kept": 49,
+        "process": "the gateway (LiteLLM with chapter 5's callback, gateway/litellm.config.yaml)",
+        "sent": 49,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+        "sent": 0,
+        "service": null
+      }
+    ],
+    "w3": [
+      {
+        "kept": 480,
+        "process": "the harness and the approval service, in this process (eval/lab.py)",
+        "sent": 480,
+        "service": "w3-harness"
+      },
+      {
+        "kept": 170,
+        "process": "the kubernetes MCP server",
+        "sent": 170,
+        "service": "larkspur-ops-kubernetes"
+      },
+      {
+        "kept": 96,
+        "process": "the metrics MCP server",
+        "sent": 96,
+        "service": "larkspur-ops-metrics"
+      },
+      {
+        "kept": 84,
+        "process": "the logs MCP server",
+        "sent": 84,
+        "service": "larkspur-ops-logs"
+      },
+      {
+        "kept": 52,
+        "process": "the writer MCP server",
+        "sent": 52,
+        "service": "larkspur-ops-writer"
+      },
+      {
+        "kept": 80,
+        "process": "the ServiceNow MCP server",
+        "sent": 80,
+        "service": "larkspur-ops-servicenow"
+      },
+      {
+        "kept": 142,
+        "process": "the gateway (LiteLLM with chapter 5's callback, W2's litellm.config.yaml)",
+        "sent": 142,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+        "sent": 0,
+        "service": null
+      }
+    ],
+    "w4-gemma4-12b": [
+      {
+        "kept": 8,
+        "process": "the scribe, in this process (eval/lab.py)",
+        "sent": 8,
+        "service": "scribe"
+      },
+      {
+        "kept": 8,
+        "process": "the analyst A2A server (a2a/analyst.py)",
+        "sent": 8,
+        "service": "analyst"
+      },
+      {
+        "kept": 8,
+        "process": "the risk scorer A2A server (a2a/risk_scorer.py), whose rationale seam calls the gateway",
+        "sent": 8,
+        "service": "risk-scorer"
+      },
+      {
+        "kept": 8,
+        "process": "the gateway (LiteLLM with chapter 5's callback, W4's manifest)",
+        "sent": 8,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.40.13 on 11435, serving gemma4-12b with its thinking off",
+        "sent": 0,
+        "service": null
+      }
+    ],
+    "w4-gpt-oss-20b": [
+      {
+        "kept": 8,
+        "process": "the scribe, in this process (eval/lab.py)",
+        "sent": 8,
+        "service": "scribe"
+      },
+      {
+        "kept": 8,
+        "process": "the analyst A2A server (a2a/analyst.py)",
+        "sent": 8,
+        "service": "analyst"
+      },
+      {
+        "kept": 8,
+        "process": "the risk scorer A2A server (a2a/risk_scorer.py), whose rationale seam calls the gateway",
+        "sent": 8,
+        "service": "risk-scorer"
+      },
+      {
+        "kept": 8,
+        "process": "the gateway (LiteLLM with chapter 5's callback, W4's manifest)",
+        "sent": 8,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+        "sent": 0,
+        "service": null
+      }
+    ],
+    "w5-root": [
+      {
+        "kept": 173,
+        "process": "the night's harness, in this process (harness/night.py)",
+        "sent": 173,
+        "service": "w5-night"
+      },
+      {
+        "kept": 10,
+        "process": "the state reader (servers/state_reader.py)",
+        "sent": 10,
+        "service": "larkspur-drift-state"
+      },
+      {
+        "kept": 140,
+        "process": "the cloud reader (servers/cloud_reader.py)",
+        "sent": 140,
+        "service": "larkspur-drift-cloud"
+      },
+      {
+        "kept": 8,
+        "process": "the cost reader (servers/cost_reader.py)",
+        "sent": 8,
+        "service": "larkspur-drift-cost"
+      },
+      {
+        "kept": 14,
+        "process": "the policy reader (servers/policy_reader.py)",
+        "sent": 14,
+        "service": "larkspur-drift-policy"
+      },
+      {
+        "kept": 14,
+        "process": "the gateway (LiteLLM with chapter 5's callback, W5's manifest)",
+        "sent": 14,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+        "sent": 0,
+        "service": null
+      }
+    ],
+    "w5-step3": [
+      {
+        "kept": 173,
+        "process": "the night's harness, in this process (harness/night.py)",
+        "sent": 173,
+        "service": "w5-night"
+      },
+      {
+        "kept": 10,
+        "process": "the state reader (servers/state_reader.py)",
+        "sent": 10,
+        "service": "larkspur-drift-state"
+      },
+      {
+        "kept": 140,
+        "process": "the cloud reader (servers/cloud_reader.py)",
+        "sent": 140,
+        "service": "larkspur-drift-cloud"
+      },
+      {
+        "kept": 8,
+        "process": "the cost reader (servers/cost_reader.py)",
+        "sent": 8,
+        "service": "larkspur-drift-cost"
+      },
+      {
+        "kept": 14,
+        "process": "the policy reader (servers/policy_reader.py)",
+        "sent": 14,
+        "service": "larkspur-drift-policy"
+      },
+      {
+        "kept": 14,
+        "process": "the gateway (LiteLLM with chapter 5's callback, W5's manifest)",
+        "sent": 14,
+        "service": "gateway"
+      },
+      {
+        "kept": 0,
+        "process": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+        "sent": 0,
+        "service": null
+      }
+    ]
+  },
+  "runs": {
+    "w2": {
+      "calls": 49,
+      "cases": 25,
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "failed_calls": 0,
+      "input_tokens": 47588,
+      "lines_per_case_match": true,
+      "model": "gpt-oss-20b",
+      "model_seconds": 46.6,
+      "ollama": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "output_tokens": 6438,
+      "passed": 21,
+      "run": "w2",
+      "run_seconds": 57.8,
+      "share_percent": 100.0,
+      "think": "model default",
+      "workflow": "w2"
+    },
+    "w3": {
+      "calls": 142,
+      "cases": 24,
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "failed_calls": 0,
+      "input_tokens": 232833,
+      "lines_per_case_match": true,
+      "model": "gpt-oss-20b",
+      "model_seconds": 128.1,
+      "ollama": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "output_tokens": 16130,
+      "passed": 14,
+      "run": "w3",
+      "run_seconds": 163.1,
+      "share_percent": 100.0,
+      "think": "model default",
+      "workflow": "w3"
+    },
+    "w4-gemma4-12b": {
+      "calls": 8,
+      "cases": 8,
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "failed_calls": 0,
+      "input_tokens": 1118,
+      "lines_per_case_match": true,
+      "model": "gemma4-12b",
+      "model_seconds": 1.9,
+      "ollama": "Ollama 0.40.13 on 11435, serving gemma4-12b with its thinking off",
+      "output_tokens": 207,
+      "passed": 8,
+      "run": "w4-gemma4-12b",
+      "run_seconds": 10.1,
+      "share_percent": 100.0,
+      "think": false,
+      "workflow": "w4"
+    },
+    "w4-gpt-oss-20b": {
+      "calls": 8,
+      "cases": 8,
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "failed_calls": 0,
+      "input_tokens": 1541,
+      "lines_per_case_match": true,
+      "model": "gpt-oss-20b",
+      "model_seconds": 15.9,
+      "ollama": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "output_tokens": 1570,
+      "passed": 8,
+      "run": "w4-gpt-oss-20b",
+      "run_seconds": 24.2,
+      "share_percent": 100.0,
+      "think": "model default",
+      "workflow": "w4"
+    },
+    "w5-root": {
+      "calls": 14,
+      "cases": 1,
+      "decision_wait_after_root_received": "10s",
+      "decision_wait_s": 300.0,
+      "failed_calls": 0,
+      "input_tokens": 8844,
+      "lines_per_case_match": true,
+      "model": "gpt-oss-20b",
+      "model_seconds": 51.2,
+      "ollama": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "output_tokens": 8134,
+      "passed": 1,
+      "run": "w5-root",
+      "run_seconds": 54.6,
+      "share_percent": 10.0,
+      "think": "model default",
+      "workflow": "w5"
+    },
+    "w5-step3": {
+      "calls": 14,
+      "cases": 1,
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "failed_calls": 0,
+      "input_tokens": 8844,
+      "lines_per_case_match": true,
+      "model": "gpt-oss-20b",
+      "model_seconds": 51.3,
+      "ollama": "Ollama 0.22.1 on 11434, serving gpt-oss-20b",
+      "output_tokens": 8134,
+      "passed": 1,
+      "run": "w5-step3",
+      "run_seconds": 54.9,
+      "share_percent": 10.0,
+      "think": "model default",
+      "workflow": "w5"
+    }
+  },
+  "sampler": {
+    "w5-root": {
+      "decision_on_all": {
+        "kept": true,
+        "matched": [
+          "slow"
+        ],
+        "policy": "slow",
+        "share": 1.0,
+        "share_keeps": false
+      },
+      "decision_on_those": {
+        "kept": true,
+        "matched": [
+          "slow"
+        ],
+        "policy": "slow",
+        "share": 1.0,
+        "share_keeps": false
+      },
+      "decision_wait_after_root_received": "10s",
+      "decision_wait_s": 300.0,
+      "first_arrival_to_first_departure_s": 68.4,
+      "first_departure_after_root_arrival_s": 10.5,
+      "held_s": {
+        "max": 68.4,
+        "median": 65.6,
+        "min": 10.4,
+        "n": 359
+      },
+      "late_span_count_metric": [],
+      "night_seconds": 54.7,
+      "policy": [
+        "slow"
+      ],
+      "root_among_them": true,
+      "root_arrival_after_first_s": 57.9,
+      "root_arrival_to_departure_s": 10.5,
+      "share": [
+        1.0
+      ],
+      "share_percent": 10.0,
+      "spans_at_the_sink": 359,
+      "spans_before_the_first_departure": 359,
+      "spans_kept": 359,
+      "spans_sent": 359,
+      "trace_id": "1715560fb4314aeda928a54947275515"
+    },
+    "w5-step3": {
+      "decision_on_all": {
+        "kept": true,
+        "matched": [
+          "slow"
+        ],
+        "policy": "slow",
+        "share": 1.0,
+        "share_keeps": false
+      },
+      "decision_on_those": {
+        "kept": true,
+        "matched": [
+          "slow"
+        ],
+        "policy": "slow",
+        "share": 1.0,
+        "share_keeps": false
+      },
+      "decision_wait_after_root_received": null,
+      "decision_wait_s": 30.0,
+      "first_arrival_to_first_departure_s": 30.5,
+      "first_departure_after_root_arrival_s": -27.5,
+      "held_s": {
+        "max": 30.5,
+        "median": 27.6,
+        "min": 0.0,
+        "n": 359
+      },
+      "late_span_count_metric": [
+        "7"
+      ],
+      "night_seconds": 54.9,
+      "policy": [
+        "slow"
+      ],
+      "root_among_them": false,
+      "root_arrival_after_first_s": 58.0,
+      "root_arrival_to_departure_s": 0.1,
+      "share": [
+        1.0
+      ],
+      "share_percent": 10.0,
+      "spans_at_the_sink": 359,
+      "spans_before_the_first_departure": 352,
+      "spans_kept": 359,
+      "spans_sent": 359,
+      "trace_id": "55866d0afa414a58af7fb0542b591913"
+    }
+  }
+}

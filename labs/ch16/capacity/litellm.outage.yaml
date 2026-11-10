@@ -1,0 +1,63 @@
+# Step 5's outage drill (O-D10): chapter 5's three aliases and its callback, with the router's cooldown set.
+#
+# Chapter 5's config has one deployment per alias and leaves `allowed_fails` and `cooldown_time` at LiteLLM's
+# defaults, under which a lone deployment is never cooled down by 5xx errors below 1,000 requests a minute
+# (fact sheet 8.1). LiteLLM 1.106.6 treats an explicit `allowed_fails: 3` as unset, so this drill sets 2: the
+# primary is cooled down when a third failure lands within `cooldown_time` of the first. Fallback stays as
+# chapter 5 wrote it, one hop to the deployment in us-east-2, and chapter 5's callback turns it off for any
+# request whose manifest doesn't allow that Region, as it does for W3. The backends are the fake provider
+# (`fake_provider.py`) on free ports, from the environment; the prices are chapter 5's stand-ins.
+#
+# Run (from labs/ch16/capacity, so that the callback module is importable):
+#   LITELLM_MASTER_KEY=... GATEWAY_CONFIG=litellm.outage.yaml CAPACITY_PRIMARY_URL=http://127.0.0.1:<p>/v1 \
+#   CAPACITY_FALLBACK_URL=... CAPACITY_SELF_HOSTED_URL=... litellm --config litellm.outage.yaml --host 127.0.0.1
+# capacity/run_drills.py starts everything this needs and stops it again.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/CAPACITY_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-fallback
+    litellm_params:
+      model: openai/fake-fallback
+      api_base: os.environ/CAPACITY_FALLBACK_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: fallback, region: us-east-2,
+                 jurisdiction: US, hosting: managed}
+
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/CAPACITY_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  fallbacks: [{"larkspur-chat": ["larkspur-chat-fallback"]}]
+  num_retries: 0  # chapter 5's: fail over, do not hammer
+  callbacks: ch05_hooks.hooks
+  drop_params: true
+
+router_settings:
+  routing_strategy: simple-shuffle
+  # set explicitly, and to a value other than 3, which 1.106.6 treats as unset (fact sheet 8.1)
+  allowed_fails: 2
+  cooldown_time: 30
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

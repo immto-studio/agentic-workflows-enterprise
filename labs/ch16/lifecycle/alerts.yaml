@@ -1,0 +1,43 @@
+# The retirement alert (chapter 16, step 8, O-D14), written as slo/alerts.yaml writes the others. No paging service
+# runs (O-D17): lifecycle/retirement.py evaluates the rules over lifecycle/register.yaml for a given date and prints
+# what would page, ticket, or go into the monthly review. A rule reads a model's retirement date, its stage, and
+# whether Larkspur runs on it (`pinned`); nothing here reads a run.
+retirement:
+  source: >-
+    chapters 7 and 8's rule, as their labs hold it: a test fails 90 days before a pinned model retires, which is when
+    the register says to move the alias (labs/ch07/tests/test_models_and_costs.py, labs/ch08/tests/test_models_and_costs.py);
+    O-D15's review window, the models within 180 days of retirement in the monthly review; and chapter 6's Legacy
+    rules (labs/ch06/models.yaml): a Legacy notice on a pinned model or its fallback needs the weekly call that
+    keeps the fallback's access, since an account that doesn't use a Legacy model for fifteen days may lose it,
+    and after three months in Legacy the price rises.
+  evaluate: once a day, from the register as committed; the dates below are days before the retirement date
+  windows: {alert_days: 90, review_days: 180}
+  rules:
+    - name: retired-still-pinned
+      action: page
+      when: a pinned model is past its retirement date; its calls fail, so the platform's on-call is paged (ch05:498)
+    - name: retirement-90d
+      action: ticket
+      when: a pinned model retires within 90 days; the ticket is the alias move, to the model's owner
+    - name: retirement-180d-review
+      action: review
+      when: >-
+        any model in the register retires within 180 days, pinned or not; the row goes into the monthly review
+        (O-D15), where a model Larkspur doesn't run on is the market moving and a pinned one is a move to plan
+    - name: legacy-notice
+      action: ticket
+      when: >-
+        a pinned model is in a provider's notice stage (AWS Legacy; Foundry Legacy or Deprecated): chapter 6's weekly
+        call keeps a Legacy fallback's access, and the review names the extended-access price
+    - name: unscheduled
+      action: none
+      when: >-
+        no retirement date is published. Where the provider gives an earliest possible date, the row shows it, and
+        a passed earliest date means a notice can come any day with the provider's minimum period
+  notice_periods: >-
+    what the provider promises before a retirement, from the fact sheets: AWS at least six months of Legacy for
+    models launched before 7 September 2026 and 45 days or six months after it; Google at least 45 days; Foundry at
+    least 60 days for a GA model and 30 for a preview. The alert has its 90 days only where the date is published
+    that far ahead, which AWS's six-month Legacy period and Foundry's retirement date set eighteen months out at GA
+    give it. Under a shorter promise (AWS's 45-day period, Google's 45 days, Foundry's 60 and 30) the date can arrive
+    inside the window, and the alert then fires on the day it is published.

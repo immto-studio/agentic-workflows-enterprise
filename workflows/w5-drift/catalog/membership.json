@@ -1,0 +1,13 @@
+{
+  "synced_at": "2026-11-02T02:00:00Z",
+  "delta_applied_at": "2026-11-02T06:55:00Z",
+  "groups": {
+    "f7a8b9c0-d1e2-5f3a-8b4c-5d6e7f809102": "w5-drift-agent"
+  },
+  "broad": [],
+  "members": {
+    "e6f7a8b9-c0d1-5e2f-9a3b-4c5d6e7f8091": [
+      "w5-drift-agent"
+    ]
+  }
+}

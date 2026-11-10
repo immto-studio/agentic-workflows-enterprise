@@ -1,0 +1,129 @@
+{
+  "runs": {
+    "w3": {
+      "all_kept_spans_at_the_sink": true,
+      "case": {
+        "case": "w3-01",
+        "executed": true,
+        "model_calls": 7,
+        "passed": true,
+        "proposal": {
+          "args": {
+            "service": "claims-api"
+          },
+          "tool": "restart_deployment"
+        },
+        "seconds": 13.3,
+        "state": "done",
+        "tool_calls": 6,
+        "trace_id": "484e9edf5f694fca851d1d77c5a50345",
+        "workflow": "w3"
+      },
+      "collector_exit": 0,
+      "gateway_calls": 7,
+      "model": "gpt-oss-20b",
+      "one_tree": true,
+      "processes": {
+        "gateway": 7,
+        "larkspur-ops-kubernetes": 10,
+        "larkspur-ops-logs": 2,
+        "larkspur-ops-metrics": 4,
+        "larkspur-ops-servicenow": 4,
+        "larkspur-ops-writer": 4,
+        "w3-harness": 25
+      },
+      "row": {
+        "case": "w3-01",
+        "other_traces": 0,
+        "root_names": {
+          "w3-harness: invoke_agent w3-incident": 1
+        },
+        "roots": 1,
+        "spans": 56,
+        "spans_in_other_traces": 0,
+        "trace_id": "484e9edf5f694fca851d1d77c5a50345"
+      },
+      "share_percent": 100.0,
+      "spans_left_the_sampler": 56,
+      "spans_sent": 56,
+      "step_3b": {
+        "cases": 24,
+        "row": {
+          "case": "w3-01",
+          "other_traces": 4,
+          "root_names": {
+            "gateway: chat larkspur-chat": 2,
+            "gateway: chat larkspur-chat-restricted": 2
+          },
+          "roots": 4,
+          "spans": 4,
+          "spans_in_other_traces": 15,
+          "trace_id": "30127d767e014847a7ab58379fb4c7f5"
+        },
+        "unnamed_spans": 480,
+        "unnamed_traces": 240
+      },
+      "traces_at_the_collector": 1,
+      "unnamed_spans": 0,
+      "unnamed_traces": 0,
+      "workflow": "w3"
+    },
+    "w4-gpt-oss-20b": {
+      "all_kept_spans_at_the_sink": true,
+      "case": {
+        "case": "w4-01",
+        "passed": true,
+        "rationale_source": "model",
+        "risk_class": "Low",
+        "seconds": 2.8,
+        "trace_id": "a599e27fd4341004b037cd1208cb4032",
+        "workflow": "w4"
+      },
+      "collector_exit": 0,
+      "gateway_calls": 1,
+      "model": "gpt-oss-20b",
+      "one_tree": true,
+      "processes": {
+        "analyst": 1,
+        "gateway": 1,
+        "risk-scorer": 1,
+        "scribe": 1
+      },
+      "row": {
+        "case": "w4-01",
+        "other_traces": 0,
+        "root_names": {
+          "scribe: invoke_agent change-management": 1
+        },
+        "roots": 1,
+        "spans": 4,
+        "spans_in_other_traces": 0,
+        "trace_id": "a599e27fd4341004b037cd1208cb4032"
+      },
+      "share_percent": 100.0,
+      "spans_left_the_sampler": 4,
+      "spans_sent": 4,
+      "step_3b": {
+        "cases": 8,
+        "row": {
+          "case": "w4-01",
+          "other_traces": 0,
+          "root_names": {
+            "gateway: chat larkspur-chat": 1,
+            "scribe: invoke_agent change-management": 1
+          },
+          "roots": 2,
+          "spans": 4,
+          "spans_in_other_traces": 0,
+          "trace_id": "8a82bc436b77d0f340f95980f2139fe6"
+        },
+        "unnamed_spans": 0,
+        "unnamed_traces": 0
+      },
+      "traces_at_the_collector": 1,
+      "unnamed_spans": 0,
+      "unnamed_traces": 0,
+      "workflow": "w4"
+    }
+  }
+}

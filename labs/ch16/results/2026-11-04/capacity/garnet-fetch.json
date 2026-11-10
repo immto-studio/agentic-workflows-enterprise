@@ -1,0 +1,24 @@
+{
+ "checked_on": "2026-11-04",
+ "license": "MIT (Copyright (c) Microsoft Corporation), LICENSE at the tag v2.2.5",
+ "published_by": "GitHub release API, assets[].digest; no checksum file or build attestation in the release",
+ "version": "2.2.5",
+ "asset": "win-x64-based-readytorun.zip",
+ "bytes": 26186101,
+ "sha256": "48103d4e02a90081d6050bc932227c0908947568ce1caed208e2daf095a798c3",
+ "published_sha256_matches": true,
+ "authenticode_garnet_server_exe": {
+  "checked": true,
+  "status": "Valid",
+  "signer": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+  "issuer": "CN=Microsoft Code Signing PCA 2024, O=Microsoft Corporation, C=US",
+  "timestamped": true
+ },
+ "authenticode_lua54_dll": {
+  "checked": true,
+  "status": "NotSigned",
+  "signer": null,
+  "issuer": null,
+  "timestamped": false
+ }
+}

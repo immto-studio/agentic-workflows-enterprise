@@ -1,0 +1,82 @@
+{
+ "measured": true,
+ "workflow": "w2",
+ "candidate": "gemma4-12b",
+ "control": "gpt-oss-20b",
+ "decision": "remap back",
+ "because": [
+  "the gate: trajectory.allowed regressed past the threshold"
+ ],
+ "rule": {
+  "min_runs": 20,
+  "slis": [
+   "success",
+   "latency"
+  ],
+  "latency_read_from": "latency_without_loads",
+  "counted_over": "the runs each arm served (touched)"
+ },
+ "gate": {
+  "checks": 11,
+  "regressed": [
+   "trajectory.allowed"
+  ],
+  "held": 9,
+  "not_gated": 1
+ },
+ "slis": {
+  "success": {
+   "read": "success",
+   "control": {
+    "good": 85,
+    "valid": 85,
+    "value": 1.0
+   },
+   "candidate": {
+    "good": 47,
+    "valid": 47,
+    "value": 1.0
+   },
+   "candidate_not_below_control": true
+  },
+  "latency": {
+   "read": "latency_without_loads",
+   "control": {
+    "good": 85,
+    "valid": 85,
+    "value": 1.0
+   },
+   "candidate": {
+    "good": 47,
+    "valid": 47,
+    "value": 1.0
+   },
+   "candidate_not_below_control": true
+  }
+ },
+ "as_measured": {
+  "decision": "remap back",
+  "because": [
+   "the gate: trajectory.allowed regressed past the threshold"
+  ],
+  "latency": {
+   "read": "latency",
+   "control": {
+    "good": 69,
+    "valid": 85,
+    "value": 0.811765
+   },
+   "candidate": {
+    "good": 31,
+    "valid": 47,
+    "value": 0.659574
+   },
+   "candidate_not_below_control": false
+  }
+ },
+ "why_the_loads_are_taken_out": "the run's seconds less the time its calls spent loading a model the server had to swap in, measured from the watcher's samples of /api/ps (every half second); what the latency SLI reads where each model has replicas of its own",
+ "reads": [
+  "gate.json",
+  "canary.json"
+ ]
+}

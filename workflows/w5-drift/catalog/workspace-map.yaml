@@ -1,0 +1,15 @@
+# Which teams may read which Terraform workspaces and which accounts through W5 (W5-D3; W2-D4's shape).
+# The team is a group from W5's membership table (catalog/membership.json), the one the agent's service
+# principal holds; the server takes the caller's groups from that table and never from a tool argument.
+# A tool that takes a workspace is checked against `teams`; a tool that takes an account against
+# `accounts`; the two policy tools take neither, and the token and the table still decide who may ask.
+#
+# Owner: the platform team, with FinOps as the second reader. A change is a change of what the agent may
+# read and goes through review like one. A name listed nowhere is visible to nobody through W5, and the
+# refusal reads the same whether the name exists or not: the payments CDE (chapter 2's PCI slice) has a
+# workspace and an account in the lab's fakes, and neither is here.
+reviewed: 2026-11-02
+teams:
+  w5-drift-agent: [network-live, claims-api-prod, sandbox-quill]
+accounts:
+  w5-drift-agent: [lm-network-prod, lm-claims-prod, lm-sandbox]

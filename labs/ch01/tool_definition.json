@@ -1,0 +1,18 @@
+{
+  "toolSpec": {
+    "name": "get_pod_status",
+    "description": "Pod counts for one production deployment. Read-only.",
+    "inputSchema": {
+      "json": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Deployment name, for example claims-api"
+          }
+        },
+        "required": ["service"]
+      }
+    }
+  }
+}

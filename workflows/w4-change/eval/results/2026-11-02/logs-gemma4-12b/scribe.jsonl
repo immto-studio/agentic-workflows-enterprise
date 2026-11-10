@@ -1,0 +1,48 @@
+{"ts": "2026-11-02T21:00:51.680+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:00:51.843+00:00", "event": "task_sent", "trace_id": "c67b511aaf4f496bb41452b8e8b2d4db", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:00:52.050+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:00:52.223+00:00", "event": "task_sent", "trace_id": "c67b511aaf4f496bb41452b8e8b2d4db", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:02.942+00:00", "event": "pack_assembled", "trace_id": "c67b511aaf4f496bb41452b8e8b2d4db", "change_ref": "claims-api#482", "risk_class": "Low", "service": "claims-api"}
+{"ts": "2026-11-02T21:01:02.946+00:00", "event": "pack_written_to_systems", "trace_id": "c67b511aaf4f496bb41452b8e8b2d4db", "change_ref": "claims-api#482", "servicenow": "CHG0041101"}
+{"ts": "2026-11-02T21:01:03.110+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:03.276+00:00", "event": "task_sent", "trace_id": "f24e52f2b3d745a994ba2e7f7b571ab7", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:03.459+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:03.633+00:00", "event": "task_sent", "trace_id": "f24e52f2b3d745a994ba2e7f7b571ab7", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:05.878+00:00", "event": "pack_assembled", "trace_id": "f24e52f2b3d745a994ba2e7f7b571ab7", "change_ref": "document-ocr#31", "risk_class": "Medium", "service": "document-ocr"}
+{"ts": "2026-11-02T21:01:05.890+00:00", "event": "pack_written_to_systems", "trace_id": "f24e52f2b3d745a994ba2e7f7b571ab7", "change_ref": "document-ocr#31", "servicenow": "CHG0041102"}
+{"ts": "2026-11-02T21:01:06.077+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:06.253+00:00", "event": "task_sent", "trace_id": "588450c3b95a4b51be6a3e743185a7e5", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:06.439+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:06.621+00:00", "event": "task_sent", "trace_id": "588450c3b95a4b51be6a3e743185a7e5", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:10.212+00:00", "event": "pack_assembled", "trace_id": "588450c3b95a4b51be6a3e743185a7e5", "change_ref": "fraud-scoring#120", "risk_class": "High", "service": "fraud-scoring"}
+{"ts": "2026-11-02T21:01:10.227+00:00", "event": "pack_written_to_systems", "trace_id": "588450c3b95a4b51be6a3e743185a7e5", "change_ref": "fraud-scoring#120", "servicenow": "CHG0041103"}
+{"ts": "2026-11-02T21:01:10.405+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:10.583+00:00", "event": "task_sent", "trace_id": "3e70ce1a87c84f55ace251d01359630a", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:10.771+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:10.957+00:00", "event": "task_sent", "trace_id": "3e70ce1a87c84f55ace251d01359630a", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:12.799+00:00", "event": "pack_assembled", "trace_id": "3e70ce1a87c84f55ace251d01359630a", "change_ref": "billing-worker#77", "risk_class": "High", "service": "billing-worker"}
+{"ts": "2026-11-02T21:01:12.813+00:00", "event": "pack_written_to_systems", "trace_id": "3e70ce1a87c84f55ace251d01359630a", "change_ref": "billing-worker#77", "servicenow": "CHG0041104"}
+{"ts": "2026-11-02T21:01:13.000+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:13.179+00:00", "event": "task_sent", "trace_id": "058314b52f8b4f0bb0cba49a9b2a00bf", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:13.364+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:13.537+00:00", "event": "task_sent", "trace_id": "058314b52f8b4f0bb0cba49a9b2a00bf", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:16.621+00:00", "event": "pack_assembled", "trace_id": "058314b52f8b4f0bb0cba49a9b2a00bf", "change_ref": "policy-admin#200", "risk_class": "High", "service": "policy-admin"}
+{"ts": "2026-11-02T21:01:16.635+00:00", "event": "pack_written_to_systems", "trace_id": "058314b52f8b4f0bb0cba49a9b2a00bf", "change_ref": "policy-admin#200", "servicenow": "CHG0041105"}
+{"ts": "2026-11-02T21:01:16.815+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:16.995+00:00", "event": "task_sent", "trace_id": "0f52dd23a12b44bcb49ebc725cc4b18c", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:17.198+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:17.380+00:00", "event": "task_sent", "trace_id": "0f52dd23a12b44bcb49ebc725cc4b18c", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:21.560+00:00", "event": "pack_assembled", "trace_id": "0f52dd23a12b44bcb49ebc725cc4b18c", "change_ref": "claims-api#500", "risk_class": "High", "service": "claims-api"}
+{"ts": "2026-11-02T21:01:21.575+00:00", "event": "pack_written_to_systems", "trace_id": "0f52dd23a12b44bcb49ebc725cc4b18c", "change_ref": "claims-api#500", "servicenow": "CHG0041106"}
+{"ts": "2026-11-02T21:01:21.760+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:21.941+00:00", "event": "task_sent", "trace_id": "b44f62317cd24079810b10089aa0782f", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:22.146+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:22.334+00:00", "event": "task_sent", "trace_id": "b44f62317cd24079810b10089aa0782f", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:24.338+00:00", "event": "pack_assembled", "trace_id": "b44f62317cd24079810b10089aa0782f", "change_ref": "quote-engine#88", "risk_class": "High", "service": "quote-engine"}
+{"ts": "2026-11-02T21:01:24.352+00:00", "event": "pack_written_to_systems", "trace_id": "b44f62317cd24079810b10089aa0782f", "change_ref": "quote-engine#88", "servicenow": "CHG0041107"}
+{"ts": "2026-11-02T21:01:24.546+00:00", "event": "agent_card", "name": "analyst", "version": "0.1.0", "skills": ["assess-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49247/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:24.727+00:00", "event": "task_sent", "trace_id": "7847e7c6237f4780b25306bdd8ff5bca", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:24.922+00:00", "event": "agent_card", "name": "risk-scorer", "version": "0.1.0", "skills": ["score-change"], "interfaces": [["JSONRPC", "http://127.0.0.1:49255/"]], "bearer_schemes": ["larkspur-bearer"]}
+{"ts": "2026-11-02T21:01:25.116+00:00", "event": "task_sent", "trace_id": "7847e7c6237f4780b25306bdd8ff5bca", "agent_identity": "larkspur-scribe"}
+{"ts": "2026-11-02T21:01:29.951+00:00", "event": "pack_assembled", "trace_id": "7847e7c6237f4780b25306bdd8ff5bca", "change_ref": "quote-engine#90", "risk_class": "High", "service": "quote-engine"}
+{"ts": "2026-11-02T21:01:29.965+00:00", "event": "pack_written_to_systems", "trace_id": "7847e7c6237f4780b25306bdd8ff5bca", "change_ref": "quote-engine#90", "servicenow": "CHG0041108"}

@@ -1,0 +1,13 @@
+{
+  "phase": "sampled",
+  "share_percent": 10.0,
+  "collector_port": 50563,
+  "collector_started": 1793734681.0452645,
+  "collector_exit": 0,
+  "decision_wait_s": 30.0,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "runs": 105
+}

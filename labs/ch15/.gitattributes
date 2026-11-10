@@ -1,0 +1,18 @@
+# The converted sets and the replay's results are compared with what a fresh conversion or replay writes
+# (cases/convert.py --check, tests/test_replay.py). Keep them LF in every checkout, as the root file does
+# for W1's corpus, so core.autocrlf on Windows can't turn them into CRLF.
+cases/*.jsonl text eol=lf
+results/** text eol=lf
+# The sample and the synthetic labels are compared with what their scripts write (labels/sample.py --check,
+# labels/synthetic.py --check, tests/test_labels.py), and the labeling page appends LF lines to labels-A.jsonl.
+labels/*.json text eol=lf
+labels/*.jsonl text eol=lf
+labels/synthetic/** text eol=lf
+# The red-team inventory and variants are compared with what their scripts write (redteam/plants.py --check,
+# redteam/generate.py --check, tests/test_redteam.py).
+redteam/*.json text eol=lf
+# The baseline is compared with what its source gives (ci/baseline.py --check), a live result is the source of an
+# accepted baseline by its hash, and the release table with what release/standing.py writes.
+baseline/** text eol=lf
+live/** text eol=lf
+release/** text eol=lf

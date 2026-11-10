@@ -1,0 +1,6 @@
+# 2 November 2026, after the second sandbox apply (book #69). Windows 11, Python 3.12.9.
+# This lab's environment (requirements.txt):   python -m pytest -q tests/
+84 passed, 3 skipped in 28.84s
+# Chapter 5's environment:   python -m pytest -q tests/test_image.py tests/test_gateway_aws.py tests/test_scope_check.py tests/test_scp.py
+55 passed, 9 warnings in 14.73s
+# ruff check sandbox tests pipeline: All checks passed!

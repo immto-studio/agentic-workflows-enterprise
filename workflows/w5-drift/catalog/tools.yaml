@@ -1,0 +1,279 @@
+# W5's tool catalog: every tool its four MCP servers serve, the server that runs it, and the read access
+# that server's identity holds. The platform team owns it, with FinOps as the second reader (W5-D2); the
+# tests read it, and aws/ reads it with yamldecode, so it is the one place that says what an identity may
+# do (W5-D15).
+#
+# One server per source, each under an identity of its own (W5-D3, W2's shape): the state reader holds the
+# bucket's reads and nothing on the lock file; the cloud reader the describes, the tagging read, the trail
+# lookup, and one metric read; the cost reader the Cost Explorer, Budgets, and export reads; the policy
+# reader no AWS action at all. Each list is exactly what the server's fake mirrors. The fact sheet
+# (LINKS.md, chapter 14, section C.1) records the not-write flag of AWS's machine-readable service
+# reference, read 2026-11-02, for the five EC2 describes, the load balancers' describe, GetResources,
+# LookupEvents, the Cost Explorer reads, and the two S3 object reads; the Service Authorization Reference,
+# read 2026-11-03, files the bucket listings under "List" (C.12.1) and the metric read under "Read"
+# (C.13.4); the budget view and the key's decrypt are reads by their verbs and were not looked up.
+# ReadOnlyAccess is the ceiling of these identities and ViewOnlyAccess the wrong template, because it
+# cannot read the state object, the cost data, or the budgets. No tool takes a bucket key, an account
+# number, or a team: the server derives the first two from the workspace or the account name, and the
+# workspace map decides which names the agent may use (catalog/workspace-map.yaml). The Google and Azure
+# columns name the read roles the fact sheet quotes (D.1, D.2), by role, not by action; aws/ plans the AWS
+# form offline.
+#
+# The cloud and cost readers read the three workload accounts the map names through EKS Pod Identity
+# target roles (C.7, section E): the reader's role in the ops account holds only sts:AssumeRole and
+# sts:TagSession on its target roles, and the target role in each account holds the account's reads from
+# the lists below. A service account takes one association and so one target (C.7.7), so each of the two
+# readers has one service account, and runs one Pod, per account. The cost reader's two S3 reads are the
+# organization's CUR 2.0 export, which lands in a bucket the ops account owns (C.11); an identity of its
+# own reads it there, with no target role.
+
+app:
+  # The four servers share one app registration (one audience, one app role), and only W5's runtime may
+  # ask for a token for it, with its own client credentials leased from Vault: the agent acts for nobody
+  # (chapter 4, W5-D11). The token is app-only (servers/w5_access.py): `idtyp` app, no `scp`, the role in
+  # `roles`, the service principal as `sub` and `oid`; a delegated token is refused. In Entra the app has
+  # an owner and a sponsor and a quarterly access review. The GUIDs are synthetic, like W1's and W2's.
+  servers_app: c4d5e6f7-a8b9-5c0d-9e1f-2a3b4c5d6e7f     # W5_SERVERS_APP, the token's audience
+  role: Drift.Read                                       # an app role in `roles`, not a delegated scope
+  clients: [d5e6f7a8-b9c0-5d1e-8f2a-3b4c5d6e7f80]       # W5_RUNTIME, the one azp the servers accept
+  grant: client_credentials
+  owner: tomasz.nowak@larkspur.example
+  sponsor: priya.raman@larkspur.example
+  access_review: quarterly
+
+github:
+  # The one write (W5-D6 as the fact sheet corrected it, section E): a branch on the agent's fork and a
+  # pull request on the upstream, from two App registrations, because an App's permissions belong to its
+  # registration and every installing account grants the same set (A.1). The fork is a bot user's, not an
+  # organization's, so the owning team may edit the agent's branch; a private upstream's fork inherits its
+  # team permissions (A.2). Every App holds "Metadata" read on the repositories it is installed on; the
+  # list below is what each asks for beyond it, and each App's id is the one GitHub gave its registration.
+  # aws/ reads this block too, and its precondition is a check of this record, not of GitHub: it refuses the
+  # plan if an App installed on the upstream is given "Contents", "Workflows", or "Administration" write
+  # here (A.6: "Administration" edits the rulesets and branch protection W5 relies on), if the fork App is
+  # installed on the upstream, if the ruleset names any bypass actor (a W5 App found by actor_type
+  # Integration and its id, A.6.4), or if it lacks the code owner's review. The harness checks GitHub itself
+  # before every night's writes (harness/github_check.py): the upstream App's token and the rules on main.
+  fork: larkspur-w5/platform-infra            # the bot user larkspur-w5's fork; the branch w5/<key> lives here
+  upstream: larkspur-mutual/platform-infra    # where the pull request is opened, base main
+  apps:
+    larkspur-w5-fork:
+      id: 410001                              # the registration's App id, as a ruleset's bypass list names an App
+      installed_on: larkspur-w5/platform-infra
+      permissions: {contents: write}          # creates the branch and writes the file (POST git/refs, PUT contents)
+      cannot: anything on the upstream, where it is not installed; a workflow file anywhere (no "Workflows")
+    larkspur-w5-upstream:
+      id: 410002
+      installed_on: larkspur-mutual/platform-infra
+      permissions: {pull_requests: write, metadata: read}   # opens and updates the pull request, reads it back
+      cannot: a branch, a file, a workflow file, or the merge, each a "Contents" or "Workflows" write (A.1); a review it posts satisfies no code-owner rule
+  ruleset:                                    # on the upstream's main (A.4, A.12), in the REST names where they differ
+    require_pull_request: {approvals: 1, code_owner_review: true, dismiss_stale_on_push: true, last_push_approved_by_another: true}
+    # "Require status checks to pass": the validate workflow's job, pinned to GitHub Actions as its source, so no
+    # other App or person can satisfy it (A.12.3). 15368 is the GitHub Actions App's id, as GET /apps/github-actions
+    # returned it on 3 November 2026. No "Restrict updates": no page says what it does to a merge, and a required
+    # pull request keeps every direct push out (A.12.1, A.12.2).
+    require_status_checks: [{context: validate, integration_id: 15368}]
+    restrict_creations: true
+    block_force_pushes: true
+    bypass_actors: []                         # GitHub's shape, {actor_id, actor_type, bypass_mode}; none at all
+    codeowners: users and teams with write access only (A.8.2); no App of W5 is in it
+
+membership:
+  # The one member of catalog/membership.json: the agent's service principal, in the group the workspace
+  # map names. The table is W1's shape; in production the same sync writes it from the directory.
+  subject: e6f7a8b9-c0d1-5e2f-9a3b-4c5d6e7f8091          # W5_AGENT_OID
+  name: larkspur-w5-drift
+  group: w5-drift-agent
+
+# Every identity below runs as Kubernetes service accounts in the platform team's namespace of the ops
+# cluster, beside W2's and W3's servers and W4's analyst and scribe, and gets its own role through EKS Pod
+# Identity (aws/main.tf): one service account each for the state and policy readers, the harness, and the
+# cost reader's export identity; one per workload account for the cloud and cost readers, each with that
+# account's target role. The namespace and the service accounts are recorded here, as W4's catalog does.
+harness:
+  # The night's runner (harness/night.py, W5-D2): it calls the four readers over MCP under the agent's
+  # app-only token, the gateway for the prose, and the writer under the two Apps' installation tokens,
+  # each leased from Vault for the night, and reads nothing on AWS itself. Its role holds no AWS action
+  # (W5-D15); it has one so the boundary binds the agent too and CloudTrail names it if it ever calls AWS,
+  # as W4's analyst has one (chapter 4: a role for the harness, and a role for each tool server).
+  identity: larkspur-drift-harness
+  team: platform-engineering
+  namespace: larkspur-ops
+  service_account: w5-harness
+  aws: {role_actions: []}
+
+servers:
+  state-mcp:
+    identity: larkspur-drift-state-reader
+    team: platform-engineering
+    namespace: larkspur-ops
+    service_account: w5-state-reader
+    aws:
+      role_actions: [s3:GetObject, s3:GetObjectVersion, s3:ListBucket, s3:ListBucketVersions, kms:Decrypt]
+      resources:
+        bucket: larkspur-terraform-state
+        prefix: live/*/terraform.tfstate       # the state key's pattern; aws/ grants it for the mapped workspaces only
+        kms_key: alias/larkspur-terraform-state   # the policy names the key by the ARN the state stack gives it
+      # kms:Decrypt is the read of the state object's data key on one KMS key, which s3:GetObject needs on
+      # an SSE-KMS bucket (B.2; the corpus's s3-secure-bucket module, "the only approved way to create an
+      # S3 bucket at Larkspur", enforces SSE-KMS with a customer-managed key for Confidential data, and
+      # state is Confidential, W5-D4); it is not a secret read, and W2's vetting rule that counts it as one
+      # is set aside for this one key only. Nothing is granted on *.tflock (B.2), and aws/'s boundary
+      # denies every action on it. The state stack's bucket policy merges aws/'s deny of the object writes
+      # and deletes for every W5 role by aws:PrincipalArn (C.5), so a mistaken grant still cannot write state.
+    google: {role: roles/storage.objectViewer, scope: the state bucket}
+    azure: {role: Storage Blob Data Reader, scope: the state container}
+  cloud-mcp:
+    identity: larkspur-drift-cloud-reader       # the ops role: sts:AssumeRole and sts:TagSession on the targets only
+    team: platform-engineering
+    namespace: larkspur-ops
+    service_accounts:                           # workload account -> the service account that reads it (C.7.7)
+      lm-network-prod: w5-cloud-reader-lm-network-prod
+      lm-claims-prod: w5-cloud-reader-lm-claims-prod
+      lm-sandbox: w5-cloud-reader-lm-sandbox
+    aws:
+      # The target role has the same name in each workload account and holds every read below there: the
+      # inventory, the tags, the event history (one account and one Region, C.9), and the metric.
+      target_role: larkspur-drift-cloud-reader-target
+      role_actions:
+        - ec2:DescribeInstances
+        - ec2:DescribeVolumes
+        - ec2:DescribeSnapshots
+        - ec2:DescribeSecurityGroups
+        - ec2:DescribeRouteTables
+        - elasticloadbalancing:DescribeLoadBalancers
+        - tag:GetResources                  # omits untagged resources: the inventory is the describes plus this
+        - cloudtrail:LookupEvents           # one attribute, ninety days, two calls a second per Region
+        - cloudwatch:GetMetricStatistics    # one instance's CPU; W2's metrics server shape
+    google: {role: roles/cloudasset.viewer, audit: roles/logging.viewer, metrics: roles/monitoring.viewer}
+    azure: {role: Reader, scope: subscription}   # Resource Graph, the activity log, and metrics all read under Reader
+  cost-mcp:
+    identity: larkspur-drift-cost-reader        # the ops role: sts:AssumeRole and sts:TagSession on the targets only
+    team: platform-engineering
+    namespace: larkspur-ops
+    service_accounts:                           # workload account -> the service account that reads it (C.7.7)
+      lm-network-prod: w5-cost-reader-lm-network-prod
+      lm-claims-prod: w5-cost-reader-lm-claims-prod
+      lm-sandbox: w5-cost-reader-lm-sandbox
+    aws:
+      # A member account sees its own costs in Cost Explorer, and budgets and anomaly monitors stay in the
+      # account that made them (C.10), so the five account reads below are the target role's in each
+      # workload account. The two S3 reads are the export identity's, in the ops account.
+      target_role: larkspur-drift-cost-reader-target
+      role_actions:
+        - ce:GetCostAndUsage
+        - ce:GetCostAndUsageWithResources   # resource-level, fourteen days, after the opt-in
+        - ce:GetAnomalies                   # the anomalies and their root causes; the fake lists no monitor
+        - budgets:ViewBudget                # DescribeBudgets maps to this ...
+        - aws-portal:ViewBilling            # ... and to this (C.1, C.4)
+        - s3:GetObject                      # the CUR 2.0 export, landing daily
+        - s3:ListBucket                     # a billing period's files, under the export's prefix
+    export:
+      # The organization's CUR 2.0 export: the management account delivers every account's rows to a bucket
+      # the ops account owns (C.11.1, C.11.2), so an identity of its own reads it in the ops account, with no
+      # target role. The bucket is aws/'s variable cost_export_bucket, never the state bucket (C.11, C.12.3);
+      # the objects arrive under SSE-S3 (C.11.3) and are read with s3:GetObject like any other (C.3, C.11).
+      identity: larkspur-drift-cost-export-reader
+      team: platform-engineering
+      namespace: larkspur-ops
+      service_account: w5-cost-export-reader
+      prefix: larkspur-cur2-daily/*         # the export's own path prefix in the bucket
+    google: {role: roles/bigquery.dataViewer, scope: the billing export dataset}
+    azure: {role: Cost Management Reader, scope: subscription}
+  policy-mcp:
+    identity: larkspur-drift-policy-reader
+    team: platform-engineering
+    namespace: larkspur-ops
+    service_account: w5-policy-reader
+    aws: {role_actions: []}                 # the standard is a document; the exceptions are ServiceNow records
+    servicenow: {read: [sc_req_item], write: []}   # the catalogue item's requested items, read-only
+    corpus: {document: pol-cloud-resource-tagging-standard.md}
+
+tools:
+  list_workspaces:
+    server: state-mcp
+    args: []
+    reads: the state keys under the bucket's prefix, filtered to the workspaces the agent may read
+  get_state:
+    server: state-mcp
+    args: [workspace]
+    reads: the current state object (s3:GetObject), masked before it leaves
+  get_state_version:
+    server: state-mcp
+    args: [workspace, version_id]
+    reads: one stored version of the state object (s3:GetObjectVersion), masked
+  list_state_versions:
+    server: state-mcp
+    args: [workspace]
+    reads: the state key's versions (s3:ListBucketVersions); the state key only, never the lock file
+  describe_resources:
+    server: cloud-mcp
+    args: [account, region, kind]
+    reads: one describe call from a fixed set, in its own response shape
+  get_resources_by_tag:
+    server: cloud-mcp
+    args: [account, region, tag_key]
+    reads: the tagging API's resources carrying one key, with all their tags
+  lookup_events:
+    server: cloud-mcp
+    args: [account, region, attribute_key, attribute_value, days]
+    reads: CloudTrail's event history, one attribute, 1 to 90 days, 50 a page
+  get_cpu_utilization:
+    server: cloud-mcp
+    args: [account, region, instance_id, days]
+    reads: one instance's CPUUtilization, 1 to 14 days, one datapoint a day
+  get_cost_and_usage:
+    server: cost-mcp
+    args: [account, start, end, group_by_tag]
+    reads: Cost Explorer, monthly, grouped by one tag key
+  get_cost_by_resource:
+    server: cost-mcp
+    args: [account, resource_ids, days]
+    reads: Cost Explorer with resources, daily, 1 to 14 days, for a list of resource ids
+  describe_budgets:
+    server: cost-mcp
+    args: [account]
+    reads: the account's budgets with their calculated spend and their notifications
+  get_anomalies:
+    server: cost-mcp
+    args: [account, days]
+    reads: the anomaly monitor's findings with their root causes, 1 to 90 days
+  read_cost_export:
+    server: cost-mcp
+    args: [account, billing_period]
+    reads: the CUR 2.0 export's rows for one billing period, resource ids and tag columns on
+  get_tagging_standard:
+    server: policy-mcp
+    args: []
+    reads: the tagging standard's current version as fields
+  list_policy_exceptions:
+    server: policy-mcp
+    args: [state]
+    reads: the Policy exception records from ServiceNow in one state
+  open_pull_request:
+    # The one write (W5-D6, W5-D9): not an MCP tool but the harness's own call to writer/pull_requests.py
+    # under the two Apps' installation tokens. One pull request per finding key, updated in place; a
+    # suppressed finding is not raised; a closed or merged one is not raised again for thirty days.
+    server: writer
+    args: [finding_key]
+    writes: the branch w5/<key> on the fork (the fork App) and the pull request upstream (the upstream App); never a merge, a review, or a workflow file
+
+# Never-list entries that have a tool shape (W5-D7), denied by having no tool at all and no identity that
+# could do them: W5's manifest names them, the catalog serves none, the identities above hold no action
+# that could do them, and aws/'s boundaries deny them as AWS actions with sts:AssumeRole beside them, on
+# every role but the named target roles in the ops account and on every role in the workload accounts, so
+# no role can reach the pipeline's apply role. The GitHub half is the fork and the two upstream permissions
+# (`github` above): a merge and a workflow file are outside what either App holds, and a review the upstream
+# App could post satisfies no code-owner rule.
+never:
+  apply_plan: no apply role exists for W5; sts:AssumeRole denied on the boundaries except the chain to the named target roles; the state bucket refuses its writes
+  merge_pull_request: the merge is a "Contents" write on the upstream (A.1); the upstream App holds "Pull requests" and "Metadata" only, the fork App is not installed there
+  approve_pull_request: the upstream App can post a review (A.7) and the writer posts none; it cannot approve its own pull request (A.3), and the ruleset needs a code owner's approval, which CODEOWNERS gives to people and teams only (A.8)
+  delete_resource: no delete action on any identity, the waste it finds included (stop-after-seven-days is FinOps' tag policy, not W5's)
+  stop_instance: no ec2 stop, terminate, or modify action on any identity
+  modify_security_group: no ec2 security group write on any identity; the boundary denies them (chapter 2's PCI sentence)
+  delete_namespace: no Kubernetes write on any identity
+  modify_iam: no iam action on any identity
+  read_vault_secret: no secretsmanager, ssm, or Kubernetes Secrets read on any identity; a state's secrets are masked at the reader
+  run_command: no exec, ssm, or remote command action on any identity

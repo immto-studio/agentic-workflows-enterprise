@@ -1,0 +1,50 @@
+# Step 5's limiter-cache drill (O-D8): step 4's database-backed gateway, unchanged but for one more callback.
+#
+# Step 4's aliases, keys, callbacks and settings, with `census_hooks.hooks` after them: at each call it writes
+# what the proxy's internal usage cache holds, the in-memory cache LiteLLM 1.106.6's rate limiter keeps each key's
+# tokens-per-minute window and counters in when there is no Redis. That cache holds 200 entries. Step 4's
+# `alerting: ["webhook"]` also makes the proxy keep one entry per request there, its status, for the alerting
+# threshold plus 100 seconds (ProxyLogging.update_request_status, meant for Slack's hanging-request alerts).
+#
+# Run (from labs/ch16/capacity): as litellm.outage.yaml, with DATABASE_URL and WEBHOOK_URL as step 4's and
+# CAPACITY_CENSUS_FILE naming the census file. capacity/run_drills.py starts everything this needs.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/BUDGET_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-restricted  # the self-hosted model, chapter 9
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/BUDGET_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  # the key must agree with the tags (ch05:164), then chapter 5's rules, limits, cost line and span
+  callbacks: [binding_hooks.hooks, ch05_hooks.hooks, census_hooks.hooks]
+  num_retries: 0
+  drop_params: true
+  # a key's 1mo budget resets at midnight on the 1st in this zone; the default is UTC
+  timezone: America/Toronto
+  # the default, written out: a spent budget answers 422, which the harness counts as a budget stop
+  budget_exceeded_status_code: 422
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  database_url: os.environ/DATABASE_URL
+  # budget alerts as a POST of LiteLLM's webhook event to WEBHOOK_URL; email alerts need the license
+  alerting: ["webhook"]
+  alert_types: ["budget_alerts"]

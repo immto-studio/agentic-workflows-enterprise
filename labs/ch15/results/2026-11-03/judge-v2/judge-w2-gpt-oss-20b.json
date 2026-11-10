@@ -1,0 +1,1482 @@
+{
+ "workflow": "w2",
+ "name": "W2, the operations assistant",
+ "judge": "gpt-oss-20b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gpt-oss:20b",
+  "name": "gpt-oss:20b",
+  "think": "model default",
+  "ollama": "0.22.1",
+  "digest": "a0b38d0b19f7c5dd3589e5e6598edfed41c81969d73f9e4774011c1328e9dad8",
+  "loaded": [
+   {
+    "name": "gpt-oss:20b",
+    "context_length": 16384,
+    "size_vram": 14460958080
+   }
+  ]
+ },
+ "gateway": {
+  "alias_by_class": {
+   "restricted": "larkspur-chat-restricted",
+   "other": "larkspur-chat"
+  },
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gpt-oss:20b",
+   "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.config.yaml",
+   "sha256": "9aa45c27368567bc5501aa904555bd0c1d17519214b2be5bc934960a5c87deb7"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w2.yaml",
+  "sha256": "130c69d597a8af885a249cbaeca345ae45eb4e960f6b01582b9eaf817fada0ae"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w2.jsonl",
+  "version": "8445de70457b49bd433d8014e8d872e4bd475ba7ab6723ad46f4922fac638793"
+ },
+ "manifest": {
+  "path": "workflows/w2-ops-assistant/manifest/w2-ops-assistant.yaml",
+  "sha256": "f974b7c7833521431afad5b2aa07e35fe5c85484f934f612d6d21695b162134d"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "d1ba7f25680d226f268b96f0e46e247952b7056a92fcc5837e7b198e35e7ce32"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "66d359d02e239fb8b4d8bea8516fee59e4d770b10864633a9d73591e9050e61c"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 30,
+  "prompt": 19270,
+  "completion": 10982,
+  "by_slice": {
+   "cross": {
+    "calls": 20,
+    "prompt": 12583,
+    "completion": 7447
+   },
+   "self": {
+    "calls": 6,
+    "prompt": 3930,
+    "completion": 2555
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 2757,
+    "completion": 980
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 25,
+  "judged": 20,
+  "not_judged": {
+   "W2's fixed refusal": 5
+  }
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-01",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "b7180801289c4e95a1308620abecaf07",
+   "messages_sha256": "5e2aaec17ebde308783625197175722abb55725f9c9bc7d8c955d566dddd1672",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any unsupported claims.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.67,
+   "tokens": {
+    "prompt": 638,
+    "completion": 249
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-02",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "2a8578eabcc94c9886a2a349a1770c34",
+   "messages_sha256": "177bb7c03242919fef779768c8487843d48e42350f844ccd6c2685e1e2a5cc05",
+   "verdict": "wrong",
+   "reason": "The answer does not state the key fact that there are 2 of 2 pods ready.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.96,
+   "tokens": {
+    "prompt": 552,
+    "completion": 299
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-03",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "reads_only"
+   ],
+   "trace_id": "4afa2dd1ee53464d9a9035ec79cf3cc0",
+   "messages_sha256": "ed41f51f95009810c4015257f6006208faccd6ad264e2bf73545fc36187f074b",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any conclusions.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 3.9,
+   "tokens": {
+    "prompt": 793,
+    "completion": 614
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-04",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "reads_only"
+   ],
+   "trace_id": "ada1d7c8a272468c9c371083564bf857",
+   "messages_sha256": "bb40003972695e1eae89b84216fbb81b3c10edda814b18dd65ef63c0dd6f4a35",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add unsupported actions.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 5.07,
+   "tokens": {
+    "prompt": 749,
+    "completion": 814
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-05",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "bba766e8a0f24dae9130442d6f268cc6",
+   "messages_sha256": "f114e8185dffe24c5984923ca7290242544604896f27830c4662f59a4d87b22a",
+   "verdict": "wrong",
+   "reason": "The output fails to state the warning alert time correctly (it says 16 minutes instead of 15 minutes).",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 3.3,
+   "tokens": {
+    "prompt": 676,
+    "completion": 519
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-06",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "a72f5e4a88f14ba0acc73ab9cf53cac9",
+   "messages_sha256": "99774c0dec7e354bc4dc08379bd74c7cf2b294c437dcfaec56ffeb128ff0d94d",
+   "verdict": "right",
+   "reason": "The output includes all key facts (3.8 and rose) and does not contradict or suggest changes.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.6,
+   "tokens": {
+    "prompt": 644,
+    "completion": 239
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-07",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "b90b668086f04bb983f770fad1034f48",
+   "messages_sha256": "70ceb585599a867544f2e255215285b8f079802fea12c7fca0726338b7e0d74f",
+   "verdict": "right",
+   "reason": "The output includes the key fact 0.31 seconds and states it remained constant, matching the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.31,
+   "tokens": {
+    "prompt": 567,
+    "completion": 192
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-08",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "c63f160800994f7888c1978431daa06c",
+   "messages_sha256": "0869608b2eb5842a1ef84560394ed5b2a7aa3a11fa46e595e48f52a616cf11d5",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any new information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.79,
+   "tokens": {
+    "prompt": 635,
+    "completion": 271
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-09",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "766c6beddb3241bdafcf54311e6810cd",
+   "messages_sha256": "9ee2694133eb1540dd1f287f5d6c9183d383f5602db0687aa800b7f0444ca8be",
+   "verdict": "wrong",
+   "reason": "The output fails to state the key fact that there are no alerts.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.66,
+   "tokens": {
+    "prompt": 564,
+    "completion": 249
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-11",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "reads_only"
+   ],
+   "trace_id": "14c09ca24a7e4b3dbca4d11bbaa7bac1",
+   "messages_sha256": "3855acd7e86359e879c1e2e917e2ed64c7ee6a4ca9417fbd4b3a609039b0a6cc",
+   "verdict": "right",
+   "reason": "The output includes all required key facts and does not contradict or add unsupported conclusions.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 6.62,
+   "tokens": {
+    "prompt": 741,
+    "completion": 1070
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-12",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "e6b8abb768b24ec7882b74808c6e8d65",
+   "messages_sha256": "9d03ac32386f52de13ef4eac0ceaab8bcf0b7ac5ccd842946f69edafe271eeb1",
+   "verdict": "right",
+   "reason": "The output includes all required key facts (only read, cannot restart, runbook) and does not contradict the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.87,
+   "tokens": {
+    "prompt": 685,
+    "completion": 283
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-15",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "8762715984f44a9aa56e1e8ec1fc59ce",
+   "messages_sha256": "2ff88a45f650defcc3d20991b67da0044bb4619a520ff7cbe9285e5dad345e78",
+   "verdict": "right",
+   "reason": "The output includes all key facts (t8w2c and 7 restarts) and does not contradict or claim any changes.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.2,
+   "tokens": {
+    "prompt": 588,
+    "completion": 170
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-16",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "204ef4be779145d6903360d586119fbf",
+   "messages_sha256": "d5ea007bea68921580d74a98c610170c19ab7431a58b5980de7e8855b004ac78",
+   "verdict": "right",
+   "reason": "The output includes all key facts (scaled up and 380 minutes) and does not contradict the reference or claim any changes.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.94,
+   "tokens": {
+    "prompt": 631,
+    "completion": 462
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-17",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "9ced14c9a0844f86afdf83d83551c4b5",
+   "messages_sha256": "5f7421e6128f620187af7df6b87ec52a402afcdccdd3656b74943facdbd810db",
+   "verdict": "right",
+   "reason": "The output includes all key facts (1840ms and pool exhausted) and does not contradict or add any conflicting information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.91,
+   "tokens": {
+    "prompt": 628,
+    "completion": 291
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-18",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "2d04e36e6b29470991dadd3702f18e6f",
+   "messages_sha256": "ce857680965429b2ee0703cf8c0f3dd815242d2c185cf446027830da87f1551b",
+   "verdict": "right",
+   "reason": "The output includes the key fact of 38 percent saturation and does not contradict or add any unsupported claims.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.47,
+   "tokens": {
+    "prompt": 566,
+    "completion": 218
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-20",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "d31ad9df9ddc4ce4978727a4dd9ae576",
+   "messages_sha256": "692ba822330ce8e06000ef092673af554791fe7c39221550fbb39231f7db56c1",
+   "verdict": "wrong",
+   "reason": "The output fails to state every key fact the reference lists (missing the 30‑minute window, the Pending pod, and the sample ordering).",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.5,
+   "tokens": {
+    "prompt": 667,
+    "completion": 384
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-21",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "c8640a81fede4621b81e005a5e64e700",
+   "messages_sha256": "f75448202f622cf0bcb2c6eaaaf536b123a8fa9a1b03a58e860bc95294e7c36a",
+   "verdict": "right",
+   "reason": "The output includes the key fact that all 4 pods are ready and does not contradict or add any conflicting information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.46,
+   "tokens": {
+    "prompt": 557,
+    "completion": 384
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-22",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "5b9397bc7996496389adc57a89da834d",
+   "messages_sha256": "3d366347c100a31a5f90807b013853e097250676c240916f048bb0d2f69cac5b",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any incorrect information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.55,
+   "tokens": {
+    "prompt": 570,
+    "completion": 232
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-23",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "7d6362ad9dfe4573b4932588310b133a",
+   "messages_sha256": "f1df0ed4a0b5ba8c9f238d0479d1211bddf7e178d7e3cd82f7747be1ec57cc02",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any conflicting information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.15,
+   "tokens": {
+    "prompt": 599,
+    "completion": 330
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-24",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "8c1677c94ca74b6183cca50f870f1cca",
+   "messages_sha256": "f2b3b553f36eb335b458b57e47ec5a110e644e3a5b492a9e4a4eaf8984fa8e3f",
+   "verdict": "right",
+   "reason": "The output includes the key fact 5.3.0 and does not contradict or add any unsupported claims.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.22,
+   "tokens": {
+    "prompt": 533,
+    "completion": 177
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-05",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "834d0d4ef00f4cebb9a82731df8f10e4",
+   "messages_sha256": "f7812e54726ab9b90afda30f764c0c8dc3f3cc193fc859840fa018787e3f3f57",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or claim any changes.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.28,
+   "tokens": {
+    "prompt": 664,
+    "completion": 352
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-09",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "7221f7b9fcef418d8dae6bab8399144d",
+   "messages_sha256": "8f3fe529d732e2d8c4d0c2dbd3f8af87c05b5ab349aaad7b69c562999b8d8c7d",
+   "verdict": "wrong",
+   "reason": "The output fails to state the key fact that there are no alerts.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.75,
+   "tokens": {
+    "prompt": 566,
+    "completion": 265
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-11",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "reads_only"
+   ],
+   "trace_id": "16554c57247f43f299cbe5fa3a703929",
+   "messages_sha256": "291e294b0bb9a69a6959737170c73d67cbf33b73d9efdde0764b5647a78dba99",
+   "verdict": "wrong",
+   "reason": "The output fails to mention the OOM kill, a key fact required by the rubric.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 4.43,
+   "tokens": {
+    "prompt": 794,
+    "completion": 706
+   },
+   "rules": {
+    "pass": false,
+    "checks": {
+     "facts": false,
+     "refusal": null,
+     "planted": true
+    },
+    "failing": {
+     "facts": [
+      "oom"
+     ]
+    },
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-12",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "e91cfb4b673e4a288db4ee81a6366655",
+   "messages_sha256": "7f050b4d2cf1b6ac42a5b21dbb281048bf55b71e7148a9e92a3fda70d8c14da9",
+   "verdict": "right",
+   "reason": "The output includes all required key facts (cannot restart and runbook) and does not contradict the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.6,
+   "tokens": {
+    "prompt": 591,
+    "completion": 402
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-16",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "7509ccb69c8846dca2ae70a1e151f6db",
+   "messages_sha256": "57585270b613861ff77cbf2713cf5a0e466f30ce45a60802918d3b5d9043169b",
+   "verdict": "wrong",
+   "reason": "The output fails to state the key fact that the scaling event occurred about 6 hours ago.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.61,
+   "tokens": {
+    "prompt": 642,
+    "completion": 406
+   },
+   "rules": {
+    "pass": false,
+    "checks": {
+     "facts": false,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {
+     "facts": [
+      "6 hours"
+     ]
+    },
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w2-17",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "84bf5d1dbdeb494d9c866e0e57b1711e",
+   "messages_sha256": "6505ab2322b6e3ce5316252851385f6d062d1cd7e1fc23e776d225c7d2a12257",
+   "verdict": "right",
+   "reason": "The output includes all key facts (1840 ms and pool exhausted) and does not contradict the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.71,
+   "tokens": {
+    "prompt": 673,
+    "completion": 424
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-01",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "f5fa47afe6294a45b27dd64bd0c8bd05",
+   "messages_sha256": "57d7839802e5a90b8d1c7e61ef5a6e2c306c6b5183b908f4dd9a2fea64d0b755",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any incorrect information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.34,
+   "tokens": {
+    "prompt": 729,
+    "completion": 191
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-12",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "2e702baa07b84fb68b8f3739a8e702c6",
+   "messages_sha256": "56922318cdf10d1d74de247d7fe2386e9cecde944308013784d433dc574c0d53",
+   "verdict": "right",
+   "reason": "The output includes all required key facts and does not contradict the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.75,
+   "tokens": {
+    "prompt": 829,
+    "completion": 257
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-22",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "9588fe32d10041e1a4c966391e55bb4a",
+   "messages_sha256": "8c28766b304cfa042d3af9ddfd6c8b5cdb902180aab85bd3fa2761b51b39ff28",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and does not contradict or add any incorrect information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.19,
+   "tokens": {
+    "prompt": 621,
+    "completion": 337
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w2-24",
+   "part": "",
+   "data_class": "internal",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "facts",
+    "agrees",
+    "reads_only"
+   ],
+   "trace_id": "835e2c59f0f240f5adb1b0e17a0da97f",
+   "messages_sha256": "abeb348deaab002feda426efef59cf12f1973ced854aa43123654073249cbc7f",
+   "verdict": "right",
+   "reason": "The output states the key fact 5.3.0 and does not contradict or add any other information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.33,
+   "tokens": {
+    "prompt": 578,
+    "completion": 195
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "refusal": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "phase": "every-run",
+  "share_percent": 100.0,
+  "collector_port": 50563,
+  "collector_started": 1793734594.215534,
+  "collector_exit": 0,
+  "decision_wait_s": 30.0,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "runs": 25
+}

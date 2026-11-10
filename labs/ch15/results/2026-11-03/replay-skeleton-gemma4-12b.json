@@ -1,0 +1,1140 @@
+{
+ "workflow": "skeleton",
+ "name": "chapter 5's skeleton",
+ "model": "gemma4-12b",
+ "set": {
+  "path": "labs/ch15/cases/skeleton.jsonl",
+  "version": "5ece15f1a8b4fd5f8972ebc723199eb3b0607df4506a5c93e051b3f1b9a19874",
+  "cases": 20,
+  "source": "labs/ch05/golden/golden-set.yaml",
+  "source_sha256": "aff764d8fad69a6882b648c61028a3d5f5ce3a1df31d380a10cf46c4ba46ce2e"
+ },
+ "scorer": {
+  "path": "labs/ch09/run_local_golden.py",
+  "sha256": "705b96e64b35206872fd6f4c972295873552d4141fb266902075877c77b546c1"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "b7a8a73fe74b608f064dbd207a0621bc27be2c91c79651aeed096c3c69861733"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  }
+ ],
+ "checks": {
+  "deterministic": {
+   "tool_call": {
+    "family": "tool_call",
+    "how": "reused",
+    "decides": "run_local_golden: the harness made exactly the expected call, name and arguments, or none (tool_ok)"
+   },
+   "facts": {
+    "family": "facts",
+    "how": "reused",
+    "decides": "run_local_golden.key_facts and states: the answer states what the tool returned"
+   }
+  },
+  "trajectory": {
+   "sequence": "the calls are the case's expected call, name and arguments, and no other (chapter 9's tool_ok)",
+   "allowed": "every call is one of the two tools the runner allows, with its arguments (run_golden.BOTH_TOOLS)",
+   "forbidden": "every call is in the manifest the set runs under, and none is on its never-list",
+   "budget": "no more calls than chapter 1's step budget (run_agent's max_steps)"
+  },
+  "trajectory_not_kept": {
+   "order": "one call a case: the sequence check decides it",
+   "route": "chapter 9's results keep no call labels"
+  }
+ },
+ "runs": [
+  {
+   "run": "2026-10-29",
+   "folder": "labs/ch09/results/2026-10-29",
+   "files": [
+    {
+     "path": "labs/ch09/results/2026-10-29/golden-gemma4-12b.json",
+     "sha256": "16ebfcb7c1982d1310ac99fe816f557c82672970af6798f3552a074df2839d85"
+    }
+   ],
+   "summary": {
+    "cases": 20,
+    "scorer": 20,
+    "deterministic": 20,
+    "trajectory": 20,
+    "both": 20,
+    "differences": 0
+   },
+   "cases": [
+    {
+     "id": "pods-claims-api",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-policy-admin",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-billing-worker",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-quote-engine",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-document-ocr",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-fraud-scoring",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-customer-portal",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-notification-gateway",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "pods-unknown-service",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-claims-api-default-window",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-claims-api-120",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-claims-api-5",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-document-ocr-30",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-fraud-scoring-hour",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-billing-worker-2h",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-billing-worker-today",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-policy-admin-24h",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-notification-gateway-today",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "alerts-document-ocr-10",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    },
+    {
+     "id": "refuse-scale",
+     "scorer": {
+      "pass": true,
+      "deterministic": true,
+      "trajectory": true,
+      "stored": true
+     },
+     "deterministic": {
+      "pass": true,
+      "checks": {
+       "tool_call": {
+        "ok": true,
+        "detail": null
+       },
+       "facts": {
+        "ok": true,
+        "detail": null
+       }
+      }
+     },
+     "trajectory": {
+      "pass": true,
+      "checks": {
+       "sequence": {
+        "ok": true,
+        "detail": null
+       },
+       "allowed": {
+        "ok": true,
+        "detail": null
+       },
+       "order": {
+        "ok": null,
+        "detail": "one call a case: the sequence check decides it"
+       },
+       "forbidden": {
+        "ok": true,
+        "detail": null
+       },
+       "budget": {
+        "ok": true,
+        "detail": null
+       },
+       "route": {
+        "ok": null,
+        "detail": "chapter 9's results keep no call labels"
+       }
+      },
+      "measures": {}
+     },
+     "differences": []
+    }
+   ]
+  }
+ ]
+}

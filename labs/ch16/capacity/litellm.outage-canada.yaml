@@ -1,0 +1,66 @@
+# Step 5b's outage drill (O-D10): litellm.outage.yaml with a fallback inside Canada for what may not leave it.
+#
+# Chapter 5's three aliases, its callback and its one-hop chain from the primary in ca-central-1 to the deployment
+# in us-east-2, unchanged, with step 5's cooldown. Chapter 5's callback turns that chain off for W3, whose manifest
+# allows ca-central-1 alone, so in step 5's drill W3 got the primary's error and then the cooldown's 429. Here the
+# section `larkspur_fallbacks_in_jurisdiction` names the self-hosted alias, in ca-central-1, as larkspur-chat's
+# fallback for such a request, and `fallback_hooks.hooks`, after chapter 5's callback, gives a request that
+# fallback when chapter 5 has turned its chain off and chapter 2's grid and its manifest's Regions allow the hop:
+# the grid lets a Confidential call reach a self-hosted model in the jurisdiction (labs/ch05/gateway/gateway_rules.py,
+# may_receive). LiteLLM doesn't read the section. Chapter 5's own config and demo are unchanged.
+#
+# Run (from labs/ch16/capacity): as litellm.outage.yaml. capacity/run_5b.py starts everything this needs.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: openai/fake-primary
+      api_base: os.environ/CAPACITY_PRIMARY_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: primary, region: ca-central-1,
+                 jurisdiction: CA, hosting: managed}
+
+  - model_name: larkspur-chat-fallback
+    litellm_params:
+      model: openai/fake-fallback
+      api_base: os.environ/CAPACITY_FALLBACK_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      timeout: 5
+    model_info: {id: fallback, region: us-east-2,
+                 jurisdiction: US, hosting: managed}
+
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: openai/fake-self-hosted
+      api_base: os.environ/CAPACITY_SELF_HOSTED_URL
+      api_key: not-used-by-the-fake
+      input_cost_per_token: 0.000001
+      output_cost_per_token: 0.000001
+      timeout: 5
+    model_info: {id: self-hosted, region: ca-central-1,
+                 jurisdiction: CA, hosting: self-hosted}
+
+litellm_settings:
+  fallbacks: [{"larkspur-chat": ["larkspur-chat-fallback"]}]
+  num_retries: 0  # chapter 5's: fail over, do not hammer
+  callbacks: [ch05_hooks.hooks, fallback_hooks.hooks]
+  drop_params: true
+
+router_settings:
+  routing_strategy: simple-shuffle
+  # set explicitly, and to a value other than 3, which 1.106.6 treats as unset (fact sheet 8.1)
+  allowed_fails: 2
+  cooldown_time: 30
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+
+# Chapter 16's: for a request whose own chain chapter 5 turns off, the fallback it may take instead, if chapter 2's
+# grid and its manifest's Regions allow it. Read by fallback_hooks.py; LiteLLM doesn't read it.
+larkspur_fallbacks_in_jurisdiction:
+  larkspur-chat: [larkspur-chat-restricted]

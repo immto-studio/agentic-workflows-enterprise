@@ -1,0 +1,167 @@
+# vLLM serving gpt-oss-20b on one GPU, the production shape of the model the lab runs on Ollama.
+#
+# Pinned twice: the engine image by digest (v0.31.0, the newest release older than two weeks on
+# 2026-10-29) and the weights by full commit hash, which is also the directory they are read
+# from. The model store keeps each approved revision under its own path, and an init container
+# checks every file against the approved digest list (weights-digests.yaml) before vLLM starts.
+# The pod has no network path out (networkpolicy.yaml allows no egress, HF_HUB_OFFLINE=1), so the
+# tiktoken encodings gpt-oss reads at start-up come from the store as well.
+#
+# vLLM listens on loopback only. The allowlist container in the same pod (vllm-allowlist.yaml) is
+# the only way in, for the gateway and for Prometheus; nothing outside the pod, not even a process
+# on the node, reaches vLLM's own port. vLLM's probes run inside its container for that reason.
+#
+# The pods run on a node pool of their own (label and taint larkspur.example/llm-restricted) and
+# never on a GPU that time-slicing shares: GPU Feature Discovery labels a time-sliced node with
+# nvidia.com/gpu.replicas, and the affinity below admits only nodes without it or with 1.
+#
+# Validated with kubeconform and the checks in tests/test_manifests.py; not run on a GPU cluster.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-gpt-oss-20b
+  namespace: llm-serving
+  labels: {app: vllm, model: gpt-oss-20b}
+spec:
+  replicas: 2                       # two, so a node drain or a crash is not an outage
+  selector:
+    matchLabels: {app: vllm, model: gpt-oss-20b}
+  template:
+    metadata:
+      labels: {app: vllm, model: gpt-oss-20b}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile: {type: RuntimeDefault}
+      nodeSelector:
+        larkspur.example/node-pool: llm-restricted
+      tolerations:
+        - {key: larkspur.example/llm-restricted, operator: Exists, effect: NoSchedule}
+        - {key: nvidia.com/gpu, operator: Exists, effect: NoSchedule}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:              # either term admits a node: whole GPUs only
+              - matchExpressions:
+                  - {key: nvidia.com/gpu.replicas, operator: DoesNotExist}
+              - matchExpressions:
+                  - {key: nvidia.com/gpu.replicas, operator: In, values: ["1"]}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels: {app: vllm, model: gpt-oss-20b}
+        - maxSkew: 1                        # across zones too, where the Region has the GPUs
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels: {app: vllm, model: gpt-oss-20b}
+      initContainers:
+        - name: verify-weights              # the bytes on the volume match the approved record
+          image: docker.io/library/busybox@sha256:42a9ff19af33811ee466b24c66384461d37c32dcc28d1d27d49b8aca816bd5ee  # 1.37.0-glibc
+          command: [sh, -c]
+          args:
+            - >-
+              cd /models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee &&
+              sha256sum -c /digests/gpt-oss-20b.sha256 &&
+              cd /models/tiktoken && sha256sum -c /digests/tiktoken.sha256
+          resources:
+            requests: {cpu: 500m, memory: 64Mi}
+            limits: {memory: 64Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: models, mountPath: /models, readOnly: true}
+            - {name: digests, mountPath: /digests, readOnly: true}
+      containers:
+        - name: vllm
+          image: docker.io/vllm/vllm-openai@sha256:c1c9f6fd5c109ba7f0546a59f5b2f15fb87f64c77782e90a27b648b42a8e67c3  # v0.31.0
+          args:
+            - --model=/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee
+            - --served-model-name=gpt-oss-20b
+            - --enable-auto-tool-choice
+            - --tool-call-parser=openai
+            - --max-model-len=32768
+            - --gpu-memory-utilization=0.92
+            - --host=127.0.0.1              # loopback only: the allowlist is the way in
+            - --port=8000
+          env:
+            - name: VLLM_API_KEY            # a second check on the routes it covers, not the boundary
+              valueFrom:
+                secretKeyRef: {name: vllm-api-key, key: api-key}
+            - {name: HF_HUB_OFFLINE, value: "1"}
+            - {name: TIKTOKEN_ENCODINGS_BASE, value: /models/tiktoken}   # Harmony's vocab, read locally
+            - {name: VLLM_NO_USAGE_STATS, value: "1"}   # vLLM reports anonymous usage by default
+            - {name: HOME, value: /home/vllm}
+            - {name: XDG_CACHE_HOME, value: /home/vllm/.cache}
+          resources:
+            requests: {cpu: "4", memory: 32Gi, nvidia.com/gpu: 1}
+            limits: {memory: 32Gi, nvidia.com/gpu: 1}
+          startupProbe:                     # loading and compiling takes minutes, not seconds
+            exec: {command: [python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)"]}
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            exec: {command: [python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)"]}
+            periodSeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:
+            exec: {command: [python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)"]}
+            periodSeconds: 30
+            timeoutSeconds: 5               # a busy API server can miss the one-second default
+            failureThreshold: 3
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: models, mountPath: /models, readOnly: true}
+            - {name: home, mountPath: /home/vllm}
+            - {name: tmp, mountPath: /tmp}
+            - {name: shm, mountPath: /dev/shm}
+        - name: allowlist                   # the only port the gateway and Prometheus reach
+          image: docker.io/nginxinc/nginx-unprivileged@sha256:f5116ed4606f3eb015dd4a8e28cb9b351476dc0ad4bc6e9f93b19cec130cdf03  # 1.30.6-alpine
+          command: [nginx, -g, "daemon off;"]
+          ports:
+            - {name: api, containerPort: 8080}
+            - {name: metrics, containerPort: 8081}
+          resources:
+            requests: {cpu: 100m, memory: 64Mi}
+            limits: {memory: 128Mi}
+          readinessProbe:                   # through to vLLM: ready when the model answers
+            httpGet: {path: /health, port: api}
+            periodSeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:                    # nginx itself
+            tcpSocket: {port: api}
+            periodSeconds: 30
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: allowlist, mountPath: /etc/nginx/nginx.conf, subPath: nginx.conf, readOnly: true}
+            - {name: proxy-tmp, mountPath: /tmp}
+      volumes:
+        - name: models
+          persistentVolumeClaim: {claimName: model-store, readOnly: true}
+        - name: digests
+          configMap: {name: weights-digests}
+        - name: home
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+        - name: shm                         # PyTorch uses shared memory between processes
+          emptyDir: {medium: Memory, sizeLimit: 2Gi}
+        - name: allowlist
+          configMap: {name: vllm-allowlist}
+        - name: proxy-tmp
+          emptyDir: {}

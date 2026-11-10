@@ -1,0 +1,242 @@
+{
+ "measured": "2026-11-03",
+ "model": "gpt-oss-20b",
+ "versions": {
+  "python": "3.12.9",
+  "litellm": "1.106.6",
+  "mcp": "2.3.0",
+  "ollama_base": "http://127.0.0.1:11434",
+  "num_ctx": 16384,
+  "max_tokens": 4096,
+  "ollama": "0.22.1",
+  "w5_commit": "52abce6"
+ },
+ "nights": [
+  {
+   "id": "night-1",
+   "night": "2026-11-02",
+   "trigger": "schedule",
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ],
+   "trace_id": "ae5480bc36de48919c6ab6b18440d61f",
+   "findings": 15,
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 2,
+    "idle": 1,
+    "missing": 1,
+    "old_snapshot": 1,
+    "unattached_volume": 2,
+    "unmanaged": 2,
+    "untagged": 4
+   },
+   "pull_requests": {
+    "opened": 14,
+    "skipped": 0,
+    "suppressed": 1,
+    "updated": 0
+   },
+   "body_sources": {
+    "model": 12,
+    "stub": 2
+   },
+   "refused_words": {},
+   "duration_s": 500.248,
+   "seconds": 500.3,
+   "cost_as_recorded": {
+    "completion_tokens": 17855,
+    "failed": 0,
+    "gateway_calls": 14,
+    "prompt_tokens": 8991,
+    "refused": 0
+   },
+   "gateway": {
+    "calls": 14,
+    "prompt_tokens": 8991,
+    "completion_tokens": 17855,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 14,
+     "median": 21231.0,
+     "p95": 114192.0,
+     "max": 114192.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": false
+  },
+  {
+   "id": "night-2",
+   "night": "2026-11-03",
+   "trigger": "schedule",
+   "workspaces": [
+    "network-live",
+    "claims-api-prod",
+    "sandbox-quill"
+   ],
+   "trace_id": "dd55f4859fbe41908698497a99908367",
+   "findings": 15,
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 2,
+    "idle": 1,
+    "missing": 1,
+    "old_snapshot": 1,
+    "unattached_volume": 1,
+    "unmanaged": 3,
+    "untagged": 4
+   },
+   "pull_requests": {
+    "opened": 1,
+    "skipped": 0,
+    "suppressed": 1,
+    "updated": 13
+   },
+   "body_sources": {
+    "model": 12,
+    "stub": 2
+   },
+   "refused_words": {},
+   "duration_s": 578.049,
+   "seconds": 578.1,
+   "cost_as_recorded": {
+    "completion_tokens": 20698,
+    "failed": 0,
+    "gateway_calls": 14,
+    "prompt_tokens": 8991,
+    "refused": 0
+   },
+   "gateway": {
+    "calls": 14,
+    "prompt_tokens": 8991,
+    "completion_tokens": 20698,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 14,
+     "median": 21314.0,
+     "p95": 114028.0,
+     "max": 114028.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": false
+  },
+  {
+   "id": "alarm-1",
+   "night": "2026-11-03",
+   "trigger": "budget",
+   "workspaces": [
+    "claims-api-prod"
+   ],
+   "trace_id": "4ad23cdf55d74de5b97b05f1f652f231",
+   "findings": 3,
+   "by_kind": {
+    "changed": 2,
+    "graviton_candidate": 1
+   },
+   "pull_requests": {
+    "opened": 0,
+    "skipped": 0,
+    "suppressed": 0,
+    "updated": 3
+   },
+   "body_sources": {
+    "model": 3
+   },
+   "refused_words": {},
+   "duration_s": 55.398,
+   "seconds": 55.4,
+   "cost_as_recorded": {
+    "completion_tokens": 1967,
+    "failed": 0,
+    "gateway_calls": 3,
+    "prompt_tokens": 2089,
+    "refused": 0
+   },
+   "gateway": {
+    "calls": 3,
+    "prompt_tokens": 2089,
+    "completion_tokens": 1967,
+    "refused": 0,
+    "failed": 0,
+    "latency_ms": {
+     "n": 3,
+     "median": 17962.0,
+     "p95": 20743.0,
+     "max": 20743.0
+    },
+    "served": [
+     "larkspur-chat"
+    ]
+   },
+   "pass": false
+  }
+ ],
+ "totals": {
+  "findings": 33,
+  "opened": 15,
+  "updated": 16,
+  "suppressed": 2,
+  "skipped": 0,
+  "bodies_from_model": 27,
+  "bodies_written": 31,
+  "refused_words": 0,
+  "refused_word_list": [],
+  "seconds": 1133.7,
+  "gateway_calls": 31,
+  "prompt_tokens": 20071,
+  "completion_tokens": 40520,
+  "gateway_calls_in_log": 31,
+  "latency_ms": {
+   "n": 31,
+   "median": 20720.0,
+   "p95": 114028.0,
+   "max": 114192.0
+  },
+  "prose": {
+   "model_bodies": 27,
+   "words": {
+    "n": 27,
+    "median": 69.0,
+    "p95": 93.0,
+    "max": 93.0
+   },
+   "u2011": 53,
+   "bodies_with_u2011": 15,
+   "other_typographic": 0
+  }
+ },
+ "savings": {
+  "month": "2026-11",
+  "proposed_share_of_spend": 0.0077,
+  "realized_share_of_spend": 0.0033,
+  "realized_share_of_proposed": 0.4277,
+  "realized_findings": 1,
+  "pull_requests_by_state": {
+   "open": 14,
+   "merged": 1,
+   "closed": 0
+  },
+  "findings_seen": 16,
+  "findings_suppressed": 1,
+  "with_estimate": 6,
+  "accounts_read": [
+   "lm-claims-prod",
+   "lm-network-prod",
+   "lm-sandbox"
+  ]
+ },
+ "nights_passed": [
+  0,
+  3
+ ]
+}

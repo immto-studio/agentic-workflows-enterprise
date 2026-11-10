@@ -1,0 +1,31 @@
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+service-account*.json
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.example.tfvars
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.bin/
+# Lab ch05 run output: the trace file and the scribe's artifact
+labs/ch05/traces.jsonl
+labs/ch05/summary.json
+labs/ch05/gateway.log
+labs/ch05/server.log
+labs/ch05/report.json
+.pytest_cache/
+workflows/w1-knowledge-assistant/gateway.log
+workflows/w2-ops-assistant/gateway.log
+labs/ch06/sandbox/image-uri.txt
+labs/ch08/sandbox/image-uri.txt
+
+# the live labs' scratch run folders (eval/lab.py): never committed; results go to eval/results/<date>/
+**/eval/_lab/

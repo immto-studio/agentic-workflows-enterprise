@@ -1,0 +1,1 @@
+{"server": "ollama 0.40.13", "model": "gemma4:12b", "runs": 5, "cold_load_s": 18.42, "median_prompt_tok_s": 1393.5, "median_output_tok_s": 197.9, "median_output_tokens": 512, "median_total_s": 2.64}

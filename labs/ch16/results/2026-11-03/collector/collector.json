@@ -1,0 +1,4332 @@
+{
+  "phases": {
+    "every-run": {
+      "by_policy": [
+        {
+          "collector_count": 3,
+          "matched": 3,
+          "policy": "failed",
+          "recorded": 3,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "refused",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "slow",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "over-budget",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "fallback",
+          "recorded": 0,
+          "shares": []
+        },
+        {
+          "collector_count": 25,
+          "matched": 25,
+          "policy": "share-of-the-rest",
+          "recorded": 19,
+          "shares": [
+            1.0
+          ]
+        }
+      ],
+      "collector_exit": 0,
+      "content": {
+        "before": {
+          "gen_ai.tool.call.arguments": 42
+        },
+        "cloudwatch": {},
+        "file": {},
+        "langfuse": {}
+      },
+      "delay": {
+        "collector_to_cloudwatch": {
+          "max": 31.06,
+          "median": 30.74,
+          "min": 30.2,
+          "n": 25
+        },
+        "collector_to_langfuse": {
+          "max": 31.06,
+          "median": 30.74,
+          "min": 30.2,
+          "n": 25
+        },
+        "last_span_to_langfuse": {
+          "max": 32.14,
+          "median": 31.26,
+          "min": 20.15,
+          "n": 25
+        }
+      },
+      "hashing": {
+        "collector_kept": 19,
+        "runs": 19,
+        "same": true,
+        "share_keeps": 19
+      },
+      "headers": {
+        "cloudwatch": {
+          "algorithms": [
+            "AWS4-HMAC-SHA256"
+          ],
+          "amz_date": true,
+          "errors": 0,
+          "key_ids": [
+            "LARKSPURLABDUMMYKEY0"
+          ],
+          "paths": [
+            "/v1/traces"
+          ],
+          "requests": 17,
+          "scopes": [
+            "us-east-2/xray/aws4_request"
+          ],
+          "signed_headers": [
+            "content-encoding;content-length;content-type;host;x-amz-date"
+          ],
+          "verified": 17
+        },
+        "langfuse": {
+          "all_basic": true,
+          "all_ingestion_version": true,
+          "basic": [
+            "pk-lab-dummy:sk-lab-dummy"
+          ],
+          "errors": 0,
+          "ingestion_version": [
+            "4"
+          ],
+          "paths": [
+            "/api/public/otel/v1/traces"
+          ],
+          "requests": 17
+        }
+      },
+      "langfuse_cost": {
+        "elsewhere": 0,
+        "equal": 45,
+        "spans": 45
+      },
+      "meta": {
+        "collector_exit": 0,
+        "collector_port": 50563,
+        "collector_started": 1793734594.215534,
+        "decision_wait_s": 30.0,
+        "feature_gates": [
+          "processor.tailsamplingprocessor.usetracestate",
+          "processor.tailsamplingprocessor.recordpolicy"
+        ],
+        "phase": "every-run",
+        "runs": 25,
+        "share_percent": 100.0
+      },
+      "other_traces": [],
+      "rows": [
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 1.532,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "aa25e8a155834076a5bc9aeb8b2e8b73"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.407,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "e7744f110a9f455daf2ac4b59f55f8b8"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.386,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "d5c50bc4669a42a3b0cfa9795578bc32"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.409,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "2581544c527849c288a3ff005171cb02"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.444,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "bb39d30c5f4d4da5a184f870b92fbb2e"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.379,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "fdab40b358ee4f81b2e700fe4752e29e"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.412,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "8387840d31dc48b899ac197ae1225f1a"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.387,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0ffe8e7cb82e4939bdde91a73375ca06"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.515,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "dd4ebe6cb22940a2a5510b002993de1f"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.546,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f57483a23004437791323553448f89ec"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.418,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0ef6be6cb286406c808e7ebf019c7d08"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.418,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "7d458df4aca840d38475c5f42ecc1c82"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.386,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f673afc74ba348f6910f74dbecbdf1b8"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.401,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "4682fe1dcde84488b0d18f1e06470555"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.404,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ada4148444c342a9a446bb7384211626"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.432,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0a72c0d345414e8b804b1139cfef47c7"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.4,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "b80c623bb4af4717b5aba20350c2e3aa"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.425,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "3d13d80636fd4b8bae2b5a1bb9de1c87"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.42,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "512c227695ca495ebeda5ef401a4108c"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 1,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.211,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "b4221eeb6df9415e9ef02ff0f9d9a920"
+        },
+        {
+          "case": "refused-alerts",
+          "cost_lines": 1,
+          "cost_usd": 0.00042,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "refused"
+            ],
+            "policy": "refused",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 1,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "refused",
+          "passed": true,
+          "recorded_policy": [
+            "refused"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.273,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "d97e8b54cd8340d1acb27fd399c72c6b"
+        },
+        {
+          "case": "over-budget-pasted-log",
+          "cost_lines": 1,
+          "cost_usd": 0.510417,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "over-budget"
+            ],
+            "policy": "over-budget",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 1,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "over-budget",
+          "passed": true,
+          "recorded_policy": [
+            "over-budget"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.229,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "15d690ac32684d819db73667ef928a82"
+        },
+        {
+          "case": "fallback-primary-down",
+          "cost_lines": 4,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed",
+              "fallback"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 4,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "fallback",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.633,
+          "server_lines": 1,
+          "spans_sent": 13,
+          "tool_calls": 1,
+          "trace_id": "fc4f02cb25e3425ea7038980f91d55b6"
+        },
+        {
+          "case": "slow-model",
+          "cost_lines": 2,
+          "cost_usd": 0.000768,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "slow"
+            ],
+            "policy": "slow",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "slow",
+          "passed": true,
+          "recorded_policy": [
+            "slow"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 12.39,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "86f4cf3fd9cc4985b0e5191b77dc712a"
+        },
+        {
+          "case": "failed-both-down",
+          "cost_lines": 1,
+          "cost_usd": null,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 1,
+          "harness_lines": 1,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "failed",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.704,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "654fb9e4c27a41c596da5f36f6fe6fce"
+        }
+      ],
+      "services": {
+        "gateway": {
+          "cloudwatch": 48,
+          "file": 48,
+          "langfuse": 48,
+          "sent": 48
+        },
+        "harness": {
+          "cloudwatch": 117,
+          "file": 117,
+          "langfuse": 117,
+          "sent": 117
+        },
+        "mcp-server": {
+          "cloudwatch": 92,
+          "file": 92,
+          "langfuse": 92,
+          "sent": 92
+        }
+      }
+    },
+    "sampled": {
+      "by_policy": [
+        {
+          "collector_count": 7,
+          "matched": 7,
+          "policy": "failed",
+          "recorded": 7,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "refused",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "slow",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "over-budget",
+          "recorded": 1,
+          "shares": [
+            1.0
+          ]
+        },
+        {
+          "collector_count": 1,
+          "matched": 1,
+          "policy": "fallback",
+          "recorded": 0,
+          "shares": []
+        },
+        {
+          "collector_count": 13,
+          "matched": 13,
+          "policy": "share-of-the-rest",
+          "recorded": 11,
+          "shares": [
+            0.1
+          ]
+        }
+      ],
+      "collector_exit": 0,
+      "content": {
+        "before": {
+          "gen_ai.tool.call.arguments": 194
+        },
+        "cloudwatch": {},
+        "file": {},
+        "langfuse": {}
+      },
+      "delay": {
+        "collector_to_cloudwatch": {
+          "max": 30.92,
+          "median": 30.68,
+          "min": 30.21,
+          "n": 21
+        },
+        "collector_to_langfuse": {
+          "max": 30.92,
+          "median": 30.67,
+          "min": 30.21,
+          "n": 21
+        },
+        "last_span_to_langfuse": {
+          "max": 32.42,
+          "median": 31.17,
+          "min": 18.32,
+          "n": 21
+        }
+      },
+      "hashing": {
+        "collector_kept": 11,
+        "runs": 95,
+        "same": true,
+        "share_keeps": 11
+      },
+      "headers": {
+        "cloudwatch": {
+          "algorithms": [
+            "AWS4-HMAC-SHA256"
+          ],
+          "amz_date": true,
+          "errors": 0,
+          "key_ids": [
+            "LARKSPURLABDUMMYKEY0"
+          ],
+          "paths": [
+            "/v1/traces"
+          ],
+          "requests": 19,
+          "scopes": [
+            "us-east-2/xray/aws4_request"
+          ],
+          "signed_headers": [
+            "content-encoding;content-length;content-type;host;x-amz-date"
+          ],
+          "verified": 19
+        },
+        "langfuse": {
+          "all_basic": true,
+          "all_ingestion_version": true,
+          "basic": [
+            "pk-lab-dummy:sk-lab-dummy"
+          ],
+          "errors": 0,
+          "ingestion_version": [
+            "4"
+          ],
+          "paths": [
+            "/api/public/otel/v1/traces"
+          ],
+          "requests": 19
+        }
+      },
+      "langfuse_cost": {
+        "elsewhere": 0,
+        "equal": 38,
+        "spans": 38
+      },
+      "meta": {
+        "collector_exit": 0,
+        "collector_port": 50563,
+        "collector_started": 1793734681.0452645,
+        "decision_wait_s": 30.0,
+        "feature_gates": [
+          "processor.tailsamplingprocessor.usetracestate",
+          "processor.tailsamplingprocessor.recordpolicy"
+        ],
+        "phase": "sampled",
+        "runs": 105,
+        "share_percent": 10.0
+      },
+      "other_traces": [],
+      "rows": [
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.41,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "8606b30431b54790a66a9a5670b38bb2"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.438,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f363ba092e7c409d996af57f80ad6682"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.404,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "7ea05514b7e04413ba1136cb9f85a805"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.381,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "01b00d427b8247bdbc6f227a9470b3e1"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.442,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "78b569a78bb34852ae861b23e979073f"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.398,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ef694b96e443444b9c3046fac47a8e02"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.46,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "35f27c8f14c147149febd3e648a79c70"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.419,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ad7fff35aa3c4ea79d6d646937e39eb5"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.388,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "93fc5d67c1324049a8f3896f4ee996be"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.388,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "21148bb3c06b43519907a960e7342caf"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.406,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ff2260cea0e04385b9de0b4bb196f78a"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.385,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "2fefecc776b34ea292bb4a186e11dd5c"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.401,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "2121ca8b3b0a4b999e468e850afe84a2"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.426,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "c159d1dba9d442db86e05d08d7d9765c"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.417,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "b6ac774817774c93b48d7612a393a71a"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.456,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "1ee4a203a7c841068c364b5e8d7d189e"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.425,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "70d500bb6fa0404b8c851e7635af142b"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.435,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "7a51deb0cf234f94995cc5031142373d"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.403,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "687c664a808f4aa396c3b2f0270c7f87"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.193,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "cafbf2a639e24385a1432addb844236b"
+        },
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.555,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "499f84839dbb49dba01d07dcab60d3b6"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.441,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "528405a438da446c970aa65f60550aa7"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.393,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "627c82ed4a1f493dac84ceb1e0fdab8e"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.364,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "20c9308303784e74923414fb159f5b16"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.392,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "806ad2d6c0344da8bd51f487c10187ed"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.37,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ccea3c05294f43d68d5b41f422588da2"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.457,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "59578e7013424099ba5699523ecd8f0b"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.499,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "47e63c6344c34df3b6b3a9f1051083d9"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.414,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f58d72856fc04a79b2179c8668d88fe8"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.419,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "83e18cbb71b34e80979da9325687a7c9"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.405,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f0b3b5d8a97d458ba258bf1fde898bde"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.473,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "c80fa929308e4db3be7e06a8aa5dfeec"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.479,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "9c83ef2d0d8244b3858e99de83be4393"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.475,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "58d36c49667f4df6818789ece444b62b"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.521,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "4bc497a2ebb643e8941a89a4c853004b"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.373,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "fe32d4dfd3814ad6b90e7b3e70bfdcd1"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.372,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "e84988ff561f4914958d15a0836f48c4"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.451,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0b8e6fcf3a404bf0af5b2024e205526a"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.431,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "fa9d46b70c8e426799a19d0658fa13bc"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.243,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "6b4ba25ea20344a48ffaab5428c879b8"
+        },
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.406,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "fac3287921b941b6be1201918e33d601"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.401,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "a5e736ac2c5146978fc338f331c4a265"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.391,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "94509649f45e4c93a76eb958ce112ed4"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.411,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "b4ef45b0be1046d48b93b3f57a0fcb74"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.431,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "8cfcdd94fb604e0ba92e766562097d55"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.381,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ebdb5bc5daca4360bde7e59a3989af32"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.44,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "3d3db8e3e7e140dea2c709bc54e8c8f2"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.419,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "378c565aa4a74ff0b53bb6eb32a43c7c"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.406,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "dba30f2fa9ed4e9bbfe988cb8e159b7d"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.431,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "5b64f4c46dd1443dbfbb13dbb8da495a"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.421,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f73b5d0dbc724908a752f5e297b46b22"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.403,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "eb7802c07e6c400b8113b2efc46e61fc"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.379,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "7408c960ed144577840d1adf4f4d0479"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.391,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "12ebf20284364f5ca30cfa7e221775de"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.413,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "8d9b4425ad9f4eabb87c6fd84a6a5243"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.444,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "097649094204416b8f8310d647f0f418"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.415,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ffca06fbb34e4fe784561157e2476acb"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.466,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "9f354eb4630b4f1b996d0930a7005cd4"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.525,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0f270e8e967648338d8bb3dac47e3333"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.201,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "8360680dd400451692f7fbb2056cc490"
+        },
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.436,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "df5d595a63be4b8785dd4fd373ebf7cb"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.439,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "0dabe78d9cd44c5580c42177bc0486f1"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.437,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "35f2331231fd4003b35fdb0e0466debb"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.448,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "233bdc5a312943b7b15c6f6e288455ff"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.464,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "44afb9587a9647d9a9248b89ce486421"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.442,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "b0e8bb31278f4272a6333edc22b14834"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.43,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "03f3e2f8538544cd86d6999323d6c7e7"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.431,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "618263791e6244aea63856be2310f9d9"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.431,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f9746a41c7d04acd9d3d89e8e4dbc369"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.454,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "20b13f6210b848bfa4b192b4bde8b61c"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.456,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "1fed509a321b46c5a00b01ee80fa5b8e"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.458,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "afda51c3ab0241fb9af69b648d385236"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.42,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "6f40ec9f889e446c9566a94565a62d1e"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.418,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "6137feac88144aa39cec3f45198a1180"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.532,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "86414368013d47f9a24b7d4b07a4681f"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": true,
+            "matched": [],
+            "policy": "share-of-the-rest",
+            "share": 0.1,
+            "share_keeps": true
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "share-of-the-rest"
+          ],
+          "recorded_share": [
+            0.1
+          ],
+          "same_spans": true,
+          "seconds": 0.471,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "10829891689f44fd86568fa6cc26eb54"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.411,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ba8f6c3cd11b47e2a4687529ecbedc24"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.426,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "9c0e059d95f04e839c5e2f6966683cc2"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.437,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "1a356ae257024eed8b1114f5374b8600"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.228,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "974e3b5ce925436c82057503af1e3059"
+        },
+        {
+          "case": "pods-claims-api",
+          "cost_lines": 2,
+          "cost_usd": 0.000876,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.419,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "215b2922d8ca45caa1bb2c5970e0c1dc"
+        },
+        {
+          "case": "pods-policy-admin",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.46,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "ae1487f8b7df410fad9e9ad0908ac3be"
+        },
+        {
+          "case": "pods-billing-worker",
+          "cost_lines": 2,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.457,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "75134cb5649d4bc097d558650904cc30"
+        },
+        {
+          "case": "pods-quote-engine",
+          "cost_lines": 2,
+          "cost_usd": 0.00081,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.533,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f52ca6dff1384d2ab54edeed02ca62f0"
+        },
+        {
+          "case": "pods-document-ocr",
+          "cost_lines": 2,
+          "cost_usd": 0.000864,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.423,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f5e0d6dbd90e4db4a084ee20ebf02405"
+        },
+        {
+          "case": "pods-fraud-scoring",
+          "cost_lines": 2,
+          "cost_usd": 0.00078,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.441,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "6292e12b140d47d98b5c2959e13cf827"
+        },
+        {
+          "case": "pods-customer-portal",
+          "cost_lines": 2,
+          "cost_usd": 0.000786,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.45,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "d03ed0518fd5421bb90a1a0764c3aa20"
+        },
+        {
+          "case": "pods-notification-gateway",
+          "cost_lines": 2,
+          "cost_usd": 0.000792,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.527,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "797c9f48dd9e48bc807c46494965303c"
+        },
+        {
+          "case": "pods-unknown-service",
+          "cost_lines": 2,
+          "cost_usd": 0.000735,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.409,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "a621d2191cc6457a82c2ae649bae8309"
+        },
+        {
+          "case": "alerts-claims-api-default-window",
+          "cost_lines": 2,
+          "cost_usd": 0.001125,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.426,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "413624374d6a42c696ae53cea43edd2c"
+        },
+        {
+          "case": "alerts-claims-api-120",
+          "cost_lines": 2,
+          "cost_usd": 0.001209,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.407,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "31e3329b57b54f10b913fb6f5c3c58c5"
+        },
+        {
+          "case": "alerts-claims-api-5",
+          "cost_lines": 2,
+          "cost_usd": 0.00108,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.405,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "d8d43f0bee434fc4b4901b2e6af35b40"
+        },
+        {
+          "case": "alerts-document-ocr-30",
+          "cost_lines": 2,
+          "cost_usd": 0.001074,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.438,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "47690536b8d241caa487a84d369de11b"
+        },
+        {
+          "case": "alerts-fraud-scoring-hour",
+          "cost_lines": 2,
+          "cost_usd": 0.00102,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.474,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "faf6f233912e416fad84b23abd5c1ced"
+        },
+        {
+          "case": "alerts-billing-worker-2h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.405,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "537a17e082db4afaa6e3b60ba2d29aa8"
+        },
+        {
+          "case": "alerts-billing-worker-today",
+          "cost_lines": 2,
+          "cost_usd": 0.001086,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.433,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "d65b490c2e8d4d88a689563a552fcdbc"
+        },
+        {
+          "case": "alerts-policy-admin-24h",
+          "cost_lines": 2,
+          "cost_usd": 0.000819,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.439,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "f5fa8cb84d66456bbd6dc2238928928c"
+        },
+        {
+          "case": "alerts-notification-gateway-today",
+          "cost_lines": 2,
+          "cost_usd": 0.000795,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.453,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "46b3692b93104e3295a6b2a17c7e5a38"
+        },
+        {
+          "case": "alerts-document-ocr-10",
+          "cost_lines": 2,
+          "cost_usd": 0.000825,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.45,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "727d0c6ad9ae4950bab1927ac0f47556"
+        },
+        {
+          "case": "refuse-scale",
+          "cost_lines": 1,
+          "cost_usd": 0.000426,
+          "expected": {
+            "kept": false,
+            "matched": [],
+            "policy": null,
+            "share": null,
+            "share_keeps": false
+          },
+          "gateway_spans": 0,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": false,
+            "file": false,
+            "langfuse": false
+          },
+          "kind": "golden",
+          "passed": true,
+          "recorded_policy": [],
+          "recorded_share": [],
+          "same_spans": false,
+          "seconds": 0.195,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "4eed191151284fb1b4a9c6281734c6cf"
+        },
+        {
+          "case": "refused-alerts",
+          "cost_lines": 1,
+          "cost_usd": 0.00042,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "refused"
+            ],
+            "policy": "refused",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 1,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "refused",
+          "passed": true,
+          "recorded_policy": [
+            "refused"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.195,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "5e1371bd34a945d69152e4bcc6dec583"
+        },
+        {
+          "case": "over-budget-pasted-log",
+          "cost_lines": 1,
+          "cost_usd": 0.510417,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "over-budget"
+            ],
+            "policy": "over-budget",
+            "share": 1.0,
+            "share_keeps": true
+          },
+          "gateway_spans": 1,
+          "harness_lines": 2,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "over-budget",
+          "passed": true,
+          "recorded_policy": [
+            "over-budget"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.266,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "ec9e1754e2944c8c9ae3f3a518a6e7a4"
+        },
+        {
+          "case": "fallback-primary-down",
+          "cost_lines": 4,
+          "cost_usd": 0.000804,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed",
+              "fallback"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 4,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "fallback",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.609,
+          "server_lines": 1,
+          "spans_sent": 13,
+          "tool_calls": 1,
+          "trace_id": "add78e30510a4ccbab2eae0ee7913dde"
+        },
+        {
+          "case": "slow-model",
+          "cost_lines": 2,
+          "cost_usd": 0.000768,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "slow"
+            ],
+            "policy": "slow",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 2,
+          "harness_lines": 3,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "slow",
+          "passed": true,
+          "recorded_policy": [
+            "slow"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 12.45,
+          "server_lines": 1,
+          "spans_sent": 11,
+          "tool_calls": 1,
+          "trace_id": "d7e2c688673f49c6be82af704da84134"
+        },
+        {
+          "case": "failed-both-down",
+          "cost_lines": 1,
+          "cost_usd": null,
+          "expected": {
+            "kept": true,
+            "matched": [
+              "failed"
+            ],
+            "policy": "failed",
+            "share": 1.0,
+            "share_keeps": false
+          },
+          "gateway_spans": 1,
+          "harness_lines": 1,
+          "kept": {
+            "cloudwatch": true,
+            "file": true,
+            "langfuse": true
+          },
+          "kind": "failed",
+          "passed": true,
+          "recorded_policy": [
+            "failed"
+          ],
+          "recorded_share": [
+            1.0
+          ],
+          "same_spans": true,
+          "seconds": 0.652,
+          "server_lines": 0,
+          "spans_sent": 6,
+          "tool_calls": 0,
+          "trace_id": "1044922b9d0949088fbf79f5b3156e77"
+        }
+      ],
+      "services": {
+        "gateway": {
+          "cloudwatch": 41,
+          "file": 41,
+          "langfuse": 41,
+          "sent": 204
+        },
+        "harness": {
+          "cloudwatch": 99,
+          "file": 99,
+          "langfuse": 99,
+          "sent": 509
+        },
+        "mcp-server": {
+          "cloudwatch": 78,
+          "file": 78,
+          "langfuse": 78,
+          "sent": 404
+        }
+      }
+    }
+  }
+}

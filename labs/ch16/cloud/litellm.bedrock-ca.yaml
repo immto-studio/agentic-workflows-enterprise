@@ -1,0 +1,51 @@
+# Step 7's gateway for the Canada call: chapter 6's design for the AWS pair (labs/ch06/gateway/litellm.aws.yaml),
+# larkspur-chat on Nova Lite through its Canadian geographic profile, called in ca-central-1, and the fallback
+# the same model In-Region in us-east-2. The guardrail is left out: it needs chapter 6's Terraform, which this
+# session doesn't apply. The prices are the dated table's (ledger/prices.yaml). Credentials come from the
+# environment alone: boto3 reads AWS_PROFILE and the shared credentials file when the proxy starts.
+#
+# The callbacks: this step's request_metadata_hooks puts the trace id and the workflow into Bedrock's
+# requestMetadata (O-D2), then chapter 5's rules, limits, cost line and span run unchanged.
+#
+# Run (from labs/ch16/cloud, so that the callback modules are importable):
+#   GATEWAY_CONFIG=litellm.bedrock-ca.yaml LITELLM_MASTER_KEY=<a local value> \
+#     litellm --config litellm.bedrock-ca.yaml --host 127.0.0.1 --port 4016
+# cloud/bedrock_calls.py starts it and stops it again.
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: bedrock/converse/ca.amazon.nova-lite-v1:0
+      aws_region_name: ca-central-1
+      allowed_openai_params: [tools]      # LiteLLM 1.106.6 doesn't know the ca. profile (chapter 6's note)
+      input_cost_per_token: 0.000000064   # ca-central-1, the dated table (nova-lite-ca)
+      output_cost_per_token: 0.000000256
+      timeout: 120
+    model_info:
+      id: nova-lite-ca
+      region: ca-central-1                    # where the call is made
+      serves_from: [ca-central-1, ca-west-1]  # where it can be served
+      jurisdiction: CA
+      hosting: managed
+
+  - model_name: larkspur-chat-fallback  # in Ohio, for Internal data only
+    litellm_params:
+      model: bedrock/converse/amazon.nova-lite-v1:0
+      aws_region_name: us-east-2
+      input_cost_per_token: 0.00000006    # us-east-2, the dated table (nova-lite-us)
+      output_cost_per_token: 0.00000024
+      timeout: 120
+    model_info:
+      id: nova-lite-us
+      region: us-east-2
+      jurisdiction: US
+      hosting: managed
+
+litellm_settings:
+  fallbacks: [{"larkspur-chat": ["larkspur-chat-fallback"]}]
+  num_retries: 0
+  callbacks: [request_metadata_hooks.hooks, ch05_bedrock_callback.hooks]
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

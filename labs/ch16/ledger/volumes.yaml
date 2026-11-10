@@ -1,0 +1,159 @@
+# The month: how many runs each workflow makes, with the source of every number, and the platform's
+# quantities for the allocation (companion #14, O-D5, O-D6, O-D15).
+#
+# A number the book states cites its line in book1/manuscript (chNN:line, as of 3 November 2026). A
+# number it doesn't state says "lab assumption, not in the book", with its basis. Chapters 1 to 14 were
+# searched for each workflow's volume first (`searched`). Per-run figures come from the kept runs; these
+# are Larkspur's monthly estimates, and the summary marks which is which (O-D15).
+month_hours: 730          # the cost sheets' month, as in prices.yaml
+reference_model: gpt-oss-20b   # the token counts the month and the allocation use: every workflow kept
+                               # runs on it, and chapter 9's restricted alias serves it
+
+workflows:
+  w1:
+    runs: 6000
+    unit: question
+    source: lab assumption, not in the book
+    basis: about two questions a month for each of the roughly three thousand people in technology (ch01:298)
+    searched: chapters 1 to 14 give the knowledge assistant no volume
+  w2:
+    tokens: 100000000
+    unit: question
+    source: ch09:405
+    words: "at Larkspur's estimate of 100 million tokens a month"
+    cross_check:
+      source: ch12:18
+      words: "the hundred questions an hour"
+  w3:
+    runs: 300
+    unit: incident
+    source: lab assumption, not in the book
+    basis: about ten incidents a day reach the incident workflow
+    searched: chapters 1 to 14 give the incident workflow no volume
+  w4:
+    runs: 200
+    unit: change
+    source: ch13:9
+    words: "Marcus Bell's board approves about two hundred changes a month"
+    also: ch02:151
+  w5:
+    unit: night or alarm
+    parts:
+      nights:
+        runs: 30
+        source: ch14:29
+        words: "A nightly schedule or a budget alert starts the harness"
+        also: ch14:13, and the manifest's budget comment ("one night a day")
+      alarms:
+        runs: 4
+        source: lab assumption, not in the book
+        basis: about one budget or anomaly alarm a week; chapter 14 names the trigger (ch14:29) and not its rate
+
+# W3 and W4 kept no token counts: their gateway logs stayed in the labs' scratch folders. The month and
+# the allocation price their calls with another workflow's mean tokens per call, on the same model.
+tokens_proxy:
+  w3:
+    from: w2
+    source: lab assumption, not in the book
+    basis: W3 triages with W2's six reads (ch12:18), so each of its calls takes W2's mean tokens per call; W3's prompts carry more reads, so this is likely low
+  w4:
+    from: w5
+    source: lab assumption, not in the book
+    basis: W4's one call writes a sentence of prose from a structured record, as each of W5's calls writes a pull request body from a finding
+
+platform:
+  gpu:
+    replicas: 2
+    replicas_source: ch09:23 ("two vLLM replicas") and ch09:107 ("The floor of two")
+    hours: 730
+    hours_source: ch09:407 ("costs its GPUs for every hour of the month, used or not")
+    price: aws-g6e.xlarge-l40s
+    price_source: ch09:415 ("priced at the cost sheet's smallest g6e size as a lower bound")
+    throughput:
+      file: labs/ch09/results/2026-10-29/throughput-gpt-oss-20b.json
+      source: lab assumption, not in the book
+      basis: >-
+        chapter 9's single-stream measurement of gpt-oss-20b on the workstation's RTX 5080 stands in for
+        one L40S replica; vLLM batches requests, so the busy time it gives is an upper bound
+  fixed:
+    - item: the gateway's database
+      price: rds-postgres-db.t4g.medium-cac1
+      quantity: 1
+      per: hour
+      source: lab assumption, not in the book
+      basis: >-
+        the largest instance the table prices; LiteLLM's sizing page starts at db.m7g.large (fact sheet
+        8.1), which no source prices, so the line is low. Single-AZ, the only kind section 8.8 prices
+    - item: the database's storage
+      price: rds-gp3-storage-cac1
+      quantity: 20
+      per: gb_month
+      source: lab assumption, not in the book
+      basis: 20 GB of gp3
+    - item: Redis
+      price: elasticache-t4g.micro-redis-cac1
+      quantity: 1
+      per: hour
+      source: lab assumption, not in the book
+      basis: one cache.t4g.micro node; chapter 5 names Redis beside the database (ch05:502)
+    - item: the gateway's compute
+      price: ec2-m7i-flex.large-use2
+      quantity: 2
+      per: hour
+      source: lab assumption, not in the book
+      basis: >-
+        one m7i-flex.large for each gateway of the pair; a stand-in, since the table prices EC2 only in
+        us-east-2 and the gateways run in ca-central-1
+      stand_in: true
+    - item: Langfuse's stores
+      price: ec2-t3.xlarge-use2
+      quantity: 1
+      per: hour
+      source: lab assumption, not in the book
+      basis: >-
+        Langfuse's four stores from its Compose file on one VM of the size its guide asks for (fact sheet
+        8.5), as step 7 runs it; a stand-in in us-east-2
+      stand_in: true
+    - item: Langfuse's disk
+      price: ebs-gp3-use2
+      quantity: 100
+      per: gb_month
+      source: lab assumption, not in the book
+      basis: 100 GB of gp3 for the VM
+      stand_in: true
+    - item: chapter 6's interface endpoints
+      price: vpc-interface-endpoint-cac1
+      quantity: 16
+      per: hour
+      source: labs/ch06/cost/cost-sheet.yaml
+      basis: eight endpoints in two Availability Zones (the sheet's idle_month, from terraform/network.tf)
+    - item: chapter 6's two KMS keys
+      price: kms-key-cac1
+      quantity: 2
+      per: month
+      source: labs/ch06/cost/cost-sheet.yaml
+      basis: the workflow's key and the tool gateway's signing key (the sheet's idle_month)
+    - item: chapter 7's Private Service Connect endpoint
+      price: psc-endpoint-google
+      quantity: 1
+      per: hour
+      source: ch07:88
+      basis: the gateway pair reaches Gemini through one
+    - item: chapter 8's private endpoints
+      price: private-endpoints-azure
+      quantity: 3
+      per: hour
+      source: ch08:59
+      basis: the agents' account, the models account and the registry are reached through private endpoints
+    - item: LiteLLM's enterprise license
+      price: litellm-enterprise
+      quantity: 1
+      per: month
+      source: ch05:502
+      basis: chapter 5 lists it among the skeleton's costs
+    - item: Langfuse's enterprise features
+      price: langfuse-enterprise
+      quantity: 1
+      per: month
+      source: ch05:502
+      basis: chapter 5 lists them among the skeleton's costs

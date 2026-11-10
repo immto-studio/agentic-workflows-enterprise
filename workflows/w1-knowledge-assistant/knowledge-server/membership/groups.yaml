@@ -1,0 +1,27 @@
+# The reviewed map from the group names W1's pages use to Entra group object IDs (W1-D17).
+#
+# Owner: security engineering (lm-security-engineering). A change to this file goes through their
+# review like any change to access, because the file decides which Entra group a page's
+# access_groups entry means.
+#
+# - A page may name only a group listed here; the ingestion gate refuses any other.
+# - The membership sync tracks these object IDs and nothing else. A second Entra group with the
+#   same display name never counts: Entra doesn't keep display names unique, and members can
+#   create security groups by default. A tracked ID that disappears stops the sync.
+# - broad: true marks the groups nearly everyone holds. A Confidential or Restricted page may not
+#   name one (W1-D18), and a membership table older than 36 hours grants only these (W1-D27).
+#
+# The object IDs are synthetic, like everything about Larkspur Mutual.
+reviewed: 2026-10-29
+groups:
+  lm-all-staff: {id: "0681cfc3-4bd5-55aa-a29c-62f5f9c1304a", broad: true}
+  lm-eng-all: {id: "e6d6fb9f-665f-5754-a0df-824132ecd5e9", broad: true}
+  lm-vault-break-glass: {id: "9b948a12-69b2-5bb2-83ef-a70538c96c7c"}
+  lm-pci-cde-operators: {id: "18a8b506-715d-5f5b-9ba6-1de5436bd17c"}
+  lm-insider-risk: {id: "bb1b0582-5348-5259-ba5b-be1e6430632e"}
+  lm-ea-leads: {id: "de44f471-84bc-54df-99e1-4c7a6b3b4608"}
+  lm-security-engineering: {id: "2b872f3d-e8b4-58b6-9b67-9e103582019a"}
+  lm-cloud-governance: {id: "d8548679-f1c4-51af-ab37-6b83822fcb1f"}
+  lm-sec-incident-response: {id: "1e872a82-1133-5821-8dd8-edeca153828c"}
+  lm-iam-admins: {id: "5a1d40ea-e059-5c7d-90e1-0eb0e50dabbc"}
+  lm-legal-regulatory: {id: "53bf0ae2-19a0-5bf5-b2bc-f3af9708e19d"}

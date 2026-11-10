@@ -1,0 +1,827 @@
+{
+ "workflow": "w4",
+ "name": "W4, change management",
+ "judge": "gpt-oss-20b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gpt-oss:20b",
+  "name": "gpt-oss:20b",
+  "think": "model default",
+  "ollama": "0.22.1",
+  "digest": "a0b38d0b19f7c5dd3589e5e6598edfed41c81969d73f9e4774011c1328e9dad8",
+  "loaded": [
+   {
+    "name": "gpt-oss:20b",
+    "context_length": 16384,
+    "size_vram": 14460958080
+   }
+  ]
+ },
+ "gateway": {
+  "alias": "larkspur-chat",
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gpt-oss:20b",
+   "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.config.yaml",
+   "sha256": "9aa45c27368567bc5501aa904555bd0c1d17519214b2be5bc934960a5c87deb7"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w4.yaml",
+  "sha256": "7d1c3c8047c5a36985ca5ffc743f0a21a35eadacc7b2948e2ef16172ad5c344f"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w4.jsonl",
+  "version": "506eb14dcd423560752d7cf7eb4fac1447d86c7cdc91976a5ca1da91f8c56ddb"
+ },
+ "manifest": {
+  "path": "workflows/w4-change/manifest/w4-change.yaml",
+  "sha256": "8fdf61468d39f8823a0b69637fa318aec6df598049b30487244216ac3fe64e5b"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "e0a645c2415c68abcd6a8c51d857c3da5d84aa4aa24c27d36e96cd984af333eb"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "a2871f78aa2a5614f32c51cfd2d5472702e6fb16a152e8bf78ae7eda40fa8bcb"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 16,
+  "prompt": 8903,
+  "completion": 4769,
+  "by_slice": {
+   "cross": {
+    "calls": 8,
+    "prompt": 4297,
+    "completion": 2000
+   },
+   "self": {
+    "calls": 4,
+    "prompt": 2091,
+    "completion": 892
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 2515,
+    "completion": 1877
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 8,
+  "judged": 8,
+  "not_judged": {}
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "3ae7d46c63694892adfdfc27e99f4ce8",
+   "messages_sha256": "b0f49b17e0d67fc530019ea0ea8c2c17f91c4304071aef2fc58e60b8aa3476c1",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.24,
+   "tokens": {
+    "prompt": 552,
+    "completion": 344
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "0eccd40c92504b4094e93dc3208120b8",
+   "messages_sha256": "690c4af84995770ebc9b1379f11f9e5e8b31a9cf74a3850a5b8bab5388c8e26a",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.91,
+   "tokens": {
+    "prompt": 532,
+    "completion": 293
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "331228b4ccc44cf88042d22ece9bb3cf",
+   "messages_sha256": "aa4174fe22a07cf5d8ceb835cae3c6cc9c49ba9f557fa12a10078f23440f87bd",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.95,
+   "tokens": {
+    "prompt": 564,
+    "completion": 298
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c4858a35595c4c08b6592186cb10793b",
+   "messages_sha256": "1486d467c1a1fb1b1996a73084d8352ed5f67fd26207ba71acd7b4b17265d0ed",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.39,
+   "tokens": {
+    "prompt": 511,
+    "completion": 197
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "cc886f6d13aa476785dc0b6cce290b59",
+   "messages_sha256": "ddc7f791081a54e56d09883d2dc270412daabfffa7813e54fab7c65de968403c",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.35,
+   "tokens": {
+    "prompt": 515,
+    "completion": 198
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "b0363b7dbc3a451c8b74c2bcd429ec44",
+   "messages_sha256": "7a6132292defcee6a030e1555da538e2f61f2fa4f91d5a5f02db048396f277a2",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.67,
+   "tokens": {
+    "prompt": 569,
+    "completion": 253
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "01351708a08a4ceb8c2db6d4ebc4fbaa",
+   "messages_sha256": "2e43039f93af3b70e1f42605b5ee2a977da3202a401d6d345ddf519e7107dbd2",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.2,
+   "tokens": {
+    "prompt": 512,
+    "completion": 174
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "48ab70fc035e405c8f1b9e8b8b1bf14a",
+   "messages_sha256": "7db708a538eabb07f25d6e84d14fbee4798ed43047334ddcd447ecbcdb7d9170",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.62,
+   "tokens": {
+    "prompt": 542,
+    "completion": 243
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c161c06a4b444eabb19a8bb153946e5e",
+   "messages_sha256": "69f0b46e40e14bfd6306ac0bebbda2d1876541ddd0e46d096bdff51ff0db1251",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.49,
+   "tokens": {
+    "prompt": 529,
+    "completion": 223
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "36c02ce263994e3dba10ef9a1757a9c5",
+   "messages_sha256": "b757ac39d40a8ed475787ad34dfc569df20f5f1c655be43e42bd84c3d6ffd15c",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.34,
+   "tokens": {
+    "prompt": 511,
+    "completion": 197
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "bc05176c7d60461bb7d65cca6d6993e3",
+   "messages_sha256": "d1f6e430f0ac61d8facf125add0e948632cfaa67d50e68584af2984325b19fb1",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.23,
+   "tokens": {
+    "prompt": 509,
+    "completion": 179
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "3b383008dea74ca5926c896da77771be",
+   "messages_sha256": "d631531d9774a3519dfa729912462fd75f064dd822ef4a140c1932331175da6a",
+   "verdict": "right",
+   "reason": "The output satisfies all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.95,
+   "tokens": {
+    "prompt": 542,
+    "completion": 293
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "775ca3acecfb4f559c3999f7b6a4f054",
+   "messages_sha256": "79e43f6f0da2312f9226ffd0787e49378c466b0bc30174f7a021865acc391e60",
+   "verdict": "wrong",
+   "reason": "The output contains multiple sentences instead of the single sentence required by the rubric.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 4.15,
+   "tokens": {
+    "prompt": 633,
+    "completion": 663
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "c5917a3ff8fd498284841b0715ecedf6",
+   "messages_sha256": "272756ac1c47a246603e7f1c9eac20ece5f057a4a4f562ebca7ea697995997f8",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.4,
+   "tokens": {
+    "prompt": 601,
+    "completion": 202
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "85acbe08ccaa41fa9c29bcda703e1595",
+   "messages_sha256": "05d30576d9d9937591bff2e637d21aa191c59edd1a9d8fc088c53458f152933c",
+   "verdict": "wrong",
+   "reason": "The output contains multiple sentences instead of the required single sentence.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 4.2,
+   "tokens": {
+    "prompt": 635,
+    "completion": 672
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "e9f085ebf2fb444c8fa1cd5c1a1fb974",
+   "messages_sha256": "e7812d3698aa81b1640c965b8ca7929953af01400bb59933b6a62dc3e504905c",
+   "verdict": "wrong",
+   "reason": "The output contains multiple sentences, violating the rubric requirement that the rationale be a single sentence.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.2,
+   "tokens": {
+    "prompt": 646,
+    "completion": 340
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  }
+ ]
+}

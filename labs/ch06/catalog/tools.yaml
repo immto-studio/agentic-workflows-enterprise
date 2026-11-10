@@ -1,0 +1,58 @@
+# The tool catalog: every tool Larkspur's tool gateway serves on AWS, the server that runs it, and
+# the AWS access that tool's role gets. The platform team owns it. A change here is a change to
+# every workflow whose manifest lists the tool, so pipeline/scope_check.py compares the catalog as
+# well as the manifest, and a grant that grows needs a change record.
+#
+# terraform/modules/manifest_roles turns the tools a manifest lists into one role per tool. The
+# ${...} placeholders in `resources` and `principal` are filled from the module's template_vars.
+
+servers:
+  k8s-mcp:
+    # The base role the Kubernetes MCP server runs under (EKS Pod Identity). It may assume a tool's
+    # role for one request, naming the person and the workflow; it holds no access of its own.
+    principal: "${k8s_mcp_role_arn}"
+    gateway_target: k8s
+  knowledge-mcp:
+    principal: "${knowledge_mcp_role_arn}"
+    gateway_target: knowledge
+
+tools:
+  get_pod_status:
+    server: k8s-mcp
+    writes: false
+    aws:
+      - actions: [eks:DescribeCluster]
+        resources: ["${cluster_arn}"]
+    eks_access:
+      policy: AmazonEKSViewPolicy        # read-only, in the namespaces below only
+      namespaces: [claims, billing]
+  get_recent_alerts:
+    server: k8s-mcp
+    writes: false
+    aws:
+      - actions: [cloudwatch:DescribeAlarms, cloudwatch:DescribeAlarmHistory]
+        resources: ["arn:aws:cloudwatch:${region}:${account_id}:alarm:*"]
+  restart_deployment:
+    server: k8s-mcp
+    writes: true
+    aws:
+      - actions: [eks:DescribeCluster]
+        resources: ["${cluster_arn}"]
+    eks_access:
+      # Bound in the cluster to patch on deployments in claims and billing. patch can change any field,
+      # so an admission policy lets this group change the restart annotation and nothing else.
+      groups: [larkspur:deployment-restarters]
+  search_runbooks:
+    server: knowledge-mcp
+    writes: false
+    aws:
+      - actions: [bedrock:Retrieve]
+        resources: ["${knowledge_base_arn}"]
+
+# Never-list entries that have an AWS action, denied on every tool role whose manifest names them.
+# The others (deleting a namespace, for one) are Kubernetes permissions, and RBAC refuses them.
+never:
+  modify_iam: ["iam:*"]
+  read_vault_secret: ["secretsmanager:GetSecretValue", "ssm:GetParameter*"]
+  run_command: ["ssm:SendCommand", "ssm:StartSession", "ecs:ExecuteCommand"]
+  delete_namespace: ["eks:DeleteCluster", "eks:UpdateClusterConfig"]

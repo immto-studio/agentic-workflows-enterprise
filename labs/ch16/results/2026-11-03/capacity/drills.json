@@ -1,0 +1,1998 @@
+{
+ "date": "2026-11-04",
+ "versions": {
+  "litellm": "1.106.6",
+  "prisma": "0.15.0",
+  "psycopg": "3.3.6",
+  "httpx": "0.28.1",
+  "uvicorn": "0.54.0",
+  "starlette": "1.10.0",
+  "python": "3.12.9"
+ },
+ "postgres": "16.15-5",
+ "quota_tpm": 100000,
+ "burst": [
+  15.0,
+  75.0
+ ],
+ "duration_s": 150.0,
+ "shapes": {
+  "w2-ops-assistant": {
+   "input_tokens": 964,
+   "max_tokens": 256,
+   "output_tokens": 152,
+   "estimate": 1220
+  },
+  "w3-incident": {
+   "input_tokens": 1602,
+   "max_tokens": 256,
+   "output_tokens": 99,
+   "estimate": 1858
+  }
+ },
+ "burst_shape": {
+  "input_tokens": 6000,
+  "max_tokens": 2000,
+  "output_tokens": 1000,
+  "estimate": 8000
+ },
+ "policies": {
+  "none": {
+   "name": "none",
+   "max_attempts": 1,
+   "honours_retry_after": false,
+   "jitter_s": 1.0,
+   "base_s": 1.0,
+   "cap_s": 20.0,
+   "deadline_s": null,
+   "retry_any_failure": false
+  },
+  "honour": {
+   "name": "honour",
+   "max_attempts": 6,
+   "honours_retry_after": true,
+   "jitter_s": 1.0,
+   "base_s": 1.0,
+   "cap_s": 20.0,
+   "deadline_s": 60.0,
+   "retry_any_failure": false
+  },
+  "naive": {
+   "name": "naive",
+   "max_attempts": 20,
+   "honours_retry_after": false,
+   "jitter_s": 0.0,
+   "base_s": 0.0,
+   "cap_s": 0.0,
+   "deadline_s": null,
+   "retry_any_failure": true
+  }
+ },
+ "repeat": {
+  "rows": [
+   {
+    "case": "run A writes under its approval, and its pod is lost before it records the result",
+    "presented": "run A's approval",
+    "write_ran": true,
+    "generation_before": 1,
+    "generation_after": 2,
+    "stopped_by": null,
+    "reason": "the process died after the write"
+   },
+   {
+    "case": "run A resumed by a new harness process, its store intact",
+    "presented": "run A's approval, reserved in run A's store",
+    "write_ran": false,
+    "generation_before": 2,
+    "generation_after": 2,
+    "stopped_by": "W3's store",
+    "reason": "the write is marked started; the run ended done after verifying"
+   },
+   {
+    "case": "run B presents run A's approval",
+    "presented": "run A's approval, under run B's trace id",
+    "write_ran": false,
+    "generation_before": 2,
+    "generation_after": 2,
+    "stopped_by": "the approval service",
+    "reason": "the approval is for another run"
+   },
+   {
+    "case": "run A's approval presented again, by a harness that lost run A's store",
+    "presented": "run A's approval, under run A's trace id",
+    "write_ran": false,
+    "generation_before": 2,
+    "generation_after": 2,
+    "stopped_by": "the approval service",
+    "reason": "already applied"
+   },
+   {
+    "case": "run B presents its own approval before anyone has decided",
+    "presented": "run B's approval, pending",
+    "write_ran": false,
+    "generation_before": 2,
+    "generation_after": 2,
+    "stopped_by": "the approval service",
+    "reason": "the approval is pending"
+   },
+   {
+    "case": "a person approves run B's own request",
+    "presented": "run B's approval, approved",
+    "write_ran": true,
+    "generation_before": 2,
+    "generation_after": 3,
+    "stopped_by": null,
+    "reason": "a second restart, decided by a person; the run ended done"
+   }
+  ],
+  "approval_checks": [
+   {
+    "approval": "run A",
+    "trace": "run A",
+    "covers": true,
+    "reason": "covered"
+   },
+   {
+    "approval": "run A",
+    "trace": "run B",
+    "covers": false,
+    "reason": "the approval is for another run"
+   },
+   {
+    "approval": "run A",
+    "trace": "run A",
+    "covers": false,
+    "reason": "already applied"
+   },
+   {
+    "approval": "run B",
+    "trace": "run B",
+    "covers": false,
+    "reason": "the approval is pending"
+   },
+   {
+    "approval": "run B",
+    "trace": "run B",
+    "covers": true,
+    "reason": "covered"
+   }
+  ],
+  "approvals": {
+   "run A": "approved",
+   "run B": "approved"
+  },
+  "restarts": 2,
+  "writes_called": 2
+ },
+ "router_retries": [
+  {
+   "case": "one deployment in the group, Retry-After 5 s",
+   "alias": "larkspur-chat-single",
+   "retry_after_s": 5,
+   "attempts": [
+    {
+     "t": 0.971,
+     "deployment": "t1",
+     "status": 429
+    },
+    {
+     "t": 6.085,
+     "deployment": "t1",
+     "status": 429
+    },
+    {
+     "t": 11.575,
+     "deployment": "t1",
+     "status": 200
+    }
+   ],
+   "gaps_s": [
+    5.113,
+    5.491
+   ],
+   "status": 200,
+   "served_by": "t1-single",
+   "took_s": 11.628,
+   "client_retry_after": null,
+   "client_provider_retry_after": null
+  },
+  {
+   "case": "one deployment in the group, Retry-After 90 s",
+   "alias": "larkspur-chat-single",
+   "retry_after_s": 90,
+   "attempts": [
+    {
+     "t": 0.998,
+     "deployment": "t1",
+     "status": 429
+    },
+    {
+     "t": 1.813,
+     "deployment": "t1",
+     "status": 429
+    },
+    {
+     "t": 3.289,
+     "deployment": "t1",
+     "status": 200
+    }
+   ],
+   "gaps_s": [
+    0.815,
+    1.476
+   ],
+   "status": 200,
+   "served_by": "t1-single",
+   "took_s": 3.351,
+   "client_retry_after": null,
+   "client_provider_retry_after": null
+  },
+  {
+   "case": "two deployments in the group, the first throttled, Retry-After 5 s",
+   "alias": "larkspur-chat-pair",
+   "retry_after_s": 5,
+   "attempts": [
+    {
+     "t": 0.945,
+     "deployment": "t1",
+     "status": 429
+    },
+    {
+     "t": 0.958,
+     "deployment": "t2",
+     "status": 200
+    }
+   ],
+   "gaps_s": [
+    0.013
+   ],
+   "status": 200,
+   "served_by": "t2-pair",
+   "took_s": 1.025,
+   "client_retry_after": null,
+   "client_provider_retry_after": null
+  }
+ ],
+ "client_retries": [
+  {
+   "through": "the provider directly",
+   "policy": "none",
+   "max_attempts": 1,
+   "requests": 80,
+   "served": 46,
+   "calls": 80,
+   "calls_per_success": 1.739,
+   "requests_in_the_minute": 80,
+   "calls_in_the_minute": 80,
+   "load_over_offered": 1.0,
+   "provider_calls_in_the_minute": 80,
+   "provider_refusals_in_the_minute": 34,
+   "last_served_s": 33.813,
+   "wait_median_s": 0.0613,
+   "refused_by": {
+    "the provider's quota": 34
+   }
+  },
+  {
+   "through": "the provider directly",
+   "policy": "honour",
+   "max_attempts": 6,
+   "requests": 80,
+   "served": 56,
+   "calls": 238,
+   "calls_per_success": 4.25,
+   "requests_in_the_minute": 80,
+   "calls_in_the_minute": 80,
+   "load_over_offered": 1.0,
+   "provider_calls_in_the_minute": 80,
+   "provider_refusals_in_the_minute": 34,
+   "last_served_s": 67.528,
+   "wait_median_s": 0.0638,
+   "refused_by": {
+    "the provider's quota": 182
+   }
+  },
+  {
+   "through": "the provider directly",
+   "policy": "naive",
+   "max_attempts": 20,
+   "requests": 80,
+   "served": 46,
+   "calls": 726,
+   "calls_per_success": 15.783,
+   "requests_in_the_minute": 80,
+   "calls_in_the_minute": 726,
+   "load_over_offered": 9.075,
+   "provider_calls_in_the_minute": 726,
+   "provider_refusals_in_the_minute": 680,
+   "last_served_s": 33.823,
+   "wait_median_s": 0.0607,
+   "refused_by": {
+    "the provider's quota": 680
+   }
+  },
+  {
+   "through": "step 4's gateway",
+   "policy": "honour",
+   "max_attempts": 6,
+   "requests": 80,
+   "served": 75,
+   "calls": 222,
+   "calls_per_success": 2.96,
+   "requests_in_the_minute": 80,
+   "calls_in_the_minute": 80,
+   "load_over_offered": 1.0,
+   "provider_calls_in_the_minute": 80,
+   "provider_refusals_in_the_minute": 34,
+   "last_served_s": 83.863,
+   "wait_median_s": 0.3703,
+   "refused_by": {
+    "chapter 5's requests per minute": 72,
+    "the provider's quota": 75
+   }
+  },
+  {
+   "through": "step 4's gateway",
+   "policy": "naive",
+   "max_attempts": 20,
+   "requests": 80,
+   "served": 46,
+   "calls": 726,
+   "calls_per_success": 15.783,
+   "requests_in_the_minute": 80,
+   "calls_in_the_minute": 726,
+   "load_over_offered": 9.075,
+   "provider_calls_in_the_minute": 120,
+   "provider_refusals_in_the_minute": 74,
+   "last_served_s": 34.129,
+   "wait_median_s": 0.3649,
+   "refused_by": {
+    "chapter 5's requests per minute": 606,
+    "the provider's quota": 74
+   }
+  }
+ ],
+ "outage": [
+  {
+   "mode": "5xx",
+   "allowed_fails": 2,
+   "cooldown_time_s": 30,
+   "failures_at_the_primary": [
+    0.223,
+    0.254,
+    0.542,
+    30.815,
+    31.635,
+    31.809
+   ],
+   "cycles": [
+    {
+     "first_failure_s": 0.223,
+     "last_failure_s": 0.542,
+     "failures": 3,
+     "cooldown_seen_s": 1.477
+    },
+    {
+     "first_failure_s": 30.815,
+     "last_failure_s": 31.809,
+     "failures": 3,
+     "cooldown_seen_s": 33.65
+    }
+   ],
+   "first_cooldown_answer_s": 1.477,
+   "sent_to_the_failing_primary_s": 0.542,
+   "failures_before_the_first_cooldown": 3,
+   "healed_at_s": 60.01,
+   "primary_served_again_after_heal_s": 2.155,
+   "w2": {
+    "calls": 59,
+    "statuses": {
+     "200": 59
+    },
+    "served_by": {
+     "fallback": 59
+    },
+    "kinds": {},
+    "latency_median_s": 0.0822,
+    "latency_max_s": 0.104
+   },
+   "w3": {
+    "calls": 30,
+    "statuses": {
+     "429": 29,
+     "503": 1
+    },
+    "served_by": {},
+    "kinds": {
+     "status 503": 1,
+     "the router's cooldown": 29
+    },
+    "latency_median_s": null,
+    "latency_max_s": null
+   },
+   "w2_regions": {
+    "ca-central-1": 50,
+    "us-east-2": 62
+   },
+   "w3_regions": {
+    "ca-central-1": 26
+   },
+   "w3_failed_lines_with_fallback_disabled": 33,
+   "w3_failed_lines": 33,
+   "w2_cooldown_failures_logged_as_the_fallback": 58,
+   "runs": {
+    "w3_in_flight": {
+     "trace_id": "7cb92e6fb52c4d73a326953c3bc50cc0",
+     "outcome": "unavailable",
+     "reason": "model unavailable",
+     "text": "W3 couldn't reach the model just now; work the incident without it, or try again.",
+     "raised": null,
+     "model_calls": 2
+    },
+    "w2_in_flight": {
+     "trace_id": "2d7efdb6a58d4eec8e49406952d3bc91",
+     "answered": true,
+     "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+     "error": null,
+     "calls": [
+      0.366,
+      0.388
+     ]
+    },
+    "w3_during_cooldown": {
+     "trace_id": "e738b2132ea04415abc8a5e9f071c683",
+     "outcome": null,
+     "reason": null,
+     "text": null,
+     "raised": "HTTPStatusError 429",
+     "model_calls": 1
+    }
+   },
+   "run_lines": {
+    "w3_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     }
+    ],
+    "w2_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     },
+     {
+      "deployment": "fallback",
+      "region": "us-east-2",
+      "event": "call",
+      "fallback": true
+     }
+    ],
+    "w3_during_cooldown": [
+     {
+      "deployment": null,
+      "region": null,
+      "event": "failed",
+      "fallback": false
+     }
+    ]
+   }
+  },
+  {
+   "mode": "timeout",
+   "allowed_fails": 2,
+   "cooldown_time_s": 30,
+   "failures_at_the_primary": [
+    5.229,
+    5.245,
+    5.797,
+    6.762,
+    41.117,
+    41.895,
+    46.215,
+    46.945
+   ],
+   "cycles": [
+    {
+     "first_failure_s": 5.229,
+     "last_failure_s": 6.762,
+     "failures": 4,
+     "cooldown_seen_s": 6.778
+    },
+    {
+     "first_failure_s": 41.117,
+     "last_failure_s": 46.945,
+     "failures": 4,
+     "cooldown_seen_s": 46.959
+    }
+   ],
+   "first_cooldown_answer_s": 6.778,
+   "sent_to_the_failing_primary_s": 6.762,
+   "failures_before_the_first_cooldown": 4,
+   "healed_at_s": 60.002,
+   "primary_served_again_after_heal_s": 16.63,
+   "w2": {
+    "calls": 47,
+    "statuses": {
+     "200": 47
+    },
+    "served_by": {
+     "fallback": 47
+    },
+    "kinds": {},
+    "latency_median_s": 0.0816,
+    "latency_max_s": 5.104
+   },
+   "w3": {
+    "calls": 25,
+    "statuses": {
+     "408": 3,
+     "429": 22
+    },
+    "served_by": {},
+    "kinds": {
+     "status 408": 3,
+     "the router's cooldown": 22
+    },
+    "latency_median_s": null,
+    "latency_max_s": null
+   },
+   "w2_regions": {
+    "ca-central-1": 36,
+    "us-east-2": 64
+   },
+   "w3_regions": {
+    "ca-central-1": 19
+   },
+   "w3_failed_lines_with_fallback_disabled": 35,
+   "w3_failed_lines": 35,
+   "w2_cooldown_failures_logged_as_the_fallback": 60,
+   "runs": {
+    "w2_in_flight": {
+     "trace_id": "dfd59547770c4d8dba307cec280bc6f6",
+     "answered": true,
+     "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+     "error": null,
+     "calls": [
+      0.081,
+      5.158
+     ]
+    },
+    "w3_in_flight": {
+     "trace_id": "ff49d019dadb4220aeaaf80d4c9dd590",
+     "outcome": null,
+     "reason": null,
+     "text": null,
+     "raised": "HTTPStatusError 408",
+     "model_calls": 2
+    },
+    "w3_during_cooldown": {
+     "trace_id": "5ca7bd42ea7448dd8833ef66955b0f98",
+     "outcome": null,
+     "reason": null,
+     "text": null,
+     "raised": "HTTPStatusError 429",
+     "model_calls": 1
+    }
+   },
+   "run_lines": {
+    "w2_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     },
+     {
+      "deployment": "fallback",
+      "region": "us-east-2",
+      "event": "call",
+      "fallback": true
+     }
+    ],
+    "w3_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     }
+    ],
+    "w3_during_cooldown": [
+     {
+      "deployment": null,
+      "region": null,
+      "event": "failed",
+      "fallback": false
+     }
+    ]
+   }
+  },
+  {
+   "mode": "connection",
+   "allowed_fails": 2,
+   "cooldown_time_s": 30,
+   "failures_at_the_primary": [
+    2.291,
+    2.299,
+    2.909,
+    3.878,
+    35.274,
+    36.072,
+    37.387,
+    38.131
+   ],
+   "cycles": [
+    {
+     "first_failure_s": 2.291,
+     "last_failure_s": 3.878,
+     "failures": 4,
+     "cooldown_seen_s": 3.894
+    },
+    {
+     "first_failure_s": 35.274,
+     "last_failure_s": 38.131,
+     "failures": 4,
+     "cooldown_seen_s": 38.147
+    }
+   ],
+   "first_cooldown_answer_s": 3.894,
+   "sent_to_the_failing_primary_s": 3.878,
+   "failures_before_the_first_cooldown": 4,
+   "healed_at_s": 60.001,
+   "primary_served_again_after_heal_s": 7.761,
+   "w2": {
+    "calls": 56,
+    "statuses": {
+     "200": 56
+    },
+    "served_by": {
+     "fallback": 56
+    },
+    "kinds": {},
+    "latency_median_s": 0.0856,
+    "latency_max_s": 2.127
+   },
+   "w3": {
+    "calls": 29,
+    "statuses": {
+     "429": 26,
+     "500": 3
+    },
+    "served_by": {},
+    "kinds": {
+     "status 500": 3,
+     "the router's cooldown": 26
+    },
+    "latency_median_s": null,
+    "latency_max_s": null
+   },
+   "w2_regions": {
+    "ca-central-1": 45,
+    "us-east-2": 64
+   },
+   "w3_regions": {
+    "ca-central-1": 24
+   },
+   "w3_failed_lines_with_fallback_disabled": 35,
+   "w3_failed_lines": 35,
+   "w2_cooldown_failures_logged_as_the_fallback": 60,
+   "runs": {
+    "w3_in_flight": {
+     "trace_id": "03c103ab412449d8970f70504a1edaf2",
+     "outcome": "unavailable",
+     "reason": "model unavailable",
+     "text": "W3 couldn't reach the model just now; work the incident without it, or try again.",
+     "raised": null,
+     "model_calls": 2
+    },
+    "w2_in_flight": {
+     "trace_id": "447f7af21d05496eb1b36316ad33a8c8",
+     "answered": true,
+     "answer": "claims-api has 2 of 3 pods ready. Not ready: claims-api-7d9f8b6c4-t8w2c (CrashLo",
+     "error": null,
+     "calls": [
+      0.079,
+      2.219
+     ]
+    },
+    "w3_during_cooldown": {
+     "trace_id": "0c7ab84638bb411b982053dddedb5b8e",
+     "outcome": null,
+     "reason": null,
+     "text": null,
+     "raised": "HTTPStatusError 429",
+     "model_calls": 1
+    }
+   },
+   "run_lines": {
+    "w3_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     }
+    ],
+    "w2_in_flight": [
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "call",
+      "fallback": false
+     },
+     {
+      "deployment": "primary",
+      "region": "ca-central-1",
+      "event": "failed",
+      "fallback": false
+     },
+     {
+      "deployment": "fallback",
+      "region": "us-east-2",
+      "event": "call",
+      "fallback": true
+     }
+    ],
+    "w3_during_cooldown": [
+     {
+      "deployment": null,
+      "region": null,
+      "event": "failed",
+      "fallback": false
+     }
+    ]
+   }
+  }
+ ],
+ "latency": [
+  {
+   "setup": "the provider alone, no gateway",
+   "calls": 60,
+   "concurrency": 1,
+   "answered": 60,
+   "client_ms": {
+    "median": 206.0607,
+    "p95": 225.1531
+   },
+   "provider_ms": {
+    "median": 205.156,
+    "p95": 224.149
+   },
+   "gateway_ms": {
+    "median": 0.9729,
+    "p95": 1.1974,
+    "max": 1.364
+   },
+   "litellm_reports_ms": {
+    "median": null,
+    "p95": null
+   }
+  },
+  {
+   "setup": "chapter 5's gateway, no database",
+   "calls": 60,
+   "concurrency": 1,
+   "answered": 60,
+   "client_ms": {
+    "median": 207.3927,
+    "p95": 224.7744
+   },
+   "provider_ms": {
+    "median": 197.314,
+    "p95": 214.72
+   },
+   "gateway_ms": {
+    "median": 9.8222,
+    "p95": 11.6117,
+    "max": 13.533
+   },
+   "litellm_reports_ms": {
+    "median": 2.5601,
+    "p95": 5.47
+   }
+  },
+  {
+   "setup": "chapter 5's gateway, the provider answering in 50 ms",
+   "calls": 60,
+   "concurrency": 1,
+   "answered": 60,
+   "client_ms": {
+    "median": 62.106,
+    "p95": 70.8581
+   },
+   "provider_ms": {
+    "median": 52.4835,
+    "p95": 61.082
+   },
+   "gateway_ms": {
+    "median": 9.5497,
+    "p95": 11.142,
+    "max": 13.44
+   },
+   "litellm_reports_ms": {
+    "median": 3.3461,
+    "p95": 7.9961
+   }
+  },
+  {
+   "setup": "step 4's gateway, W2's virtual key",
+   "calls": 60,
+   "concurrency": 1,
+   "answered": 60,
+   "client_ms": {
+    "median": 206.7325,
+    "p95": 229.5546
+   },
+   "provider_ms": {
+    "median": 193.376,
+    "p95": 213.062
+   },
+   "gateway_ms": {
+    "median": 13.2517,
+    "p95": 18.49,
+    "max": 19.499
+   },
+   "litellm_reports_ms": {
+    "median": 6.814,
+    "p95": 12.5129
+   }
+  },
+  {
+   "setup": "step 4's gateway, W2's key with a tpm_limit",
+   "calls": 60,
+   "concurrency": 1,
+   "answered": 60,
+   "client_ms": {
+    "median": 206.0665,
+    "p95": 217.6814
+   },
+   "provider_ms": {
+    "median": 194.575,
+    "p95": 206.427
+   },
+   "gateway_ms": {
+    "median": 11.5373,
+    "p95": 13.5999,
+    "max": 19.498
+   },
+   "litellm_reports_ms": {
+    "median": 0.0,
+    "p95": 8.5671
+   }
+  },
+  {
+   "setup": "step 4's gateway, W2's key with a tpm_limit, 8 at once",
+   "calls": 96,
+   "concurrency": 8,
+   "answered": 96,
+   "client_ms": {
+    "median": 235.8487,
+    "p95": 252.3094
+   },
+   "provider_ms": {
+    "median": 196.3385,
+    "p95": 208.368
+   },
+   "gateway_ms": {
+    "median": 38.9186,
+    "p95": 48.9503,
+    "max": 51.903
+   },
+   "litellm_reports_ms": {
+    "median": 25.9428,
+    "p95": 36.443
+   }
+  }
+ ],
+ "proxy_start_s": 28.3,
+ "contention": [
+  {
+   "name": "requests per minute alone",
+   "round": 1,
+   "what": "chapter 5's callback limits each workflow to its manifest's requests a minute (W2 120, W3 60)",
+   "config": "litellm.config.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 16.12,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 2,
+    "attempts": 37,
+    "attempts_per_request": 3.7,
+    "wait_median_s": 18.6735,
+    "wait_p95_s": 48.189,
+    "wait_max_s": 48.189,
+    "refused_by": {
+     "the provider's quota": 27
+    },
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 17,
+    "attempts": 52,
+    "attempts_per_request": 2.08,
+    "wait_median_s": 0.1728,
+    "wait_p95_s": 45.8562,
+    "wait_max_s": 48.189,
+    "refused_by": {
+     "the provider's quota": 27
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 9,
+    "served_share": 0.4737,
+    "first_attempt": 5,
+    "attempts": 82,
+    "attempts_per_request": 4.316,
+    "wait_median_s": 0.2077,
+    "wait_p95_s": 37.2719,
+    "wait_max_s": 37.2719,
+    "refused_by": {
+     "the provider's quota": 73
+    },
+    "tokens_served": 10044
+   },
+   "w2_burst": {
+    "requests": 12,
+    "served": 10,
+    "served_share": 0.8333,
+    "first_attempt": 4,
+    "attempts": 28,
+    "attempts_per_request": 2.333,
+    "wait_median_s": 59.2137,
+    "wait_p95_s": 60.2928,
+    "wait_max_s": 60.2928,
+    "refused_by": {
+     "the provider's quota": 18
+    },
+    "tokens_served": 70000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 115050,
+    "peak_over_quota": 1.1505,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 58,
+      "refused": 91,
+      "tokens_charged": 170640
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 27,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key",
+   "round": 1,
+   "what": "each workflow's key gets a tpm_limit, the two dividing the provider's quota exactly",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 75000,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 16.0,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1629,
+    "wait_p95_s": 0.1797,
+    "wait_max_s": 0.1797,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1642,
+    "wait_p95_s": 0.4134,
+    "wait_max_s": 0.8656,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 21,
+    "served": 7,
+    "served_share": 0.3333,
+    "first_attempt": 5,
+    "attempts": 93,
+    "attempts_per_request": 4.429,
+    "wait_median_s": 0.2096,
+    "wait_p95_s": 0.913,
+    "wait_max_s": 0.913,
+    "refused_by": {
+     "chapter 5's requests per minute": 86
+    },
+    "tokens_served": 7812
+   },
+   "w2_burst": {
+    "requests": 149,
+    "served": 17,
+    "served_share": 0.1141,
+    "first_attempt": 9,
+    "attempts": 313,
+    "attempts_per_request": 2.101,
+    "wait_median_s": 1.1119,
+    "wait_p95_s": 26.8463,
+    "wait_max_s": 26.8463,
+    "refused_by": {
+     "chapter 5's requests per minute": 191,
+     "the key's tokens per minute": 105
+    },
+    "tokens_served": 119000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 108838,
+    "peak_over_quota": 1.0884,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 53,
+      "refused": 0,
+      "tokens_charged": 159176
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key, with headroom",
+   "round": 1,
+   "what": "W2's share halved, so that W2's share twice and W3's demand fit the quota",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 37500,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 15.89,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1683,
+    "wait_p95_s": 0.1799,
+    "wait_max_s": 0.1799,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1666,
+    "wait_p95_s": 0.1799,
+    "wait_max_s": 0.8801,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 5,
+    "served_share": 0.2632,
+    "first_attempt": 4,
+    "attempts": 90,
+    "attempts_per_request": 4.737,
+    "wait_median_s": 0.2225,
+    "wait_p95_s": 0.6647,
+    "wait_max_s": 0.6647,
+    "refused_by": {
+     "chapter 5's requests per minute": 85
+    },
+    "tokens_served": 5580
+   },
+   "w2_burst": {
+    "requests": 139,
+    "served": 8,
+    "served_share": 0.0576,
+    "first_attempt": 0,
+    "attempts": 298,
+    "attempts_per_request": 2.144,
+    "wait_median_s": 13.812,
+    "wait_p95_s": 24.0118,
+    "wait_max_s": 24.0118,
+    "refused_by": {
+     "chapter 5's requests per minute": 184,
+     "the key's tokens per minute": 106
+    },
+    "tokens_served": 56000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 110058,
+    "peak_over_quota": 1.1006,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 47,
+      "refused": 0,
+      "tokens_charged": 117176
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "deployment limits",
+   "round": 1,
+   "what": "tpm, rpm and max_parallel_requests on the deployment, under enforce_model_rate_limits",
+   "config": "litellm.deployment.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 15.3,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 8,
+    "served_share": 0.8,
+    "first_attempt": 2,
+    "attempts": 42,
+    "attempts_per_request": 4.2,
+    "wait_median_s": 18.0266,
+    "wait_p95_s": 45.5389,
+    "wait_max_s": 45.5389,
+    "refused_by": {
+     "the deployment's parallel requests": 6,
+     "the provider's quota": 28
+    },
+    "tokens_served": 13608
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 23,
+    "served_share": 0.92,
+    "first_attempt": 15,
+    "attempts": 65,
+    "attempts_per_request": 2.6,
+    "wait_median_s": 0.1652,
+    "wait_p95_s": 36.848,
+    "wait_max_s": 45.5389,
+    "refused_by": {
+     "the deployment's parallel requests": 6,
+     "the provider's quota": 36
+    },
+    "tokens_served": 39123
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 11,
+    "served_share": 0.55,
+    "first_attempt": 5,
+    "attempts": 84,
+    "attempts_per_request": 4.2,
+    "wait_median_s": 1.2275,
+    "wait_p95_s": 49.1935,
+    "wait_max_s": 49.1935,
+    "refused_by": {
+     "chapter 5's requests per minute": 9,
+     "the deployment's parallel requests": 3,
+     "the provider's quota": 61
+    },
+    "tokens_served": 12276
+   },
+   "w2_burst": {
+    "requests": 18,
+    "served": 16,
+    "served_share": 0.8889,
+    "first_attempt": 8,
+    "attempts": 46,
+    "attempts_per_request": 2.556,
+    "wait_median_s": 2.4107,
+    "wait_p95_s": 60.5387,
+    "wait_max_s": 60.5387,
+    "refused_by": {
+     "chapter 5's requests per minute": 12,
+     "the deployment's parallel requests": 4,
+     "the provider's quota": 14
+    },
+    "tokens_served": 112000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 116270,
+    "peak_over_quota": 1.1627,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 61,
+      "refused": 100,
+      "tokens_charged": 185756
+     },
+     "w3-incident": {
+      "admitted": 23,
+      "refused": 36,
+      "tokens_charged": 39123
+     }
+    }
+   }
+  },
+  {
+   "name": "requests per minute alone",
+   "round": 2,
+   "what": "chapter 5's callback limits each workflow to its manifest's requests a minute (W2 120, W3 60)",
+   "config": "litellm.config.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 15.36,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 7,
+    "served_share": 0.7,
+    "first_attempt": 2,
+    "attempts": 44,
+    "attempts_per_request": 4.4,
+    "wait_median_s": 9.375,
+    "wait_p95_s": 45.4537,
+    "wait_max_s": 45.4537,
+    "refused_by": {
+     "the provider's quota": 37
+    },
+    "tokens_served": 11907
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 22,
+    "served_share": 0.88,
+    "first_attempt": 17,
+    "attempts": 59,
+    "attempts_per_request": 2.36,
+    "wait_median_s": 0.1621,
+    "wait_p95_s": 39.9603,
+    "wait_max_s": 45.4537,
+    "refused_by": {
+     "the provider's quota": 37
+    },
+    "tokens_served": 37422
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 11,
+    "served_share": 0.55,
+    "first_attempt": 5,
+    "attempts": 84,
+    "attempts_per_request": 4.2,
+    "wait_median_s": 7.3191,
+    "wait_p95_s": 33.4191,
+    "wait_max_s": 33.4191,
+    "refused_by": {
+     "the provider's quota": 73
+    },
+    "tokens_served": 12276
+   },
+   "w2_burst": {
+    "requests": 20,
+    "served": 19,
+    "served_share": 0.95,
+    "first_attempt": 12,
+    "attempts": 36,
+    "attempts_per_request": 1.8,
+    "wait_median_s": 1.1224,
+    "wait_p95_s": 60.7275,
+    "wait_max_s": 60.7275,
+    "refused_by": {
+     "the provider's quota": 17
+    },
+    "tokens_served": 133000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 113206,
+    "peak_over_quota": 1.1321,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 60,
+      "refused": 92,
+      "tokens_charged": 178756
+     },
+     "w3-incident": {
+      "admitted": 22,
+      "refused": 37,
+      "tokens_charged": 37422
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key",
+   "round": 2,
+   "what": "each workflow's key gets a tpm_limit, the two dividing the provider's quota exactly",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 75000,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 15.33,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.161,
+    "wait_p95_s": 0.1743,
+    "wait_max_s": 0.1743,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 22,
+    "attempts": 31,
+    "attempts_per_request": 1.24,
+    "wait_median_s": 0.1611,
+    "wait_p95_s": 6.7881,
+    "wait_max_s": 12.8898,
+    "refused_by": {
+     "the provider's quota": 6
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 6,
+    "served_share": 0.3158,
+    "first_attempt": 4,
+    "attempts": 94,
+    "attempts_per_request": 4.947,
+    "wait_median_s": 0.2243,
+    "wait_p95_s": 24.6913,
+    "wait_max_s": 24.6913,
+    "refused_by": {
+     "chapter 5's requests per minute": 88
+    },
+    "tokens_served": 6696
+   },
+   "w2_burst": {
+    "requests": 136,
+    "served": 10,
+    "served_share": 0.0735,
+    "first_attempt": 1,
+    "attempts": 284,
+    "attempts_per_request": 2.088,
+    "wait_median_s": 21.6166,
+    "wait_p95_s": 24.4913,
+    "wait_max_s": 24.4913,
+    "refused_by": {
+     "chapter 5's requests per minute": 169,
+     "the key's tokens per minute": 105
+    },
+    "tokens_served": 70000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 112484,
+    "peak_over_quota": 1.1248,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 55,
+      "refused": 1,
+      "tokens_charged": 167292
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 6,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key, with headroom",
+   "round": 2,
+   "what": "W2's share halved, so that W2's share twice and W3's demand fit the quota",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 37500,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 14.83,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1603,
+    "wait_p95_s": 0.1629,
+    "wait_max_s": 0.1629,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 22,
+    "attempts": 34,
+    "attempts_per_request": 1.36,
+    "wait_median_s": 0.1618,
+    "wait_p95_s": 15.8301,
+    "wait_max_s": 24.941,
+    "refused_by": {
+     "the provider's quota": 9
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 4,
+    "served_share": 0.2,
+    "first_attempt": 2,
+    "attempts": 105,
+    "attempts_per_request": 5.25,
+    "wait_median_s": 9.846,
+    "wait_p95_s": 23.1273,
+    "wait_max_s": 23.1273,
+    "refused_by": {
+     "chapter 5's requests per minute": 100,
+     "the key's tokens per minute": 1
+    },
+    "tokens_served": 4464
+   },
+   "w2_burst": {
+    "requests": 154,
+    "served": 14,
+    "served_share": 0.0909,
+    "first_attempt": 4,
+    "attempts": 334,
+    "attempts_per_request": 2.169,
+    "wait_median_s": 4.6254,
+    "wait_p95_s": 22.5873,
+    "wait_max_s": 22.5873,
+    "refused_by": {
+     "chapter 5's requests per minute": 209,
+     "the key's tokens per minute": 111
+    },
+    "tokens_served": 98000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 114440,
+    "peak_over_quota": 1.1444,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 47,
+      "refused": 12,
+      "tokens_charged": 134828
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 9,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "deployment limits",
+   "round": 2,
+   "what": "tpm, rpm and max_parallel_requests on the deployment, under enforce_model_rate_limits",
+   "config": "litellm.deployment.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 15.94,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 3,
+    "served_share": 0.3,
+    "first_attempt": 1,
+    "attempts": 48,
+    "attempts_per_request": 4.8,
+    "wait_median_s": 0.432,
+    "wait_p95_s": 3.609,
+    "wait_max_s": 3.609,
+    "refused_by": {
+     "the deployment's parallel requests": 2,
+     "the provider's quota": 43
+    },
+    "tokens_served": 5103
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 18,
+    "served_share": 0.72,
+    "first_attempt": 16,
+    "attempts": 63,
+    "attempts_per_request": 2.52,
+    "wait_median_s": 0.17,
+    "wait_p95_s": 3.609,
+    "wait_max_s": 3.609,
+    "refused_by": {
+     "the deployment's parallel requests": 2,
+     "the provider's quota": 43
+    },
+    "tokens_served": 30618
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 12,
+    "served_share": 0.6,
+    "first_attempt": 4,
+    "attempts": 84,
+    "attempts_per_request": 4.2,
+    "wait_median_s": 4.1599,
+    "wait_p95_s": 45.3219,
+    "wait_max_s": 45.3219,
+    "refused_by": {
+     "chapter 5's requests per minute": 10,
+     "the deployment's parallel requests": 3,
+     "the provider's quota": 59
+    },
+    "tokens_served": 13392
+   },
+   "w2_burst": {
+    "requests": 17,
+    "served": 14,
+    "served_share": 0.8235,
+    "first_attempt": 7,
+    "attempts": 44,
+    "attempts_per_request": 2.588,
+    "wait_median_s": 1.8573,
+    "wait_p95_s": 58.9858,
+    "wait_max_s": 58.9858,
+    "refused_by": {
+     "chapter 5's requests per minute": 3,
+     "the deployment's parallel requests": 8,
+     "the provider's quota": 19
+    },
+    "tokens_served": 98000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 113192,
+    "peak_over_quota": 1.1319,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 61,
+      "refused": 83,
+      "tokens_charged": 179872
+     },
+     "w3-incident": {
+      "admitted": 18,
+      "refused": 43,
+      "tokens_charged": 30618
+     }
+    }
+   }
+  },
+  {
+   "name": "requests per minute alone",
+   "round": 3,
+   "what": "chapter 5's callback limits each workflow to its manifest's requests a minute (W2 120, W3 60)",
+   "config": "litellm.config.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 15.48,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 3,
+    "attempts": 38,
+    "attempts_per_request": 3.8,
+    "wait_median_s": 20.3445,
+    "wait_p95_s": 51.2871,
+    "wait_max_s": 51.2871,
+    "refused_by": {
+     "the provider's quota": 28
+    },
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 18,
+    "attempts": 53,
+    "attempts_per_request": 2.12,
+    "wait_median_s": 0.1659,
+    "wait_p95_s": 45.7586,
+    "wait_max_s": 51.2871,
+    "refused_by": {
+     "the provider's quota": 28
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 20,
+    "served": 9,
+    "served_share": 0.45,
+    "first_attempt": 7,
+    "attempts": 81,
+    "attempts_per_request": 4.05,
+    "wait_median_s": 0.2219,
+    "wait_p95_s": 30.4291,
+    "wait_max_s": 30.4291,
+    "refused_by": {
+     "the provider's quota": 72
+    },
+    "tokens_served": 10044
+   },
+   "w2_burst": {
+    "requests": 20,
+    "served": 18,
+    "served_share": 0.9,
+    "first_attempt": 12,
+    "attempts": 36,
+    "attempts_per_request": 1.8,
+    "wait_median_s": 1.1296,
+    "wait_p95_s": 60.4024,
+    "wait_max_s": 60.4024,
+    "refused_by": {
+     "the provider's quota": 18
+    },
+    "tokens_served": 126000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 114412,
+    "peak_over_quota": 1.1441,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 57,
+      "refused": 91,
+      "tokens_charged": 169524
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 28,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key",
+   "round": 3,
+   "what": "each workflow's key gets a tpm_limit, the two dividing the provider's quota exactly",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 75000,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 15.34,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1656,
+    "wait_p95_s": 0.1779,
+    "wait_max_s": 0.1779,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 25,
+    "attempts": 25,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1632,
+    "wait_p95_s": 0.1793,
+    "wait_max_s": 0.8424,
+    "refused_by": {},
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 5,
+    "served_share": 0.2632,
+    "first_attempt": 4,
+    "attempts": 90,
+    "attempts_per_request": 4.737,
+    "wait_median_s": 0.2083,
+    "wait_p95_s": 0.651,
+    "wait_max_s": 0.651,
+    "refused_by": {
+     "chapter 5's requests per minute": 85
+    },
+    "tokens_served": 5580
+   },
+   "w2_burst": {
+    "requests": 142,
+    "served": 9,
+    "served_share": 0.0634,
+    "first_attempt": 1,
+    "attempts": 315,
+    "attempts_per_request": 2.218,
+    "wait_median_s": 14.3129,
+    "wait_p95_s": 26.4451,
+    "wait_max_s": 26.4451,
+    "refused_by": {
+     "chapter 5's requests per minute": 201,
+     "the key's tokens per minute": 105
+    },
+    "tokens_served": 63000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 108200,
+    "peak_over_quota": 1.082,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 53,
+      "refused": 0,
+      "tokens_charged": 159176
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 0,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "tokens per minute per key, with headroom",
+   "round": 3,
+   "what": "W2's share halved, so that W2's share twice and W3's demand fit the quota",
+   "config": "litellm.config.yaml",
+   "tpm_limit": {
+    "w2-ops-assistant": 37500,
+    "w3-incident": 25000
+   },
+   "proxy_back_in_s": 14.81,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 10,
+    "served_share": 1.0,
+    "first_attempt": 10,
+    "attempts": 10,
+    "attempts_per_request": 1.0,
+    "wait_median_s": 0.1598,
+    "wait_p95_s": 0.177,
+    "wait_max_s": 0.177,
+    "refused_by": {},
+    "tokens_served": 17010
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 25,
+    "served_share": 1.0,
+    "first_attempt": 23,
+    "attempts": 28,
+    "attempts_per_request": 1.12,
+    "wait_median_s": 0.1612,
+    "wait_p95_s": 1.4182,
+    "wait_max_s": 7.2655,
+    "refused_by": {
+     "the provider's quota": 3
+    },
+    "tokens_served": 42525
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 4,
+    "served_share": 0.2105,
+    "first_attempt": 3,
+    "attempts": 95,
+    "attempts_per_request": 5.0,
+    "wait_median_s": 0.2183,
+    "wait_p95_s": 0.7743,
+    "wait_max_s": 0.7743,
+    "refused_by": {
+     "chapter 5's requests per minute": 91
+    },
+    "tokens_served": 4464
+   },
+   "w2_burst": {
+    "requests": 141,
+    "served": 9,
+    "served_share": 0.0638,
+    "first_attempt": 0,
+    "attempts": 307,
+    "attempts_per_request": 2.177,
+    "wait_median_s": 9.2502,
+    "wait_p95_s": 23.0466,
+    "wait_max_s": 23.0466,
+    "refused_by": {
+     "chapter 5's requests per minute": 192,
+     "the key's tokens per minute": 106
+    },
+    "tokens_served": 63000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 113122,
+    "peak_over_quota": 1.1312,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 47,
+      "refused": 0,
+      "tokens_charged": 123060
+     },
+     "w3-incident": {
+      "admitted": 25,
+      "refused": 3,
+      "tokens_charged": 42525
+     }
+    }
+   }
+  },
+  {
+   "name": "deployment limits",
+   "round": 3,
+   "what": "tpm, rpm and max_parallel_requests on the deployment, under enforce_model_rate_limits",
+   "config": "litellm.deployment.yaml",
+   "tpm_limit": null,
+   "proxy_back_in_s": 16.39,
+   "w3_in_the_burst": {
+    "requests": 10,
+    "served": 4,
+    "served_share": 0.4,
+    "first_attempt": 2,
+    "attempts": 46,
+    "attempts_per_request": 4.6,
+    "wait_median_s": 0.3572,
+    "wait_p95_s": 45.8509,
+    "wait_max_s": 45.8509,
+    "refused_by": {
+     "the deployment's parallel requests": 2,
+     "the provider's quota": 40
+    },
+    "tokens_served": 6804
+   },
+   "w3_whole_run": {
+    "requests": 25,
+    "served": 19,
+    "served_share": 0.76,
+    "first_attempt": 17,
+    "attempts": 61,
+    "attempts_per_request": 2.44,
+    "wait_median_s": 0.1643,
+    "wait_p95_s": 45.8509,
+    "wait_max_s": 45.8509,
+    "refused_by": {
+     "the deployment's parallel requests": 2,
+     "the provider's quota": 40
+    },
+    "tokens_served": 32319
+   },
+   "w2_steady_in_the_burst": {
+    "requests": 19,
+    "served": 9,
+    "served_share": 0.4737,
+    "first_attempt": 4,
+    "attempts": 79,
+    "attempts_per_request": 4.158,
+    "wait_median_s": 0.9519,
+    "wait_p95_s": 39.2685,
+    "wait_max_s": 39.2685,
+    "refused_by": {
+     "chapter 5's requests per minute": 11,
+     "the deployment's parallel requests": 1,
+     "the provider's quota": 58
+    },
+    "tokens_served": 10044
+   },
+   "w2_burst": {
+    "requests": 17,
+    "served": 15,
+    "served_share": 0.8824,
+    "first_attempt": 8,
+    "attempts": 42,
+    "attempts_per_request": 2.471,
+    "wait_median_s": 1.075,
+    "wait_p95_s": 60.4353,
+    "wait_max_s": 60.4353,
+    "refused_by": {
+     "chapter 5's requests per minute": 10,
+     "the deployment's parallel requests": 2,
+     "the provider's quota": 15
+    },
+    "tokens_served": 105000
+   },
+   "provider": {
+    "quota": 100000,
+    "peak_reserved_in_a_minute": 115632,
+    "peak_over_quota": 1.1563,
+    "by_workflow": {
+     "w2-ops-assistant": {
+      "admitted": 59,
+      "refused": 81,
+      "tokens_charged": 177640
+     },
+     "w3-incident": {
+      "admitted": 19,
+      "refused": 40,
+      "tokens_charged": 32319
+     }
+    }
+   }
+  }
+ ],
+ "database": {
+  "stopped_for_s": 90.146,
+  "calls_before": 10,
+  "calls_while_down": 91,
+  "while_down": {
+   "200": 60,
+   "503": 31
+  },
+  "answered_from_the_key_cache": 51,
+  "the_cache_answered_until_s": 50.109,
+  "first_refusal_sent_at_s": 50.999,
+  "refusals": 31,
+  "refusal_held_its_caller_s": {
+   "median": 14.58,
+   "max": 18.783
+  },
+  "answered_after_waiting_for_the_database": 9,
+  "messages_while_down": {
+   "Service Unavailable, the authentication database is temporarily unreachable. Please retry shortly.": 31
+  },
+  "after_restart": {
+   "200": 59
+  },
+  "first_call_answered_after_restart_sent_s": 0.862,
+  "cost_of_answered_calls_usd": 0.1161,
+  "of_which_while_down_usd": 0.0459,
+  "spend_counted_usd": 0.063,
+  "spend_counted_over_answered": 0.5426
+ }
+}

@@ -1,0 +1,66 @@
+{
+  "synced_at": "2026-10-29T02:00:00Z",
+  "delta_applied_at": "2026-10-29T23:55:00Z",
+  "groups": {
+    "0681cfc3-4bd5-55aa-a29c-62f5f9c1304a": "lm-all-staff",
+    "e6d6fb9f-665f-5754-a0df-824132ecd5e9": "lm-eng-all",
+    "9b948a12-69b2-5bb2-83ef-a70538c96c7c": "lm-vault-break-glass",
+    "18a8b506-715d-5f5b-9ba6-1de5436bd17c": "lm-pci-cde-operators",
+    "bb1b0582-5348-5259-ba5b-be1e6430632e": "lm-insider-risk",
+    "de44f471-84bc-54df-99e1-4c7a6b3b4608": "lm-ea-leads",
+    "2b872f3d-e8b4-58b6-9b67-9e103582019a": "lm-security-engineering",
+    "d8548679-f1c4-51af-ab37-6b83822fcb1f": "lm-cloud-governance",
+    "1e872a82-1133-5821-8dd8-edeca153828c": "lm-sec-incident-response",
+    "5a1d40ea-e059-5c7d-90e1-0eb0e50dabbc": "lm-iam-admins",
+    "53bf0ae2-19a0-5bf5-b2bc-f3af9708e19d": "lm-legal-regulatory"
+  },
+  "broad": [
+    "lm-all-staff",
+    "lm-eng-all"
+  ],
+  "members": {
+    "05eab7f9-0e10-594a-b410-36e41b625d20": [
+      "lm-all-staff",
+      "lm-ea-leads",
+      "lm-eng-all"
+    ],
+    "150ae7ac-aad5-55f2-99a4-5a6c1a6e833f": [
+      "lm-all-staff",
+      "lm-eng-all",
+      "lm-vault-break-glass"
+    ],
+    "4cd23fbd-8358-5a5c-83ce-5fd7f4b8207e": [
+      "lm-all-staff",
+      "lm-eng-all",
+      "lm-sec-incident-response"
+    ],
+    "5e3ab547-94b8-5819-b3bf-3c8219d3ca92": [
+      "lm-all-staff",
+      "lm-cloud-governance",
+      "lm-eng-all"
+    ],
+    "b8629306-a86e-510b-bede-64d5017d894d": [
+      "lm-all-staff",
+      "lm-eng-all",
+      "lm-pci-cde-operators"
+    ],
+    "c483d1f9-4a9b-595d-91b3-5a491d64c3e4": [
+      "lm-all-staff",
+      "lm-eng-all",
+      "lm-vault-break-glass"
+    ],
+    "cc091d04-608a-525c-bf24-bdef9ee3fb83": [
+      "lm-all-staff",
+      "lm-eng-all"
+    ],
+    "d0e14fb7-ba16-51e9-80c6-8c233ac4c455": [
+      "lm-all-staff",
+      "lm-eng-all"
+    ],
+    "f1478a09-c370-5841-a2c3-8d5c03a1f0f3": [
+      "lm-all-staff",
+      "lm-eng-all",
+      "lm-legal-regulatory"
+    ]
+  }
+}

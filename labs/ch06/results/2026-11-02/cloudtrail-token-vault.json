@@ -1,0 +1,77 @@
+{
+ "source": "CloudTrail event history, read 2026-11-02; the runtime role's calls only",
+ "events": [
+  {
+   "event": "GetResourceApiKey",
+   "time": "2026-11-02T22:00:56Z",
+   "error": "AccessDenied",
+   "message": "User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-c7560cb2-239a-45d8-9096-5ab933f717a3 is not authorized to perform: bedrock-agentcore:GetResourceApiKey on resource: arn:aws:bedrock-agentcore:us-east-2:<account>:token-vault/default",
+   "invoked_by": null,
+   "resource": "arn:aws:bedrock-agentcore:us-east-2:<account>:token-vault/default/apikeycredentialprovider/w3-incident-model-gateway"
+  },
+  {
+   "event": "GetResourceApiKey",
+   "time": "2026-11-02T22:03:37Z",
+   "error": "AccessDenied",
+   "message": "Access denied when retrieving the provided secret 'arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO'. User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-13e32f62-79a6-4f36-",
+   "invoked_by": null,
+   "resource": "arn:aws:bedrock-agentcore:us-east-2:<account>:token-vault/default/apikeycredentialprovider/w3-incident-model-gateway"
+  },
+  {
+   "event": "GetSecretValue",
+   "time": "2026-11-02T22:03:37Z",
+   "error": "AccessDenied",
+   "message": "User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-13e32f62-79a6-4f36-976c-cc0ec320794f is not authorized to perform: secretsmanager:GetSecretValue on resource: arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-",
+   "invoked_by": "bedrock-agentcore.amazonaws.com",
+   "resource": "arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO"
+  },
+  {
+   "event": "GetSecretValue",
+   "time": "2026-11-02T22:03:37Z",
+   "error": "AccessDenied",
+   "message": "User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-13e32f62-79a6-4f36-976c-cc0ec320794f is not authorized to perform: secretsmanager:GetSecretValue on resource: arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-",
+   "invoked_by": "bedrock-agentcore.amazonaws.com",
+   "resource": "arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO"
+  },
+  {
+   "event": "GetResourceApiKey",
+   "time": "2026-11-02T22:07:46Z",
+   "error": "AccessDenied",
+   "message": "Access denied when retrieving the provided secret 'arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO'. User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-3b68f6ab-3c25-49c4-",
+   "invoked_by": null,
+   "resource": "arn:aws:bedrock-agentcore:us-east-2:<account>:token-vault/default/apikeycredentialprovider/w3-incident-model-gateway"
+  },
+  {
+   "event": "GetSecretValue",
+   "time": "2026-11-02T22:07:46Z",
+   "error": "AccessDenied",
+   "message": "User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-3b68f6ab-3c25-49c4-90fb-7f7aff08223c is not authorized to perform: secretsmanager:GetSecretValue on resource: arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-",
+   "invoked_by": "bedrock-agentcore.amazonaws.com",
+   "resource": "arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO"
+  },
+  {
+   "event": "GetSecretValue",
+   "time": "2026-11-02T22:07:46Z",
+   "error": "AccessDenied",
+   "message": "User: arn:aws:sts::<account>:assumed-role/w3-incident-harness/BedrockAgentCore-3b68f6ab-3c25-49c4-90fb-7f7aff08223c is not authorized to perform: secretsmanager:GetSecretValue on resource: arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-",
+   "invoked_by": "bedrock-agentcore.amazonaws.com",
+   "resource": "arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO"
+  },
+  {
+   "event": "GetResourceApiKey",
+   "time": "2026-11-02T22:10:41Z",
+   "error": null,
+   "message": "",
+   "invoked_by": null,
+   "resource": "arn:aws:bedrock-agentcore:us-east-2:<account>:token-vault/default/apikeycredentialprovider/w3-incident-model-gateway"
+  },
+  {
+   "event": "GetSecretValue",
+   "time": "2026-11-02T22:10:41Z",
+   "error": null,
+   "message": "",
+   "invoked_by": "bedrock-agentcore.amazonaws.com",
+   "resource": "arn:aws:secretsmanager:us-east-2:<account>:secret:ch06-sandbox-gateway-key-c689f760b60fdbc71300b71189-CmedvO"
+  }
+ ]
+}

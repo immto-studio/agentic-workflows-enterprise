@@ -1,0 +1,20 @@
+# W1's ingestion job: it embeds the corpus and nothing else, so its manifest names one alias and no
+# tool. On AWS the Knowledge Base embeds with its own service role, the service control policy's one
+# exception (chapter 6); here the job has its own manifest at the gateway instead. Each call carries
+# the class of the chunks in it, and a Restricted chunk may reach only a self-hosted embedding model.
+workflow: w1-ingest
+owner: sam.okafor@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 0
+data_class_max: restricted
+models: [larkspur-embed]
+regions: [ca-central-1]
+tools: {}
+never:
+  - restart_deployment
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 0.50, per_month_usd: 50, requests_per_minute: 120}
+trace_content: false

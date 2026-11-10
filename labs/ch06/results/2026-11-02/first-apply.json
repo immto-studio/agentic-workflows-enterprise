@@ -1,0 +1,162 @@
+{
+ "region": "us-east-2",
+ "checked": "2026-11-02T17:13:19-0500",
+ "runtime": {
+  "status": "READY",
+  "failureReason": null,
+  "agentRuntimeVersion": "1",
+  "platformVersion": "V1"
+ },
+ "tool_gateway": {
+  "status": "READY",
+  "statusReasons": null,
+  "authorizerType": "AWS_IAM"
+ },
+ "tool_gateway_targets": {
+  "k8s": {
+   "status": "READY",
+   "statusReasons": null,
+   "lastSynchronizedAt": "2026-11-02 21:58:26.991295+00:00"
+  },
+  "knowledge": {
+   "status": "READY",
+   "statusReasons": null,
+   "lastSynchronizedAt": "2026-11-02 21:58:42.421018+00:00"
+  }
+ },
+ "targets_listed": [
+  {
+   "name": "k8s",
+   "status": "READY"
+  },
+  {
+   "name": "knowledge",
+   "status": "READY"
+  }
+ ],
+ "policy_engine": {
+  "status": "ACTIVE",
+  "policies": [
+   {
+    "name": "w3_incident_get_pod_status",
+    "status": "ACTIVE",
+    "statusReasons": []
+   },
+   {
+    "name": "w3_incident_get_recent_alerts",
+    "status": "ACTIVE",
+    "statusReasons": []
+   },
+   {
+    "name": "w3_incident_restart_deployment",
+    "status": "ACTIVE",
+    "statusReasons": []
+   },
+   {
+    "name": "w3_incident_search_runbooks",
+    "status": "ACTIVE",
+    "statusReasons": []
+   }
+  ]
+ },
+ "knowledge_base": {
+  "status": "ACTIVE"
+ },
+ "guardrail": {
+  "status": "READY",
+  "version": "1",
+  "crossRegionDetails": {
+   "guardrailProfileId": "us.guardrail.v1:0",
+   "guardrailProfileArn": "arn:aws:bedrock:us-east-2:<account>:guardrail-profile/us.guardrail.v1:0"
+  }
+ },
+ "invocation_logging": {
+  "cloudWatchConfig": {
+   "logGroupName": "/aws/bedrock/model-invocations",
+   "roleArn": "arn:aws:iam::<account>:role/w3-incident-invocation-logging"
+  },
+  "textDataDeliveryEnabled": false,
+  "imageDataDeliveryEnabled": false,
+  "embeddingDataDeliveryEnabled": false,
+  "videoDataDeliveryEnabled": false
+ },
+ "privatelink_gateway_service": {
+  "name": "com.amazonaws.us-east-2.bedrock-agentcore.gateway",
+  "exists": true
+ },
+ "endpoints": [
+  [
+   "bedrock-agent-runtime",
+   "available"
+  ],
+  [
+   "bedrock-agentcore",
+   "available"
+  ],
+  [
+   "bedrock-agentcore.gateway",
+   "available"
+  ],
+  [
+   "bedrock-runtime",
+   "available"
+  ],
+  [
+   "ecr.api",
+   "available"
+  ],
+  [
+   "ecr.dkr",
+   "available"
+  ],
+  [
+   "logs",
+   "available"
+  ],
+  [
+   "s3",
+   "available"
+  ],
+  [
+   "sts",
+   "available"
+  ]
+ ],
+ "mcp_stand_ins": {
+  "requests": 16,
+  "methods_by_server": {
+   "k8s-mcp": {
+    "server/discover": 2,
+    "initialize": 2,
+    "notifications/initialized": 2,
+    "tools/list": 2
+   },
+   "knowledge-mcp": {
+    "server/discover": 2,
+    "initialize": 2,
+    "notifications/initialized": 2,
+    "tools/list": 2
+   }
+  },
+  "token_presented": {
+   "present": true,
+   "header": {
+    "alg": "RS256",
+    "typ": "JWT",
+    "x5t": "ryBx-65jNoxH4FQH_6zarNjaNf4",
+    "kid": "ryBx-65jNoxH4FQH_6zarNjaNf4"
+   },
+   "claims": {
+    "aud": "api://<mcp-servers-app>",
+    "iss": "https://sts.windows.net/<tenant>/",
+    "azp": null,
+    "appid": "<tool-gateway-app>",
+    "tid": "<tenant>",
+    "roles": null,
+    "ver": "1.0"
+   }
+  },
+  "actor_header_seen": false,
+  "sessions": []
+ }
+}

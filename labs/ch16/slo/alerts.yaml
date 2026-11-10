@@ -1,0 +1,115 @@
+# The alert rules (companion #14, O-D12, O-D17). No paging service runs (O-D17): slo/burn.py evaluates the rules
+# over the simulated month and prints what would page and what would open a ticket. O-D12's fast burns page and
+# everything else opens a ticket (O-D13).
+burn_rate:
+  source: >-
+    the workbook's multiwindow, multi-burn-rate table (Table 5-8), whose burn rates, long windows and budget shares
+    fact sheet section 6 quotes and whose short windows section 9.4 gives: page at burn rate 14.4 over 1 hour (2% of
+    budget) with 5 minutes, and 6 over 6 hours (5%) with 30 minutes, and ticket at burn rate 1 over 3 days (10%)
+    with 6 hours. "Burn rate is how fast, relative to the SLO, the service consumes the error budget": the bad share
+    of the window's valid events over 1 minus the target.
+  evaluate_every_minutes: 5
+  rules:
+    - {name: fast-burn-1h, action: page, burn_rate: 14.4, long_window_hours: 1, budget_share: 0.02, short_window_hours: 0.08333333333333333}
+    - {name: fast-burn-6h, action: page, burn_rate: 6, long_window_hours: 6, budget_share: 0.05, short_window_hours: 0.5}
+    - {name: slow-burn-3d, action: ticket, burn_rate: 1, long_window_hours: 72, budget_share: 0.10, short_window_hours: 6}
+  short_windows: >-
+    The workbook pairs each long window with a shorter one: "A good guideline is to make the short window 1/12 the
+    duration of the long window" (fact sheet 9.4), which makes 5 minutes for the hour (0.08333333333333333 hours
+    here, the float nearest 1/12, so that the window is exactly 300 seconds), 30 minutes for the 6 hours, and 6 hours
+    for the 3 days. burn.py fires a rule only while both windows burn at or past its rate, so an alert "exhibits a
+    better reset time by ceasing to fire five minutes later, rather than one hour later". A window with no valid event
+    has no burn rate (burn.py reads it as 0), so on a stream with few events the short window is often empty and the
+    alert stays off until a bad event falls inside it.
+  slis: [success, latency, outcome]
+  page_slis: [success, latency]
+  continues: >-
+    an alert whose condition holds again within its long window of the end of its last episode is the same alert, one
+    burst that dips and returns; burn.py counts it once. A condition that returns a long window or more after the
+    end is a new alert.
+  outcome: >-
+    the outcome SLI opens tickets and never pages: its events are a person's decisions, made minutes to days after the
+    run by someone who has already seen what W3, W4 or W5 proposed, and the policy's rung down is the answer to it
+w5_failed_nights:
+  source: >-
+    fact sheet 8.9: W5 runs once a night, "about 30 events a month, so one failed night spends a whole share of its
+    budget at once, and a burn rate tuned for steady traffic has nothing to average over; its SLO has to be written
+    in nights, with a budget of whole failed nights". The workbook's longer window for low traffic ("increasing the
+    time window used for the alerting logic ensures alerts that trigger pages are more significant") is the 30 days.
+  rules:
+    - {name: failed-night, action: ticket, when: "a night or an alarm's run that is bad for success"}
+    - {name: late-night, action: ticket, when: "a night not done by 08:00 ET, six hours after its 02:00 start"}
+    - name: nights-budget-spent
+      action: ticket
+      when: >-
+        the 30-day window's failed runs reach the budget, at the failed run that brings their count to it or past it:
+        3.4 runs at 90 percent of about 34 a month, nights and alarm runs, so three failed runs fit inside it and the
+        fourth spends it, as budget_policy.spent counts the same budget
+  page: never; nothing W5 proposes is urgent at night, and a page has to be "worthy of attention" (fact sheet 8.9)
+probe:
+  source: >-
+    the workbook's first option for a low-traffic service, "Generate artificial traffic to compensate for the lack
+    of signal from real users" (fact sheet 8.9). The probe is slo/probe.py: each hour, at minute 30, it sends its
+    workflow's golden case's first model call through the gateway with the workflow's key and tags, and counts the
+    call good when the gateway answers 200 with a reply within the probe's own limit. Where the call was served is
+    the residency control's, which the gateway enforces and its cost line records; a breach is an incident.
+  minute: 30
+  limit_s: 30
+  workflows:
+    w1: {case: gq-14/oncall.engineer, why: "an Internal question answered from larkspur-chat alone, passing in every kept run"}
+    w3: {case: w3-02, why: "one read and an answer, Confidential on larkspur-chat, passing in both kept runs"}
+    w4: {case: w4-01, why: "the first change: one rationale call on larkspur-chat, as every change makes"}
+  counts_in: >-
+    the alerts only. The error budgets and the policy count real runs; the probe's runs join a workflow's own in the
+    burn-rate windows of the design that uses it, as the workbook's artificial traffic does.
+  low_volume: >-
+    W1 (about 8 questions an hour), W3 (0.4 incidents) and W4 (0.3 changes), against the workbook's example of "10
+    requests per hour", where "a single failed request results in an hourly error rate of 10%". W2 has about 59 an
+    hour and needs none; W5 has its nights.
+designs:
+  own-traffic:
+    what: every workflow's burn-rate alerts over its own runs alone; W5 by nights
+    workflows: {w1: own, w2: own, w3: own, w4: own, w5: nights}
+  with-probe:
+    what: the lab's proposal. W1, W3 and W4 add the hourly probe's runs to their own; W2 its own; W5 by nights
+    workflows: {w1: probe, w2: own, w3: probe, w4: probe, w5: nights}
+    proposed: true
+  grouped:
+    what: >-
+      the workbook's second option, "Combine smaller services into a larger service for monitoring purposes": W1, W3
+      and W4 as one service on the success SLI, at the lowest of their targets so that W3's own step-budget stops
+      don't page the group; W2 its own; W5 by nights
+    workflows: {w1: group, w2: own, w3: group, w4: group, w5: nights}
+    group: [w1, w3, w4]
+    group_target: lowest
+platform:
+  source: >-
+    ch05:498: "The platform's on-call is paged when the gateway itself fails, or when a provider's rate limit starts
+    returning 429s across workflows", and "nobody is woken for a workflow that hit its own budget"
+  rules:
+    - name: provider-429-across-workflows
+      action: page
+      when: the provider's 429s reach two or more workflows within 5 minutes
+      signal: the gateway's `failed` cost lines whose error is the provider's rate limit, by workflow
+      evaluated: true
+      how: >-
+        burn.platform_alerts over the month's provider_429 records; a page stays open for an hour after the last 429
+        that held the condition, so one throttled hour is one page
+    - name: gateway-down
+      action: page
+      when: the gateway answers no call for 5 minutes
+      signal: >-
+        step 5b's store alert (capacity/store_hooks.py) and the proxy's readiness are the signals the lab has
+      evaluated: false
+      not_evaluated_because: >-
+        the month injects no gateway failure, and neither signal has a stand-in in the simulation; the rule is written
+        down for the chapter and burn.py has no evaluator for it
+    - name: own-limit
+      action: ticket
+      when: a workflow's own monthly budget or request rate refuses its runs
+      signal: LiteLLM's 422 and the 80 percent webhook (step 4), chapter 5's request-rate `refused` line
+      evaluated: false
+      not_evaluated_because: >-
+        the month holds no run its own budget or rate refused (no run ends in own_limit, which slis counts as not
+        valid), so there is nothing to evaluate it on; the rule is written down for the chapter and burn.py has no
+        evaluator for it

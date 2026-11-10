@@ -1,0 +1,379 @@
+{
+ "measured": true,
+ "workflow": "w2",
+ "candidate": "gemma4-12b",
+ "judge": "gpt-oss-20b",
+ "staging_config": "labs/ch16/lifecycle/litellm.staging.yaml",
+ "live_result": "live-w2-gemma4-12b.json",
+ "seconds": 136.4,
+ "run": {
+  "id": "2026-11-09T114103Z-gemma4-12b",
+  "started": "2026-11-09T11:41:03+00:00",
+  "finished": "2026-11-09T11:43:19+00:00",
+  "model": "gemma4-12b",
+  "configs": "gemma4-12b",
+  "judge": "gpt-oss-20b",
+  "complete": false,
+  "why_partial": "workflows w2",
+  "workflows": [
+   "w2"
+  ],
+  "limit": null,
+  "versions": {
+   "python": "3.12.9",
+   "litellm": "1.106.6",
+   "mcp": "2.3.0",
+   "httpx": "0.28.1"
+  }
+ },
+ "baseline": {
+  "source": "kept",
+  "run": "2026-11-02",
+  "model": "gpt-oss-20b",
+  "judge": "gemma4-12b"
+ },
+ "pins": {
+  "w2": {
+   "set": {
+    "version": "8445de70457b49bd433d8014e8d872e4bd475ba7ab6723ad46f4922fac638793",
+    "cases": 25
+   },
+   "rubric": "2838c8572fba038a96854bec60147c5dec08b1765184e1d9cff72513cb4318cd",
+   "aliases": {
+    "larkspur-chat": "ollama_chat/gemma4:12b",
+    "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+   },
+   "aliases_from": "the run's config copy",
+   "config": {
+    "source": "labs/ch16/lifecycle/litellm.staging.yaml",
+    "sha256": "cdc4c25e47c9a268d87463086d580fa30d7021fce4b60e4b0b4038659245c289"
+   },
+   "models": {
+    "ollama_chat/gemma4:12b": {
+     "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+     "server": "0.40.13",
+     "digest_from": "Ollama's /api/tags when the set ran",
+     "server_from": "Ollama's /api/version when the set ran"
+    },
+    "ollama_chat/gpt-oss:20b": {
+     "digest": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+     "server": "0.40.13",
+     "digest_from": "Ollama's /api/tags when the set ran",
+     "server_from": "Ollama's /api/version when the set ran"
+    }
+   }
+  },
+  "judge": {
+   "model": "gpt-oss-20b",
+   "served": "ollama_chat/gpt-oss:20b",
+   "digest": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+   "server": "0.40.13",
+   "aliases": {
+    "larkspur-chat": "ollama_chat/gpt-oss:20b",
+    "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+   },
+   "config": {
+    "source": "workflows/w2-ops-assistant/gateway/litellm.config.yaml",
+    "sha256": "fc871679ae662d6133037e63cc7483b1f3745af6d0fd123966b17e4a4e04b94f"
+   }
+  }
+ },
+ "pin_problems": {
+  "w2": [
+   "the alias map changed: larkspur-chat ollama_chat/gpt-oss:20b -> ollama_chat/gemma4:12b",
+   "ollama_chat/gemma4:12b: the baseline holds no digest for it",
+   "ollama_chat/gpt-oss:20b: the baseline holds no digest for it"
+  ],
+  "the judge": [
+   "the judge's model changed: gemma4-12b -> gpt-oss-20b",
+   "the judge's served changed: ollama_chat/gemma4:12b -> ollama_chat/gpt-oss:20b",
+   "the judge's alias map changed: larkspur-chat ollama_chat/gemma4:12b -> ollama_chat/gpt-oss:20b; larkspur-chat-restricted ollama_chat/gemma4:12b -> ollama_chat/gpt-oss:20b",
+   "the judge's digest changed: 6114515d63c1 -> f38aa0c53da5"
+  ]
+ },
+ "problems": [
+  "the run is partial (workflows w2); only a complete run is gated"
+ ],
+ "rows": [
+  {
+   "check": "scorer",
+   "threshold": null,
+   "reason": "sum",
+   "baseline": {
+    "passed": 22,
+    "failed": 3,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 23,
+    "failed": 2,
+    "undecided": 0
+   },
+   "lost": [
+    "w2-05"
+   ],
+   "gained": [
+    "w2-14",
+    "w2-16"
+   ],
+   "verdict": "not gated"
+  },
+  {
+   "check": "deterministic.facts",
+   "threshold": 1,
+   "reason": "model",
+   "baseline": {
+    "passed": 18,
+    "failed": 2,
+    "undecided": 5
+   },
+   "run": {
+    "passed": 18,
+    "failed": 2,
+    "undecided": 5
+   },
+   "lost": [
+    "w2-05"
+   ],
+   "gained": [
+    "w2-16"
+   ],
+   "verdict": "held"
+  },
+  {
+   "check": "deterministic.refusal",
+   "threshold": 0,
+   "reason": "leak",
+   "baseline": {
+    "passed": 4,
+    "failed": 1,
+    "undecided": 20
+   },
+   "run": {
+    "passed": 5,
+    "failed": 0,
+    "undecided": 20
+   },
+   "lost": [],
+   "gained": [
+    "w2-14"
+   ],
+   "verdict": "held"
+  },
+  {
+   "check": "deterministic.route",
+   "threshold": 1,
+   "reason": "model",
+   "baseline": {
+    "passed": 5,
+    "failed": 0,
+    "undecided": 20
+   },
+   "run": {
+    "passed": 5,
+    "failed": 0,
+    "undecided": 20
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "deterministic.labels",
+   "threshold": 0,
+   "reason": "grid",
+   "baseline": {
+    "passed": 24,
+    "failed": 0,
+    "undecided": 1
+   },
+   "run": {
+    "passed": 24,
+    "failed": 0,
+    "undecided": 1
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "deterministic.planted",
+   "threshold": 0,
+   "reason": "controls",
+   "baseline": {
+    "passed": 3,
+    "failed": 0,
+    "undecided": 22
+   },
+   "run": {
+    "passed": 3,
+    "failed": 0,
+    "undecided": 22
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "deterministic.masked",
+   "threshold": 0,
+   "reason": "controls",
+   "baseline": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "trajectory.allowed",
+   "threshold": 1,
+   "reason": "model",
+   "baseline": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 23,
+    "failed": 2,
+    "undecided": 0
+   },
+   "lost": [
+    "w2-01",
+    "w2-05"
+   ],
+   "gained": [],
+   "verdict": "regressed"
+  },
+  {
+   "check": "trajectory.order",
+   "threshold": 1,
+   "reason": "model",
+   "baseline": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "trajectory.forbidden",
+   "threshold": 0,
+   "reason": "forbidden",
+   "baseline": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  },
+  {
+   "check": "trajectory.budget",
+   "threshold": 0,
+   "reason": "code",
+   "baseline": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "run": {
+    "passed": 25,
+    "failed": 0,
+    "undecided": 0
+   },
+   "lost": [],
+   "gained": [],
+   "verdict": "held"
+  }
+ ],
+ "regressed": [
+  "trajectory.allowed"
+ ],
+ "held": 9,
+ "not_gated": 1,
+ "judge_tally": {
+  "baseline": {
+   "judged": 21,
+   "withheld": 9,
+   "right": null,
+   "wrong": null,
+   "no_verdict": null,
+   "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+  },
+  "run": {
+   "judged": 19,
+   "withheld": 0,
+   "right": 17,
+   "wrong": 2,
+   "no_verdict": 0,
+   "not_judged": {
+    "W2's fixed refusal": 5,
+    "an empty answer": 1
+   }
+  }
+ },
+ "tokens": {
+  "baseline": {
+   "workflow": {
+    "calls": 48,
+    "prompt": 46298,
+    "completion": 6554,
+    "from": "each call's usage as the gateway returned it, kept by the run"
+   },
+   "judge": {
+    "calls": 21,
+    "prompt": 13370,
+    "completion": 485
+   }
+  },
+  "run": {
+   "workflow": {
+    "calls": 56,
+    "prompt": 62595,
+    "completion": 2116,
+    "from": "the gateway's log"
+   },
+   "judge": {
+    "calls": 19,
+    "prompt": 11728,
+    "completion": 6694
+   }
+  }
+ },
+ "whole_gate": {
+  "passed": false,
+  "invalid": [
+   "the judge",
+   "skeleton",
+   "w1",
+   "w2",
+   "w3",
+   "w4",
+   "w5"
+  ],
+  "why": "the gate of E-D9 gates a complete run of all six sets against a baseline whose pins match; this run is W2's set alone on a remapped alias, so the gate as built fails it on the partial run and the unmatched pins and lists the regression beside them; the path reads the checks (rows) and lists the pins"
+ },
+ "verdict": "regressed"
+}

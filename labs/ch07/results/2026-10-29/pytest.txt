@@ -1,0 +1,7 @@
+# chapter 7 environment (labs/ch07/requirements.txt)
+...................sssssssss.......................                      [100%]
+42 passed, 9 skipped in 3.20s
+
+# chapter 5 environment (labs/ch05/requirements.txt), image tests
+.................                                                        [100%]
+17 passed in 5.99s

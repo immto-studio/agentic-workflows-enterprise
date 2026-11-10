@@ -1,0 +1,11 @@
+# Before chapter 8's first apply on the trial subscription, 2026-11-02 (sandbox/sandbox.py and the scratchpad's azure_prepare.py); IDs removed
+# The subscription under the lab's service principal, the resource providers after registration, gpt-4o's availability and quota in Canada East
+providers: all registered
+model: ('gpt-4.1-mini', '2025-04-14', ('Standard', 'GlobalStandard', 'GlobalStandard', 'DeveloperTier', 'GlobalProvisionedManaged', 'GlobalBatch'), 'Legacy')
+model: ('gpt-4o', '2024-05-13', ('GlobalStandard', 'ProvisionedManaged', 'GlobalBatch', 'GlobalProvisionedManaged'), 'Deprecating')
+model: ('gpt-4o', '2024-08-06', ('GlobalStandard', 'ProvisionedManaged', 'GlobalProvisionedManaged', 'GlobalStandard', 'GlobalBatch'), 'Deprecating')
+model: ('gpt-4o', '2024-11-20', ('Standard', 'ProvisionedManaged', 'GlobalStandard', 'GlobalBatch', 'GlobalProvisionedManaged'), 'Legacy')
+model: ('gpt-4o-mini', '2024-07-18', ('GlobalStandard', 'GlobalBatch', 'ProvisionedManaged', 'GlobalStandard', 'GlobalProvisionedManaged'), 'Deprecating')
+model: ('gpt-5.1', '2025-11-13', ('GlobalStandard', 'ProvisionedManaged', 'GlobalProvisionedManaged', 'GlobalBatch'), 'GenerallyAvailable')
+canadaeast quota rows: [('OpenAI.GlobalStandard.gpt-4o-finetune', 0, 0), ('OpenAI.GlobalStandard.gpt-4o-mini-finetune', 0, 0), ('OpenAI.GlobalBatch.gpt-4o', 0, 0), ('OpenAI.GlobalBatch.gpt-4o-mini', 0, 0), ('OpenAI.Provisioned.gpt-4o-audio-preview', 0, 0), ('OpenAI.Standard.gpt-4o', 0, 0), ('OpenAI.GlobalStandard.gpt-4o', 0, 0), ('OpenAI.GlobalStandard.gpt-4o-mini', 0, 0), ('AccountCount', 1, 200)]
+ContainerRegistry RP: Registered

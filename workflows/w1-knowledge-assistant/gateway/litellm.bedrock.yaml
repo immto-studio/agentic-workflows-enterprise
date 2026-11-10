@@ -1,0 +1,66 @@
+# W1's gateway with the managed model chapter 6 chose: larkspur-chat on Amazon Nova Lite through the
+# Canada profile, as on AWS; larkspur-chat-restricted and larkspur-embed stay on the workstation,
+# because Restricted text goes only to a model Larkspur runs and the index was built with qwen3.
+#
+# The Canada profile serves from ca-central-1 and ca-west-1, so serves_from lists both and W1's
+# manifest names both Regions (chapter 6's rule compares every destination with the manifest).
+# Claude Haiku 5.5 also has a Canada profile since 22 October 2026, but a free-plan account can't
+# call it ("not available for this account", 29 October 2026), so the lab compares Nova Lite alone.
+#
+# Credentials come from the environment only, never from this file: boto3 reads AWS_PROFILE,
+# AWS_SHARED_CREDENTIALS_FILE and AWS_CONFIG_FILE when the proxy starts.
+#
+# Run (from workflows/w1-knowledge-assistant/gateway):
+#   AWS_PROFILE=<profile> LITELLM_MASTER_KEY=<a local value> \
+#     litellm --config litellm.bedrock.yaml --host 127.0.0.1 --port 4012
+
+model_list:
+  - model_name: larkspur-embed
+    litellm_params:
+      model: ollama/qwen3-embedding:0.6b
+      api_base: http://127.0.0.1:11434
+      input_cost_per_token: 0
+    model_info:
+      id: local-qwen3-embedding
+      mode: embedding
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat
+    litellm_params:
+      model: bedrock/converse/ca.amazon.nova-lite-v1:0
+      aws_region_name: ca-central-1
+      # LiteLLM 1.106.6 knows the global., us., eu., apac., jp., au., and us-gov. profiles but not
+      # ca., so it takes this model for one without tools, and drop_params drops them without a
+      # word. Nova Lite then writes a search and its results as text. Allowing the tools sends
+      # them as Bedrock's toolConfig (found on 29 October 2026; tests/test_gateway_config.py).
+      allowed_openai_params: [tools]
+      input_cost_per_token: 0.000000064    # ca-central-1, AWS Price List, 2026-10-28
+      output_cost_per_token: 0.000000256
+      timeout: 120
+    model_info:
+      id: nova-lite-ca
+      region: ca-central-1                    # where the call is made
+      serves_from: [ca-central-1, ca-west-1]  # where it can be served
+      jurisdiction: CA
+      hosting: managed
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11434
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-restricted
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

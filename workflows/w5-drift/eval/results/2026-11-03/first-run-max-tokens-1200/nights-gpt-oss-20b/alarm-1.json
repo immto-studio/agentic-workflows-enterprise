@@ -1,0 +1,302 @@
+{
+ "agent": {
+  "name": "larkspur-w5-drift",
+  "oid": "e6f7a8b9-c0d1-5e2f-9a3b-4c5d6e7f8091"
+ },
+ "body_sources": {
+  "model": 3
+ },
+ "cost": {
+  "completion_tokens": 1967,
+  "failed": 0,
+  "gateway_calls": 3,
+  "prompt_tokens": 2089,
+  "refused": 0
+ },
+ "counts": {
+  "by_kind": {
+   "changed": 2,
+   "graviton_candidate": 1
+  },
+  "findings": 3,
+  "pull_requests": {
+   "opened": 0,
+   "skipped": 0,
+   "suppressed": 0,
+   "updated": 3
+  }
+ },
+ "duration_s": 55.429,
+ "failed": {},
+ "findings": [
+  {
+   "account": "lm-claims-prod",
+   "address": "aws_instance.api",
+   "attribution": {
+    "event_id": "5521e801-ebce-5326-88eb-7a802bf0a667",
+    "event_name": "ModifyInstanceAttribute",
+    "event_time": "2026-10-24T15:05:31Z",
+    "identity_type": "AssumedRole",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "i-0c1a1b2c3d4e5f001"
+    },
+    "principal_arn": "arn:aws:sts::422233334444:assumed-role/ClaimsOperator/sam.okafor",
+    "source_ip": "10.44.8.30",
+    "user_agent": "console.ec2.amazonaws.com",
+    "username": "sam.okafor"
+   },
+   "estimated_monthly_saving": null,
+   "evidence": {
+    "attributes": {
+     "instance_type": {
+      "live": "m5.large",
+      "state": "t3.large"
+     }
+    }
+   },
+   "key": "claims-api-prod:aws_instance.api:changed",
+   "kind": "changed",
+   "region": "ca-central-1",
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "adopt",
+   "workspace": "claims-api-prod"
+  },
+  {
+   "account": "lm-claims-prod",
+   "address": "aws_security_group.billing_worker",
+   "attribution": {
+    "event_id": "393e0c91-e863-54f1-9103-d21a0e61825f",
+    "event_name": "AuthorizeSecurityGroupIngress",
+    "event_time": "2026-10-29T03:12:47Z",
+    "identity_type": "IAMUser",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "sg-0c1a1b2c3d4e5f102"
+    },
+    "principal_arn": "arn:aws:iam::422233334444:user/jenkins-deploy-prod",
+    "source_ip": "10.44.12.7",
+    "user_agent": "Jenkins/2.479.2 (job billing-worker-deploy-prod; build 4471)",
+    "username": "jenkins-deploy-prod"
+   },
+   "estimated_monthly_saving": null,
+   "evidence": {
+    "attributes": {
+     "ingress": {
+      "added": [
+       [
+        "tcp",
+        8080,
+        8080,
+        "0.0.0.0/0"
+       ]
+      ],
+      "descriptions": {
+       "[\"tcp\", 8080, 8080, \"0.0.0.0/0\"]": "temp: jenkins smoke test"
+      },
+      "live": [
+       [
+        "tcp",
+        443,
+        443,
+        "10.44.0.0/16"
+       ],
+       [
+        "tcp",
+        8080,
+        8080,
+        "0.0.0.0/0"
+       ]
+      ],
+      "removed": [],
+      "state": [
+       [
+        "tcp",
+        443,
+        443,
+        "10.44.0.0/16"
+       ]
+      ]
+     }
+    }
+   },
+   "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "kind": "changed",
+   "region": "ca-central-1",
+   "resource_id": "sg-0c1a1b2c3d4e5f102",
+   "resource_type": "aws_security_group",
+   "suppressed_by": null,
+   "template": "revert",
+   "workspace": "claims-api-prod"
+  },
+  {
+   "account": "lm-claims-prod",
+   "address": "aws_instance.api",
+   "attribution": {
+    "event_id": "5521e801-ebce-5326-88eb-7a802bf0a667",
+    "event_name": "ModifyInstanceAttribute",
+    "event_time": "2026-10-24T15:05:31Z",
+    "identity_type": "AssumedRole",
+    "lookup": {
+     "AttributeKey": "ResourceName",
+     "AttributeValue": "i-0c1a1b2c3d4e5f001"
+    },
+    "principal_arn": "arn:aws:sts::422233334444:assumed-role/ClaimsOperator/sam.okafor",
+    "source_ip": "10.44.8.30",
+    "user_agent": "console.ec2.amazonaws.com",
+    "username": "sam.okafor"
+   },
+   "estimated_monthly_saving": 17.18,
+   "evidence": {
+    "adr": "ADR-0050",
+    "architecture": "x86_64",
+    "code_instance_type": "t3.large",
+    "cost": {
+     "fraction": 0.2,
+     "monthly": 85.9,
+     "period": "2026-10",
+     "unit": "synthetic"
+    },
+    "family": "m5",
+    "instance_type": "m5.large",
+    "suggested_family": "m7g",
+    "suggested_type": "m7g.large"
+   },
+   "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "kind": "graviton_candidate",
+   "region": "ca-central-1",
+   "resource_id": "i-0c1a1b2c3d4e5f001",
+   "resource_type": "aws_instance",
+   "suppressed_by": null,
+   "template": "instance_type",
+   "workspace": "claims-api-prod"
+  }
+ ],
+ "golden_id": "alarm-1",
+ "ledger": {
+  "file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run\\nights\\ledger.json",
+  "pull_request_states": {
+   "claims-api-prod:aws_instance.api:changed": "open",
+   "claims-api-prod:aws_instance.api:graviton_candidate": "open",
+   "claims-api-prod:aws_security_group.billing_worker:changed": "open",
+   "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged": "open",
+   "sandbox-quill:aws_ebs_volume.archive:unattached_volume": "merged",
+   "sandbox-quill:aws_ebs_volume.scratch:missing": "open",
+   "sandbox-quill:aws_instance.batch:idle": "open",
+   "sandbox-quill:aws_instance.notebook:graviton_candidate": "open",
+   "sandbox-quill:aws_instance.notebook:untagged": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60501:unmanaged": "open",
+   "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged": "open",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume": "open",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged": "open",
+   "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged": "open"
+  },
+  "realized": []
+ },
+ "locks": {
+  "cloud-mcp": {
+   "describe_resources": "e9513e671807",
+   "get_cpu_utilization": "8813dec127b6",
+   "get_resources_by_tag": "89d512ad7775",
+   "lookup_events": "cb5b699a5f50"
+  },
+  "cost-mcp": {
+   "describe_budgets": "8bf498cdfc70",
+   "get_anomalies": "6f0f1f583941",
+   "get_cost_and_usage": "656e870b42d4",
+   "get_cost_by_resource": "ec11d277b7dd",
+   "read_cost_export": "af4477b1ef86"
+  },
+  "policy-mcp": {
+   "get_tagging_standard": "a6eaec06276a",
+   "list_policy_exceptions": "617b28643c28"
+  },
+  "state-mcp": {
+   "get_state": "26e51e8ebc2e",
+   "get_state_version": "01b6bb351f60",
+   "list_state_versions": "cb33e81a6d0b",
+   "list_workspaces": "efeec45e4902"
+  }
+ },
+ "log_file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run\\nights\\alarm-2026-11-03-lm-claims-prod.jsonl",
+ "night": "2026-11-03",
+ "pull_requests": [
+  {
+   "action": "updated",
+   "body_source": "model",
+   "branch": "w5/claims-api-prod-aws_instance.api-changed",
+   "key": "claims-api-prod:aws_instance.api:changed",
+   "number": 2301,
+   "pushed": false,
+   "reason": "",
+   "refused_words": [],
+   "repo": "larkspur-mutual/platform-infra",
+   "title": "Instance type drift detected on claims-api-prod: aws_instance.api"
+  },
+  {
+   "action": "updated",
+   "body_source": "model",
+   "branch": "w5/claims-api-prod-aws_security_group.billing_worker-changed",
+   "key": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "number": 2302,
+   "pushed": false,
+   "reason": "",
+   "refused_words": [],
+   "repo": "larkspur-mutual/platform-infra",
+   "title": "Revert unauthorized ingress rule on billing_worker security group"
+  },
+  {
+   "action": "updated",
+   "body_source": "model",
+   "branch": "w5/claims-api-prod-aws_instance.api-graviton_candidate",
+   "key": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "number": 2303,
+   "pushed": false,
+   "reason": "",
+   "refused_words": [],
+   "repo": "larkspur-mutual/platform-infra",
+   "title": "Graviton candidate for aws_instance.api in claims-api-prod"
+  }
+ ],
+ "record_file": "<companion>\\workflows\\w5-drift\\eval\\_lab\\run\\nights\\alarm-2026-11-03-lm-claims-prod.json",
+ "refused": {},
+ "refused_words": {},
+ "seconds": 55.5,
+ "spend": {
+  "lm-claims-prod": 21718.24
+ },
+ "started": "2026-11-03T06:11:03+00:00",
+ "trace_id": "864ae04a8e41481d880f364007cf1ade",
+ "trigger": {
+  "account": "lm-claims-prod",
+  "alert": "budget:claims-monthly:FORECASTED:100",
+  "budget": "claims-monthly",
+  "kind": "budget",
+  "notification_type": "FORECASTED",
+  "state": {
+   "actual": "1402.10",
+   "budget": "lm-claims-prod-monthly",
+   "forecasted": "25930.00",
+   "found": true,
+   "limit": "24000.00",
+   "matched_by": "the account's one budget",
+   "notification": {
+    "ComparisonOperator": "GREATER_THAN",
+    "NotificationState": "ALARM",
+    "NotificationType": "FORECASTED",
+    "Threshold": 100.0,
+    "ThresholdType": "PERCENTAGE"
+   }
+  },
+  "threshold": 100.0
+ },
+ "workspaces": [
+  "claims-api-prod"
+ ],
+ "workspaces_read": [
+  "claims-api-prod"
+ ]
+}

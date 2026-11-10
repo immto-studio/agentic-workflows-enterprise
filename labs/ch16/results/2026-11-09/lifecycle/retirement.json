@@ -1,0 +1,734 @@
+{
+ "measured": true,
+ "simulated": false,
+ "rules": {
+  "source": "chapters 7 and 8's rule, as their labs hold it: a test fails 90 days before a pinned model retires, which is when the register says to move the alias (labs/ch07/tests/test_models_and_costs.py, labs/ch08/tests/test_models_and_costs.py); O-D15's review window, the models within 180 days of retirement in the monthly review; and chapter 6's Legacy rules (labs/ch06/models.yaml): a Legacy notice on a pinned model or its fallback needs the weekly call that keeps the fallback's access, since an account that doesn't use a Legacy model for fifteen days may lose it, and after three months in Legacy the price rises.",
+  "evaluate": "once a day, from the register as committed; the dates below are days before the retirement date",
+  "windows": {
+   "alert_days": 90,
+   "review_days": 180
+  },
+  "rules": [
+   {
+    "name": "retired-still-pinned",
+    "action": "page",
+    "when": "a pinned model is past its retirement date; its calls fail, so the platform's on-call is paged (ch05:498)"
+   },
+   {
+    "name": "retirement-90d",
+    "action": "ticket",
+    "when": "a pinned model retires within 90 days; the ticket is the alias move, to the model's owner"
+   },
+   {
+    "name": "retirement-180d-review",
+    "action": "review",
+    "when": "any model in the register retires within 180 days, pinned or not; the row goes into the monthly review (O-D15), where a model Larkspur doesn't run on is the market moving and a pinned one is a move to plan"
+   },
+   {
+    "name": "legacy-notice",
+    "action": "ticket",
+    "when": "a pinned model is in a provider's notice stage (AWS Legacy; Foundry Legacy or Deprecated): chapter 6's weekly call keeps a Legacy fallback's access, and the review names the extended-access price"
+   },
+   {
+    "name": "unscheduled",
+    "action": "none",
+    "when": "no retirement date is published. Where the provider gives an earliest possible date, the row shows it, and a passed earliest date means a notice can come any day with the provider's minimum period"
+   }
+  ],
+  "notice_periods": "what the provider promises before a retirement, from the fact sheets: AWS at least six months of Legacy for models launched before 7 September 2026 and 45 days or six months after it; Google at least 45 days; Foundry at least 60 days for a GA model and 30 for a preview. The alert has its 90 days only where the date is published that far ahead, which AWS's six-month Legacy period and Foundry's retirement date set eighteen months out at GA give it. Under a shorter promise (AWS's 45-day period, Google's 45 days, Foundry's 60 and 30) the date can arrive inside the window, and the alert then fires on the day it is published."
+ },
+ "dates": {
+  "2026-11-09": {
+   "on": "2026-11-09",
+   "windows": {
+    "alert_days": 90,
+    "review_days": 180
+   },
+   "counts": {
+    "retired": 0,
+    "alert": 1,
+    "review": 4,
+    "clear": 0,
+    "unscheduled": 8
+   },
+   "rows": [
+    {
+     "model": "aws-nova-lite",
+     "name": "Amazon Nova Lite",
+     "cloud": "aws",
+     "pinned": true,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-12-05",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-mistral-large",
+     "name": "Mistral Large (24.02)",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-02-26",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-09-28",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-haiku-5-5",
+     "name": "Claude Haiku 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-10-07",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-3-haiku",
+     "name": "Claude 3 Haiku",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2026-11-13",
+     "earliest": null,
+     "days_left": 4,
+     "state": "alert"
+    },
+    {
+     "model": "aws-llama3-70b",
+     "name": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2027-03-30",
+     "earliest": null,
+     "days_left": 141,
+     "state": "review"
+    },
+    {
+     "model": "google-gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": null,
+     "earliest": "2027-05-19",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": "2027-04-01",
+     "earliest": null,
+     "days_left": 143,
+     "state": "review"
+    },
+    {
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "stage": "Legacy",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": 156,
+     "state": "review"
+    },
+    {
+     "model": "azure-gpt-4-1-mini",
+     "name": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "stage": "Deprecated",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": 156,
+     "state": "review"
+    },
+    {
+     "model": "local-gpt-oss-20b",
+     "name": "gpt-oss-20b",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-gemma4-12b",
+     "name": "Gemma 4 12B",
+     "cloud": "local",
+     "pinned": false,
+     "stage": "candidate",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-qwen3-embedding-0-6b",
+     "name": "Qwen3 Embedding 0.6B",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    }
+   ],
+   "alerts": [
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "aws-claude-3-haiku",
+     "name": "Claude 3 Haiku",
+     "cloud": "aws",
+     "pinned": false,
+     "retires": "2026-11-13",
+     "days_left": 4,
+     "detail": "retires in 4 days; not behind a Larkspur alias"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "aws-llama3-70b",
+     "name": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "retires": "2027-03-30",
+     "days_left": 141,
+     "detail": "retires in 141 days; not behind a Larkspur alias"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "retires": "2027-04-01",
+     "days_left": 143,
+     "detail": "retires in 143 days; Larkspur runs on it"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": 156,
+     "detail": "retires in 156 days; Larkspur runs on it"
+    },
+    {
+     "rule": "legacy-notice",
+     "action": "ticket",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": 156,
+     "detail": "in Legacy, with no start date on the provider's schedule"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "azure-gpt-4-1-mini",
+     "name": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "retires": "2027-04-14",
+     "days_left": 156,
+     "detail": "retires in 156 days; not behind a Larkspur alias"
+    }
+   ],
+   "pages": 0,
+   "tickets": 1,
+   "review_rows": 5
+  },
+  "2027-02-01": {
+   "on": "2027-02-01",
+   "windows": {
+    "alert_days": 90,
+    "review_days": 180
+   },
+   "counts": {
+    "retired": 1,
+    "alert": 4,
+    "review": 0,
+    "clear": 0,
+    "unscheduled": 8
+   },
+   "rows": [
+    {
+     "model": "aws-nova-lite",
+     "name": "Amazon Nova Lite",
+     "cloud": "aws",
+     "pinned": true,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-12-05",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-mistral-large",
+     "name": "Mistral Large (24.02)",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-02-26",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-09-28",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-haiku-5-5",
+     "name": "Claude Haiku 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-10-07",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-3-haiku",
+     "name": "Claude 3 Haiku",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2026-11-13",
+     "earliest": null,
+     "days_left": -80,
+     "state": "retired"
+    },
+    {
+     "model": "aws-llama3-70b",
+     "name": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2027-03-30",
+     "earliest": null,
+     "days_left": 57,
+     "state": "alert"
+    },
+    {
+     "model": "google-gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": null,
+     "earliest": "2027-05-19",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": "2027-04-01",
+     "earliest": null,
+     "days_left": 59,
+     "state": "alert"
+    },
+    {
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "stage": "Legacy",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": 72,
+     "state": "alert"
+    },
+    {
+     "model": "azure-gpt-4-1-mini",
+     "name": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "stage": "Deprecated",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": 72,
+     "state": "alert"
+    },
+    {
+     "model": "local-gpt-oss-20b",
+     "name": "gpt-oss-20b",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-gemma4-12b",
+     "name": "Gemma 4 12B",
+     "cloud": "local",
+     "pinned": false,
+     "stage": "candidate",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-qwen3-embedding-0-6b",
+     "name": "Qwen3 Embedding 0.6B",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    }
+   ],
+   "alerts": [
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "aws-llama3-70b",
+     "name": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "retires": "2027-03-30",
+     "days_left": 57,
+     "detail": "retires in 57 days; not behind a Larkspur alias"
+    },
+    {
+     "rule": "retirement-90d",
+     "action": "ticket",
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "retires": "2027-04-01",
+     "days_left": 59,
+     "detail": "retires in 59 days; replacement: none processed in Canada on 28 October 2026: gemini-embedding-001 and gemini-embedding-2 process in the US and EU only, so after 1 April 2027 no embedding model processed in Canada remains on the platform"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "retires": "2027-04-01",
+     "days_left": 59,
+     "detail": "retires in 59 days; Larkspur runs on it"
+    },
+    {
+     "rule": "retirement-90d",
+     "action": "ticket",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": 72,
+     "detail": "retires in 72 days; replacement: gpt-5.1 2025-11-13 (GA, retiring 2027-05-15), which Canada had only as a regional provisioned deployment in Canada East and as Global deployments, not as a Standard one"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": 72,
+     "detail": "retires in 72 days; Larkspur runs on it"
+    },
+    {
+     "rule": "legacy-notice",
+     "action": "ticket",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": 72,
+     "detail": "in Legacy, with no start date on the provider's schedule"
+    },
+    {
+     "rule": "retirement-180d-review",
+     "action": "review",
+     "model": "azure-gpt-4-1-mini",
+     "name": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "retires": "2027-04-14",
+     "days_left": 72,
+     "detail": "retires in 72 days; not behind a Larkspur alias"
+    }
+   ],
+   "pages": 0,
+   "tickets": 3,
+   "review_rows": 4
+  },
+  "2027-05-01": {
+   "on": "2027-05-01",
+   "windows": {
+    "alert_days": 90,
+    "review_days": 180
+   },
+   "counts": {
+    "retired": 5,
+    "alert": 0,
+    "review": 0,
+    "clear": 0,
+    "unscheduled": 8
+   },
+   "rows": [
+    {
+     "model": "aws-nova-lite",
+     "name": "Amazon Nova Lite",
+     "cloud": "aws",
+     "pinned": true,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-12-05",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-mistral-large",
+     "name": "Mistral Large (24.02)",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2025-02-26",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": true
+    },
+    {
+     "model": "aws-claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-09-28",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-haiku-5-5",
+     "name": "Claude Haiku 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Active",
+     "retires": null,
+     "earliest": "2027-10-07",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "aws-claude-3-haiku",
+     "name": "Claude 3 Haiku",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2026-11-13",
+     "earliest": null,
+     "days_left": -169,
+     "state": "retired"
+    },
+    {
+     "model": "aws-llama3-70b",
+     "name": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2027-03-30",
+     "earliest": null,
+     "days_left": -32,
+     "state": "retired"
+    },
+    {
+     "model": "google-gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": null,
+     "earliest": "2027-05-19",
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": "2027-04-01",
+     "earliest": null,
+     "days_left": -30,
+     "state": "retired"
+    },
+    {
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "stage": "Legacy",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": -17,
+     "state": "retired"
+    },
+    {
+     "model": "azure-gpt-4-1-mini",
+     "name": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "stage": "Deprecated",
+     "retires": "2027-04-14",
+     "earliest": null,
+     "days_left": -17,
+     "state": "retired"
+    },
+    {
+     "model": "local-gpt-oss-20b",
+     "name": "gpt-oss-20b",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-gemma4-12b",
+     "name": "Gemma 4 12B",
+     "cloud": "local",
+     "pinned": false,
+     "stage": "candidate",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    },
+    {
+     "model": "local-qwen3-embedding-0-6b",
+     "name": "Qwen3 Embedding 0.6B",
+     "cloud": "local",
+     "pinned": true,
+     "stage": "serving",
+     "retires": null,
+     "earliest": null,
+     "days_left": null,
+     "state": "unscheduled",
+     "earliest_passed": false
+    }
+   ],
+   "alerts": [
+    {
+     "rule": "retired-still-pinned",
+     "action": "page",
+     "model": "google-text-multilingual-embedding-002",
+     "name": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "retires": "2027-04-01",
+     "days_left": -30,
+     "detail": "retired 30 days ago and still pinned"
+    },
+    {
+     "rule": "retired-still-pinned",
+     "action": "page",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": -17,
+     "detail": "retired 17 days ago and still pinned"
+    },
+    {
+     "rule": "legacy-notice",
+     "action": "ticket",
+     "model": "azure-gpt-4o",
+     "name": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "retires": "2027-04-14",
+     "days_left": -17,
+     "detail": "in Legacy, with no start date on the provider's schedule"
+    }
+   ],
+   "pages": 2,
+   "tickets": 1,
+   "review_rows": 0
+  }
+ }
+}

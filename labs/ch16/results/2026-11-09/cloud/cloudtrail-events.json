@@ -1,0 +1,1156 @@
+{
+ "about": "CloudTrail event history, us-east-2, the sessions of step 7's tool role; account IDs, access key IDs, principal IDs, user names, and addresses replaced",
+ "Records": [
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "<principal-id>",
+    "arn": "arn:aws:iam::<account>:user/<user>",
+    "accountId": "<account>",
+    "accessKeyId": "akia-9f6de001d85f",
+    "userName": "<user>"
+   },
+   "eventTime": "2026-11-09T10:02:10Z",
+   "eventSource": "sts.amazonaws.com",
+   "eventName": "AssumeRole",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/D,N,b,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "roleArn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+    "roleSessionName": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "durationSeconds": 900,
+    "tags": [
+     {
+      "key": "workflow",
+      "value": "w3-incident"
+     },
+     {
+      "key": "trace_id",
+      "value": "5de3012d83cd461e9d1c74d4cc3259df"
+     }
+    ]
+   },
+   "responseElements": {
+    "credentials": {
+     "accessKeyId": "asia-40084311aa1b",
+     "sessionToken": "<session-token>",
+     "expiration": "2026-11-09T10:17:10Z"
+    },
+    "assumedRoleUser": {
+     "assumedRoleId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+     "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e"
+    },
+    "packedPolicySize": 21,
+    "sessionTokenUtilization": 21,
+    "sessionTokenSize": 872
+   },
+   "additionalEventData": {
+    "ExtendedRequestId": "MTp1cy1lYXN0LTI6UzoxNzk0MjE4NTMwMjc0OlI6azNmMXNlVE0=",
+    "RequestDetails": {
+     "endpointType": "regional",
+     "awsServingRegion": "us-east-2"
+    }
+   },
+   "requestID": "116f1b79-3daf-44f4-84d1-4977cf3cf4f6",
+   "eventID": "a005400b-3fae-474a-8000-75d5fac193f5",
+   "readOnly": true,
+   "resources": [
+    {
+     "accountId": "<account>",
+     "type": "AWS::IAM::Role",
+     "ARN": "arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+    }
+   ],
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "sts.us-east-2.amazonaws.com",
+    "keyExchange": "secp256r1"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:10Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "f247f3d9-3ae4-4a65-9ba7-cb68d6da2ee5",
+   "eventID": "26ec0b6d-8c34-4119-9ec8-c16fc6659bce",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:11Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "17706b78-7474-474b-9add-add5f92763ee",
+   "eventID": "841c6810-3532-4732-b1e7-4dd0f58c7aaa",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:12Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "a2e50d5b-2a52-4f3d-9a86-f4d7e73bcd6e",
+   "eventID": "d1281bd1-0736-4b6a-ba20-c95d42dd56a3",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:13Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "88087723-be04-4746-be4a-815a71f3d22a",
+   "eventID": "8418c100-4424-425a-b765-0221a7fa391f",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:13Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "d78697ee-8bb9-40c9-b8ba-bd678658bf5a",
+   "eventID": "c3142029-58c7-4b59-be68-46d23ddc5696",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:14Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "d61d6c97-5599-4a76-9350-11ad631d5371",
+   "eventID": "fccd95d4-948f-4e77-bc49-df86a4c24ed7",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:15Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "71781502-8c31-4844-8ace-2ba32b76969d",
+   "eventID": "97f45ffb-079d-41e8-a7e0-f9b13df9e2a6",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:16Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "9a2bfa27-18c2-485d-9827-ae7bd97c1716",
+   "eventID": "3cfba2e5-6e9e-42d8-8c33-c0f3b0136d26",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:17Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "02dd9b5e-183a-42ac-9143-0a685b69d3b9",
+   "eventID": "ebeea83e-dd8c-4f3f-be06-1acc35a45ac9",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:18Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "4e57a0c5-1a0d-4088-a898-c7bd49d51a36",
+   "eventID": "31a9a1d5-eada-4bc7-858f-1f0011d8dc9b",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:19Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "9522a6e6-903e-4c81-a6db-3b37063f340f",
+   "eventID": "235c5b99-1c8d-41bb-95cb-3df029c92686",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "<principal-id>",
+    "arn": "arn:aws:iam::<account>:user/<user>",
+    "accountId": "<account>",
+    "accessKeyId": "akia-9f6de001d85f",
+    "userName": "<user>"
+   },
+   "eventTime": "2026-11-09T10:02:21Z",
+   "eventSource": "sts.amazonaws.com",
+   "eventName": "AssumeRole",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/D,N,b,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "roleArn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+    "roleSessionName": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "durationSeconds": 900,
+    "tags": [
+     {
+      "key": "workflow",
+      "value": "w3-incident"
+     },
+     {
+      "key": "trace_id",
+      "value": "4cbae03fa55e4f00b8aac041eacc67a2"
+     }
+    ]
+   },
+   "responseElements": {
+    "credentials": {
+     "accessKeyId": "asia-aa1586ede697",
+     "sessionToken": "<session-token>",
+     "expiration": "2026-11-09T10:17:21Z"
+    },
+    "assumedRoleUser": {
+     "assumedRoleId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+     "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00"
+    },
+    "packedPolicySize": 21,
+    "sessionTokenUtilization": 21,
+    "sessionTokenSize": 872
+   },
+   "additionalEventData": {
+    "ExtendedRequestId": "MTp1cy1lYXN0LTI6UzoxNzk0MjE4NTQxMjM1OlI6VDhZM3ZpQTg=",
+    "RequestDetails": {
+     "endpointType": "regional",
+     "awsServingRegion": "us-east-2"
+    }
+   },
+   "requestID": "f68a718a-fe23-42e2-af91-31d1dd6b020d",
+   "eventID": "ed2a54cc-65af-4927-84fa-6e215983f702",
+   "readOnly": true,
+   "resources": [
+    {
+     "accountId": "<account>",
+     "type": "AWS::IAM::Role",
+     "ARN": "arn:aws:iam::<account>:role/w3-incident-get-pod-status"
+    }
+   ],
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "sts.us-east-2.amazonaws.com",
+    "keyExchange": "secp256r1"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:21Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "718adce8-8379-4a88-9a18-fb2f1c4b2c59",
+   "eventID": "4fc0d128-7359-438c-b7d0-f247a8c10e02",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:22Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "6b18b921-1945-44f1-b02a-642bd8e01e70",
+   "eventID": "55e8f0d1-69a4-4c42-acce-5f7c03fa0b9b",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:23Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "db035121-bdae-478f-a852-be7ebb39a52d",
+   "eventID": "a41d7aa7-e69c-4c43-97ec-8dbfc7f65c5b",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:24Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "5bb46737-b249-4808-9bd1-d540d63ffd79",
+   "eventID": "384acabf-07a2-4d0a-b215-631df4b65565",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:24Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "358b8acd-fac1-40e6-8d89-b21ebf485a51",
+   "eventID": "461adfab-dba1-4da9-bfa8-f3f4f14868dd",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:25Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "80646c55-e5cd-4795-9aa9-3cbb355a7062",
+   "eventID": "ba1a450f-d5a5-4188-a7fa-776c607b5e5c",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:26Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00 is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "b12dd758-2005-46cf-89c2-c97ce5affece",
+   "eventID": "4b053270-9874-4147-95d4-67b24e504b55",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e",
+    "accountId": "<account>",
+    "accessKeyId": "asia-40084311aa1b",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:10Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:27Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "errorCode": "Client.UnauthorizedOperation",
+   "errorMessage": "You are not authorized to perform this operation. User: arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.5de3012d83cd461e is not authorized to perform: ec2:DescribeInstances with an explicit deny in an identity-based policy",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "d96e0564-946e-4833-ab5b-0b640e80d3ff",
+   "eventID": "3bd6f9b7-4ffa-452f-9c37-a3a10e75d964",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:27Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "889ce3b9-c9bb-4a0c-8d65-fccd495e525b",
+   "eventID": "63f057d7-d7fc-42dd-b077-43bf43836923",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  },
+  {
+   "eventVersion": "1.11",
+   "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "<principal-id>:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "arn": "arn:aws:sts::<account>:assumed-role/w3-incident-get-pod-status/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.4cbae03fa55e4f00",
+    "accountId": "<account>",
+    "accessKeyId": "asia-aa1586ede697",
+    "sessionContext": {
+     "sessionIssuer": {
+      "type": "Role",
+      "principalId": "<principal-id>",
+      "arn": "arn:aws:iam::<account>:role/w3-incident-get-pod-status",
+      "accountId": "<account>",
+      "userName": "<user>"
+     },
+     "attributes": {
+      "creationDate": "2026-11-09T10:02:21Z",
+      "mfaAuthenticated": "false"
+     }
+    }
+   },
+   "eventTime": "2026-11-09T10:02:30Z",
+   "eventSource": "ec2.amazonaws.com",
+   "eventName": "DescribeInstances",
+   "awsRegion": "us-east-2",
+   "sourceIPAddress": "<ip>",
+   "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.12.9 md/pyimpl#CPython m/e,b,D,Z cfg/retry-mode#legacy Botocore/1.43.121",
+   "requestParameters": {
+    "maxResults": 5,
+    "instancesSet": {},
+    "filterSet": {}
+   },
+   "responseElements": null,
+   "requestID": "9964b61a-605b-44db-ad63-4fa95a1e8087",
+   "eventID": "86e48ace-839e-4023-9113-2d135c3612cf",
+   "readOnly": true,
+   "eventType": "AwsApiCall",
+   "managementEvent": true,
+   "recipientAccountId": "<account>",
+   "eventCategory": "Management",
+   "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "ec2.us-east-2.amazonaws.com"
+   }
+  }
+ ]
+}

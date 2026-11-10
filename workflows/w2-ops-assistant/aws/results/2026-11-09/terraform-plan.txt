@@ -1,0 +1,505 @@
+# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-09)
+# No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
+data.aws_iam_policy_document.server_reads["logs-mcp"]: Reading...
+data.aws_iam_policy_document.server_reads["metrics-mcp"]: Reading...
+data.aws_iam_policy_document.server_reads["kubernetes-mcp"]: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Reading...
+data.aws_iam_policy_document.read_boundary: Reading...
+data.aws_iam_policy_document.server_reads["kubernetes-mcp"]: Read complete after 0s [id=2221311043]
+data.aws_iam_policy_document.server_reads["logs-mcp"]: Read complete after 0s [id=4250132802]
+data.aws_iam_policy_document.server_reads["metrics-mcp"]: Read complete after 0s [id=1148010673]
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
+data.aws_iam_policy_document.read_boundary: Read complete after 0s [id=3236341632]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_eks_access_entry.kubernetes_reader will be created
+  + resource "aws_eks_access_entry" "kubernetes_reader" {
+      + access_entry_arn  = (known after apply)
+      + cluster_name      = "ops"
+      + created_at        = (known after apply)
+      + id                = (known after apply)
+      + kubernetes_groups = (known after apply)
+      + modified_at       = (known after apply)
+      + principal_arn     = (known after apply)
+      + region            = "ca-central-1"
+      + tags              = {
+          + "server" = "kubernetes-mcp"
+        }
+      + tags_all          = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "kubernetes-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+      + type              = "STANDARD"
+      + user_name         = (known after apply)
+    }
+
+  # aws_eks_access_policy_association.kubernetes_view will be created
+  + resource "aws_eks_access_policy_association" "kubernetes_view" {
+      + associated_at = (known after apply)
+      + cluster_name  = "ops"
+      + id            = (known after apply)
+      + modified_at   = (known after apply)
+      + policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+      + principal_arn = (known after apply)
+      + region        = "ca-central-1"
+
+      + access_scope {
+          + namespaces = [
+              + "larkspur-prod",
+            ]
+          + type       = "namespace"
+        }
+    }
+
+  # aws_eks_pod_identity_association.server["kubernetes-mcp"] will be created
+  + resource "aws_eks_pod_identity_association" "server" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "kubernetes-mcp"
+      + tags                 = {
+          + "server" = "kubernetes-mcp"
+        }
+      + tags_all             = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "kubernetes-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_eks_pod_identity_association.server["logs-mcp"] will be created
+  + resource "aws_eks_pod_identity_association" "server" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "logs-mcp"
+      + tags                 = {
+          + "server" = "logs-mcp"
+        }
+      + tags_all             = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "logs-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_eks_pod_identity_association.server["metrics-mcp"] will be created
+  + resource "aws_eks_pod_identity_association" "server" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "metrics-mcp"
+      + tags                 = {
+          + "server" = "metrics-mcp"
+        }
+      + tags_all             = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "metrics-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_iam_policy.read_boundary will be created
+  + resource "aws_iam_policy" "read_boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W2's three MCP server roles: the union of their read actions, and the never-list denied."
+      + id               = (known after apply)
+      + name             = "w2-ops-assistant-read-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "logs:GetLogEvents",
+                          + "logs:FilterLogEvents",
+                          + "logs:DescribeLogStreams",
+                          + "logs:DescribeLogGroups",
+                          + "eks:DescribeCluster",
+                          + "cloudwatch:ListMetrics",
+                          + "cloudwatch:GetMetricData",
+                          + "cloudwatch:DescribeAlarms",
+                          + "cloudwatch:DescribeAlarmHistory",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "ReadCeiling"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "iam:*",
+                          + "eks:UpdateAccessEntry",
+                          + "eks:CreateAccessEntry",
+                          + "eks:AssociateAccessPolicy",
+                          + "eks:AccessKubernetesApi",
+                          + "ec2:RevokeSecurityGroupIngress",
+                          + "ec2:RevokeSecurityGroupEgress",
+                          + "ec2:ModifySecurityGroupRules",
+                          + "ec2:DeleteSecurityGroup",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:AuthorizeSecurityGroupIngress",
+                          + "ec2:AuthorizeSecurityGroupEgress",
+                          + "cloudwatch:PutMetricData",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_iam_policy.server_reads["kubernetes-mcp"] will be created
+  + resource "aws_iam_policy" "server_reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W2 kubernetes-mcp: read actions from the catalog"
+      + id               = (known after apply)
+      + name             = "larkspur-ops-kubernetes-reader-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "eks:DescribeCluster"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                      + Sid      = "Reads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_iam_policy.server_reads["logs-mcp"] will be created
+  + resource "aws_iam_policy" "server_reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W2 logs-mcp: read actions from the catalog"
+      + id               = (known after apply)
+      + name             = "larkspur-ops-logs-reader-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "logs:GetLogEvents",
+                          + "logs:FilterLogEvents",
+                          + "logs:DescribeLogStreams",
+                          + "logs:DescribeLogGroups",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:logs:ca-central-1:111122223333:log-group:/larkspur/prod/*:log-stream:*",
+                          + "arn:aws:logs:ca-central-1:111122223333:log-group:/larkspur/prod/*",
+                        ]
+                      + Sid      = "Reads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_iam_policy.server_reads["metrics-mcp"] will be created
+  + resource "aws_iam_policy" "server_reads" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W2 metrics-mcp: read actions from the catalog"
+      + id               = (known after apply)
+      + name             = "larkspur-ops-metrics-reader-reads"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "cloudwatch:ListMetrics",
+                          + "cloudwatch:GetMetricData",
+                          + "cloudwatch:DescribeAlarms",
+                          + "cloudwatch:DescribeAlarmHistory",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "Reads"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+    }
+
+  # aws_iam_role.server["kubernetes-mcp"] will be created
+  + resource "aws_iam_role" "server" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W2 kubernetes-mcp: the catalog's reads only"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-ops-kubernetes-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-ops-kubernetes-reader"
+          + "server"   = "kubernetes-mcp"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-ops-kubernetes-reader"
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "kubernetes-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.server["logs-mcp"] will be created
+  + resource "aws_iam_role" "server" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W2 logs-mcp: the catalog's reads only"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-ops-logs-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-ops-logs-reader"
+          + "server"   = "logs-mcp"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-ops-logs-reader"
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "logs-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.server["metrics-mcp"] will be created
+  + resource "aws_iam_role" "server" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W2 metrics-mcp: the catalog's reads only"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-ops-metrics-reader"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-ops-metrics-reader"
+          + "server"   = "metrics-mcp"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-ops-metrics-reader"
+          + "owner"    = "sam.okafor@larkspur.example"
+          + "server"   = "metrics-mcp"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w2-ops-assistant"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.server_reads["kubernetes-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "server_reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-ops-kubernetes-reader"
+    }
+
+  # aws_iam_role_policy_attachment.server_reads["logs-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "server_reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-ops-logs-reader"
+    }
+
+  # aws_iam_role_policy_attachment.server_reads["metrics-mcp"] will be created
+  + resource "aws_iam_role_policy_attachment" "server_reads" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-ops-metrics-reader"
+    }
+
+Plan: 15 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + actions          = {
+      + kubernetes-mcp = [
+          + "eks:DescribeCluster",
+        ]
+      + logs-mcp       = [
+          + "logs:FilterLogEvents",
+          + "logs:GetLogEvents",
+          + "logs:DescribeLogGroups",
+          + "logs:DescribeLogStreams",
+        ]
+      + metrics-mcp    = [
+          + "cloudwatch:GetMetricData",
+          + "cloudwatch:ListMetrics",
+          + "cloudwatch:DescribeAlarms",
+          + "cloudwatch:DescribeAlarmHistory",
+        ]
+    }
+  + boundary_arn     = (known after apply)
+  + role_arns        = {
+      + kubernetes-mcp = (known after apply)
+      + logs-mcp       = (known after apply)
+      + metrics-mcp    = (known after apply)
+    }
+  + service_accounts = {
+      + kubernetes-mcp = "larkspur-ops/kubernetes-mcp"
+      + logs-mcp       = "larkspur-ops/logs-mcp"
+      + metrics-mcp    = "larkspur-ops/metrics-mcp"
+    }

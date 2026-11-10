@@ -1,0 +1,400 @@
+{
+  "about": "Sample CloudTrail events for collector/join.py, written in the shapes AWS documents for an AssumeRole event with session tags (IAM User Guide, cloudtrail-integration) and for a later call made with the assumed role's credentials (CloudTrail User Guide, cloudtrail-event-reference-user-identity), read on 3 November 2026. None was recorded from an account: the account is AWS's documentation example, the keys and IDs are placeholders, and the tool roles follow chapter 6's names. Three runs of the tool server's restart role: run A (trace 7d3e0c5f9a1b4c2e8f6a0b1c2d3e4f5a) and run B (trace 2c9a4e6b8d0f41a3b5c7d9e1f3a5b7c9) take the session name of the amended O-D2, the engineer's object ID, a dot, and the trace id's first 16 hex characters; run C (trace 9e8d7c6b5a4f43e2a1b0c9d8e7f6a5b4) takes chapter 6's session name, the object ID alone, so only its AssumeRole tag and an access key can tie it to the run. One later call of A and one of C carry an empty accessKeyId, which the CloudTrail guide says can happen. The last event is another principal's and belongs to no run.",
+  "Records": [
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLETOOLSRV01:eks-w3-tool-server-7f9c",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-tool-server/eks-w3-tool-server-7f9c",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLETOOLSRV01",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLETOOLSRV01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-tool-server",
+            "accountId": "111122223333",
+            "userName": "w3-incident-tool-server"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T13:55:02Z"}
+        }
+      },
+      "eventTime": "2026-11-10T14:02:11Z",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {
+        "roleArn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+        "roleSessionName": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "tags": [
+          {"key": "workflow", "value": "w3-incident"},
+          {"key": "trace_id", "value": "7d3e0c5f9a1b4c2e8f6a0b1c2d3e4f5a"}
+        ],
+        "durationSeconds": 900
+      },
+      "responseElements": {
+        "credentials": {
+          "accessKeyId": "ASIAEXAMPLERUNA00001",
+          "expiration": "Nov 10, 2026, 2:17:11 PM",
+          "sessionToken": "EXAMPLE-SESSION-TOKEN-A"
+        },
+        "assumedRoleUser": {
+          "assumedRoleId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+          "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e"
+        },
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "sessionTokenSize": 1210,
+        "sessionTokenUtilization": 29
+      },
+      "requestID": "0b1c2d3e-0001-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0001-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "resources": [
+        {"ARN": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment", "accountId": "111122223333", "type": "AWS::IAM::Role"}
+      ],
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLERUNA00001",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLERESTART01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+            "accountId": "111122223333",
+            "userName": "w3-incident-restart-deployment"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T14:02:11Z"},
+          "sourceIdentity": "tomasz.nowak@larkspur.example"
+        }
+      },
+      "eventTime": "2026-11-10T14:02:12Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeCluster",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {"name": "larkspur-prod"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0002-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0002-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.7d3e0c5f9a1b4c2e",
+        "accountId": "111122223333",
+        "accessKeyId": "",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLERESTART01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+            "accountId": "111122223333",
+            "userName": "w3-incident-restart-deployment"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T14:02:11Z"},
+          "sourceIdentity": "tomasz.nowak@larkspur.example"
+        }
+      },
+      "eventTime": "2026-11-10T14:02:13Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeNodegroup",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {"name": "larkspur-prod", "nodegroupName": "general"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0003-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0003-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLETOOLSRV01:eks-w3-tool-server-7f9c",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-tool-server/eks-w3-tool-server-7f9c",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLETOOLSRV01",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLETOOLSRV01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-tool-server",
+            "accountId": "111122223333",
+            "userName": "w3-incident-tool-server"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T13:55:02Z"}
+        }
+      },
+      "eventTime": "2026-11-10T14:05:40Z",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {
+        "roleArn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+        "roleSessionName": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.2c9a4e6b8d0f41a3",
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "tags": [
+          {"key": "workflow", "value": "w3-incident"},
+          {"key": "trace_id", "value": "2c9a4e6b8d0f41a3b5c7d9e1f3a5b7c9"}
+        ],
+        "durationSeconds": 900
+      },
+      "responseElements": {
+        "credentials": {
+          "accessKeyId": "ASIAEXAMPLERUNB00001",
+          "expiration": "Nov 10, 2026, 2:20:40 PM",
+          "sessionToken": "EXAMPLE-SESSION-TOKEN-B"
+        },
+        "assumedRoleUser": {
+          "assumedRoleId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.2c9a4e6b8d0f41a3",
+          "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.2c9a4e6b8d0f41a3"
+        },
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "sessionTokenSize": 1210,
+        "sessionTokenUtilization": 29
+      },
+      "requestID": "0b1c2d3e-0004-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0004-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "resources": [
+        {"ARN": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment", "accountId": "111122223333", "type": "AWS::IAM::Role"}
+      ],
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.2c9a4e6b8d0f41a3",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f.2c9a4e6b8d0f41a3",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLERUNB00001",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLERESTART01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+            "accountId": "111122223333",
+            "userName": "w3-incident-restart-deployment"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T14:05:40Z"},
+          "sourceIdentity": "tomasz.nowak@larkspur.example"
+        }
+      },
+      "eventTime": "2026-11-10T14:05:41Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeCluster",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {"name": "larkspur-prod"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0005-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0005-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLETOOLSRV01:eks-w3-tool-server-7f9c",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-tool-server/eks-w3-tool-server-7f9c",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLETOOLSRV01",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLETOOLSRV01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-tool-server",
+            "accountId": "111122223333",
+            "userName": "w3-incident-tool-server"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T13:55:02Z"}
+        }
+      },
+      "eventTime": "2026-11-10T14:07:20Z",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {
+        "roleArn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+        "roleSessionName": "3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "tags": [
+          {"key": "workflow", "value": "w3-incident"},
+          {"key": "trace_id", "value": "9e8d7c6b5a4f43e2a1b0c9d8e7f6a5b4"}
+        ],
+        "durationSeconds": 900
+      },
+      "responseElements": {
+        "credentials": {
+          "accessKeyId": "ASIAEXAMPLERUNC00001",
+          "expiration": "Nov 10, 2026, 2:22:20 PM",
+          "sessionToken": "EXAMPLE-SESSION-TOKEN-C"
+        },
+        "assumedRoleUser": {
+          "assumedRoleId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+          "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f"
+        },
+        "sourceIdentity": "tomasz.nowak@larkspur.example",
+        "sessionTokenSize": 1210,
+        "sessionTokenUtilization": 29
+      },
+      "requestID": "0b1c2d3e-0006-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0006-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "resources": [
+        {"ARN": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment", "accountId": "111122223333", "type": "AWS::IAM::Role"}
+      ],
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLERUNC00001",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLERESTART01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+            "accountId": "111122223333",
+            "userName": "w3-incident-restart-deployment"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T14:07:20Z"},
+          "sourceIdentity": "tomasz.nowak@larkspur.example"
+        }
+      },
+      "eventTime": "2026-11-10T14:07:21Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeCluster",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {"name": "larkspur-prod"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0007-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0007-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLERESTART01:3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+        "arn": "arn:aws:sts::111122223333:assumed-role/w3-incident-restart-deployment/3f2b9c1e-6a4d-4e8b-9c7f-1a2b3c4d5e6f",
+        "accountId": "111122223333",
+        "accessKeyId": "",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLERESTART01",
+            "arn": "arn:aws:iam::111122223333:role/w3-incident-restart-deployment",
+            "accountId": "111122223333",
+            "userName": "w3-incident-restart-deployment"
+          },
+          "attributes": {"mfaAuthenticated": "false", "creationDate": "2026-11-10T14:07:20Z"},
+          "sourceIdentity": "tomasz.nowak@larkspur.example"
+        }
+      },
+      "eventTime": "2026-11-10T14:07:22Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeNodegroup",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "10.20.31.17",
+      "userAgent": "Boto3/1.43.121 md/Botocore#1.43.121 ua/2.1 os/linux lang/python#3.12.9",
+      "requestParameters": {"name": "larkspur-prod", "nodegroupName": "general"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0008-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0008-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    },
+    {
+      "eventVersion": "1.11",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLEPLATFORM1:priya.raman",
+        "arn": "arn:aws:sts::111122223333:assumed-role/platform-readonly/priya.raman",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAEXAMPLEPLATFORM1",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLEPLATFORM1",
+            "arn": "arn:aws:iam::111122223333:role/platform-readonly",
+            "accountId": "111122223333",
+            "userName": "platform-readonly"
+          },
+          "attributes": {"mfaAuthenticated": "true", "creationDate": "2026-11-10T13:00:00Z"}
+        }
+      },
+      "eventTime": "2026-11-10T14:08:00Z",
+      "eventSource": "eks.amazonaws.com",
+      "eventName": "DescribeCluster",
+      "awsRegion": "us-east-2",
+      "sourceIPAddress": "203.0.113.24",
+      "userAgent": "aws-cli/2.31.0 md/awscrt#0.27.6 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.7",
+      "requestParameters": {"name": "larkspur-prod"},
+      "responseElements": null,
+      "requestID": "0b1c2d3e-0009-4a5b-8c7d-6e5f4a3b2c1d",
+      "eventID": "9a8b7c6d-0009-4e2f-8a1b-3c4d5e6f7a8b",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management"
+    }
+  ]
+}

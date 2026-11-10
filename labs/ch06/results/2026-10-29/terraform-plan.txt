@@ -1,0 +1,41 @@
+# terraform plan -refresh=false with placeholder credentials and terraform/example.tfvars.txt (2026-10-29)
+# No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
+Plan: 74 to add, 0 to change, 0 to destroy.
+74 resources to create
+    1  aws_bedrock_guardrail
+    1  aws_bedrock_guardrail_version
+    1  aws_bedrock_model_invocation_logging_configuration
+    1  aws_bedrockagent_data_source
+    1  aws_bedrockagent_knowledge_base
+    1  aws_bedrockagentcore_agent_runtime
+    1  aws_bedrockagentcore_agent_runtime_endpoint
+    1  aws_bedrockagentcore_api_key_credential_provider
+    1  aws_bedrockagentcore_gateway
+    2  aws_bedrockagentcore_gateway_target
+    1  aws_bedrockagentcore_oauth2_credential_provider
+    4  aws_bedrockagentcore_policy
+    1  aws_bedrockagentcore_policy_engine
+    2  aws_bedrockagentcore_resource_policy
+    1  aws_budgets_budget
+    1  aws_cloudwatch_log_delivery
+    1  aws_cloudwatch_log_delivery_destination
+    1  aws_cloudwatch_log_delivery_source
+    3  aws_cloudwatch_log_group
+    2  aws_eks_access_entry
+    1  aws_eks_access_policy_association
+    1  aws_iam_policy
+    8  aws_iam_role
+    9  aws_iam_role_policy
+    1  aws_kms_alias
+    2  aws_kms_key
+    1  aws_s3_bucket
+    1  aws_s3_bucket_public_access_block
+    1  aws_s3_bucket_server_side_encryption_configuration
+    1  aws_s3_bucket_versioning
+    1  aws_s3vectors_index
+    1  aws_s3vectors_vector_bucket
+    3  aws_security_group
+    9  aws_vpc_endpoint
+    4  aws_vpc_security_group_egress_rule
+    1  aws_vpc_security_group_ingress_rule
+    1  terraform_data

@@ -1,0 +1,8 @@
+# The Compose file's two Langfuse images carry the floating tag `:4`; this override pins them to the release
+# step 1 chose (fact sheet 8.5). ClickHouse is already pinned there; postgres:17, redis:7 and the Chainguard
+# MinIO image float, and the session records the digests it pulled (digests.txt on the VM).
+services:
+  langfuse-worker:
+    image: docker.langfuse.com/langfuse/langfuse-worker:${version}
+  langfuse-web:
+    image: docker.langfuse.com/langfuse/langfuse:${version}

@@ -1,0 +1,104 @@
+# The judge's rubric for W5's pull-request prose (chapter 15, step 3, E-D4).
+#
+# The judge reads `title` and the `text` of each criterion whose `when` holds for the finding, in this
+# order. `from` says where W5's README, scorer, or prose seam already says it; it is for the people who read
+# the rubric, and the judge never sees it. Every judge result records this file's hash.
+#
+# when: always; attribution or no_attribution (the finding has an audit-trail event, or none); saving or
+# no_saving (the finding has an estimated monthly saving, or none).
+workflow: w5
+title: >-
+  W5, drift and FinOps. The output is the title and the prose of a pull request W5 opens about one finding.
+  Code decided the finding, and its facts are complete: a field that is absent is absent.
+criteria:
+  - id: names
+    when: always
+    text: The title and the prose name the finding's kind and its resource.
+    from: >-
+      README, "The golden nights and the scorer": "kind and resource: the finding's kind is named (a word list
+      per kind), and so is its resource".
+  - id: actor
+    when: attribution
+    text: They name the actor of the audit-trail event the facts give.
+    from: >-
+      README, "The golden nights and the scorer": "actor: the attribution's actor is named where there is
+      one".
+  - id: trail
+    when: attribution
+    text: >-
+      They credit the audit trail, CloudTrail, a log, an event, or an actor only with the event and the actor
+      the facts give.
+    from: >-
+      README, "The golden nights and the scorer": "attribution: the audit trail, CloudTrail, an event, or an
+      actor is credited only when the finding has an attribution, and then only its own actor and event".
+  - id: no_trail
+    when: no_attribution
+    text: >-
+      No audit-trail event explains this finding. They credit the audit trail, CloudTrail, a log, an event, or
+      an actor with nothing; they may say that the trail explains nothing.
+    from: >-
+      README, "The golden nights and the scorer": "attribution: ... credited only when the finding has an
+      attribution ... a sentence that says the trail explains nothing passes".
+  - id: saving
+    when: saving
+    text: >-
+      They state the estimated monthly saving the facts give, that figure and no other, and present no cost
+      as a saving.
+    from: >-
+      README, "The golden nights and the scorer": "a finding with a saving states that figure and no other";
+      "What it cannot see: ... a figure that is a cost and not a saving".
+  - id: no_saving
+    when: no_saving
+    text: >-
+      This finding has no estimated saving. They state no saving and no figure or unit for one, and write
+      nothing such as null, N/A, or 0 in its place; they may say that no saving is estimated. A cost is not a
+      saving.
+    from: >-
+      README, "The golden nights and the scorer": "saving: a finding with no saving may say there is none and
+      nothing more (no figure, no unit, no `null`, no "N/A")"; "What it cannot see: ... a figure that is a cost
+      and not a saving".
+  - id: cause
+    when: always
+    text: They give no cause for the finding that the facts do not give.
+    from: >-
+      README, "The golden nights and the scorer": "What it cannot see: a cause invented without crediting the
+      trail".
+  - id: facts_only
+    when: always
+    text: >-
+      Everything else they state about the resource is in the facts, and they name no action on it that the
+      facts do not give.
+    from: >-
+      harness/prose.py, SYSTEM: "state only what the facts state"; README, "Step 5b": "The scorer also passes
+      sentences that are wrong" (an excused tag listed among the tags an instance has, a snapshot "attached"
+      to the volume it was taken from, a title that "names a change the pull request does not make").
+  - id: claims
+    when: always
+    text: >-
+      They restate no claim the facts do not make: that FinOps or anyone else approved, accepted, or exempted
+      the resource, that no action or report is needed, or that the workspace is reconciled by hand.
+    from: >-
+      README, "The golden nights and the scorer": "no plant's claim is restated in a title or the prose";
+      eval/score.py, CLAIMS; eval/nights.yaml, the claims each plant makes.
+  - id: decision
+    when: always
+    text: >-
+      They do not say or imply that anything has been, or will be, applied, merged, approved, or done: W5 only
+      proposes, and a person reviews, merges, and applies.
+    from: >-
+      README, "The model seam and the forbidden words": "the text must not say apply, merge, approved, approve,
+      or safe, and that the agent proposes only"; harness/prose.py, SYSTEM: "do not say or imply that anything
+      has been or will be done".
+  - id: internals
+    when: always
+    text: >-
+      They use none of the lab's own words (template, stub, finding key, detector) and write out no finding
+      key.
+    from: >-
+      README, "The golden nights and the scorer": "internals: none of the lab's words (INTERNALS: template,
+      stub, finding key, detector, remove_block), and not the finding's key written out".
+  - id: complete
+    when: always
+    text: No sentence is cut off.
+    from: >-
+      README, "The golden nights and the scorer": "What it cannot see: ... a body cut off mid-sentence".

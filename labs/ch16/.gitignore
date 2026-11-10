@@ -1,0 +1,26 @@
+# The pinned Collector's tarball and binary (collector/fetch.py), and the local run's scratch folders
+# (collector/run_local.py and the tests): never committed; the run's results go to results/<date>/collector/.
+collector/bin/
+collector/_lab/
+# PostgreSQL's pinned zip and its unpacked binaries (budget/postgres.py), and step 4's scratch folders: the
+# clusters, the proxies' logs, the switch files a drill flips. The results go to results/<date>/budget/.
+budget/pg/
+budget/_lab/
+# Step 5's scratch folders: the drills' clusters, proxies' logs, provider logs and raw records, and the cost lines
+# its callbacks write. The results go to results/<date>/capacity/.
+capacity/_lab/
+# Step 5b's pinned Garnet, its zip and the server's files (capacity/garnet.py).
+capacity/garnet/
+# Step 6's probe log when the probe runs against a live gateway (slo/probe.py); the month's results go to
+# results/<date>/slo/.
+slo/_lab/
+# Step 7's scratch (cloud/): the live run's raw records, the gateways' logs and spans, the tunnel's logs and its
+# key pair, and Terraform's working files. The results go to results/<date>/cloud/.
+cloud/_lab/
+# Step 8's scratch (lifecycle/): the live job's and the canary's raw records, the gateways' logs, W2's servers' logs.
+# The results go to results/<date>/lifecycle/.
+lifecycle/_lab/
+cloud/terraform/.terraform/
+cloud/terraform/*.tfstate
+cloud/terraform/*.tfstate.*
+cloud/terraform/*.tfvars

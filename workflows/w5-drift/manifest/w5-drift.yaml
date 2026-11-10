@@ -1,0 +1,50 @@
+# The Terraform drift and FinOps agent (W5, chapter 14), as the lab runs it: chapter 5's manifest shape with
+# W5's reads. W5 reads Terraform state, the live inventory and the audit trail, the cost data, and the
+# tagging policy; computes drift and waste in code (W5-D5); and will open pull requests and nothing else
+# (rung 2, W5-D6, W5-D7). The model writes only the pull request's prose (W5-D8). The gateway and the
+# harness read this file; growing the tool list is a change of scope and goes through a change record.
+workflow: w5-drift
+owner: tomasz.nowak@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 2
+data_class_max: confidential       # state names internal systems; a Restricted value never reaches the model, masked at the server (W5-D4)
+models: [larkspur-chat]
+regions: [ca-central-1]            # every call of this workflow is served in Canada
+tools:
+  # The state reader: the backend's objects, masked (W5-D4).
+  list_workspaces: {args: []}
+  get_state: {args: [workspace]}
+  get_state_version: {args: [workspace, version_id]}
+  list_state_versions: {args: [workspace]}
+  # The cloud reader: the inventory, the tags, the trail, one metric (W5-D3, W5-D5).
+  describe_resources: {args: [account, region, kind]}
+  get_resources_by_tag: {args: [account, region, tag_key]}
+  lookup_events: {args: [account, region, attribute_key, attribute_value, days]}
+  get_cpu_utilization: {args: [account, region, instance_id, days]}
+  # The cost reader: by tag, by resource, the budgets, the anomalies, the export (W5-D10).
+  get_cost_and_usage: {args: [account, start, end, group_by_tag]}
+  get_cost_by_resource: {args: [account, resource_ids, days]}
+  describe_budgets: {args: [account]}
+  get_anomalies: {args: [account, days]}
+  read_cost_export: {args: [account, billing_period]}
+  # The policy reader: the standard and the exceptions (W5-D9).
+  get_tagging_standard: {args: []}
+  list_policy_exceptions: {args: [state]}
+  # The one write (W5-D6, W5-D9): a branch on the agent's fork under the fork App's contents: write and a
+  # pull request on the upstream under the upstream App's pull_requests: write, and nothing else. The
+  # harness calls the writer itself (writer/pull_requests.py); no MCP server serves it and the model never
+  # chooses it: the finding key comes from the detectors.
+  open_pull_request: {args: [finding_key], writes: true}
+never:  # W5's six (W5-D7), then chapter 4's five; modify_security_group is on both lists and appears once
+  - apply_plan
+  - merge_pull_request
+  - approve_pull_request
+  - delete_resource
+  - stop_instance
+  - modify_security_group
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 1.00, per_month_usd: 100, requests_per_minute: 60}   # one night a day; the alarm path is a second run
+trace_content: false

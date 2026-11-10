@@ -1,0 +1,29 @@
+# The knowledge assistant (W1, chapter 10) in the local lab. Rung 0: it answers and changes nothing.
+# It may carry Restricted text, because a member of a narrow group may ask about a Restricted page.
+# Each call is labeled at least with the highest class the engineer may read (caller_class) and
+# with the highest class among the passages in its prompt (chapter 2's rule), and the gateway's
+# grid sends a Restricted prompt to the self-hosted alias only.
+# Two tools, both read-only: search_docs for the model, caller_class for the harness alone; the
+# tool gateway's policy lets W1's harness call these two and nothing else (W1-D14).
+# ca-west-1 is in `regions` because the Canada profile that serves larkspur-chat on AWS can process
+# a request in Calgary as well as in Montréal; in chapter 6's pipeline that is a grown scope, with
+# its change record. The lab's aliases all serve in ca-central-1.
+# The owner and the sponsor are W2's until chapter 10 names W1's.
+workflow: w1-knowledge
+owner: sam.okafor@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 0
+data_class_max: restricted
+models: [larkspur-embed, larkspur-chat, larkspur-chat-restricted]
+regions: [ca-central-1, ca-west-1]
+tools:
+  search_docs: {args: [query]}
+  caller_class: {args: []}
+never:
+  - restart_deployment
+  - delete_namespace
+  - modify_iam
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 0.20, per_month_usd: 100, requests_per_minute: 120}
+trace_content: false

@@ -1,0 +1,32 @@
+# The change-management agents (W4, chapter 13), as the lab runs them: chapter 5's manifest shape with
+# W4's tools. W4 reads a pull request, its CI, its Terraform plan, and the service's recent changes,
+# scores the change with a fixed rubric, and writes an evidence pack to ServiceNow and a pull-request
+# comment; it writes nothing to infrastructure and never merges or approves (rung 2, W4-D6). The model
+# writes only the rationale; the class is the rubric's (W4-D9). The gateway and the agents read this file.
+workflow: w4-change
+owner: tomasz.nowak@larkspur.example
+sponsor: priya.raman@larkspur.example
+rung: 2
+data_class_max: confidential       # Internal by default; a diff or a log line can carry Confidential data (W4-D14)
+models: [larkspur-chat]
+regions: [ca-central-1]            # every call of this workflow is served in Canada
+tools:
+  # The analyst's reads: the pull request, its files and checks, the Terraform plan, the recent changes.
+  get_pull_request: {args: [change_ref]}
+  get_pull_request_files: {args: [change_ref]}
+  get_check_runs: {args: [change_ref]}
+  get_terraform_plan: {args: [change_ref]}
+  get_recent_changes: {args: [service, minutes]}
+  # The scribe's two writes: a ticket and a comment, never infrastructure (W4-D6, W4-D7, W4-D8).
+  write_evidence_pack: {args: [change_ref], writes: true}
+  upsert_pr_comment: {args: [change_ref], writes: true}
+never:  # W4's two, then chapter 4's tool-shaped actions
+  - merge_pull_request
+  - approve_pull_request
+  - delete_namespace
+  - modify_iam
+  - modify_security_group
+  - read_vault_secret
+  - run_command
+budget: {per_run_usd: 1.00, per_month_usd: 200, requests_per_minute: 60}
+trace_content: false

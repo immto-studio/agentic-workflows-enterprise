@@ -1,0 +1,1 @@
+{"server": "ollama 0.40.13", "model": "gpt-oss:20b", "runs": 5, "cold_load_s": 3.07, "median_prompt_tok_s": 5575.4, "median_output_tok_s": 181.0, "median_output_tokens": 512, "median_total_s": 2.86}

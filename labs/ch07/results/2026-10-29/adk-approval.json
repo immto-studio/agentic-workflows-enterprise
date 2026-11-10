@@ -1,0 +1,138 @@
+{
+  "google-adk": "2.13.0",
+  "python": "3.12.9",
+  "results": [
+    {
+      "pattern": "tool confirmation",
+      "sessions": "in-memory",
+      "approved": true,
+      "paused": true,
+      "waiting": "",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 1,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "in-memory",
+      "approved": true,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 2,
+      "error": ""
+    },
+    {
+      "pattern": "tool confirmation",
+      "sessions": "in-memory",
+      "approved": false,
+      "paused": true,
+      "waiting": "",
+      "answer": "claims-api was not restarted: This tool call is rejected..",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "in-memory",
+      "approved": false,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "claims-api was not restarted: declined.",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    },
+    {
+      "pattern": "tool confirmation",
+      "sessions": "sqlite",
+      "approved": true,
+      "paused": true,
+      "waiting": "",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 1,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "sqlite",
+      "approved": true,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 2,
+      "error": ""
+    },
+    {
+      "pattern": "tool confirmation",
+      "sessions": "sqlite",
+      "approved": false,
+      "paused": true,
+      "waiting": "",
+      "answer": "claims-api was not restarted: This tool call is rejected..",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "sqlite",
+      "approved": false,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "claims-api was not restarted: declined.",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    },
+    {
+      "pattern": "tool confirmation",
+      "sessions": "database",
+      "approved": true,
+      "paused": true,
+      "waiting": "",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 1,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "database",
+      "approved": true,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "Restarted claims-api in claims (CHG0001 claims/claims-api).",
+      "restarts": 1,
+      "write_calls": 2,
+      "error": ""
+    },
+    {
+      "pattern": "tool confirmation",
+      "sessions": "database",
+      "approved": false,
+      "paused": true,
+      "waiting": "",
+      "answer": "claims-api was not restarted: This tool call is rejected..",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    },
+    {
+      "pattern": "long-running tool",
+      "sessions": "database",
+      "approved": false,
+      "paused": true,
+      "waiting": "Restart of claims-api is waiting for approval APR-0001.",
+      "answer": "claims-api was not restarted: declined.",
+      "restarts": 0,
+      "write_calls": 0,
+      "error": ""
+    }
+  ]
+}

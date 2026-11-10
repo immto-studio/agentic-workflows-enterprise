@@ -1,0 +1,111 @@
+{
+  "nginx": "nginx version: nginx/1.30.6",
+  "config_test": "successful",
+  "probes": [
+    {
+      "method": "POST",
+      "port": 8080,
+      "path": "/v1/chat/completions",
+      "status": 200,
+      "first_byte_s": 0.03,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8080,
+      "path": "/v1/models",
+      "status": 200,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8080,
+      "path": "/health",
+      "status": 200,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "POST",
+      "port": 8080,
+      "path": "/invocations",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "POST",
+      "port": 8080,
+      "path": "/update_weights",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "POST",
+      "port": 8080,
+      "path": "/pause",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8080,
+      "path": "/metrics",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8080,
+      "path": "/tokenize",
+      "status": 404,
+      "first_byte_s": 0.02,
+      "as_designed": true
+    },
+    {
+      "method": "POST",
+      "port": 8080,
+      "path": "/v1/completions",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8080,
+      "path": "/v1/chat/completions/../../invocations",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8081,
+      "path": "/metrics",
+      "status": 200,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "POST",
+      "port": 8081,
+      "path": "/v1/chat/completions",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    },
+    {
+      "method": "GET",
+      "port": 8081,
+      "path": "/health",
+      "status": 404,
+      "first_byte_s": 0.0,
+      "as_designed": true
+    }
+  ],
+  "streams": true
+}

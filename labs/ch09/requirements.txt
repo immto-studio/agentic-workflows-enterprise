@@ -1,0 +1,3 @@
+# Lab ch09, part 1. Python 3.12. The chapter 5 lab's pinned set (the harness, the MCP server, the
+# tracing hook and the LiteLLM gateway are reused from labs/ch05); nothing else is needed.
+-r ../ch05/requirements.txt

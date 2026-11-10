@@ -1,0 +1,126 @@
+{
+ "region": "us-east-2",
+ "checked": "2026-10-30T01:10:08-0400",
+ "runtime": {
+  "status": "READY",
+  "failureReason": null,
+  "agentRuntimeVersion": "1",
+  "platformVersion": "V1"
+ },
+ "tool_gateway": {
+  "status": "READY",
+  "statusReasons": null,
+  "authorizerType": "AWS_IAM"
+ },
+ "tool_gateway_targets": {},
+ "targets_listed": [
+  {
+   "name": "k8s",
+   "status": "UPDATE_UNSUCCESSFUL"
+  },
+  {
+   "name": "knowledge",
+   "status": "UPDATE_UNSUCCESSFUL"
+  }
+ ],
+ "policy_engine": {
+  "status": "ACTIVE",
+  "policies": []
+ },
+ "knowledge_base": {
+  "status": "ACTIVE"
+ },
+ "guardrail": {
+  "status": "READY",
+  "version": "1",
+  "crossRegionDetails": {
+   "guardrailProfileId": "us.guardrail.v1:0",
+   "guardrailProfileArn": "arn:aws:bedrock:us-east-2:<account>:guardrail-profile/us.guardrail.v1:0"
+  }
+ },
+ "invocation_logging": {
+  "cloudWatchConfig": {
+   "logGroupName": "/aws/bedrock/model-invocations",
+   "roleArn": "arn:aws:iam::<account>:role/w3-incident-invocation-logging"
+  },
+  "textDataDeliveryEnabled": false,
+  "imageDataDeliveryEnabled": false,
+  "embeddingDataDeliveryEnabled": false,
+  "videoDataDeliveryEnabled": false
+ },
+ "privatelink_gateway_service": {
+  "name": "com.amazonaws.us-east-2.bedrock-agentcore.gateway",
+  "exists": true
+ },
+ "endpoints": [
+  [
+   "bedrock-agent-runtime",
+   "available"
+  ],
+  [
+   "bedrock-agentcore",
+   "available"
+  ],
+  [
+   "bedrock-agentcore.gateway",
+   "available"
+  ],
+  [
+   "bedrock-runtime",
+   "available"
+  ],
+  [
+   "ecr.api",
+   "available"
+  ],
+  [
+   "ecr.dkr",
+   "available"
+  ],
+  [
+   "logs",
+   "available"
+  ],
+  [
+   "s3",
+   "available"
+  ],
+  [
+   "sts",
+   "available"
+  ]
+ ],
+ "model_call": {
+  "stop": "end_turn",
+  "usage": {
+   "inputTokens": 6,
+   "outputTokens": 3,
+   "totalTokens": 9
+  }
+ },
+ "invocation_record": {
+  "keys": [
+   "accountId",
+   "identity",
+   "inferenceRegion",
+   "input",
+   "modelId",
+   "operation",
+   "output",
+   "region",
+   "requestId",
+   "schemaType",
+   "schemaVersion",
+   "timestamp"
+  ],
+  "input_keys": [
+   "inputContentType",
+   "inputTokenCount"
+  ],
+  "output_keys": [
+   "outputContentType",
+   "outputTokenCount"
+  ],
+  "text_fields_present": []
+ }
+}

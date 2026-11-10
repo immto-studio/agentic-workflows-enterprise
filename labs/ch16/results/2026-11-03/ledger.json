@@ -1,0 +1,5940 @@
+{
+ "date_of_the_kept_runs": "2026-10-29 to 2026-11-03",
+ "table": {
+  "file": "ledger/prices.yaml",
+  "entries": 49
+ },
+ "lines": [
+  {
+   "workflow": "skeleton",
+   "kept_runs": 2,
+   "traced_runs": 0,
+   "runs": 40,
+   "lines": 77,
+   "with_tokens": 77,
+   "with_duration": 77,
+   "runs_with_trace_id": 0,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat-restricted/internal": 77
+   },
+   "tool_calls_kept_as": "every tool call, with its arguments"
+  },
+  {
+   "workflow": "w1",
+   "kept_runs": 3,
+   "traced_runs": 0,
+   "runs": 75,
+   "lines": 163,
+   "with_tokens": 163,
+   "with_duration": 163,
+   "runs_with_trace_id": 0,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat-restricted/restricted": 18,
+    "larkspur-chat/confidential": 12,
+    "larkspur-chat/internal": 133
+   },
+   "tool_calls_kept_as": "the searches the model calls imply"
+  },
+  {
+   "workflow": "w2",
+   "kept_runs": 6,
+   "traced_runs": 1,
+   "runs": 135,
+   "lines": 281,
+   "with_tokens": 281,
+   "with_duration": 281,
+   "runs_with_trace_id": 25,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat/internal": 281
+   },
+   "tool_calls_kept_as": "every read, with whether it returned data"
+  },
+  {
+   "workflow": "w3",
+   "kept_runs": 2,
+   "traced_runs": 1,
+   "runs": 48,
+   "lines": 279,
+   "with_tokens": 142,
+   "with_duration": 142,
+   "runs_with_trace_id": 24,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat-restricted/restricted": 20,
+    "larkspur-chat/confidential": 259
+   },
+   "tool_calls_kept_as": "the reads that returned data"
+  },
+  {
+   "workflow": "w4",
+   "kept_runs": 6,
+   "traced_runs": 2,
+   "runs": 48,
+   "lines": 48,
+   "with_tokens": 16,
+   "with_duration": 16,
+   "runs_with_trace_id": 48,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat/internal": 48
+   },
+   "tool_calls_kept_as": "not kept"
+  },
+  {
+   "workflow": "w5",
+   "kept_runs": 11,
+   "traced_runs": 0,
+   "runs": 33,
+   "lines": 341,
+   "with_tokens": 341,
+   "with_duration": 341,
+   "runs_with_trace_id": 33,
+   "fallbacks": 0,
+   "aliases": {
+    "larkspur-chat/confidential": 341
+   },
+   "tool_calls_kept_as": "every read in the night's log"
+  }
+ ],
+ "recount_ratios": {
+  "gpt-oss-20b": {
+   "input": 1.3638,
+   "output": 0.5381
+  },
+  "gemma4-12b": {
+   "input": 1.3352,
+   "output": 0.5279
+  }
+ },
+ "per_run": [
+  {
+   "workflow": "skeleton",
+   "model": "gemma4-12b",
+   "kept_runs": 1,
+   "runs": 20,
+   "runs_with_tokens": 20,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 2.0,
+    "mean": 1.95
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 0.95
+   },
+   "tool_calls_kept_as": "every tool call, with its arguments",
+   "input_tokens": {
+    "median": 678.0,
+    "p95": 753.0,
+    "mean": 654.05
+   },
+   "output_tokens": {
+    "median": 121.0,
+    "p95": 180.0,
+    "mean": 134.3
+   },
+   "cost_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "per_run_usd": 0.5,
+   "cost_pct_of_run_budget": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "guardrail_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "guardrail_over_tokens": null,
+   "restricted_calls": 39
+  },
+  {
+   "workflow": "skeleton",
+   "model": "gpt-oss-20b",
+   "kept_runs": 1,
+   "runs": 20,
+   "runs_with_tokens": 20,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 2.0,
+    "mean": 1.9
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 0.9
+   },
+   "tool_calls_kept_as": "every tool call, with its arguments",
+   "input_tokens": {
+    "median": 729.5,
+    "p95": 804.0,
+    "mean": 685.45
+   },
+   "output_tokens": {
+    "median": 118.0,
+    "p95": 200.0,
+    "mean": 129.05
+   },
+   "cost_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "per_run_usd": 0.5,
+   "cost_pct_of_run_budget": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "guardrail_usd": {
+    "median": 0.0,
+    "p95": 0.0,
+    "mean": 0.0
+   },
+   "guardrail_over_tokens": null,
+   "restricted_calls": 38
+  },
+  {
+   "workflow": "w1",
+   "model": "gemma4-12b",
+   "kept_runs": 1,
+   "runs": 25,
+   "runs_with_tokens": 25,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 3.0,
+    "mean": 2.16
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 2.0,
+    "mean": 1.16
+   },
+   "tool_calls_kept_as": "the searches the model calls imply",
+   "input_tokens": {
+    "median": 2423.0,
+    "p95": 6072.0,
+    "mean": 2902.12
+   },
+   "output_tokens": {
+    "median": 337.0,
+    "p95": 457.0,
+    "mean": 335.76
+   },
+   "cost_usd": {
+    "median": 0.00024256,
+    "p95": 0.000487936,
+    "mean": 0.0002442624
+   },
+   "per_run_usd": 0.2,
+   "cost_pct_of_run_budget": {
+    "median": 0.12128,
+    "p95": 0.243968,
+    "mean": 0.1221312
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0002491029,
+    "p95": 0.0005713047,
+    "mean": 0.0002628076
+   },
+   "guardrail_usd": {
+    "median": 0.00325,
+    "p95": 0.007,
+    "mean": 0.00341
+   },
+   "guardrail_over_tokens": 13.96,
+   "restricted_calls": 6
+  },
+  {
+   "workflow": "w1",
+   "model": "gpt-oss-20b",
+   "kept_runs": 1,
+   "runs": 25,
+   "runs_with_tokens": 25,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 3.0,
+    "mean": 2.2
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 2.0,
+    "mean": 1.2
+   },
+   "tool_calls_kept_as": "the searches the model calls imply",
+   "input_tokens": {
+    "median": 2359.0,
+    "p95": 5528.0,
+    "mean": 2868.04
+   },
+   "output_tokens": {
+    "median": 283.0,
+    "p95": 583.0,
+    "mean": 328.84
+   },
+   "cost_usd": {
+    "median": 0.000240576,
+    "p95": 0.000407232,
+    "mean": 0.0002401254
+   },
+   "per_run_usd": 0.2,
+   "cost_pct_of_run_budget": {
+    "median": 0.120288,
+    "p95": 0.203616,
+    "mean": 0.12006272
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0002496082,
+    "p95": 0.0005095137,
+    "mean": 0.0002656673
+   },
+   "guardrail_usd": {
+    "median": 0.00325,
+    "p95": 0.00675,
+    "mean": 0.00342
+   },
+   "guardrail_over_tokens": 14.24,
+   "restricted_calls": 6
+  },
+  {
+   "workflow": "w1",
+   "model": "nova-lite",
+   "kept_runs": 1,
+   "runs": 25,
+   "runs_with_tokens": 25,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 3.0,
+    "mean": 2.16
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 2.0,
+    "mean": 1.16
+   },
+   "tool_calls_kept_as": "the searches the model calls imply",
+   "input_tokens": {
+    "median": 3163.0,
+    "p95": 6930.0,
+    "mean": 3540.32
+   },
+   "output_tokens": {
+    "median": 200.0,
+    "p95": 317.0,
+    "mean": 207.64
+   },
+   "cost_usd": {
+    "median": 0.000253312,
+    "p95": 0.000496,
+    "mean": 0.0002521062
+   },
+   "per_run_usd": 0.2,
+   "cost_pct_of_run_budget": {
+    "median": 0.126656,
+    "p95": 0.248,
+    "mean": 0.12605312
+   },
+   "recounted_as_nova_lite_usd": null,
+   "guardrail_usd": {
+    "median": 0.00375,
+    "p95": 0.008,
+    "mean": 0.00394
+   },
+   "guardrail_over_tokens": 15.63,
+   "restricted_calls": 6
+  },
+  {
+   "workflow": "w2",
+   "model": "gemma4-12b",
+   "kept_runs": 1,
+   "runs": 25,
+   "runs_with_tokens": 25,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 3.0,
+    "mean": 2.08
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 2.0,
+    "mean": 1.24
+   },
+   "tool_calls_kept_as": "every read, with whether it returned data",
+   "input_tokens": {
+    "median": 2163.0,
+    "p95": 3841.0,
+    "mean": 2341.52
+   },
+   "output_tokens": {
+    "median": 183.0,
+    "p95": 314.0,
+    "mean": 184.04
+   },
+   "cost_usd": {
+    "median": 0.000182656,
+    "p95": 0.000326208,
+    "mean": 0.0001969715
+   },
+   "per_run_usd": 0.5,
+   "cost_pct_of_run_budget": {
+    "median": 0.0365312,
+    "p95": 0.0652416,
+    "mean": 0.039394304
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0002091002,
+    "p95": 0.0003706589,
+    "mean": 0.000224961
+   },
+   "guardrail_usd": {
+    "median": 0.00275,
+    "p95": 0.005,
+    "mean": 0.00303
+   },
+   "guardrail_over_tokens": 15.38,
+   "restricted_calls": 0
+  },
+  {
+   "workflow": "w2",
+   "model": "gpt-oss-20b",
+   "kept_runs": 5,
+   "runs": 110,
+   "runs_with_tokens": 110,
+   "model_calls": {
+    "median": 2.0,
+    "p95": 5.0,
+    "mean": 2.0818181818
+   },
+   "tool_calls": {
+    "median": 1.0,
+    "p95": 4.0,
+    "mean": 1.2545454545
+   },
+   "tool_calls_kept_as": "every read, with whether it returned data",
+   "input_tokens": {
+    "median": 1848.0,
+    "p95": 4685.0,
+    "mean": 2007.7454545455
+   },
+   "output_tokens": {
+    "median": 261.5,
+    "p95": 698.0,
+    "mean": 316.2181818182
+   },
+   "cost_usd": {
+    "median": 0.000187104,
+    "p95": 0.000452928,
+    "mean": 0.0002094476
+   },
+   "per_run_usd": 0.5,
+   "cost_pct_of_run_budget": {
+    "median": 0.0374208,
+    "p95": 0.0905856,
+    "mean": 0.0418895127
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0001978682,
+    "p95": 0.0004639894,
+    "mean": 0.0002188026
+   },
+   "guardrail_usd": {
+    "median": 0.00275,
+    "p95": 0.00675,
+    "mean": 0.0029295455
+   },
+   "guardrail_over_tokens": 13.99,
+   "restricted_calls": 0
+  },
+  {
+   "workflow": "w3",
+   "model": "gpt-oss-20b",
+   "kept_runs": 2,
+   "runs": 48,
+   "runs_with_tokens": 24,
+   "model_calls": {
+    "median": 7.0,
+    "p95": 9.0,
+    "mean": 5.8125
+   },
+   "tool_calls": {
+    "median": 6.0,
+    "p95": 8.0,
+    "mean": 4.8125
+   },
+   "tool_calls_kept_as": "the reads that returned data",
+   "input_tokens": {
+    "median": 11802.0,
+    "p95": 15671.0,
+    "mean": 9701.375
+   },
+   "output_tokens": {
+    "median": 620.5,
+    "p95": 1169.0,
+    "mean": 672.0833333333
+   },
+   "cost_usd": {
+    "median": 0.000886816,
+    "p95": 0.001176064,
+    "mean": 0.0007084667
+   },
+   "per_run_usd": 2.0,
+   "cost_pct_of_run_budget": {
+    "median": 0.0443408,
+    "p95": 0.0588032,
+    "mean": 0.0354233333
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0010856771,
+    "p95": 0.0013840686,
+    "mean": 0.0008504239
+   },
+   "guardrail_usd": {
+    "median": 0.014125,
+    "p95": 0.01825,
+    "mean": 0.011
+   },
+   "guardrail_over_tokens": 15.53,
+   "restricted_calls": 20
+  },
+  {
+   "workflow": "w4",
+   "model": "gemma4-12b",
+   "kept_runs": 2,
+   "runs": 16,
+   "runs_with_tokens": 8,
+   "model_calls": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 1.0
+   },
+   "tool_calls": null,
+   "tool_calls_kept_as": "not kept",
+   "input_tokens": {
+    "median": 135.5,
+    "p95": 155.0,
+    "mean": 139.75
+   },
+   "output_tokens": {
+    "median": 23.5,
+    "p95": 43.0,
+    "mean": 25.875
+   },
+   "cost_usd": {
+    "median": 1.4688e-05,
+    "p95": 2.0544e-05,
+    "mean": 1.5568e-05
+   },
+   "per_run_usd": 1.0,
+   "cost_pct_of_run_budget": {
+    "median": 0.0014688,
+    "p95": 0.0020544,
+    "mean": 0.0015568
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 1.47547e-05,
+    "p95": 1.85436e-05,
+    "mean": 1.54388e-05
+   },
+   "guardrail_usd": {
+    "median": 0.0005,
+    "p95": 0.0005,
+    "mean": 0.0005
+   },
+   "guardrail_over_tokens": 32.12,
+   "restricted_calls": 0
+  },
+  {
+   "workflow": "w4",
+   "model": "gpt-oss-20b",
+   "kept_runs": 4,
+   "runs": 32,
+   "runs_with_tokens": 8,
+   "model_calls": {
+    "median": 1.0,
+    "p95": 1.0,
+    "mean": 1.0
+   },
+   "tool_calls": null,
+   "tool_calls_kept_as": "not kept",
+   "input_tokens": {
+    "median": 189.5,
+    "p95": 208.0,
+    "mean": 192.625
+   },
+   "output_tokens": {
+    "median": 189.5,
+    "p95": 300.0,
+    "mean": 196.25
+   },
+   "cost_usd": {
+    "median": 6.0992e-05,
+    "p95": 8.8448e-05,
+    "mean": 6.2568e-05
+   },
+   "per_run_usd": 1.0,
+   "cost_pct_of_run_budget": {
+    "median": 0.0060992,
+    "p95": 0.0088448,
+    "mean": 0.0062568
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 4.31245e-05,
+    "p95": 5.72116e-05,
+    "mean": 4.38471e-05
+   },
+   "guardrail_usd": {
+    "median": 0.0005,
+    "p95": 0.00075,
+    "mean": 0.0005625
+   },
+   "guardrail_over_tokens": 8.99,
+   "restricted_calls": 0
+  },
+  {
+   "workflow": "w5",
+   "model": "gemma4-12b",
+   "kept_runs": 5,
+   "runs": 15,
+   "runs_with_tokens": 15,
+   "model_calls": {
+    "median": 14.0,
+    "p95": 14.0,
+    "mean": 10.3333333333
+   },
+   "tool_calls": {
+    "median": 82.0,
+    "p95": 82.0,
+    "mean": 62.6666666667
+   },
+   "tool_calls_kept_as": "every read in the night's log",
+   "input_tokens": {
+    "median": 8902.0,
+    "p95": 9509.0,
+    "mean": 6784.4666666667
+   },
+   "output_tokens": {
+    "median": 1662.0,
+    "p95": 108426.0,
+    "mean": 16316.5333333333
+   },
+   "cost_usd": {
+    "median": 0.001004096,
+    "p95": 0.02836384,
+    "mean": 0.0046112384
+   },
+   "per_run_usd": 1.0,
+   "cost_pct_of_run_budget": {
+    "median": 0.1004096,
+    "p95": 2.836384,
+    "mean": 0.46112384
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.00099247,
+    "p95": 0.0154631279,
+    "mean": 0.0027848071
+   },
+   "guardrail_usd": {
+    "median": 0.01425,
+    "p95": 0.12125,
+    "mean": 0.02585
+   },
+   "guardrail_over_tokens": 5.61,
+   "restricted_calls": 0
+  },
+  {
+   "workflow": "w5",
+   "model": "gpt-oss-20b",
+   "kept_runs": 6,
+   "runs": 18,
+   "runs_with_tokens": 18,
+   "model_calls": {
+    "median": 14.0,
+    "p95": 14.0,
+    "mean": 10.3333333333
+   },
+   "tool_calls": {
+    "median": 82.0,
+    "p95": 82.0,
+    "mean": 62.6666666667
+   },
+   "tool_calls_kept_as": "every read in the night's log",
+   "input_tokens": {
+    "median": 8848.5,
+    "p95": 8991.0,
+    "mean": 6613.0555555556
+   },
+   "output_tokens": {
+    "median": 8972.0,
+    "p95": 25462.0,
+    "mean": 11171.0555555556
+   },
+   "cost_usd": {
+    "median": 0.002863008,
+    "p95": 0.007093696,
+    "mean": 0.0032830258
+   },
+   "per_run_usd": 1.0,
+   "cost_pct_of_run_budget": {
+    "median": 0.2863008,
+    "p95": 0.7093696,
+    "mean": 0.3283025778
+   },
+   "recounted_as_nova_lite_usd": {
+    "median": 0.0020080761,
+    "p95": 0.0042922454,
+    "mean": 0.0021160618
+   },
+   "guardrail_usd": {
+    "median": 0.0215,
+    "p95": 0.03825,
+    "mean": 0.0204444444
+   },
+   "guardrail_over_tokens": 6.23,
+   "restricted_calls": 0
+  }
+ ],
+ "w2_against_chapter_3": {
+  "claim": "ch03:58",
+  "golden_cases": 25,
+  "golden_refusal_cases": 5,
+  "all": {
+   "runs": 135,
+   "model_calls": 2,
+   "tool_calls": 1,
+   "model_calls_counts": {
+    "0": 6,
+    "1": 22,
+    "2": 77,
+    "3": 22,
+    "4": 1,
+    "5": 7
+   },
+   "tool_calls_counts": {
+    "0": 11,
+    "1": 94,
+    "2": 22,
+    "3": 1,
+    "4": 7
+   }
+  },
+  "answers": {
+   "runs": 108,
+   "model_calls": 2.0,
+   "tool_calls": 1.0,
+   "model_calls_counts": {
+    "1": 5,
+    "2": 73,
+    "3": 22,
+    "4": 1,
+    "5": 7
+   },
+   "tool_calls_counts": {
+    "0": 4,
+    "1": 74,
+    "2": 22,
+    "3": 1,
+    "4": 7
+   }
+  },
+  "by_kept_run": {
+   "gemma4-12b 2026-11-02": {
+    "runs": 25,
+    "model_calls": 2,
+    "tool_calls": 1,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 3,
+     "2": 15,
+     "3": 5,
+     "4": 1
+    },
+    "tool_calls_counts": {
+     "0": 1,
+     "1": 18,
+     "2": 5,
+     "3": 1
+    }
+   },
+   "gpt-oss-20b 2026-11-02": {
+    "runs": 25,
+    "model_calls": 2,
+    "tool_calls": 1,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 4,
+     "2": 16,
+     "3": 4
+    },
+    "tool_calls_counts": {
+     "0": 2,
+     "1": 19,
+     "2": 4
+    }
+   },
+   "gpt-oss-20b 2026-11-02 run1": {
+    "runs": 20,
+    "model_calls": 2.0,
+    "tool_calls": 1.0,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 4,
+     "2": 6,
+     "3": 2,
+     "5": 7
+    },
+    "tool_calls_counts": {
+     "0": 2,
+     "1": 9,
+     "2": 2,
+     "4": 7
+    }
+   },
+   "gpt-oss-20b 2026-11-02 run2": {
+    "runs": 20,
+    "model_calls": 2.0,
+    "tool_calls": 1.0,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 4,
+     "2": 12,
+     "3": 3
+    },
+    "tool_calls_counts": {
+     "0": 2,
+     "1": 15,
+     "2": 3
+    }
+   },
+   "gpt-oss-20b 2026-11-02 run3": {
+    "runs": 20,
+    "model_calls": 2.0,
+    "tool_calls": 1.0,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 3,
+     "2": 13,
+     "3": 3
+    },
+    "tool_calls_counts": {
+     "0": 2,
+     "1": 15,
+     "2": 3
+    }
+   },
+   "gpt-oss-20b traced/2026-11-03": {
+    "runs": 25,
+    "model_calls": 2,
+    "tool_calls": 1,
+    "model_calls_counts": {
+     "0": 1,
+     "1": 4,
+     "2": 15,
+     "3": 5
+    },
+    "tool_calls_counts": {
+     "0": 2,
+     "1": 18,
+     "2": 5
+    }
+   }
+  },
+  "skeleton": {
+   "runs": 40,
+   "model_calls": 2.0,
+   "tool_calls": 1.0,
+   "model_calls_counts": {
+    "1": 3,
+    "2": 37
+   },
+   "tool_calls_counts": {
+    "0": 3,
+    "1": 37
+   }
+  },
+  "ch11_361_first_two_prompts": {
+   "words": "about 850 prompt tokens for the first and 1,000 for the second; Gemma 4 12B's run to about 1,000 and 1,200",
+   "measured_medians": {
+    "gemma4-12b": [
+     991.5,
+     1181.0
+    ],
+    "gpt-oss-20b": [
+     841,
+     1008
+    ]
+   }
+  }
+ },
+ "tokens_across_models": {
+  "cases": 25,
+  "compared": 17,
+  "left_out_restricted": [
+   "gq-01/vault.custodian",
+   "gq-02/pci.operator",
+   "gq-03/incident.responder"
+  ],
+  "left_out_unanswered": {
+   "gpt-oss-20b": [
+    "gq-01/oncall.engineer",
+    "gq-02/oncall.engineer",
+    "gq-03/oncall.engineer",
+    "gq-04/oncall.engineer",
+    "gq-05/oncall.engineer"
+   ]
+  },
+  "same_number_of_calls": 17,
+  "totals": {
+   "gpt-oss-20b": {
+    "input": 38157,
+    "output": 6320,
+    "calls": 34
+   },
+   "gemma4-12b": {
+    "input": 38975,
+    "output": 6442,
+    "calls": 34
+   },
+   "nova-lite": {
+    "input": 52039,
+    "output": 3401,
+    "calls": 34
+   }
+  },
+  "ratios": {
+   "nova-lite/gpt-oss-20b": {
+    "input": {
+     "median": 1.369,
+     "min": 1.2732,
+     "max": 1.5281,
+     "of_totals": 1.3638
+    },
+    "output": {
+     "median": 0.5666,
+     "min": 0.2515,
+     "max": 0.9718,
+     "of_totals": 0.5381
+    },
+    "first_input": {
+     "median": 1.7125,
+     "min": 1.6951,
+     "max": 1.7296,
+     "of_totals": 1.7128
+    }
+   },
+   "nova-lite/gemma4-12b": {
+    "input": {
+     "median": 1.3211,
+     "min": 1.2332,
+     "max": 1.4708,
+     "of_totals": 1.3352
+    },
+    "output": {
+     "median": 0.5919,
+     "min": 0.1796,
+     "max": 1.426,
+     "of_totals": 0.5279
+    },
+    "first_input": {
+     "median": 1.9656,
+     "min": 1.9359,
+     "max": 1.9882,
+     "of_totals": 1.9659
+    }
+   },
+   "gemma4-12b/gpt-oss-20b": {
+    "input": {
+     "median": 1.0348,
+     "min": 0.9288,
+     "max": 1.0899,
+     "of_totals": 1.0214
+    },
+    "output": {
+     "median": 0.9291,
+     "min": 0.305,
+     "max": 4.4276,
+     "of_totals": 1.0193
+    },
+    "first_input": {
+     "median": 0.8713,
+     "min": 0.8651,
+     "max": 0.879,
+     "of_totals": 0.8713
+    }
+   }
+  },
+  "per_case": [
+   {
+    "case": "gq-04/ea.lead",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2182,
+     "output": 197,
+     "first_input": 393
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2270,
+     "output": 201,
+     "first_input": 340
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2999,
+     "output": 111,
+     "first_input": 676
+    }
+   },
+   {
+    "case": "gq-05/regulatory.liaison",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 1882,
+     "output": 186,
+     "first_input": 404
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 1748,
+     "output": 147,
+     "first_input": 352
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2540,
+     "output": 175,
+     "first_input": 688
+    }
+   },
+   {
+    "case": "gq-06/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2482,
+     "output": 524,
+     "first_input": 405
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2423,
+     "output": 457,
+     "first_input": 353
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3209,
+     "output": 317,
+     "first_input": 689
+    }
+   },
+   {
+    "case": "gq-07/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2036,
+     "output": 248,
+     "first_input": 395
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2219,
+     "output": 169,
+     "first_input": 343
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2994,
+     "output": 241,
+     "first_input": 679
+    }
+   },
+   {
+    "case": "gq-08/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 1762,
+     "output": 168,
+     "first_input": 392
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 1752,
+     "output": 437,
+     "first_input": 340
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2473,
+     "output": 124,
+     "first_input": 676
+    }
+   },
+   {
+    "case": "gq-09/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2359,
+     "output": 323,
+     "first_input": 401
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2441,
+     "output": 348,
+     "first_input": 349
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3163,
+     "output": 151,
+     "first_input": 686
+    }
+   },
+   {
+    "case": "gq-10/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2036,
+     "output": 283,
+     "first_input": 399
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2122,
+     "output": 1253,
+     "first_input": 348
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2840,
+     "output": 225,
+     "first_input": 684
+    }
+   },
+   {
+    "case": "gq-11/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2390,
+     "output": 282,
+     "first_input": 398
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2298,
+     "output": 434,
+     "first_input": 346
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3380,
+     "output": 165,
+     "first_input": 682
+    }
+   },
+   {
+    "case": "gq-12/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2573,
+     "output": 583,
+     "first_input": 400
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2537,
+     "output": 333,
+     "first_input": 348
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3276,
+     "output": 262,
+     "first_input": 685
+    }
+   },
+   {
+    "case": "gq-13/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2020,
+     "output": 501,
+     "first_input": 410
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2084,
+     "output": 419,
+     "first_input": 359
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2822,
+     "output": 248,
+     "first_input": 695
+    }
+   },
+   {
+    "case": "gq-14/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2095,
+     "output": 400,
+     "first_input": 404
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2194,
+     "output": 399,
+     "first_input": 352
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 2868,
+     "output": 243,
+     "first_input": 688
+    }
+   },
+   {
+    "case": "gq-15/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2469,
+     "output": 353,
+     "first_input": 403
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2473,
+     "output": 360,
+     "first_input": 352
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3216,
+     "output": 200,
+     "first_input": 690
+    }
+   },
+   {
+    "case": "gq-16/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2208,
+     "output": 241,
+     "first_input": 395
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2302,
+     "output": 135,
+     "first_input": 343
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3010,
+     "output": 109,
+     "first_input": 678
+    }
+   },
+   {
+    "case": "gq-17/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2463,
+     "output": 324,
+     "first_input": 393
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2496,
+     "output": 265,
+     "first_input": 343
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3250,
+     "output": 236,
+     "first_input": 679
+    }
+   },
+   {
+    "case": "gq-18/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2359,
+     "output": 859,
+     "first_input": 392
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2481,
+     "output": 262,
+     "first_input": 342
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3259,
+     "output": 216,
+     "first_input": 678
+    }
+   },
+   {
+    "case": "gq-19/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2652,
+     "output": 423,
+     "first_input": 401
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2753,
+     "output": 393,
+     "first_input": 350
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3395,
+     "output": 199,
+     "first_input": 685
+    }
+   },
+   {
+    "case": "gq-20/oncall.engineer",
+    "gpt-oss-20b": {
+     "calls": 2,
+     "input": 2189,
+     "output": 425,
+     "first_input": 405
+    },
+    "gemma4-12b": {
+     "calls": 2,
+     "input": 2382,
+     "output": 430,
+     "first_input": 356
+    },
+    "nova-lite": {
+     "calls": 2,
+     "input": 3345,
+     "output": 179,
+     "first_input": 692
+    }
+   }
+  ]
+ },
+ "litellm_custom_prices": [
+  {
+   "gateway": "aws",
+   "alias": "larkspur-chat",
+   "deployment": "nova-lite-ca",
+   "litellm_model": "bedrock/converse/ca.amazon.nova-lite-v1:0",
+   "input_tokens": 1000,
+   "output_tokens": 100,
+   "expected_usd": 8.96e-05,
+   "response_cost_usd": 8.960000000000001e-05,
+   "completion_cost_usd": 8.960000000000001e-05,
+   "budget_checks_skipped": false
+  },
+  {
+   "gateway": "aws",
+   "alias": "larkspur-chat-fallback",
+   "deployment": "nova-lite-us",
+   "litellm_model": "bedrock/converse/amazon.nova-lite-v1:0",
+   "input_tokens": 1000,
+   "output_tokens": 100,
+   "expected_usd": 8.4e-05,
+   "response_cost_usd": 8.4e-05,
+   "completion_cost_usd": 8.4e-05,
+   "budget_checks_skipped": false
+  },
+  {
+   "gateway": "aws",
+   "alias": "larkspur-chat-restricted",
+   "deployment": "vllm-gpt-oss-20b",
+   "litellm_model": "hosted_vllm/gpt-oss-20b",
+   "input_tokens": 1000,
+   "output_tokens": 100,
+   "expected_usd": 0.0,
+   "response_cost_usd": 0.0,
+   "completion_cost_usd": 0.0,
+   "budget_checks_skipped": true
+  },
+  {
+   "gateway": "aws",
+   "alias": "larkspur-embed",
+   "deployment": "titan-embed-v2-ca",
+   "litellm_model": "bedrock/amazon.titan-embed-text-v2:0",
+   "input_tokens": 10,
+   "output_tokens": 0,
+   "expected_usd": 1e-06,
+   "response_cost_usd": 1e-06,
+   "completion_cost_usd": null,
+   "budget_checks_skipped": false
+  },
+  {
+   "gateway": "aws",
+   "alias": "larkspur-chat",
+   "deployment": "(by name only)",
+   "litellm_model": "bedrock/converse/ca.amazon.nova-lite-v1:0",
+   "input_tokens": 1000,
+   "output_tokens": 100,
+   "expected_usd": null,
+   "response_cost_usd": null,
+   "completion_cost_usd": 0.0,
+   "budget_checks_skipped": null
+  },
+  {
+   "gateway": "azure",
+   "alias": "larkspur-chat",
+   "deployment": "gpt-4o-canada-east",
+   "litellm_model": "azure/gpt-4o-2024-11-20",
+   "input_tokens": 1000,
+   "output_tokens": 100,
+   "expected_usd": 0.004235,
+   "response_cost_usd": 0.004235,
+   "completion_cost_usd": 0.004235,
+   "budget_checks_skipped": false
+  }
+ ],
+ "litellm_map": {
+  "litellm": "1.106.6",
+  "map": "model_prices_and_context_window_backup.json",
+  "local_map": "True",
+  "map_in_use_is_the_wheels": true,
+  "rows": [
+   {
+    "deployment": "nova-lite-ca",
+    "name": "bedrock/ca.amazon.nova-lite-v1:0",
+    "map_key": "ca.amazon.nova-lite-v1:0",
+    "what": "the Canadian profile, called in ca-central-1, as chapter 6 calls it",
+    "map_entry": null,
+    "litellm": {
+     "error": "ModelNotMappedError"
+    },
+    "table": {
+     "input": 0.064,
+     "output": 0.256
+    },
+    "table_over_litellm": null,
+    "kind": "missing"
+   },
+   {
+    "deployment": "nova-lite-ca",
+    "name": "bedrock/us.amazon.nova-lite-v1:0",
+    "map_key": "us.amazon.nova-lite-v1:0",
+    "what": "the US profile, called in ca-central-1",
+    "map_entry": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "litellm": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "table": {
+     "input": 0.064,
+     "output": 0.256
+    },
+    "table_over_litellm": 1.0667,
+    "kind": "different"
+   },
+   {
+    "deployment": "nova-lite-us",
+    "name": "bedrock/us.amazon.nova-lite-v1:0",
+    "map_key": "us.amazon.nova-lite-v1:0",
+    "what": "the US profile, called in us-east-2",
+    "map_entry": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "litellm": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "table": {
+     "input": 0.06,
+     "output": 0.24
+    },
+    "table_over_litellm": 1.0,
+    "kind": "equal"
+   },
+   {
+    "deployment": "nova-lite-us",
+    "name": "bedrock/amazon.nova-lite-v1:0",
+    "map_key": "amazon.nova-lite-v1:0",
+    "what": "the bare model In-Region in us-east-2, as the fallback calls it",
+    "map_entry": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "litellm": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "table": {
+     "input": 0.06,
+     "output": 0.24
+    },
+    "table_over_litellm": 1.0,
+    "kind": "equal"
+   },
+   {
+    "deployment": "nova-lite-ca",
+    "name": "bedrock/ca-central-1/amazon.nova-lite-v1:0",
+    "map_key": "bedrock/ca-central-1/amazon.nova-lite-v1:0",
+    "what": "the bare model with ca-central-1 as LiteLLM's Region prefix",
+    "map_entry": null,
+    "litellm": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "table": {
+     "input": 0.064,
+     "output": 0.256
+    },
+    "table_over_litellm": 1.0667,
+    "kind": "base price"
+   },
+   {
+    "deployment": "nova-lite-us",
+    "name": "bedrock/us-east-2/amazon.nova-lite-v1:0",
+    "map_key": "bedrock/us-east-2/amazon.nova-lite-v1:0",
+    "what": "the bare model with us-east-2 as LiteLLM's Region prefix",
+    "map_entry": null,
+    "litellm": {
+     "input_per_million": 0.06,
+     "output_per_million": 0.24
+    },
+    "table": {
+     "input": 0.06,
+     "output": 0.24
+    },
+    "table_over_litellm": 1.0,
+    "kind": "base price"
+   },
+   {
+    "deployment": "vllm-gpt-oss-20b",
+    "name": "hosted_vllm/gpt-oss-20b",
+    "map_key": "hosted_vllm/gpt-oss-20b",
+    "what": "chapter 9's self-hosted model behind vLLM",
+    "map_entry": null,
+    "litellm": {
+     "error": "ModelNotMappedError"
+    },
+    "table": {
+     "input": 0.0,
+     "output": 0.0
+    },
+    "table_over_litellm": null,
+    "kind": "missing"
+   },
+   {
+    "deployment": "titan-embed-v2-ca",
+    "name": "bedrock/amazon.titan-embed-text-v2:0",
+    "map_key": "amazon.titan-embed-text-v2:0",
+    "what": "Titan Text Embeddings V2, called in ca-central-1",
+    "map_entry": {
+     "input_per_million": 0.02,
+     "output_per_million": 0.0
+    },
+    "litellm": {
+     "input_per_million": 0.02,
+     "output_per_million": 0.0
+    },
+    "table": {
+     "input": 0.1,
+     "output": 0.0
+    },
+    "table_over_litellm": 5.0,
+    "kind": "different"
+   },
+   {
+    "deployment": "gpt-4o-canada-east",
+    "name": "azure/gpt-4o-2024-11-20",
+    "map_key": "azure/gpt-4o-2024-11-20",
+    "what": "gpt-4o 2024-11-20, a Standard deployment in Canada East",
+    "map_entry": {
+     "input_per_million": 2.5,
+     "output_per_million": 10.0
+    },
+    "litellm": {
+     "input_per_million": 2.5,
+     "output_per_million": 10.0
+    },
+    "table": {
+     "input": 3.025,
+     "output": 12.1
+    },
+    "table_over_litellm": 1.21,
+    "kind": "different"
+   },
+   {
+    "deployment": "gemini-3.5-flash-montreal",
+    "name": "vertex_ai/gemini-3.5-flash",
+    "map_key": "vertex_ai/gemini-3.5-flash",
+    "what": "Gemini 3.5 Flash in Montr\u00e9al",
+    "map_entry": {
+     "input_per_million": 1.5,
+     "output_per_million": 9.0
+    },
+    "litellm": {
+     "input_per_million": 1.5,
+     "output_per_million": 9.0
+    },
+    "table": null,
+    "table_over_litellm": null,
+    "kind": "no table price"
+   },
+   {
+    "deployment": "bedrock-gpt-oss-120b-use1",
+    "name": "bedrock/openai.gpt-oss-120b-1:0",
+    "map_key": "openai.gpt-oss-120b-1:0",
+    "what": "gpt-oss-120b on Bedrock's Standard tier in us-east-1, chapter 9's crossover",
+    "map_entry": {
+     "input_per_million": 0.15,
+     "output_per_million": 0.6
+    },
+    "litellm": {
+     "input_per_million": 0.15,
+     "output_per_million": 0.6
+    },
+    "table": {
+     "input": 0.15,
+     "output": 0.6
+    },
+    "table_over_litellm": 1.0,
+    "kind": "equal"
+   }
+  ]
+ },
+ "restricted_alias_rates": {
+  "w2-ops-assistant": 120,
+  "w1-knowledge": 120,
+  "w3-incident": 60
+ },
+ "month": {
+  "reference_model": "gpt-oss-20b",
+  "month_hours": 730,
+  "rows": [
+   {
+    "workflow": "w1",
+    "volume": {
+     "runs": 6000,
+     "unit": "question",
+     "source": "lab assumption, not in the book",
+     "basis": "about two questions a month for each of the roughly three thousand people in technology (ch01:298)",
+     "searched": "chapters 1 to 14 give the knowledge assistant no volume"
+    },
+    "sources": [
+     "lab assumption, not in the book"
+    ],
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-10-29"
+    ],
+    "runs_in_profile": 25,
+    "runs_per_month": 6000.0,
+    "calls_per_run": 2.2,
+    "calls_per_month": 13200.0,
+    "tokens_per_month": 19181280,
+    "restricted_tokens_per_month": 1933440,
+    "cost_per_run_usd": 0.0002401254,
+    "direct_usd": 1.44075264,
+    "per_month_usd": 100,
+    "direct_pct_of_month": 1.440753,
+    "direct_pct_range_over_kept_runs": [
+     1.440753,
+     1.440753
+    ],
+    "recounted_as_nova_lite_usd": 1.59400405,
+    "recounted_pct_of_month": 1.594004,
+    "guardrail_usd": 20.52,
+    "guardrail_pct_of_month": 20.52,
+    "guardrail_over_tokens": 14.24
+   },
+   {
+    "workflow": "w2",
+    "volume": {
+     "tokens": 100000000,
+     "unit": "question",
+     "source": "ch09:405",
+     "words": "at Larkspur's estimate of 100 million tokens a month",
+     "cross_check": {
+      "source": "ch12:18",
+      "words": "the hundred questions an hour"
+     }
+    },
+    "sources": [
+     "ch09:405"
+    ],
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-11-02",
+     "gpt-oss-20b 2026-11-02 run1",
+     "gpt-oss-20b 2026-11-02 run2",
+     "gpt-oss-20b 2026-11-02 run3",
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs_in_profile": 110,
+    "runs_per_month": 43029.93,
+    "calls_per_run": 2.0818,
+    "calls_per_month": 89580.5,
+    "tokens_per_month": 100000000,
+    "restricted_tokens_per_month": 0,
+    "cost_per_run_usd": 0.0002094476,
+    "direct_usd": 9.01251467,
+    "per_month_usd": 200,
+    "direct_pct_of_month": 4.506257,
+    "direct_pct_range_over_kept_runs": [
+     4.334428,
+     4.880808
+    ],
+    "recounted_as_nova_lite_usd": 9.41506302,
+    "recounted_pct_of_month": 4.707532,
+    "guardrail_usd": 126.05814518,
+    "guardrail_pct_of_month": 63.029073,
+    "guardrail_over_tokens": 13.99
+   },
+   {
+    "workflow": "w3",
+    "volume": {
+     "runs": 300,
+     "unit": "incident",
+     "source": "lab assumption, not in the book",
+     "basis": "about ten incidents a day reach the incident workflow",
+     "searched": "chapters 1 to 14 give the incident workflow no volume"
+    },
+    "sources": [
+     "lab assumption, not in the book"
+    ],
+    "basis": "measured on the 24 of 48 runs with tokens",
+    "kept_runs": [
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs_in_profile": 24,
+    "runs_per_month": 300.0,
+    "calls_per_run": 5.9167,
+    "calls_per_month": 1775.0,
+    "tokens_per_month": 3112038,
+    "restricted_tokens_per_month": 284075,
+    "cost_per_run_usd": 0.0007084667,
+    "direct_usd": 0.21254,
+    "per_month_usd": 500,
+    "direct_pct_of_month": 0.042508,
+    "direct_pct_range_over_kept_runs": [
+     0.042508,
+     0.042508
+    ],
+    "recounted_as_nova_lite_usd": 0.25512716,
+    "recounted_pct_of_month": 0.051025,
+    "guardrail_usd": 3.3,
+    "guardrail_pct_of_month": 0.66,
+    "guardrail_over_tokens": 15.53
+   },
+   {
+    "workflow": "w4",
+    "volume": {
+     "runs": 200,
+     "unit": "change",
+     "source": "ch13:9",
+     "words": "Marcus Bell's board approves about two hundred changes a month",
+     "also": "ch02:151"
+    },
+    "sources": [
+     "ch13:9"
+    ],
+    "basis": "measured on the 8 of 32 runs with tokens",
+    "kept_runs": [
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs_in_profile": 8,
+    "runs_per_month": 200.0,
+    "calls_per_run": 1.0,
+    "calls_per_month": 200.0,
+    "tokens_per_month": 77775,
+    "restricted_tokens_per_month": 0,
+    "cost_per_run_usd": 6.2568e-05,
+    "direct_usd": 0.0125136,
+    "per_month_usd": 200,
+    "direct_pct_of_month": 0.006257,
+    "direct_pct_range_over_kept_runs": [
+     0.006257,
+     0.006257
+    ],
+    "recounted_as_nova_lite_usd": 0.00876941,
+    "recounted_pct_of_month": 0.004385,
+    "guardrail_usd": 0.1125,
+    "guardrail_pct_of_month": 0.05625,
+    "guardrail_over_tokens": 8.99
+   },
+   {
+    "workflow": "w5",
+    "volume": {
+     "unit": "night or alarm",
+     "parts": {
+      "nights": {
+       "runs": 30,
+       "source": "ch14:29",
+       "words": "A nightly schedule or a budget alert starts the harness",
+       "also": "ch14:13, and the manifest's budget comment (\"one night a day\")"
+      },
+      "alarms": {
+       "runs": 4,
+       "source": "lab assumption, not in the book",
+       "basis": "about one budget or anomaly alarm a week; chapter 14 names the trigger (ch14:29) and not its rate"
+      }
+     }
+    },
+    "sources": [
+     "nights: ch14:29",
+     "alarms: lab assumption, not in the book"
+    ],
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-11-03",
+     "gpt-oss-20b 2026-11-03/after-review",
+     "gpt-oss-20b 2026-11-03/first-run-max-tokens-1200",
+     "gpt-oss-20b 2026-11-03/second-run-max-tokens-4096",
+     "gpt-oss-20b 2026-11-03/step-5b",
+     "gpt-oss-20b 2026-11-03/step-5c"
+    ],
+    "runs_in_profile": 18,
+    "runs_per_month": 34.0,
+    "calls_per_run": 10.3333,
+    "calls_per_month": 351.33,
+    "tokens_per_month": 604660,
+    "restricted_tokens_per_month": 0,
+    "cost_per_run_usd": 0.0032830258,
+    "direct_usd": 0.11162288,
+    "per_month_usd": 100,
+    "direct_pct_of_month": 0.111623,
+    "direct_pct_range_over_kept_runs": [
+     0.068445,
+     0.164505
+    ],
+    "recounted_as_nova_lite_usd": 0.0719461,
+    "recounted_pct_of_month": 0.071946,
+    "guardrail_usd": 0.69511111,
+    "guardrail_pct_of_month": 0.695111,
+    "guardrail_over_tokens": 6.23
+   }
+  ],
+  "profiles": {
+   "w1": {
+    "workflow": "w1",
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-10-29"
+    ],
+    "runs": 25,
+    "calls": 2.2,
+    "restricted_calls": 0.24,
+    "input": 2868.04,
+    "output": 328.84,
+    "restricted_input": 285.84,
+    "restricted_output": 36.4,
+    "cost": 0.0002401254,
+    "guardrail": 0.00342
+   },
+   "w2": {
+    "workflow": "w2",
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-11-02",
+     "gpt-oss-20b 2026-11-02 run1",
+     "gpt-oss-20b 2026-11-02 run2",
+     "gpt-oss-20b 2026-11-02 run3",
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs": 110,
+    "calls": 2.081818181818182,
+    "restricted_calls": 0.0,
+    "input": 2007.7454545454545,
+    "output": 316.2181818181818,
+    "restricted_input": 0.0,
+    "restricted_output": 0.0,
+    "cost": 0.0002094476,
+    "guardrail": 0.0029295455
+   },
+   "w3": {
+    "workflow": "w3",
+    "basis": "measured on the 24 of 48 runs with tokens",
+    "kept_runs": [
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs": 24,
+    "calls": 5.916666666666667,
+    "restricted_calls": 0.375,
+    "input": 9701.375,
+    "output": 672.0833333333334,
+    "restricted_input": 822.5833333333334,
+    "restricted_output": 124.33333333333333,
+    "cost": 0.0007084667,
+    "guardrail": 0.011
+   },
+   "w4": {
+    "workflow": "w4",
+    "basis": "measured on the 8 of 32 runs with tokens",
+    "kept_runs": [
+     "gpt-oss-20b traced/2026-11-03"
+    ],
+    "runs": 8,
+    "calls": 1.0,
+    "restricted_calls": 0.0,
+    "input": 192.625,
+    "output": 196.25,
+    "restricted_input": 0.0,
+    "restricted_output": 0.0,
+    "cost": 6.2568e-05,
+    "guardrail": 0.0005625
+   },
+   "w5": {
+    "workflow": "w5",
+    "basis": "measured",
+    "kept_runs": [
+     "gpt-oss-20b 2026-11-03",
+     "gpt-oss-20b 2026-11-03/after-review",
+     "gpt-oss-20b 2026-11-03/first-run-max-tokens-1200",
+     "gpt-oss-20b 2026-11-03/second-run-max-tokens-4096",
+     "gpt-oss-20b 2026-11-03/step-5b",
+     "gpt-oss-20b 2026-11-03/step-5c"
+    ],
+    "runs": 18,
+    "calls": 10.333333333333334,
+    "restricted_calls": 0.0,
+    "input": 6613.055555555556,
+    "output": 11171.055555555555,
+    "restricted_input": 0.0,
+    "restricted_output": 0.0,
+    "cost": 0.0032830258,
+    "guardrail": 0.0204444444
+   }
+  },
+  "recount_ratios": {
+   "input": 1.3638,
+   "output": 0.5381
+  }
+ },
+ "tenants": {
+  "manifests": [
+   "w1",
+   "w2",
+   "w3"
+  ],
+  "kept_runs": {
+   "skeleton": 77,
+   "w1": 18,
+   "w3": 20
+  },
+  "chapter 9": {
+   "workflows": [
+    "w3",
+    "w2"
+   ],
+   "lines": [
+    "ch09:18",
+    "ch09:200"
+   ],
+   "words": "On this path Larkspur runs all of them, for two workflows."
+  },
+  "chapter 10": {
+   "workflows": [
+    "w1"
+   ],
+   "lines": [
+    "ch10:72",
+    "ch10:78"
+   ],
+   "words": "Restricted calls go to the self-hosted model on EKS from month six"
+  }
+ },
+ "allocation": {
+  "gpu": {
+   "replicas": 2,
+   "hours": 730,
+   "price": "aws-g6e.xlarge-l40s",
+   "per_hour": 1.861,
+   "usd": 2717.06,
+   "throughput": {
+    "prompt_tokens_per_second": 5575.4,
+    "output_tokens_per_second": 181.0
+   },
+   "capacity_seconds": 5256000,
+   "sent": {
+    "w1": {
+     "input_tokens": 1715040,
+     "output_tokens": 218400,
+     "busy_seconds": 1514.238
+    },
+    "w2": {
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "busy_seconds": 0.0
+    },
+    "w3": {
+     "input_tokens": 246775,
+     "output_tokens": 37300,
+     "busy_seconds": 250.339
+    },
+    "w4": {
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "busy_seconds": 0.0
+    },
+    "w5": {
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "busy_seconds": 0.0
+    }
+   },
+   "readings": {
+    "chapter 9": {
+     "tenants": [
+      "w2",
+      "w3"
+     ],
+     "busy_seconds": 250.339,
+     "used_share": 4.7629185692541856e-05,
+     "used_usd": 0.12941136,
+     "idle_usd": 2716.93058864,
+     "idle_share": 0.9999523708143074,
+     "split": {
+      "w2": {
+       "tokens": 0,
+       "token_share": 0.0,
+       "usd": 0.0,
+       "pct_of_month": 0.0,
+       "without_idle_line_usd": 0.0,
+       "without_idle_line_pct_of_month": 0.0
+      },
+      "w3": {
+       "tokens": 284075,
+       "token_share": 1.0,
+       "usd": 0.12941136,
+       "pct_of_month": 0.025882,
+       "without_idle_line_usd": 2717.06,
+       "without_idle_line_pct_of_month": 543.412
+      }
+     }
+    },
+    "manifests and chapter 10": {
+     "tenants": [
+      "w1",
+      "w2",
+      "w3"
+     ],
+     "busy_seconds": 1764.577,
+     "used_share": 0.0003357262176560122,
+     "used_usd": 0.91218828,
+     "idle_usd": 2716.14781172,
+     "idle_share": 0.999664273782344,
+     "split": {
+      "w1": {
+       "tokens": 1933440,
+       "token_share": 0.8718948913536098,
+       "usd": 0.7953323,
+       "pct_of_month": 0.795332,
+       "without_idle_line_usd": 2368.9907335,
+       "without_idle_line_pct_of_month": 2368.990734
+      },
+      "w2": {
+       "tokens": 0,
+       "token_share": 0.0,
+       "usd": 0.0,
+       "pct_of_month": 0.0,
+       "without_idle_line_usd": 0.0,
+       "without_idle_line_pct_of_month": 0.0
+      },
+      "w3": {
+       "tokens": 284075,
+       "token_share": 0.12810510864639021,
+       "usd": 0.11685598,
+       "pct_of_month": 0.023371,
+       "without_idle_line_usd": 348.0692665,
+       "without_idle_line_pct_of_month": 69.613853
+      }
+     }
+    }
+   }
+  },
+  "fixed": {
+   "lines": [
+    {
+     "item": "the gateway's database",
+     "price": "rds-postgres-db.t4g.medium-cac1",
+     "quantity": 1,
+     "per": "hour",
+     "unit_usd": 0.07,
+     "usd": 51.1,
+     "stand_in": false,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "the database's storage",
+     "price": "rds-gp3-storage-cac1",
+     "quantity": 20,
+     "per": "gb_month",
+     "unit_usd": 0.127,
+     "usd": 2.54,
+     "stand_in": false,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "Redis",
+     "price": "elasticache-t4g.micro-redis-cac1",
+     "quantity": 1,
+     "per": "hour",
+     "unit_usd": 0.018,
+     "usd": 13.14,
+     "stand_in": false,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "the gateway's compute",
+     "price": "ec2-m7i-flex.large-use2",
+     "quantity": 2,
+     "per": "hour",
+     "unit_usd": 0.09576,
+     "usd": 139.8096,
+     "stand_in": true,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "Langfuse's stores",
+     "price": "ec2-t3.xlarge-use2",
+     "quantity": 1,
+     "per": "hour",
+     "unit_usd": 0.1664,
+     "usd": 121.472,
+     "stand_in": true,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "Langfuse's disk",
+     "price": "ebs-gp3-use2",
+     "quantity": 100,
+     "per": "gb_month",
+     "unit_usd": 0.08,
+     "usd": 8.0,
+     "stand_in": true,
+     "parameter": false,
+     "source": "lab assumption, not in the book",
+     "words": null
+    },
+    {
+     "item": "chapter 6's interface endpoints",
+     "price": "vpc-interface-endpoint-cac1",
+     "quantity": 16,
+     "per": "hour",
+     "unit_usd": 0.011,
+     "usd": 128.48,
+     "stand_in": false,
+     "parameter": false,
+     "source": "labs/ch06/cost/cost-sheet.yaml",
+     "words": null
+    },
+    {
+     "item": "chapter 6's two KMS keys",
+     "price": "kms-key-cac1",
+     "quantity": 2,
+     "per": "month",
+     "unit_usd": 1.0,
+     "usd": 2.0,
+     "stand_in": false,
+     "parameter": false,
+     "source": "labs/ch06/cost/cost-sheet.yaml",
+     "words": null
+    },
+    {
+     "item": "chapter 7's Private Service Connect endpoint",
+     "price": "psc-endpoint-google",
+     "quantity": 1,
+     "per": "hour",
+     "unit_usd": null,
+     "usd": null,
+     "stand_in": false,
+     "parameter": true,
+     "source": "ch07:88",
+     "words": "labs/ch07/cost/cost-sheet.yaml doesn't price it, and section 8.8 has no Google network price"
+    },
+    {
+     "item": "chapter 8's private endpoints",
+     "price": "private-endpoints-azure",
+     "quantity": 3,
+     "per": "hour",
+     "unit_usd": null,
+     "usd": null,
+     "stand_in": false,
+     "parameter": true,
+     "source": "ch08:59",
+     "words": "labs/ch08/README.md: \"The registry, the private endpoints and the workspace bill too, and the sheet doesn't price them.\""
+    },
+    {
+     "item": "LiteLLM's enterprise license",
+     "price": "litellm-enterprise",
+     "quantity": 1,
+     "per": "month",
+     "unit_usd": null,
+     "usd": null,
+     "stand_in": false,
+     "parameter": true,
+     "source": "ch05:502",
+     "words": "Pricing depends on your deployment size. Get in touch to scope it."
+    },
+    {
+     "item": "Langfuse's enterprise features",
+     "price": "langfuse-enterprise",
+     "quantity": 1,
+     "per": "month",
+     "unit_usd": null,
+     "usd": null,
+     "stand_in": false,
+     "parameter": true,
+     "source": "ch05:502",
+     "words": "Custom Pricing"
+    }
+   ],
+   "priced_usd": 466.5416,
+   "stand_in_usd": 269.2816,
+   "parameters": [
+    "chapter 7's Private Service Connect endpoint",
+    "chapter 8's private endpoints",
+    "LiteLLM's enterprise license",
+    "Langfuse's enterprise features"
+   ],
+   "splits": {
+    "gateway calls": {
+     "w1": {
+      "share": 0.12558651041040816,
+      "usd": 58.59133151,
+      "pct_of_month": 58.591332
+     },
+     "w2": {
+      "share": 0.8522804845317854,
+      "usd": 397.6243009,
+      "pct_of_month": 198.81215
+     },
+     "w3": {
+      "share": 0.01688757999836928,
+      "usd": 7.87875859,
+      "pct_of_month": 1.575752
+     },
+     "w4": {
+      "share": 0.0019028259153092144,
+      "usd": 0.88774745,
+      "pct_of_month": 0.443874
+     },
+     "w5": {
+      "share": 0.0033425991441279317,
+      "usd": 1.55946155,
+      "pct_of_month": 1.559462
+     }
+    },
+    "tokens": {
+     "w1": {
+      "share": 0.15597611343758147,
+      "usd": 72.76934552,
+      "pct_of_month": 72.769346
+     },
+     "w2": {
+      "share": 0.8131684300400258,
+      "usd": 379.37690042,
+      "pct_of_month": 189.68845
+     },
+     "w3": {
+      "share": 0.02530611054684902,
+      "usd": 11.8063533,
+      "pct_of_month": 2.361271
+     },
+     "w4": {
+      "share": 0.0006324417464636301,
+      "usd": 0.29506038,
+      "pct_of_month": 0.14753
+     },
+     "w5": {
+      "share": 0.00491690422908002,
+      "usd": 2.29394037,
+      "pct_of_month": 2.29394
+     }
+    }
+   }
+  }
+ },
+ "sampling": {
+  "month_seed": 20261103,
+  "sample_seed": 16,
+  "seeds": 1000,
+  "workflows": {
+   "w1": {
+    "kept_runs_drawn_from": 75,
+    "runs": 6000,
+    "truth_usd": 1.47487667,
+    "failed_share": 0.143167,
+    "over_budget": 0,
+    "mean_cost_failed_usd": 0.0002410954,
+    "mean_cost_rest_usd": 0.000246601,
+    "head": [
+     {
+      "rate": 0.01,
+      "error": {
+       "mean": 0.003597,
+       "std": 0.13858,
+       "p5": -0.217571,
+       "p95": 0.233162,
+       "max_abs": 0.445228
+      },
+      "unknown_share": 0.989996,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 0.1,
+      "error": {
+       "mean": -0.000153,
+       "std": 0.044165,
+       "p5": -0.074934,
+       "p95": 0.072307,
+       "max_abs": 0.138278
+      },
+      "unknown_share": 0.899977,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 0.5,
+      "error": {
+       "mean": -0.000435,
+       "std": 0.014514,
+       "p5": -0.024892,
+       "p95": 0.02332,
+       "max_abs": 0.053288
+      },
+      "unknown_share": 0.500194,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 1.0,
+      "error": {
+       "mean": 0.0,
+       "std": 0.0,
+       "p5": 0.0,
+       "p95": 0.0,
+       "max_abs": 0.0
+      },
+      "unknown_share": 0.0,
+      "seeds_with_no_trace": 0
+     }
+    ],
+    "tail": [
+     {
+      "share_of_the_rest": 0.01,
+      "kept_share": 0.151712,
+      "unknown_share": 0.848288,
+      "naive": {
+       "mean": -0.018011,
+       "std": 0.004123,
+       "p5": -0.024656,
+       "p95": -0.011096,
+       "max_abs": 0.033262
+      },
+      "weighted": {
+       "mean": -0.003574,
+       "std": 0.131352,
+       "p5": -0.209645,
+       "p95": 0.223152,
+       "max_abs": 0.486337
+      }
+     },
+     {
+      "share_of_the_rest": 0.1,
+      "kept_share": 0.228796,
+      "unknown_share": 0.771204,
+      "naive": {
+       "mean": -0.01093,
+       "std": 0.00855,
+       "p5": -0.025576,
+       "p95": 0.00279,
+       "max_abs": 0.038308
+      },
+      "weighted": {
+       "mean": -0.000834,
+       "std": 0.039985,
+       "p5": -0.06747,
+       "p95": 0.059835,
+       "max_abs": 0.137003
+      }
+     }
+    ]
+   },
+   "w2": {
+    "kept_runs_drawn_from": 135,
+    "runs": 43030,
+    "truth_usd": 8.94520358,
+    "failed_share": 0.215501,
+    "over_budget": 0,
+    "mean_cost_failed_usd": 0.0003127159,
+    "mean_cost_rest_usd": 0.0001790855,
+    "head": [
+     {
+      "rate": 0.01,
+      "error": {
+       "mean": 0.000676,
+       "std": 0.057287,
+       "p5": -0.094009,
+       "p95": 0.093129,
+       "max_abs": 0.197583
+      },
+      "unknown_share": 0.990001,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 0.1,
+      "error": {
+       "mean": 0.000748,
+       "std": 0.017721,
+       "p5": -0.028422,
+       "p95": 0.030356,
+       "max_abs": 0.056716
+      },
+      "unknown_share": 0.899952,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 0.5,
+      "error": {
+       "mean": 0.000194,
+       "std": 0.005825,
+       "p5": -0.00922,
+       "p95": 0.009757,
+       "max_abs": 0.017203
+      },
+      "unknown_share": 0.499866,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 1.0,
+      "error": {
+       "mean": 0.0,
+       "std": 0.0,
+       "p5": 0.0,
+       "p95": 0.0,
+       "max_abs": 0.0
+      },
+      "unknown_share": 0.0,
+      "seeds_with_no_trace": 0
+     }
+    ],
+    "tail": [
+     {
+      "share_of_the_rest": 0.01,
+      "kept_share": 0.22335,
+      "unknown_share": 0.77665,
+      "naive": {
+       "mean": 0.481673,
+       "std": 0.001331,
+       "p5": 0.479557,
+       "p95": 0.483827,
+       "max_abs": 0.486005
+      },
+      "weighted": {
+       "mean": -0.000236,
+       "std": 0.03943,
+       "p5": -0.066776,
+       "p95": 0.062051,
+       "max_abs": 0.135208
+      }
+     },
+     {
+      "share_of_the_rest": 0.1,
+      "kept_share": 0.294018,
+      "unknown_share": 0.705982,
+      "naive": {
+       "mean": 0.332613,
+       "std": 0.002717,
+       "p5": 0.328275,
+       "p95": 0.336943,
+       "max_abs": 0.34108
+      },
+      "weighted": {
+       "mean": 0.000516,
+       "std": 0.012142,
+       "p5": -0.020185,
+       "p95": 0.020128,
+       "max_abs": 0.039743
+      }
+     }
+    ]
+   },
+   "w5": {
+    "kept_runs_drawn_from": 33,
+    "runs": 34,
+    "truth_usd": 0.16451661,
+    "failed_share": 0.647059,
+    "over_budget": 0,
+    "mean_cost_failed_usd": 0.0070453847,
+    "mean_cost_rest_usd": 0.0007931787,
+    "head": [
+     {
+      "rate": 0.01,
+      "error": {
+       "mean": 0.042867,
+       "std": 3.39992,
+       "p5": -1.0,
+       "p95": 3.311842,
+       "max_abs": 32.678302
+      },
+      "unknown_share": 0.990176,
+      "seeds_with_no_trace": 707
+     },
+     {
+      "rate": 0.1,
+      "error": {
+       "mean": -0.000388,
+       "std": 0.955021,
+       "p5": -0.986734,
+       "p95": 1.656987,
+       "max_abs": 4.492672
+      },
+      "unknown_share": 0.898971,
+      "seeds_with_no_trace": 34
+     },
+     {
+      "rate": 0.5,
+      "error": {
+       "mean": -0.007098,
+       "std": 0.32351,
+       "p5": -0.555344,
+       "p95": 0.552666,
+       "max_abs": 0.852804
+      },
+      "unknown_share": 0.500235,
+      "seeds_with_no_trace": 0
+     },
+     {
+      "rate": 1.0,
+      "error": {
+       "mean": 0.0,
+       "std": 0.0,
+       "p5": 0.0,
+       "p95": 0.0,
+       "max_abs": 0.0
+      },
+      "unknown_share": 0.0,
+      "seeds_with_no_trace": 0
+     }
+    ],
+    "tail": [
+     {
+      "share_of_the_rest": 0.01,
+      "kept_share": 0.650618,
+      "unknown_share": 0.349382,
+      "naive": {
+       "mean": 0.449185,
+       "std": 0.01941,
+       "p5": 0.394656,
+       "p95": 0.456042,
+       "max_abs": 0.456042
+      },
+      "weighted": {
+       "mean": -0.00493,
+       "std": 0.238427,
+       "p5": -0.057855,
+       "p95": 0.0748,
+       "max_abs": 1.613718
+      }
+     },
+     {
+      "share_of_the_rest": 0.1,
+      "kept_share": 0.682353,
+      "unknown_share": 0.317647,
+      "naive": {
+       "mean": 0.391516,
+       "std": 0.052501,
+       "p5": 0.293263,
+       "p95": 0.456042,
+       "max_abs": 0.456042
+      },
+      "weighted": {
+       "mean": 0.000439,
+       "std": 0.077297,
+       "p5": -0.057855,
+       "p95": 0.154901,
+       "max_abs": 0.367638
+      }
+     }
+    ]
+   }
+  }
+ },
+ "measured": {
+  "tokens": [
+   {
+    "workflow": "w3",
+    "basis": [
+     "proxy: W2's tokens per call",
+     "measured on the 24 of 48 runs with tokens"
+    ],
+    "runs": [
+     24,
+     24
+    ],
+    "calls_per_run": [
+     5.708333333333333,
+     5.916666666666667
+    ],
+    "restricted_calls_per_run": [
+     0.4583333333333333,
+     0.375
+    ],
+    "input_per_call": [
+     962.5777777777778,
+     1639.669014084507
+    ],
+    "output_per_call": [
+     157.4777777777778,
+     113.59154929577466
+    ],
+    "input_per_run": [
+     5494.714814814814,
+     9701.375
+    ],
+    "output_per_run": [
+     898.9356481481482,
+     672.0833333333334
+    ],
+    "cost_per_run_usd": [
+     0.0005350763,
+     0.0007084667
+    ]
+   },
+   {
+    "workflow": "w4",
+    "basis": [
+     "proxy: W5's tokens per call",
+     "measured on the 8 of 32 runs with tokens"
+    ],
+    "runs": [
+     24,
+     8
+    ],
+    "calls_per_run": [
+     1.0,
+     1.0
+    ],
+    "restricted_calls_per_run": [
+     0.0,
+     0.0
+    ],
+    "input_per_call": [
+     639.9731182795699,
+     192.625
+    ],
+    "output_per_call": [
+     1081.0698924731182,
+     196.25
+    ],
+    "input_per_run": [
+     639.9731182795699,
+     192.625
+    ],
+    "output_per_run": [
+     1081.0698924731182,
+     196.25
+    ],
+    "cost_per_run_usd": [
+     0.0003177122,
+     6.2568e-05
+    ]
+   }
+  ],
+  "month": [
+   {
+    "workflow": "w1",
+    "runs_per_month": [
+     6000.0,
+     6000.0
+    ],
+    "calls_per_month": [
+     13200.0,
+     13200.0
+    ],
+    "tokens_per_month": [
+     19181280,
+     19181280
+    ],
+    "direct_usd": [
+     1.44075264,
+     1.44075264
+    ],
+    "direct_pct_of_month": [
+     1.440753,
+     1.440753
+    ],
+    "guardrail_pct_of_month": [
+     20.52,
+     20.52
+    ],
+    "calls_share": [
+     0.12602019072583048,
+     0.12558651041040816
+    ],
+    "tokens_share": [
+     0.1571614582181125,
+     0.15597611343758147
+    ],
+    "fixed_by_calls_usd": [
+     58.79366141,
+     58.59133151
+    ],
+    "fixed_by_tokens_usd": [
+     73.32235818,
+     72.76934552
+    ],
+    "gpu_usd": [
+     0.7936718,
+     0.7953323
+    ],
+    "gpu_token_share": [
+     0.9262223184588638,
+     0.8718948913536098
+    ]
+   },
+   {
+    "workflow": "w2",
+    "runs_per_month": [
+     42160.61,
+     43029.93
+    ],
+    "calls_per_month": [
+     89281.29,
+     89580.5
+    ],
+    "tokens_per_month": [
+     100000000,
+     100000000
+    ],
+    "direct_usd": [
+     9.09948514,
+     9.01251467
+    ],
+    "direct_pct_of_month": [
+     4.549743,
+     4.506257
+    ],
+    "guardrail_pct_of_month": [
+     63.17891,
+     63.029073
+    ],
+    "calls_share": [
+     0.8523670601551653,
+     0.8522804845317854
+    ],
+    "tokens_share": [
+     0.8193481259754954,
+     0.8131684300400258
+    ],
+    "fixed_by_calls_usd": [
+     397.66469203,
+     397.6243009
+    ],
+    "fixed_by_tokens_usd": [
+     382.25998565,
+     379.37690042
+    ],
+    "gpu_usd": [
+     0.0,
+     0.0
+    ],
+    "gpu_token_share": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "workflow": "w3",
+    "runs_per_month": [
+     300.0,
+     300.0
+    ],
+    "calls_per_month": [
+     1712.5,
+     1775.0
+    ],
+    "tokens_per_month": [
+     1918095,
+     3112038
+    ],
+    "direct_usd": [
+     0.16052288,
+     0.21254
+    ],
+    "direct_pct_of_month": [
+     0.032105,
+     0.042508
+    ],
+    "guardrail_pct_of_month": [
+     0.39375,
+     0.66
+    ],
+    "calls_share": [
+     0.016349210349847324,
+     0.01688757999836928
+    ],
+    "tokens_share": [
+     0.015715875436929677,
+     0.02530611054684902
+    ],
+    "fixed_by_calls_usd": [
+     7.62758676,
+     7.87875859
+    ],
+    "fixed_by_tokens_usd": [
+     7.33210967,
+     11.8063533
+    ],
+    "gpu_usd": [
+     0.06321945,
+     0.11685598
+    ],
+    "gpu_token_share": [
+     0.07377768154113613,
+     0.12810510864639021
+    ]
+   },
+   {
+    "workflow": "w4",
+    "runs_per_month": [
+     200.0,
+     200.0
+    ],
+    "calls_per_month": [
+     200.0,
+     200.0
+    ],
+    "tokens_per_month": [
+     344209,
+     77775
+    ],
+    "direct_usd": [
+     0.06354243,
+     0.0125136
+    ],
+    "direct_pct_of_month": [
+     0.031771,
+     0.006257
+    ],
+    "guardrail_pct_of_month": [
+     0.2,
+     0.05625
+    ],
+    "calls_share": [
+     0.0019093968291792496,
+     0.0019028259153092144
+    ],
+    "tokens_share": [
+     0.002820269990938993,
+     0.0006324417464636301
+    ],
+    "fixed_by_calls_usd": [
+     0.89081305,
+     0.88774745
+    ],
+    "fixed_by_tokens_usd": [
+     1.31577327,
+     0.29506038
+    ],
+    "gpu_usd": [
+     null,
+     null
+    ],
+    "gpu_token_share": [
+     null,
+     null
+    ]
+   },
+   {
+    "workflow": "w5",
+    "runs_per_month": [
+     34.0,
+     34.0
+    ],
+    "calls_per_month": [
+     351.33,
+     351.33
+    ],
+    "tokens_per_month": [
+     604660,
+     604660
+    ],
+    "direct_usd": [
+     0.11162288,
+     0.11162288
+    ],
+    "direct_pct_of_month": [
+     0.111623,
+     0.111623
+    ],
+    "guardrail_pct_of_month": [
+     0.695111,
+     0.695111
+    ],
+    "calls_share": [
+     0.0033541419399777286,
+     0.0033425991441279317
+    ],
+    "tokens_share": [
+     0.004954270378523431,
+     0.00491690422908002
+    ],
+    "fixed_by_calls_usd": [
+     1.56484675,
+     1.55946155
+    ],
+    "fixed_by_tokens_usd": [
+     2.31137323,
+     2.29394037
+    ],
+    "gpu_usd": [
+     null,
+     null
+    ],
+    "gpu_token_share": [
+     null,
+     null
+    ]
+   }
+  ],
+  "fixed_priced_usd": 466.5416,
+  "gpu_reading": "manifests and chapter 10"
+ },
+ "judge": {
+  "folder": "labs/ch15/results/2026-11-03",
+  "measured": [
+   "2026-11-03"
+  ],
+  "thinking": {
+   "gemma4-12b": false,
+   "gpt-oss-20b": "model default"
+  },
+  "tag_is_the_judged_workflows": 1439,
+  "current_files": {
+   "gemma4-12b": {
+    "calls": 360,
+    "prompt_median": 976.0,
+    "completion_median": 29.0
+   },
+   "gpt-oss-20b": {
+    "calls": 240,
+    "prompt_median": 951.0,
+    "completion_median": 559.0
+   }
+  },
+  "layout": [
+   {
+    "run": "v1",
+    "place": "labs/ch15/results/2026-11-03/judge-v1",
+    "files": [
+     "judge-w1-gemma4-12b.json",
+     "judge-w1-gpt-oss-20b.json",
+     "judge-w2-gemma4-12b.json",
+     "judge-w2-gpt-oss-20b.json",
+     "judge-w3-gemma4-12b.json",
+     "judge-w3-gpt-oss-20b.json",
+     "judge-w4-gemma4-12b.json",
+     "judge-w4-gpt-oss-20b.json",
+     "judge-w5-gemma4-12b.json",
+     "judge-w5-gpt-oss-20b.json"
+    ]
+   },
+   {
+    "run": "v2",
+    "place": "labs/ch15/results/2026-11-03/judge-v2",
+    "files": [
+     "judge-w1-gemma4-12b.json",
+     "judge-w1-gpt-oss-20b.json",
+     "judge-w2-gemma4-12b.json",
+     "judge-w2-gpt-oss-20b.json",
+     "judge-w3-gemma4-12b.json",
+     "judge-w3-gpt-oss-20b.json",
+     "judge-w4-gemma4-12b.json",
+     "judge-w4-gpt-oss-20b.json",
+     "judge-w5-gemma4-12b.json",
+     "judge-w5-gpt-oss-20b.json"
+    ]
+   },
+   {
+    "run": "v3",
+    "place": "labs/ch15/results/2026-11-03",
+    "files": [
+     "judge-w1-gemma4-12b.json",
+     "judge-w1-gpt-oss-20b.json",
+     "judge-w2-gemma4-12b.json",
+     "judge-w2-gpt-oss-20b.json",
+     "judge-w3-gemma4-12b.json",
+     "judge-w3-gpt-oss-20b.json"
+    ]
+   }
+  ],
+  "origins": {
+   "judge-w1-gemma4-12b.json": "v3",
+   "judge-w1-gpt-oss-20b.json": "v3",
+   "judge-w2-gemma4-12b.json": "v3",
+   "judge-w2-gpt-oss-20b.json": "v3",
+   "judge-w3-gemma4-12b.json": "v3",
+   "judge-w3-gpt-oss-20b.json": "v3",
+   "judge-w4-gemma4-12b.json": "v2",
+   "judge-w4-gpt-oss-20b.json": "v2",
+   "judge-w5-gemma4-12b.json": "v2",
+   "judge-w5-gpt-oss-20b.json": "v2"
+  },
+  "calls": 1439,
+  "prompt_tokens": 1231927,
+  "completion_tokens": 338238,
+  "current_log_lines_also_in_a_kept_run": 361,
+  "by_workflow_tag": {
+   "w1-knowledge": 336,
+   "w2-ops-assistant": 312,
+   "w3-incident": 69,
+   "w4-change": 86,
+   "w5-drift": 636
+  },
+  "by_alias_and_class": {
+   "larkspur-chat-restricted/restricted": 230,
+   "larkspur-chat/confidential": 782,
+   "larkspur-chat/internal": 312,
+   "larkspur-chat/restricted": 115
+  },
+  "judged_outputs_basis": {
+   "w1": "measured",
+   "w2": "measured",
+   "w5": "measured, the body's call",
+   "w3": "stand-in",
+   "w4": "stand-in",
+   "why": "W3's and W4's judged outputs come from chapter 15's kept runs, whose gateway logs stayed in the scratch folders (step 2), so step 3b's run of the same case on the same model stands in for their tokens"
+  },
+  "by_run": [
+   {
+    "workflow": "all",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 360,
+    "judge_tokens": {
+     "prompt": 321810,
+     "completion": 10799,
+     "total": 332609
+    },
+    "seconds": 188.0,
+    "usd": 0.02336038,
+    "completion_median": 30.0,
+    "prompt_median": 976.0,
+    "measured": {
+     "judgments": 310,
+     "judge_tokens": {
+      "prompt": 290276,
+      "completion": 9427,
+      "total": 299703
+     },
+     "judged_tokens": {
+      "prompt": 433972,
+      "completion": 193431,
+      "total": 627403
+     },
+     "ratio": {
+      "prompt": 0.6689,
+      "completion": 0.0487,
+      "total": 0.4777
+     },
+     "completion_over": 0,
+     "total_over": 59
+    },
+    "stand-in": {
+     "judgments": 50,
+     "judge_tokens": {
+      "prompt": 31534,
+      "completion": 1372,
+      "total": 32906
+     },
+     "judged_tokens": {
+      "prompt": 220173,
+      "completion": 20612,
+      "total": 240785
+     },
+     "ratio": {
+      "prompt": 0.1432,
+      "completion": 0.0666,
+      "total": 0.1367
+     },
+     "completion_over": 3,
+     "total_over": 27
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "v1",
+    "judge": "gpt-oss-20b",
+    "judgments": 240,
+    "judge_tokens": {
+     "prompt": 210383,
+     "completion": 139746,
+     "total": 350129
+    },
+    "seconds": 904.4,
+    "usd": 0.04923949,
+    "completion_median": 563.0,
+    "prompt_median": 951.0,
+    "measured": {
+     "judgments": 224,
+     "judge_tokens": {
+      "prompt": 201480,
+      "completion": 134977,
+      "total": 336457
+     },
+     "judged_tokens": {
+      "prompt": 342347,
+      "completion": 56682,
+      "total": 399029
+     },
+     "ratio": {
+      "prompt": 0.5885,
+      "completion": 2.3813,
+      "total": 0.8432
+     },
+     "completion_over": 194,
+     "total_over": 130
+    },
+    "stand-in": {
+     "judgments": 16,
+     "judge_tokens": {
+      "prompt": 8903,
+      "completion": 4769,
+      "total": 13672
+     },
+     "judged_tokens": {
+      "prompt": 2451,
+      "completion": 1237,
+      "total": 3688
+     },
+     "ratio": {
+      "prompt": 3.6324,
+      "completion": 3.8553,
+      "total": 3.7072
+     },
+     "completion_over": 13,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 360,
+    "judge_tokens": {
+     "prompt": 322176,
+     "completion": 10828,
+     "total": 333004
+    },
+    "seconds": 189.5,
+    "usd": 0.0202064,
+    "completion_median": 30.0,
+    "prompt_median": 976.0,
+    "measured": {
+     "judgments": 310,
+     "judge_tokens": {
+      "prompt": 290670,
+      "completion": 9416,
+      "total": 300086
+     },
+     "judged_tokens": {
+      "prompt": 433972,
+      "completion": 193431,
+      "total": 627403
+     },
+     "ratio": {
+      "prompt": 0.6698,
+      "completion": 0.0487,
+      "total": 0.4783
+     },
+     "completion_over": 0,
+     "total_over": 59
+    },
+    "stand-in": {
+     "judgments": 50,
+     "judge_tokens": {
+      "prompt": 31506,
+      "completion": 1412,
+      "total": 32918
+     },
+     "judged_tokens": {
+      "prompt": 220173,
+      "completion": 20612,
+      "total": 240785
+     },
+     "ratio": {
+      "prompt": 0.1431,
+      "completion": 0.0685,
+      "total": 0.1367
+     },
+     "completion_over": 3,
+     "total_over": 27
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "v2",
+    "judge": "gpt-oss-20b",
+    "judgments": 240,
+    "judge_tokens": {
+     "prompt": 210805,
+     "completion": 138566,
+     "total": 349371
+    },
+    "seconds": 882.6,
+    "usd": 0.04062477,
+    "completion_median": 563.0,
+    "prompt_median": 951.0,
+    "measured": {
+     "judgments": 224,
+     "judge_tokens": {
+      "prompt": 201950,
+      "completion": 134440,
+      "total": 336390
+     },
+     "judged_tokens": {
+      "prompt": 342347,
+      "completion": 56682,
+      "total": 399029
+     },
+     "ratio": {
+      "prompt": 0.5899,
+      "completion": 2.3718,
+      "total": 0.843
+     },
+     "completion_over": 193,
+     "total_over": 130
+    },
+    "stand-in": {
+     "judgments": 16,
+     "judge_tokens": {
+      "prompt": 8855,
+      "completion": 4126,
+      "total": 12981
+     },
+     "judged_tokens": {
+      "prompt": 2451,
+      "completion": 1237,
+      "total": 3688
+     },
+     "ratio": {
+      "prompt": 3.6128,
+      "completion": 3.3355,
+      "total": 3.5198
+     },
+     "completion_over": 14,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "v3",
+    "judge": "gemma4-12b",
+    "judgments": 152,
+    "judge_tokens": {
+     "prompt": 105984,
+     "completion": 4078,
+     "total": 110062
+    },
+    "seconds": 67.2,
+    "usd": 0.0046416,
+    "completion_median": 28.0,
+    "prompt_median": 680.5,
+    "measured": {
+     "judgments": 129,
+     "judge_tokens": {
+      "prompt": 88100,
+      "completion": 3405,
+      "total": 91505
+     },
+     "judged_tokens": {
+      "prompt": 317005,
+      "completion": 39613,
+      "total": 356618
+     },
+     "ratio": {
+      "prompt": 0.2779,
+      "completion": 0.086,
+      "total": 0.2566
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 23,
+     "judge_tokens": {
+      "prompt": 17884,
+      "completion": 673,
+      "total": 18557
+     },
+     "judged_tokens": {
+      "prompt": 215223,
+      "completion": 16044,
+      "total": 231267
+     },
+     "ratio": {
+      "prompt": 0.0831,
+      "completion": 0.0419,
+      "total": 0.0802
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "v3",
+    "judge": "gpt-oss-20b",
+    "judgments": 87,
+    "judge_tokens": {
+     "prompt": 60769,
+     "completion": 34221,
+     "total": 94990
+    },
+    "seconds": 225.3,
+    "usd": 0.00404467,
+    "completion_median": 337,
+    "prompt_median": 697,
+    "measured": {
+     "judgments": 87,
+     "judge_tokens": {
+      "prompt": 60769,
+      "completion": 34221,
+      "total": 94990
+     },
+     "judged_tokens": {
+      "prompt": 252103,
+      "completion": 22444,
+      "total": 274547
+     },
+     "ratio": {
+      "prompt": 0.241,
+      "completion": 1.5247,
+      "total": 0.346
+     },
+     "completion_over": 68,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   }
+  ],
+  "by_workflow": [
+   {
+    "workflow": "w1",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 165,
+    "judge_tokens": {
+     "prompt": 118984,
+     "completion": 4625,
+     "total": 123609
+    },
+    "seconds": 83.7,
+    "usd": 0.00292262,
+    "completion_median": 27,
+    "prompt_median": 714,
+    "measured": {
+     "judgments": 165,
+     "judge_tokens": {
+      "prompt": 118984,
+      "completion": 4625,
+      "total": 123609
+     },
+     "judged_tokens": {
+      "prompt": 470352,
+      "completion": 49236,
+      "total": 519588
+     },
+     "ratio": {
+      "prompt": 0.253,
+      "completion": 0.0939,
+      "total": 0.2379
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "all",
+    "judge": "gpt-oss-20b",
+    "judgments": 171,
+    "judge_tokens": {
+     "prompt": 123707,
+     "completion": 68260,
+     "total": 191967
+    },
+    "seconds": 460.4,
+    "usd": 0.00844704,
+    "completion_median": 338,
+    "prompt_median": 704,
+    "measured": {
+     "judgments": 171,
+     "judge_tokens": {
+      "prompt": 123707,
+      "completion": 68260,
+      "total": 191967
+     },
+     "judged_tokens": {
+      "prompt": 531852,
+      "completion": 49308,
+      "total": 581160
+     },
+     "ratio": {
+      "prompt": 0.2326,
+      "completion": 1.3844,
+      "total": 0.3303
+     },
+     "completion_over": 117,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "all",
+    "judge": "both",
+    "judgments": 336,
+    "judge_tokens": {
+     "prompt": 242691,
+     "completion": 72885,
+     "total": 315576
+    },
+    "seconds": 544.1,
+    "usd": 0.01136966,
+    "completion_median": 97.0,
+    "prompt_median": 705.5,
+    "measured": {
+     "judgments": 336,
+     "judge_tokens": {
+      "prompt": 242691,
+      "completion": 72885,
+      "total": 315576
+     },
+     "judged_tokens": {
+      "prompt": 1002204,
+      "completion": 98544,
+      "total": 1100748
+     },
+     "ratio": {
+      "prompt": 0.2422,
+      "completion": 0.7396,
+      "total": 0.2867
+     },
+     "completion_over": 117,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 222,
+    "judge_tokens": {
+     "prompt": 144666,
+     "completion": 5731,
+     "total": 150397
+    },
+    "seconds": 84.6,
+    "usd": 0.01072576,
+    "completion_median": 28.0,
+    "prompt_median": 641.5,
+    "measured": {
+     "judgments": 222,
+     "judge_tokens": {
+      "prompt": 144666,
+      "completion": 5731,
+      "total": 150397
+     },
+     "judged_tokens": {
+      "prompt": 480663,
+      "completion": 69603,
+      "total": 550266
+     },
+     "ratio": {
+      "prompt": 0.301,
+      "completion": 0.0823,
+      "total": 0.2733
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "all",
+    "judge": "gpt-oss-20b",
+    "judgments": 90,
+    "judge_tokens": {
+     "prompt": 57810,
+     "completion": 32946,
+     "total": 90756
+    },
+    "seconds": 213.2,
+    "usd": 0.01213402,
+    "completion_median": 295.0,
+    "prompt_median": 633.0,
+    "measured": {
+     "judgments": 90,
+     "judge_tokens": {
+      "prompt": 57810,
+      "completion": 32946,
+      "total": 90756
+     },
+     "judged_tokens": {
+      "prompt": 224457,
+      "completion": 18024,
+      "total": 242481
+     },
+     "ratio": {
+      "prompt": 0.2576,
+      "completion": 1.8279,
+      "total": 0.3743
+     },
+     "completion_over": 84,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "all",
+    "judge": "both",
+    "judgments": 312,
+    "judge_tokens": {
+     "prompt": 202476,
+     "completion": 38677,
+     "total": 241153
+    },
+    "seconds": 297.8,
+    "usd": 0.02285978,
+    "completion_median": 30.0,
+    "prompt_median": 636.5,
+    "measured": {
+     "judgments": 312,
+     "judge_tokens": {
+      "prompt": 202476,
+      "completion": 38677,
+      "total": 241153
+     },
+     "judged_tokens": {
+      "prompt": 705120,
+      "completion": 87627,
+      "total": 792747
+     },
+     "ratio": {
+      "prompt": 0.2872,
+      "completion": 0.4414,
+      "total": 0.3042
+     },
+     "completion_over": 84,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w3",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 69,
+    "judge_tokens": {
+     "prompt": 53571,
+     "completion": 2039,
+     "total": 55610
+    },
+    "seconds": 32.6,
+    "usd": 0.0034567,
+    "completion_median": 29,
+    "prompt_median": 727,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 69,
+     "judge_tokens": {
+      "prompt": 53571,
+      "completion": 2039,
+      "total": 55610
+     },
+     "judged_tokens": {
+      "prompt": 645669,
+      "completion": 48132,
+      "total": 693801
+     },
+     "ratio": {
+      "prompt": 0.083,
+      "completion": 0.0424,
+      "total": 0.0802
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w3",
+    "run": "all",
+    "judge": "both",
+    "judgments": 69,
+    "judge_tokens": {
+     "prompt": 53571,
+     "completion": 2039,
+     "total": 55610
+    },
+    "seconds": 32.6,
+    "usd": 0.0034567,
+    "completion_median": 29,
+    "prompt_median": 727,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 69,
+     "judge_tokens": {
+      "prompt": 53571,
+      "completion": 2039,
+      "total": 55610
+     },
+     "judged_tokens": {
+      "prompt": 645669,
+      "completion": 48132,
+      "total": 693801
+     },
+     "ratio": {
+      "prompt": 0.083,
+      "completion": 0.0424,
+      "total": 0.0802
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 54,
+    "judge_tokens": {
+     "prompt": 27353,
+     "completion": 1418,
+     "total": 28771
+    },
+    "seconds": 20.1,
+    "usd": 0.0021136,
+    "completion_median": 28.0,
+    "prompt_median": 504.0,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 54,
+     "judge_tokens": {
+      "prompt": 27353,
+      "completion": 1418,
+      "total": 28771
+     },
+     "judged_tokens": {
+      "prompt": 9900,
+      "completion": 9136,
+      "total": 19036
+     },
+     "ratio": {
+      "prompt": 2.7629,
+      "completion": 0.1552,
+      "total": 1.5114
+     },
+     "completion_over": 6,
+     "total_over": 54
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "all",
+    "judge": "gpt-oss-20b",
+    "judgments": 32,
+    "judge_tokens": {
+     "prompt": 17758,
+     "completion": 8895,
+     "total": 26653
+    },
+    "seconds": 58.7,
+    "usd": 0.00341363,
+    "completion_median": 244.5,
+    "prompt_median": 540.5,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 32,
+     "judge_tokens": {
+      "prompt": 17758,
+      "completion": 8895,
+      "total": 26653
+     },
+     "judged_tokens": {
+      "prompt": 4902,
+      "completion": 2474,
+      "total": 7376
+     },
+     "ratio": {
+      "prompt": 3.6226,
+      "completion": 3.5954,
+      "total": 3.6135
+     },
+     "completion_over": 27,
+     "total_over": 32
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "all",
+    "judge": "both",
+    "judgments": 86,
+    "judge_tokens": {
+     "prompt": 45111,
+     "completion": 10313,
+     "total": 55424
+    },
+    "seconds": 78.8,
+    "usd": 0.00552723,
+    "completion_median": 28.0,
+    "prompt_median": 513.5,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 86,
+     "judge_tokens": {
+      "prompt": 45111,
+      "completion": 10313,
+      "total": 55424
+     },
+     "judged_tokens": {
+      "prompt": 14802,
+      "completion": 11610,
+      "total": 26412
+     },
+     "ratio": {
+      "prompt": 3.0476,
+      "completion": 0.8883,
+      "total": 2.0984
+     },
+     "completion_over": 33,
+     "total_over": 86
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 362,
+    "judge_tokens": {
+     "prompt": 405396,
+     "completion": 11892,
+     "total": 417288
+    },
+    "seconds": 223.8,
+    "usd": 0.0289897,
+    "completion_median": 33.0,
+    "prompt_median": 1088.0,
+    "measured": {
+     "judgments": 362,
+     "judge_tokens": {
+      "prompt": 405396,
+      "completion": 11892,
+      "total": 417288
+     },
+     "judged_tokens": {
+      "prompt": 233934,
+      "completion": 307636,
+      "total": 541570
+     },
+     "ratio": {
+      "prompt": 1.733,
+      "completion": 0.0387,
+      "total": 0.7705
+     },
+     "completion_over": 0,
+     "total_over": 118
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "all",
+    "judge": "gpt-oss-20b",
+    "judgments": 274,
+    "judge_tokens": {
+     "prompt": 282682,
+     "completion": 202432,
+     "total": 485114
+    },
+    "seconds": 1280.0,
+    "usd": 0.06991424,
+    "completion_median": 631.0,
+    "prompt_median": 1009.0,
+    "measured": {
+     "judgments": 274,
+     "judge_tokens": {
+      "prompt": 282682,
+      "completion": 202432,
+      "total": 485114
+     },
+     "judged_tokens": {
+      "prompt": 180488,
+      "completion": 68476,
+      "total": 248964
+     },
+     "ratio": {
+      "prompt": 1.5662,
+      "completion": 2.9562,
+      "total": 1.9485
+     },
+     "completion_over": 254,
+     "total_over": 260
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "all",
+    "judge": "both",
+    "judgments": 636,
+    "judge_tokens": {
+     "prompt": 688078,
+     "completion": 214324,
+     "total": 902402
+    },
+    "seconds": 1503.8,
+    "usd": 0.09890394,
+    "completion_median": 39.0,
+    "prompt_median": 1058.0,
+    "measured": {
+     "judgments": 636,
+     "judge_tokens": {
+      "prompt": 688078,
+      "completion": 214324,
+      "total": 902402
+     },
+     "judged_tokens": {
+      "prompt": 414422,
+      "completion": 376112,
+      "total": 790534
+     },
+     "ratio": {
+      "prompt": 1.6603,
+      "completion": 0.5698,
+      "total": 1.1415
+     },
+     "completion_over": 254,
+     "total_over": 378
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   }
+  ],
+  "by_workflow_run": [
+   {
+    "workflow": "w1",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 55,
+    "judge_tokens": {
+     "prompt": 39478,
+     "completion": 1547,
+     "total": 41025
+    },
+    "seconds": 25.5,
+    "usd": 0.00292262,
+    "completion_median": 27,
+    "prompt_median": 714,
+    "measured": {
+     "judgments": 55,
+     "judge_tokens": {
+      "prompt": 39478,
+      "completion": 1547,
+      "total": 41025
+     },
+     "judged_tokens": {
+      "prompt": 156784,
+      "completion": 16412,
+      "total": 173196
+     },
+     "ratio": {
+      "prompt": 0.2518,
+      "completion": 0.0943,
+      "total": 0.2369
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "v1",
+    "judge": "gpt-oss-20b",
+    "judgments": 57,
+    "judge_tokens": {
+     "prompt": 40869,
+     "completion": 22779,
+     "total": 63648
+    },
+    "seconds": 161.7,
+    "usd": 0.00844704,
+    "completion_median": 344,
+    "prompt_median": 702,
+    "measured": {
+     "judgments": 57,
+     "judge_tokens": {
+      "prompt": 40869,
+      "completion": 22779,
+      "total": 63648
+     },
+     "judged_tokens": {
+      "prompt": 177284,
+      "completion": 16436,
+      "total": 193720
+     },
+     "ratio": {
+      "prompt": 0.2305,
+      "completion": 1.3859,
+      "total": 0.3286
+     },
+     "completion_over": 39,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 55,
+    "judge_tokens": {
+     "prompt": 39713,
+     "completion": 1548,
+     "total": 41261
+    },
+    "seconds": 29.8,
+    "usd": 0.0,
+    "completion_median": 27,
+    "prompt_median": 714,
+    "measured": {
+     "judgments": 55,
+     "judge_tokens": {
+      "prompt": 39713,
+      "completion": 1548,
+      "total": 41261
+     },
+     "judged_tokens": {
+      "prompt": 156784,
+      "completion": 16412,
+      "total": 173196
+     },
+     "ratio": {
+      "prompt": 0.2533,
+      "completion": 0.0943,
+      "total": 0.2382
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "v2",
+    "judge": "gpt-oss-20b",
+    "judgments": 57,
+    "judge_tokens": {
+     "prompt": 41339,
+     "completion": 22242,
+     "total": 63581
+    },
+    "seconds": 144.3,
+    "usd": 0.0,
+    "completion_median": 327,
+    "prompt_median": 703,
+    "measured": {
+     "judgments": 57,
+     "judge_tokens": {
+      "prompt": 41339,
+      "completion": 22242,
+      "total": 63581
+     },
+     "judged_tokens": {
+      "prompt": 177284,
+      "completion": 16436,
+      "total": 193720
+     },
+     "ratio": {
+      "prompt": 0.2332,
+      "completion": 1.3532,
+      "total": 0.3282
+     },
+     "completion_over": 38,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "v3",
+    "judge": "gemma4-12b",
+    "judgments": 55,
+    "judge_tokens": {
+     "prompt": 39793,
+     "completion": 1530,
+     "total": 41323
+    },
+    "seconds": 28.4,
+    "usd": 0.0,
+    "completion_median": 27,
+    "prompt_median": 715,
+    "measured": {
+     "judgments": 55,
+     "judge_tokens": {
+      "prompt": 39793,
+      "completion": 1530,
+      "total": 41323
+     },
+     "judged_tokens": {
+      "prompt": 156784,
+      "completion": 16412,
+      "total": 173196
+     },
+     "ratio": {
+      "prompt": 0.2538,
+      "completion": 0.0932,
+      "total": 0.2386
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w1",
+    "run": "v3",
+    "judge": "gpt-oss-20b",
+    "judgments": 57,
+    "judge_tokens": {
+     "prompt": 41499,
+     "completion": 23239,
+     "total": 64738
+    },
+    "seconds": 154.4,
+    "usd": 0.0,
+    "completion_median": 361,
+    "prompt_median": 705,
+    "measured": {
+     "judgments": 57,
+     "judge_tokens": {
+      "prompt": 41499,
+      "completion": 23239,
+      "total": 64738
+     },
+     "judged_tokens": {
+      "prompt": 177284,
+      "completion": 16436,
+      "total": 193720
+     },
+     "ratio": {
+      "prompt": 0.2341,
+      "completion": 1.4139,
+      "total": 0.3342
+     },
+     "completion_over": 40,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 74,
+    "judge_tokens": {
+     "prompt": 48100,
+     "completion": 1934,
+     "total": 50034
+    },
+    "seconds": 28.3,
+    "usd": 0.0035735,
+    "completion_median": 28.5,
+    "prompt_median": 641.5,
+    "measured": {
+     "judgments": 74,
+     "judge_tokens": {
+      "prompt": 48100,
+      "completion": 1934,
+      "total": 50034
+     },
+     "judged_tokens": {
+      "prompt": 160221,
+      "completion": 23201,
+      "total": 183422
+     },
+     "ratio": {
+      "prompt": 0.3002,
+      "completion": 0.0834,
+      "total": 0.2728
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v1",
+    "judge": "gpt-oss-20b",
+    "judgments": 30,
+    "judge_tokens": {
+     "prompt": 19270,
+     "completion": 10982,
+     "total": 30252
+    },
+    "seconds": 71.2,
+    "usd": 0.00404467,
+    "completion_median": 295.0,
+    "prompt_median": 633.0,
+    "measured": {
+     "judgments": 30,
+     "judge_tokens": {
+      "prompt": 19270,
+      "completion": 10982,
+      "total": 30252
+     },
+     "judged_tokens": {
+      "prompt": 74819,
+      "completion": 6008,
+      "total": 80827
+     },
+     "ratio": {
+      "prompt": 0.2576,
+      "completion": 1.8279,
+      "total": 0.3743
+     },
+     "completion_over": 28,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 74,
+    "judge_tokens": {
+     "prompt": 48259,
+     "completion": 1922,
+     "total": 50181
+    },
+    "seconds": 28.2,
+    "usd": 0.00358061,
+    "completion_median": 28.0,
+    "prompt_median": 641.5,
+    "measured": {
+     "judgments": 74,
+     "judge_tokens": {
+      "prompt": 48259,
+      "completion": 1922,
+      "total": 50181
+     },
+     "judged_tokens": {
+      "prompt": 160221,
+      "completion": 23201,
+      "total": 183422
+     },
+     "ratio": {
+      "prompt": 0.3012,
+      "completion": 0.0828,
+      "total": 0.2736
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v2",
+    "judge": "gpt-oss-20b",
+    "judgments": 30,
+    "judge_tokens": {
+     "prompt": 19270,
+     "completion": 10982,
+     "total": 30252
+    },
+    "seconds": 71.1,
+    "usd": 0.00404467,
+    "completion_median": 295.0,
+    "prompt_median": 633.0,
+    "measured": {
+     "judgments": 30,
+     "judge_tokens": {
+      "prompt": 19270,
+      "completion": 10982,
+      "total": 30252
+     },
+     "judged_tokens": {
+      "prompt": 74819,
+      "completion": 6008,
+      "total": 80827
+     },
+     "ratio": {
+      "prompt": 0.2576,
+      "completion": 1.8279,
+      "total": 0.3743
+     },
+     "completion_over": 28,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v3",
+    "judge": "gemma4-12b",
+    "judgments": 74,
+    "judge_tokens": {
+     "prompt": 48307,
+     "completion": 1875,
+     "total": 50182
+    },
+    "seconds": 28.1,
+    "usd": 0.00357165,
+    "completion_median": 28.0,
+    "prompt_median": 641.5,
+    "measured": {
+     "judgments": 74,
+     "judge_tokens": {
+      "prompt": 48307,
+      "completion": 1875,
+      "total": 50182
+     },
+     "judged_tokens": {
+      "prompt": 160221,
+      "completion": 23201,
+      "total": 183422
+     },
+     "ratio": {
+      "prompt": 0.3015,
+      "completion": 0.0808,
+      "total": 0.2736
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w2",
+    "run": "v3",
+    "judge": "gpt-oss-20b",
+    "judgments": 30,
+    "judge_tokens": {
+     "prompt": 19270,
+     "completion": 10982,
+     "total": 30252
+    },
+    "seconds": 71.0,
+    "usd": 0.00404467,
+    "completion_median": 295.0,
+    "prompt_median": 633.0,
+    "measured": {
+     "judgments": 30,
+     "judge_tokens": {
+      "prompt": 19270,
+      "completion": 10982,
+      "total": 30252
+     },
+     "judged_tokens": {
+      "prompt": 74819,
+      "completion": 6008,
+      "total": 80827
+     },
+     "ratio": {
+      "prompt": 0.2576,
+      "completion": 1.8279,
+      "total": 0.3743
+     },
+     "completion_over": 28,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w3",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 23,
+    "judge_tokens": {
+     "prompt": 17817,
+     "completion": 675,
+     "total": 18492
+    },
+    "seconds": 10.9,
+    "usd": 0.00131309,
+    "completion_median": 29,
+    "prompt_median": 727,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 23,
+     "judge_tokens": {
+      "prompt": 17817,
+      "completion": 675,
+      "total": 18492
+     },
+     "judged_tokens": {
+      "prompt": 215223,
+      "completion": 16044,
+      "total": 231267
+     },
+     "ratio": {
+      "prompt": 0.0828,
+      "completion": 0.0421,
+      "total": 0.08
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w3",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 23,
+    "judge_tokens": {
+     "prompt": 17870,
+     "completion": 691,
+     "total": 18561
+    },
+    "seconds": 10.9,
+    "usd": 0.00107366,
+    "completion_median": 31,
+    "prompt_median": 727,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 23,
+     "judge_tokens": {
+      "prompt": 17870,
+      "completion": 691,
+      "total": 18561
+     },
+     "judged_tokens": {
+      "prompt": 215223,
+      "completion": 16044,
+      "total": 231267
+     },
+     "ratio": {
+      "prompt": 0.083,
+      "completion": 0.0431,
+      "total": 0.0803
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w3",
+    "run": "v3",
+    "judge": "gemma4-12b",
+    "judgments": 23,
+    "judge_tokens": {
+     "prompt": 17884,
+     "completion": 673,
+     "total": 18557
+    },
+    "seconds": 10.8,
+    "usd": 0.00106995,
+    "completion_median": 29,
+    "prompt_median": 727,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 23,
+     "judge_tokens": {
+      "prompt": 17884,
+      "completion": 673,
+      "total": 18557
+     },
+     "judged_tokens": {
+      "prompt": 215223,
+      "completion": 16044,
+      "total": 231267
+     },
+     "ratio": {
+      "prompt": 0.0831,
+      "completion": 0.0419,
+      "total": 0.0802
+     },
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 27,
+    "judge_tokens": {
+     "prompt": 13717,
+     "completion": 697,
+     "total": 14414
+    },
+    "seconds": 10.1,
+    "usd": 0.00105632,
+    "completion_median": 28,
+    "prompt_median": 506,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 27,
+     "judge_tokens": {
+      "prompt": 13717,
+      "completion": 697,
+      "total": 14414
+     },
+     "judged_tokens": {
+      "prompt": 4950,
+      "completion": 4568,
+      "total": 9518
+     },
+     "ratio": {
+      "prompt": 2.7711,
+      "completion": 0.1526,
+      "total": 1.5144
+     },
+     "completion_over": 3,
+     "total_over": 27
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "v1",
+    "judge": "gpt-oss-20b",
+    "judgments": 16,
+    "judge_tokens": {
+     "prompt": 8903,
+     "completion": 4769,
+     "total": 13672
+    },
+    "seconds": 31.3,
+    "usd": 0.00179066,
+    "completion_median": 248.0,
+    "prompt_median": 542.0,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 16,
+     "judge_tokens": {
+      "prompt": 8903,
+      "completion": 4769,
+      "total": 13672
+     },
+     "judged_tokens": {
+      "prompt": 2451,
+      "completion": 1237,
+      "total": 3688
+     },
+     "ratio": {
+      "prompt": 3.6324,
+      "completion": 3.8553,
+      "total": 3.7072
+     },
+     "completion_over": 13,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 27,
+    "judge_tokens": {
+     "prompt": 13636,
+     "completion": 721,
+     "total": 14357
+    },
+    "seconds": 9.9,
+    "usd": 0.00105728,
+    "completion_median": 28,
+    "prompt_median": 503,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 27,
+     "judge_tokens": {
+      "prompt": 13636,
+      "completion": 721,
+      "total": 14357
+     },
+     "judged_tokens": {
+      "prompt": 4950,
+      "completion": 4568,
+      "total": 9518
+     },
+     "ratio": {
+      "prompt": 2.7547,
+      "completion": 0.1578,
+      "total": 1.5084
+     },
+     "completion_over": 3,
+     "total_over": 27
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w4",
+    "run": "v2",
+    "judge": "gpt-oss-20b",
+    "judgments": 16,
+    "judge_tokens": {
+     "prompt": 8855,
+     "completion": 4126,
+     "total": 12981
+    },
+    "seconds": 27.4,
+    "usd": 0.00162298,
+    "completion_median": 242.5,
+    "prompt_median": 539.0,
+    "measured": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "stand-in": {
+     "judgments": 16,
+     "judge_tokens": {
+      "prompt": 8855,
+      "completion": 4126,
+      "total": 12981
+     },
+     "judged_tokens": {
+      "prompt": 2451,
+      "completion": 1237,
+      "total": 3688
+     },
+     "ratio": {
+      "prompt": 3.6128,
+      "completion": 3.3355,
+      "total": 3.5198
+     },
+     "completion_over": 14,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "v1",
+    "judge": "gemma4-12b",
+    "judgments": 181,
+    "judge_tokens": {
+     "prompt": 202698,
+     "completion": 5946,
+     "total": 208644
+    },
+    "seconds": 113.1,
+    "usd": 0.01449485,
+    "completion_median": 33,
+    "prompt_median": 1088,
+    "measured": {
+     "judgments": 181,
+     "judge_tokens": {
+      "prompt": 202698,
+      "completion": 5946,
+      "total": 208644
+     },
+     "judged_tokens": {
+      "prompt": 116967,
+      "completion": 153818,
+      "total": 270785
+     },
+     "ratio": {
+      "prompt": 1.733,
+      "completion": 0.0387,
+      "total": 0.7705
+     },
+     "completion_over": 0,
+     "total_over": 59
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "v1",
+    "judge": "gpt-oss-20b",
+    "judgments": 137,
+    "judge_tokens": {
+     "prompt": 141341,
+     "completion": 101216,
+     "total": 242557
+    },
+    "seconds": 640.2,
+    "usd": 0.03495712,
+    "completion_median": 631,
+    "prompt_median": 1009,
+    "measured": {
+     "judgments": 137,
+     "judge_tokens": {
+      "prompt": 141341,
+      "completion": 101216,
+      "total": 242557
+     },
+     "judged_tokens": {
+      "prompt": 90244,
+      "completion": 34238,
+      "total": 124482
+     },
+     "ratio": {
+      "prompt": 1.5662,
+      "completion": 2.9562,
+      "total": 1.9485
+     },
+     "completion_over": 127,
+     "total_over": 130
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "v2",
+    "judge": "gemma4-12b",
+    "judgments": 181,
+    "judge_tokens": {
+     "prompt": 202698,
+     "completion": 5946,
+     "total": 208644
+    },
+    "seconds": 110.7,
+    "usd": 0.01449485,
+    "completion_median": 33,
+    "prompt_median": 1088,
+    "measured": {
+     "judgments": 181,
+     "judge_tokens": {
+      "prompt": 202698,
+      "completion": 5946,
+      "total": 208644
+     },
+     "judged_tokens": {
+      "prompt": 116967,
+      "completion": 153818,
+      "total": 270785
+     },
+     "ratio": {
+      "prompt": 1.733,
+      "completion": 0.0387,
+      "total": 0.7705
+     },
+     "completion_over": 0,
+     "total_over": 59
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "w5",
+    "run": "v2",
+    "judge": "gpt-oss-20b",
+    "judgments": 137,
+    "judge_tokens": {
+     "prompt": 141341,
+     "completion": 101216,
+     "total": 242557
+    },
+    "seconds": 639.7,
+    "usd": 0.03495712,
+    "completion_median": 631,
+    "prompt_median": 1009,
+    "measured": {
+     "judgments": 137,
+     "judge_tokens": {
+      "prompt": 141341,
+      "completion": 101216,
+      "total": 242557
+     },
+     "judged_tokens": {
+      "prompt": 90244,
+      "completion": 34238,
+      "total": 124482
+     },
+     "ratio": {
+      "prompt": 1.5662,
+      "completion": 2.9562,
+      "total": 1.9485
+     },
+     "completion_over": 127,
+     "total_over": 130
+    },
+    "stand-in": {
+     "judgments": 0,
+     "judge_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "judged_tokens": {
+      "prompt": 0,
+      "completion": 0,
+      "total": 0
+     },
+     "ratio": null,
+     "completion_over": 0,
+     "total_over": 0
+    },
+    "without_tokens": 0
+   }
+  ],
+  "by_judge": [
+   {
+    "workflow": "all",
+    "run": "all",
+    "judge": "gemma4-12b",
+    "judgments": 872,
+    "judge_tokens": {
+     "prompt": 749970,
+     "completion": 25705,
+     "total": 775675
+    },
+    "seconds": 444.7,
+    "usd": 0.04820838,
+    "completion_median": 29.0,
+    "prompt_median": 793.0,
+    "measured": {
+     "judgments": 749,
+     "judge_tokens": {
+      "prompt": 669046,
+      "completion": 22248,
+      "total": 691294
+     },
+     "judged_tokens": {
+      "prompt": 1184949,
+      "completion": 426475,
+      "total": 1611424
+     },
+     "ratio": {
+      "prompt": 0.5646,
+      "completion": 0.0522,
+      "total": 0.429
+     },
+     "completion_over": 0,
+     "total_over": 118
+    },
+    "stand-in": {
+     "judgments": 123,
+     "judge_tokens": {
+      "prompt": 80924,
+      "completion": 3457,
+      "total": 84381
+     },
+     "judged_tokens": {
+      "prompt": 655569,
+      "completion": 57268,
+      "total": 712837
+     },
+     "ratio": {
+      "prompt": 0.1234,
+      "completion": 0.0604,
+      "total": 0.1184
+     },
+     "completion_over": 6,
+     "total_over": 54
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "all",
+    "judge": "gpt-oss-20b",
+    "judgments": 567,
+    "judge_tokens": {
+     "prompt": 481957,
+     "completion": 312533,
+     "total": 794490
+    },
+    "seconds": 2012.4,
+    "usd": 0.09390893,
+    "completion_median": 551,
+    "prompt_median": 852,
+    "measured": {
+     "judgments": 535,
+     "judge_tokens": {
+      "prompt": 464199,
+      "completion": 303638,
+      "total": 767837
+     },
+     "judged_tokens": {
+      "prompt": 936797,
+      "completion": 135808,
+      "total": 1072605
+     },
+     "ratio": {
+      "prompt": 0.4955,
+      "completion": 2.2358,
+      "total": 0.7159
+     },
+     "completion_over": 455,
+     "total_over": 260
+    },
+    "stand-in": {
+     "judgments": 32,
+     "judge_tokens": {
+      "prompt": 17758,
+      "completion": 8895,
+      "total": 26653
+     },
+     "judged_tokens": {
+      "prompt": 4902,
+      "completion": 2474,
+      "total": 7376
+     },
+     "ratio": {
+      "prompt": 3.6226,
+      "completion": 3.5954,
+      "total": 3.6135
+     },
+     "completion_over": 27,
+     "total_over": 32
+    },
+    "without_tokens": 0
+   },
+   {
+    "workflow": "all",
+    "run": "all",
+    "judge": "both",
+    "judgments": 1439,
+    "judge_tokens": {
+     "prompt": 1231927,
+     "completion": 338238,
+     "total": 1570165
+    },
+    "seconds": 2457.1,
+    "usd": 0.14211731,
+    "completion_median": 36,
+    "prompt_median": 832,
+    "measured": {
+     "judgments": 1284,
+     "judge_tokens": {
+      "prompt": 1133245,
+      "completion": 325886,
+      "total": 1459131
+     },
+     "judged_tokens": {
+      "prompt": 2121746,
+      "completion": 562283,
+      "total": 2684029
+     },
+     "ratio": {
+      "prompt": 0.5341,
+      "completion": 0.5796,
+      "total": 0.5436
+     },
+     "completion_over": 455,
+     "total_over": 378
+    },
+    "stand-in": {
+     "judgments": 155,
+     "judge_tokens": {
+      "prompt": 98682,
+      "completion": 12352,
+      "total": 111034
+     },
+     "judged_tokens": {
+      "prompt": 660471,
+      "completion": 59742,
+      "total": 720213
+     },
+     "ratio": {
+      "prompt": 0.1494,
+      "completion": 0.2068,
+      "total": 0.1542
+     },
+     "completion_over": 33,
+     "total_over": 86
+    },
+    "without_tokens": 0
+   }
+  ],
+  "by_slice": [
+   {
+    "slice": "cross",
+    "judgments": 1227,
+    "judge_tokens": {
+     "prompt": 1058957,
+     "completion": 282414,
+     "total": 1341371
+    },
+    "seconds": 2066.9,
+    "usd": 0.12167226,
+    "completion_median": 36,
+    "prompt_median": 852,
+    "measured": {
+     "judgments": 1116,
+     "judge_tokens": {
+      "prompt": 988964,
+      "completion": 275900,
+      "total": 1264864
+     },
+     "judged_tokens": {
+      "prompt": 1803030,
+      "completion": 496348,
+      "total": 2299378
+     },
+     "ratio": {
+      "prompt": 0.5485,
+      "completion": 0.5559,
+      "total": 0.5501
+     },
+     "completion_over": 401,
+     "total_over": 336
+    },
+    "stand-in": {
+     "judgments": 111,
+     "judge_tokens": {
+      "prompt": 69993,
+      "completion": 6514,
+      "total": 76507
+     },
+     "judged_tokens": {
+      "prompt": 542023,
+      "completion": 49666,
+      "total": 591689
+     },
+     "ratio": {
+      "prompt": 0.1291,
+      "completion": 0.1312,
+      "total": 0.1293
+     },
+     "completion_over": 16,
+     "total_over": 54
+    },
+    "without_tokens": 0
+   },
+   {
+    "slice": "self",
+    "judgments": 120,
+    "judge_tokens": {
+     "prompt": 93070,
+     "completion": 33431,
+     "total": 126501
+    },
+    "seconds": 230.1,
+    "usd": 0.01201382,
+    "completion_median": 96.0,
+    "prompt_median": 706.0,
+    "measured": {
+     "judgments": 104,
+     "judge_tokens": {
+      "prompt": 84990,
+      "completion": 31297,
+      "total": 116287
+     },
+     "judged_tokens": {
+      "prompt": 194957,
+      "completion": 45558,
+      "total": 240515
+     },
+     "ratio": {
+      "prompt": 0.4359,
+      "completion": 0.687,
+      "total": 0.4835
+     },
+     "completion_over": 29,
+     "total_over": 26
+    },
+    "stand-in": {
+     "judgments": 16,
+     "judge_tokens": {
+      "prompt": 8080,
+      "completion": 2134,
+      "total": 10214
+     },
+     "judged_tokens": {
+      "prompt": 2550,
+      "completion": 1968,
+      "total": 4518
+     },
+     "ratio": {
+      "prompt": 3.1686,
+      "completion": 1.0843,
+      "total": 2.2607
+     },
+     "completion_over": 9,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   },
+   {
+    "slice": "padded",
+    "judgments": 92,
+    "judge_tokens": {
+     "prompt": 79900,
+     "completion": 22393,
+     "total": 102293
+    },
+    "seconds": 160.1,
+    "usd": 0.00843123,
+    "completion_median": 35.0,
+    "prompt_median": 816.5,
+    "measured": {
+     "judgments": 64,
+     "judge_tokens": {
+      "prompt": 59291,
+      "completion": 18689,
+      "total": 77980
+     },
+     "judged_tokens": {
+      "prompt": 123759,
+      "completion": 20377,
+      "total": 144136
+     },
+     "ratio": {
+      "prompt": 0.4791,
+      "completion": 0.9172,
+      "total": 0.541
+     },
+     "completion_over": 25,
+     "total_over": 16
+    },
+    "stand-in": {
+     "judgments": 28,
+     "judge_tokens": {
+      "prompt": 20609,
+      "completion": 3704,
+      "total": 24313
+     },
+     "judged_tokens": {
+      "prompt": 115898,
+      "completion": 8108,
+      "total": 124006
+     },
+     "ratio": {
+      "prompt": 0.1778,
+      "completion": 0.4568,
+      "total": 0.1961
+     },
+     "completion_over": 8,
+     "total_over": 16
+    },
+    "without_tokens": 0
+   }
+  ],
+  "sentence": [
+   {
+    "workflow": "w1",
+    "judge": "gemma4-12b",
+    "basis": "measured",
+    "judgments": 165,
+    "ratio": {
+     "prompt": 0.253,
+     "completion": 0.0939,
+     "total": 0.2379
+    },
+    "more_than_the_output": false,
+    "more_completion": false,
+    "more_prompt": false,
+    "completion_over": 0,
+    "total_over": 0
+   },
+   {
+    "workflow": "w1",
+    "judge": "gpt-oss-20b",
+    "basis": "measured",
+    "judgments": 171,
+    "ratio": {
+     "prompt": 0.2326,
+     "completion": 1.3844,
+     "total": 0.3303
+    },
+    "more_than_the_output": false,
+    "more_completion": true,
+    "more_prompt": false,
+    "completion_over": 117,
+    "total_over": 0
+   },
+   {
+    "workflow": "w2",
+    "judge": "gemma4-12b",
+    "basis": "measured",
+    "judgments": 222,
+    "ratio": {
+     "prompt": 0.301,
+     "completion": 0.0823,
+     "total": 0.2733
+    },
+    "more_than_the_output": false,
+    "more_completion": false,
+    "more_prompt": false,
+    "completion_over": 0,
+    "total_over": 0
+   },
+   {
+    "workflow": "w2",
+    "judge": "gpt-oss-20b",
+    "basis": "measured",
+    "judgments": 90,
+    "ratio": {
+     "prompt": 0.2576,
+     "completion": 1.8279,
+     "total": 0.3743
+    },
+    "more_than_the_output": false,
+    "more_completion": true,
+    "more_prompt": false,
+    "completion_over": 84,
+    "total_over": 0
+   },
+   {
+    "workflow": "w3",
+    "judge": "gemma4-12b",
+    "basis": "stand-in",
+    "judgments": 69,
+    "ratio": {
+     "prompt": 0.083,
+     "completion": 0.0424,
+     "total": 0.0802
+    },
+    "more_than_the_output": false,
+    "more_completion": false,
+    "more_prompt": false,
+    "completion_over": 0,
+    "total_over": 0
+   },
+   {
+    "workflow": "w4",
+    "judge": "gemma4-12b",
+    "basis": "stand-in",
+    "judgments": 54,
+    "ratio": {
+     "prompt": 2.7629,
+     "completion": 0.1552,
+     "total": 1.5114
+    },
+    "more_than_the_output": true,
+    "more_completion": false,
+    "more_prompt": true,
+    "completion_over": 6,
+    "total_over": 54
+   },
+   {
+    "workflow": "w4",
+    "judge": "gpt-oss-20b",
+    "basis": "stand-in",
+    "judgments": 32,
+    "ratio": {
+     "prompt": 3.6226,
+     "completion": 3.5954,
+     "total": 3.6135
+    },
+    "more_than_the_output": true,
+    "more_completion": true,
+    "more_prompt": true,
+    "completion_over": 27,
+    "total_over": 32
+   },
+   {
+    "workflow": "w5",
+    "judge": "gemma4-12b",
+    "basis": "measured",
+    "judgments": 362,
+    "ratio": {
+     "prompt": 1.733,
+     "completion": 0.0387,
+     "total": 0.7705
+    },
+    "more_than_the_output": false,
+    "more_completion": false,
+    "more_prompt": true,
+    "completion_over": 0,
+    "total_over": 118
+   },
+   {
+    "workflow": "w5",
+    "judge": "gpt-oss-20b",
+    "basis": "measured",
+    "judgments": 274,
+    "ratio": {
+     "prompt": 1.5662,
+     "completion": 2.9562,
+     "total": 1.9485
+    },
+    "more_than_the_output": true,
+    "more_completion": true,
+    "more_prompt": true,
+    "completion_over": 254,
+    "total_over": 260
+   }
+  ],
+  "conclusion": {
+   "thinking_on": [
+    "gpt-oss-20b"
+   ],
+   "thinking_off": [
+    "gemma4-12b"
+   ],
+   "by_judge": {
+    "gemma4-12b": [
+     {
+      "workflow": "w1",
+      "basis": "measured",
+      "judgments": 165,
+      "completion": 0.0939,
+      "total": 0.2379,
+      "prompt": 0.253,
+      "completion_over": 0,
+      "total_over": 0
+     },
+     {
+      "workflow": "w2",
+      "basis": "measured",
+      "judgments": 222,
+      "completion": 0.0823,
+      "total": 0.2733,
+      "prompt": 0.301,
+      "completion_over": 0,
+      "total_over": 0
+     },
+     {
+      "workflow": "w3",
+      "basis": "stand-in",
+      "judgments": 69,
+      "completion": 0.0424,
+      "total": 0.0802,
+      "prompt": 0.083,
+      "completion_over": 0,
+      "total_over": 0
+     },
+     {
+      "workflow": "w4",
+      "basis": "stand-in",
+      "judgments": 54,
+      "completion": 0.1552,
+      "total": 1.5114,
+      "prompt": 2.7629,
+      "completion_over": 6,
+      "total_over": 54
+     },
+     {
+      "workflow": "w5",
+      "basis": "measured",
+      "judgments": 362,
+      "completion": 0.0387,
+      "total": 0.7705,
+      "prompt": 1.733,
+      "completion_over": 0,
+      "total_over": 118
+     }
+    ],
+    "gpt-oss-20b": [
+     {
+      "workflow": "w1",
+      "basis": "measured",
+      "judgments": 171,
+      "completion": 1.3844,
+      "total": 0.3303,
+      "prompt": 0.2326,
+      "completion_over": 117,
+      "total_over": 0
+     },
+     {
+      "workflow": "w2",
+      "basis": "measured",
+      "judgments": 90,
+      "completion": 1.8279,
+      "total": 0.3743,
+      "prompt": 0.2576,
+      "completion_over": 84,
+      "total_over": 0
+     },
+     {
+      "workflow": "w4",
+      "basis": "stand-in",
+      "judgments": 32,
+      "completion": 3.5954,
+      "total": 3.6135,
+      "prompt": 3.6226,
+      "completion_over": 27,
+      "total_over": 32
+     },
+     {
+      "workflow": "w5",
+      "basis": "measured",
+      "judgments": 274,
+      "completion": 2.9562,
+      "total": 1.9485,
+      "prompt": 1.5662,
+      "completion_over": 254,
+      "total_over": 260
+     }
+    ]
+   },
+   "not_judged_by": {
+    "gemma4-12b": {},
+    "gpt-oss-20b": {
+     "w3": [
+      "gemma4-12b"
+     ]
+    }
+   },
+   "completion_in_total": {
+    "gemma4-12b": {
+     "above": [],
+     "not_above": [
+      "w1",
+      "w2",
+      "w3",
+      "w4",
+      "w5"
+     ]
+    },
+    "gpt-oss-20b": {
+     "above": [
+      "w1",
+      "w2",
+      "w4",
+      "w5"
+     ],
+     "not_above": []
+    }
+   },
+   "all_tokens_in_total": {
+    "gemma4-12b": {
+     "above": [
+      "w4"
+     ],
+     "not_above": [
+      "w1",
+      "w2",
+      "w3",
+      "w5"
+     ]
+    },
+    "gpt-oss-20b": {
+     "above": [
+      "w4",
+      "w5"
+     ],
+     "not_above": [
+      "w1",
+      "w2"
+     ]
+    }
+   }
+  }
+ }
+}

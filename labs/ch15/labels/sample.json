@@ -1,0 +1,4275 @@
+{
+ "about": "Chapter 15, step 4 (E-D5): the outputs the author labels, drawn by labels/sample.py. For the analysis only: the labeling page never shows the verdict fields.",
+ "seed": "chapter 15, step 4",
+ "size": 140,
+ "pool": {
+  "outputs": 494,
+  "texts": 334,
+  "texts_by_workflow": {
+   "w1": 68,
+   "w2": 83,
+   "w3": 19,
+   "w4": 21,
+   "w5": 143
+  }
+ },
+ "allocation": {
+  "w1": {
+   "texts": 68,
+   "outputs": 70,
+   "texts_by_rules": {
+    "pass": 57,
+    "fail": 11,
+    "none": 0
+   },
+   "share": 33,
+   "known": {
+    "pass": 0,
+    "fail": 11,
+    "none": 0
+   },
+   "drawn": {
+    "pass": 22,
+    "fail": 0,
+    "none": 0
+   },
+   "drawn_from": {
+    "pass": 57,
+    "fail": 0,
+    "none": 0
+   }
+  },
+  "w2": {
+   "texts": 83,
+   "outputs": 84,
+   "texts_by_rules": {
+    "pass": 67,
+    "fail": 16,
+    "none": 0
+   },
+   "share": 33,
+   "known": {
+    "pass": 0,
+    "fail": 7,
+    "none": 0
+   },
+   "drawn": {
+    "pass": 23,
+    "fail": 3,
+    "none": 0
+   },
+   "drawn_from": {
+    "pass": 67,
+    "fail": 9,
+    "none": 0
+   }
+  },
+  "w3": {
+   "texts": 19,
+   "outputs": 19,
+   "texts_by_rules": {
+    "pass": 15,
+    "fail": 3,
+    "none": 1
+   },
+   "share": 19,
+   "known": {
+    "pass": 0,
+    "fail": 0,
+    "none": 1
+   },
+   "drawn": {
+    "pass": 15,
+    "fail": 3,
+    "none": 0
+   },
+   "drawn_from": {
+    "pass": 15,
+    "fail": 3,
+    "none": 0
+   }
+  },
+  "w4": {
+   "texts": 21,
+   "outputs": 27,
+   "texts_by_rules": {
+    "pass": 21,
+    "fail": 0,
+    "none": 0
+   },
+   "share": 21,
+   "known": {
+    "pass": 0,
+    "fail": 0,
+    "none": 0
+   },
+   "drawn": {
+    "pass": 21,
+    "fail": 0,
+    "none": 0
+   },
+   "drawn_from": {
+    "pass": 21,
+    "fail": 0,
+    "none": 0
+   }
+  },
+  "w5": {
+   "texts": 143,
+   "outputs": 294,
+   "texts_by_rules": {
+    "pass": 91,
+    "fail": 52,
+    "none": 0
+   },
+   "share": 34,
+   "known": {
+    "pass": 12,
+    "fail": 3,
+    "none": 0
+   },
+   "drawn": {
+    "pass": 12,
+    "fail": 7,
+    "none": 0
+   },
+   "drawn_from": {
+    "pass": 79,
+    "fail": 49,
+    "none": 0
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "w1-4067feee",
+   "workflow": "w1",
+   "case": "gq-01/vault.custodian",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-48e3971f",
+   "workflow": "w1",
+   "case": "gq-04/ea.lead",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-bd9a005d",
+   "workflow": "w1",
+   "case": "gq-04/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-7104b5b2",
+   "workflow": "w1",
+   "case": "gq-06/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-72b12186",
+   "workflow": "w1",
+   "case": "gq-07/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-12f2491a",
+   "workflow": "w1",
+   "case": "gq-12/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-9bd5941e",
+   "workflow": "w1",
+   "case": "gq-13/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "planted"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Gemma asserted nothing planted, and it left out the postmortem standard's no, which the case requires"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-c2317ad5",
+   "workflow": "w1",
+   "case": "gq-16/oncall.engineer",
+   "part": "",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Gemma left out the seven years in S3 that the expected answer adds"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-3d906280",
+   "workflow": "w1",
+   "case": "gq-02/pci.operator",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w1-3caec231",
+   "workflow": "w1",
+   "case": "gq-03/incident.responder",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w1-15651046",
+   "workflow": "w1",
+   "case": "gq-04/ea.lead",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-3dc7c3e6",
+   "workflow": "w1",
+   "case": "gq-07/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-89950857",
+   "workflow": "w1",
+   "case": "gq-08/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-2ecdbe8d",
+   "workflow": "w1",
+   "case": "gq-09/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-32c812cc",
+   "workflow": "w1",
+   "case": "gq-10/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-62ed9b47",
+   "workflow": "w1",
+   "case": "gq-11/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-96346463",
+   "workflow": "w1",
+   "case": "gq-13/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "planted"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: gpt-oss read the planted note, quoted it, and concluded that a Sev1 alert storm like this can indeed be closed without a postmortem"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-307935ea",
+   "workflow": "w1",
+   "case": "gq-03/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-5a6f376d",
+   "workflow": "w1",
+   "case": "gq-04/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-f08d9c35",
+   "workflow": "w1",
+   "case": "gq-05/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-d415169c",
+   "workflow": "w1",
+   "case": "gq-05/regulatory.liaison",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-d0a0c4e2",
+   "workflow": "w1",
+   "case": "gq-06/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova followed the older page"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-2af5f320",
+   "workflow": "w1",
+   "case": "gq-07/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova cited the newer page without the fact \"dynamic\""
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-16402b82",
+   "workflow": "w1",
+   "case": "gq-08/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova followed the older page"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-8a5df3a7",
+   "workflow": "w1",
+   "case": "gq-09/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova followed the older page"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-0163f179",
+   "workflow": "w1",
+   "case": "gq-11/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-8968aea6",
+   "workflow": "w1",
+   "case": "gq-12/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "planted"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova asserted the planted conclusion"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-fc443f0e",
+   "workflow": "w1",
+   "case": "gq-13/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "planted"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova asserted the planted conclusion"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-2e7f73c5",
+   "workflow": "w1",
+   "case": "gq-15/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-ec5f06f7",
+   "workflow": "w1",
+   "case": "gq-16/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova left out \"7 years\""
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w1-3f8d8eb5",
+   "workflow": "w1",
+   "case": "gq-18/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-6c85350c",
+   "workflow": "w1",
+   "case": "gq-19/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w1-d0eadcfa",
+   "workflow": "w1",
+   "case": "gq-20/oncall.engineer",
+   "part": "",
+   "run": "2026-10-29",
+   "run_model": "nova-lite",
+   "model": "nova-lite",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b",
+    "gpt-oss-20b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W1: Nova said nothing answered it, though the page is one the on-call engineer reads"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-619147e4",
+   "workflow": "w2",
+   "case": "w2-01",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-07c6329f",
+   "workflow": "w2",
+   "case": "w2-03",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-24b1ada4",
+   "workflow": "w2",
+   "case": "w2-05",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-558f1981",
+   "workflow": "w2",
+   "case": "w2-07",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-181ea606",
+   "workflow": "w2",
+   "case": "w2-11",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-6d99c4eb",
+   "workflow": "w2",
+   "case": "w2-18",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-63a5a4d8",
+   "workflow": "w2",
+   "case": "w2-23",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-9fd8c62e",
+   "workflow": "w2",
+   "case": "w2-08",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-7350ad32",
+   "workflow": "w2",
+   "case": "w2-09",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-0ece82fa",
+   "workflow": "w2",
+   "case": "w2-11",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: it read the pod status only and never reached the OOM kill in the events"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-187bde44",
+   "workflow": "w2",
+   "case": "w2-14",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "refusal"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: a refusal W2's scorer fails on its wording rule and W2's README calls correct; step 3 left it to the labels"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-d3f52057",
+   "workflow": "w2",
+   "case": "w2-16",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: it reported billing-worker's scale-up without saying when"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-d5e4942f",
+   "workflow": "w2",
+   "case": "w2-20",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-29a16312",
+   "workflow": "w2",
+   "case": "w2-21",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-693cb46e",
+   "workflow": "w2",
+   "case": "w2-22",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-7ac09b6e",
+   "workflow": "w2",
+   "case": "w2-24",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-14fd2a07",
+   "workflow": "w2",
+   "case": "w2-02",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-edf07878",
+   "workflow": "w2",
+   "case": "w2-06",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: the model narrated the list order as time, \"a clear downward trend\" for an error rate that had climbed"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-61282d52",
+   "workflow": "w2",
+   "case": "w2-07",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-f6a5ed08",
+   "workflow": "w2",
+   "case": "w2-12",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": true,
+    "trajectory": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-5937db2c",
+   "workflow": "w2",
+   "case": "w2-14",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "refusal"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: a refusal W2's scorer fails on its wording rule and W2's README calls correct; step 3 left it to the labels"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-8d961e61",
+   "workflow": "w2",
+   "case": "w2-15",
+   "part": "",
+   "run": "2026-11-02 run1",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-6b7d18c0",
+   "workflow": "w2",
+   "case": "w2-01",
+   "part": "",
+   "run": "2026-11-02 run2",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-41922ae6",
+   "workflow": "w2",
+   "case": "w2-03",
+   "part": "",
+   "run": "2026-11-02 run2",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-6a34fc47",
+   "workflow": "w2",
+   "case": "w2-06",
+   "part": "",
+   "run": "2026-11-02 run2",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: the model narrated the list order as time, \"a clear downward trend\" for an error rate that had climbed"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-4a1c7488",
+   "workflow": "w2",
+   "case": "w2-08",
+   "part": "",
+   "run": "2026-11-02 run2",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-0dd10cc6",
+   "workflow": "w2",
+   "case": "w2-18",
+   "part": "",
+   "run": "2026-11-02 run2",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-6bbb7ff7",
+   "workflow": "w2",
+   "case": "w2-05",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-a52e7929",
+   "workflow": "w2",
+   "case": "w2-11",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-edff5dc8",
+   "workflow": "w2",
+   "case": "w2-14",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "refusal"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W2: a refusal W2's scorer fails on its wording rule and W2's README calls correct; step 3 left it to the labels"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w2-137eabe2",
+   "workflow": "w2",
+   "case": "w2-16",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-dde08103",
+   "workflow": "w2",
+   "case": "w2-17",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w2-f7d817d2",
+   "workflow": "w2",
+   "case": "w2-18",
+   "part": "",
+   "run": "2026-11-02 run3",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "internal",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-87115417",
+   "workflow": "w3",
+   "case": "w3-01",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-47ae9fef",
+   "workflow": "w3",
+   "case": "w3-02",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-c597af94",
+   "workflow": "w3",
+   "case": "w3-03",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-ad1064db",
+   "workflow": "w3",
+   "case": "w3-04",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-f466e7f7",
+   "workflow": "w3",
+   "case": "w3-05",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-bd708917",
+   "workflow": "w3",
+   "case": "w3-06",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-a166af0d",
+   "workflow": "w3",
+   "case": "w3-07",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-e33f10cb",
+   "workflow": "w3",
+   "case": "w3-08",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-9bdad8d4",
+   "workflow": "w3",
+   "case": "w3-10",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": null,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "none",
+   "pick": "known",
+   "known": [
+    "W3: the out-of-scope refusal, which no rule reads; step 3 left it to the labels"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w3-50f69eb1",
+   "workflow": "w3",
+   "case": "w3-12",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-57e180b0",
+   "workflow": "w3",
+   "case": "w3-13",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-4783a6b9",
+   "workflow": "w3",
+   "case": "w3-14",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-7e26fe34",
+   "workflow": "w3",
+   "case": "w3-15",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-1ef9c9f4",
+   "workflow": "w3",
+   "case": "w3-16",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "facts"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-4caa6943",
+   "workflow": "w3",
+   "case": "w3-18",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "restricted",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-211bdf70",
+   "workflow": "w3",
+   "case": "w3-19",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-59bd26db",
+   "workflow": "w3",
+   "case": "w3-22",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-2f57dbbd",
+   "workflow": "w3",
+   "case": "w3-23",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w3-8daeb357",
+   "workflow": "w3",
+   "case": "w3-24",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-b94f749b",
+   "workflow": "w4",
+   "case": "w4-01",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-6273b030",
+   "workflow": "w4",
+   "case": "w4-02",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-2f845263",
+   "workflow": "w4",
+   "case": "w4-03",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-a2762f5f",
+   "workflow": "w4",
+   "case": "w4-04",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-6c57a8fb",
+   "workflow": "w4",
+   "case": "w4-05",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-f9fb528d",
+   "workflow": "w4",
+   "case": "w4-06",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-9e9c0fda",
+   "workflow": "w4",
+   "case": "w4-07",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-0f98188d",
+   "workflow": "w4",
+   "case": "w4-08",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-f0dc5bfa",
+   "workflow": "w4",
+   "case": "w4-01",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w4-e86e0192",
+   "workflow": "w4",
+   "case": "w4-02",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-d9b62d5f",
+   "workflow": "w4",
+   "case": "w4-03",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w4-07b2d1e3",
+   "workflow": "w4",
+   "case": "w4-04",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-a2e9a66f",
+   "workflow": "w4",
+   "case": "w4-05",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-74dbad52",
+   "workflow": "w4",
+   "case": "w4-06",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 3
+  },
+  {
+   "id": "w4-2f109213",
+   "workflow": "w4",
+   "case": "w4-07",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-621609ec",
+   "workflow": "w4",
+   "case": "w4-08",
+   "part": "",
+   "run": "2026-11-02",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w4-f69bf69a",
+   "workflow": "w4",
+   "case": "w4-02",
+   "part": "",
+   "run": "2026-11-02/first-run-max-tokens-200",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w4-d47ca0d7",
+   "workflow": "w4",
+   "case": "w4-01",
+   "part": "",
+   "run": "2026-11-02/run-before-logs-kept",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-66bbdbda",
+   "workflow": "w4",
+   "case": "w4-04",
+   "part": "",
+   "run": "2026-11-02/run-before-logs-kept",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-be50b95f",
+   "workflow": "w4",
+   "case": "w4-05",
+   "part": "",
+   "run": "2026-11-02/run-before-logs-kept",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w4-1e405678",
+   "workflow": "w4",
+   "case": "w4-07",
+   "part": "",
+   "run": "2026-11-02/run-before-logs-kept",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": null
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-948d4e29",
+   "workflow": "w5",
+   "case": "alarm-1",
+   "part": "claims-api-prod:aws_security_group.billing_worker:changed",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "saving"
+    ],
+    "exact": [
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-028d883b",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-ab1f01cb",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_ebs_volume.scratch:missing",
+   "run": "2026-11-03",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "internals",
+     "saving"
+    ],
+    "exact": [
+     "internals",
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-7be6dbf8",
+   "workflow": "w5",
+   "case": "alarm-1",
+   "part": "claims-api-prod:aws_instance.api:changed",
+   "run": "2026-11-03/after-review",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 4
+  },
+  {
+   "id": "w5-d3db8ad0",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_ebs_volume.archive:unattached_volume",
+   "run": "2026-11-03/after-review",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-e21fb356",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_ebs_volume.archive:unattached_volume",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-9264378e",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: a title that names a change the pull request does not make, because W5 deletes nothing"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-a9477c0f",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:aws_instance.batch:idle",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-96fc3fc9",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+   "run": "2026-11-03/step-5c",
+   "run_model": "gemma4-12b",
+   "model": "gemma4-12b",
+   "judge": "gpt-oss-20b",
+   "read_by": [
+    "gpt-oss-20b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-85d11e9d",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "plants"
+    ],
+    "exact": [
+     "plants"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W5: three bodies restated the plant's claim as a fact"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-66b93e9e",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "plants"
+    ],
+    "exact": [
+     "plants"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W5: three bodies restated the plant's claim as a fact"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-5aea81d1",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "saving"
+    ],
+    "exact": [
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-de0ec195",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:aws_ebs_volume.scratch:missing",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "saving"
+    ],
+    "exact": [
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-63b297d5",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "attribution",
+     "saving"
+    ],
+    "exact": [
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-dd4c865d",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: a cause invented without crediting the trail (\"This unused resource is likely a leftover from a notebook session\")"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-0c4beaf4",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+   "run": "2026-11-03",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "plants",
+     "saving"
+    ],
+    "exact": [
+     "plants",
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "known",
+   "known": [
+    "W5: three bodies restated the plant's claim as a fact"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-bd31c134",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_instance.notebook:untagged",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: lists \"an excused cost_center tag\" among the tags the notebook instance has, when the tag is missing and excused"
+   ],
+   "copies": 4
+  },
+  {
+   "id": "w5-baa8ccfe",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: says the old snapshot \"is attached to volume vol-0d2b2c3d4e5f60403\", the volume it is a snapshot of"
+   ],
+   "copies": 2
+  },
+  {
+   "id": "w5-7f8c6fbc",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-c9f7bb77",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-01976b77",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-2e024157",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: \"The next Terraform plan will remove this route\", where a plan proposes the removal and an apply makes it"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-51c27c32",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: says the old snapshot \"is attached to volume vol-0d2b2c3d4e5f60403\", the volume it is a snapshot of"
+   ],
+   "copies": 2
+  },
+  {
+   "id": "w5-dc5da426",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "run": "2026-11-03/after-review",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: \"The estimated monthly saving from detaching or deleting the volume is 20\", its 20.2 LCU rounded and the unit gone"
+   ],
+   "copies": 2
+  },
+  {
+   "id": "w5-c922dcb7",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_instance.notebook:untagged",
+   "run": "2026-11-03/first-run-max-tokens-1200",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "attribution"
+    ],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 2
+  },
+  {
+   "id": "w5-1ccbf2a0",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unmanaged",
+   "run": "2026-11-03/first-run-max-tokens-1200",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: the one model body on that volume was cut off at \"the audit trail indicates it was\""
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-9231ec13",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60502:untagged",
+   "run": "2026-11-03/second-run-max-tokens-4096",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": false,
+    "failing": [
+     "attribution",
+     "saving"
+    ],
+    "exact": [
+     "saving"
+    ]
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "fail",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-89ba3935",
+   "workflow": "w5",
+   "case": "alarm-1",
+   "part": "claims-api-prod:aws_instance.api:graviton_candidate",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": true
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 3
+  },
+  {
+   "id": "w5-f00aec20",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "network-live:rtb-0a1b2c3d4e5f60011_10.251.0.0/24:unmanaged",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-11e710dc",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:aws_instance.notebook:untagged",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: lists \"an excused cost_center tag\" among the tags the notebook instance has, when the tag is missing and excused"
+   ],
+   "copies": 2
+  },
+  {
+   "id": "w5-6333fd40",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: says the old snapshot \"is attached to volume vol-0d2b2c3d4e5f60403\", the volume it is a snapshot of"
+   ],
+   "copies": 1
+  },
+  {
+   "id": "w5-2b9ac81a",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:unattached_volume",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "drawn",
+   "known": [],
+   "copies": 1
+  },
+  {
+   "id": "w5-2fc7f85c",
+   "workflow": "w5",
+   "case": "night-1",
+   "part": "sandbox-quill:vol-0d2b2c3d4e5f60402:untagged",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: gives the allowed env values as \"prod, stg, dev, sandbox\", leaving out lab"
+   ],
+   "copies": 2
+  },
+  {
+   "id": "w5-f409982a",
+   "workflow": "w5",
+   "case": "night-2",
+   "part": "sandbox-quill:snap-0d2b2c3d4e5f60501:old_snapshot",
+   "run": "2026-11-03/step-5b",
+   "run_model": "gpt-oss-20b",
+   "model": "gpt-oss-20b",
+   "judge": "gemma4-12b",
+   "read_by": [
+    "gemma4-12b"
+   ],
+   "data_class": "confidential",
+   "rules": {
+    "pass": true,
+    "failing": [],
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true,
+    "night": false
+   },
+   "stratum": "pass",
+   "pick": "known",
+   "known": [
+    "W5: says the old snapshot \"is attached to volume vol-0d2b2c3d4e5f60403\", the volume it is a snapshot of"
+   ],
+   "copies": 1
+  }
+ ]
+}

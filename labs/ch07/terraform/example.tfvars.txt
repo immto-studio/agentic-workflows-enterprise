@@ -1,0 +1,16 @@
+# Copy to lab.tfvars for a personal sandbox project; every value below is a placeholder.
+# A project without an organization has no folder and no perimeter: the deny policy sits on
+# the project, and the agent identity's trust domain is built from the project number.
+project_id                    = "quill-ops-assistant-sandbox"
+project_number                = "123456789012"
+billing_account               = "000000-000000-000000"
+budget_alert_email            = "you@example.com"
+monthly_budget                = 20
+harness_image                 = "northamerica-northeast1-docker.pkg.dev/quill-ops-assistant-sandbox/agent-harness/harness@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+gateway_key_version           = "1"
+network_attachment            = "projects/quill-ops-assistant-sandbox/regions/northamerica-northeast1/networkAttachments/agent-egress"
+vpc_network                   = "projects/quill-ops-assistant-sandbox/global/networks/quill"
+trust_config                  = "projects/123456789012/locations/northamerica-northeast1/trustConfigs/larkspur-private-ca"
+kms_key                       = "projects/quill-ops-assistant-sandbox/locations/northamerica-northeast1/keyRings/agents/cryptoKeys/harness"
+model_gateway_service_account = "llm-gateway@quill-ops-assistant-sandbox.iam.gserviceaccount.com"
+deletion_policy               = "FORCE"

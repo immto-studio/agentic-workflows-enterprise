@@ -1,0 +1,3 @@
+# terraform v1.13.1, version="5.11.0"
+Success! The configuration is valid.
+

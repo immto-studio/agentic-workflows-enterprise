@@ -1,0 +1,16 @@
+{
+ "region": "ca-central-1",
+ "name": "larkspur-w1-check-b36e45",
+ "started": "2026-10-29T23:17:07-0400",
+ "embedding_model": "amazon.titan-embed-text-v2:0",
+ "checks": {},
+ "teardown": {},
+ "error": "AccessDenied: An error occurred (AccessDenied) when calling the CreateBucket operation: User: arn:aws:iam::<account>:user/administrator is not authorized to perform: s3:CreateBucket on resource: \"arn:aws:s3:::larkspur-w1-check-b36e45-corpus\" with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/<organization>/service_control_policy/<policy>",
+ "left_after_teardown": {
+  "knowledge_bases": "AccessDeniedException: User: arn:aws:iam::<account>:user/administrator is not authorized to perform: bedrock:ListKnowledgeBases on resource: arn:aws:bedrock:ca-central-1:<account>:knowledge-base/* with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/<organization>/service_control_policy/<policy>",
+  "vector_buckets": "AccessDeniedException: User: arn:aws:iam::<account>:user/administrator is not authorized to perform: s3vectors:ListVectorBuckets on resource: arn:aws:s3vectors:ca-central-1:<account>:* with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/<organization>/service_control_policy/<policy>",
+  "buckets": "AccessDenied: User: arn:aws:iam::<account>:user/administrator is not authorized to perform: s3:ListAllMyBuckets with an explicit deny in a service control policy: arn:aws:organizations::<account>:policy/<organization>/service_control_policy/<policy>",
+  "roles": []
+ },
+ "finished": "2026-10-29T23:17:08-0400"
+}

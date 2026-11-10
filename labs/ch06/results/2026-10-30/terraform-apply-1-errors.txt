@@ -1,0 +1,16 @@
+# First apply on synthetic data in us-east-2 (sandbox/, book D-036), 2026-10-30, before the fixes
+# terraform apply -var-file=lab.tfvars after the budget; account IDs, request IDs and resource IDs removed
+Resources created: 46
+
+Error: creating Bedrock AgentCore Gateway
+ID: "w3-incident-tools"
+Cause: operation error Bedrock AgentCore Control: CreateGateway, ,
+ValidationException: Access denied while calling GetPolicyEngine on Policy
+Engine:
+arn:aws:bedrock-agentcore:us-east-2:<account>:policy-engine/w3_incident_tools-<id>
+Confirm this role has bedrock-agentcore:GetPolicyEngine permissions and retry
+your request"
+Error: creating Security Group (w3-incident-runtime): operation error EC2: CreateSecurityGroup, https response error StatusCode: 400, RequestID: <id>, api error InvalidParameterValue: Invalid security group description. Valid descriptions are strings less than 256 characters from the following set:  a-zA-Z0-9. _-:/()#,@[]+=&;{}!$*
+Error: creating Security Group (w3-incident-tool-gateway): operation error EC2: CreateSecurityGroup, https response error StatusCode: 400, RequestID: <id>, api error InvalidParameterValue: Invalid security group description. Valid descriptions are strings less than 256 characters from the following set:  a-zA-Z0-9. _-:/()#,@[]+=&;{}!$*
+Error: creating EKS Access Entry (ops-sandbox:arn:aws:iam::<account>:role/w3-incident-restart-deployment): operation error EKS: CreateAccessEntry, https response error StatusCode: 404, RequestID: <id>, ResourceNotFoundException: No cluster found for name: ops-sandbox.
+Error: creating EKS Access Entry (ops-sandbox:arn:aws:iam::<account>:role/w3-incident-get-pod-status): operation error EKS: CreateAccessEntry, https response error StatusCode: 404, RequestID: <id>, ResourceNotFoundException: No cluster found for name: ops-sandbox.

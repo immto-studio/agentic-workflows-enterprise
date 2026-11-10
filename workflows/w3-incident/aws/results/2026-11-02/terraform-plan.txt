@@ -1,0 +1,464 @@
+# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-02)
+# No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
+data.aws_iam_policy_document.write_boundary: Reading...
+data.aws_iam_policy_document.write["restart_deployment"]: Reading...
+data.aws_iam_policy_document.write["scale_deployment"]: Reading...
+data.aws_iam_policy_document.runtime_trust: Reading...
+data.aws_iam_policy_document.runtime: Reading...
+data.aws_iam_policy_document.write["scale_deployment"]: Read complete after 0s [id=3818226536]
+data.aws_iam_policy_document.write["restart_deployment"]: Read complete after 0s [id=3818226536]
+data.aws_iam_policy_document.runtime_trust: Read complete after 0s [id=3844529573]
+data.aws_iam_policy_document.runtime: Read complete after 0s [id=1095141959]
+data.aws_iam_policy_document.write_boundary: Read complete after 0s [id=2388593712]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.aws_iam_policy_document.write_trust["restart_deployment"] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_iam_policy_document" "write_trust" {
+      + id            = (known after apply)
+      + json          = (known after apply)
+      + minified_json = (known after apply)
+
+      + statement {
+          + actions = [
+              + "sts:AssumeRole",
+              + "sts:SetSourceIdentity",
+              + "sts:TagSession",
+            ]
+          + effect  = "Allow"
+          + sid     = "RuntimeAssumesPerRequest"
+
+          + condition {
+              + test     = "StringEquals"
+              + values   = [
+                  + "w3-incident",
+                ]
+              + variable = "aws:RequestTag/workflow"
+            }
+
+          + principals {
+              + identifiers = [
+                  + (known after apply),
+                ]
+              + type        = "AWS"
+            }
+        }
+    }
+
+  # data.aws_iam_policy_document.write_trust["scale_deployment"] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_iam_policy_document" "write_trust" {
+      + id            = (known after apply)
+      + json          = (known after apply)
+      + minified_json = (known after apply)
+
+      + statement {
+          + actions = [
+              + "sts:AssumeRole",
+              + "sts:SetSourceIdentity",
+              + "sts:TagSession",
+            ]
+          + effect  = "Allow"
+          + sid     = "RuntimeAssumesPerRequest"
+
+          + condition {
+              + test     = "StringEquals"
+              + values   = [
+                  + "w3-incident",
+                ]
+              + variable = "aws:RequestTag/workflow"
+            }
+
+          + principals {
+              + identifiers = [
+                  + (known after apply),
+                ]
+              + type        = "AWS"
+            }
+        }
+    }
+
+  # aws_eks_access_entry.write["restart_deployment"] will be created
+  + resource "aws_eks_access_entry" "write" {
+      + access_entry_arn  = (known after apply)
+      + cluster_name      = "ops"
+      + created_at        = (known after apply)
+      + id                = (known after apply)
+      + kubernetes_groups = [
+          + "larkspur-ops-writers",
+        ]
+      + modified_at       = (known after apply)
+      + principal_arn     = (known after apply)
+      + region            = "ca-central-1"
+      + tags              = {
+          + "tool" = "restart_deployment"
+        }
+      + tags_all          = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "tool"     = "restart_deployment"
+          + "workflow" = "w3-incident"
+        }
+      + type              = "STANDARD"
+      + user_name         = (known after apply)
+    }
+
+  # aws_eks_access_entry.write["scale_deployment"] will be created
+  + resource "aws_eks_access_entry" "write" {
+      + access_entry_arn  = (known after apply)
+      + cluster_name      = "ops"
+      + created_at        = (known after apply)
+      + id                = (known after apply)
+      + kubernetes_groups = [
+          + "larkspur-ops-writers",
+        ]
+      + modified_at       = (known after apply)
+      + principal_arn     = (known after apply)
+      + region            = "ca-central-1"
+      + tags              = {
+          + "tool" = "scale_deployment"
+        }
+      + tags_all          = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "tool"     = "scale_deployment"
+          + "workflow" = "w3-incident"
+        }
+      + type              = "STANDARD"
+      + user_name         = (known after apply)
+    }
+
+  # aws_eks_pod_identity_association.runtime will be created
+  + resource "aws_eks_pod_identity_association" "runtime" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "writer-mcp"
+      + tags                 = {
+          + "role" = "writer-runtime"
+        }
+      + tags_all             = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "role"     = "writer-runtime"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+    }
+
+  # aws_iam_policy.runtime will be created
+  + resource "aws_iam_policy" "runtime" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W3 writer runtime: assume the two write roles, describe the cluster"
+      + id               = (known after apply)
+      + name             = "w3-incident-writer-runtime-assume"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "sts:TagSession",
+                          + "sts:SetSourceIdentity",
+                          + "sts:AssumeRole",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:iam::111122223333:role/larkspur-ops-scaler",
+                          + "arn:aws:iam::111122223333:role/larkspur-ops-restarter",
+                        ]
+                      + Sid      = "AssumeWriteRoles"
+                    },
+                  + {
+                      + Action   = "eks:DescribeCluster"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                      + Sid      = "DescribeCluster"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+    }
+
+  # aws_iam_policy.write["restart_deployment"] will be created
+  + resource "aws_iam_policy" "write" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W3 restart_deployment: eks:DescribeCluster only; the write itself is the custom Kubernetes Role's"
+      + id               = (known after apply)
+      + name             = "larkspur-ops-restarter-eks"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "eks:DescribeCluster"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                      + Sid      = "DescribeCluster"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+    }
+
+  # aws_iam_policy.write["scale_deployment"] will be created
+  + resource "aws_iam_policy" "write" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W3 scale_deployment: eks:DescribeCluster only; the write itself is the custom Kubernetes Role's"
+      + id               = (known after apply)
+      + name             = "larkspur-ops-scaler-eks"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "eks:DescribeCluster"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:eks:ca-central-1:111122223333:cluster/ops"
+                      + Sid      = "DescribeCluster"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+    }
+
+  # aws_iam_policy.write_boundary will be created
+  + resource "aws_iam_policy" "write_boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W3's write roles: eks:DescribeCluster, and the never-list denied, sts:AssumeRole included."
+      + id               = (known after apply)
+      + name             = "w3-incident-write-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "eks:DescribeCluster"
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "WriteCeiling"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "iam:*",
+                          + "eks:UpdateAccessEntry",
+                          + "eks:CreateAccessEntry",
+                          + "eks:AssociateAccessPolicy",
+                          + "eks:AccessKubernetesApi",
+                          + "ec2:RevokeSecurityGroupIngress",
+                          + "ec2:RevokeSecurityGroupEgress",
+                          + "ec2:ModifySecurityGroupRules",
+                          + "ec2:DeleteSecurityGroup",
+                          + "ec2:CreateSecurityGroup",
+                          + "ec2:AuthorizeSecurityGroupIngress",
+                          + "ec2:AuthorizeSecurityGroupEgress",
+                          + "cloudwatch:PutMetricData",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+    }
+
+  # aws_iam_role.runtime will be created
+  + resource "aws_iam_role" "runtime" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W3 writer runtime: assumes a write role per request, with the engineer as source identity"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "w3-incident-writer-runtime"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "role" = "writer-runtime"
+        }
+      + tags_all              = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "role"     = "writer-runtime"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w3-incident"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.write["restart_deployment"] will be created
+  + resource "aws_iam_role" "write" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = (known after apply)
+      + create_date           = (known after apply)
+      + description           = "W3 restart_deployment: eks:DescribeCluster and one namespaced Kubernetes write, assumed per request"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-ops-restarter"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-ops-restarter"
+          + "tool"     = "restart_deployment"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-ops-restarter"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "tool"     = "restart_deployment"
+          + "workflow" = "w3-incident"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.write["scale_deployment"] will be created
+  + resource "aws_iam_role" "write" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = (known after apply)
+      + create_date           = (known after apply)
+      + description           = "W3 scale_deployment: eks:DescribeCluster and one namespaced Kubernetes write, assumed per request"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-ops-scaler"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "identity" = "larkspur-ops-scaler"
+          + "tool"     = "scale_deployment"
+        }
+      + tags_all              = {
+          + "identity" = "larkspur-ops-scaler"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "tool"     = "scale_deployment"
+          + "workflow" = "w3-incident"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.runtime will be created
+  + resource "aws_iam_role_policy_attachment" "runtime" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "w3-incident-writer-runtime"
+    }
+
+  # aws_iam_role_policy_attachment.write["restart_deployment"] will be created
+  + resource "aws_iam_role_policy_attachment" "write" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-ops-restarter"
+    }
+
+  # aws_iam_role_policy_attachment.write["scale_deployment"] will be created
+  + resource "aws_iam_role_policy_attachment" "write" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-ops-scaler"
+    }
+
+Plan: 13 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + access_entries   = {
+      + restart_deployment = [
+          + "larkspur-ops-writers",
+        ]
+      + scale_deployment   = [
+          + "larkspur-ops-writers",
+        ]
+    }
+  + boundary_arn     = (known after apply)
+  + runtime_role_arn = (known after apply)
+  + write_role_arns  = {
+      + restart_deployment = (known after apply)
+      + scale_deployment   = (known after apply)
+    }

@@ -1,0 +1,98 @@
+{
+  "all_kept_spans_at_the_sink": true,
+  "collector_exit": 0,
+  "collector_started": 1793741884.002382,
+  "date": "2026-11-03",
+  "decision_wait_after_root_received": null,
+  "decision_wait_s": 30.0,
+  "ended": 1793741914.4662564,
+  "feature_gates": [
+    "processor.tailsamplingprocessor.usetracestate",
+    "processor.tailsamplingprocessor.recordpolicy"
+  ],
+  "gpu_after": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 11839,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [],
+      "version": "0.22.1"
+    },
+    "ollama_11435": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gemma4:12b",
+          "size_vram": 1471330384
+        }
+      ],
+      "version": "0.40.13"
+    }
+  },
+  "gpu_before": {
+    "gpu": {
+      "memory_total_mib": 16303,
+      "memory_used_mib": 11810,
+      "name": "NVIDIA GeForce RTX 5080",
+      "utilization_pct": 0
+    },
+    "ollama_11434": {
+      "loaded": [],
+      "version": "0.22.1"
+    },
+    "ollama_11435": {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gemma4:12b",
+          "size_vram": 1471330384
+        }
+      ],
+      "version": "0.40.13"
+    }
+  },
+  "model": "gemma4-12b",
+  "only": null,
+  "processes": [
+    {
+      "process": "the scribe, in this process (eval/lab.py)",
+      "service": "scribe"
+    },
+    {
+      "process": "the analyst A2A server (a2a/analyst.py)",
+      "service": "analyst"
+    },
+    {
+      "process": "the risk scorer A2A server (a2a/risk_scorer.py), whose rationale seam calls the gateway",
+      "service": "risk-scorer"
+    },
+    {
+      "process": "the gateway (LiteLLM with chapter 5's callback, W4's manifest)",
+      "service": "gateway"
+    },
+    {
+      "loaded": [
+        {
+          "context_length": 16384,
+          "name": "gemma4:12b",
+          "size_vram": 1471330384
+        }
+      ],
+      "process": "Ollama 0.40.13 on 11435, serving gemma4-12b with its thinking off",
+      "service": null
+    }
+  ],
+  "python": "3.12.9",
+  "run": "w4-gemma4-12b",
+  "seconds": 29.7,
+  "share_percent": 100.0,
+  "started": 1793741884.005281,
+  "think": false,
+  "traces_expected_kept": 8,
+  "wait": null,
+  "waited_after_quiet_s": 21.7,
+  "workflow": "w4"
+}

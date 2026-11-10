@@ -1,0 +1,22 @@
+{
+  "ollama": "0.40.13",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "memory_total_mib": 16303,
+  "driver": "617.42",
+  "runs": [
+    {
+      "model": "gpt-oss:20b",
+      "used_before_mib": 1573,
+      "used_loaded_mib": 14122,
+      "model_takes_mib": 12549,
+      "context_length": 4096
+    },
+    {
+      "model": "gemma4:12b",
+      "used_before_mib": 1569,
+      "used_loaded_mib": 10380,
+      "model_takes_mib": 8811,
+      "context_length": 4096
+    }
+  ]
+}

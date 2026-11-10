@@ -1,0 +1,89 @@
+{
+ "checked": "2026-11-02T02:21:06-0500",
+ "accounts": [
+  {
+   "name": "fdy-ops-assistant-sbx01",
+   "location": "canadacentral",
+   "state": "Succeeded",
+   "publicNetworkAccess": "Disabled",
+   "networkInjections": [
+    {
+     "scenario": "agent",
+     "subnetArmId": "/subscriptions/<id>/resourceGroups/rg-ch08-sandbox/providers/Microsoft.Network/virtualNetworks/vnet-ch08-sandbox/subnets/snet-agents",
+     "useMicrosoftManagedNetwork": false
+    }
+   ],
+   "allowProjectManagement": true,
+   "disableLocalAuth": true
+  },
+  {
+   "name": "fdy-models-sbx01",
+   "location": "canadaeast",
+   "state": "Succeeded",
+   "publicNetworkAccess": "Disabled",
+   "networkInjections": null,
+   "allowProjectManagement": false,
+   "disableLocalAuth": true
+  }
+ ],
+ "project": {
+  "provisioningState": "Succeeded",
+  "endpoints": {
+   "AI Foundry API": "https://fdy-ops-assistant-sbx01.services.ai.azure.com/api/projects/ops-assistant"
+  },
+  "identity": "UserAssigned"
+ },
+ "project_connections": [],
+ "project_capability_hosts": [],
+ "account_capability_hosts": [
+  "fdy-ops-assistant-sbx01@aml_aiagentservice"
+ ],
+ "deployments": [],
+ "registries": [
+  {
+   "name": "acropsassistantsbx01",
+   "sku": "Premium",
+   "state": "Succeeded",
+   "roleAssignmentMode": null,
+   "armTokenPolicy": {
+    "status": "enabled"
+   }
+  }
+ ],
+ "private_endpoints": [
+  {
+   "name": "pe-acropsassistantsbx01",
+   "state": "Succeeded",
+   "connection": [
+    "Approved"
+   ]
+  },
+  {
+   "name": "pe-fdy-models-sbx01",
+   "state": "Succeeded",
+   "connection": [
+    "Approved"
+   ]
+  },
+  {
+   "name": "pe-fdy-ops-assistant-sbx01",
+   "state": "Succeeded",
+   "connection": [
+    "Approved"
+   ]
+  }
+ ],
+ "policy_assignments": [
+  "sys.blockwesteurope"
+ ],
+ "budgets": [
+  {
+   "name": "ops-assistant-monthly",
+   "amount": 20.0,
+   "notifications": [
+    "actual_GreaterThanOrEqualTo_80.000000_Percent",
+    "forecasted_GreaterThanOrEqualTo_100.000000_Percent"
+   ]
+  }
+ ]
+}

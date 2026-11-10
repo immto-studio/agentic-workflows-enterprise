@@ -1,0 +1,501 @@
+# The model register (chapter 16, step 8, O-D14): one register for the three clouds and the local models, merged
+# from chapters 6 to 9 and from what the gateways serve. Each model has one lifecycle (its stage, the date it
+# retires, the replacement) and one or more deployments, each with the identifier the gateway pins it by. The
+# facts come from the chapters' own registers and the fact sheets, each with the date it was read; the local
+# digests were read from the portable Ollama 0.40.13 on 9 November 2026 (lifecycle/register.py --digests).
+#
+# The pin is what a gateway can hold a model to:
+# - a local model: the digest Ollama reports for the tag, on the server that serves it, since two servers report
+#   two digests for the same tag (below), or the weights' revision and SHA-256 list for the vLLM deployment;
+# - a Bedrock model: its model ID or inference profile ID. Nova Lite's and the Legacy models' IDs carry a version
+#   (`-v1:0`, a date), so a new version is a new ID. Claude 5.5's IDs carry no version and no date
+#   (anthropic.claude-sonnet-5-5, anthropic.claude-haiku-5-5), so a change under one is invisible to this register,
+#   and only chapter 15's live job (E-D9) would see it. The chapter states that limit;
+# - a Foundry model: its name and version; a Google model: its model ID, which Google versions by the ID itself.
+#
+# lifecycle/register.py loads this file, checks it against every gateway configuration and Terraform file named
+# under `gateways`, and prints what doesn't agree; lifecycle/retirement.py computes the retirement alert from it.
+read_on: 2026-11-09
+
+stages:
+  aws:
+    values: [Active, Legacy, EOL]
+    source: >-
+      AWS's model lifecycle pages as labs/ch06/models.yaml and LINKS.md, chapter 6 (section 11)
+      quote them: Active; Legacy, the notice period before the end of life, at least six months for models launched
+      before 7 September 2026, during which new customers can't adopt the model and an account that doesn't use it
+      for fifteen days may lose it; EOL, after which requests fail and nothing migrates by itself.
+  google:
+    values: [preview, GA, retired]
+    source: >-
+      Google's "Model versions and lifecycle" as labs/ch07/models.yaml reads it (updated 2026-10-28): a stable model
+      stays available at least twelve months after its release, a retirement date is never moved earlier, and
+      the notice is at least 45 days (LINKS.md, chapter 7, S35).
+  azure:
+    values: [Preview, GA, Legacy, Deprecated, Retired]
+    source: >-
+      the Foundry Models lifecycle and support policy as labs/ch08/models.yaml and its tests hold it: Legacy
+      (new deployments until deprecation), Deprecated (no longer available to new customers, decided per
+      subscription), Retired (requests answer 410); a GA model's retirement is set eighteen months out and the
+      notice is at least 60 days (LINKS.md, chapter 8, W11).
+  larkspur:
+    values: [candidate, serving, retired]
+    source: >-
+      the lab's own stages for a self-hosted model, since chapter 9 pins weights and digests and names no lifecycle:
+      candidate, evaluated on the golden sets and behind no alias; serving, behind an alias in a gateway
+      configuration; retired, removed from every gateway and from the model store.
+
+models:
+  - id: aws-nova-lite
+    name: Amazon Nova Lite
+    cloud: aws
+    host: Amazon Bedrock
+    model: amazon.nova-lite-v1:0
+    pinned: true
+    stage: Active
+    stage_scheme: aws
+    launched: 2024-12-05
+    retires: null
+    retires_no_earlier_than: 2025-12-05
+    legacy_from: null
+    replacement: >-
+      none named by AWS. Larkspur's candidate for larkspur-chat is Claude Haiku 5.5 through its Canadian profile
+      (aws-claude-haiku-5-5, below), which moves behind the alias only when a golden set passes on it (book D-032)
+    processed_in_canada: true
+    pin: {kind: model id, value: amazon.nova-lite-v1:0, versioned: true,
+          note: the ID carries the version (v1:0); the Canadian profile ID adds the geography}
+    deployments:
+      - id: nova-lite-ca
+        identifier: ca.amazon.nova-lite-v1:0
+        aliases: [larkspur-chat]
+        region: ca-central-1
+        serves_from: [ca-central-1, ca-west-1]
+        hosting: managed
+        configs: [labs/ch06/gateway/litellm.aws.yaml, labs/ch16/cloud/litellm.bedrock-ca.yaml,
+                  workflows/w1-knowledge-assistant/gateway/litellm.bedrock.yaml]
+      - id: nova-lite-us
+        identifier: amazon.nova-lite-v1:0
+        aliases: [larkspur-chat-fallback, larkspur-chat]
+        region: us-east-2
+        hosting: managed
+        configs: [labs/ch06/gateway/litellm.aws.yaml, labs/ch16/cloud/litellm.bedrock-ca.yaml,
+                  labs/ch16/cloud/litellm.bedrock-us.yaml]
+        note: >-
+          chapter 6's fallback for Internal data, and the deployment step 7 put behind larkspur-chat for its two
+          logged calls in us-east-2 (labs/ch16/cloud/litellm.bedrock-us.yaml)
+    source: {register: labs/ch06/models.yaml, facts: "LINKS.md, chapter 6, section 11",
+             read: 2026-10-29}
+
+  - id: aws-mistral-large
+    name: Mistral Large (24.02)
+    cloud: aws
+    host: Amazon Bedrock
+    model: mistral.mistral-large-2402-v1:0
+    pinned: false
+    stage: Active
+    stage_scheme: aws
+    launched: 2024-02-26
+    retires: null
+    retires_no_earlier_than: 2025-02-26
+    legacy_from: null
+    replacement: none named
+    processed_in_canada: true
+    pin: {kind: model id, value: mistral.mistral-large-2402-v1:0, versioned: true,
+          note: the ID carries the release (2402) and the version (v1:0)}
+    deployments: []
+    source: {register: labs/ch06/models.yaml, facts: "LINKS.md, chapter 6, section 11",
+             read: 2026-10-29}
+
+  - id: aws-claude-sonnet-5-5
+    name: Claude Sonnet 5.5
+    cloud: aws
+    host: Amazon Bedrock
+    model: anthropic.claude-sonnet-5-5
+    pinned: false
+    stage: Active
+    stage_scheme: aws
+    launched: 2026-09-28
+    retires: null
+    retires_no_earlier_than: 2027-09-28
+    legacy_from: null
+    replacement: none named
+    processed_in_canada: false
+    pin:
+      kind: model id
+      value: anthropic.claude-sonnet-5-5
+      versioned: false
+      note: >-
+        the ID carries no version and no date, so a change to the model under it is invisible to this register;
+        only a rerun of the golden sets (chapter 15's live job, E-D9) would show it. Served through the US
+        profile, so Internal and Public data only under chapter 2's grid
+    deployments: []
+    source: {register: labs/ch06/models.yaml, facts: "LINKS.md, chapter 6, section 11",
+             read: 2026-10-29}
+
+  - id: aws-claude-haiku-5-5
+    name: Claude Haiku 5.5
+    cloud: aws
+    host: Amazon Bedrock
+    model: anthropic.claude-haiku-5-5
+    pinned: false
+    larkspur_stage: candidate
+    stage: Active
+    stage_scheme: aws
+    launched: 2026-10-07
+    retires: null
+    retires_no_earlier_than: 2027-10-07
+    legacy_from: null
+    replacement: none named
+    processed_in_canada: true
+    pin:
+      kind: inference profile id
+      value: ca.anthropic.claude-haiku-5-5
+      versioned: false
+      note: >-
+        the profile and the model ID carry no version and no date, the same limit as Claude Sonnet 5.5's. The
+        Canadian profile was created on 22 October 2026 and routes to ca-central-1 and ca-west-1; the lab's
+        account can't call it (AccessDeniedException, 29 October 2026), so nothing here has run on it
+    deployments: []
+    source: {register: "labs/ch06/gateway/litellm.aws.yaml (its header)",
+             facts: "LINKS.md, chapter 6, sections 11.10 and 11.11", read: 2026-10-29}
+
+  - id: aws-claude-3-haiku
+    name: Claude 3 Haiku
+    cloud: aws
+    host: Amazon Bedrock
+    model: anthropic.claude-3-haiku-20240307-v1:0
+    pinned: false
+    stage: Legacy
+    stage_scheme: aws
+    launched: 2024-03-13
+    retires: 2026-11-13
+    retires_no_earlier_than: null
+    legacy_from: 2026-10-15
+    replacement: none named by AWS in Canada
+    processed_in_canada: true
+    pin: {kind: model id, value: anthropic.claude-3-haiku-20240307-v1:0, versioned: true,
+          note: the ID carries the snapshot date and the version}
+    deployments: []
+    source: {register: labs/ch06/models.yaml,
+             facts: "LINKS.md, chapter 6, section 11 (Model lifecycle (Legacy), ca-central-1)",
+             read: 2026-10-29}
+
+  - id: aws-llama3-70b
+    name: Llama 3 70B Instruct
+    cloud: aws
+    host: Amazon Bedrock
+    model: meta.llama3-70b-instruct-v1:0
+    pinned: false
+    stage: Legacy
+    stage_scheme: aws
+    launched: 2024-04-18
+    retires: 2027-03-30
+    retires_no_earlier_than: null
+    legacy_from: 2026-09-30
+    replacement: none named by AWS in Canada
+    processed_in_canada: true
+    pin: {kind: model id, value: meta.llama3-70b-instruct-v1:0, versioned: true,
+          note: the ID carries the version}
+    deployments: []
+    source: {register: labs/ch06/models.yaml,
+             facts: "LINKS.md, chapter 6, section 11 (Model lifecycle (Legacy), ca-central-1)",
+             read: 2026-10-29}
+
+  - id: google-gemini-3-5-flash
+    name: Gemini 3.5 Flash
+    cloud: google
+    host: Gemini Enterprise Agent Platform
+    model: gemini-3.5-flash
+    pinned: true
+    stage: GA
+    stage_scheme: google
+    launched: 2026-05-19
+    retires: null
+    retires_no_earlier_than: 2027-05-19
+    legacy_from: null
+    replacement: none named
+    processed_in_canada: true
+    pin: {kind: model id, value: gemini-3.5-flash, versioned: true,
+          note: Google versions by the model ID; a new version is a new ID with its own retirement date}
+    deployments:
+      - id: memory-bank-generation
+        identifier: gemini-3.5-flash
+        aliases: []
+        region: northamerica-northeast1
+        hosting: managed
+        terraform: labs/ch07/terraform/runtime.tf
+        note: chapter 7's Memory Bank memory generation; Larkspur writes its own memories, so generation stays off
+    source: {register: labs/ch07/models.yaml,
+             facts: "LINKS.md, chapter 7 (Model versions and lifecycle, Data residency)",
+             read: 2026-10-28}
+
+  - id: google-text-multilingual-embedding-002
+    name: text-multilingual-embedding-002
+    cloud: google
+    host: Gemini Enterprise Agent Platform
+    model: text-multilingual-embedding-002
+    pinned: true
+    stage: GA
+    stage_scheme: google
+    launched: 2024-05-14
+    retires: 2027-04-01
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: >-
+      none processed in Canada on 28 October 2026: gemini-embedding-001 and gemini-embedding-2 process in the US and
+      EU only, so after 1 April 2027 no embedding model processed in Canada remains on the platform
+    processed_in_canada: true
+    pin: {kind: model id, value: text-multilingual-embedding-002, versioned: true,
+          note: Google versions by the model ID}
+    deployments:
+      - id: memory-bank-similarity
+        identifier: text-multilingual-embedding-002
+        aliases: []
+        region: northamerica-northeast1
+        hosting: managed
+        terraform: labs/ch07/terraform/runtime.tf
+        note: chapter 7's Memory Bank similarity search
+    source: {register: labs/ch07/models.yaml,
+             facts: "LINKS.md, chapter 7 (Embedding models, Residency in Canada)",
+             read: 2026-10-28}
+
+  - id: azure-gpt-4o
+    name: gpt-4o
+    cloud: azure
+    host: Microsoft Foundry
+    model: gpt-4o
+    version: "2024-11-20"
+    pinned: true
+    stage: Legacy
+    stage_scheme: azure
+    launched: null
+    retires: 2027-04-14
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: >-
+      gpt-5.1 2025-11-13 (GA, retiring 2027-05-15), which Canada had only as a regional provisioned deployment in
+      Canada East and as Global deployments, not as a Standard one
+    processed_in_canada: true
+    pin: {kind: model name and version, value: gpt-4o 2024-11-20, versioned: true,
+          note: the version is the snapshot; a Standard deployment is upgraded at retirement unless NoAutoUpgrade}
+    deployments:
+      - id: chat-model
+        identifier: gpt-4o
+        version: "2024-11-20"
+        aliases: []
+        region: canadaeast
+        hosting: managed
+        terraform: labs/ch08/terraform/variables.tf
+        note: chapter 8's chat model, a Standard deployment in Canada East (variable chat_model)
+    source: {register: labs/ch08/models.yaml,
+             facts: "LINKS.md, chapter 8 (Model lifecycle, W11 and W12)",
+             read: 2026-10-29, page_dates: {region_availability: 2026-09-03, retirement_schedule: 2026-09-21,
+                                             lifecycle_policy: 2026-07-24}}
+
+  - id: azure-gpt-4-1-mini
+    name: gpt-4.1-mini
+    cloud: azure
+    host: Microsoft Foundry
+    model: gpt-4.1-mini
+    version: "2025-04-14"
+    pinned: false
+    stage: Deprecated
+    stage_scheme: azure
+    launched: null
+    retires: 2027-04-14
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: none named
+    processed_in_canada: true
+    pin: {kind: model name and version, value: gpt-4.1-mini 2025-04-14, versioned: true,
+          note: Deprecated means no new customers, decided per subscription, so a fresh sandbox can't deploy it}
+    deployments: []
+    source: {register: labs/ch08/models.yaml,
+             facts: "LINKS.md, chapter 8 (Model lifecycle, W11 and W12)",
+             read: 2026-10-29, page_dates: {region_availability: 2026-09-03, retirement_schedule: 2026-09-21,
+                                             lifecycle_policy: 2026-07-24}}
+
+  - id: local-gpt-oss-20b
+    name: gpt-oss-20b
+    cloud: local
+    host: the workstation's Ollama, and chapter 9's vLLM on Kubernetes
+    model: gpt-oss:20b
+    pinned: true
+    stage: serving
+    stage_scheme: larkspur
+    launched: null
+    retires: null
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: gemma4-12b is the candidate behind it (local-gemma4-12b, below); Larkspur sets its own dates
+    processed_in_canada: true
+    license: Apache 2.0, with OpenAI's usage policy (labs/ch09/README.md)
+    pin:
+      kind: ollama digest
+      value: f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe
+      server: Ollama 0.40.13
+      versioned: true
+      note: >-
+        the digest the portable Ollama 0.40.13 reports for gpt-oss:20b on 9 November 2026. The same tag reported
+        a0b38d0b19f7c5dd3589e5e6598edfed41c81969d73f9e4774011c1328e9dad8 on Ollama 0.22.1 on 3 November 2026
+        (labs/ch15/results/2026-11-03/judge-w2-gpt-oss-20b.json), so a local pin is the digest on the server
+        that serves it, and the server's version is part of the pin
+    deployments:
+      - id: local-gpt-oss-20b
+        identifier: gpt-oss:20b
+        aliases: [larkspur-chat-restricted]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [labs/ch09/gateway/litellm.config.yaml]
+      - id: local-gpt-oss-20b-chat
+        identifier: gpt-oss:20b
+        aliases: [larkspur-chat]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [workflows/w1-knowledge-assistant/gateway/litellm.config.yaml,
+                  workflows/w2-ops-assistant/gateway/litellm.config.yaml,
+                  labs/ch16/lifecycle/litellm.current.yaml, labs/ch16/lifecycle/litellm.canary.yaml]
+        note: the control arm of the canary (litellm.canary.yaml) is this deployment, at weight 3 of 4
+      - id: local-gpt-oss-20b-restricted
+        identifier: gpt-oss:20b
+        aliases: [larkspur-chat-restricted]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [workflows/w1-knowledge-assistant/gateway/litellm.config.yaml,
+                  workflows/w1-knowledge-assistant/gateway/litellm.bedrock.yaml,
+                  workflows/w2-ops-assistant/gateway/litellm.config.yaml,
+                  labs/ch16/lifecycle/litellm.current.yaml, labs/ch16/lifecycle/litellm.canary.yaml,
+                  labs/ch16/lifecycle/litellm.staging.yaml]
+      - id: vllm-gpt-oss-20b-6cee5e8
+        identifier: gpt-oss-20b
+        aliases: [larkspur-chat-restricted]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [labs/ch09/gateway/litellm.k8s.yaml, labs/ch06/gateway/litellm.aws.yaml]
+        pin:
+          kind: weights revision and SHA-256 list
+          value: 6cee5e81ee83917806bbde320786a8fb61efebee
+          files: labs/ch09/k8s/weights-digests.yaml
+          versioned: true
+          note: >-
+            the Hugging Face revision the weights are read from, and the SHA-256 of each of the ten files and the
+            two tiktoken encodings, checked before vLLM starts (chapter 9, part 2)
+    source: {register: "labs/ch09 (gateway/, k8s/weights-digests.yaml)", facts: "Ollama's /api/tags on 11435",
+             read: 2026-11-09}
+
+  - id: local-gemma4-12b
+    name: Gemma 4 12B
+    cloud: local
+    host: the workstation's portable Ollama 0.40.13
+    model: gemma4:12b
+    pinned: false
+    stage: candidate
+    stage_scheme: larkspur
+    launched: null
+    retires: null
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: not applicable; it is the candidate for larkspur-chat in step 8's upgrade run
+    processed_in_canada: true
+    license: Apache 2.0, with Google's prohibited-use policy linked (labs/ch09/README.md)
+    pin:
+      kind: ollama digest
+      value: 6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b
+      server: Ollama 0.40.13
+      versioned: true
+      note: >-
+        the digest the portable Ollama 0.40.13 reports on 9 November 2026, the same it reported on 3 November
+        (chapter 15's judge, labs/ch15/baseline/baseline.json). Gemma 4 12B loads on this server alone
+    deployments:
+      - id: local-gemma4-12b
+        identifier: gemma4:12b
+        aliases: [larkspur-chat-restricted]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [labs/ch09/gateway/litellm.gemma.yaml]
+      - id: local-gemma4-12b-chat
+        identifier: gemma4:12b
+        aliases: [larkspur-chat]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [workflows/w1-knowledge-assistant/gateway/litellm.gemma.yaml,
+                  workflows/w2-ops-assistant/gateway/litellm.gemma.yaml]
+      - id: local-gemma4-12b-restricted
+        identifier: gemma4:12b
+        aliases: [larkspur-chat-restricted]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [workflows/w1-knowledge-assistant/gateway/litellm.gemma.yaml,
+                  workflows/w2-ops-assistant/gateway/litellm.gemma.yaml]
+      - id: candidate-gemma4-12b-chat
+        identifier: gemma4:12b
+        aliases: [larkspur-chat]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [labs/ch16/lifecycle/litellm.staging.yaml, labs/ch16/lifecycle/litellm.canary.yaml]
+        note: the candidate behind larkspur-chat on the staging gateway, and the canary arm at weight 1 of 4
+    source: {register: "labs/ch09 (gateway/litellm.gemma.yaml)", facts: "Ollama's /api/tags on 11435",
+             read: 2026-11-09}
+
+  - id: local-qwen3-embedding-0-6b
+    name: Qwen3 Embedding 0.6B
+    cloud: local
+    host: the workstation's Ollama
+    model: qwen3-embedding:0.6b
+    pinned: true
+    stage: serving
+    stage_scheme: larkspur
+    launched: null
+    retires: null
+    retires_no_earlier_than: null
+    legacy_from: null
+    replacement: none chosen; W1 picked it by measurement (workflows/w1-knowledge-assistant/eval/results/2026-10-29)
+    processed_in_canada: true
+    pin:
+      kind: ollama digest
+      value: ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d
+      server: Ollama 0.40.13
+      versioned: true
+      note: the digest the portable Ollama 0.40.13 reports on 9 November 2026
+    deployments:
+      - id: local-qwen3-embedding
+        identifier: qwen3-embedding:0.6b
+        aliases: [larkspur-embed]
+        region: ca-central-1
+        hosting: self-hosted
+        configs: [workflows/w1-knowledge-assistant/gateway/litellm.config.yaml,
+                  workflows/w1-knowledge-assistant/gateway/litellm.gemma.yaml,
+                  workflows/w1-knowledge-assistant/gateway/litellm.bedrock.yaml]
+    source: {register: workflows/w1-knowledge-assistant/gateway/litellm.config.yaml,
+             facts: "Ollama's /api/tags on 11435", read: 2026-11-09}
+
+# The gateway configurations the register must agree with: every deployment in each is a register deployment
+# with the same identifier and alias, and every register deployment that names a configuration is in it.
+gateways:
+  litellm:
+    - labs/ch06/gateway/litellm.aws.yaml
+    - labs/ch09/gateway/litellm.config.yaml
+    - labs/ch09/gateway/litellm.gemma.yaml
+    - labs/ch09/gateway/litellm.k8s.yaml
+    - labs/ch16/cloud/litellm.bedrock-ca.yaml
+    - labs/ch16/cloud/litellm.bedrock-us.yaml
+    - labs/ch16/lifecycle/litellm.current.yaml
+    - labs/ch16/lifecycle/litellm.staging.yaml
+    - labs/ch16/lifecycle/litellm.canary.yaml
+    - workflows/w1-knowledge-assistant/gateway/litellm.config.yaml
+    - workflows/w1-knowledge-assistant/gateway/litellm.gemma.yaml
+    - workflows/w1-knowledge-assistant/gateway/litellm.bedrock.yaml
+    - workflows/w2-ops-assistant/gateway/litellm.config.yaml
+    - workflows/w2-ops-assistant/gateway/litellm.gemma.yaml
+  terraform:
+    - path: labs/ch07/terraform/runtime.tf
+      reads: google model IDs under ${local.models}/, as labs/ch07/tests/test_models_and_costs.py reads them
+    - path: labs/ch08/terraform/variables.tf
+      reads: the chat_model variable's default (name and version), as labs/ch08/tests/test_models_and_costs.py reads it
+  excluded:
+    - path: labs/ch05/gateway/litellm.config.yaml
+      why: its three deployments are chapter 5's fake backends (openai/fake-primary and the like), not models
+    - path: labs/ch16/budget/litellm.config.yaml
+      why: step 4's gateway on the same fakes
+    - path: labs/ch16/capacity/
+      why: step 5's and 5b's configurations on the fake provider

@@ -1,0 +1,655 @@
+{
+ "region": "us-east-2",
+ "name": "larkspur-w1-check-8b7221",
+ "started": "2026-10-29T23:23:03-0400",
+ "embedding_model": "amazon.titan-embed-text-v2:0",
+ "checks": {
+  "unfiltered": {
+   "question": "gq-01",
+   "source": "rb-vault-break-glass-unseal.md",
+   "returned": [
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    },
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    },
+    {
+     "doc_id": "rb-msk-under-replicated-partitions.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "pm-2025-08-vault-lease-explosion.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "rb-vault-kubernetes-auth-failures.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    }
+   ]
+  },
+  "on_call": [
+   {
+    "question": "gq-01",
+    "source": "rb-vault-break-glass-unseal.md",
+    "returned": [
+     {
+      "doc_id": "rb-msk-under-replicated-partitions.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2025-08-vault-lease-explosion.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-vault-kubernetes-auth-failures.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2026-06-msk-broker-disk-full.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-vault-kubernetes-auth-failures.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-02",
+    "source": "rb-pci-tokenization-key-rotation.md",
+    "returned": [
+     {
+      "doc_id": "tfmod-aws-kms-key.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "adr-0018-customer-managed-kms-keys-per-data-domain.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-encryption-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "tfmod-aws-dynamodb-table.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2025-05-claims-api-expired-internal-certificate.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-03",
+    "source": "pm-2025-11-quill-bigquery-dataset-exposure.md",
+    "returned": [
+     {
+      "doc_id": "rb-quill-pricing-export-scheduled-query-failed.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-quill-feature-store-refresh-late.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-quill-pricing-export-scheduled-query-failed.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2026-04-bigquery-slot-exhaustion.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "tfmod-gcp-bigquery-dataset.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-04",
+    "source": "adr-0019-mainframe-exit-timeline.md",
+    "returned": [
+     {
+      "doc_id": "rb-lpas-nightly-batch-abend.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "adr-0055-integrate-with-lpas-through-mq-not-db2-reads.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-lpas-cics-response-time-degraded.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-lpas-cics-response-time-degraded.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "adr-0023-commercial-lines-net-apps-stay-on-azure-app-service.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-05",
+    "source": "pol-regulatory-incident-notification.md",
+    "returned": [
+     {
+      "doc_id": "pol-incident-response-sla.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-postmortem-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-third-party-saas-onboarding.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-logging-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-policy-quote-service-elevated-5xx.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   }
+  ],
+  "member": [
+   {
+    "question": "gq-01",
+    "source": "rb-vault-break-glass-unseal.md",
+    "group": "lm-vault-break-glass",
+    "returned": [
+     {
+      "doc_id": "rb-vault-break-glass-unseal.md",
+      "access_groups": [
+       "\"lm-vault-break-glass\""
+      ],
+      "access_group": "lm-vault-break-glass",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "rb-vault-break-glass-unseal.md",
+      "access_groups": [
+       "\"lm-vault-break-glass\""
+      ],
+      "access_group": "lm-vault-break-glass",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "rb-msk-under-replicated-partitions.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2025-08-vault-lease-explosion.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-vault-kubernetes-auth-failures.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-02",
+    "source": "rb-pci-tokenization-key-rotation.md",
+    "group": "lm-pci-cde-operators",
+    "returned": [
+     {
+      "doc_id": "rb-pci-tokenization-key-rotation.md",
+      "access_groups": [
+       "\"lm-pci-cde-operators\""
+      ],
+      "access_group": "lm-pci-cde-operators",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "rb-pci-tokenization-key-rotation.md",
+      "access_groups": [
+       "\"lm-pci-cde-operators\""
+      ],
+      "access_group": "lm-pci-cde-operators",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "tfmod-aws-kms-key.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "adr-0018-customer-managed-kms-keys-per-data-domain.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-encryption-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-03",
+    "source": "pm-2025-11-quill-bigquery-dataset-exposure.md",
+    "group": "lm-sec-incident-response",
+    "returned": [
+     {
+      "doc_id": "pm-2025-11-quill-bigquery-dataset-exposure.md",
+      "access_groups": [
+       "\"lm-sec-incident-response\""
+      ],
+      "access_group": "lm-sec-incident-response",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "rb-quill-pricing-export-scheduled-query-failed.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pm-2025-11-quill-bigquery-dataset-exposure.md",
+      "access_groups": [
+       "\"lm-sec-incident-response\""
+      ],
+      "access_group": "lm-sec-incident-response",
+      "classification": "Restricted"
+     },
+     {
+      "doc_id": "rb-quill-feature-store-refresh-late.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-quill-pricing-export-scheduled-query-failed.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-04",
+    "source": "adr-0019-mainframe-exit-timeline.md",
+    "group": "lm-ea-leads",
+    "returned": [
+     {
+      "doc_id": "adr-0019-mainframe-exit-timeline.md",
+      "access_groups": [
+       "\"lm-ea-leads\""
+      ],
+      "access_group": "lm-ea-leads",
+      "classification": "Confidential"
+     },
+     {
+      "doc_id": "adr-0019-mainframe-exit-timeline.md",
+      "access_groups": [
+       "\"lm-ea-leads\""
+      ],
+      "access_group": "lm-ea-leads",
+      "classification": "Confidential"
+     },
+     {
+      "doc_id": "rb-lpas-nightly-batch-abend.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "adr-0055-integrate-with-lpas-through-mq-not-db2-reads.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "rb-lpas-cics-response-time-degraded.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   },
+   {
+    "question": "gq-05",
+    "source": "pol-regulatory-incident-notification.md",
+    "group": "lm-legal-regulatory",
+    "returned": [
+     {
+      "doc_id": "pol-regulatory-incident-notification.md",
+      "access_groups": [
+       "\"lm-legal-regulatory\""
+      ],
+      "access_group": "lm-legal-regulatory",
+      "classification": "Confidential"
+     },
+     {
+      "doc_id": "pol-incident-response-sla.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-postmortem-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-third-party-saas-onboarding.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     },
+     {
+      "doc_id": "pol-logging-standard.md",
+      "access_groups": [
+       "\"lm-eng-all\""
+      ],
+      "access_group": "lm-eng-all",
+      "classification": "Internal"
+     }
+    ]
+   }
+  ],
+  "list_contains_alone": {
+   "question": "gq-01",
+   "group": "lm-vault-break-glass",
+   "returned": [
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    },
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    }
+   ]
+  },
+  "equals_single_value": {
+   "question": "gq-01",
+   "group": "lm-vault-break-glass",
+   "returned": [
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    },
+    {
+     "doc_id": "rb-vault-break-glass-unseal.md",
+     "access_groups": [
+      "\"lm-vault-break-glass\""
+     ],
+     "access_group": "lm-vault-break-glass",
+     "classification": "Restricted"
+    }
+   ]
+  },
+  "retrieve_without_invoke_model": {
+   "returned": [
+    {
+     "doc_id": "rb-msk-under-replicated-partitions.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "pm-2025-08-vault-lease-explosion.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "rb-vault-kubernetes-auth-failures.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "pm-2026-06-msk-broker-disk-full.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    },
+    {
+     "doc_id": "rb-vault-kubernetes-auth-failures.md",
+     "access_groups": [
+      "\"lm-eng-all\""
+     ],
+     "access_group": "lm-eng-all",
+     "classification": "Internal"
+    }
+   ]
+  }
+ },
+ "teardown": {
+  "data_source": "deleted",
+  "knowledge_base": "TimeoutError: knowledge base deletion: not done after 300 s",
+  "index": "deleted",
+  "vector_bucket": "deleted",
+  "bucket": "deleted",
+  "caller_role": "deleted",
+  "kb_role": "deleted"
+ },
+ "pages": 130,
+ "index_mode": "ENHANCED",
+ "ingestion": {
+  "status": "COMPLETE",
+  "statistics": {
+   "numberOfDocumentsScanned": 130,
+   "numberOfMetadataDocumentsScanned": 130,
+   "numberOfNewDocumentsIndexed": 129,
+   "numberOfModifiedDocumentsIndexed": 0,
+   "numberOfMetadataDocumentsModified": 0,
+   "numberOfDocumentsDeleted": 0,
+   "numberOfDocumentsFailed": 1,
+   "numberOfDocumentsSkipped": 0
+  },
+  "failure_reasons": [
+   "[\"The server encountered an internal error while processing the request.\"]"
+  ]
+ },
+ "left_after_teardown": {
+  "knowledge_bases": [
+   "larkspur-w1-check-8b7221"
+  ],
+  "vector_buckets": [],
+  "buckets": [],
+  "roles": []
+ },
+ "finished": "2026-10-29T23:33:15-0400",
+ "confirmed_after_teardown": {
+  "checked": "2026-10-29T23:42:37-0400",
+  "note": "The Knowledge Base was still DELETING when the 300 s wait ended; listed again later, it was gone.",
+  "knowledge_bases": [],
+  "vector_buckets": [],
+  "buckets": [],
+  "roles": []
+ }
+}

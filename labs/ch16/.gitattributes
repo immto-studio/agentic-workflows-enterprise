@@ -1,0 +1,8 @@
+# The results and the generated LiteLLM prices are compared with what a fresh report or a fresh generation
+# writes (tests/test_results.py, tests/test_price.py). Keep them LF in every checkout, as chapter 15's lab
+# does, so core.autocrlf on Windows can't turn them into CRLF.
+results/** text eol=lf
+ledger/litellm.prices.yaml text eol=lf
+# Step 7's vendored Compose file is checked against its release's SHA-256 (tests/test_cloud_terraform.py), so a
+# checkout that turned it into CRLF would fail the pin.
+cloud/langfuse/docker-compose.yml text eol=lf

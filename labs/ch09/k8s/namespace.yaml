@@ -1,0 +1,12 @@
+# The namespace the self-hosted model runs in. Pod Security "restricted" is enforced: no root, no
+# privilege escalation, no added capabilities, the runtime's seccomp profile. A GPU pod needs none
+# of those; the device plugin hands the GPU over without them.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: llm-serving
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: v1.35
+    larkspur.example/data-class-max: restricted
+    larkspur.example/owner: platform-team

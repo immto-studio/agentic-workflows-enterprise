@@ -1,0 +1,2147 @@
+{
+ "review": "monthly",
+ "month": "2026-11",
+ "on": "2026-11-09",
+ "for": "Ingrid Holm's monthly review (O-D15)",
+ "legend": {
+  "measured": "read or computed from a kept run, a drill, or a live run on this workstation or in the lab account",
+  "priced": "measured tokens or calls times a price of the dated table, at chapter 6's design: what the same tokens would cost on the managed alias, since the local models cost nothing",
+  "estimated": "Larkspur's monthly volumes (ledger/volumes.yaml, each with its source) and anything multiplied by them, and the guardrail's estimate, which no cost line carries",
+  "simulated": "step 6's month, 30 days built from the kept runs with five injected events, marked simulated wherever it appears",
+  "recorded": "a date, a state, or a change record read from a register or a record file, not measured by the lab"
+ },
+ "prices": {
+  "file": "labs/ch16/ledger/prices.yaml",
+  "entries": 49,
+  "dated": 49,
+  "first": "2026-10-28",
+  "last": "2026-11-03"
+ },
+ "workflows": [
+  "w1",
+  "w2",
+  "w3",
+  "w4",
+  "w5"
+ ],
+ "sections": {
+  "runs_and_cost_per_run": {
+   "basis": {
+    "runs_kept": "measured",
+    "model_calls_a_run": "measured",
+    "runs_a_month": "estimated",
+    "cost_per_run": "priced",
+    "judge_tokens": "measured",
+    "note": "the per-run figures are the kept runs' on gpt-oss-20b, the ledger's reference model: their calls and tokens are measured, and the dollars are those tokens priced at chapter 6's design from ledger/prices.yaml; the volumes are ledger/volumes.yaml's, each with its source; the 95th percentile is the nearest rank, a value some run had; chapter 15's judge is in the ledger under the workflow it judged, and its ratio is its tokens over the judged outputs' own, with step 3b's run of the same case standing in where a judged output kept no tokens, as the basis column says"
+   },
+   "reference_model": "gpt-oss-20b",
+   "rows": [
+    {
+     "workflow": "w1",
+     "kept_runs": 3,
+     "runs_kept": 75,
+     "runs_on_the_model": 25,
+     "runs_with_tokens": 25,
+     "runs_a_month": 6000.0,
+     "unit": "question",
+     "volume_sources": [
+      "lab assumption, not in the book"
+     ],
+     "model_calls_a_run": {
+      "median": 2.0,
+      "p95": 3.0
+     },
+     "cost_per_run_usd": {
+      "median": 0.000240576,
+      "p95": 0.000407232
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.120288,
+      "p95": 0.203616
+     },
+     "per_run_usd": 0.2,
+     "basis_of_the_per_run_figures": "measured"
+    },
+    {
+     "workflow": "w2",
+     "kept_runs": 6,
+     "runs_kept": 135,
+     "runs_on_the_model": 110,
+     "runs_with_tokens": 110,
+     "runs_a_month": 43029.93,
+     "unit": "question",
+     "volume_sources": [
+      "ch09:405"
+     ],
+     "model_calls_a_run": {
+      "median": 2.0,
+      "p95": 5.0
+     },
+     "cost_per_run_usd": {
+      "median": 0.000187104,
+      "p95": 0.000452928
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0374208,
+      "p95": 0.0905856
+     },
+     "per_run_usd": 0.5,
+     "basis_of_the_per_run_figures": "measured"
+    },
+    {
+     "workflow": "w3",
+     "kept_runs": 2,
+     "runs_kept": 48,
+     "runs_on_the_model": 48,
+     "runs_with_tokens": 24,
+     "runs_a_month": 300.0,
+     "unit": "incident",
+     "volume_sources": [
+      "lab assumption, not in the book"
+     ],
+     "model_calls_a_run": {
+      "median": 7.0,
+      "p95": 9.0
+     },
+     "cost_per_run_usd": {
+      "median": 0.000886816,
+      "p95": 0.001176064
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0443408,
+      "p95": 0.0588032
+     },
+     "per_run_usd": 2.0,
+     "basis_of_the_per_run_figures": "measured on the 24 of 48 runs with tokens"
+    },
+    {
+     "workflow": "w4",
+     "kept_runs": 6,
+     "runs_kept": 48,
+     "runs_on_the_model": 32,
+     "runs_with_tokens": 8,
+     "runs_a_month": 200.0,
+     "unit": "change",
+     "volume_sources": [
+      "ch13:9"
+     ],
+     "model_calls_a_run": {
+      "median": 1.0,
+      "p95": 1.0
+     },
+     "cost_per_run_usd": {
+      "median": 6.0992e-05,
+      "p95": 8.8448e-05
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0060992,
+      "p95": 0.0088448
+     },
+     "per_run_usd": 1.0,
+     "basis_of_the_per_run_figures": "measured on the 8 of 32 runs with tokens"
+    },
+    {
+     "workflow": "w5",
+     "kept_runs": 11,
+     "runs_kept": 33,
+     "runs_on_the_model": 18,
+     "runs_with_tokens": 18,
+     "runs_a_month": 34.0,
+     "unit": "night or alarm",
+     "volume_sources": [
+      "nights: ch14:29",
+      "alarms: lab assumption, not in the book"
+     ],
+     "model_calls_a_run": {
+      "median": 14.0,
+      "p95": 14.0
+     },
+     "cost_per_run_usd": {
+      "median": 0.002863008,
+      "p95": 0.007093696
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.2863008,
+      "p95": 0.7093696
+     },
+     "per_run_usd": 1.0,
+     "basis_of_the_per_run_figures": "measured"
+    }
+   ],
+   "by_model": [
+    {
+     "workflow": "w1",
+     "model": "gemma4-12b",
+     "runs": 25,
+     "runs_with_tokens": 25,
+     "cost_per_run_usd": {
+      "median": 0.00024256,
+      "p95": 0.000487936
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.12128,
+      "p95": 0.243968
+     }
+    },
+    {
+     "workflow": "w1",
+     "model": "gpt-oss-20b",
+     "runs": 25,
+     "runs_with_tokens": 25,
+     "cost_per_run_usd": {
+      "median": 0.000240576,
+      "p95": 0.000407232
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.120288,
+      "p95": 0.203616
+     }
+    },
+    {
+     "workflow": "w1",
+     "model": "nova-lite",
+     "runs": 25,
+     "runs_with_tokens": 25,
+     "cost_per_run_usd": {
+      "median": 0.000253312,
+      "p95": 0.000496
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.126656,
+      "p95": 0.248
+     }
+    },
+    {
+     "workflow": "w2",
+     "model": "gemma4-12b",
+     "runs": 25,
+     "runs_with_tokens": 25,
+     "cost_per_run_usd": {
+      "median": 0.000182656,
+      "p95": 0.000326208
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0365312,
+      "p95": 0.0652416
+     }
+    },
+    {
+     "workflow": "w2",
+     "model": "gpt-oss-20b",
+     "runs": 110,
+     "runs_with_tokens": 110,
+     "cost_per_run_usd": {
+      "median": 0.000187104,
+      "p95": 0.000452928
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0374208,
+      "p95": 0.0905856
+     }
+    },
+    {
+     "workflow": "w3",
+     "model": "gpt-oss-20b",
+     "runs": 48,
+     "runs_with_tokens": 24,
+     "cost_per_run_usd": {
+      "median": 0.000886816,
+      "p95": 0.001176064
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0443408,
+      "p95": 0.0588032
+     }
+    },
+    {
+     "workflow": "w4",
+     "model": "gemma4-12b",
+     "runs": 16,
+     "runs_with_tokens": 8,
+     "cost_per_run_usd": {
+      "median": 1.4688e-05,
+      "p95": 2.0544e-05
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0014688,
+      "p95": 0.0020544
+     }
+    },
+    {
+     "workflow": "w4",
+     "model": "gpt-oss-20b",
+     "runs": 32,
+     "runs_with_tokens": 8,
+     "cost_per_run_usd": {
+      "median": 6.0992e-05,
+      "p95": 8.8448e-05
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.0060992,
+      "p95": 0.0088448
+     }
+    },
+    {
+     "workflow": "w5",
+     "model": "gemma4-12b",
+     "runs": 15,
+     "runs_with_tokens": 15,
+     "cost_per_run_usd": {
+      "median": 0.001004096,
+      "p95": 0.02836384
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.1004096,
+      "p95": 2.836384
+     }
+    },
+    {
+     "workflow": "w5",
+     "model": "gpt-oss-20b",
+     "runs": 18,
+     "runs_with_tokens": 18,
+     "cost_per_run_usd": {
+      "median": 0.002863008,
+      "p95": 0.007093696
+     },
+     "pct_of_per_run_usd": {
+      "median": 0.2863008,
+      "p95": 0.7093696
+     }
+    }
+   ],
+   "highest_median": {
+    "workflow": "w5",
+    "pct": 0.2863008
+   },
+   "highest_p95": {
+    "workflow": "w5",
+    "model": "gemma4-12b",
+    "pct": 2.836384
+   },
+   "judge": {
+    "calls": 1439,
+    "runs": 3,
+    "prompt_tokens": 1231927,
+    "completion_tokens": 338238,
+    "thinking": {
+     "gemma4-12b": false,
+     "gpt-oss-20b": "model default"
+    },
+    "conclusion": {
+     "thinking_on": [
+      "gpt-oss-20b"
+     ],
+     "thinking_off": [
+      "gemma4-12b"
+     ],
+     "by_judge": {
+      "gemma4-12b": [
+       {
+        "workflow": "w1",
+        "basis": "measured",
+        "judgments": 165,
+        "completion": 0.0939,
+        "total": 0.2379,
+        "prompt": 0.253,
+        "completion_over": 0,
+        "total_over": 0
+       },
+       {
+        "workflow": "w2",
+        "basis": "measured",
+        "judgments": 222,
+        "completion": 0.0823,
+        "total": 0.2733,
+        "prompt": 0.301,
+        "completion_over": 0,
+        "total_over": 0
+       },
+       {
+        "workflow": "w3",
+        "basis": "stand-in",
+        "judgments": 69,
+        "completion": 0.0424,
+        "total": 0.0802,
+        "prompt": 0.083,
+        "completion_over": 0,
+        "total_over": 0
+       },
+       {
+        "workflow": "w4",
+        "basis": "stand-in",
+        "judgments": 54,
+        "completion": 0.1552,
+        "total": 1.5114,
+        "prompt": 2.7629,
+        "completion_over": 6,
+        "total_over": 54
+       },
+       {
+        "workflow": "w5",
+        "basis": "measured",
+        "judgments": 362,
+        "completion": 0.0387,
+        "total": 0.7705,
+        "prompt": 1.733,
+        "completion_over": 0,
+        "total_over": 118
+       }
+      ],
+      "gpt-oss-20b": [
+       {
+        "workflow": "w1",
+        "basis": "measured",
+        "judgments": 171,
+        "completion": 1.3844,
+        "total": 0.3303,
+        "prompt": 0.2326,
+        "completion_over": 117,
+        "total_over": 0
+       },
+       {
+        "workflow": "w2",
+        "basis": "measured",
+        "judgments": 90,
+        "completion": 1.8279,
+        "total": 0.3743,
+        "prompt": 0.2576,
+        "completion_over": 84,
+        "total_over": 0
+       },
+       {
+        "workflow": "w4",
+        "basis": "stand-in",
+        "judgments": 32,
+        "completion": 3.5954,
+        "total": 3.6135,
+        "prompt": 3.6226,
+        "completion_over": 27,
+        "total_over": 32
+       },
+       {
+        "workflow": "w5",
+        "basis": "measured",
+        "judgments": 274,
+        "completion": 2.9562,
+        "total": 1.9485,
+        "prompt": 1.5662,
+        "completion_over": 254,
+        "total_over": 260
+       }
+      ]
+     },
+     "not_judged_by": {
+      "gemma4-12b": {},
+      "gpt-oss-20b": {
+       "w3": [
+        "gemma4-12b"
+       ]
+      }
+     },
+     "completion_in_total": {
+      "gemma4-12b": {
+       "above": [],
+       "not_above": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5"
+       ]
+      },
+      "gpt-oss-20b": {
+       "above": [
+        "w1",
+        "w2",
+        "w4",
+        "w5"
+       ],
+       "not_above": []
+      }
+     },
+     "all_tokens_in_total": {
+      "gemma4-12b": {
+       "above": [
+        "w4"
+       ],
+       "not_above": [
+        "w1",
+        "w2",
+        "w3",
+        "w5"
+       ]
+      },
+      "gpt-oss-20b": {
+       "above": [
+        "w4",
+        "w5"
+       ],
+       "not_above": [
+        "w1",
+        "w2"
+       ]
+      }
+     }
+    },
+    "rows": [
+     {
+      "workflow": "w1",
+      "judge": "gemma4-12b",
+      "judgments": 165,
+      "judge_tokens": {
+       "prompt": 118984,
+       "completion": 4625,
+       "total": 123609
+      },
+      "judged_tokens": {
+       "prompt": 470352,
+       "completion": 49236,
+       "total": 519588
+      },
+      "ratio": {
+       "prompt": 0.253,
+       "completion": 0.0939,
+       "total": 0.2379
+      },
+      "basis": "measured",
+      "completion_over": 0
+     },
+     {
+      "workflow": "w1",
+      "judge": "gpt-oss-20b",
+      "judgments": 171,
+      "judge_tokens": {
+       "prompt": 123707,
+       "completion": 68260,
+       "total": 191967
+      },
+      "judged_tokens": {
+       "prompt": 531852,
+       "completion": 49308,
+       "total": 581160
+      },
+      "ratio": {
+       "prompt": 0.2326,
+       "completion": 1.3844,
+       "total": 0.3303
+      },
+      "basis": "measured",
+      "completion_over": 117
+     },
+     {
+      "workflow": "w2",
+      "judge": "gemma4-12b",
+      "judgments": 222,
+      "judge_tokens": {
+       "prompt": 144666,
+       "completion": 5731,
+       "total": 150397
+      },
+      "judged_tokens": {
+       "prompt": 480663,
+       "completion": 69603,
+       "total": 550266
+      },
+      "ratio": {
+       "prompt": 0.301,
+       "completion": 0.0823,
+       "total": 0.2733
+      },
+      "basis": "measured",
+      "completion_over": 0
+     },
+     {
+      "workflow": "w2",
+      "judge": "gpt-oss-20b",
+      "judgments": 90,
+      "judge_tokens": {
+       "prompt": 57810,
+       "completion": 32946,
+       "total": 90756
+      },
+      "judged_tokens": {
+       "prompt": 224457,
+       "completion": 18024,
+       "total": 242481
+      },
+      "ratio": {
+       "prompt": 0.2576,
+       "completion": 1.8279,
+       "total": 0.3743
+      },
+      "basis": "measured",
+      "completion_over": 84
+     },
+     {
+      "workflow": "w3",
+      "judge": "gemma4-12b",
+      "judgments": 69,
+      "judge_tokens": {
+       "prompt": 53571,
+       "completion": 2039,
+       "total": 55610
+      },
+      "judged_tokens": {
+       "prompt": 645669,
+       "completion": 48132,
+       "total": 693801
+      },
+      "ratio": {
+       "prompt": 0.083,
+       "completion": 0.0424,
+       "total": 0.0802
+      },
+      "basis": "stand-in",
+      "completion_over": 0
+     },
+     {
+      "workflow": "w4",
+      "judge": "gemma4-12b",
+      "judgments": 54,
+      "judge_tokens": {
+       "prompt": 27353,
+       "completion": 1418,
+       "total": 28771
+      },
+      "judged_tokens": {
+       "prompt": 9900,
+       "completion": 9136,
+       "total": 19036
+      },
+      "ratio": {
+       "prompt": 2.7629,
+       "completion": 0.1552,
+       "total": 1.5114
+      },
+      "basis": "stand-in",
+      "completion_over": 6
+     },
+     {
+      "workflow": "w4",
+      "judge": "gpt-oss-20b",
+      "judgments": 32,
+      "judge_tokens": {
+       "prompt": 17758,
+       "completion": 8895,
+       "total": 26653
+      },
+      "judged_tokens": {
+       "prompt": 4902,
+       "completion": 2474,
+       "total": 7376
+      },
+      "ratio": {
+       "prompt": 3.6226,
+       "completion": 3.5954,
+       "total": 3.6135
+      },
+      "basis": "stand-in",
+      "completion_over": 27
+     },
+     {
+      "workflow": "w5",
+      "judge": "gemma4-12b",
+      "judgments": 362,
+      "judge_tokens": {
+       "prompt": 405396,
+       "completion": 11892,
+       "total": 417288
+      },
+      "judged_tokens": {
+       "prompt": 233934,
+       "completion": 307636,
+       "total": 541570
+      },
+      "ratio": {
+       "prompt": 1.733,
+       "completion": 0.0387,
+       "total": 0.7705
+      },
+      "basis": "measured",
+      "completion_over": 0
+     },
+     {
+      "workflow": "w5",
+      "judge": "gpt-oss-20b",
+      "judgments": 274,
+      "judge_tokens": {
+       "prompt": 282682,
+       "completion": 202432,
+       "total": 485114
+      },
+      "judged_tokens": {
+       "prompt": 180488,
+       "completion": 68476,
+       "total": 248964
+      },
+      "ratio": {
+       "prompt": 1.5662,
+       "completion": 2.9562,
+       "total": 1.9485
+      },
+      "basis": "measured",
+      "completion_over": 254
+     }
+    ]
+   }
+  },
+  "month_against_budget": {
+   "basis": {
+    "month": "estimated",
+    "mean_cost_per_run": "priced",
+    "note": "the month is the estimated volume times the mean cost per run, the mean over the runs section 1's median and 95th percentile summarize; the guardrail column is an estimate the cost lines don't carry (step 2); the recounted column multiplies the tokens by the ratios Nova Lite's count showed on W1's cases"
+   },
+   "rows": [
+    {
+     "workflow": "w1",
+     "runs_a_month": 6000.0,
+     "calls_a_month": 13200.0,
+     "tokens_a_month": 19181280,
+     "mean_cost_per_run_usd": 0.0002401254,
+     "direct_usd": 1.44075264,
+     "per_month_usd": 100,
+     "pct_of_per_month_usd": 1.440753,
+     "kept_runs_in_profile": 1,
+     "pct_range_over_kept_runs": [
+      1.440753,
+      1.440753
+     ],
+     "recounted_as_nova_lite_pct": 1.594004,
+     "guardrail_pct": 20.52,
+     "basis_of_the_per_run_figures": "measured",
+     "volume_sources": [
+      "lab assumption, not in the book"
+     ]
+    },
+    {
+     "workflow": "w2",
+     "runs_a_month": 43029.93,
+     "calls_a_month": 89580.5,
+     "tokens_a_month": 100000000,
+     "mean_cost_per_run_usd": 0.0002094476,
+     "direct_usd": 9.01251467,
+     "per_month_usd": 200,
+     "pct_of_per_month_usd": 4.506257,
+     "kept_runs_in_profile": 5,
+     "pct_range_over_kept_runs": [
+      4.334428,
+      4.880808
+     ],
+     "recounted_as_nova_lite_pct": 4.707532,
+     "guardrail_pct": 63.029073,
+     "basis_of_the_per_run_figures": "measured",
+     "volume_sources": [
+      "ch09:405"
+     ]
+    },
+    {
+     "workflow": "w3",
+     "runs_a_month": 300.0,
+     "calls_a_month": 1775.0,
+     "tokens_a_month": 3112038,
+     "mean_cost_per_run_usd": 0.0007084667,
+     "direct_usd": 0.21254,
+     "per_month_usd": 500,
+     "pct_of_per_month_usd": 0.042508,
+     "kept_runs_in_profile": 1,
+     "pct_range_over_kept_runs": [
+      0.042508,
+      0.042508
+     ],
+     "recounted_as_nova_lite_pct": 0.051025,
+     "guardrail_pct": 0.66,
+     "basis_of_the_per_run_figures": "measured on the 24 of 48 runs with tokens",
+     "volume_sources": [
+      "lab assumption, not in the book"
+     ]
+    },
+    {
+     "workflow": "w4",
+     "runs_a_month": 200.0,
+     "calls_a_month": 200.0,
+     "tokens_a_month": 77775,
+     "mean_cost_per_run_usd": 6.2568e-05,
+     "direct_usd": 0.0125136,
+     "per_month_usd": 200,
+     "pct_of_per_month_usd": 0.006257,
+     "kept_runs_in_profile": 1,
+     "pct_range_over_kept_runs": [
+      0.006257,
+      0.006257
+     ],
+     "recounted_as_nova_lite_pct": 0.004385,
+     "guardrail_pct": 0.05625,
+     "basis_of_the_per_run_figures": "measured on the 8 of 32 runs with tokens",
+     "volume_sources": [
+      "ch13:9"
+     ]
+    },
+    {
+     "workflow": "w5",
+     "runs_a_month": 34.0,
+     "calls_a_month": 351.33,
+     "tokens_a_month": 604660,
+     "mean_cost_per_run_usd": 0.0032830258,
+     "direct_usd": 0.11162288,
+     "per_month_usd": 100,
+     "pct_of_per_month_usd": 0.111623,
+     "kept_runs_in_profile": 6,
+     "pct_range_over_kept_runs": [
+      0.068445,
+      0.164505
+     ],
+     "recounted_as_nova_lite_pct": 0.071946,
+     "guardrail_pct": 0.695111,
+     "basis_of_the_per_run_figures": "measured",
+     "volume_sources": [
+      "nights: ch14:29",
+      "alarms: lab assumption, not in the book"
+     ]
+    }
+   ],
+   "largest": {
+    "workflow": "w2",
+    "pct": 4.506257
+   },
+   "recount_ratios": {
+    "input": 1.3638,
+    "output": 0.5381
+   }
+  },
+  "shared_lines": {
+   "basis": {
+    "shares": "estimated",
+    "note": "O-D6: the GPUs' hours (two replicas, every hour of the month, at the dated table's price) are split among the alias's tenants by their share of its tokens, from the estimated volumes at the measured tokens per run, and the idle remainder is the platform team's line; the platform's fixed costs are split by tokens, as O-D6 was amended on 3 November 2026 (ch02:144); the shared lines are showback beside the direct costs and never count against a workflow's budget"
+   },
+   "tenants": [
+    "w1",
+    "w2",
+    "w3"
+   ],
+   "tenants_from": "manifests and chapter 10",
+   "rows": [
+    {
+     "workflow": "w1",
+     "tenant": true,
+     "restricted_tokens_a_month": 1933440,
+     "token_share": 0.8718948913536098,
+     "gpu_usd": 0.7953323,
+     "gpu_pct_of_per_month_usd": 0.795332,
+     "fixed_share": 0.15597611343758147,
+     "fixed_usd": 72.76934552,
+     "fixed_pct_of_per_month_usd": 72.769346,
+     "direct_usd": 1.44075264
+    },
+    {
+     "workflow": "w2",
+     "tenant": true,
+     "restricted_tokens_a_month": 0,
+     "token_share": 0.0,
+     "gpu_usd": 0.0,
+     "gpu_pct_of_per_month_usd": 0.0,
+     "fixed_share": 0.8131684300400258,
+     "fixed_usd": 379.37690042,
+     "fixed_pct_of_per_month_usd": 189.68845,
+     "direct_usd": 9.01251467
+    },
+    {
+     "workflow": "w3",
+     "tenant": true,
+     "restricted_tokens_a_month": 284075,
+     "token_share": 0.12810510864639021,
+     "gpu_usd": 0.11685598,
+     "gpu_pct_of_per_month_usd": 0.023371,
+     "fixed_share": 0.02530611054684902,
+     "fixed_usd": 11.8063533,
+     "fixed_pct_of_per_month_usd": 2.361271,
+     "direct_usd": 0.21254
+    },
+    {
+     "workflow": "w4",
+     "tenant": false,
+     "restricted_tokens_a_month": 0,
+     "token_share": null,
+     "gpu_usd": 0.0,
+     "gpu_pct_of_per_month_usd": 0.0,
+     "fixed_share": 0.0006324417464636301,
+     "fixed_usd": 0.29506038,
+     "fixed_pct_of_per_month_usd": 0.14753,
+     "direct_usd": 0.0125136
+    },
+    {
+     "workflow": "w5",
+     "tenant": false,
+     "restricted_tokens_a_month": 0,
+     "token_share": null,
+     "gpu_usd": 0.0,
+     "gpu_pct_of_per_month_usd": 0.0,
+     "fixed_share": 0.00491690422908002,
+     "fixed_usd": 2.29394037,
+     "fixed_pct_of_per_month_usd": 2.29394,
+     "direct_usd": 0.11162288
+    }
+   ],
+   "gpu": {
+    "replicas": 2,
+    "hours": 730,
+    "price": "aws-g6e.xlarge-l40s",
+    "usd": 2717.06,
+    "used_usd": 0.91218828,
+    "idle_usd": 2716.14781172,
+    "idle_share": 0.999664273782344
+   },
+   "fixed": {
+    "priced_usd": 466.5416,
+    "stand_in_usd": 269.2816,
+    "parameters": [
+     "chapter 7's Private Service Connect endpoint",
+     "chapter 8's private endpoints",
+     "LiteLLM's enterprise license",
+     "Langfuse's enterprise features"
+    ],
+    "split_by": "tokens"
+   }
+  },
+  "error_budget": {
+   "basis": {
+    "slis_on_the_kept_runs": "measured",
+    "budgets": "simulated",
+    "note": "the SLIs are measured on the kept runs; the error budgets are step 6's, 1 minus the target times the valid events the simulated month expects, and what is left is what that month left, every event of it drawn from the kept runs or injected"
+   },
+   "month": {
+    "seed": 20261109,
+    "start": "2027-01-05T00:00:00-05:00",
+    "days": 30
+   },
+   "measured": [
+    {
+     "workflow": "w1",
+     "sli": "success",
+     "target": 0.995,
+     "threshold_s": null,
+     "good": 75,
+     "valid": 75,
+     "value": 1.0
+    },
+    {
+     "workflow": "w1",
+     "sli": "latency",
+     "target": 0.95,
+     "threshold_s": 30.0,
+     "good": 74,
+     "valid": 75,
+     "value": 0.986667
+    },
+    {
+     "workflow": "w2",
+     "sli": "success",
+     "target": 0.995,
+     "threshold_s": null,
+     "good": 129,
+     "valid": 135,
+     "value": 0.955556
+    },
+    {
+     "workflow": "w2",
+     "sli": "latency",
+     "target": 0.95,
+     "threshold_s": 10.0,
+     "good": 128,
+     "valid": 129,
+     "value": 0.992248
+    },
+    {
+     "workflow": "w3",
+     "sli": "success",
+     "target": 0.95,
+     "threshold_s": null,
+     "good": 40,
+     "valid": 48,
+     "value": 0.833333
+    },
+    {
+     "workflow": "w3",
+     "sli": "latency",
+     "target": 0.95,
+     "threshold_s": 120.0,
+     "good": 40,
+     "valid": 40,
+     "value": 1.0
+    },
+    {
+     "workflow": "w3",
+     "sli": "outcome",
+     "target": 0.9,
+     "threshold_s": null,
+     "good": 2,
+     "valid": 2,
+     "value": 1.0
+    },
+    {
+     "workflow": "w4",
+     "sli": "success",
+     "target": 0.99,
+     "threshold_s": null,
+     "good": 48,
+     "valid": 48,
+     "value": 1.0
+    },
+    {
+     "workflow": "w4",
+     "sli": "latency",
+     "target": 0.95,
+     "threshold_s": 60.0,
+     "good": 48,
+     "valid": 48,
+     "value": 1.0
+    },
+    {
+     "workflow": "w4",
+     "sli": "outcome",
+     "target": 0.9,
+     "threshold_s": null,
+     "good": 0,
+     "valid": 0,
+     "value": null
+    },
+    {
+     "workflow": "w5",
+     "sli": "success",
+     "target": 0.9,
+     "threshold_s": null,
+     "good": 33,
+     "valid": 33,
+     "value": 1.0
+    },
+    {
+     "workflow": "w5",
+     "sli": "latency",
+     "target": 0.9,
+     "threshold_s": 21600.0,
+     "good": 33,
+     "valid": 33,
+     "value": 1.0
+    },
+    {
+     "workflow": "w5",
+     "sli": "outcome",
+     "target": 0.8,
+     "threshold_s": null,
+     "good": 11,
+     "valid": 11,
+     "value": 1.0
+    }
+   ],
+   "simulated": [
+    {
+     "workflow": "w1",
+     "sli": "success",
+     "budget_events": 29.589,
+     "bad": 54,
+     "valid": 5955,
+     "used": 1.825,
+     "left": -0.825,
+     "spent_at": "Sat 30 Jan 2027 21:56",
+     "spent_at_s": 2239004.926,
+     "causes": {
+      "self-hosted-down": 53,
+      "throttled-hour": 1
+     },
+     "value": 0.990932
+    },
+    {
+     "workflow": "w1",
+     "sli": "latency",
+     "budget_events": 295.89,
+     "bad": 3,
+     "valid": 5901,
+     "used": 0.0101,
+     "left": 0.9899,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {
+      "throttled-hour": 3
+     },
+     "value": 0.999492
+    },
+    {
+     "workflow": "w2",
+     "sli": "success",
+     "budget_events": 212.202,
+     "bad": 5432,
+     "valid": 42133,
+     "used": 25.5982,
+     "left": -24.5983,
+     "spent_at": "Sun 17 Jan 2027 04:24",
+     "spent_at_s": 1052694.74,
+     "causes": {
+      "baseline": 261,
+      "model-regression": 5161,
+      "throttled-hour": 10
+     },
+     "value": 0.871075
+    },
+    {
+     "workflow": "w2",
+     "sli": "latency",
+     "budget_events": 2098.446,
+     "bad": 1106,
+     "valid": 36701,
+     "used": 0.5271,
+     "left": 0.4729,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {
+      "model-regression": 1029,
+      "provider-outage": 47,
+      "throttled-hour": 30
+     },
+     "value": 0.969865
+    },
+    {
+     "workflow": "w3",
+     "sli": "success",
+     "budget_events": 14.795,
+     "bad": 45,
+     "valid": 281,
+     "used": 3.0417,
+     "left": -2.0416,
+     "spent_at": "Fri 22 Jan 2027 21:38",
+     "spent_at_s": 1546697.171,
+     "causes": {
+      "baseline": 40,
+      "self-hosted-down": 5
+     },
+     "value": 0.839858
+    },
+    {
+     "workflow": "w3",
+     "sli": "latency",
+     "budget_events": 12.329,
+     "bad": 0,
+     "valid": 236,
+     "used": 0.0,
+     "left": 1.0,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {},
+     "value": 1.0
+    },
+    {
+     "workflow": "w3",
+     "sli": "outcome",
+     "budget_events": 2.774,
+     "bad": 5,
+     "valid": 30,
+     "used": 1.8025,
+     "left": -0.8025,
+     "spent_at": "Wed 20 Jan 2027 11:18",
+     "spent_at_s": 1336696.815,
+     "causes": {
+      "baseline": 2,
+      "model-regression": 3
+     },
+     "value": 0.833333
+    },
+    {
+     "workflow": "w4",
+     "sli": "success",
+     "budget_events": 1.973,
+     "bad": 3,
+     "valid": 190,
+     "used": 1.5208,
+     "left": -0.5205,
+     "spent_at": "Thu 28 Jan 2027 18:00",
+     "spent_at_s": 2052055.606,
+     "causes": {
+      "w4-records-refused": 3
+     },
+     "value": 0.984211
+    },
+    {
+     "workflow": "w4",
+     "sli": "latency",
+     "budget_events": 9.863,
+     "bad": 0,
+     "valid": 187,
+     "used": 0.0,
+     "left": 1.0,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {},
+     "value": 1.0
+    },
+    {
+     "workflow": "w4",
+     "sli": "outcome",
+     "budget_events": 19.726,
+     "bad": 9,
+     "valid": 161,
+     "used": 0.4563,
+     "left": 0.5437,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {
+      "baseline": 9
+     },
+     "value": 0.944099
+    },
+    {
+     "workflow": "w5",
+     "sli": "success",
+     "budget_events": 3.395,
+     "bad": 0,
+     "valid": 35,
+     "used": 0.0,
+     "left": 1.0,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {},
+     "value": 1.0
+    },
+    {
+     "workflow": "w5",
+     "sli": "latency",
+     "budget_events": 3.395,
+     "bad": 0,
+     "valid": 35,
+     "used": 0.0,
+     "left": 1.0,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {},
+     "value": 1.0
+    },
+    {
+     "workflow": "w5",
+     "sli": "outcome",
+     "budget_events": 3.6,
+     "bad": 3,
+     "valid": 17,
+     "used": 0.8333,
+     "left": 0.1667,
+     "spent_at": null,
+     "spent_at_s": null,
+     "causes": {
+      "baseline": 2,
+      "model-regression": 1
+     },
+     "value": 0.823529
+    }
+   ],
+   "spent": [
+    {
+     "workflow": "w1",
+     "sli": "success",
+     "budget_events": 29.589,
+     "bad": 54,
+     "valid": 5955,
+     "used": 1.825,
+     "left": -0.825,
+     "spent_at": "Sat 30 Jan 2027 21:56",
+     "spent_at_s": 2239004.926,
+     "causes": {
+      "self-hosted-down": 53,
+      "throttled-hour": 1
+     },
+     "value": 0.990932
+    },
+    {
+     "workflow": "w2",
+     "sli": "success",
+     "budget_events": 212.202,
+     "bad": 5432,
+     "valid": 42133,
+     "used": 25.5982,
+     "left": -24.5983,
+     "spent_at": "Sun 17 Jan 2027 04:24",
+     "spent_at_s": 1052694.74,
+     "causes": {
+      "baseline": 261,
+      "model-regression": 5161,
+      "throttled-hour": 10
+     },
+     "value": 0.871075
+    },
+    {
+     "workflow": "w3",
+     "sli": "success",
+     "budget_events": 14.795,
+     "bad": 45,
+     "valid": 281,
+     "used": 3.0417,
+     "left": -2.0416,
+     "spent_at": "Fri 22 Jan 2027 21:38",
+     "spent_at_s": 1546697.171,
+     "causes": {
+      "baseline": 40,
+      "self-hosted-down": 5
+     },
+     "value": 0.839858
+    },
+    {
+     "workflow": "w3",
+     "sli": "outcome",
+     "budget_events": 2.774,
+     "bad": 5,
+     "valid": 30,
+     "used": 1.8025,
+     "left": -0.8025,
+     "spent_at": "Wed 20 Jan 2027 11:18",
+     "spent_at_s": 1336696.815,
+     "causes": {
+      "baseline": 2,
+      "model-regression": 3
+     },
+     "value": 0.833333
+    },
+    {
+     "workflow": "w4",
+     "sli": "success",
+     "budget_events": 1.973,
+     "bad": 3,
+     "valid": 190,
+     "used": 1.5208,
+     "left": -0.5205,
+     "spent_at": "Thu 28 Jan 2027 18:00",
+     "spent_at_s": 2052055.606,
+     "causes": {
+      "w4-records-refused": 3
+     },
+     "value": 0.984211
+    }
+   ]
+  },
+  "incidents": {
+   "basis": {
+    "events": "simulated",
+    "control_breaches": "not evaluated",
+    "note": "the five events were injected into step 6's month and each run its course, since the month models no response; the alerts are the proposed design's (with-probe) and the platform's; the symptom column is the lab's reading of the playbook"
+   },
+   "control_breaches": {
+    "status": "not evaluated",
+    "kept_runs": [],
+    "simulated_month": [],
+    "why": "nothing in the lab checks a run against a control: a run's `violation` field is set by no kept run and no simulated run (slo/slis.py), so the empty incident lists in kept.json and month.json say nothing about residency, the never-list, or the budgets. The controls hold by refusal, and the gateway's refusal counts, the `refused` and `failed` cost lines, could stand in for a check; no step reads them to check a control"
+   },
+   "events": [
+    {
+     "id": "provider-outage",
+     "what": "the managed model behind larkspur-chat in ca-central-1 stops answering, as in step 5's timeout mode",
+     "start": "Mon 11 Jan 2027 10:00",
+     "end": "Mon 11 Jan 2027 10:45",
+     "symptom": "a provider outage",
+     "runs_changed": {
+      "w1": 2,
+      "w2": 55
+     },
+     "bad_events": {},
+     "first_alert": {
+      "action": "page",
+      "scope": "w4",
+      "sli": "success",
+      "rule": "fast-burn-1h",
+      "start": "Mon 11 Jan 2027 10:35"
+     },
+     "policy": []
+    },
+    {
+     "id": "throttled-hour",
+     "what": "the provider's quota for the account falls to half of the demand on larkspur-chat for an hour",
+     "start": "Wed 13 Jan 2027 14:00",
+     "end": "Wed 13 Jan 2027 15:00",
+     "symptom": "none in the playbook; the platform's page, provider-429-across-workflows (ch05:498)",
+     "runs_changed": {
+      "w1": 5,
+      "w2": 44
+     },
+     "bad_events": {
+      "w1": 1,
+      "w2": 10
+     },
+     "first_alert": {
+      "action": "page",
+      "scope": "w2",
+      "sli": "success",
+      "rule": "fast-burn-1h",
+      "start": "Wed 13 Jan 2027 14:10"
+     },
+     "policy": [
+      {
+       "workflow": "w2",
+       "action": "freeze",
+       "sli": "success",
+       "at": "Sun 17 Jan 2027 04:24",
+       "its_bad_events": 10,
+       "bad_events_when_spent": 213
+      },
+      {
+       "workflow": "w1",
+       "action": "freeze",
+       "sli": "success",
+       "at": "Sat 30 Jan 2027 21:56",
+       "its_bad_events": 1,
+       "bad_events_when_spent": 30
+      }
+     ]
+    },
+    {
+     "id": "model-regression",
+     "what": "larkspur-chat is remapped on day 15 and the new model does worse in production than on the golden sets",
+     "start": "Wed 20 Jan 2027 10:00",
+     "end": "Thu 04 Feb 2027 00:00",
+     "symptom": "a model that changed under its alias",
+     "runs_changed": {
+      "w2": 20403,
+      "w3": 10,
+      "w5": 15
+     },
+     "bad_events": {
+      "w2": 5161,
+      "w3": 3,
+      "w5": 1
+     },
+     "first_alert": {
+      "action": "page",
+      "scope": "w2",
+      "sli": "success",
+      "rule": "fast-burn-1h",
+      "start": "Wed 20 Jan 2027 10:30"
+     },
+     "policy": [
+      {
+       "workflow": "w3",
+       "action": "freeze",
+       "sli": "outcome",
+       "at": "Wed 20 Jan 2027 11:18",
+       "its_bad_events": 1,
+       "bad_events_when_spent": 3
+      },
+      {
+       "workflow": "w3",
+       "action": "rung down",
+       "sli": "outcome",
+       "at": "Wed 20 Jan 2027 11:18",
+       "its_bad_events": 1,
+       "bad_events_when_spent": 3
+      }
+     ]
+    },
+    {
+     "id": "self-hosted-down",
+     "what": "both of chapter 9's replicas stop answering for a weekend; the managed path is healthy",
+     "start": "Sat 30 Jan 2027 00:00",
+     "end": "Mon 01 Feb 2027 00:00",
+     "symptom": "a provider outage",
+     "runs_changed": {
+      "w1": 53,
+      "w3": 5
+     },
+     "bad_events": {
+      "w1": 53,
+      "w3": 5
+     },
+     "first_alert": {
+      "action": "page",
+      "scope": "w1",
+      "sli": "success",
+      "rule": "fast-burn-1h",
+      "start": "Sat 30 Jan 2027 00:45"
+     },
+     "policy": [
+      {
+       "workflow": "w1",
+       "action": "freeze",
+       "sli": "success",
+       "at": "Sat 30 Jan 2027 21:56",
+       "its_bad_events": 29,
+       "bad_events_when_spent": 30
+      }
+     ]
+    },
+    {
+     "id": "w4-records-refused",
+     "what": "the change record's API refuses W4's writes for a day (an expired token), and every pack fails to be written",
+     "start": "Thu 28 Jan 2027 00:00",
+     "end": "Fri 29 Jan 2027 00:00",
+     "symptom": "a run of refusals or tool errors",
+     "runs_changed": {
+      "w4": 3
+     },
+     "bad_events": {
+      "w4": 3
+     },
+     "first_alert": {
+      "action": "page",
+      "scope": "w4",
+      "sli": "success",
+      "rule": "fast-burn-1h",
+      "start": "Thu 28 Jan 2027 14:35"
+     },
+     "policy": [
+      {
+       "workflow": "w4",
+       "action": "freeze",
+       "sli": "success",
+       "at": "Thu 28 Jan 2027 18:00",
+       "its_bad_events": 2,
+       "bad_events_when_spent": 2
+      }
+     ]
+    }
+   ],
+   "alerts_by_scope": [
+    {
+     "scope": "w1",
+     "pages": {
+      "self-hosted-down": 21,
+      "throttled-hour": 1
+     },
+     "tickets": {
+      "self-hosted-down": 1
+     }
+    },
+    {
+     "scope": "w2",
+     "pages": {
+      "baseline": 5,
+      "model-regression": 2,
+      "throttled-hour": 1
+     },
+     "tickets": {
+      "baseline": 1,
+      "model-regression": 1
+     }
+    },
+    {
+     "scope": "w3",
+     "pages": {
+      "baseline": 2
+     },
+     "tickets": {
+      "baseline": 5,
+      "model-regression": 1
+     }
+    },
+    {
+     "scope": "w4",
+     "pages": {
+      "provider-outage": 2,
+      "w4-records-refused": 4
+     },
+     "tickets": {
+      "provider-outage": 1,
+      "w4-records-refused": 1
+     }
+    },
+    {
+     "scope": "platform",
+     "pages": {
+      "throttled-hour": 1
+     },
+     "tickets": {}
+    }
+   ],
+   "policy_actions": [
+    {
+     "at": "Sun 17 Jan 2027 04:24",
+     "workflow": "w2",
+     "action": "freeze",
+     "sli": "success",
+     "decided_by": "the policy, agreed in advance",
+     "change": null
+    },
+    {
+     "at": "Wed 20 Jan 2027 11:18",
+     "workflow": "w3",
+     "action": "freeze",
+     "sli": "outcome",
+     "decided_by": "the policy, agreed in advance",
+     "change": null
+    },
+    {
+     "at": "Wed 20 Jan 2027 11:18",
+     "workflow": "w3",
+     "action": "rung down",
+     "sli": "outcome",
+     "decided_by": "the on-call lead (oncall.lead@larkspur.example)",
+     "change": "EC-SIM-01"
+    },
+    {
+     "at": "Fri 22 Jan 2027 21:38",
+     "workflow": "w3",
+     "action": "budget spent",
+     "sli": "success",
+     "decided_by": "",
+     "change": null
+    },
+    {
+     "at": "Thu 28 Jan 2027 18:00",
+     "workflow": "w4",
+     "action": "freeze",
+     "sli": "success",
+     "decided_by": "the policy, agreed in advance",
+     "change": null
+    },
+    {
+     "at": "Sat 30 Jan 2027 21:56",
+     "workflow": "w1",
+     "action": "freeze",
+     "sli": "success",
+     "decided_by": "the policy, agreed in advance",
+     "change": null
+    }
+   ],
+   "design": "with-probe"
+  },
+  "budget_events_and_switches": {
+   "basis": {
+    "records": "recorded",
+    "timings": "measured",
+    "note": "step 4's drills ran on 3 November 2026 (UTC) and set the month's spend through LiteLLM's admin API, so the alerts and the stop are measured on a seeded month; the change records are the lines the levers left in November 2026: five kill-switch cycles and one rung down as drills, and one alias remap in the upgrade path, run once"
+   },
+   "month": "2026-11",
+   "alerts": [
+    {
+     "received_at": "2026-11-03T23:45:39.755+00:00",
+     "event": "threshold_crossed",
+     "what": "the month's pace projected past the soft budget",
+     "workflow": "w2-ops-assistant",
+     "spend_usd": 159.751012,
+     "max_budget_usd": 160.0,
+     "soft_budget_usd": null,
+     "projected_usd": 1722.8720211343243,
+     "forwarded_to": [
+      "sam.okafor@larkspur.example",
+      "finops@larkspur.example"
+     ]
+    },
+    {
+     "received_at": "2026-11-03T23:45:41.851+00:00",
+     "event": "soft_budget_crossed",
+     "what": "the soft budget reached",
+     "workflow": "w2-ops-assistant",
+     "spend_usd": 160.00035100000002,
+     "max_budget_usd": 200.0,
+     "soft_budget_usd": 160.0,
+     "projected_usd": null,
+     "forwarded_to": [
+      "sam.okafor@larkspur.example",
+      "finops@larkspur.example"
+     ]
+    },
+    {
+     "received_at": "2026-11-03T23:45:58.200+00:00",
+     "event": "budget_crossed",
+     "what": "the month's pace projected past the soft budget",
+     "workflow": "w2-ops-assistant",
+     "spend_usd": 199.751012,
+     "max_budget_usd": 160.0,
+     "soft_budget_usd": null,
+     "projected_usd": 2154.0959676841035,
+     "forwarded_to": [
+      "sam.okafor@larkspur.example",
+      "finops@larkspur.example"
+     ]
+    },
+    {
+     "received_at": "2026-11-03T23:47:05.864+00:00",
+     "event": "budget_crossed",
+     "what": "the budget reached",
+     "workflow": "w2-ops-assistant",
+     "spend_usd": 200.0,
+     "max_budget_usd": 200.0,
+     "soft_budget_usd": 160.0,
+     "projected_usd": null,
+     "forwarded_to": [
+      "sam.okafor@larkspur.example",
+      "finops@larkspur.example"
+     ]
+    }
+   ],
+   "stop": {
+    "workflow": "w2-ops-assistant",
+    "status": 422,
+    "kind": "monthly_budget",
+    "first_stopped_run": 5,
+    "max_budget_usd": 200.0,
+    "month_before_usd": 199.754144,
+    "month_after_usd": 199.755632,
+    "short_of_budget_usd": 0.244368,
+    "calls_by_stopped_runs": 4
+   },
+   "changes": [
+    {
+     "change": "EC-DRILL-01",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "kill switch, gateway half",
+       "from": "open",
+       "to": "blocked"
+      },
+      {
+       "lever": "kill switch released",
+       "from": "blocked",
+       "to": "open"
+      }
+     ],
+     "workflow": "w2-ops-assistant",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:45:02.749+00:00",
+     "last_at": "2026-11-03T23:45:04.794+00:00",
+     "document_by": "2026-11-04T23:45:02.749+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "EC-DRILL-02",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "kill switch, gateway half",
+       "from": "open",
+       "to": "blocked"
+      },
+      {
+       "lever": "kill switch released",
+       "from": "blocked",
+       "to": "open"
+      }
+     ],
+     "workflow": "w2-ops-assistant",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:45:06.826+00:00",
+     "last_at": "2026-11-03T23:45:08.859+00:00",
+     "document_by": "2026-11-04T23:45:06.826+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "EC-DRILL-03",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "kill switch, gateway half",
+       "from": "open",
+       "to": "blocked"
+      },
+      {
+       "lever": "kill switch released",
+       "from": "blocked",
+       "to": "open"
+      }
+     ],
+     "workflow": "w2-ops-assistant",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:45:10.911+00:00",
+     "last_at": "2026-11-03T23:45:12.945+00:00",
+     "document_by": "2026-11-04T23:45:10.911+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "EC-DRILL-04",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "kill switch, gateway half",
+       "from": "open",
+       "to": "blocked"
+      },
+      {
+       "lever": "kill switch released",
+       "from": "blocked",
+       "to": "open"
+      }
+     ],
+     "workflow": "w2-ops-assistant",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:45:14.983+00:00",
+     "last_at": "2026-11-03T23:45:17.016+00:00",
+     "document_by": "2026-11-04T23:45:14.983+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "EC-DRILL-05",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "kill switch, gateway half",
+       "from": "open",
+       "to": "blocked"
+      },
+      {
+       "lever": "kill switch released",
+       "from": "blocked",
+       "to": "open"
+      }
+     ],
+     "workflow": "w2-ops-assistant",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:45:19.049+00:00",
+     "last_at": "2026-11-03T23:45:21.089+00:00",
+     "document_by": "2026-11-04T23:45:19.049+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "EC-DRILL-RUNG",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "rung down",
+       "from": "manifest (3)",
+       "to": "1"
+      },
+      {
+       "lever": "rung restored",
+       "from": "unreadable",
+       "to": "manifest (3)"
+      }
+     ],
+     "workflow": "w3-incident",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-03T23:47:21.996+00:00",
+     "last_at": "2026-11-03T23:47:22.013+00:00",
+     "document_by": "2026-11-04T23:47:21.996+00:00",
+     "review": "the next board meeting",
+     "run": "drill",
+     "source": "labs/ch16/results/2026-11-03/budget/drills.json",
+     "lines": 2
+    },
+    {
+     "change": "CH-20261109-01",
+     "kind": "emergency",
+     "steps": [
+      {
+       "lever": "alias remap, back",
+       "from": "local-gpt-oss-20b-chat (weight 3), candidate-gemma4-12b-chat (weight 1)",
+       "to": "local-gpt-oss-20b-chat"
+      }
+     ],
+     "workflow": "larkspur-chat",
+     "by": "oncall.lead@larkspur.example",
+     "first_at": "2026-11-09T11:54:11.440+00:00",
+     "last_at": "2026-11-09T11:54:11.440+00:00",
+     "document_by": "2026-11-10T11:54:11.440+00:00",
+     "review": "the next board meeting",
+     "run": "the upgrade path, run once",
+     "source": "labs/ch16/results/2026-11-09/lifecycle/changes.jsonl",
+     "lines": 1
+    }
+   ],
+   "rule": {
+    "kinds": [
+     "emergency"
+    ],
+    "authority": [
+     "on-call lead"
+    ],
+    "hours": [
+     24
+    ],
+    "review": [
+     "the next board meeting"
+    ]
+   },
+   "drill_date": "2026-11-03"
+  },
+  "retirement": {
+   "basis": {
+    "dates": "recorded",
+    "note": "the register's dates are the providers' published ones, each with its source and the date it was read (lifecycle/register.yaml); the days left are counted to the review's date"
+   },
+   "on": "2026-11-09",
+   "windows": {
+    "alert_days": 90,
+    "review_days": 180
+   },
+   "counts": {
+    "retired": 0,
+    "alert": 1,
+    "review": 4,
+    "clear": 0,
+    "unscheduled": 8
+   },
+   "rows": [
+    {
+     "model": "Claude 3 Haiku",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2026-11-13",
+     "days_left": 4,
+     "state": "alert",
+     "fires": [
+      "review"
+     ]
+    },
+    {
+     "model": "Llama 3 70B Instruct",
+     "cloud": "aws",
+     "pinned": false,
+     "stage": "Legacy",
+     "retires": "2027-03-30",
+     "days_left": 141,
+     "state": "review",
+     "fires": [
+      "review"
+     ]
+    },
+    {
+     "model": "text-multilingual-embedding-002",
+     "cloud": "google",
+     "pinned": true,
+     "stage": "GA",
+     "retires": "2027-04-01",
+     "days_left": 143,
+     "state": "review",
+     "fires": [
+      "review"
+     ]
+    },
+    {
+     "model": "gpt-4.1-mini",
+     "cloud": "azure",
+     "pinned": false,
+     "stage": "Deprecated",
+     "retires": "2027-04-14",
+     "days_left": 156,
+     "state": "review",
+     "fires": [
+      "review"
+     ]
+    },
+    {
+     "model": "gpt-4o",
+     "cloud": "azure",
+     "pinned": true,
+     "stage": "Legacy",
+     "retires": "2027-04-14",
+     "days_left": 156,
+     "state": "review",
+     "fires": [
+      "review",
+      "ticket (Legacy notice)"
+     ]
+    }
+   ],
+   "unscheduled": [
+    {
+     "model": "Amazon Nova Lite",
+     "cloud": "aws",
+     "pinned": true,
+     "earliest": "2025-12-05",
+     "earliest_passed": true
+    },
+    {
+     "model": "Mistral Large (24.02)",
+     "cloud": "aws",
+     "pinned": false,
+     "earliest": "2025-02-26",
+     "earliest_passed": true
+    },
+    {
+     "model": "Claude Sonnet 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "earliest": "2027-09-28",
+     "earliest_passed": false
+    },
+    {
+     "model": "Claude Haiku 5.5",
+     "cloud": "aws",
+     "pinned": false,
+     "earliest": "2027-10-07",
+     "earliest_passed": false
+    },
+    {
+     "model": "Gemini 3.5 Flash",
+     "cloud": "google",
+     "pinned": true,
+     "earliest": "2027-05-19",
+     "earliest_passed": false
+    },
+    {
+     "model": "gpt-oss-20b",
+     "cloud": "local",
+     "pinned": true,
+     "earliest": null,
+     "earliest_passed": false
+    },
+    {
+     "model": "Gemma 4 12B",
+     "cloud": "local",
+     "pinned": false,
+     "earliest": null,
+     "earliest_passed": false
+    },
+    {
+     "model": "Qwen3 Embedding 0.6B",
+     "cloud": "local",
+     "pinned": true,
+     "earliest": null,
+     "earliest_passed": false
+    }
+   ],
+   "pages": 0,
+   "tickets": 1,
+   "review_rows": 5
+  },
+  "w5_savings": {
+   "basis": {
+    "savings": "recorded",
+    "calls_and_tokens": "measured",
+    "cost_to_find": "priced",
+    "note": "the savings are W5's ledger's own shares (writer/ledger.py, summary(month)): the estimates the detectors made for the findings that got a pull request, over the accounts' spend the nights read, with a merged and applied finding credited when a later night found its resource gone; the accounts are the lab's fixtures, and the ledger gives shares and counts and never an amount (W5-D10), so the page does too. The cost to find them is the gateway's calls and tokens for the month's runs, priced at the dated table's price for larkspur-chat on the kept runs' token counts, which Nova Lite would count differently (step 2's ratios), and shown as shares of W5's budgets"
+   },
+   "ledger": "workflows/w5-drift/eval/results/2026-11-03/after-review/nights-gpt-oss-20b/ledger.json",
+   "kept_run": "2026-11-03/after-review",
+   "month": "2026-11",
+   "nights": 3,
+   "night_kinds": {
+    "budget": 1,
+    "schedule": 2
+   },
+   "findings": {
+    "seen": 16,
+    "by_kind": {
+     "changed": 2,
+     "graviton_candidate": 2,
+     "unmanaged": 3,
+     "unattached_volume": 2,
+     "missing": 1,
+     "idle": 1,
+     "untagged": 4,
+     "old_snapshot": 1
+    },
+    "suppressed": 1,
+    "with_estimate": 6
+   },
+   "pull_requests": {
+    "open": 14,
+    "merged": 1,
+    "closed": 0,
+    "opened": 15,
+    "updated": 16,
+    "skipped": 0
+   },
+   "savings": {
+    "proposed_share_of_spend": 0.0077,
+    "realized_share_of_spend": 0.0033,
+    "realized_share_of_proposed": 0.4277,
+    "realized_findings": 1
+   },
+   "agent": {
+    "gateway_calls": 31,
+    "prompt_tokens": 19577,
+    "completion_tokens": 19358,
+    "refused": 0,
+    "failed": 0,
+    "seconds": 135.478,
+    "accounts_read": [
+     "lm-claims-prod",
+     "lm-network-prod",
+     "lm-sandbox"
+    ]
+   },
+   "priced": {
+    "deployment": "nova-lite-ca",
+    "pct_of_per_month_usd": 0.006209,
+    "share_of_realized_saving": 6.467e-05
+   },
+   "per_night": {
+    "model": "gpt-oss-20b",
+    "pct_of_per_run_usd": {
+     "median": 0.2863008,
+     "p95": 0.7093696
+    }
+   },
+   "other_kept_runs": [
+    {
+     "kept_run": "2026-11-03",
+     "gateway_calls": 31,
+     "prompt_tokens": 20071,
+     "completion_tokens": 51682,
+     "seconds": 1459.555,
+     "same_savings": true
+    },
+    {
+     "kept_run": "2026-11-03/first-run-max-tokens-1200",
+     "gateway_calls": 31,
+     "prompt_tokens": 20071,
+     "completion_tokens": 27142,
+     "seconds": 770.259,
+     "same_savings": true
+    },
+    {
+     "kept_run": "2026-11-03/second-run-max-tokens-4096",
+     "gateway_calls": 31,
+     "prompt_tokens": 20071,
+     "completion_tokens": 40520,
+     "seconds": 1133.695,
+     "same_savings": true
+    },
+    {
+     "kept_run": "2026-11-03/step-5b",
+     "gateway_calls": 31,
+     "prompt_tokens": 19666,
+     "completion_tokens": 43681,
+     "seconds": 898.316,
+     "same_savings": true
+    },
+    {
+     "kept_run": "2026-11-03/step-5c",
+     "gateway_calls": 31,
+     "prompt_tokens": 19579,
+     "completion_tokens": 18696,
+     "seconds": 401.757,
+     "same_savings": true
+    }
+   ],
+   "range_over_kept_runs": {
+    "runs": 6,
+    "completion_tokens": [
+     18696,
+     51682
+    ],
+    "seconds": [
+     135.478,
+     1459.555
+    ]
+   }
+  }
+ },
+ "sources": {
+  "ledger": "labs/ch16/results/2026-11-03/ledger.json",
+  "slo": "labs/ch16/results/2026-11-09/slo",
+  "drills": "labs/ch16/results/2026-11-03/budget/drills.json",
+  "changes": "labs/ch16/results/2026-11-09/lifecycle/changes.jsonl",
+  "register": "labs/ch16/lifecycle/register.yaml",
+  "retirement_rules": "labs/ch16/lifecycle/alerts.yaml",
+  "playbook": "labs/ch16/playbook/playbook.yaml",
+  "volumes": "labs/ch16/ledger/volumes.yaml",
+  "prices": "labs/ch16/ledger/prices.yaml",
+  "w5_ledger": "workflows/w5-drift/eval/results/2026-11-03/after-review/nights-gpt-oss-20b/ledger.json",
+  "manifests": [
+   "workflows/w1-knowledge-assistant/manifest/w1-knowledge.yaml",
+   "workflows/w2-ops-assistant/manifest/w2-ops-assistant.yaml",
+   "workflows/w3-incident/manifest/w3-incident.yaml",
+   "workflows/w4-change/manifest/w4-change.yaml",
+   "workflows/w5-drift/manifest/w5-drift.yaml"
+  ]
+ }
+}

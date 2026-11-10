@@ -1,0 +1,122 @@
+{
+ "start": {
+  "at": "2026-11-09T09:37:59.823+00:00",
+  "budget": {
+   "name": "ch16-cloud-session",
+   "type": "COST",
+   "time_unit": "MONTHLY",
+   "limit": {
+    "Amount": "5.0",
+    "Unit": "USD"
+   },
+   "calculated_spend": {
+    "ActualSpend": {
+     "Amount": "0.0",
+     "Unit": "USD"
+    }
+   },
+   "time_period": {
+    "Start": "2026-10-31 20:00:00-04:00",
+    "End": "2087-06-14 20:00:00-04:00"
+   },
+   "last_updated": "2026-11-09 04:37:59.130000-05:00",
+   "notifications": [
+    {
+     "threshold": 100.0,
+     "threshold_type": null,
+     "type": "ACTUAL",
+     "operator": "GREATER_THAN",
+     "state": "OK",
+     "subscribers": [
+      {
+       "type": "SNS",
+       "address_kind": "sns-topic"
+      }
+     ]
+    },
+    {
+     "threshold": 80.0,
+     "threshold_type": null,
+     "type": "ACTUAL",
+     "operator": "GREATER_THAN",
+     "state": "OK",
+     "subscribers": [
+      {
+       "type": "SNS",
+       "address_kind": "sns-topic"
+      }
+     ]
+    }
+   ]
+  },
+  "plan": {
+   "plan": "FREE",
+   "status": "ACTIVE",
+   "remaining_credits": {
+    "amount": 139.38,
+    "unit": "USD"
+   },
+   "expires": "2027-04-28"
+  }
+ },
+ "end": {
+  "at": "2026-11-09T10:07:04.517+00:00",
+  "budget": {
+   "name": "ch16-cloud-session",
+   "type": "COST",
+   "time_unit": "MONTHLY",
+   "limit": {
+    "Amount": "5.0",
+    "Unit": "USD"
+   },
+   "calculated_spend": {
+    "ActualSpend": {
+     "Amount": "0.0",
+     "Unit": "USD"
+    }
+   },
+   "time_period": {
+    "Start": "2026-10-31 20:00:00-04:00",
+    "End": "2087-06-14 20:00:00-04:00"
+   },
+   "last_updated": "2026-11-09 04:37:59.130000-05:00",
+   "notifications": [
+    {
+     "threshold": 100.0,
+     "threshold_type": null,
+     "type": "ACTUAL",
+     "operator": "GREATER_THAN",
+     "state": "OK",
+     "subscribers": [
+      {
+       "type": "SNS",
+       "address_kind": "sns-topic"
+      }
+     ]
+    },
+    {
+     "threshold": 80.0,
+     "threshold_type": null,
+     "type": "ACTUAL",
+     "operator": "GREATER_THAN",
+     "state": "OK",
+     "subscribers": [
+      {
+       "type": "SNS",
+       "address_kind": "sns-topic"
+      }
+     ]
+    }
+   ]
+  },
+  "plan": {
+   "plan": "FREE",
+   "status": "ACTIVE",
+   "remaining_credits": {
+    "amount": 159.38,
+    "unit": "USD"
+   },
+   "expires": "2027-04-28"
+  }
+ }
+}

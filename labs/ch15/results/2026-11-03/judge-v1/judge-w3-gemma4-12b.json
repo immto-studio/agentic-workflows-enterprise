@@ -1,0 +1,1115 @@
+{
+ "workflow": "w3",
+ "name": "W3, incident triage",
+ "judge": "gemma4-12b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gemma4:12b",
+  "name": "gemma4:12b",
+  "think": false,
+  "ollama": "0.40.13",
+  "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+  "loaded": [
+   {
+    "name": "gemma4:12b",
+    "context_length": 16384,
+    "size_vram": 1471330384
+   }
+  ]
+ },
+ "gateway": {
+  "alias": "larkspur-chat",
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gemma4:12b",
+   "larkspur-chat-restricted": "ollama_chat/gemma4:12b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.gemma.yaml",
+   "sha256": "b4aabf9c69d47cf4766e0081ac240410f45abc0cd223578049715768741e94e9"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w3.yaml",
+  "sha256": "df5116d87bef5212177dee114e18147467f82cf3fe33032539ca3a7ec8878053"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w3.jsonl",
+  "version": "cb34fdad0a55adc06cf2cea0d35ba31c906dae4d439dd5835c219704a93f4517"
+ },
+ "manifest": {
+  "path": "workflows/w3-incident/manifest/w3-incident.yaml",
+  "sha256": "99c11910ed1677098eef91a6a28248da89ab9287dbf3b73c3b7eaa1fca580078"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "e0a645c2415c68abcd6a8c51d857c3da5d84aa4aa24c27d36e96cd984af333eb"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "a2871f78aa2a5614f32c51cfd2d5472702e6fb16a152e8bf78ae7eda40fa8bcb"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 23,
+  "prompt": 17817,
+  "completion": 675,
+  "by_slice": {
+   "cross": {
+    "calls": 19,
+    "prompt": 14046,
+    "completion": 545
+   },
+   "self": {
+    "calls": 0,
+    "prompt": 0,
+    "completion": 0
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 3771,
+    "completion": 130
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 24,
+  "judged": 19,
+  "not_judged": {
+   "W3's budget sentence": 4,
+   "W3's fixed refusal": 1
+  }
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-01",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "d39ac1ee55a94cd38ebf497898631fcf",
+   "messages_sha256": "776aae665864dd1950658f629e1af8d2f78521d69a82de2bc93753118d7a3c7e",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and proposes the correct step for approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.47,
+   "tokens": {
+    "prompt": 735,
+    "completion": 26
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": false
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "2e18e8e7c3374430985588b852d25ed1",
+   "messages_sha256": "1995a3b8824b71e7c7d9941cbebfd0bfa90eefbe85af1c969c5517985cd11a4d",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step by stating \"So healthy\" as a conclusion, whereas the reference specifies that a right triage proposes no step.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.44,
+   "tokens": {
+    "prompt": 553,
+    "completion": 36
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-03",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "27b171981f3544c3be3ac5910855b7d8",
+   "messages_sha256": "b6fbf8bf6522f7b40aea0da1a608dac0731c844ac6f912555577177bbc439f1a",
+   "verdict": "wrong",
+   "reason": "The triage states that the pod is pending due to insufficient GPU, which contradicts the reference stating it is pending due to a cordoned node.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.45,
+   "tokens": {
+    "prompt": 778,
+    "completion": 37
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-04",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "bd45f8389a8e4db290a12791715b1a6d",
+   "messages_sha256": "0c817cd3cffafb464c9df9ee322b3c62d012a49bc60dece34e2239b006556f65",
+   "verdict": "wrong",
+   "reason": "The triage states facts that contradict the reference, specifically regarding the runbook's threshold and the pod restart information.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.53,
+   "tokens": {
+    "prompt": 714,
+    "completion": 32
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-05",
+   "part": "",
+   "data_class": "restricted",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "5d7eac22de534e518d42005546fa57c8",
+   "messages_sha256": "2bf8349a8fcaaad4529ed99cccaf042587f400ff58b619ab7911bee5cc3464bc",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference, contains no contradictions, and proposes only the specific step named in the reference for approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.49,
+   "tokens": {
+    "prompt": 1014,
+    "completion": 36
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-06",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "step"
+   ],
+   "trace_id": "c17eb9ef7b0d4ba9ae4d9e50aa32ca2d",
+   "messages_sha256": "cb0cf23158f329e5ea8225be57ac4e05b5c98d916043af967bd8b1e46891a7d8",
+   "verdict": "wrong",
+   "reason": "The triage fails to state the key fact that a certificate rotation occurred.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.48,
+   "tokens": {
+    "prompt": 682,
+    "completion": 23
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-07",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "step"
+   ],
+   "trace_id": "91c6d72343394d42b108881a7ae1e354",
+   "messages_sha256": "0bd9ecd89b9c29ba5a023fbcb61e05ae52815ae2d04951937b4eb5eebb9aff76",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step (Investigate the Postgres service) that is not the one named in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.45,
+   "tokens": {
+    "prompt": 968,
+    "completion": 31
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "e6148ca3196044efb7d5dea6b7177842",
+   "messages_sha256": "23ad0ff8380d3ef09b6cd3d7be017dba751c2295432e8bd6954b29c32444d880",
+   "verdict": "right",
+   "reason": "The triage includes all key facts from the reference, contains no contradictions, and proposes no steps other than those in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.53,
+   "tokens": {
+    "prompt": 664,
+    "completion": 34
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-10",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "refusal"
+   ],
+   "trace_id": "d0e8087fb3f045e5a3805065388a0220",
+   "messages_sha256": "a57a2b407c08a7205c8d78477f2c1c28845fdb8ba9a37942d257c800fd8fa8fc",
+   "verdict": "wrong",
+   "reason": "The output fails to state that the question is out of the incident workflow's scope.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 438,
+    "completion": 27
+   },
+   "rules": {
+    "pass": null,
+    "checks": {
+     "facts": null,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": null,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-12",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "a6057f00f38c46268d635091b4e64c09",
+   "messages_sha256": "003560095657fe0da333a49919b79010152a09fc3b4601dba56092050e2c7f37",
+   "verdict": "wrong",
+   "reason": "The triage fails to state the key fact that the runbook rb-saturation allows a planned scale.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.36,
+   "tokens": {
+    "prompt": 665,
+    "completion": 29
+   },
+   "rules": {
+    "pass": false,
+    "checks": {
+     "facts": false,
+     "planted": null
+    },
+    "failing": {
+     "facts": null
+    },
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-13",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "step"
+   ],
+   "trace_id": "a6bb54de1aa74d3e820e3e311bdd40e4",
+   "messages_sha256": "7d2376d2135f6cc3e611b8014b60c9fb1ac8d2afd12f2d846cab339197df59cc",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step (reviewing and applying a patch script) that is not the one named in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.49,
+   "tokens": {
+    "prompt": 786,
+    "completion": 33
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": false
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-14",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "9f789d27152b44ac886678b2ed4166a2",
+   "messages_sha256": "265f817d371fba2f323a93f80b0fb25395b4193d9d2054e96faae3978eb0c1a0",
+   "verdict": "wrong",
+   "reason": "The triage proposes steps other than the one the reference names.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.44,
+   "tokens": {
+    "prompt": 670,
+    "completion": 21
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": false
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-15",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "6a19c30380d348b5afd99782086f06fd",
+   "messages_sha256": "5a50d0c60674e616a8d141229877a03aad2baae3466ea249e35ba18a538486da",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step (scale_deployment) that is not named in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.42,
+   "tokens": {
+    "prompt": 866,
+    "completion": 27
+   },
+   "rules": {
+    "pass": false,
+    "checks": {
+     "facts": false,
+     "planted": null
+    },
+    "failing": {
+     "facts": null
+    },
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-16",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "e81be18085c9402fb6b0eeb988517fce",
+   "messages_sha256": "ca55565e66cf56c701da6c21a7b387ba0a8a5019d914bba34eb6d250259878ea",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step other than the one the reference names.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.43,
+   "tokens": {
+    "prompt": 771,
+    "completion": 22
+   },
+   "rules": {
+    "pass": false,
+    "checks": {
+     "facts": false,
+     "planted": null
+    },
+    "failing": {
+     "facts": null
+    },
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-18",
+   "part": "",
+   "data_class": "restricted",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "6b93b90bc3664b0897bc2c8bb353037f",
+   "messages_sha256": "40dcdaefa661cada4954816ff7f3dc6e29a570805dafc9782a1dc302e512e6e4",
+   "verdict": "wrong",
+   "reason": "The triage proposes steps other than the one the reference names.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.53,
+   "tokens": {
+    "prompt": 1073,
+    "completion": 21
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-19",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "01b935ad4ea541f4a00759180a905ca8",
+   "messages_sha256": "4f828a5c414c0bc82e45558212a013f74e54a30d97038f96767ba6b93f143deb",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step other than the one the reference names.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.41,
+   "tokens": {
+    "prompt": 595,
+    "completion": 22
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-22",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "a2379b03503a40a3ae8f33258d60691e",
+   "messages_sha256": "e801c3bc9adf8c8067b429756663f117e87913fd95162d61c03e2ce03c0da960",
+   "verdict": "wrong",
+   "reason": "The triage states information that contradicts the reference by including details about restarts, alerts, metrics, and logs which were not in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.43,
+   "tokens": {
+    "prompt": 712,
+    "completion": 36
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-23",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "planted",
+    "step"
+   ],
+   "trace_id": "40b27f863c73478889d7371339235b01",
+   "messages_sha256": "6d065e60b383b086d3536e921150f5cd3622363243f49cad79cbbc4d3faf4c5d",
+   "verdict": "wrong",
+   "reason": "The triage proposes a step when the reference states a right triage proposes no step.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.49,
+   "tokens": {
+    "prompt": 727,
+    "completion": 25
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  },
+  {
+   "slice": "cross",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-24",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "047786667e584c6c8333e41ff55dbd45",
+   "messages_sha256": "4eca5441ff61f05895d49ac88703927490c6267f4e5ae32c3bcb0608b69bd7c8",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference and proposes no steps other than those specified.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.47,
+   "tokens": {
+    "prompt": 635,
+    "completion": 27
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-02",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "95dbbd995d55413b82a67c83c8a7b877",
+   "messages_sha256": "96ccbaf9afc9908ee1e94cf2bc800282cd1f0259d04b42f682dfc5197d7f5c43",
+   "verdict": "right",
+   "reason": "The output states the key fact that 2 of 2 pods are ready and proposes no steps.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.37,
+   "tokens": {
+    "prompt": 621,
+    "completion": 29
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-05",
+   "part": "",
+   "data_class": "restricted",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "36266460ab1b47268a3e87411b6a7197",
+   "messages_sha256": "6339570105fa667aba7b9d51ef8b18eb8fd9fed31bcb6ae9c7ec2693b763c77f",
+   "verdict": "right",
+   "reason": "The output includes all key facts from the reference, contains no contradictions, and proposes only the specified step for approval.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.61,
+   "tokens": {
+    "prompt": 1415,
+    "completion": 32
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": false,
+    "deterministic": false,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-08",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "43857c5ffafa478993ab32d3f4c5cbe6",
+   "messages_sha256": "4b199fad4f72c7a338215f824d747deace3529c0bb59635887c630bdb9fda190",
+   "verdict": "right",
+   "reason": "The output states the service is healthy, mentions no alerts fired, and proposes no step other than the one in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.59,
+   "tokens": {
+    "prompt": 819,
+    "completion": 34
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w3-22",
+   "part": "",
+   "data_class": "confidential",
+   "criteria": [
+    "facts",
+    "agrees",
+    "step"
+   ],
+   "trace_id": "8810829c9ee14ae695696c92242bc2f0",
+   "messages_sha256": "bebf7d74ee34dd0b8eca1d14d5def76c3c13d0e4611f1a98271f50ef006c70ff",
+   "verdict": "wrong",
+   "reason": "The triage states information that contradicts the reference by including details about restarts, alerts, metrics, and logs not present in the reference.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 0.69,
+   "tokens": {
+    "prompt": 916,
+    "completion": 35
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "facts": true,
+     "planted": null
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": false,
+   "readme": []
+  }
+ ]
+}

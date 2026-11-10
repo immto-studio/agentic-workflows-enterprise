@@ -1,0 +1,73 @@
+{
+  "comment": "SHA-256 of each tool's definition (name, title, description, input and output schemas, annotations). Regenerate with `python server.py --write-lock` and review the diff: the description is prompt text the model reads, and the schemas and annotations decide what it can ask for.",
+  "generated": "2026-11-02",
+  "tools": {
+    "restart_deployment": {
+      "sha256": "3b5e5f09841b73f7e6be45f46e7a05f1afd7b1dc6fddd13dc020b341d3274cbd",
+      "definition": {
+        "name": "restart_deployment",
+        "description": "Restart one deployment by rolling its pods, after an approval. The restart runs only if a recorded yes covers exactly this restart in this run, and runs once. Not read-only.",
+        "inputSchema": {
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            }
+          },
+          "required": [
+            "service"
+          ],
+          "title": "restart_deploymentArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "restart_deploymentDictOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      }
+    },
+    "scale_deployment": {
+      "sha256": "aafec2131b5a114645170b4b67cd48e8600fb5514d586f2650938d9a0d40dd51",
+      "definition": {
+        "name": "scale_deployment",
+        "description": "Scale one deployment to `replicas` (1 to 8), after an approval. The scale runs only if a recorded yes covers exactly this scale in this run, and runs once. Not read-only.",
+        "inputSchema": {
+          "properties": {
+            "service": {
+              "title": "Service",
+              "type": "string"
+            },
+            "replicas": {
+              "title": "Replicas",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "service",
+            "replicas"
+          ],
+          "title": "scale_deploymentArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "scale_deploymentDictOutput",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        }
+      }
+    }
+  }
+}

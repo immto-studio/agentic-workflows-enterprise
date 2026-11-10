@@ -1,0 +1,43 @@
+{"meta": {"measured": "2026-10-29", "ollama": "0.22.1", "models": {"nomic-embed-text": "0a109f422b47", "embeddinggemma": "85462619ee72", "qwen3-embedding:0.6b": "ac6da0dfba84"}, "chunks": {"fixed": 189, "heading": 710}, "questions": 20}}
+{"variant": "fixed", "retriever": "bm25", "hit_at_k": 17, "questions": 20, "k": 1, "current_above_stale": 3, "stale_pairs": 5, "misses": ["gq-04", "gq-09", "gq-10"]}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-06", "gq-08", "gq-10", "gq-11"]}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-06", "gq-09", "gq-10", "gq-11"]}
+{"variant": "heading", "retriever": "bm25", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 3, "stale_pairs": 5, "misses": ["gq-04", "gq-06", "gq-08", "gq-10"]}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-06", "gq-08", "gq-10", "gq-11"]}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 17, "questions": 20, "k": 1, "current_above_stale": 3, "stale_pairs": 5, "misses": ["gq-06", "gq-10", "gq-11"]}
+{"variant": "fixed", "retriever": "bm25", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 3, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 3, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 19, "questions": 20, "k": 3, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "heading", "retriever": "bm25", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 3, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 3, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 19, "questions": 20, "k": 3, "current_above_stale": 3, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "fixed", "retriever": "bm25", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 3, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 5, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "fixed", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 19, "questions": 20, "k": 5, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "heading", "retriever": "bm25", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 3, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 5, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-11"]}
+{"variant": "heading", "model": "nomic-embed-text", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 3, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 15, "questions": 20, "k": 1, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-08", "gq-09", "gq-10"]}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 1, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-09", "gq-10"]}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 15, "questions": 20, "k": 1, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-08", "gq-09", "gq-10"]}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 17, "questions": 20, "k": 1, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-06", "gq-09", "gq-10"]}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 3, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-07"]}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 1, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 2, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 19, "questions": 20, "k": 5, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-07"]}
+{"variant": "fixed", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 1, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "embeddinggemma", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 2, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 14, "questions": 20, "k": 1, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-08", "gq-09", "gq-10", "gq-13"]}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 16, "questions": 20, "k": 1, "current_above_stale": 1, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-09", "gq-10"]}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 15, "questions": 20, "k": 1, "current_above_stale": 0, "stale_pairs": 5, "misses": ["gq-06", "gq-07", "gq-08", "gq-09", "gq-10"]}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 17, "questions": 20, "k": 1, "current_above_stale": 2, "stale_pairs": 5, "misses": ["gq-06", "gq-09", "gq-10"]}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 1, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 3, "current_above_stale": 2, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "fixed", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 1, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "dense", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 0, "stale_pairs": 5, "misses": []}
+{"variant": "heading", "model": "qwen3-embedding:0.6b", "retriever": "hybrid", "hit_at_k": 20, "questions": 20, "k": 5, "current_above_stale": 2, "stale_pairs": 5, "misses": []}

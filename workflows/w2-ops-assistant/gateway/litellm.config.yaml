@@ -1,0 +1,46 @@
+# W2's gateway in the local lab: chapter 5's callbacks, W2's manifest, two chat aliases on Ollama.
+#
+# W2 carries Internal data only, so every call goes to larkspur-chat; the restricted alias is listed
+# because W2's manifest names it (chapter 5's rules check the manifest's models against the config).
+# On a laptop every destination is self-hosted, and model_info says so, because model_info is what
+# the grid reads. num_ctx asks Ollama for a 16k context window: its default is 4096 tokens, and a
+# reasoning model that fills the window with reasoning returns no content (the first run's w2-04).
+#
+# Run (from workflows/w2-ops-assistant/gateway):
+#   LITELLM_MASTER_KEY=<a local value> litellm --config litellm.config.yaml --host 127.0.0.1 --port 4013
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11434
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-chat
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11434
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-restricted
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+  drop_params: true
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

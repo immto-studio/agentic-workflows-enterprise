@@ -1,0 +1,846 @@
+{
+ "workflow": "w4",
+ "name": "W4, change management",
+ "judge": "gpt-oss-20b",
+ "measured": "2026-11-03",
+ "judge_model": {
+  "served": "ollama_chat/gpt-oss:20b",
+  "name": "gpt-oss:20b",
+  "think": "model default",
+  "ollama": "0.22.1",
+  "digest": "a0b38d0b19f7c5dd3589e5e6598edfed41c81969d73f9e4774011c1328e9dad8",
+  "loaded": [
+   {
+    "name": "gpt-oss:20b",
+    "context_length": 16384,
+    "size_vram": 14460958080
+   }
+  ]
+ },
+ "gateway": {
+  "alias_by_class": {
+   "restricted": "larkspur-chat-restricted",
+   "other": "larkspur-chat"
+  },
+  "aliases": {
+   "larkspur-chat": "ollama_chat/gpt-oss:20b",
+   "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+  },
+  "config": {
+   "source": "workflows/w2-ops-assistant/gateway/litellm.config.yaml",
+   "sha256": "9aa45c27368567bc5501aa904555bd0c1d17519214b2be5bc934960a5c87deb7"
+  },
+  "num_ctx": 16384,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "litellm": "1.106.6",
+  "python": "3.12.9"
+ },
+ "prompt": {
+  "path": "labs/ch15/judge/prompt.txt",
+  "sha256": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22"
+ },
+ "rubric": {
+  "path": "labs/ch15/judge/rubrics/w4.yaml",
+  "sha256": "d8f4d41bdfcef915c93125a93f404c97b2f8a15643b74c636a813fc8b8be53ab"
+ },
+ "set": {
+  "path": "labs/ch15/cases/w4.jsonl",
+  "version": "506eb14dcd423560752d7cf7eb4fac1447d86c7cdc91976a5ca1da91f8c56ddb"
+ },
+ "manifest": {
+  "path": "workflows/w4-change/manifest/w4-change.yaml",
+  "sha256": "8fdf61468d39f8823a0b69637fa318aec6df598049b30487244216ac3fe64e5b"
+ },
+ "code": [
+  {
+   "path": "labs/ch15/judge/judge.py",
+   "sha256": "d1ba7f25680d226f268b96f0e46e247952b7056a92fcc5837e7b198e35e7ce32"
+  },
+  {
+   "path": "labs/ch15/judge/items.py",
+   "sha256": "1200ee995f2a034d8fdb62d9211feb6e1b7d53b7fd6d728cf08021b48657581b"
+  },
+  {
+   "path": "labs/ch15/judge/run_judge.py",
+   "sha256": "66d359d02e239fb8b4d8bea8516fee59e4d770b10864633a9d73591e9050e61c"
+  },
+  {
+   "path": "labs/ch15/layers/registry.py",
+   "sha256": "255a60ba5e8fd4e178870d6f489dfba36bbaea1de8afe93d9ae11f924617444e"
+  },
+  {
+   "path": "labs/ch15/layers/deterministic.py",
+   "sha256": "f6b2d21881edb47bd8091e777ba275e14d9c8e508dde2b4a9623453241e5ec37"
+  },
+  {
+   "path": "labs/ch15/layers/trajectory.py",
+   "sha256": "bbc9abb53fe3a6857571812f6dac6463d2369b1b47a2526953b70d2781a46c1e"
+  },
+  {
+   "path": "labs/ch15/cases/convert.py",
+   "sha256": "d335c732bc72ea8f836014c93af2f9a4f900443aaf8dae5155373e3eaddf0ffd"
+  },
+  {
+   "path": "labs/ch15/run_replay.py",
+   "sha256": "56f997a31653c5c166ab229e8d84bf4d6dd3f534872cbc6e2a5666aa39971b36"
+  }
+ ],
+ "tokens": {
+  "calls": 16,
+  "prompt": 8855,
+  "completion": 4126,
+  "by_slice": {
+   "cross": {
+    "calls": 8,
+    "prompt": 4273,
+    "completion": 1859
+   },
+   "self": {
+    "calls": 4,
+    "prompt": 2079,
+    "completion": 1018
+   },
+   "padded": {
+    "calls": 4,
+    "prompt": 2503,
+    "completion": 1249
+   }
+  }
+ },
+ "outputs": {
+  "of_other_models": 8,
+  "judged": 8,
+  "not_judged": {}
+ },
+ "items": [
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "e5bb623acc2e4ce3805bdcae1986964d",
+   "messages_sha256": "ece5da01defa33b5b67be8b9b855fd5651216164762f3d81e10d469ac3760cf7",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.66,
+   "tokens": {
+    "prompt": 549,
+    "completion": 247
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "8001db2eec454ee3aa2574ea51759957",
+   "messages_sha256": "407c25860cb600bfd126e86453f237ddfb8e5cf3b51712a828a3930664cf2e8b",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.34,
+   "tokens": {
+    "prompt": 529,
+    "completion": 196
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "ae4e5a8422694e189a42db56c5a105c3",
+   "messages_sha256": "1cb7460b7ad387b815634dfc7482f832f35b2acc9a7a575b0d03bf725d3cd3a1",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.87,
+   "tokens": {
+    "prompt": 561,
+    "completion": 284
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "779960534cf54f6caf1f8740fa56d21b",
+   "messages_sha256": "bd1e570630ac3f99528be3d2dde19cdd7946c9f2c1563b671dd697feda21008e",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.38,
+   "tokens": {
+    "prompt": 508,
+    "completion": 200
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "31a6c1eab0d3491db1c79503f5fe2d30",
+   "messages_sha256": "9258522889d650fdee880406610856453db1648e412a56e5da76e88c21b9b6ae",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.49,
+   "tokens": {
+    "prompt": 512,
+    "completion": 221
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "cddd214851b5449b9d123d277c697cfa",
+   "messages_sha256": "7d71cc667fa282106bb67fbb3a30c947594e3203c8b268f73bcb72ab6de97372",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.84,
+   "tokens": {
+    "prompt": 566,
+    "completion": 279
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-07",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "7271ec76ad8644a6ad8d0142821a4e36",
+   "messages_sha256": "ae4624ef333ee64a594e92c7d9a63f2f697e4426585d30adf2705f99b7e116d4",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.35,
+   "tokens": {
+    "prompt": 509,
+    "completion": 199
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "cross",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "4f01624e71114fb2ae306292f0fa35d1",
+   "messages_sha256": "0a2497d35361750e0c6e614bad40e68026a5621a6d586f73aa4cb349dc589943",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.56,
+   "tokens": {
+    "prompt": 539,
+    "completion": 233
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": [
+    {
+     "says": "right",
+     "readme": "W4: both models wrote a faithful sentence for every change"
+    }
+   ]
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "4ffb753c80fe4b94b75a616ce54e5970",
+   "messages_sha256": "6817fda8edeee95eca6a64a5e0c79c3eb9d6acdd3b7ba02be10afb1f136c2b9e",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.41,
+   "tokens": {
+    "prompt": 526,
+    "completion": 208
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-04",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "68b5ebeca019405087c6f3f48fbefd4c",
+   "messages_sha256": "84170e8574456706606b764ea5bf15a6eded9171561afbe05aea3c9d4a58e8a3",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.93,
+   "tokens": {
+    "prompt": 508,
+    "completion": 294
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-05",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "5c96211c8fb341ae8af2ba3b1e55d620",
+   "messages_sha256": "193dc0beb4ba4013102653a8ec95dc4bffe44225c3f9b26f077b4e0016de8db0",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.82,
+   "tokens": {
+    "prompt": 506,
+    "completion": 277
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "self",
+   "model": "gpt-oss-20b",
+   "author": "gpt-oss-20b",
+   "run": "2026-11-02",
+   "case": "w4-08",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "67f2c0b2cfcb4738a7d9423cc8ffc244",
+   "messages_sha256": "e5e605aa4bef417bd2a94a1c2601aac04c8d8486ee8b4424109563db0ee77469",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.61,
+   "tokens": {
+    "prompt": 539,
+    "completion": 239
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-01",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "be120ff739594237ae08677b311c5014",
+   "messages_sha256": "b34d9df88d6d10453db8fe2ca397aaa45bf194f6120700c1e945744bc182b077",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.64,
+   "tokens": {
+    "prompt": 630,
+    "completion": 246
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-02",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "cc2e0b100d8f479aa1262cddc7014968",
+   "messages_sha256": "f23acf4ded6396d7ca0ecd76f2fb015a343b2190ef0850fb9eaefaf63ec9c93a",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 1.28,
+   "tokens": {
+    "prompt": 598,
+    "completion": 184
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-03",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "8c05507e088945acb864ab69ae3b53d1",
+   "messages_sha256": "d7af4ec3b569748061663ebbcdacd96087b3f140e064fc339afb0c0ed15ee088",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.98,
+   "tokens": {
+    "prompt": 632,
+    "completion": 468
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  },
+  {
+   "slice": "padded",
+   "model": "gemma4-12b",
+   "author": "gemma4-12b",
+   "run": "2026-11-02",
+   "case": "w4-06",
+   "part": "",
+   "data_class": "confidential",
+   "alias": "larkspur-chat",
+   "criteria": [
+    "class",
+    "reasons",
+    "approval"
+   ],
+   "trace_id": "92abe37b16264bf29497c2e3a994b2d3",
+   "messages_sha256": "0fbe18a1b6f1712dec0081e66db89e639523491192dbfbdd7bf49c1499273ae3",
+   "verdict": "right",
+   "reason": "The output meets all rubric criteria.",
+   "unparsable": null,
+   "reply": null,
+   "error": null,
+   "finish_reason": "stop",
+   "seconds": 2.29,
+   "tokens": {
+    "prompt": 643,
+    "completion": 351
+   },
+   "rules": {
+    "pass": true,
+    "checks": {
+     "rationale": true
+    },
+    "failing": {},
+    "exact": []
+   },
+   "verdicts": {
+    "scorer": true,
+    "deterministic": true,
+    "trajectory": true
+   },
+   "agrees": true,
+   "readme": []
+  }
+ ]
+}

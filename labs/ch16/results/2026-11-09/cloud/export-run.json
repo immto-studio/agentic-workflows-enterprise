@@ -1,0 +1,2130 @@
+{
+ "stamp": "20261109T095122Z",
+ "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+ "decision_wait_s": 30.0,
+ "share_percent": 100.0,
+ "langfuse_reached_for": true,
+ "collector_stop_s": 0.016,
+ "run": {
+  "runs": 25,
+  "passed": 25,
+  "kinds": [
+   "failed",
+   "fallback",
+   "golden",
+   "over-budget",
+   "refused",
+   "slow"
+  ],
+  "started": "2026-11-09T09:51:23+00:00",
+  "ended": "2026-11-09T09:52:13+00:00",
+  "spans_sent": 257,
+  "spans_in_file": 257,
+  "spans_left_collector": 257,
+  "traces": 25,
+  "traces_with_every_span_in_file": 25,
+  "traces_with_every_span_left": 25,
+  "sink_requests": 17,
+  "sink_delay_s": {
+   "5de3012d83cd461e9d1c74d4cc3259df": 33.5,
+   "1b98be7f07f341b8b6960f9ff75c1a88": 32.0,
+   "dfe6178c562e42318ff801d3033ca78a": 30.9,
+   "cfc390757b0c4535b6fd4eac3b2948a9": 30.8,
+   "9b6442475b1f4e0991a925f62e040325": 31.7,
+   "56d40fd5f9e949b0b39534743b843768": 30.6,
+   "ede973ac1977409db36e18c447960583": 31.5,
+   "9e275ed19205475089f800410260d1e2": 30.4,
+   "33d7e7001cd24afdbda6b2290bd3b5a0": 30.3,
+   "71d8c2162b3e40898f2895b6898b0885": 31.2,
+   "2ba3f7e725a54ff7a381c24017f7dde6": 32.1,
+   "d7b8dc5010654ffd95dd3d4dc76664aa": 31.0,
+   "17e0de1afe274f3d9400a573198b3746": 30.9,
+   "9d7d40735133489fb8b2d08bcb0b32bb": 31.8,
+   "92abf0fd965c4055bbb77283c79d6501": 30.7,
+   "105499b48dde44099f9b370e48e8c165": 31.6,
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": 30.5,
+   "85982547a45f4446868870a704878e94": 31.4,
+   "b8a2e19c056e4ba7a796a487290ed9c6": 31.3,
+   "6eaa72add1e042abae27fd9f8449bd9e": 32.2,
+   "11b0a18a8c1b45a7886cb67de665f324": 31.1,
+   "91462b9cfd8a441ba4f71b5e4aef50c7": 32.0,
+   "2b5addc83e3f44e6bf69897a91e7b63d": 31.7,
+   "87cdb84439bd4a9bbb2abf0ce9534531": 32.8,
+   "7cfda303c2ed48a3ba984edde3e1135c": 31.0
+  }
+ },
+ "collector": {
+  "exit_code": 0,
+  "log": {
+   "lines": 13,
+   "error_or_warning_lines": 0,
+   "first_error_or_warning_lines": []
+  },
+  "exporter_metrics": [
+   "otelcol_exporter_in_flight_requests{data_type=\"traces\",exporter=\"file\"} 0",
+   "otelcol_exporter_in_flight_requests{data_type=\"traces\",exporter=\"otlp_http/cloudwatch\"} 0",
+   "otelcol_exporter_in_flight_requests{data_type=\"traces\",exporter=\"otlp_http/langfuse\"} 0",
+   "otelcol_exporter_in_flight_requests{data_type=\"traces\",exporter=\"otlp_http/sink\"} 0",
+   "otelcol_exporter_in_flight_requests{data_type=\"traces\",exporter=\"otlp_http/tap\"} 0",
+   "otelcol_exporter_queue_capacity{data_type=\"traces\",exporter=\"otlp_http/cloudwatch\"} 1000",
+   "otelcol_exporter_queue_capacity{data_type=\"traces\",exporter=\"otlp_http/langfuse\"} 1000",
+   "otelcol_exporter_queue_capacity{data_type=\"traces\",exporter=\"otlp_http/sink\"} 1000",
+   "otelcol_exporter_queue_capacity{data_type=\"traces\",exporter=\"otlp_http/tap\"} 1000",
+   "otelcol_exporter_queue_size{data_type=\"traces\",exporter=\"otlp_http/cloudwatch\"} 0",
+   "otelcol_exporter_queue_size{data_type=\"traces\",exporter=\"otlp_http/langfuse\"} 0",
+   "otelcol_exporter_queue_size{data_type=\"traces\",exporter=\"otlp_http/sink\"} 0",
+   "otelcol_exporter_queue_size{data_type=\"traces\",exporter=\"otlp_http/tap\"} 0",
+   "otelcol_exporter_sent_spans{exporter=\"file\"} 257",
+   "otelcol_exporter_sent_spans{exporter=\"otlp_http/cloudwatch\",server_address=\"xray.us-east-2.amazonaws.com\",url_path=\"/v1/traces\"} 257",
+   "otelcol_exporter_sent_spans{exporter=\"otlp_http/langfuse\",server_address=\"127.0.0.1\",server_port=\"3100\",url_path=\"/api/public/otel/v1/traces\"} 257",
+   "otelcol_exporter_sent_spans{exporter=\"otlp_http/sink\",server_address=\"127.0.0.1\",server_port=\"50654\",url_path=\"/v1/traces\"} 257",
+   "otelcol_exporter_sent_spans{exporter=\"otlp_http/tap\",server_address=\"127.0.0.1\",server_port=\"50653\",url_path=\"/v1/traces\"} 257"
+  ]
+ },
+ "trace_ids": {
+  "pods-claims-api": "5de3012d83cd461e9d1c74d4cc3259df",
+  "pods-policy-admin": "1b98be7f07f341b8b6960f9ff75c1a88",
+  "pods-billing-worker": "dfe6178c562e42318ff801d3033ca78a",
+  "pods-quote-engine": "cfc390757b0c4535b6fd4eac3b2948a9",
+  "pods-document-ocr": "9b6442475b1f4e0991a925f62e040325",
+  "pods-fraud-scoring": "56d40fd5f9e949b0b39534743b843768",
+  "pods-customer-portal": "ede973ac1977409db36e18c447960583",
+  "pods-notification-gateway": "9e275ed19205475089f800410260d1e2",
+  "pods-unknown-service": "33d7e7001cd24afdbda6b2290bd3b5a0",
+  "alerts-claims-api-default-window": "71d8c2162b3e40898f2895b6898b0885",
+  "alerts-claims-api-120": "2ba3f7e725a54ff7a381c24017f7dde6",
+  "alerts-claims-api-5": "d7b8dc5010654ffd95dd3d4dc76664aa",
+  "alerts-document-ocr-30": "17e0de1afe274f3d9400a573198b3746",
+  "alerts-fraud-scoring-hour": "9d7d40735133489fb8b2d08bcb0b32bb",
+  "alerts-billing-worker-2h": "92abf0fd965c4055bbb77283c79d6501",
+  "alerts-billing-worker-today": "105499b48dde44099f9b370e48e8c165",
+  "alerts-policy-admin-24h": "a4ad2aa0e182475bb9e86f2c4c3fd5b3",
+  "alerts-notification-gateway-today": "85982547a45f4446868870a704878e94",
+  "alerts-document-ocr-10": "b8a2e19c056e4ba7a796a487290ed9c6",
+  "refuse-scale": "6eaa72add1e042abae27fd9f8449bd9e",
+  "refused-alerts": "11b0a18a8c1b45a7886cb67de665f324",
+  "over-budget-pasted-log": "91462b9cfd8a441ba4f71b5e4aef50c7",
+  "fallback-primary-down": "2b5addc83e3f44e6bf69897a91e7b63d",
+  "slow-model": "87cdb84439bd4a9bbb2abf0ce9534531",
+  "failed-both-down": "7cfda303c2ed48a3ba984edde3e1135c"
+ },
+ "cloudwatch": {
+  "group": "aws/spans",
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "started": "2026-11-09T09:52:45.602+00:00",
+  "polled_s": 0.71,
+  "group_seen_after_s": 0.307,
+  "readings": [
+   {
+    "seconds": 0.709,
+    "group_exists": true,
+    "events": 257,
+    "traces_seen": 25,
+    "traces_complete": 25
+   }
+  ],
+  "trace_id_key": "traceId",
+  "record_shape": {
+   "keys": [
+    "attributes",
+    "durationNano",
+    "endTimeUnixNano",
+    "flags",
+    "kind",
+    "name",
+    "parentSpanId",
+    "resource",
+    "scope",
+    "spanId",
+    "startTimeUnixNano",
+    "status",
+    "traceId"
+   ],
+   "nested_keys": {
+    "resource": [
+     "attributes"
+    ],
+    "scope": [
+     "attributes",
+     "name",
+     "version"
+    ],
+    "attributes": [
+     "PlatformType",
+     "aws.local.environment",
+     "aws.local.operation",
+     "aws.local.service",
+     "aws.span.kind",
+     "jsonrpc.request.id",
+     "mcp.method.name",
+     "mcp.protocol.version",
+     "telemetry.extended"
+    ],
+    "status": [
+     "code"
+    ]
+   }
+  },
+  "sample_record": {
+   "resource": {
+    "attributes": {
+     "telemetry.sdk.language": "python",
+     "service.instance.id": "4eaaecae-09f3-4235-9d78-c1e73fbfaa5f",
+     "service.name": "mcp-server",
+     "telemetry.sdk.version": "1.45.1",
+     "service.namespace": "larkspur-lab-ch05",
+     "larkspur.identity": "larkspur-ops-reader",
+     "telemetry.sdk.name": "opentelemetry"
+    }
+   },
+   "scope": {
+    "name": "mcp-python-sdk",
+    "version": "",
+    "attributes": {
+     "tailsampling.policy": "share-of-the-rest"
+    }
+   },
+   "traceId": "5de3012d83cd461e9d1c74d4cc3259df",
+   "spanId": "191a426c9070fd8a",
+   "parentSpanId": "cb07c4b548576441",
+   "flags": 768,
+   "name": "server/discover",
+   "kind": "SERVER",
+   "startTimeUnixNano": 1794217894243737100,
+   "endTimeUnixNano": 1794217894243737100,
+   "durationNano": 0,
+   "attributes": {
+    "aws.local.service": "mcp-server",
+    "aws.local.operation": "server/discover",
+    "aws.span.kind": "SERVER",
+    "telemetry.extended": "true",
+    "mcp.protocol.version": "2026-07-28",
+    "PlatformType": "Generic",
+    "mcp.method.name": "server/discover",
+    "jsonrpc.request.id": "1",
+    "aws.local.environment": "generic:default"
+   },
+   "status": {
+    "code": "UNSET"
+   }
+  },
+  "spans_expected": {
+   "5de3012d83cd461e9d1c74d4cc3259df": 11,
+   "1b98be7f07f341b8b6960f9ff75c1a88": 11,
+   "dfe6178c562e42318ff801d3033ca78a": 11,
+   "cfc390757b0c4535b6fd4eac3b2948a9": 11,
+   "9b6442475b1f4e0991a925f62e040325": 11,
+   "56d40fd5f9e949b0b39534743b843768": 11,
+   "ede973ac1977409db36e18c447960583": 11,
+   "9e275ed19205475089f800410260d1e2": 11,
+   "33d7e7001cd24afdbda6b2290bd3b5a0": 11,
+   "71d8c2162b3e40898f2895b6898b0885": 11,
+   "2ba3f7e725a54ff7a381c24017f7dde6": 11,
+   "d7b8dc5010654ffd95dd3d4dc76664aa": 11,
+   "17e0de1afe274f3d9400a573198b3746": 11,
+   "9d7d40735133489fb8b2d08bcb0b32bb": 11,
+   "92abf0fd965c4055bbb77283c79d6501": 11,
+   "105499b48dde44099f9b370e48e8c165": 11,
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": 11,
+   "85982547a45f4446868870a704878e94": 11,
+   "b8a2e19c056e4ba7a796a487290ed9c6": 11,
+   "6eaa72add1e042abae27fd9f8449bd9e": 6,
+   "11b0a18a8c1b45a7886cb67de665f324": 6,
+   "91462b9cfd8a441ba4f71b5e4aef50c7": 6,
+   "2b5addc83e3f44e6bf69897a91e7b63d": 13,
+   "87cdb84439bd4a9bbb2abf0ce9534531": 11,
+   "7cfda303c2ed48a3ba984edde3e1135c": 6
+  },
+  "spans_found": {
+   "5de3012d83cd461e9d1c74d4cc3259df": 11,
+   "1b98be7f07f341b8b6960f9ff75c1a88": 11,
+   "dfe6178c562e42318ff801d3033ca78a": 11,
+   "cfc390757b0c4535b6fd4eac3b2948a9": 11,
+   "9b6442475b1f4e0991a925f62e040325": 11,
+   "56d40fd5f9e949b0b39534743b843768": 11,
+   "ede973ac1977409db36e18c447960583": 11,
+   "9e275ed19205475089f800410260d1e2": 11,
+   "33d7e7001cd24afdbda6b2290bd3b5a0": 11,
+   "71d8c2162b3e40898f2895b6898b0885": 11,
+   "2ba3f7e725a54ff7a381c24017f7dde6": 11,
+   "d7b8dc5010654ffd95dd3d4dc76664aa": 11,
+   "17e0de1afe274f3d9400a573198b3746": 11,
+   "9d7d40735133489fb8b2d08bcb0b32bb": 11,
+   "92abf0fd965c4055bbb77283c79d6501": 11,
+   "105499b48dde44099f9b370e48e8c165": 11,
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": 11,
+   "85982547a45f4446868870a704878e94": 11,
+   "b8a2e19c056e4ba7a796a487290ed9c6": 11,
+   "6eaa72add1e042abae27fd9f8449bd9e": 6,
+   "11b0a18a8c1b45a7886cb67de665f324": 6,
+   "91462b9cfd8a441ba4f71b5e4aef50c7": 6,
+   "2b5addc83e3f44e6bf69897a91e7b63d": 13,
+   "87cdb84439bd4a9bbb2abf0ce9534531": 11,
+   "7cfda303c2ed48a3ba984edde3e1135c": 6
+  },
+  "traces_expected": 25,
+  "traces_seen": 25,
+  "traces_complete": 25,
+  "first_seen": {
+   "5de3012d83cd461e9d1c74d4cc3259df": {
+    "seconds": 0.709,
+    "after_sink_s": 38.6,
+    "ingestion_minus_span_ms": 34756
+   },
+   "1b98be7f07f341b8b6960f9ff75c1a88": {
+    "seconds": 0.709,
+    "after_sink_s": 38.6,
+    "ingestion_minus_span_ms": 33308
+   },
+   "dfe6178c562e42318ff801d3033ca78a": {
+    "seconds": 0.709,
+    "after_sink_s": 38.6,
+    "ingestion_minus_span_ms": 32208
+   },
+   "cfc390757b0c4535b6fd4eac3b2948a9": {
+    "seconds": 0.709,
+    "after_sink_s": 37.6,
+    "ingestion_minus_span_ms": 31927
+   },
+   "9b6442475b1f4e0991a925f62e040325": {
+    "seconds": 0.709,
+    "after_sink_s": 35.6,
+    "ingestion_minus_span_ms": 32826
+   },
+   "56d40fd5f9e949b0b39534743b843768": {
+    "seconds": 0.709,
+    "after_sink_s": 35.6,
+    "ingestion_minus_span_ms": 31726
+   },
+   "ede973ac1977409db36e18c447960583": {
+    "seconds": 0.709,
+    "after_sink_s": 33.6,
+    "ingestion_minus_span_ms": 32629
+   },
+   "9e275ed19205475089f800410260d1e2": {
+    "seconds": 0.709,
+    "after_sink_s": 33.6,
+    "ingestion_minus_span_ms": 31528
+   },
+   "33d7e7001cd24afdbda6b2290bd3b5a0": {
+    "seconds": 0.709,
+    "after_sink_s": 32.6,
+    "ingestion_minus_span_ms": 31426
+   },
+   "71d8c2162b3e40898f2895b6898b0885": {
+    "seconds": 0.709,
+    "after_sink_s": 30.6,
+    "ingestion_minus_span_ms": 32330
+   },
+   "2ba3f7e725a54ff7a381c24017f7dde6": {
+    "seconds": 0.709,
+    "after_sink_s": 28.6,
+    "ingestion_minus_span_ms": 33231
+   },
+   "d7b8dc5010654ffd95dd3d4dc76664aa": {
+    "seconds": 0.709,
+    "after_sink_s": 28.6,
+    "ingestion_minus_span_ms": 32131
+   },
+   "17e0de1afe274f3d9400a573198b3746": {
+    "seconds": 0.709,
+    "after_sink_s": 27.6,
+    "ingestion_minus_span_ms": 32031
+   },
+   "9d7d40735133489fb8b2d08bcb0b32bb": {
+    "seconds": 0.709,
+    "after_sink_s": 25.6,
+    "ingestion_minus_span_ms": 32933
+   },
+   "92abf0fd965c4055bbb77283c79d6501": {
+    "seconds": 0.709,
+    "after_sink_s": 25.6,
+    "ingestion_minus_span_ms": 31833
+   },
+   "105499b48dde44099f9b370e48e8c165": {
+    "seconds": 0.709,
+    "after_sink_s": 23.6,
+    "ingestion_minus_span_ms": 32732
+   },
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": {
+    "seconds": 0.709,
+    "after_sink_s": 23.6,
+    "ingestion_minus_span_ms": 31633
+   },
+   "85982547a45f4446868870a704878e94": {
+    "seconds": 0.709,
+    "after_sink_s": 21.6,
+    "ingestion_minus_span_ms": 32536
+   },
+   "b8a2e19c056e4ba7a796a487290ed9c6": {
+    "seconds": 0.709,
+    "after_sink_s": 20.6,
+    "ingestion_minus_span_ms": 32432
+   },
+   "6eaa72add1e042abae27fd9f8449bd9e": {
+    "seconds": 0.709,
+    "after_sink_s": 18.6,
+    "ingestion_minus_span_ms": 33338
+   },
+   "11b0a18a8c1b45a7886cb67de665f324": {
+    "seconds": 0.709,
+    "after_sink_s": 18.6,
+    "ingestion_minus_span_ms": 32237
+   },
+   "91462b9cfd8a441ba4f71b5e4aef50c7": {
+    "seconds": 0.709,
+    "after_sink_s": 16.6,
+    "ingestion_minus_span_ms": 33139
+   },
+   "2b5addc83e3f44e6bf69897a91e7b63d": {
+    "seconds": 0.709,
+    "after_sink_s": 15.6,
+    "ingestion_minus_span_ms": 32863
+   },
+   "87cdb84439bd4a9bbb2abf0ce9534531": {
+    "seconds": 0.709,
+    "after_sink_s": 13.6,
+    "ingestion_minus_span_ms": 33941
+   },
+   "7cfda303c2ed48a3ba984edde3e1135c": {
+    "seconds": 0.709,
+    "after_sink_s": 2.6,
+    "ingestion_minus_span_ms": 32174
+   }
+  },
+  "complete": {
+   "5de3012d83cd461e9d1c74d4cc3259df": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 38.6
+   },
+   "1b98be7f07f341b8b6960f9ff75c1a88": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 38.6
+   },
+   "dfe6178c562e42318ff801d3033ca78a": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 38.6
+   },
+   "cfc390757b0c4535b6fd4eac3b2948a9": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 37.6
+   },
+   "9b6442475b1f4e0991a925f62e040325": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 35.6
+   },
+   "56d40fd5f9e949b0b39534743b843768": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 35.6
+   },
+   "ede973ac1977409db36e18c447960583": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 33.6
+   },
+   "9e275ed19205475089f800410260d1e2": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 33.6
+   },
+   "33d7e7001cd24afdbda6b2290bd3b5a0": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 32.6
+   },
+   "71d8c2162b3e40898f2895b6898b0885": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 30.6
+   },
+   "2ba3f7e725a54ff7a381c24017f7dde6": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 28.6
+   },
+   "d7b8dc5010654ffd95dd3d4dc76664aa": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 28.6
+   },
+   "17e0de1afe274f3d9400a573198b3746": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 27.6
+   },
+   "9d7d40735133489fb8b2d08bcb0b32bb": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 25.6
+   },
+   "92abf0fd965c4055bbb77283c79d6501": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 25.6
+   },
+   "105499b48dde44099f9b370e48e8c165": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 23.6
+   },
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 23.6
+   },
+   "85982547a45f4446868870a704878e94": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 21.6
+   },
+   "b8a2e19c056e4ba7a796a487290ed9c6": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 20.6
+   },
+   "6eaa72add1e042abae27fd9f8449bd9e": {
+    "seconds": 0.709,
+    "spans": 6,
+    "after_sink_s": 18.6
+   },
+   "11b0a18a8c1b45a7886cb67de665f324": {
+    "seconds": 0.709,
+    "spans": 6,
+    "after_sink_s": 18.6
+   },
+   "91462b9cfd8a441ba4f71b5e4aef50c7": {
+    "seconds": 0.709,
+    "spans": 6,
+    "after_sink_s": 16.6
+   },
+   "2b5addc83e3f44e6bf69897a91e7b63d": {
+    "seconds": 0.709,
+    "spans": 13,
+    "after_sink_s": 15.6
+   },
+   "87cdb84439bd4a9bbb2abf0ce9534531": {
+    "seconds": 0.709,
+    "spans": 11,
+    "after_sink_s": 13.6
+   },
+   "7cfda303c2ed48a3ba984edde3e1135c": {
+    "seconds": 0.709,
+    "spans": 6,
+    "after_sink_s": 2.6
+   }
+  },
+  "events_not_ours": 0,
+  "xray": {
+   "ok": true,
+   "summaries_in_window": 0,
+   "ours_indexed": 0,
+   "ours_ids": [],
+   "indexing_percent": 1.0,
+   "sample": null
+  },
+  "application_signals": {
+   "ok": true,
+   "services": []
+  },
+  "insights": {
+   "ok": true,
+   "query": "fields @timestamp | filter traceId in [\"105499b48dde44099f9b370e48e8c165\", \"11b0a18a8c1b45a7886cb67de665f324\", \"17e0de1afe274f3d9400a573198b3746\", \"1b98be7f07f341b8b6960f9ff75c1a88\", \"2b5addc83e3f44e6bf69897a91e7b63d\", \"2ba3f7e725a54ff7a381c24017f7dde6\", \"33d7e7001cd24afdbda6b2290bd3b5a0\", \"56d40fd5f9e949b0b39534743b843768\", \"5de3012d83cd461e9d1c74d4cc3259df\", \"6eaa72add1e042abae27fd9f8449bd9e\", \"71d8c2162b3e40898f2895b6898b0885\", \"7cfda303c2ed48a3ba984edde3e1135c\", \"85982547a45f4446868870a704878e94\", \"87cdb84439bd4a9bbb2abf0ce9534531\", \"91462b9cfd8a441ba4f71b5e4aef50c7\", \"92abf0fd965c4055bbb77283c79d6501\", \"9b6442475b1f4e0991a925f62e040325\", \"9d7d40735133489fb8b2d08bcb0b32bb\", \"9e275ed19205475089f800410260d1e2\", \"a4ad2aa0e182475bb9e86f2c4c3fd5b3\", \"b8a2e19c056e4ba7a796a487290ed9c6\", \"cfc390757b0c4535b6fd4eac3b2948a9\", \"d7b8dc5010654ffd95dd3d4dc76664aa\", \"dfe6178c562e42318ff801d3033ca78a\", \"ede973ac1977409db36e18c447960583\"] | stats count(*) as spans by traceId",
+   "status": "Complete",
+   "rows": 25,
+   "spans_by_trace": {
+    "7cfda303c2ed48a3ba984edde3e1135c": 6,
+    "87cdb84439bd4a9bbb2abf0ce9534531": 11,
+    "2b5addc83e3f44e6bf69897a91e7b63d": 13,
+    "91462b9cfd8a441ba4f71b5e4aef50c7": 6,
+    "11b0a18a8c1b45a7886cb67de665f324": 6,
+    "6eaa72add1e042abae27fd9f8449bd9e": 6,
+    "b8a2e19c056e4ba7a796a487290ed9c6": 11,
+    "85982547a45f4446868870a704878e94": 11,
+    "a4ad2aa0e182475bb9e86f2c4c3fd5b3": 11,
+    "105499b48dde44099f9b370e48e8c165": 11,
+    "92abf0fd965c4055bbb77283c79d6501": 11,
+    "9d7d40735133489fb8b2d08bcb0b32bb": 11,
+    "17e0de1afe274f3d9400a573198b3746": 11,
+    "d7b8dc5010654ffd95dd3d4dc76664aa": 11,
+    "2ba3f7e725a54ff7a381c24017f7dde6": 11,
+    "71d8c2162b3e40898f2895b6898b0885": 11,
+    "33d7e7001cd24afdbda6b2290bd3b5a0": 11,
+    "9e275ed19205475089f800410260d1e2": 11,
+    "ede973ac1977409db36e18c447960583": 11,
+    "56d40fd5f9e949b0b39534743b843768": 11,
+    "9b6442475b1f4e0991a925f62e040325": 11,
+    "cfc390757b0c4535b6fd4eac3b2948a9": 11,
+    "dfe6178c562e42318ff801d3033ca78a": 11,
+    "1b98be7f07f341b8b6960f9ff75c1a88": 11,
+    "5de3012d83cd461e9d1c74d4cc3259df": 11
+   },
+   "statistics": {
+    "recordsMatched": 257.0,
+    "recordsScanned": 257.0,
+    "estimatedRecordsSkipped": 0.0,
+    "bytesScanned": 309817.0,
+    "estimatedBytesSkipped": 0.0,
+    "logGroupsScanned": 1.0,
+    "resultCount": 25.0
+   }
+  }
+ },
+ "langfuse": {
+  "base": "http://127.0.0.1:3100",
+  "clock": "time.perf_counter() for intervals and datetime.now(timezone.utc) for stamps, both on this workstation",
+  "started": "2026-11-09T09:52:45.196+00:00",
+  "health": {
+   "ok": true,
+   "status": 200,
+   "body": {
+    "status": "OK",
+    "version": "4.74.0"
+   }
+  },
+  "polled_s": 2.093,
+  "readings": [
+   {
+    "seconds": 2.062,
+    "traces_seen": 25,
+    "traces_complete": 25
+   }
+  ],
+  "errors": [],
+  "traces_expected": 25,
+  "traces_seen": 25,
+  "traces_complete": 25,
+  "first_seen": {
+   "5de3012d83cd461e9d1c74d4cc3259df": {
+    "seconds": 0.324,
+    "after_sink_s": 37.7
+   },
+   "1b98be7f07f341b8b6960f9ff75c1a88": {
+    "seconds": 0.44,
+    "after_sink_s": 37.7
+   },
+   "dfe6178c562e42318ff801d3033ca78a": {
+    "seconds": 0.532,
+    "after_sink_s": 37.7
+   },
+   "cfc390757b0c4535b6fd4eac3b2948a9": {
+    "seconds": 0.581,
+    "after_sink_s": 36.7
+   },
+   "9b6442475b1f4e0991a925f62e040325": {
+    "seconds": 0.672,
+    "after_sink_s": 34.7
+   },
+   "56d40fd5f9e949b0b39534743b843768": {
+    "seconds": 0.764,
+    "after_sink_s": 34.7
+   },
+   "ede973ac1977409db36e18c447960583": {
+    "seconds": 0.856,
+    "after_sink_s": 32.7
+   },
+   "9e275ed19205475089f800410260d1e2": {
+    "seconds": 0.903,
+    "after_sink_s": 32.7
+   },
+   "33d7e7001cd24afdbda6b2290bd3b5a0": {
+    "seconds": 0.992,
+    "after_sink_s": 31.7
+   },
+   "71d8c2162b3e40898f2895b6898b0885": {
+    "seconds": 1.039,
+    "after_sink_s": 29.7
+   },
+   "2ba3f7e725a54ff7a381c24017f7dde6": {
+    "seconds": 1.085,
+    "after_sink_s": 27.7
+   },
+   "d7b8dc5010654ffd95dd3d4dc76664aa": {
+    "seconds": 1.18,
+    "after_sink_s": 27.7
+   },
+   "17e0de1afe274f3d9400a573198b3746": {
+    "seconds": 1.227,
+    "after_sink_s": 26.7
+   },
+   "9d7d40735133489fb8b2d08bcb0b32bb": {
+    "seconds": 1.32,
+    "after_sink_s": 24.7
+   },
+   "92abf0fd965c4055bbb77283c79d6501": {
+    "seconds": 1.367,
+    "after_sink_s": 24.7
+   },
+   "105499b48dde44099f9b370e48e8c165": {
+    "seconds": 1.456,
+    "after_sink_s": 22.7
+   },
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": {
+    "seconds": 1.544,
+    "after_sink_s": 22.7
+   },
+   "85982547a45f4446868870a704878e94": {
+    "seconds": 1.636,
+    "after_sink_s": 20.7
+   },
+   "b8a2e19c056e4ba7a796a487290ed9c6": {
+    "seconds": 1.683,
+    "after_sink_s": 19.7
+   },
+   "6eaa72add1e042abae27fd9f8449bd9e": {
+    "seconds": 1.78,
+    "after_sink_s": 17.7
+   },
+   "11b0a18a8c1b45a7886cb67de665f324": {
+    "seconds": 1.827,
+    "after_sink_s": 17.7
+   },
+   "91462b9cfd8a441ba4f71b5e4aef50c7": {
+    "seconds": 1.879,
+    "after_sink_s": 15.7
+   },
+   "2b5addc83e3f44e6bf69897a91e7b63d": {
+    "seconds": 1.928,
+    "after_sink_s": 14.7
+   },
+   "87cdb84439bd4a9bbb2abf0ce9534531": {
+    "seconds": 2.016,
+    "after_sink_s": 12.7
+   },
+   "7cfda303c2ed48a3ba984edde3e1135c": {
+    "seconds": 2.062,
+    "after_sink_s": 1.7
+   }
+  },
+  "complete": {
+   "5de3012d83cd461e9d1c74d4cc3259df": {
+    "seconds": 0.324,
+    "observations": 11,
+    "after_sink_s": 37.7
+   },
+   "1b98be7f07f341b8b6960f9ff75c1a88": {
+    "seconds": 0.44,
+    "observations": 11,
+    "after_sink_s": 37.7
+   },
+   "dfe6178c562e42318ff801d3033ca78a": {
+    "seconds": 0.532,
+    "observations": 11,
+    "after_sink_s": 37.7
+   },
+   "cfc390757b0c4535b6fd4eac3b2948a9": {
+    "seconds": 0.581,
+    "observations": 11,
+    "after_sink_s": 36.7
+   },
+   "9b6442475b1f4e0991a925f62e040325": {
+    "seconds": 0.672,
+    "observations": 11,
+    "after_sink_s": 34.7
+   },
+   "56d40fd5f9e949b0b39534743b843768": {
+    "seconds": 0.764,
+    "observations": 11,
+    "after_sink_s": 34.7
+   },
+   "ede973ac1977409db36e18c447960583": {
+    "seconds": 0.856,
+    "observations": 11,
+    "after_sink_s": 32.7
+   },
+   "9e275ed19205475089f800410260d1e2": {
+    "seconds": 0.903,
+    "observations": 11,
+    "after_sink_s": 32.7
+   },
+   "33d7e7001cd24afdbda6b2290bd3b5a0": {
+    "seconds": 0.992,
+    "observations": 11,
+    "after_sink_s": 31.7
+   },
+   "71d8c2162b3e40898f2895b6898b0885": {
+    "seconds": 1.039,
+    "observations": 11,
+    "after_sink_s": 29.7
+   },
+   "2ba3f7e725a54ff7a381c24017f7dde6": {
+    "seconds": 1.085,
+    "observations": 11,
+    "after_sink_s": 27.7
+   },
+   "d7b8dc5010654ffd95dd3d4dc76664aa": {
+    "seconds": 1.18,
+    "observations": 11,
+    "after_sink_s": 27.7
+   },
+   "17e0de1afe274f3d9400a573198b3746": {
+    "seconds": 1.227,
+    "observations": 11,
+    "after_sink_s": 26.7
+   },
+   "9d7d40735133489fb8b2d08bcb0b32bb": {
+    "seconds": 1.32,
+    "observations": 11,
+    "after_sink_s": 24.7
+   },
+   "92abf0fd965c4055bbb77283c79d6501": {
+    "seconds": 1.367,
+    "observations": 11,
+    "after_sink_s": 24.7
+   },
+   "105499b48dde44099f9b370e48e8c165": {
+    "seconds": 1.456,
+    "observations": 11,
+    "after_sink_s": 22.7
+   },
+   "a4ad2aa0e182475bb9e86f2c4c3fd5b3": {
+    "seconds": 1.544,
+    "observations": 11,
+    "after_sink_s": 22.7
+   },
+   "85982547a45f4446868870a704878e94": {
+    "seconds": 1.636,
+    "observations": 11,
+    "after_sink_s": 20.7
+   },
+   "b8a2e19c056e4ba7a796a487290ed9c6": {
+    "seconds": 1.683,
+    "observations": 11,
+    "after_sink_s": 19.7
+   },
+   "6eaa72add1e042abae27fd9f8449bd9e": {
+    "seconds": 1.78,
+    "observations": 6,
+    "after_sink_s": 17.7
+   },
+   "11b0a18a8c1b45a7886cb67de665f324": {
+    "seconds": 1.827,
+    "observations": 6,
+    "after_sink_s": 17.7
+   },
+   "91462b9cfd8a441ba4f71b5e4aef50c7": {
+    "seconds": 1.879,
+    "observations": 6,
+    "after_sink_s": 15.7
+   },
+   "2b5addc83e3f44e6bf69897a91e7b63d": {
+    "seconds": 1.928,
+    "observations": 13,
+    "after_sink_s": 14.7
+   },
+   "87cdb84439bd4a9bbb2abf0ce9534531": {
+    "seconds": 2.016,
+    "observations": 11,
+    "after_sink_s": 12.7
+   },
+   "7cfda303c2ed48a3ba984edde3e1135c": {
+    "seconds": 2.062,
+    "observations": 6,
+    "after_sink_s": 1.7
+   }
+  },
+  "comparison": {
+   "traces": [
+    {
+     "trace_id": "105499b48dde44099f9b370e48e8c165",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "11b0a18a8c1b45a7886cb67de665f324",
+     "spans_kept": 6,
+     "observations": 6,
+     "same_span_ids": 6,
+     "observation_types": {
+      "GENERATION": 1,
+      "SPAN": 4,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "17e0de1afe274f3d9400a573198b3746",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "1b98be7f07f341b8b6960f9ff75c1a88",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "2b5addc83e3f44e6bf69897a91e7b63d",
+     "spans_kept": 13,
+     "observations": 13,
+     "same_span_ids": 13,
+     "observation_types": {
+      "GENERATION": 4,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "2ba3f7e725a54ff7a381c24017f7dde6",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "33d7e7001cd24afdbda6b2290bd3b5a0",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "56d40fd5f9e949b0b39534743b843768",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "5de3012d83cd461e9d1c74d4cc3259df",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "6eaa72add1e042abae27fd9f8449bd9e",
+     "spans_kept": 6,
+     "observations": 6,
+     "same_span_ids": 6,
+     "observation_types": {
+      "GENERATION": 1,
+      "SPAN": 4,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "71d8c2162b3e40898f2895b6898b0885",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "7cfda303c2ed48a3ba984edde3e1135c",
+     "spans_kept": 6,
+     "observations": 6,
+     "same_span_ids": 6,
+     "observation_types": {
+      "GENERATION": 1,
+      "SPAN": 4,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "85982547a45f4446868870a704878e94",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "87cdb84439bd4a9bbb2abf0ce9534531",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "91462b9cfd8a441ba4f71b5e4aef50c7",
+     "spans_kept": 6,
+     "observations": 6,
+     "same_span_ids": 6,
+     "observation_types": {
+      "GENERATION": 1,
+      "SPAN": 4,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "92abf0fd965c4055bbb77283c79d6501",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "9b6442475b1f4e0991a925f62e040325",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "9d7d40735133489fb8b2d08bcb0b32bb",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "9e275ed19205475089f800410260d1e2",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "a4ad2aa0e182475bb9e86f2c4c3fd5b3",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "b8a2e19c056e4ba7a796a487290ed9c6",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "cfc390757b0c4535b6fd4eac3b2948a9",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "d7b8dc5010654ffd95dd3d4dc76664aa",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "dfe6178c562e42318ff801d3033ca78a",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    },
+    {
+     "trace_id": "ede973ac1977409db36e18c447960583",
+     "spans_kept": 11,
+     "observations": 11,
+     "same_span_ids": 11,
+     "observation_types": {
+      "GENERATION": 2,
+      "TOOL": 3,
+      "SPAN": 5,
+      "AGENT": 1
+     },
+     "root_observations": 1
+    }
+   ],
+   "gateway_spans_with_cost": [
+    {
+     "trace_id": "105499b48dde44099f9b370e48e8c165",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000408,
+     "langfuse_cost": 0.000408,
+     "cost_equal": true,
+     "span_tokens": [
+      76,
+      12
+     ],
+     "langfuse_tokens": [
+      76,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "105499b48dde44099f9b370e48e8c165",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000678,
+     "langfuse_cost": 0.000678,
+     "cost_equal": true,
+     "span_tokens": [
+      101,
+      25
+     ],
+     "langfuse_tokens": [
+      101,
+      25
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "11b0a18a8c1b45a7886cb67de665f324",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00042,
+     "langfuse_cost": 0.00042,
+     "cost_equal": true,
+     "span_tokens": [
+      80,
+      12
+     ],
+     "langfuse_tokens": [
+      80,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "17e0de1afe274f3d9400a573198b3746",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00042,
+     "langfuse_cost": 0.00042,
+     "cost_equal": true,
+     "span_tokens": [
+      80,
+      12
+     ],
+     "langfuse_tokens": [
+      80,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "17e0de1afe274f3d9400a573198b3746",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000654,
+     "langfuse_cost": 0.000654,
+     "cost_equal": true,
+     "span_tokens": [
+      103,
+      23
+     ],
+     "langfuse_tokens": [
+      103,
+      23
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "1b98be7f07f341b8b6960f9ff75c1a88",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000384,
+     "langfuse_cost": 0.000384,
+     "cost_equal": true,
+     "span_tokens": [
+      78,
+      10
+     ],
+     "langfuse_tokens": [
+      78,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "1b98be7f07f341b8b6960f9ff75c1a88",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000408,
+     "langfuse_cost": 0.000408,
+     "cost_equal": true,
+     "span_tokens": [
+      101,
+      7
+     ],
+     "langfuse_tokens": [
+      101,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "2b5addc83e3f44e6bf69897a91e7b63d",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-fallback",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "2b5addc83e3f44e6bf69897a91e7b63d",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-fallback",
+     "span_cost": 0.000432,
+     "langfuse_cost": 0.000432,
+     "cost_equal": true,
+     "span_tokens": [
+      109,
+      7
+     ],
+     "langfuse_tokens": [
+      109,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "2ba3f7e725a54ff7a381c24017f7dde6",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000423,
+     "langfuse_cost": 0.000423,
+     "cost_equal": true,
+     "span_tokens": [
+      81,
+      12
+     ],
+     "langfuse_tokens": [
+      81,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "2ba3f7e725a54ff7a381c24017f7dde6",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000786,
+     "langfuse_cost": 0.000786,
+     "cost_equal": true,
+     "span_tokens": [
+      137,
+      25
+     ],
+     "langfuse_tokens": [
+      137,
+      25
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "33d7e7001cd24afdbda6b2290bd3b5a0",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "33d7e7001cd24afdbda6b2290bd3b5a0",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000363,
+     "langfuse_cost": 0.000363,
+     "cost_equal": true,
+     "span_tokens": [
+      86,
+      7
+     ],
+     "langfuse_tokens": [
+      86,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "56d40fd5f9e949b0b39534743b843768",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000378,
+     "langfuse_cost": 0.000378,
+     "cost_equal": true,
+     "span_tokens": [
+      76,
+      10
+     ],
+     "langfuse_tokens": [
+      76,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "56d40fd5f9e949b0b39534743b843768",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000402,
+     "langfuse_cost": 0.000402,
+     "cost_equal": true,
+     "span_tokens": [
+      99,
+      7
+     ],
+     "langfuse_tokens": [
+      99,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "5de3012d83cd461e9d1c74d4cc3259df",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "5de3012d83cd461e9d1c74d4cc3259df",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000504,
+     "langfuse_cost": 0.000504,
+     "cost_equal": true,
+     "span_tokens": [
+      103,
+      13
+     ],
+     "langfuse_tokens": [
+      103,
+      13
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "6eaa72add1e042abae27fd9f8449bd9e",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000426,
+     "langfuse_cost": 0.000426,
+     "cost_equal": true,
+     "span_tokens": [
+      77,
+      13
+     ],
+     "langfuse_tokens": [
+      77,
+      13
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "71d8c2162b3e40898f2895b6898b0885",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000405,
+     "langfuse_cost": 0.000405,
+     "cost_equal": true,
+     "span_tokens": [
+      75,
+      12
+     ],
+     "langfuse_tokens": [
+      75,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "71d8c2162b3e40898f2895b6898b0885",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00072,
+     "langfuse_cost": 0.00072,
+     "cost_equal": true,
+     "span_tokens": [
+      115,
+      25
+     ],
+     "langfuse_tokens": [
+      115,
+      25
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "85982547a45f4446868870a704878e94",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000408,
+     "langfuse_cost": 0.000408,
+     "cost_equal": true,
+     "span_tokens": [
+      76,
+      12
+     ],
+     "langfuse_tokens": [
+      76,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "85982547a45f4446868870a704878e94",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000387,
+     "langfuse_cost": 0.000387,
+     "cost_equal": true,
+     "span_tokens": [
+      84,
+      9
+     ],
+     "langfuse_tokens": [
+      84,
+      9
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "87cdb84439bd4a9bbb2abf0ce9534531",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "87cdb84439bd4a9bbb2abf0ce9534531",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000396,
+     "langfuse_cost": 0.000396,
+     "cost_equal": true,
+     "span_tokens": [
+      97,
+      7
+     ],
+     "langfuse_tokens": [
+      97,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "91462b9cfd8a441ba4f71b5e4aef50c7",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.510417,
+     "langfuse_cost": 0.510417,
+     "cost_equal": true,
+     "span_tokens": [
+      170074,
+      13
+     ],
+     "langfuse_tokens": [
+      170074,
+      13
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "92abf0fd965c4055bbb77283c79d6501",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00042,
+     "langfuse_cost": 0.00042,
+     "cost_equal": true,
+     "span_tokens": [
+      80,
+      12
+     ],
+     "langfuse_tokens": [
+      80,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "92abf0fd965c4055bbb77283c79d6501",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000399,
+     "langfuse_cost": 0.000399,
+     "cost_equal": true,
+     "span_tokens": [
+      88,
+      9
+     ],
+     "langfuse_tokens": [
+      88,
+      9
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9b6442475b1f4e0991a925f62e040325",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000375,
+     "langfuse_cost": 0.000375,
+     "cost_equal": true,
+     "span_tokens": [
+      75,
+      10
+     ],
+     "langfuse_tokens": [
+      75,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9b6442475b1f4e0991a925f62e040325",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000489,
+     "langfuse_cost": 0.000489,
+     "cost_equal": true,
+     "span_tokens": [
+      98,
+      13
+     ],
+     "langfuse_tokens": [
+      98,
+      13
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9d7d40735133489fb8b2d08bcb0b32bb",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00042,
+     "langfuse_cost": 0.00042,
+     "cost_equal": true,
+     "span_tokens": [
+      80,
+      12
+     ],
+     "langfuse_tokens": [
+      80,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9d7d40735133489fb8b2d08bcb0b32bb",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.0006,
+     "langfuse_cost": 0.0006,
+     "cost_equal": true,
+     "span_tokens": [
+      100,
+      20
+     ],
+     "langfuse_tokens": [
+      100,
+      20
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9e275ed19205475089f800410260d1e2",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000384,
+     "langfuse_cost": 0.000384,
+     "cost_equal": true,
+     "span_tokens": [
+      78,
+      10
+     ],
+     "langfuse_tokens": [
+      78,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "9e275ed19205475089f800410260d1e2",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000408,
+     "langfuse_cost": 0.000408,
+     "cost_equal": true,
+     "span_tokens": [
+      101,
+      7
+     ],
+     "langfuse_tokens": [
+      101,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "a4ad2aa0e182475bb9e86f2c4c3fd5b3",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.00042,
+     "langfuse_cost": 0.00042,
+     "cost_equal": true,
+     "span_tokens": [
+      80,
+      12
+     ],
+     "langfuse_tokens": [
+      80,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "a4ad2aa0e182475bb9e86f2c4c3fd5b3",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000399,
+     "langfuse_cost": 0.000399,
+     "cost_equal": true,
+     "span_tokens": [
+      88,
+      9
+     ],
+     "langfuse_tokens": [
+      88,
+      9
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "b8a2e19c056e4ba7a796a487290ed9c6",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000423,
+     "langfuse_cost": 0.000423,
+     "cost_equal": true,
+     "span_tokens": [
+      81,
+      12
+     ],
+     "langfuse_tokens": [
+      81,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "b8a2e19c056e4ba7a796a487290ed9c6",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000402,
+     "langfuse_cost": 0.000402,
+     "cost_equal": true,
+     "span_tokens": [
+      89,
+      9
+     ],
+     "langfuse_tokens": [
+      89,
+      9
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "cfc390757b0c4535b6fd4eac3b2948a9",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000384,
+     "langfuse_cost": 0.000384,
+     "cost_equal": true,
+     "span_tokens": [
+      78,
+      10
+     ],
+     "langfuse_tokens": [
+      78,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "cfc390757b0c4535b6fd4eac3b2948a9",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000426,
+     "langfuse_cost": 0.000426,
+     "cost_equal": true,
+     "span_tokens": [
+      107,
+      7
+     ],
+     "langfuse_tokens": [
+      107,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "d7b8dc5010654ffd95dd3d4dc76664aa",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000423,
+     "langfuse_cost": 0.000423,
+     "cost_equal": true,
+     "span_tokens": [
+      81,
+      12
+     ],
+     "langfuse_tokens": [
+      81,
+      12
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "d7b8dc5010654ffd95dd3d4dc76664aa",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000657,
+     "langfuse_cost": 0.000657,
+     "cost_equal": true,
+     "span_tokens": [
+      104,
+      23
+     ],
+     "langfuse_tokens": [
+      104,
+      23
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "dfe6178c562e42318ff801d3033ca78a",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "dfe6178c562e42318ff801d3033ca78a",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000432,
+     "langfuse_cost": 0.000432,
+     "cost_equal": true,
+     "span_tokens": [
+      109,
+      7
+     ],
+     "langfuse_tokens": [
+      109,
+      7
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "ede973ac1977409db36e18c447960583",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000372,
+     "langfuse_cost": 0.000372,
+     "cost_equal": true,
+     "span_tokens": [
+      74,
+      10
+     ],
+     "langfuse_tokens": [
+      74,
+      10
+     ],
+     "tokens_equal": true
+    },
+    {
+     "trace_id": "ede973ac1977409db36e18c447960583",
+     "span": "chat larkspur-chat",
+     "found": true,
+     "type": "GENERATION",
+     "model": "fake-primary",
+     "span_cost": 0.000414,
+     "langfuse_cost": 0.000414,
+     "cost_equal": true,
+     "span_tokens": [
+      103,
+      7
+     ],
+     "langfuse_tokens": [
+      103,
+      7
+     ],
+     "tokens_equal": true
+    }
+   ],
+   "traces_with_every_span": 25,
+   "cost_read_from_gen_ai_usage_cost": 45,
+   "cost_rows": 45,
+   "tracestate_anywhere": false,
+   "span_attributes_kept_as_metadata": true
+  },
+  "sample_trace_keys": null,
+  "sample_observation": {
+   "id": "14d39f1706a7a97c",
+   "traceId": "5de3012d83cd461e9d1c74d4cc3259df",
+   "startTime": "2026-11-09T09:51:35.681Z",
+   "endTime": "2026-11-09T09:51:35.685Z",
+   "projectId": "ch16-lab",
+   "parentObservationId": "6b73b1b4867ef771",
+   "type": "GENERATION",
+   "name": "chat larkspur-chat",
+   "level": "DEFAULT",
+   "statusMessage": "",
+   "version": "",
+   "environment": "default",
+   "completionStartTime": null,
+   "createdAt": "2026-11-09T09:52:09.047Z",
+   "updatedAt": "2026-11-09T09:52:09.047Z",
+   "input": null,
+   "output": null,
+   "metadata": {
+    "scope.attributes.tailsampling.policy": "share-of-the-rest",
+    "scope.name": "larkspur.lab.ch05",
+    "resourceAttributes.service.namespace": "larkspur-lab-ch05",
+    "resourceAttributes.service.name": "gateway",
+    "resourceAttributes.service.instance.id": "8cd4d7ba-723f-4803-b86e-65f29cfa6439",
+    "resourceAttributes.telemetry.sdk.version": "1.45.1",
+    "resourceAttributes.telemetry.sdk.name": "opentelemetry",
+    "resourceAttributes.telemetry.sdk.language": "python",
+    "attributes.gen_ai.usage.cost": 0.000504,
+    "attributes.larkspur.cost_usd": 0.000504,
+    "attributes.larkspur.fallback": false,
+    "attributes.larkspur.region": "ca-central-1",
+    "attributes.larkspur.deployment": "primary",
+    "attributes.larkspur.served_alias": "larkspur-chat",
+    "attributes.larkspur.data_class": "internal",
+    "attributes.larkspur.workflow": "w2-ops-assistant",
+    "attributes.larkspur.trace_id": "5de3012d83cd461e9d1c74d4cc3259df",
+    "attributes.larkspur.component": "gateway",
+    "attributes.gen_ai.usage.output_tokens": 13,
+    "attributes.gen_ai.usage.input_tokens": 103,
+    "attributes.gen_ai.response.model": "fake-primary",
+    "attributes.gen_ai.request.model": "larkspur-chat",
+    "attributes.gen_ai.operation.name": "chat"
+   },
+   "model": "fake-primary",
+   "internalModelId": "",
+   "modelParameters": {},
+   "usageDetails": {
+    "input": 103,
+    "output": 13,
+    "total": 116
+   },
+   "inputUsage": 103,
+   "outputUsage": 13,
+   "totalUsage": 116,
+   "costDetails": {
+    "total": 0.000504
+   },
+   "inputCost": null,
+   "outputCost": null,
+   "totalCost": 0.000504,
+   "usagePricingTierId": null,
+   "usagePricingTierName": null,
+   "latency": 0.004,
+   "timeToFirstToken": null,
+   "userId": "",
+   "sessionId": "",
+   "isRootObservation": false,
+   "traceName": null,
+   "release": "",
+   "tags": [],
+   "bookmarked": false,
+   "public": false,
+   "modelId": null,
+   "inputPrice": null,
+   "outputPrice": null,
+   "totalPrice": null
+  },
+  "fields_requested": "core,basic,time,io,metadata,model,usage,metrics,trace_context",
+  "detail_routes": {
+   "GET /api/public/observations/{id}": "404: not available on deployments running in Langfuse v4 events_only mode",
+   "GET /api/public/traces/{traceId}": "404: the same message",
+   "GET /api/public/v2/metrics": "not tried",
+   "GET /api/public/metrics": "404: the same message",
+   "GET /api/public/v2/observations?fields=core,basic,time,io,metadata,model,usage,metrics,trace_context": "200: usage, cost, model and metadata on every observation"
+  },
+  "observation_metadata_keys": [
+   "attributes.gen_ai.operation.name",
+   "attributes.gen_ai.request.model",
+   "attributes.gen_ai.response.model",
+   "attributes.gen_ai.usage.cost",
+   "attributes.gen_ai.usage.input_tokens",
+   "attributes.gen_ai.usage.output_tokens",
+   "attributes.larkspur.component",
+   "attributes.larkspur.cost_usd",
+   "attributes.larkspur.data_class",
+   "attributes.larkspur.deployment",
+   "attributes.larkspur.fallback",
+   "attributes.larkspur.region",
+   "attributes.larkspur.served_alias",
+   "attributes.larkspur.trace_id",
+   "attributes.larkspur.workflow",
+   "resourceAttributes.service.instance.id",
+   "resourceAttributes.service.name",
+   "resourceAttributes.service.namespace",
+   "resourceAttributes.telemetry.sdk.language",
+   "resourceAttributes.telemetry.sdk.name",
+   "resourceAttributes.telemetry.sdk.version",
+   "scope.attributes.tailsampling.policy",
+   "scope.name"
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+# Scale on the queue, not on GPU utilization: a GPU at 100 percent can still be serving everyone
+# on time, while waiting requests mean people are waiting. KServe's LLM guidance uses the same
+# vLLM metrics. Two replicas minimum (availability); four maximum (the GPU budget for this alias).
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: vllm-gpt-oss-20b
+  namespace: llm-serving
+spec:
+  scaleTargetRef:
+    name: vllm-gpt-oss-20b
+  minReplicaCount: 2
+  maxReplicaCount: 4
+  # KEDA's cooldownPeriod applies only when scaling to zero, which this never does; between two
+  # and four the Horizontal Pod Autoscaler decides. A new replica takes minutes to load, so it
+  # waits ten minutes after the queue drains and then removes one replica at a time.
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 600
+          policies:
+            - {type: Pods, value: 1, periodSeconds: 300}
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus.monitoring.svc:9090
+        query: sum(vllm:num_requests_waiting{namespace="llm-serving", model_name="gpt-oss-20b"})
+        # AverageValue, KEDA's default: four waiting per replica on average, so with two replicas
+        # the third is asked for at about nine waiting requests
+        threshold: "4"

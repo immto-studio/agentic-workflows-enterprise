@@ -1,0 +1,2094 @@
+{
+ "kind": "baseline",
+ "schema": 1,
+ "source": {
+  "kind": "kept",
+  "results": "labs/ch15/results/2026-11-03",
+  "model": "gpt-oss-20b",
+  "judge": "gemma4-12b",
+  "runs": {
+   "skeleton": "2026-10-29",
+   "w1": "2026-10-29",
+   "w2": "2026-11-02",
+   "w3": "2026-11-02",
+   "w4": "2026-11-02",
+   "w5": "2026-11-03/after-review"
+  },
+  "files": [
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-gateway-gemma4-12b.jsonl",
+    "sha256": "9388cf165959aea7de2fe632299ccc8968b57cfddf1e57cdd14cd7e1bc17c35b"
+   },
+   {
+    "path": "labs/ch15/labels/sample.json",
+    "sha256": "1c49e8d3c21c90d03374496e6cd46d8d43ae9d402be22d6f934207c7682c93c7"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-skeleton-gpt-oss-20b.json",
+    "sha256": "135999451fd5054d54c8e2894f2d84b370cebb740675244a1d06c3c7b21cc7af"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-w1-gpt-oss-20b.json",
+    "sha256": "a39d426ba3fa8079d112c232d8ce219935b5cff26166697d229a91901191a8ca"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-w1-gemma4-12b.json",
+    "sha256": "2f9ee15e432b2fc381f56e5a30a46fa9edbbe044e22932cf5b4bac89ab941a5d"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-w2-gpt-oss-20b.json",
+    "sha256": "144ff2eb3f080e98f63933670400097b11ff811120625e6f3cd39935b3e28025"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-w2-gemma4-12b.json",
+    "sha256": "b1e26040487d5e4738cf844b27a876090cdbdee4c64f6f65b688ce32beaeeccc"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-w3-gpt-oss-20b.json",
+    "sha256": "dc81c074f9eafb7748a1eb4f587c54ba65b2eee73150fb111ab54984154adb05"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-w3-gemma4-12b.json",
+    "sha256": "6a405fcb1134128ac3c71760b4d90e324c69cc5950e4414e47504321d5ff360b"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-w4-gpt-oss-20b.json",
+    "sha256": "305ace26fac062f12e0ee15b1df12535b441a61c66b9649729768330ea92802a"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-w4-gemma4-12b.json",
+    "sha256": "6212466bba55fd01164dc8e2f82072f8dd6ed99fdf989a3c5a37ff81ddab0939"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/replay-w5-gpt-oss-20b.json",
+    "sha256": "27fbeb779701b79658d1706e34037fca74fd5a04dc89ba33638ad8525b2bc3ec"
+   },
+   {
+    "path": "labs/ch15/results/2026-11-03/judge-w5-gemma4-12b.json",
+    "sha256": "417b9361daa7011131fa8c79bf9206fcc89b26ca742db183e71e75b5be74134f"
+   }
+  ],
+  "digests": "No kept workflow run recorded a model digest. The lab's records of one are step 3's judge runs and step 6's red-team run of 3 November 2026, after these runs: gpt-oss:20b a0b38d0b19f7 on Ollama 0.22.1 and gemma4:12b 6114515d63c1 on Ollama 0.40.13."
+ },
+ "pins": {
+  "prompt": "982213048b29703bb0515181efb2ca1e8eb121db6da8a43a7655b45247815d22",
+  "judge": {
+   "model": "gemma4-12b",
+   "served": "ollama_chat/gemma4:12b",
+   "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+   "server": "0.40.13",
+   "aliases": {
+    "larkspur-chat": "ollama_chat/gemma4:12b",
+    "larkspur-chat-restricted": "ollama_chat/gemma4:12b"
+   },
+   "config": {
+    "source": "workflows/w2-ops-assistant/gateway/litellm.gemma.yaml",
+    "sha256": "b4aabf9c69d47cf4766e0081ac240410f45abc0cd223578049715768741e94e9"
+   }
+  },
+  "workflows": {
+   "skeleton": {
+    "set": {
+     "version": "5ece15f1a8b4fd5f8972ebc723199eb3b0607df4506a5c93e051b3f1b9a19874",
+     "cases": 20
+    },
+    "rubric": null,
+    "aliases": {
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "the run recorded none; its runner starts the gateway with labs/ch09/gateway/litellm.config.yaml, which has served these aliases since 6e70153, before the run",
+    "models": {
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": "0.40.13",
+      "digest_from": "the run recorded none",
+      "server_from": "chapter 9's measurement of the same day on the same server (labs/ch09/results/2026-10-29/gpu-memory.json)"
+     }
+    }
+   },
+   "w1": {
+    "set": {
+     "version": "1e1c2fbf3a70f53b671f92dcbfceeca2621e12616046868b7571ab821100b8cb",
+     "cases": 25
+    },
+    "rubric": "65655a95287883fbc23cbe4b4b47b802d7f2a3d730c267366886fb42bccc401d",
+    "aliases": {
+     "larkspur-embed": "ollama/qwen3-embedding:0.6b",
+     "larkspur-chat": "ollama_chat/gpt-oss:20b",
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "recorded by the run (workflows/w1-knowledge-assistant/eval/results/2026-10-29/answers-gpt-oss-20b.json, meta.gateway_models)",
+    "models": {
+     "ollama/qwen3-embedding:0.6b": {
+      "digest": null,
+      "server": "0.22.1",
+      "digest_from": "the run recorded none",
+      "server_from": "recorded by the run (meta.ollama)"
+     },
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": "0.22.1",
+      "digest_from": "the run recorded none",
+      "server_from": "recorded by the run (meta.ollama)"
+     }
+    }
+   },
+   "w2": {
+    "set": {
+     "version": "8445de70457b49bd433d8014e8d872e4bd475ba7ab6723ad46f4922fac638793",
+     "cases": 25
+    },
+    "rubric": "2838c8572fba038a96854bec60147c5dec08b1765184e1d9cff72513cb4318cd",
+    "aliases": {
+     "larkspur-chat": "ollama_chat/gpt-oss:20b",
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "recorded by the run (workflows/w2-ops-assistant/eval/results/2026-11-02/answers-gpt-oss-20b.json, meta.gateway_models)",
+    "models": {
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": "0.40.13",
+      "digest_from": "the run recorded none",
+      "server_from": "recorded by the run (meta.ollama)"
+     }
+    }
+   },
+   "w3": {
+    "set": {
+     "version": "44635897b4e8ec51ad7e76d03bde1e7e3e700e1ebfd79247305e9ebecd7e5936",
+     "cases": 24
+    },
+    "rubric": "a020f218c57dfa7ac370c607e684448b1f584bac4a53a01749c12ba57358a5cb",
+    "aliases": {
+     "larkspur-chat": "ollama_chat/gpt-oss:20b",
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "the run recorded none; its runner starts the gateway with workflows/w2-ops-assistant/gateway/litellm.config.yaml, which has served these aliases since a8fb2a1, before the run",
+    "models": {
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": null,
+      "digest_from": "the run recorded none",
+      "server_from": "the run recorded none"
+     }
+    }
+   },
+   "w4": {
+    "set": {
+     "version": "506eb14dcd423560752d7cf7eb4fac1447d86c7cdc91976a5ca1da91f8c56ddb",
+     "cases": 8
+    },
+    "rubric": "d8f4d41bdfcef915c93125a93f404c97b2f8a15643b74c636a813fc8b8be53ab",
+    "aliases": {
+     "larkspur-chat": "ollama_chat/gpt-oss:20b",
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "the run recorded none; its runner starts the gateway with workflows/w2-ops-assistant/gateway/litellm.config.yaml, which has served these aliases since a8fb2a1, before the run",
+    "models": {
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": "0.22.1",
+      "digest_from": "the run recorded none",
+      "server_from": "recorded by the run (summary versions.ollama)"
+     }
+    }
+   },
+   "w5": {
+    "set": {
+     "version": "7644f1e9a1d6e929f81709d93e625b06e7513e66846d8f252e2bf34a18ace121",
+     "cases": 3
+    },
+    "rubric": "a14e5f38b7e68c9cfde261424c66b0524d51e73460782221ca52529741e72b35",
+    "aliases": {
+     "larkspur-chat": "ollama_chat/gpt-oss:20b",
+     "larkspur-chat-restricted": "ollama_chat/gpt-oss:20b"
+    },
+    "aliases_from": "the run recorded none; its runner starts the gateway with workflows/w2-ops-assistant/gateway/litellm.config.yaml, which has served these aliases since a8fb2a1, before the run",
+    "models": {
+     "ollama_chat/gpt-oss:20b": {
+      "digest": null,
+      "server": "0.22.1",
+      "digest_from": "the run recorded none",
+      "server_from": "recorded by the run (summary versions.ollama)"
+     }
+    }
+   }
+  }
+ },
+ "workflows": {
+  "skeleton": {
+   "run": "2026-10-29",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "pods-claims-api": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-policy-admin": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-billing-worker": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-quote-engine": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-document-ocr": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-fraud-scoring": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-customer-portal": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-notification-gateway": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "pods-unknown-service": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-claims-api-default-window": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": false,
+     "trajectory.sequence": false,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-claims-api-120": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-claims-api-5": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-document-ocr-30": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-fraud-scoring-hour": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-billing-worker-2h": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-billing-worker-today": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-policy-admin-24h": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-notification-gateway-today": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "alerts-document-ocr-10": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "refuse-scale": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "trajectory.sequence": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 17,
+     "failed": 3,
+     "undecided": 0
+    },
+    "deterministic.tool_call": {
+     "passed": 19,
+     "failed": 1,
+     "undecided": 0
+    },
+    "deterministic.facts": {
+     "passed": 17,
+     "failed": 3,
+     "undecided": 0
+    },
+    "trajectory.sequence": {
+     "passed": 19,
+     "failed": 1,
+     "undecided": 0
+    },
+    "trajectory.allowed": {
+     "passed": 20,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.forbidden": {
+     "passed": 20,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.budget": {
+     "passed": 20,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "tokens": {
+    "workflow": {
+     "calls": 38,
+     "prompt": 13709,
+     "completion": 2581,
+     "from": "each call's usage as the gateway returned it, kept by the run"
+    }
+   }
+  },
+  "w1": {
+   "run": "2026-10-29",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "gq-01/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.citation": null,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.refusal": true,
+     "deterministic.planted": null,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-02/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.citation": null,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.refusal": true,
+     "deterministic.planted": null,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-03/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.citation": null,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.refusal": true,
+     "deterministic.planted": null,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-04/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.citation": null,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.refusal": true,
+     "deterministic.planted": null,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-05/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.citation": null,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.refusal": true,
+     "deterministic.planted": null,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-06/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-07/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-08/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-09/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-10/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-11/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": true,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-12/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": true,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-13/oncall.engineer": {
+     "scorer": false,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": false,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-14/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-15/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-16/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-17/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-18/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-19/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-20/oncall.engineer": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": null,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-01/vault.custodian": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-02/pci.operator": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-03/incident.responder": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-04/ea.lead": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    },
+    "gq-05/regulatory.liaison": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.citation": true,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.refusal": null,
+     "deterministic.planted": null,
+     "trajectory.forbidden": null,
+     "trajectory.budget": true,
+     "trajectory.route": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 24,
+     "failed": 1,
+     "undecided": 0
+    },
+    "deterministic.facts": {
+     "passed": 20,
+     "failed": 0,
+     "undecided": 5
+    },
+    "deterministic.citation": {
+     "passed": 20,
+     "failed": 0,
+     "undecided": 5
+    },
+    "deterministic.route": {
+     "passed": 5,
+     "failed": 0,
+     "undecided": 20
+    },
+    "deterministic.labels": {
+     "passed": 5,
+     "failed": 0,
+     "undecided": 20
+    },
+    "deterministic.refusal": {
+     "passed": 5,
+     "failed": 0,
+     "undecided": 20
+    },
+    "deterministic.planted": {
+     "passed": 2,
+     "failed": 1,
+     "undecided": 22
+    },
+    "trajectory.forbidden": {
+     "passed": 5,
+     "failed": 0,
+     "undecided": 20
+    },
+    "trajectory.budget": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.route": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "judge": {
+    "judged": 20,
+    "withheld": 9,
+    "right": null,
+    "wrong": null,
+    "no_verdict": null,
+    "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+   },
+   "tokens": {
+    "workflow": {
+     "calls": 55,
+     "prompt": 71701,
+     "completion": 8221,
+     "from": "each call's usage as the gateway returned it, kept by the run"
+    },
+    "judge": {
+     "calls": 20,
+     "prompt": 14392,
+     "completion": 529
+    }
+   }
+  },
+  "w2": {
+   "run": "2026-11-02",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "w2-01": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-02": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-03": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-04": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-05": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-06": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-07": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-08": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-09": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-10": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.refusal": true,
+     "deterministic.route": true,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-11": {
+     "scorer": false,
+     "deterministic.facts": false,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-12": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-13": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.refusal": true,
+     "deterministic.route": true,
+     "deterministic.labels": null,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-14": {
+     "scorer": false,
+     "deterministic.facts": null,
+     "deterministic.refusal": false,
+     "deterministic.route": true,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-15": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-16": {
+     "scorer": false,
+     "deterministic.facts": false,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-17": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-18": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-19": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.refusal": true,
+     "deterministic.route": true,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-20": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-21": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-22": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-23": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-24": {
+     "scorer": true,
+     "deterministic.facts": true,
+     "deterministic.refusal": null,
+     "deterministic.route": null,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w2-25": {
+     "scorer": true,
+     "deterministic.facts": null,
+     "deterministic.refusal": true,
+     "deterministic.route": true,
+     "deterministic.labels": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 22,
+     "failed": 3,
+     "undecided": 0
+    },
+    "deterministic.facts": {
+     "passed": 18,
+     "failed": 2,
+     "undecided": 5
+    },
+    "deterministic.refusal": {
+     "passed": 4,
+     "failed": 1,
+     "undecided": 20
+    },
+    "deterministic.route": {
+     "passed": 5,
+     "failed": 0,
+     "undecided": 20
+    },
+    "deterministic.labels": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 1
+    },
+    "deterministic.planted": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 22
+    },
+    "deterministic.masked": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.allowed": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.order": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.forbidden": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.budget": {
+     "passed": 25,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "judge": {
+    "judged": 21,
+    "withheld": 9,
+    "right": null,
+    "wrong": null,
+    "no_verdict": null,
+    "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+   },
+   "tokens": {
+    "workflow": {
+     "calls": 48,
+     "prompt": 46298,
+     "completion": 6554,
+     "from": "each call's usage as the gateway returned it, kept by the run"
+    },
+    "judge": {
+     "calls": 21,
+     "prompt": 13370,
+     "completion": 485
+    }
+   }
+  },
+  "w3": {
+   "run": "2026-11-02",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "w3-01": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": false,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": false,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-02": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-03": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-04": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": false,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-05": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": false,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-06": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": false,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-07": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": true,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-08": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-09": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": null,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-10": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": null,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-11": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-12": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-13": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": false,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": false,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-14": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": false,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-15": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": false,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-16": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-17": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-18": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-19": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-20": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-21": {
+     "scorer": false,
+     "deterministic.tool_call": false,
+     "deterministic.facts": false,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": true,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-22": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-23": {
+     "scorer": false,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": false,
+     "deterministic.prose": false,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w3-24": {
+     "scorer": true,
+     "deterministic.tool_call": true,
+     "deterministic.facts": true,
+     "deterministic.labels": true,
+     "deterministic.runbook": true,
+     "deterministic.approval": null,
+     "deterministic.planted": null,
+     "deterministic.prose": true,
+     "deterministic.writes": true,
+     "deterministic.masked": true,
+     "trajectory.allowed": true,
+     "trajectory.order": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 11,
+     "failed": 13,
+     "undecided": 0
+    },
+    "deterministic.tool_call": {
+     "passed": 18,
+     "failed": 6,
+     "undecided": 0
+    },
+    "deterministic.facts": {
+     "passed": 15,
+     "failed": 7,
+     "undecided": 2
+    },
+    "deterministic.labels": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.runbook": {
+     "passed": 23,
+     "failed": 1,
+     "undecided": 0
+    },
+    "deterministic.approval": {
+     "passed": 0,
+     "failed": 0,
+     "undecided": 24
+    },
+    "deterministic.planted": {
+     "passed": 2,
+     "failed": 3,
+     "undecided": 19
+    },
+    "deterministic.prose": {
+     "passed": 20,
+     "failed": 4,
+     "undecided": 0
+    },
+    "deterministic.writes": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.masked": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.allowed": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.order": {
+     "passed": 21,
+     "failed": 3,
+     "undecided": 0
+    },
+    "trajectory.forbidden": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.budget": {
+     "passed": 24,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "judge": {
+    "judged": 19,
+    "withheld": 19,
+    "right": null,
+    "wrong": null,
+    "no_verdict": null,
+    "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+   },
+   "tokens": {
+    "workflow": {
+     "calls": null,
+     "prompt": null,
+     "completion": null,
+     "from": "the run kept no record of its tokens"
+    },
+    "judge": {
+     "calls": 19,
+     "prompt": 14113,
+     "completion": 543
+    }
+   }
+  },
+  "w4": {
+   "run": "2026-11-02",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "w4-01": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-02": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-03": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-04": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-05": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": null,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-06": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-07": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    },
+    "w4-08": {
+     "scorer": true,
+     "deterministic.class": true,
+     "deterministic.evidence": true,
+     "deterministic.flags": true,
+     "deterministic.rationale": true,
+     "deterministic.writes": true,
+     "deterministic.planted": true,
+     "deterministic.masked": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.class": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.evidence": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.flags": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.rationale": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.writes": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.planted": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 5
+    },
+    "deterministic.masked": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.order": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.allowed": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.forbidden": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.budget": {
+     "passed": 8,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "judge": {
+    "judged": 8,
+    "withheld": 8,
+    "right": null,
+    "wrong": null,
+    "no_verdict": null,
+    "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+   },
+   "tokens": {
+    "workflow": {
+     "calls": null,
+     "prompt": null,
+     "completion": null,
+     "from": "the run kept no record of its tokens"
+    },
+    "judge": {
+     "calls": 8,
+     "prompt": 4001,
+     "completion": 224
+    }
+   }
+  },
+  "w5": {
+   "run": "2026-11-03/after-review",
+   "model": "gpt-oss-20b",
+   "cases": {
+    "night-1": {
+     "scorer": true,
+     "deterministic.findings": true,
+     "deterministic.alarm": null,
+     "deterministic.bodies": true,
+     "deterministic.realized": true,
+     "deterministic.diffs": true,
+     "deterministic.body_sources": true,
+     "deterministic.pull_requests": true,
+     "deterministic.plants": true,
+     "deterministic.masked": true,
+     "deterministic.suppressed": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true,
+     "trajectory.servers": true
+    },
+    "night-2": {
+     "scorer": true,
+     "deterministic.findings": true,
+     "deterministic.alarm": null,
+     "deterministic.bodies": true,
+     "deterministic.realized": true,
+     "deterministic.diffs": true,
+     "deterministic.body_sources": true,
+     "deterministic.pull_requests": true,
+     "deterministic.plants": true,
+     "deterministic.masked": true,
+     "deterministic.suppressed": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true,
+     "trajectory.servers": true
+    },
+    "alarm-1": {
+     "scorer": true,
+     "deterministic.findings": true,
+     "deterministic.alarm": true,
+     "deterministic.bodies": true,
+     "deterministic.realized": true,
+     "deterministic.diffs": true,
+     "deterministic.body_sources": true,
+     "deterministic.pull_requests": true,
+     "deterministic.plants": true,
+     "deterministic.masked": true,
+     "deterministic.suppressed": true,
+     "trajectory.order": true,
+     "trajectory.allowed": true,
+     "trajectory.forbidden": true,
+     "trajectory.budget": true,
+     "trajectory.route": true,
+     "trajectory.servers": true
+    }
+   },
+   "tally": {
+    "scorer": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.findings": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.alarm": {
+     "passed": 1,
+     "failed": 0,
+     "undecided": 2
+    },
+    "deterministic.bodies": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.realized": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.diffs": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.body_sources": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.pull_requests": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.plants": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.masked": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "deterministic.suppressed": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.order": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.allowed": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.forbidden": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.budget": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.route": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    },
+    "trajectory.servers": {
+     "passed": 3,
+     "failed": 0,
+     "undecided": 0
+    }
+   },
+   "judge": {
+    "judged": 31,
+    "withheld": 10,
+    "right": null,
+    "wrong": null,
+    "no_verdict": null,
+    "verdicts": "not carried from step 3's runs: the author labels the sample blind to the judge (E-D5), and a count over the other outputs, set against step 3's tables, would give away how it read the sampled ones"
+   },
+   "tokens": {
+    "workflow": {
+     "calls": 31,
+     "prompt": 19577,
+     "completion": 19358,
+     "from": "the gateway's log the run kept"
+    },
+    "judge": {
+     "calls": 31,
+     "prompt": 34827,
+     "completion": 999
+    }
+   }
+  }
+ }
+}

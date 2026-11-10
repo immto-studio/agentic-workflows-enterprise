@@ -1,0 +1,19 @@
+# Copy to lab.tfvars for a personal sandbox subscription; every value below is a placeholder.
+# The network is yours to create first: a subnet delegated to Microsoft.App/environments (used by
+# no other Foundry account and fixed for the account's life; a /27 holds about 20 sessions, enough
+# for a sandbox and too small for production, see agent_subnet_id in variables.tf), a subnet for
+# private endpoints, and the four zones.
+subscription_id            = "00000000-0000-0000-0000-000000000000"
+name_suffix                = "lm01"
+monthly_budget             = 20
+budget_start               = "2026-11-01T00:00:00Z"
+budget_alert_emails        = ["you@example.com"]
+agent_subnet_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-network/providers/Microsoft.Network/virtualNetworks/vnet-commercial-lines/subnets/snet-agents"
+private_endpoint_subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-network/providers/Microsoft.Network/virtualNetworks/vnet-commercial-lines/subnets/snet-private-endpoints"
+private_dns_zone_ids = [
+  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-dns/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com",
+  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-dns/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com",
+  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-dns/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com",
+]
+registry_dns_zone_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-dns/providers/Microsoft.Network/privateDnsZones/privatelink.azurecr.io"
+gateway_principal_id = "00000000-0000-0000-0000-000000000000"

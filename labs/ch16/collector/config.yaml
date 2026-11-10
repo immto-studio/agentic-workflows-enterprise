@@ -1,0 +1,157 @@
+# The OpenTelemetry Collector between Larkspur's processes and its trace stores (chapter 16, step 3;
+# companion #14, O-D3 and O-D4). The contrib distribution v0.164.0, pinned by collector/fetch.py.
+#
+# Every process keeps the one OTLP exporter chapter 5 gave it and sends here. One pipeline drops the
+# content no manifest allows, samples whole traces, and batches them; two more fan the sampled traces
+# out: to the span file and CloudWatch, and to Langfuse with the gateway's cost copied where Langfuse
+# reads it. The audit records and the gateway's cost lines never come through here (ch03:58).
+#
+# Run with the two tail-sampling feature gates on, as collector/run_local.py does:
+#   otelcol-contrib --config=file:collector/config.yaml --feature-gates=
+#     processor.tailsamplingprocessor.usetracestate,processor.tailsamplingprocessor.recordpolicy
+# Environment: LANGFUSE_OTLP_ENDPOINT, LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, LARKSPUR_SPAN_FILE,
+# AWS credentials for SigV4 from the SDK's default chain, and optionally LARKSPUR_TRACE_SHARE_PERCENT.
+# The README lists which settings below are the components' defaults.
+
+extensions:
+  sigv4auth/cloudwatch:
+    region: us-east-2
+    service: xray
+  basicauth/langfuse:
+    client_auth:
+      username: ${env:LANGFUSE_PUBLIC_KEY}
+      password: ${env:LANGFUSE_SECRET_KEY}
+
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 127.0.0.1:4318
+
+processors:
+  # trace_content: false in every manifest (tests/test_collector_config.py reads them all), so the
+  # opt-in content attributes of the GenAI conventions go from every span and span event. A workflow
+  # whose manifest allowed content would get a `where` clause naming it. One group per context: a
+  # single list naming both runs as span-event statements and misses spans without events (a test
+  # shows it). propagate: a statement that fails drops its batch, so no content leaves on an error.
+  transform/drop-content:
+    error_mode: propagate
+    trace_statements:
+      - statements:
+          - delete_key(span.attributes, "gen_ai.input.messages")
+          - delete_key(span.attributes, "gen_ai.input.messages_ref")
+          - delete_key(span.attributes, "gen_ai.output.messages")
+          - delete_key(span.attributes, "gen_ai.output.messages_ref")
+          - delete_key(span.attributes, "gen_ai.system_instructions")
+          - delete_key(span.attributes, "gen_ai.system_instructions_ref")
+          - delete_key(span.attributes, "gen_ai.tool.definitions")
+          - delete_key(span.attributes, "gen_ai.tool.definitions_ref")
+          - delete_key(span.attributes, "gen_ai.tool.call.arguments")
+          - delete_key(span.attributes, "gen_ai.tool.call.result")
+          - delete_key(span.attributes, "gen_ai.retrieval.documents")
+          - delete_key(span.attributes, "gen_ai.retrieval.query.text")
+          - delete_key(span.attributes, "gen_ai.memory.query.text")
+          - delete_key(span.attributes, "gen_ai.memory.records")
+          - delete_matching_keys(span.attributes, "^gen_ai\\.prompt\\.variable\\.")
+      - statements:
+          - delete_key(spanevent.attributes, "gen_ai.input.messages")
+          - delete_key(spanevent.attributes, "gen_ai.input.messages_ref")
+          - delete_key(spanevent.attributes, "gen_ai.output.messages")
+          - delete_key(spanevent.attributes, "gen_ai.output.messages_ref")
+          - delete_key(spanevent.attributes, "gen_ai.system_instructions")
+          - delete_key(spanevent.attributes, "gen_ai.system_instructions_ref")
+          - delete_key(spanevent.attributes, "gen_ai.tool.definitions")
+          - delete_key(spanevent.attributes, "gen_ai.tool.definitions_ref")
+          - delete_key(spanevent.attributes, "gen_ai.tool.call.arguments")
+          - delete_key(spanevent.attributes, "gen_ai.tool.call.result")
+          - delete_key(spanevent.attributes, "gen_ai.retrieval.documents")
+          - delete_key(spanevent.attributes, "gen_ai.retrieval.query.text")
+          - delete_key(spanevent.attributes, "gen_ai.memory.query.text")
+          - delete_key(spanevent.attributes, "gen_ai.memory.records")
+          - delete_matching_keys(spanevent.attributes, "^gen_ai\\.prompt\\.variable\\.")
+
+  # A trace is kept when any policy keeps it. The first five keep every run they match; the last keeps
+  # a share of the rest by a hash of the trace id. With the usetracestate gate, each kept span carries
+  # the share it was kept at as OpenTelemetry's threshold in its tracestate: ot=th:0 for a share of
+  # one, ot=th:e666... for ten percent. With recordpolicy, each names the policy that kept it.
+  tail_sampling:
+    decision_wait: 30s
+    num_traces: 50000
+    policies:
+      - name: failed
+        type: ottl_condition
+        ottl_condition:
+          error_mode: ignore
+          span:
+            - span.status.code == STATUS_CODE_ERROR
+            - span.attributes["error.type"] != nil
+      - name: refused
+        type: boolean_attribute
+        boolean_attribute: {key: larkspur.refused, value: true}
+      - name: slow
+        type: latency
+        latency: {threshold_ms: 10000}
+      # One condition per manifest: a single call that cost the run's whole per_run_usd. The Collector
+      # sees one span at a time and can't add up a run's calls.
+      - name: over-budget
+        type: ottl_condition
+        ottl_condition:
+          error_mode: ignore
+          span:
+            - 'span.attributes["larkspur.workflow"] == "w1-ingest" and span.attributes["larkspur.cost_usd"] >= 0.50'
+            - 'span.attributes["larkspur.workflow"] == "w1-knowledge" and span.attributes["larkspur.cost_usd"] >= 0.20'
+            - 'span.attributes["larkspur.workflow"] == "w2-ops-assistant" and span.attributes["larkspur.cost_usd"] >= 0.50'
+            - 'span.attributes["larkspur.workflow"] == "w3-incident" and span.attributes["larkspur.cost_usd"] >= 2.00'
+            - 'span.attributes["larkspur.workflow"] == "w4-change" and span.attributes["larkspur.cost_usd"] >= 1.00'
+            - 'span.attributes["larkspur.workflow"] == "w5-drift" and span.attributes["larkspur.cost_usd"] >= 1.00'
+      - name: fallback
+        type: boolean_attribute
+        boolean_attribute: {key: larkspur.fallback, value: true}
+      - name: share-of-the-rest
+        type: probabilistic
+        probabilistic:
+          hash_salt: larkspur-ch16
+          sampling_percentage: ${env:LARKSPUR_TRACE_SHARE_PERCENT:-10}
+
+  batch: {}
+
+  # Langfuse reads a call's cost from gen_ai.usage.cost and prefers it to its own estimate (fact
+  # sheet 8.5); the gateway's span carries the cost as larkspur.cost_usd (chapter 5).
+  transform/langfuse-cost:
+    trace_statements:
+      - set(span.attributes["gen_ai.usage.cost"], span.attributes["larkspur.cost_usd"]) where span.attributes["larkspur.cost_usd"] != nil
+
+exporters:
+  # Appended to, as chapter 5's processes append to their file; by default the exporter truncates the
+  # file each time the Collector starts.
+  file:
+    path: ${env:LARKSPUR_SPAN_FILE}
+    append: true
+  otlp_http/cloudwatch:
+    traces_endpoint: https://xray.us-east-2.amazonaws.com/v1/traces
+    auth:
+      authenticator: sigv4auth/cloudwatch
+  otlp_http/langfuse:
+    endpoint: ${env:LANGFUSE_OTLP_ENDPOINT}
+    auth:
+      authenticator: basicauth/langfuse
+    headers:
+      x-langfuse-ingestion-version: "4"
+
+connectors:
+  forward/sampled:
+
+service:
+  extensions: [sigv4auth/cloudwatch, basicauth/langfuse]
+  pipelines:
+    traces/sample:
+      receivers: [otlp]
+      processors: [transform/drop-content, tail_sampling, batch]
+      exporters: [forward/sampled]
+    traces/stores:
+      receivers: [forward/sampled]
+      exporters: [file, otlp_http/cloudwatch]
+    traces/langfuse:
+      receivers: [forward/sampled]
+      processors: [transform/langfuse-cost]
+      exporters: [otlp_http/langfuse]

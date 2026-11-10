@@ -1,0 +1,173 @@
+# HELP otelcol_exporter_in_flight_requests Number of export requests currently in-flight (including retry backoff). [Development]
+# TYPE otelcol_exporter_in_flight_requests gauge
+otelcol_exporter_in_flight_requests{data_type="traces",exporter="file"} 0
+otelcol_exporter_in_flight_requests{data_type="traces",exporter="otlp_http/cloudwatch"} 0
+otelcol_exporter_in_flight_requests{data_type="traces",exporter="otlp_http/langfuse"} 0
+otelcol_exporter_in_flight_requests{data_type="traces",exporter="otlp_http/sink"} 0
+otelcol_exporter_in_flight_requests{data_type="traces",exporter="otlp_http/tap"} 0
+# HELP otelcol_exporter_queue_capacity Fixed capacity of the retry queue (in batches). [Alpha]
+# TYPE otelcol_exporter_queue_capacity gauge
+otelcol_exporter_queue_capacity{data_type="traces",exporter="otlp_http/cloudwatch"} 1000
+otelcol_exporter_queue_capacity{data_type="traces",exporter="otlp_http/langfuse"} 1000
+otelcol_exporter_queue_capacity{data_type="traces",exporter="otlp_http/sink"} 1000
+otelcol_exporter_queue_capacity{data_type="traces",exporter="otlp_http/tap"} 1000
+# HELP otelcol_exporter_queue_size Current size of the retry queue (in batches). [Alpha]
+# TYPE otelcol_exporter_queue_size gauge
+otelcol_exporter_queue_size{data_type="traces",exporter="otlp_http/cloudwatch"} 0
+otelcol_exporter_queue_size{data_type="traces",exporter="otlp_http/langfuse"} 0
+otelcol_exporter_queue_size{data_type="traces",exporter="otlp_http/sink"} 0
+otelcol_exporter_queue_size{data_type="traces",exporter="otlp_http/tap"} 0
+# HELP otelcol_exporter_sent_spans Number of spans successfully sent to destination. [Alpha]
+# TYPE otelcol_exporter_sent_spans counter
+otelcol_exporter_sent_spans{exporter="file"} 257
+otelcol_exporter_sent_spans{exporter="otlp_http/cloudwatch",server_address="xray.us-east-2.amazonaws.com",url_path="/v1/traces"} 257
+otelcol_exporter_sent_spans{exporter="otlp_http/langfuse",server_address="127.0.0.1",server_port="3100",url_path="/api/public/otel/v1/traces"} 257
+otelcol_exporter_sent_spans{exporter="otlp_http/sink",server_address="127.0.0.1",server_port="50654",url_path="/v1/traces"} 257
+otelcol_exporter_sent_spans{exporter="otlp_http/tap",server_address="127.0.0.1",server_port="50653",url_path="/v1/traces"} 257
+# HELP otelcol_process_cpu_seconds Total CPU user and system time in seconds [Alpha]
+# TYPE otelcol_process_cpu_seconds counter
+otelcol_process_cpu_seconds 0.265625
+# HELP otelcol_process_memory_rss Total physical memory (resident set size) [Alpha]
+# TYPE otelcol_process_memory_rss gauge
+otelcol_process_memory_rss 1.43310848e+08
+# HELP otelcol_process_runtime_heap_alloc_bytes Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc') [Alpha]
+# TYPE otelcol_process_runtime_heap_alloc_bytes gauge
+otelcol_process_runtime_heap_alloc_bytes 3.5195032e+07
+# HELP otelcol_process_runtime_total_alloc_bytes Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc') [Alpha]
+# TYPE otelcol_process_runtime_total_alloc_bytes counter
+otelcol_process_runtime_total_alloc_bytes 8.4631992e+07
+# HELP otelcol_process_runtime_total_sys_memory_bytes Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys') [Alpha]
+# TYPE otelcol_process_runtime_total_sys_memory_bytes gauge
+otelcol_process_runtime_total_sys_memory_bytes 7.7859064e+07
+# HELP otelcol_process_uptime Uptime of the process [Alpha]
+# TYPE otelcol_process_uptime counter
+otelcol_process_uptime 81.7766633
+# HELP otelcol_processor_batch_batch_send_size Number of units in the batch [Development]
+# TYPE otelcol_processor_batch_batch_send_size histogram
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="10"} 2
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="25"} 16
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="50"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="75"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="100"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="250"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="500"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="750"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="1000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="2000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="3000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="4000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="5000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="6000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="7000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="8000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="9000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="10000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="20000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="30000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="50000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="100000"} 17
+otelcol_processor_batch_batch_send_size_bucket{processor="batch",le="+Inf"} 17
+otelcol_processor_batch_batch_send_size_sum{processor="batch"} 257
+otelcol_processor_batch_batch_send_size_count{processor="batch"} 17
+# HELP otelcol_processor_batch_metadata_cardinality Number of distinct metadata value combinations being processed [Development]
+# TYPE otelcol_processor_batch_metadata_cardinality gauge
+otelcol_processor_batch_metadata_cardinality{processor="batch"} 1
+# HELP otelcol_processor_batch_timeout_trigger_send Number of times the batch was sent due to a timeout trigger [Development]
+# TYPE otelcol_processor_batch_timeout_trigger_send counter
+otelcol_processor_batch_timeout_trigger_send{processor="batch"} 17
+# HELP otelcol_processor_incoming_items Number of items passed to the processor. [Alpha]
+# TYPE otelcol_processor_incoming_items counter
+otelcol_processor_incoming_items{otel_signal="traces",processor="transform/drop-content"} 257
+otelcol_processor_incoming_items{otel_signal="traces",processor="transform/langfuse-cost"} 257
+# HELP otelcol_processor_outgoing_items Number of items emitted from the processor. [Alpha]
+# TYPE otelcol_processor_outgoing_items counter
+otelcol_processor_outgoing_items{otel_signal="traces",processor="transform/drop-content"} 257
+otelcol_processor_outgoing_items{otel_signal="traces",processor="transform/langfuse-cost"} 257
+# HELP otelcol_processor_tail_sampling_count_traces_sampled Count of traces that were sampled or not per sampling policy [Development]
+# TYPE otelcol_processor_tail_sampling_count_traces_sampled counter
+otelcol_processor_tail_sampling_count_traces_sampled{decision="not_sampled",policy="failed",sampled="false"} 22
+otelcol_processor_tail_sampling_count_traces_sampled{decision="not_sampled",policy="fallback",sampled="false"} 24
+otelcol_processor_tail_sampling_count_traces_sampled{decision="not_sampled",policy="over-budget",sampled="false"} 24
+otelcol_processor_tail_sampling_count_traces_sampled{decision="not_sampled",policy="refused",sampled="false"} 24
+otelcol_processor_tail_sampling_count_traces_sampled{decision="not_sampled",policy="slow",sampled="false"} 24
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="failed",sampled="true"} 3
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="fallback",sampled="true"} 1
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="over-budget",sampled="true"} 1
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="refused",sampled="true"} 1
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="share-of-the-rest",sampled="true"} 25
+otelcol_processor_tail_sampling_count_traces_sampled{decision="sampled",policy="slow",sampled="true"} 1
+# HELP otelcol_processor_tail_sampling_global_count_traces_sampled Global count of traces that were sampled or not by at least one policy [Development]
+# TYPE otelcol_processor_tail_sampling_global_count_traces_sampled counter
+otelcol_processor_tail_sampling_global_count_traces_sampled{decision="sampled",sampled="true"} 25
+# HELP otelcol_processor_tail_sampling_new_trace_id_received Counts the arrival of new traces [Development]
+# TYPE otelcol_processor_tail_sampling_new_trace_id_received counter
+otelcol_processor_tail_sampling_new_trace_id_received 25
+# HELP otelcol_processor_tail_sampling_sampling_decision_timer_latency Latency (in milliseconds) of each run of the sampling decision timer [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_decision_timer_latency histogram
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="1"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="2"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="5"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="10"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="25"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="50"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="75"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="100"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="150"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="200"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="300"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="400"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="500"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="750"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="1000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="2000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="3000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="4000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="5000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="10000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="20000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="30000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="50000"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_bucket{le="+Inf"} 81
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_sum 0
+otelcol_processor_tail_sampling_sampling_decision_timer_latency_count 81
+# HELP otelcol_processor_tail_sampling_sampling_policy_evaluation_error Count of sampling policy evaluation errors [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_policy_evaluation_error counter
+otelcol_processor_tail_sampling_sampling_policy_evaluation_error 0
+# HELP otelcol_processor_tail_sampling_sampling_policy_execution_count Total number of executions of a specific sampling policy [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_policy_execution_count counter
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="failed"} 25
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="fallback"} 25
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="over-budget"} 25
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="refused"} 25
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="share-of-the-rest"} 25
+otelcol_processor_tail_sampling_sampling_policy_execution_count{policy="slow"} 25
+# HELP otelcol_processor_tail_sampling_sampling_policy_execution_time_sum Total time spent (in microseconds) executing a specific sampling policy [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_policy_execution_time_sum counter
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="failed"} 0
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="fallback"} 0
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="over-budget"} 0
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="refused"} 0
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="share-of-the-rest"} 0
+otelcol_processor_tail_sampling_sampling_policy_execution_time_sum{policy="slow"} 0
+# HELP otelcol_processor_tail_sampling_sampling_trace_dropped_too_early Count of traces that needed to be dropped before the configured wait time [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_trace_dropped_too_early counter
+otelcol_processor_tail_sampling_sampling_trace_dropped_too_early 0
+# HELP otelcol_processor_tail_sampling_sampling_traces_on_memory Tracks the number of traces current on memory [Development]
+# TYPE otelcol_processor_tail_sampling_sampling_traces_on_memory gauge
+otelcol_processor_tail_sampling_sampling_traces_on_memory 25
+# HELP otelcol_receiver_accepted_spans Number of spans successfully pushed into the pipeline. [Alpha]
+# TYPE otelcol_receiver_accepted_spans counter
+otelcol_receiver_accepted_spans{receiver="otlp",transport="http"} 257
+# HELP otelcol_receiver_failed_spans The number of spans that failed to be processed by the receiver due to internal errors. [Alpha]
+# TYPE otelcol_receiver_failed_spans counter
+otelcol_receiver_failed_spans{receiver="otlp",transport="http"} 0
+# HELP otelcol_receiver_refused_spans Number of spans that could not be pushed into the pipeline. [Alpha]
+# TYPE otelcol_receiver_refused_spans counter
+otelcol_receiver_refused_spans{receiver="otlp",transport="http"} 0
+# HELP promhttp_metric_handler_errors_total Total number of internal errors encountered by the promhttp metric handler.
+# TYPE promhttp_metric_handler_errors_total counter
+promhttp_metric_handler_errors_total{cause="encoding"} 0
+promhttp_metric_handler_errors_total{cause="gathering"} 0
+# HELP target_info Target metadata
+# TYPE target_info gauge
+target_info{service_instance_id="7a962495-8e9b-4c5d-b486-0692938bd70e",service_name="otelcol-contrib",service_version="0.164.0"} 1

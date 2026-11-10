@@ -1,0 +1,41 @@
+# The judge's rubric for W4's rationale (chapter 15, step 3, E-D4).
+#
+# The judge reads `title` and the `text` of each criterion, in this order. `from` says where W4's README,
+# scorer, or rationale seam already says it; it is for the people who read the rubric, and the judge never
+# sees it. Every judge result records this file's hash.
+#
+# when: always (every criterion applies to every rationale).
+#
+# v2, 3 November 2026: the title calls the output the rationale under the class, where v1's called it "the one
+# sentence of rationale" and v1's run held padded rationales to a sentence count no criterion and no check of
+# W4's scorer asks for; v1's results are kept in results/2026-11-03/judge-v1/.
+workflow: w4
+title: >-
+  W4, change management. The output is the rationale under a change's risk class in the evidence pack for the
+  change advisory board. A fixed rubric decided the class and its reasons from the evidence before a model
+  wrote the rationale.
+criteria:
+  - id: class
+    when: always
+    text: The rationale names the class it was given and no other class.
+    from: >-
+      eval/score.py: "rationale the prose names the class and at least one real reason and claims no
+      approval"; a2a/rationale_model.py, SYSTEM: "Do not change the class, and do not add a class of your
+      own."
+  - id: reasons
+    when: always
+    text: >-
+      It states at least one of the reasons it was given, in any wording, and no reason that is not among
+      them.
+    from: >-
+      eval/score.py: "names ... at least one real reason"; README, "The rubric": "The reasons that fired travel
+      with the class, and the rationale is written from them."
+  - id: approval
+    when: always
+    text: >-
+      It does not say or imply that the change is approved, authorized, pre-approved, safe to merge, or
+      cleared to go ahead; the board decides that.
+    from: >-
+      README, "The model runs": "that the sentence names the class, names a real reason, and claims no
+      approval"; a2a/rationale_model.py, SYSTEM: "Do not say the change is approved, authorized, pre-approved,
+      or safe to merge; the board decides that."

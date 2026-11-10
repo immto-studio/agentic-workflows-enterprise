@@ -1,0 +1,5 @@
+# W1 (chapter 10): chapter 5's environment, which the gateway, the harness and the knowledge server
+# reuse, plus sqlite-vec for the exit drill's second store. Python 3.12. Install into the same
+# virtual environment as labs/ch05.
+-r ../../labs/ch05/requirements.txt
+sqlite-vec==0.1.9

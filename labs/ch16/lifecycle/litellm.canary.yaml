@@ -1,0 +1,67 @@
+# Step 8's canary (O-D14): larkspur-chat with two deployments, the current model at weight 3 and the candidate at
+# weight 1, so LiteLLM's simple-shuffle sends a quarter of the alias's calls to the candidate (litellm 1.106.6
+# weights the shuffle by `weight`, then `rpm`, then `tpm`). Chapter 5's rules check every deployment behind the alias
+# against the grid and the manifest's Regions, so both must pass, and both do: self-hosted, ca-central-1. The
+# gateway's cost line names the deployment that served each call, which is how the two arms are told apart.
+#
+# Both deployments sit on the portable Ollama 0.40.13 on 11435. The two models don't fit the 16 GB card together
+# (chapter 9 measured 12,549 and 8,811 MiB), so the server swaps them as the weight alternates; the run measures
+# that cost and the chapter says it. In production the candidate has replicas of its own (chapter 9, part 2).
+#
+# Run (from workflows/w2-ops-assistant/gateway):
+#   GATEWAY_CONFIG=<this file> LITELLM_MASTER_KEY=<a local value> litellm --config <this file> --host 127.0.0.1 --port 4020
+
+model_list:
+  - model_name: larkspur-chat
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      weight: 3
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-chat
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat
+    litellm_params:
+      model: ollama_chat/gemma4:12b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      think: false
+      weight: 1
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: candidate-gemma4-12b-chat
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+  - model_name: larkspur-chat-restricted
+    litellm_params:
+      model: ollama_chat/gpt-oss:20b
+      api_base: http://127.0.0.1:11435
+      num_ctx: 16384
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      timeout: 300
+    model_info:
+      id: local-gpt-oss-20b-restricted
+      region: ca-central-1
+      jurisdiction: CA
+      hosting: self-hosted
+
+litellm_settings:
+  num_retries: 0
+  callbacks: gateway_hooks.hooks
+  drop_params: true
+
+router_settings:
+  routing_strategy: simple-shuffle   # weighted by `weight` above
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

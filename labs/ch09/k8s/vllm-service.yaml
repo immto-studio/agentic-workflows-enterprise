@@ -1,0 +1,25 @@
+# In-cluster only. The gateway reaches the model at http://vllm-gpt-oss-20b.llm-serving.svc:8080/v1,
+# the allowlist container's API port. The Service port equals the container port and the names
+# match, as EKS's network policy considerations require.
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-gpt-oss-20b
+  namespace: llm-serving
+  labels: {app: vllm, model: gpt-oss-20b}
+spec:
+  type: ClusterIP
+  selector: {app: vllm, model: gpt-oss-20b}
+  ports:
+    - {name: api, port: 8080, targetPort: api}   # the allowlist, never vLLM's own port
+---
+# Keep one replica up through voluntary disruptions such as node drains.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: vllm-gpt-oss-20b
+  namespace: llm-serving
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: {app: vllm, model: gpt-oss-20b}

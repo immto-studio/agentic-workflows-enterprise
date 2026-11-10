@@ -1,0 +1,14 @@
+# The judge's scratch run folders (judge/run_judge.py): the gateway's config copy, its log and spans, and the
+# judgements as they are made. Never committed; the results go to results/<date>/.
+judge/_lab/
+# The red-team runs' scratch folders (redteam/run_redteam.py, redteam/judge_outputs.py): a folder per variant with
+# its placement, the servers' logs, W1's corpus copy and index, every request the model was sent, and the
+# judgements as they are made. Never committed; redteam/report.py writes the results to results/<date>/.
+redteam/_lab/
+# The e-reader export of the 140 outputs (labels/export.py): regenerated from the sample on demand, never committed.
+labels/export/
+# The live job's scratch folders (ci/live.py): each set's config copy, gateway log, and outputs in the shape its
+# workflow keeps a run, and the judge's. Never committed; a complete run's result goes to live/<UTC time>-<model>.json.
+ci/_lab/
+# The pinned actionlint, its archive beside the binary (ci/actionlint.py), which every run checks against the digest.
+ci/bin/

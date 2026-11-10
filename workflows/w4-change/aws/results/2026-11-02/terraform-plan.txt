@@ -1,0 +1,491 @@
+# terraform plan -refresh=false with placeholder credentials and account 111122223333 (2026-11-02)
+# No request reached AWS: skip_credentials_validation, skip_requesting_account_id and no refresh.
+data.aws_iam_policy_document.boundary: Reading...
+data.aws_iam_policy_document.trigger_trust: Reading...
+data.aws_iam_policy_document.trigger: Reading...
+data.aws_iam_policy_document.pod_identity_trust: Reading...
+data.aws_iam_policy_document.agent["scribe"]: Reading...
+data.aws_iam_policy_document.trigger: Read complete after 0s [id=1346216574]
+data.aws_iam_policy_document.agent["scribe"]: Read complete after 0s [id=800441576]
+data.aws_iam_policy_document.pod_identity_trust: Read complete after 0s [id=3844529573]
+data.aws_iam_policy_document.trigger_trust: Read complete after 0s [id=1374271686]
+data.aws_iam_policy_document.boundary: Read complete after 0s [id=938035731]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_eks_pod_identity_association.agent["analyst"] will be created
+  + resource "aws_eks_pod_identity_association" "agent" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w4-analyst"
+      + tags                 = {
+          + "agent" = "analyst"
+        }
+      + tags_all             = {
+          + "agent"    = "analyst"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_eks_pod_identity_association.agent["risk_scorer"] will be created
+  + resource "aws_eks_pod_identity_association" "agent" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-change"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w4-risk-scorer"
+      + tags                 = {
+          + "agent" = "risk_scorer"
+        }
+      + tags_all             = {
+          + "agent"    = "risk_scorer"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_eks_pod_identity_association.agent["scribe"] will be created
+  + resource "aws_eks_pod_identity_association" "agent" {
+      + association_arn      = (known after apply)
+      + association_id       = (known after apply)
+      + cluster_name         = "ops"
+      + disable_session_tags = false
+      + external_id          = (known after apply)
+      + id                   = (known after apply)
+      + namespace            = "larkspur-ops"
+      + region               = "ca-central-1"
+      + role_arn             = (known after apply)
+      + service_account      = "w4-scribe"
+      + tags                 = {
+          + "agent" = "scribe"
+        }
+      + tags_all             = {
+          + "agent"    = "scribe"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_iam_policy.agent["scribe"] will be created
+  + resource "aws_iam_policy" "agent" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W4 scribe: the trigger queue's reads, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-change-scribe-queue"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "sqs:ReceiveMessage",
+                          + "sqs:GetQueueAttributes",
+                          + "sqs:DeleteMessage",
+                          + "sqs:ChangeMessageVisibility",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger"
+                      + Sid      = "TriggerQueue"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_iam_policy.boundary will be created
+  + resource "aws_iam_policy" "boundary" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permission boundary for W4's identities: the trigger queue's actions, and the never-list denied, sts:AssumeRole and the apply included."
+      + id               = (known after apply)
+      + name             = "w4-change-boundary"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "sqs:SendMessage",
+                          + "sqs:ReceiveMessage",
+                          + "sqs:GetQueueAttributes",
+                          + "sqs:DeleteMessage",
+                          + "sqs:ChangeMessageVisibility",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger"
+                      + Sid      = "Ceiling"
+                    },
+                  + {
+                      + Action   = [
+                          + "sts:AssumeRole",
+                          + "ssm:*",
+                          + "secretsmanager:*",
+                          + "s3:PutObject",
+                          + "s3:DeleteObject",
+                          + "logs:PutLogEvents",
+                          + "logs:DeleteLogGroup",
+                          + "lambda:*",
+                          + "iam:*",
+                          + "eks:*",
+                          + "ec2:*",
+                          + "dynamodb:UpdateItem",
+                          + "dynamodb:PutItem",
+                          + "dynamodb:DeleteItem",
+                          + "cloudwatch:PutMetricData",
+                          + "cloudformation:*",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                      + Sid      = "NeverList"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_iam_policy.trigger will be created
+  + resource "aws_iam_policy" "trigger" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "W4 trigger: sqs:SendMessage on the trigger queue, and nothing else"
+      + id               = (known after apply)
+      + name             = "larkspur-change-trigger-send"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = "sqs:SendMessage"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:sqs:ca-central-1:111122223333:w4-change-trigger"
+                      + Sid      = "SendTrigger"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+    }
+
+  # aws_iam_role.agent["analyst"] will be created
+  + resource "aws_iam_role" "agent" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W4 analyst: the read-only A2A server, one skill, assess-change (W4-D3)"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-change-analyst"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "agent"    = "analyst"
+          + "identity" = "larkspur-change-analyst"
+          + "team"     = "platform-engineering"
+        }
+      + tags_all              = {
+          + "agent"    = "analyst"
+          + "identity" = "larkspur-change-analyst"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "platform-engineering"
+          + "workflow" = "w4-change"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.agent["risk_scorer"] will be created
+  + resource "aws_iam_role" "agent" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W4 risk_scorer: the A2A server of the change-management team, one skill, score-change; reaches no source (W4-D3)"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-risk-scorer"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "agent"    = "risk_scorer"
+          + "identity" = "larkspur-risk-scorer"
+          + "team"     = "change-management"
+        }
+      + tags_all              = {
+          + "agent"    = "risk_scorer"
+          + "identity" = "larkspur-risk-scorer"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "change-management"
+          + "workflow" = "w4-change"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.agent["scribe"] will be created
+  + resource "aws_iam_role" "agent" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "sts:TagSession",
+                          + "sts:AssumeRole",
+                        ]
+                      + Condition = {
+                          + ArnLike = {
+                              + "aws:SourceArn" = "arn:aws:eks:ca-central-1:111122223333:cluster/*"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "pods.eks.amazonaws.com"
+                        }
+                      + Sid       = "EKSPodIdentity"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W4 scribe: the orchestrator and A2A client; two writes, a ticket and a comment, never infrastructure (W4-D6)"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-change-scribe"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "agent"    = "scribe"
+          + "identity" = "larkspur-change-scribe"
+          + "team"     = "platform-engineering"
+        }
+      + tags_all              = {
+          + "agent"    = "scribe"
+          + "identity" = "larkspur-change-scribe"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "platform-engineering"
+          + "workflow" = "w4-change"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role.trigger will be created
+  + resource "aws_iam_role" "trigger" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRoleWithWebIdentity"
+                      + Condition = {
+                          + StringEquals = {
+                              + "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+                              + "token.actions.githubusercontent.com:sub" = "repo:larkspur-mutual/platform-infra:environment:change-evidence"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Federated = "arn:aws:iam::111122223333:oidc-provider/token.actions.githubusercontent.com"
+                        }
+                      + Sid       = "GitHubActionsOIDC"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "W4 trigger: the pull-request job sends one message to the trigger queue, through OIDC"
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "larkspur-change-trigger"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + permissions_boundary  = (known after apply)
+      + tags                  = {
+          + "agent"    = "trigger"
+          + "identity" = "larkspur-change-trigger"
+          + "team"     = "platform-engineering"
+        }
+      + tags_all              = {
+          + "agent"    = "trigger"
+          + "identity" = "larkspur-change-trigger"
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "team"     = "platform-engineering"
+          + "workflow" = "w4-change"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.agent["scribe"] will be created
+  + resource "aws_iam_role_policy_attachment" "agent" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-change-scribe"
+    }
+
+  # aws_iam_role_policy_attachment.trigger will be created
+  + resource "aws_iam_role_policy_attachment" "trigger" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "larkspur-change-trigger"
+    }
+
+  # aws_sqs_queue.trigger will be created
+  + resource "aws_sqs_queue" "trigger" {
+      + arn                               = (known after apply)
+      + content_based_deduplication       = false
+      + deduplication_scope               = (known after apply)
+      + delay_seconds                     = 0
+      + fifo_queue                        = false
+      + fifo_throughput_limit             = (known after apply)
+      + id                                = (known after apply)
+      + kms_data_key_reuse_period_seconds = 0
+      + max_message_size                  = 262144
+      + message_retention_seconds         = 86400
+      + name                              = "w4-change-trigger"
+      + name_prefix                       = (known after apply)
+      + policy                            = (known after apply)
+      + receive_wait_time_seconds         = 0
+      + redrive_allow_policy              = (known after apply)
+      + redrive_policy                    = (known after apply)
+      + region                            = "ca-central-1"
+      + sqs_managed_sse_enabled           = true
+      + tags                              = {
+          + "role" = "trigger"
+        }
+      + tags_all                          = {
+          + "owner"    = "tomasz.nowak@larkspur.example"
+          + "role"     = "trigger"
+          + "sponsor"  = "priya.raman@larkspur.example"
+          + "workflow" = "w4-change"
+        }
+      + url                               = (known after apply)
+      + visibility_timeout_seconds        = 300
+    }
+
+  # terraform_data.catalog_checks will be created
+  + resource "terraform_data" "catalog_checks" {
+      + id     = (known after apply)
+      + input  = "w4-change"
+      + output = (known after apply)
+    }
+
+Plan: 14 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + agent_role_arns   = {
+      + analyst     = (known after apply)
+      + risk_scorer = (known after apply)
+      + scribe      = (known after apply)
+    }
+  + boundary_arn      = (known after apply)
+  + trigger_queue_arn = (known after apply)
+  + trigger_role_arn  = (known after apply)
